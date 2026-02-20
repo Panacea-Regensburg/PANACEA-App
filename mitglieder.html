@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mitgliederbereich – Panacea</title>
+  <style>
+    body{
+      margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background: #0b0b0b;
+      color:#111;
+    }
+    .bg{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      padding:40px 16px;
+      background: url("./icons/background.jpg") center/cover no-repeat fixed;
+    }
+    .card{
+      width:min(900px, 100%);
+      background: rgba(255,255,255,0.86);
+      backdrop-filter: blur(12px);
+      border-radius: 22px;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.18);
+      padding: 26px;
+    }
+    .topbar{
+      display:flex; align-items:center; gap:10px; margin-bottom:16px;
+    }
+    .back{
+      text-decoration:none;
+      display:inline-block;
+      padding:10px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.8);
+      color:#111;
+      font-weight:600;
+    }
+    h1{ margin: 10px 0 6px; font-size: 34px; }
+    .sub{ margin:0 0 18px; opacity:0.85; }
+    .box{
+      margin-top:18px;
+      padding:18px;
+      border-radius:18px;
+      background: rgba(255,255,255,0.75);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+    .row{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+    input{
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid rgba(0,0,0,0.12);
+      width: 260px;
+      font-size:16px;
+      background:#fff;
+    }
+    button{
+      padding:12px 16px;
+      border-radius:14px;
+      border:0;
+      font-weight:700;
+      cursor:pointer;
+      background: #d7b55b;
+      color:#111;
+    }
+    .muted{ opacity:0.75; font-size:14px; }
+    .locked{ color:#8a1f1f; font-weight:700; }
+    .ok{ color:#116b2e; font-weight:800; }
+    .hr{ height:1px; background: rgba(0,0,0,0.08); margin:18px 0; }
+  </style>
+</head>
+
+<body>
+  <div class="bg">
+    <div class="card">
+      <div class="topbar">
+        <a class="back" href="./index.html">← Home</a>
+      </div>
+
+      <h1>Mitgliederbereich</h1>
+      <p class="sub">Premium-Funktionen: 3 Impulse pro Reset + automatische Atemführung.</p>
+
+      <div class="box">
+        <div class="row">
+          <input id="codeInput" placeholder="Mitglieder-Code eingeben" />
+          <button id="unlockBtn">Freischalten</button>
+          <span id="status" class="locked">Gesperrt</span>
+        </div>
+        <p class="muted" style="margin-top:10px;">
+          Hinweis: Der Mitglieder-Code wird nach Kauf bereitgestellt (z.B. über Jimdo).
+        </p>
+      </div>
+
+      <div class="hr"></div>
+
+      <div id="premiumArea" class="box" style="display:none;">
+        <h2 style="margin-top:0;">Premium Reset (Mitglieder)</h2>
+        <p class="muted" style="margin-top:-6px;">Wähle Stress & Energie. Du bekommst 3 mögliche Impulse (random) + passende Atemzeiten.</p>
+
+        <div class="row" style="margin:14px 0 8px;">
+          <label style="min-width:170px;">Stress (1–10)</label>
+          <input id="stressM" type="range" min="1" max="10" value="5" style="width:320px;">
+        </div>
+
+        <div class="row" style="margin:6px 0 14px;">
+          <label style="min-width:170px;">Energie (1–10)</label>
+          <input id="energyM" type="range" min="1" max="10" value="5" style="width:320px;">
+        </div>
+
+        <button id="genM">Mein Premium Reset</button>
+
+        <div class="box" style="margin-top:14px;">
+          <h3 id="mTitle" style="margin:0 0 8px;"></h3>
+          <p id="mText" style="margin:0;"></p>
+          <p id="mBreath" class="muted" style="margin-top:10px;"></p>
+        </div>
+      </div>
+
+      <p class="muted" style="margin-top:18px;">
+        © Panacea Regensburg
+      </p>
+    </div>
+  </div>
+
+<script>
+  // --- Simple code unlock (Level 1) ---
+  const MEMBER_CODE = "PANACEA2026"; // (später ersetzen / rotieren)
+  const isMember = () => localStorage.getItem("panacea_member") === "true";
+
+  function setUI() {
+    const status = document.getElementById("status");
+    const area = document.getElementById("premiumArea");
+    if (isMember()) {
+      status.textContent = "Freigeschaltet ✅";
+      status.className = "ok";
+      area.style.display = "block";
+    } else {
+      status.textContent = "Gesperrt";
+      status.className = "locked";
+      area.style.display = "none";
+    }
+  }
+
+  document.getElementById("unlockBtn").addEventListener("click", () => {
+    const code = document.getElementById("codeInput").value.trim();
+    if (code === MEMBER_CODE) {
+      localStorage.setItem("panacea_member", "true");
+      alert("Freigeschaltet ✅");
+      setUI();
+    } else {
+      alert("Code falsch ❌");
+    }
+  });
+
+  setUI();
+
+  // --- Premium content (placeholder) ---
+  function level(v){ v=Number(v); if(v>=7) return "hoch"; if(v>=4) return "mittel"; return "niedrig"; }
+
+  // TEMP: qui poi mettiamo il JSON avanzato con 3 testi + breathing
+  const demo = {
+    "hoch|niedrig": { title:"Sicherheit & Beruhigung", texts:[
+      "Heute braucht dein Nervensystem Sicherheit…",
+      "Reduziere Tempo und Reize…",
+      "Weniger ist mehr: ein kleiner Schritt…"
+    ], breathing:{ inhale:4, exhale:7, minutes:3 }},
+
+    "niedrig|mittel": { title:"Stabil & klar", texts:[
+      "6 ruhige Atemzüge…",
+      "Fokus: ein Schritt nach dem anderen…",
+      "Klarheit: eine Sache auswählen…"
+    ], breathing:{ inhale:4, exhale:6, minutes:3 }},
+
+    "mittel|mittel": { title:"Reset & Struktur", texts:[
+      "Struktur: Schultern locker…",
+      "Plane nur die nächsten 30 Minuten…",
+      "Weich werden, dann handeln…"
+    ], breathing:{ inhale:4, exhale:6, minutes:4 }}
+  };
+
+  document.getElementById("genM").addEventListener("click", () => {
+    const stress = level(document.getElementById("stressM").value);
+    const energy = level(document.getElementById("energyM").value);
+    const key = `${stress}|${energy}`;
+    const data = demo[key] || { title:"Noch nicht hinterlegt", texts:["Für diese Kombination ergänzen wir Inhalte."], breathing:{ inhale:4, exhale:6, minutes:3 }};
+
+    const idx = Math.floor(Math.random() * data.texts.length);
+    document.getElementById("mTitle").textContent = data.title;
+    document.getElementById("mText").textContent = data.texts[idx];
+    document.getElementById("mBreath").textContent = `Atem: Ein ${data.breathing.inhale}s · Aus ${data.breathing.exhale}s · Dauer ${data.breathing.minutes} Min`;
+  });
+</script>
+
+</body>
+</html>
