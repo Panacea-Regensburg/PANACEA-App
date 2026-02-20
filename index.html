@@ -6,51 +6,52 @@
   <meta name="theme-color" content="#1f3b2f" />
   <title>Panacea – Body & Mind</title>
 
-  <!-- (Opzionale) Font elegante e pulito -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --glass: rgba(255,255,255,.78);
-      --glass-strong: rgba(255,255,255,.90);
+      --glass: rgba(255,255,255,.82);
+      --glass2: rgba(255,255,255,.72);
       --text: #0f1c16;
-      --muted: rgba(15, 28, 22, .72);
+      --muted: rgba(15,28,22,.72);
       --border: rgba(255,255,255,.55);
-      --shadow: 0 14px 40px rgba(0,0,0,.22);
+      --shadow: 0 16px 44px rgba(0,0,0,.22);
       --radius: 22px;
+      --cardRadius: 20px;
+      --maxAppWidth: 440px; /* look “app” su desktop */
     }
 
-    *{ box-sizing: border-box; }
-    html, body { height: 100%; }
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+
     body{
       margin:0;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--text);
-
-      /* SFONDO */
+      color:var(--text);
       background: url("icons/sfondo.png") center/cover no-repeat fixed;
     }
 
-    /* leggera “nebbia” per leggibilità */
     .veil{
       min-height: 100%;
-      padding: 22px 16px 28px;
-      background: radial-gradient(circle at top, rgba(255,255,255,.25), rgba(0,0,0,.18));
+      padding: 18px 14px 22px;
+      background: radial-gradient(circle at top, rgba(255,255,255,.20), rgba(0,0,0,.25));
+      display:flex;
+      justify-content:center;
     }
 
-    .wrap{
-      max-width: 980px;
-      margin: 0 auto;
+    /* Contenitore “app” (verticale, centrato) */
+    .app{
+      width: 100%;
+      max-width: var(--maxAppWidth);
     }
 
     header{
       display:flex;
-      align-items:flex-start;
-      justify-content: space-between;
-      gap: 14px;
-      margin: 8px 0 18px;
+      flex-direction: column;
+      gap: 10px;
+      margin: 8px 0 14px;
     }
 
     .brand{
@@ -65,22 +66,26 @@
 
     h1{
       margin:0 0 6px;
-      font-size: clamp(22px, 3.2vw, 34px);
+      font-size: 26px;
       letter-spacing: -0.02em;
-      line-height: 1.05;
+      line-height: 1.1;
     }
-
     .tagline{
       margin:0;
       color: var(--muted);
-      font-size: 14px;
-      line-height: 1.3;
+      font-size: 13px;
+      line-height: 1.25;
+    }
+
+    .topRow{
+      display:flex;
+      justify-content:flex-end;
     }
 
     .lang{
       padding: 10px 12px;
       border-radius: 999px;
-      background: var(--glass-strong);
+      background: rgba(255,255,255,.92);
       border: 1px solid var(--border);
       box-shadow: 0 10px 26px rgba(0,0,0,.14);
       backdrop-filter: blur(10px);
@@ -88,75 +93,82 @@
       white-space: nowrap;
       font-size: 13px;
       color: rgba(15,28,22,.78);
+      display:inline-flex;
+      gap:6px;
+      align-items:center;
+      justify-content:center;
     }
-    .lang a{
+    .lang button{
+      border:0;
+      background: transparent;
+      font: inherit;
       color: inherit;
-      text-decoration: none;
-      font-weight: 600;
+      font-weight: 700;
+      cursor:pointer;
+      padding: 0 2px;
     }
-    .lang a:hover{ text-decoration: underline; }
+    .lang button:hover{ text-decoration: underline; }
 
     main{
       padding: 14px;
       border-radius: var(--radius);
-      background: rgba(255,255,255,.58);
+      background: rgba(255,255,255,.60);
       border: 1px solid rgba(255,255,255,.45);
       box-shadow: var(--shadow);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
     }
 
+    /* Griglia “app”: 2 colonne su mobile */
     .grid{
       display:grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
+      gap: 12px;
     }
 
-    @media (min-width: 820px){
-      .grid{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    }
-
+    /* Card: icona grande */
     .card{
       display:flex;
       align-items:center;
       justify-content:center;
-      gap: 10px;
-      padding: 14px 14px;
-      border-radius: 20px;
-      background: rgba(255,255,255,.72);
-      border: 1px solid rgba(255,255,255,.60);
+      padding: 12px;
+      border-radius: var(--cardRadius);
+      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(255,255,255,.62);
       box-shadow: 0 10px 24px rgba(0,0,0,.12);
       text-decoration:none;
       color: var(--text);
       transition: transform .10s ease, box-shadow .10s ease, background .10s ease;
-      min-height: 92px;
-      position: relative;
-      overflow:hidden;
+      min-height: 170px; /* più “tocco” come app */
     }
-
     .card:hover{
       transform: translateY(-1px);
       box-shadow: 0 14px 30px rgba(0,0,0,.16);
-      background: rgba(255,255,255,.82);
+      background: rgba(255,255,255,.92);
     }
-
-    .icon{
-      width: 84px;
-      height: 84px;
-      display:block;
-      object-fit: contain;
-      filter: drop-shadow(0 10px 14px rgba(0,0,0,.14));
-    }
-
-    /* Accessibilità: focus */
     .card:focus{
       outline: 3px solid rgba(255, 215, 120, .85);
       outline-offset: 3px;
     }
 
+    .icon{
+  width: 90%;
+  max-width: 150px;
+  height: auto;
+  object-fit: contain;
+  display:block;
+  margin:auto;
+  filter: drop-shadow(0 14px 20px rgba(0,0,0,.18));
+}
+
+    /* Su desktop grande, restiamo “app-like” */
+    @media (min-width: 900px){
+      .veil{ padding-top: 26px; }
+    }
+
     footer{
-      margin-top: 14px;
-      text-align: center;
+      margin-top: 12px;
+      text-align:center;
       color: rgba(255,255,255,.86);
       font-size: 12px;
       text-shadow: 0 2px 10px rgba(0,0,0,.35);
@@ -166,56 +178,74 @@
 
 <body>
   <div class="veil">
-    <div class="wrap">
+    <div class="app">
+
+      <div class="topRow">
+        <div class="lang" aria-label="Sprache wählen">
+          <button type="button" onclick="setLang('de')">Deutsch</button>
+          <span>|</span>
+          <button type="button" onclick="setLang('it')">Italiano</button>
+        </div>
+      </div>
 
       <header>
         <div class="brand">
-          <h1>Panacea – Body &amp; Mind</h1>
-          <p class="tagline">Kleine Schritte. Mehr Stabilität. Jeden Tag.</p>
-        </div>
-
-        <!-- Toggle lingua: per ora sono link “placeholder” -->
-        <div class="lang" aria-label="Sprache wählen">
-          <a href="#de" title="Deutsch">Deutsch</a> | <a href="#it" title="Italiano">Italiano</a>
+          <h1 id="title">Panacea – Body &amp; Mind</h1>
+          <p class="tagline" id="tagline">Kleine Schritte. Mehr Stabilität. Jeden Tag.</p>
         </div>
       </header>
 
       <main>
         <div class="grid">
-
-          <!-- CAMBIA SOLO GLI href QUANDO HAI LE PAGINE -->
           <a class="card" href="daily-reset.html" aria-label="Daily Reset">
-            <img class="icon" src="icons/daily-reset.png" alt="Daily Reset Icon">
+            <img class="icon" src="icons/daily-reset.png" alt="Daily Reset">
           </a>
 
           <a class="card" href="wissen-klarheit.html" aria-label="Wissen & Klarheit">
-            <img class="icon" src="icons/wissen-klarheit.png" alt="Wissen & Klarheit Icon">
+            <img class="icon" src="icons/wissen-klarheit.png" alt="Wissen & Klarheit">
           </a>
 
-          <a class="card" href="lifestyle.html" aria-label="Life Style">
-            <img class="icon" src="icons/lifestyle.png" alt="Life Style Icon">
+          <a class="card" href="lifestyle.html" aria-label="Lifestyle">
+            <img class="icon" src="icons/lifestyle.png" alt="Lifestyle">
           </a>
 
           <a class="card" href="uebungen.html" aria-label="Übungen">
-            <img class="icon" src="icons/uebungen.png" alt="Übungen Icon">
+            <img class="icon" src="icons/uebungen.png" alt="Übungen">
           </a>
 
           <a class="card" href="kurse.html" aria-label="Kurse">
-            <img class="icon" src="icons/kurse.png" alt="Kurse Icon">
+            <img class="icon" src="icons/kurse.png" alt="Kurse">
           </a>
 
           <a class="card" href="mitgliederbereich.html" aria-label="Mitgliederbereich">
-            <img class="icon" src="icons/mitgliederbereich.png" alt="Mitgliederbereich Icon">
+            <img class="icon" src="icons/mitgliederbereich.png" alt="Mitgliederbereich">
           </a>
-
         </div>
       </main>
 
-      <footer>
-        © Panacea Regensburg
-      </footer>
+      <footer>© Panacea Regensburg</footer>
 
     </div>
   </div>
+
+  <script>
+    // lingua semplice (solo testo header per ora)
+    const t = {
+      de: {
+        tagline: "Kleine Schritte. Mehr Stabilität. Jeden Tag."
+      },
+      it: {
+        tagline: "Piccoli passi. Più stabilità. Ogni giorno."
+      }
+    };
+
+    function setLang(lang){
+      localStorage.setItem("panacea_lang", lang);
+      document.getElementById("tagline").textContent = t[lang]?.tagline || t.de.tagline;
+    }
+
+    // init
+    setLang(localStorage.getItem("panacea_lang") || "de");
+  </script>
 </body>
 </html>
