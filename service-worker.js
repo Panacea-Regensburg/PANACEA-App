@@ -1,3 +1,6 @@
+const CACHE_VERSION = "v13";
+const CACHE_NAME = `panacea-cache-${CACHE_VERSION}`;
+
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open("panacea-v1").then((cache) =>
