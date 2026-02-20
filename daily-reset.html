@@ -305,6 +305,13 @@
 
       <div class="titleBox">
         <h1>Daily Reset</h1>
+        <div class="dailyFocusBox" style="margin-bottom:25px; padding:20px; border-radius:18px; background:rgba(255,255,255,0.6); backdrop-filter:blur(8px);">
+  <h3 id="dailyFocusTitle" style="margin-bottom:10px;"></h3>
+  <p id="dailyFocusText" style="margin-bottom:10px;"></p>
+  <p style="font-size:0.85rem; opacity:0.7;">
+    ✨ Premium: Atemrhythmus & Impuls passen sich deinem Stresslevel an.
+  </p>
+</div>
         <p class="sub">3–5 Minuten für innere Stabilität: ruhig atmen, Körper spüren, Klarheit finden.</p>
       </div>
       <!-- Premium Reset Box -->
@@ -576,6 +583,44 @@ document.getElementById("generateResetBtn").addEventListener("click", function()
 
   renderPremiumReset(stressValue, energyValue);
 });
+</script>
+  <script>
+const dailyFocus = [
+  {
+    title: "Montag – Fokus",
+    text: "Richte deine Aufmerksamkeit auf einen klaren nächsten Schritt. Nicht alles – nur den nächsten."
+  },
+  {
+    title: "Dienstag – Ruhe",
+    text: "Verlängere heute bewusst dein Ausatmen. Dein Nervensystem liebt Sicherheit."
+  },
+  {
+    title: "Mittwoch – Klarheit",
+    text: "Beobachte deine Gedanken wie Wolken. Du musst ihnen nicht folgen."
+  },
+  {
+    title: "Donnerstag – Struktur",
+    text: "Plane nur die nächsten 30 Minuten – nicht den ganzen Tag."
+  },
+  {
+    title: "Freitag – Energie",
+    text: "Atme tief ein, öffne den Brustraum, richte dich auf. Energie entsteht durch Haltung."
+  },
+  {
+    title: "Samstag – Regeneration",
+    text: "Erlaube dir heute bewusst kleine Pausen. 3 Minuten reichen."
+  },
+  {
+    title: "Sonntag – Reflexion",
+    text: "Was hat dir diese Woche Stabilität gegeben? Wiederhole genau das."
+  }
+];
+
+const today = new Date().getDay(); // 0=Sonntag
+const index = today === 0 ? 6 : today - 1;
+
+document.getElementById("dailyFocusTitle").textContent = dailyFocus[index].title;
+document.getElementById("dailyFocusText").textContent = dailyFocus[index].text;
 </script>
 </body>
 </html>
