@@ -29,6 +29,15 @@
       color:var(--text);
       background:url("icons/sfondo.png") center / cover no-repeat fixed;
     }
+    .dayImg{
+  width:100%;
+  max-height:220px;
+  object-fit:cover;
+  border-radius:18px;
+  margin-bottom:14px;
+  border:1px solid rgba(255,255,255,.55);
+  box-shadow:0 14px 28px rgba(0,0,0,.12);
+}
     .veil{
       min-height:100%;
       background: radial-gradient(circle at 30% 5%, rgba(255,255,255,.55), rgba(255,255,255,.0) 60%);
@@ -137,6 +146,7 @@ h1 { font-size: 42px; }
 }
 
 .mini{ font-size: 15px; }
+    <img id="wissenImg" class="dayImg" src="icons/wissen/01.jpg" alt="">
   </style>
 </head>
 
@@ -180,8 +190,8 @@ h1 { font-size: 42px; }
   // ====== 21 Tage Wissen & Klarheit (progressione salvata) ======
   // IMPORTANTE: mettiamo 21 elementi. Per ora ti lascio 7 esempi + placeholder.
   const wissen21 = [
-    { title: "Tag 1 – Klarer Fokus", text: "Wähle EIN Thema für heute. Notiere den nächsten kleinsten Schritt – und starte." },
-    { title: "Tag 2 – Nervensystem beruhigen", text: "Langes Ausatmen aktiviert den Parasympathikus. 6 Atemzüge: 4 ein, 6 aus." },
+    { title:"Tag 1 – Klarer Fokus", text:"...", img:"icons/wissen/01.jpg" },
+    { title:"Tag 2 – Nervensystem beruhigen", text:"...", img:"icons/wissen/02.jpg" },
     { title: "Tag 3 – Gedanken entkoppeln", text: "Gedanken sind Ereignisse – keine Befehle. Sag: „Ich habe den Gedanken, dass…“" },
     { title: "Tag 4 – Struktur statt Druck", text: "Plane nur die nächsten 30 Minuten. Das reicht – und macht dich handlungsfähig." },
     { title: "Tag 5 – Energie durch Haltung", text: "Brustraum öffnen, Schultern weich. Haltung sendet Sicherheit ans Nervensystem." },
@@ -253,6 +263,8 @@ if (resetBtn) resetBtn.addEventListener("click", () => setDayIndex(0));
 // Init solo se esistono gli elementi testo
 if (document.getElementById("wissenTitle") && document.getElementById("wissenText")) {
   renderDay(getDayIndex());
+const imgEl = document.getElementById("wissenImg");
+if (imgEl && item.img) imgEl.src = item.img;
 }
 </script>
 </body>
