@@ -148,10 +148,27 @@
         </div>
 
         <div class="ctaRow">
-          <button class="btn" id="newImpulseBtn">Neuer Impuls</button>
-          <span style="color:rgba(15,30,23,.65); font-size:14px;">
-            Free-Version · <a class="link" href="mitglieder.html">Mitglieder freischalten</a>
-          </span>
+          // Bottoni (versione sicura)
+const prevBtn = document.getElementById("prevDayBtn");
+const nextBtn = document.getElementById("nextDayBtn");
+const resetBtn = document.getElementById("resetCycleBtn");
+
+if (prevBtn) {
+  prevBtn.addEventListener("click", () => setDayIndex(getDayIndex() - 1));
+}
+
+if (nextBtn) {
+  nextBtn.addEventListener("click", () => setDayIndex(getDayIndex() + 1));
+}
+
+if (resetBtn) {
+  resetBtn.addEventListener("click", () => setDayIndex(0));
+}
+
+// Init solo se esiste il titolo
+if (document.getElementById("wissenTitle")) {
+  renderDay(getDayIndex());
+}
         </div>
       </div>
 
