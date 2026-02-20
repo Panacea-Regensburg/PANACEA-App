@@ -159,33 +159,77 @@
   </div>
 
   <script>
-    // 7 Impulse (wechseln nach Wochentag). Später können wir das auf 30/60/365 ausbauen.
-    const wissen = [
-      { title: "Montag – Klarer Fokus", text: "Wähle EIN Thema für heute. Notiere den nächsten kleinsten Schritt – und starte in 2 Minuten." },
-      { title: "Dienstag – Nervensystem beruhigen", text: "Langes Ausatmen aktiviert den Parasympathikus. 6 Atemzüge: 4 ein, 6 aus." },
-      { title: "Mittwoch – Gedanken entkoppeln", text: "Gedanken sind Ereignisse – keine Befehle. Benenne ihn: „Ich habe den Gedanken, dass…“." },
-      { title: "Donnerstag – Struktur statt Druck", text: "Plane nur die nächsten 30 Minuten. Wenn das steht, wird der Rest leichter." },
-      { title: "Freitag – Energie durch Haltung", text: "Brustraum öffnen, Schultern weich. Haltung sendet Sicherheit ans Nervensystem." },
-      { title: "Samstag – Regeneration", text: "10 Minuten draußen (auch langsam). Tageslicht + Bewegung = sanfter Reset." },
-      { title: "Sonntag – Klarheit & Ausrichtung", text: "Was war diese Woche hilfreich? Was lässt du weg? Ein Satz reicht." }
-    ];
+  // ====== 21 Tage Wissen & Klarheit (progressione salvata) ======
+  // IMPORTANTE: mettiamo 21 elementi. Per ora ti lascio 7 esempi + placeholder.
+  const wissen21 = [
+    { title: "Tag 1 – Klarer Fokus", text: "Wähle EIN Thema für heute. Notiere den nächsten kleinsten Schritt – und starte." },
+    { title: "Tag 2 – Nervensystem beruhigen", text: "Langes Ausatmen aktiviert den Parasympathikus. 6 Atemzüge: 4 ein, 6 aus." },
+    { title: "Tag 3 – Gedanken entkoppeln", text: "Gedanken sind Ereignisse – keine Befehle. Sag: „Ich habe den Gedanken, dass…“" },
+    { title: "Tag 4 – Struktur statt Druck", text: "Plane nur die nächsten 30 Minuten. Das reicht – und macht dich handlungsfähig." },
+    { title: "Tag 5 – Energie durch Haltung", text: "Brustraum öffnen, Schultern weich. Haltung sendet Sicherheit ans Nervensystem." },
+    { title: "Tag 6 – Regeneration", text: "10 Minuten draußen (auch langsam). Tageslicht + Bewegung = sanfter Reset." },
+    { title: "Tag 7 – Klarheit & Ausrichtung", text: "Was war diese Woche hilfreich? Was lässt du weg? Ein Satz reicht." },
 
-    function renderByDay(){
-      const d = new Date();
-      const idx = (d.getDay() + 6) % 7; // Montag=0 … Sonntag=6
-      document.getElementById("wissenTitle").textContent = wissen[idx].title;
-      document.getElementById("wissenText").textContent  = wissen[idx].text;
-    }
+    // ---- Placeholder: qui mettiamo Tag 8–21 (posso scriverteli io dopo) ----
+    { title: "Tag 8 – …", text: "…" },
+    { title: "Tag 9 – …", text: "…" },
+    { title: "Tag 10 – …", text: "…" },
+    { title: "Tag 11 – …", text: "…" },
+    { title: "Tag 12 – …", text: "…" },
+    { title: "Tag 13 – …", text: "…" },
+    { title: "Tag 14 – …", text: "…" },
+    { title: "Tag 15 – …", text: "…" },
+    { title: "Tag 16 – …", text: "…" },
+    { title: "Tag 17 – …", text: "…" },
+    { title: "Tag 18 – …", text: "…" },
+    { title: "Tag 19 – …", text: "…" },
+    { title: "Tag 20 – …", text: "…" },
+    { title: "Tag 21 – …", text: "…" },
+  ];
 
-    // Button: in Free zeigen wir “neuer Impuls” = zufällig aus den 7
-    function renderRandom(){
-      const pick = wissen[Math.floor(Math.random() * wissen.length)];
-      document.getElementById("wissenTitle").textContent = pick.title;
-      document.getElementById("wissenText").textContent  = pick.text;
-    }
+  // Progress salvato per questa sezione
+  const KEY = "panacea_wissen_day"; // valore 0..20
 
-    document.getElementById("newImpulseBtn").addEventListener("click", renderRandom);
-    renderByDay();
-  </script>
+  function clamp(n, min, max) { return Math.max(min, Math.min(max, n)); }
+
+  function getDayIndex() {
+    const raw = localStorage.getItem(KEY);
+    const n = raw === null ? 0 : parseInt(raw, 10);
+    if (Number.isNaN(n)) return 0;
+    return clamp(n, 0, wissen21.length - 1);
+  }
+
+  function setDayIndex(i) {
+    const v = clamp(i, 0, wissen21.length - 1);
+    localStorage.setItem(KEY, String(v));
+    renderDay(v);
+  }
+
+  function renderDay(i) {
+    const item = wissen21[i];
+
+    // usa i tuoi ID già presenti
+    document.getElementById("wissenTitle").textContent = item.title;
+    document.getElementById("wissenText").textContent  = item.text;
+
+    // Tag X/21
+    const dayNumEl = document.getElementById("dayNum");
+    if (dayNumEl) dayNumEl.textContent = String(i + 1);
+
+    // disabilita ai bordi
+    const prevBtn = document.getElementById("prevDayBtn");
+    const nextBtn = document.getElementById("nextDayBtn");
+    if (prevBtn) prevBtn.disabled = (i === 0);
+    if (nextBtn) nextBtn.disabled = (i === wissen21.length - 1);
+  }
+
+  // Bottoni
+  document.getElementById("prevDayBtn").addEventListener("click", () => setDayIndex(getDayIndex() - 1));
+  document.getElementById("nextDayBtn").addEventListener("click", () => setDayIndex(getDayIndex() + 1));
+  document.getElementById("resetCycleBtn").addEventListener("click", () => setDayIndex(0));
+
+  // Init
+  renderDay(getDayIndex());
+</script>
 </body>
 </html>
