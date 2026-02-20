@@ -1,41 +1,13 @@
-async function loadPremiumResets() {
-  const response = await fetch("./data/resetPremium.json");
-  return await response.json();
-}
+[
+  {"stress":"niedrig","energy":"niedrig","title":"Sanfte Aktivierung","text":"Heute ist dein System eher langsam. Starte mit Licht, Wasser und 60 Sekunden sanfter Bewegung. Danach 5 ruhige Atemzüge – ohne Druck."},
+  {"stress":"niedrig","energy":"mittel","title":"Stabil & klar","text":"Dein Nervensystem ist recht stabil. Mach 6 ruhige Atemzüge und wähle eine kleine Aufgabe. Fokus auf: ein Schritt nach dem anderen."},
+  {"stress":"niedrig","energy":"hoch","title":"Nutze die Energie","text":"Du hast heute gute Energie. Mach 2 Minuten Bewegung und dann 4 tiefe Atemzüge. Setze dir ein Ziel – aber bleib freundlich zu dir."},
 
-function level(value) {
-  if (value >= 7) return "hoch";
-  if (value >= 4) return "mittel";
-  return "niedrig";
-}
+  {"stress":"mittel","energy":"niedrig","title":"Entlastung","text":"Heute braucht dein System Entlastung. Atme 2 Minuten langsam aus (Ausatmen länger als Einatmen). Danach: eine Sache weniger, nicht mehr."},
+  {"stress":"mittel","energy":"mittel","title":"Reset & Struktur","text":"Gib deinem Nervensystem Struktur: 6 Atemzüge, Schultern locker, Kiefer weich. Dann plane nur die nächsten 30 Minuten – nicht den ganzen Tag."},
+  {"stress":"mittel","energy":"hoch","title":"Lenkung","text":"Du bist aktiviert – lenke es. 90 Sekunden zügiges Gehen oder Treppen, dann 6 ruhige Atemzüge. Danach: eine klare Priorität."},
 
-function pickReset(resets, stressValue, energyValue) {
-  const stressLevel = level(stressValue);
-  const energyLevel = level(energyValue);
-
-  // debug in console
-  console.log("Stress:", stressValue, "=>", stressLevel, "| Energy:", energyValue, "=>", energyLevel);
-
-  // prendi SOLO match precisi
-  const matches = resets.filter(r => r.stress === stressLevel && r.energy === energyLevel);
-
-  // se non ci sono match, mostra un messaggio chiaro (così capiamo subito)
-  if (matches.length === 0) {
-    return {
-      title: "Kein Match gefunden",
-      text: `Für Stress=${stressLevel} und Energy=${energyLevel} gibt es noch keinen Text im JSON. Bitte ergänzen.`
-    };
-  }
-
-  // se ce ne sono più di uno, scegline uno a caso
-  const idx = Math.floor(Math.random() * matches.length);
-  return matches[idx];
-}
-
-async function renderPremiumReset(stressValue, energyValue) {
-  const resets = await loadPremiumResets();
-  const selectedReset = pickReset(resets, stressValue, energyValue);
-
-  document.getElementById("resetTitle").textContent = selectedReset.title;
-  document.getElementById("resetText").textContent = selectedReset.text;
-}
+  {"stress":"hoch","energy":"niedrig","title":"Sicherheit & Beruhigung","text":"Heute braucht dein Nervensystem Sicherheit. Atme 2 Minuten ruhig aus und entspanne Schultern und Kiefer. Nur eine kleine Aufgabe – das reicht."},
+  {"stress":"hoch","energy":"mittel","title":"Runterregeln","text":"Dein System ist stark aktiv. 6 Atemzüge mit langer Ausatmung, Blick weich in die Ferne. Danach: Tempo reduzieren und Pausen einplanen."},
+  {"stress":"hoch","energy":"hoch","title":"Energie in Klarheit","text":"Viel Aktivierung: erst 60–90 Sekunden Bewegung, dann 6 ruhige Atemzüge. Danach: entscheide dich für EINEN Fokus. Nicht alles gleichzeitig."}
+]
