@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#113a2d" />
+  <title>Daily Reset – Panacea</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --gold1:#e7c873;
+      --gold2:#c9a94f;
+      --deep:#0f2f25;
+      --text:#0f1e17;
+      --muted: rgba(15,30,23,.72);
+      --glass: rgba(255,255,255,.86);
+      --line: rgba(231,200,115,.40);
+      --shadow: 0 24px 60px rgba(0,0,0,.25);
+      --shadowSoft: 0 14px 30px rgba(0,0,0,.14);
+      --radius: 28px;
+      --maxW: 560px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+
+    body{
+      margin:0;
+      font-family:"Plus Jakarta Sans",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:url("icons/sfondo.png") center/cover no-repeat fixed;
+    }
+
+    .veil{
+      min-height:100%;
+      padding:22px 14px 28px;
+      background: radial-gradient(circle at top, rgba(255,255,255,.18), rgba(0,0,0,.25));
+      display:flex;
+      justify-content:center;
+    }
+
+    .app{
+      width:100%;
+      max-width:var(--maxW);
+    }
+
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:14px;
+    }
+
+    .back{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      text-decoration:none;
+      background: rgba(255,255,255,.82);
+      border:1px solid rgba(231,200,115,.35);
+      box-shadow: var(--shadowSoft);
+      color: rgba(15,30,23,.85);
+      font-weight:700;
+      font-size:13px;
+      backdrop-filter: blur(10px);
+    }
+    .back:hover{ text-decoration: underline; }
+
+    .titleBox{
+      padding:20px 20px 16px;
+      border-radius: var(--radius);
+      background: var(--glass);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      margin-bottom:16px;
+    }
+
+    h1{
+      margin:0 0 10px;
+      font-family:"Playfair Display",serif;
+      font-size:32px;
+      line-height:1.12;
+      letter-spacing:-0.02em;
+      background: linear-gradient(135deg, #1b4d3b, #0f2f25 45%, #1b4d3b);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .sub{
+      margin:0;
+      color: var(--muted);
+      font-size:14px;
+      line-height:1.45;
+      position:relative;
+      padding-top:12px;
+    }
+    .sub::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:0;
+      width:64px;
+      height:2px;
+      background: linear-gradient(90deg, var(--gold1), var(--gold2));
+      border-radius:2px;
+    }
+
+    .panel{
+      padding:18px;
+      border-radius: 32px;
+      background: rgba(255,255,255,.35);
+      border: 1px solid rgba(231,200,115,.25);
+      box-shadow: var(--shadowSoft);
+      backdrop-filter: blur(12px);
+    }
+
+    /* Breathing area */
+    .breathWrap{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:14px;
+      padding:12px 0 6px;
+    }
+
+    .phase{
+      font-weight:800;
+      letter-spacing:.02em;
+      color: rgba(15,30,23,.86);
+      font-size:14px;
+      text-transform: uppercase;
+    }
+
+    .timerRow{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color: rgba(15,30,23,.80);
+      font-weight:700;
+      font-size:14px;
+    }
+
+    .time{
+      font-variant-numeric: tabular-nums;
+      padding:8px 12px;
+      border-radius:999px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(231,200,115,.28);
+      box-shadow: 0 10px 22px rgba(0,0,0,.10);
+    }
+
+    /* Circle */
+    .orb{
+      width: 240px;
+      height: 240px;
+      border-radius: 999px;
+      position: relative;
+      display:grid;
+      place-items:center;
+
+      /* soft glass */
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.90), rgba(255,255,255,.55));
+      border: 1px solid rgba(231,200,115,.40);
+      box-shadow: 0 22px 60px rgba(0,0,0,.22);
+      backdrop-filter: blur(10px);
+      overflow:hidden;
+    }
+
+    /* gold ring glow */
+    .orb::before{
+      content:"";
+      position:absolute;
+      inset:-30px;
+      background: radial-gradient(circle, rgba(231,200,115,.22), transparent 60%);
+      filter: blur(6px);
+      opacity: .9;
+      pointer-events:none;
+    }
+
+    /* inner pulse element (we scale this) */
+    .pulse{
+      width: 72%;
+      height: 72%;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, rgba(231,200,115,.45), rgba(18,59,46,.18));
+      border: 1px solid rgba(231,200,115,.35);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.35);
+      transform: scale(0.88);
+      transition: transform 4s ease; /* will be overridden per phase */
+    }
+
+    .orbText{
+      position:absolute;
+      text-align:center;
+      padding: 0 18px;
+      z-index:2;
+    }
+    .orbText .focus{
+      font-weight:800;
+      font-size:16px;
+      color: rgba(15,30,23,.86);
+      margin-bottom:6px;
+    }
+    .orbText .hint{
+      font-size:13px;
+      color: rgba(15,30,23,.70);
+      line-height:1.35;
+    }
+
+    /* Controls */
+    .controls{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap:10px;
+      margin-top:14px;
+    }
+
+    button{
+      border:0;
+      cursor:pointer;
+      padding:12px 12px;
+      border-radius: 18px;
+      font-weight:800;
+      font-size:14px;
+      background: rgba(255,255,255,.88);
+      border: 1px solid rgba(231,200,115,.28);
+      box-shadow: 0 10px 22px rgba(0,0,0,.12);
+      color: rgba(15,30,23,.86);
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    button:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 14px 28px rgba(0,0,0,.16);
+    }
+
+    .primary{
+      background: linear-gradient(135deg, var(--gold1), var(--gold2));
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.30);
+    }
+
+    .ghost{
+      background: rgba(255,255,255,.78);
+    }
+
+    .settings{
+      margin-top:14px;
+      padding: 14px 14px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(231,200,115,.20);
+    }
+
+    .row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin: 10px 0;
+      font-size:14px;
+      color: rgba(15,30,23,.82);
+      font-weight:700;
+    }
+
+    input[type="number"]{
+      width: 88px;
+      padding:10px 10px;
+      border-radius: 14px;
+      border: 1px solid rgba(231,200,115,.25);
+      background: rgba(255,255,255,.90);
+      font-weight:800;
+      color: rgba(15,30,23,.86);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.35);
+    }
+
+    .mini{
+      font-size:12px;
+      font-weight:600;
+      color: rgba(15,30,23,.65);
+      margin-top: 8px;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 420px){
+      .orb{ width: 220px; height: 220px; }
+      .controls{ grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="veil">
+    <div class="app">
+      <div class="topbar">
+        <a class="back" href="index.html">← Home</a>
+      </div>
+
+      <div class="titleBox">
+        <h1>Daily Reset</h1>
+        <p class="sub">3–5 Minuten für innere Stabilität: ruhig atmen, Körper spüren, Klarheit finden.</p>
+      </div>
+
+      <div class="panel">
+        <div class="breathWrap">
+          <div class="phase" id="phaseLabel">Bereit</div>
+
+          <div class="timerRow">
+            <span>Restzeit</span>
+            <span class="time" id="timeLeft">03:00</span>
+          </div>
+
+          <div class="orb" aria-label="Atem-Animation">
+            <div class="pulse" id="pulse"></div>
+            <div class="orbText">
+              <div class="focus" id="focusText">Heute: langsamer ausatmen</div>
+              <div class="hint" id="hintText">Tippe auf Start. Folge dem Kreis: Einatmen → Ausatmen.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button class="primary" id="startBtn">Start</button>
+          <button class="ghost" id="pauseBtn" disabled>Pausieren</button>
+          <button id="resetBtn">Reset</button>
+        </div>
+
+        <div class="settings">
+          <div class="row">
+            <span>Einatmen (Sek.)</span>
+            <input id="inhale" type="number" min="2" max="8" value="4">
+          </div>
+          <div class="row">
+            <span>Ausatmen (Sek.)</span>
+            <input id="exhale" type="number" min="3" max="10" value="6">
+          </div>
+          <div class="row">
+            <span>Dauer (Min.)</span>
+            <input id="minutes" type="number" min="1" max="10" value="3">
+          </div>
+
+          <div class="mini">
+            Tipp: Längeres Ausatmen (z. B. 4–6) unterstützt die Beruhigung des Nervensystems.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // --- Elements
+    const phaseLabel = document.getElementById("phaseLabel");
+    const timeLeftEl = document.getElementById("timeLeft");
+    const pulse = document.getElementById("pulse");
+    const hintText = document.getElementById("hintText");
+
+    const inhaleInput = document.getElementById("inhale");
+    const exhaleInput = document.getElementById("exhale");
+    const minutesInput = document.getElementById("minutes");
+
+    const startBtn = document.getElementById("startBtn");
+    const pauseBtn = document.getElementById("pauseBtn");
+    const resetBtn = document.getElementById("resetBtn");
+
+    // --- State
+    let running = false;
+    let paused = false;
+
+    let inhaleSec = 4;
+    let exhaleSec = 6;
+    let totalSeconds = 180;     // default 3 min
+    let remainingSeconds = 180;
+
+    let phase = "READY";        // INHALE | EXHALE
+    let phaseTimeout = null;
+    let tickInterval = null;
+
+    function pad(n){ return String(n).padStart(2,"0"); }
+    function fmtTime(s){
+      const m = Math.floor(s/60);
+      const r = s % 60;
+      return `${pad(m)}:${pad(r)}`;
+    }
+
+    function readSettings(){
+      inhaleSec = Math.max(2, Math.min(8, Number(inhaleInput.value || 4)));
+      exhaleSec = Math.max(3, Math.min(10, Number(exhaleInput.value || 6)));
+      const mins = Math.max(1, Math.min(10, Number(minutesInput.value || 3)));
+      totalSeconds = mins * 60;
+    }
+
+    function updateTimeUI(){
+      timeLeftEl.textContent = fmtTime(remainingSeconds);
+    }
+
+    function setPhase(newPhase){
+      phase = newPhase;
+
+      if(newPhase === "INHALE"){
+        phaseLabel.textContent = "Einatmen";
+        // smooth expand
+        pulse.style.transition = `transform ${inhaleSec}s ease`;
+        pulse.style.transform = "scale(1.06)";
+      } else if(newPhase === "EXHALE"){
+        phaseLabel.textContent = "Ausatmen";
+        // smooth contract
+        pulse.style.transition = `transform ${exhaleSec}s ease`;
+        pulse.style.transform = "scale(0.86)";
+      } else {
+        phaseLabel.textContent = "Bereit";
+        pulse.style.transition = "transform 0.6s ease";
+        pulse.style.transform = "scale(0.88)";
+      }
+    }
+
+    function scheduleNextPhase(){
+      if(!running || paused) return;
+
+      if(phase === "INHALE"){
+        phaseTimeout = setTimeout(() => {
+          setPhase("EXHALE");
+          scheduleNextPhase();
+        }, inhaleSec * 1000);
+      } else if(phase === "EXHALE"){
+        phaseTimeout = setTimeout(() => {
+          setPhase("INHALE");
+          scheduleNextPhase();
+        }, exhaleSec * 1000);
+      }
+    }
+
+    function start(){
+      readSettings();
+      remainingSeconds = totalSeconds;
+      updateTimeUI();
+
+      running = true;
+      paused = false;
+      startBtn.disabled = true;
+      pauseBtn.disabled = false;
+      pauseBtn.textContent = "Pausieren";
+      hintText.textContent = "Folge dem Kreis. Wenn Gedanken kommen: sanft zurück zum Ausatmen.";
+
+      setPhase("INHALE");
+      scheduleNextPhase();
+
+      tickInterval = setInterval(() => {
+        if(!running || paused) return;
+
+        remainingSeconds -= 1;
+        updateTimeUI();
+
+        if(remainingSeconds <= 0){
+          finish();
+        }
+      }, 1000);
+    }
+
+    function togglePause(){
+      if(!running) return;
+
+      paused = !paused;
+
+      if(paused){
+        pauseBtn.textContent = "Weiter";
+        hintText.textContent = "Pause. Wenn du bereit bist: Weiter.";
+        clearTimeout(phaseTimeout);
+      } else {
+        pauseBtn.textContent = "Pausieren";
+        hintText.textContent = "Weiter. Folge dem Kreis.";
+        scheduleNextPhase();
+      }
+    }
+
+    function resetAll(){
+      running = false;
+      paused = false;
+
+      clearTimeout(phaseTimeout);
+      clearInterval(tickInterval);
+      phaseTimeout = null;
+      tickInterval = null;
+
+      readSettings();
+      remainingSeconds = totalSeconds;
+      updateTimeUI();
+
+      setPhase("READY");
+      hintText.textContent = "Tippe auf Start. Folge dem Kreis: Einatmen → Ausatmen.";
+
+      startBtn.disabled = false;
+      pauseBtn.disabled = true;
+      pauseBtn.textContent = "Pausieren";
+    }
+
+    function finish(){
+      running = false;
+      paused = false;
+
+      clearTimeout(phaseTimeout);
+      clearInterval(tickInterval);
+
+      setPhase("READY");
+      remainingSeconds = 0;
+      updateTimeUI();
+
+      hintText.textContent = "Fertig. Spüre kurz nach: Wie fühlt sich dein Körper jetzt an?";
+      startBtn.disabled = false;
+      pauseBtn.disabled = true;
+      pauseBtn.textContent = "Pausieren";
+      phaseLabel.textContent = "Geschafft";
+    }
+
+    // Init
+    readSettings();
+    remainingSeconds = totalSeconds;
+    updateTimeUI();
+    setPhase("READY");
+
+    // Events
+    startBtn.addEventListener("click", start);
+    pauseBtn.addEventListener("click", togglePause);
+    resetBtn.addEventListener("click", resetAll);
+
+    inhaleInput.addEventListener("change", resetAll);
+    exhaleInput.addEventListener("change", resetAll);
+    minutesInput.addEventListener("change", resetAll);
+  </script>
+</body>
+</html>
