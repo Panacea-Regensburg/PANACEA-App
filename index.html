@@ -1,47 +1,129 @@
-<!doctype html>
-<html lang="de">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Panacea – Body & Mind</title>
+<style>
+  :root{
+    --bg:#F5F2EA;
+    --card:#FFFFFF;
+    --text:#0f172a;
+    --muted:#475569;
+    --brand:#3F6F63;     /* verde profondo */
+    --brand2:#A8C3B0;    /* salvia */
+    --gold:#C6A75E;      /* oro tenue */
+    --border: rgba(15,23,42,.10);
+    --shadow: 0 10px 25px rgba(15,23,42,.08);
+  }
 
-  <link rel="manifest" href="./manifest.webmanifest">
-  <meta name="theme-color" content="#8FAF9B">
-  <meta name="description" content="Panacea – Body & Mind: Daily Reset, Verstehen, Lifestyle, Übungen und Kurse.">
-  <style>
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 24px; max-width: 720px; }
-    h1 { margin: 0 0 8px; }
-    p { margin: 0 0 16px; line-height: 1.4; }
-    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
-    a.card { display: block; padding: 16px; border: 1px solid #ddd; border-radius: 16px; text-decoration: none; color: #111; }
-    a.card:hover { border-color: #8FAF9B; }
-    .small { color: #444; font-size: 14px; }
-    header { display:flex; justify-content: space-between; align-items:center; gap:12px; }
-    .lang { font-size: 14px; border: 1px solid #ddd; border-radius: 999px; padding: 8px 12px; }
-  </style>
-</head>
-<body>
-  <header>
-    <div>
-      <h1>Panacea – Body & Mind</h1>
-      <p class="small">Kleine Schritte. Mehr Stabilität. Jeden Tag.</p>
-    </div>
-    <div class="lang">Deutsch | Italiano</div>
-  </header>
+  body{
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    margin:0;
+    background: radial-gradient(1200px 600px at 20% -10%, rgba(168,195,176,.35), transparent 60%),
+                radial-gradient(900px 500px at 90% 10%, rgba(198,167,94,.18), transparent 55%),
+                var(--bg);
+    color: var(--text);
+  }
 
-  <div class="grid">
-    <a class="card" href="#daily"><strong>Daily Reset</strong></a>
-    <a class="card" href="#verstehen"><strong>Verstehen</strong></a>
-    <a class="card" href="#lifestyle"><strong>Lifestyle</strong></a>
-    <a class="card" href="#uebungen"><strong>Übungen</strong></a>
-    <a class="card" href="#kurse"><strong>Kurse</strong></a>
-    <a class="card" href="#mitglieder"><strong>Mitgliederbereich</strong></a>
-  </div>
+  .wrap{
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 28px 18px 36px;
+  }
 
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('./service-worker.js');
-    }
-  </script>
-</body>
-</html>
+  header{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    gap: 14px;
+    padding: 18px 18px;
+    background: rgba(255,255,255,.65);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(8px);
+  }
+
+  .brand h1{
+    margin:0;
+    font-size: 32px;
+    letter-spacing: -0.02em;
+  }
+
+  .brand p{
+    margin:6px 0 0;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .lang{
+    font-size: 14px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 10px 14px;
+    background: white;
+    color: var(--muted);
+    display:flex;
+    align-items:center;
+    gap:8px;
+    white-space: nowrap;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 18px;
+  }
+
+  a.card{
+    display:flex;
+    align-items:center;
+    gap: 12px;
+    padding: 16px 16px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    text-decoration:none;
+    background: rgba(255,255,255,.85);
+    box-shadow: 0 8px 18px rgba(15,23,42,.06);
+    transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+  }
+
+  a.card:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(15,23,42,.10);
+    border-color: rgba(63,111,99,.35);
+  }
+
+  .icon{
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    display:grid;
+    place-items:center;
+    flex: 0 0 auto;
+    background: linear-gradient(135deg, rgba(168,195,176,.55), rgba(198,167,94,.18));
+    border: 1px solid rgba(63,111,99,.18);
+  }
+
+  .icon img{
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+  }
+
+  .label{
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  .pill{
+    margin-left:auto;
+    font-size: 12px;
+    color: var(--brand);
+    background: rgba(63,111,99,.10);
+    border: 1px solid rgba(63,111,99,.18);
+    padding: 6px 10px;
+    border-radius: 999px;
+  }
+
+  @media (max-width: 720px){
+    .grid{ grid-template-columns: 1fr; }
+    .brand h1{ font-size: 28px; }
+  }
+</style>
