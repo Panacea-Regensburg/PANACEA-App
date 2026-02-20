@@ -1,0 +1,13 @@
+[
+  {
+    "stress": "hoch",
+    "energy": "niedrig",
+    "title": "Sicherheit & Beruhigung",
+    "texts": [
+      "Heute braucht dein Nervensystem Sicherheit. Atme ruhig aus und entspanne Schultern und Kiefer.",
+      "Reduziere Tempo und Reize. Längere Ausatmung gibt deinem System ein Signal von Sicherheit.",
+      "Heute gilt: weniger ist mehr. Ein kleiner Schritt – und dann Pause."
+    ],
+    "breathing": { "inhale": 4, "exhale": 7, "minutes": 3 }
+  }
+]
