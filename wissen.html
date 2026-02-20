@@ -232,12 +232,18 @@ if (document.getElementById("wissenTitle")) {
   }
 
   // Bottoni
-  document.getElementById("prevDayBtn").addEventListener("click", () => setDayIndex(getDayIndex() - 1));
-  document.getElementById("nextDayBtn").addEventListener("click", () => setDayIndex(getDayIndex() + 1));
-  document.getElementById("resetCycleBtn").addEventListener("click", () => setDayIndex(0));
+  const prevBtn = document.getElementById("prevDayBtn");
+const nextBtn = document.getElementById("nextDayBtn");
+const resetBtn = document.getElementById("resetCycleBtn");
 
-  // Init
+if (prevBtn) prevBtn.addEventListener("click", () => setDayIndex(getDayIndex() - 1));
+if (nextBtn) nextBtn.addEventListener("click", () => setDayIndex(getDayIndex() + 1));
+if (resetBtn) resetBtn.addEventListener("click", () => setDayIndex(0));
+
+// Init solo se esistono gli elementi testo
+if (document.getElementById("wissenTitle") && document.getElementById("wissenText")) {
   renderDay(getDayIndex());
+}
 </script>
 </body>
 </html>
