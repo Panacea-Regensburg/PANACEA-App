@@ -3,147 +3,166 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#1f3b2f" />
   <title>Panacea – Body & Mind</title>
 
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1f5a47">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- Font (elegante ma leggibile) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --glass: rgba(255,255,255,.82);
-      --glass2: rgba(255,255,255,.72);
-      --text: #0f1c16;
-      --muted: rgba(15,28,22,.72);
-      --border: rgba(255,255,255,.55);
-      --shadow: 0 16px 44px rgba(0,0,0,.22);
-      --radius: 22px;
-      --cardRadius: 20px;
-      --maxAppWidth: 440px; /* look “app” su desktop */
+      --bg: #0f2f25;
+      --text: #0d1612;
+      --muted: rgba(13,22,18,.72);
+      --glass: rgba(255,255,255,.80);
+      --glass2: rgba(255,255,255,.88);
+      --line: rgba(255,255,255,.55);
+
+      --radius: 26px;
+      --radiusCard: 24px;
+
+      --shadow: 0 24px 60px rgba(0,0,0,.22);
+      --shadowSoft: 0 14px 30px rgba(0,0,0,.14);
+
+      /* App max width */
+      --maxW: 520px;
     }
 
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
+    *{ box-sizing: border-box; }
+    html, body{ height: 100%; }
 
     body{
       margin:0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:var(--text);
+      font-family: "Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
       background: url("icons/sfondo.png") center/cover no-repeat fixed;
     }
 
+    /* Leggera “nebbia” sopra lo sfondo per leggibilità */
     .veil{
       min-height: 100%;
-      padding: 18px 14px 22px;
-      background: radial-gradient(circle at top, rgba(255,255,255,.20), rgba(0,0,0,.25));
+      padding: 22px 16px 30px;
+      background:
+        radial-gradient(circle at top, rgba(255,255,255,.18), rgba(0,0,0,.20));
       display:flex;
       justify-content:center;
+      align-items:flex-start;
     }
 
-    /* Contenitore “app” (verticale, centrato) */
     .app{
       width: 100%;
-      max-width: var(--maxAppWidth);
+      max-width: var(--maxW);
     }
 
+    /* Header */
     header{
       display:flex;
-      flex-direction: column;
-      gap: 10px;
-      margin: 8px 0 14px;
+      gap: 14px;
+      align-items:flex-start;
+      justify-content:space-between;
+      margin-bottom: 18px;
     }
 
     .brand{
-      padding: 14px 16px;
+      flex:1;
+      padding: 22px 22px 18px;
       border-radius: var(--radius);
-      background: var(--glass);
-      border: 1px solid var(--border);
+      background: linear-gradient(180deg, var(--glass2), rgba(255,255,255,.78));
+      border: 1px solid var(--line);
       box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
     }
 
     h1{
-      margin:0 0 6px;
-      font-size: 26px;
+      margin:0 0 10px;
+      font-family: "Playfair Display", serif;
+      font-size: 32px;
+      font-weight: 700;
       letter-spacing: -0.02em;
-      line-height: 1.1;
+      line-height: 1.12;
     }
+
     .tagline{
       margin:0;
+      font-size: 15px;
       color: var(--muted);
-      font-size: 13px;
-      line-height: 1.25;
+      line-height: 1.45;
     }
 
-    .topRow{
-      display:flex;
-      justify-content:flex-end;
-    }
-
+    /* Toggle lingua */
     .lang{
-      padding: 10px 12px;
+      display:flex;
+      gap: 6px;
+      padding: 8px;
       border-radius: 999px;
-      background: rgba(255,255,255,.92);
-      border: 1px solid var(--border);
-      box-shadow: 0 10px 26px rgba(0,0,0,.14);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      white-space: nowrap;
-      font-size: 13px;
-      color: rgba(15,28,22,.78);
-      display:inline-flex;
-      gap:6px;
-      align-items:center;
-      justify-content:center;
+      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(255,255,255,.58);
+      box-shadow: var(--shadowSoft);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      height: fit-content;
+      margin-top: 4px;
     }
+
     .lang button{
       border:0;
-      background: transparent;
-      font: inherit;
-      color: inherit;
+      padding: 10px 12px;
+      border-radius: 999px;
       font-weight: 700;
+      font-size: 13px;
       cursor:pointer;
-      padding: 0 2px;
+      background: transparent;
+      color: rgba(13,22,18,.75);
     }
-    .lang button:hover{ text-decoration: underline; }
+    .lang button.active{
+      background: rgba(31,90,71,.12);
+      color: #123b2e;
+      box-shadow: inset 0 0 0 1px rgba(31,90,71,.18);
+    }
 
+    /* Contenitore Cards */
     main{
-      padding: 14px;
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.60);
-      border: 1px solid rgba(255,255,255,.45);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      padding: 16px;
+      border-radius: 30px;
+      background: rgba(255,255,255,.30);
+      border: 1px solid rgba(255,255,255,.30);
+      box-shadow: var(--shadowSoft);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
 
-    /* Griglia “app”: 2 colonne su mobile */
     .grid{
       display:grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
     }
 
-    /* Card: icona grande */
     .card{
       display:flex;
       align-items:center;
       justify-content:center;
-      padding: 12px;
-      border-radius: var(--cardRadius);
-      background: rgba(255,255,255,.82);
+      border-radius: var(--radiusCard);
+      background: rgba(255,255,255,.86);
       border: 1px solid rgba(255,255,255,.62);
-      box-shadow: 0 10px 24px rgba(0,0,0,.12);
+      box-shadow: 0 10px 26px rgba(0,0,0,.12);
       text-decoration:none;
-      color: var(--text);
-      transition: transform .10s ease, box-shadow .10s ease, background .10s ease;
-      min-height: 170px; /* più “tocco” come app */
+      padding: 14px;
+      min-height: 168px;
+      transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+      position: relative;
+      overflow:hidden;
     }
     .card:hover{
-      transform: translateY(-1px);
-      box-shadow: 0 14px 30px rgba(0,0,0,.16);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(0,0,0,.16);
       background: rgba(255,255,255,.92);
     }
     .card:focus{
@@ -152,26 +171,37 @@
     }
 
     .icon{
-  width: 90%;
-  max-width: 160px;
-  height: auto;
-  object-fit: contain;
-  display:block;
-  margin:auto;
-  filter: drop-shadow(0 16px 24px rgba(0,0,0,.20));
-}
-
-    /* Su desktop grande, restiamo “app-like” */
-    @media (min-width: 900px){
-      .veil{ padding-top: 26px; }
+      width: 150px;        /* grande e leggibile */
+      height: 150px;
+      object-fit: contain;
+      display:block;
+      filter: drop-shadow(0 10px 14px rgba(0,0,0,.14));
     }
 
+    /* Footer */
     footer{
-      margin-top: 12px;
       text-align:center;
-      color: rgba(255,255,255,.86);
-      font-size: 12px;
-      text-shadow: 0 2px 10px rgba(0,0,0,.35);
+      color: rgba(255,255,255,.70);
+      font-weight: 600;
+      margin-top: 14px;
+      text-shadow: 0 6px 16px rgba(0,0,0,.30);
+      font-size: 13px;
+    }
+
+    /* Desktop: un filo più largo + respiro */
+    @media (min-width: 900px){
+      :root{ --maxW: 620px; }
+      .grid{ gap: 16px; }
+      .card{ min-height: 176px; }
+      .icon{ width: 160px; height: 160px; }
+      h1{ font-size: 36px; }
+    }
+
+    /* Se vuoi proprio look "telefono" anche su PC, attiva questa:
+       (puoi lasciarla, è bella) */
+    .app{
+      /* Simula viewport “app” */
+      border-radius: 34px;
     }
   </style>
 </head>
@@ -179,73 +209,81 @@
 <body>
   <div class="veil">
     <div class="app">
-
-      <div class="topRow">
-        <div class="lang" aria-label="Sprache wählen">
-          <button type="button" onclick="setLang('de')">Deutsch</button>
-          <span>|</span>
-          <button type="button" onclick="setLang('it')">Italiano</button>
-        </div>
-      </div>
-
       <header>
         <div class="brand">
           <h1 id="title">Panacea – Body &amp; Mind</h1>
-          <p class="tagline" id="tagline">Kleine Schritte. Mehr Stabilität. Jeden Tag.</p>
+          <p class="tagline" id="subtitle">Kleine Schritte. Mehr Stabilität. Jeden Tag.</p>
+        </div>
+
+        <div class="lang" aria-label="Sprache wählen">
+          <button id="btnDE" class="active" type="button">Deutsch</button>
+          <button id="btnIT" type="button">Italiano</button>
         </div>
       </header>
 
       <main>
         <div class="grid">
-          <a class="card" href="daily-reset.html" aria-label="Daily Reset">
-            <img class="icon" src="icons/daily-reset.png" alt="Daily Reset">
+          <a class="card" href="#daily" aria-label="Daily Reset">
+            <img class="icon" src="icons/daily-reset.png" alt="Daily Reset Icon">
           </a>
 
-          <a class="card" href="wissen-klarheit.html" aria-label="Wissen & Klarheit">
-            <img class="icon" src="icons/wissen-klarheit.png" alt="Wissen & Klarheit">
+          <a class="card" href="#wissen" aria-label="Wissen & Klarheit">
+            <img class="icon" src="icons/wissen-klarheit.png" alt="Wissen & Klarheit Icon">
           </a>
 
-          <a class="card" href="lifestyle.html" aria-label="Lifestyle">
-            <img class="icon" src="icons/lifestyle.png" alt="Lifestyle">
+          <a class="card" href="#lifestyle" aria-label="Life Style">
+            <img class="icon" src="icons/lifestyle.png" alt="Life Style Icon">
           </a>
 
-          <a class="card" href="uebungen.html" aria-label="Übungen">
-            <img class="icon" src="icons/uebungen.png" alt="Übungen">
+          <a class="card" href="#uebungen" aria-label="Übungen">
+            <img class="icon" src="icons/uebungen.png" alt="Übungen Icon">
           </a>
 
-          <a class="card" href="kurse.html" aria-label="Kurse">
-            <img class="icon" src="icons/kurse.png" alt="Kurse">
+          <a class="card" href="#kurse" aria-label="Kurse">
+            <img class="icon" src="icons/kurse.png" alt="Kurse Icon">
           </a>
 
-          <a class="card" href="mitgliederbereich.html" aria-label="Mitgliederbereich">
-            <img class="icon" src="icons/mitgliederbereich.png" alt="Mitgliederbereich">
+          <a class="card" href="#mitglieder" aria-label="Mitgliederbereich">
+            <img class="icon" src="icons/mitgliederbereich.png" alt="Mitgliederbereich Icon">
           </a>
         </div>
       </main>
 
       <footer>© Panacea Regensburg</footer>
-
     </div>
   </div>
 
   <script>
-    // lingua semplice (solo testo header per ora)
-    const t = {
-      de: {
-        tagline: "Kleine Schritte. Mehr Stabilität. Jeden Tag."
-      },
-      it: {
-        tagline: "Piccoli passi. Più stabilità. Ogni giorno."
-      }
-    };
+    // Mini lingua (solo titoli). Poi estendiamo alle pagine interne.
+    const btnDE = document.getElementById("btnDE");
+    const btnIT = document.getElementById("btnIT");
+    const title = document.getElementById("title");
+    const subtitle = document.getElementById("subtitle");
 
     function setLang(lang){
+      if(lang === "de"){
+        btnDE.classList.add("active");
+        btnIT.classList.remove("active");
+        title.textContent = "Panacea – Body & Mind";
+        subtitle.textContent = "Kleine Schritte. Mehr Stabilität. Jeden Tag.";
+        document.documentElement.lang = "de";
+      }else{
+        btnIT.classList.add("active");
+        btnDE.classList.remove("active");
+        title.textContent = "Panacea – Corpo & Mente";
+        subtitle.textContent = "Piccoli passi. Più stabilità. Ogni giorno.";
+        document.documentElement.lang = "it";
+      }
+      // salva preferenza
       localStorage.setItem("panacea_lang", lang);
-      document.getElementById("tagline").textContent = t[lang]?.tagline || t.de.tagline;
     }
 
-    // init
-    setLang(localStorage.getItem("panacea_lang") || "de");
+    btnDE.addEventListener("click", () => setLang("de"));
+    btnIT.addEventListener("click", () => setLang("it"));
+
+    // carica preferenza
+    const saved = localStorage.getItem("panacea_lang");
+    if(saved === "it") setLang("it");
   </script>
 </body>
 </html>
