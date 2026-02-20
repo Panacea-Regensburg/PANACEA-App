@@ -148,22 +148,13 @@
         </div>
 
         <div class="ctaRow">
-          // Bottoni (versione sicura)
-const prevBtn = document.getElementById("prevDayBtn");
-const nextBtn = document.getElementById("nextDayBtn");
-const resetBtn = document.getElementById("resetCycleBtn");
+  <button class="btn" id="prevDayBtn" type="button">←</button>
+  <button class="btn" id="nextDayBtn" type="button">→</button>
+  <button class="btn" id="resetCycleBtn" type="button">Reset</button>
 
-if (prevBtn) {
-  prevBtn.addEventListener("click", () => setDayIndex(getDayIndex() - 1));
-}
-
-if (nextBtn) {
-  nextBtn.addEventListener("click", () => setDayIndex(getDayIndex() + 1));
-}
-
-if (resetBtn) {
-  resetBtn.addEventListener("click", () => setDayIndex(0));
-}
+  <span class="mini">Tag <b id="dayNum">1</b>/21</span>
+  <span class="mini">Free-Version · <a class="link" href="mitglieder.html">Mitglieder freischalten</a></span>
+</div>
 
 // Init solo se esiste il titolo
 if (document.getElementById("wissenTitle")) {
