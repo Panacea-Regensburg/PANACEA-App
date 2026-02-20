@@ -307,6 +307,27 @@
         <h1>Daily Reset</h1>
         <p class="sub">3–5 Minuten für innere Stabilität: ruhig atmen, Körper spüren, Klarheit finden.</p>
       </div>
+      <!-- Premium Reset Box -->
+<div class="premium-reset" style="margin-top:30px; padding:20px; border-radius:16px; background:rgba(255,255,255,0.05); backdrop-filter:blur(10px);">
+  
+  <h2 style="margin-bottom:15px;">Premium Reset</h2>
+
+  <label>Stress Level (1–10)</label>
+  <input id="stressSlider" type="range" min="1" max="10" value="5" style="width:100%; margin-bottom:15px;">
+
+  <label>Energy Level (1–10)</label>
+  <input id="energySlider" type="range" min="1" max="10" value="5" style="width:100%; margin-bottom:20px;">
+
+  <button id="generateResetBtn" style="padding:10px 20px; border:none; border-radius:12px; cursor:pointer;">
+    Mein Premium Reset
+  </button>
+
+  <div style="margin-top:25px;">
+    <h3 id="resetTitle"></h3>
+    <p id="resetText"></p>
+  </div>
+
+</div>
 
       <div class="panel">
         <div class="breathWrap">
@@ -534,5 +555,15 @@
     exhaleInput.addEventListener("change", resetAll);
     minutesInput.addEventListener("change", resetAll);
   </script>
+  <script src="./js/resetLogic.js"></script>
+
+<script>
+document.getElementById("generateResetBtn").addEventListener("click", function() {
+  const stressValue = Number(document.getElementById("stressSlider").value);
+  const energyValue = Number(document.getElementById("energySlider").value);
+
+  renderPremiumReset(stressValue, energyValue);
+});
+</script>
 </body>
 </html>
