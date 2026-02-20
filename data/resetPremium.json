@@ -1,8 +1,41 @@
-[
-  {
-    "stress": "hoch",
-    "energy": "niedrig",
-    "title": "Sicherheit & Beruhigung",
-    "text": "Heute braucht dein Nervensystem Sicherheit. Atme 2 Minuten ruhig aus und entspanne Schultern und Kiefer."
+async function loadPremiumResets() {
+  const response = await fetch("./data/resetPremium.json");
+  return await response.json();
+}
+
+function level(value) {
+  if (value >= 7) return "hoch";
+  if (value >= 4) return "mittel";
+  return "niedrig";
+}
+
+function pickReset(resets, stressValue, energyValue) {
+  const stressLevel = level(stressValue);
+  const energyLevel = level(energyValue);
+
+  // debug in console
+  console.log("Stress:", stressValue, "=>", stressLevel, "| Energy:", energyValue, "=>", energyLevel);
+
+  // prendi SOLO match precisi
+  const matches = resets.filter(r => r.stress === stressLevel && r.energy === energyLevel);
+
+  // se non ci sono match, mostra un messaggio chiaro (così capiamo subito)
+  if (matches.length === 0) {
+    return {
+      title: "Kein Match gefunden",
+      text: `Für Stress=${stressLevel} und Energy=${energyLevel} gibt es noch keinen Text im JSON. Bitte ergänzen.`
+    };
   }
-]
+
+  // se ce ne sono più di uno, scegline uno a caso
+  const idx = Math.floor(Math.random() * matches.length);
+  return matches[idx];
+}
+
+async function renderPremiumReset(stressValue, energyValue) {
+  const resets = await loadPremiumResets();
+  const selectedReset = pickReset(resets, stressValue, energyValue);
+
+  document.getElementById("resetTitle").textContent = selectedReset.title;
+  document.getElementById("resetText").textContent = selectedReset.text;
+}
