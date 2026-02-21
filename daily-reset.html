@@ -94,6 +94,36 @@
       -webkit-text-fill-color:transparent;
     }
 
+    .dailyFocusBox{
+      margin: 6px 0 12px;
+      padding: 18px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.45);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.35);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    }
+    .dailyFocusBox h3{
+      margin:0 0 8px;
+      font-size:16px;
+      font-weight:900;
+      color: rgba(15,30,23,.92);
+    }
+    .dailyFocusBox p{
+      margin:0 0 10px;
+      font-size:14px;
+      line-height:1.45;
+      color: rgba(15,30,23,.78);
+      font-weight:600;
+    }
+    .dailyFocusBox .premiumHint{
+      margin:0;
+      font-size:12.5px;
+      opacity:.75;
+      line-height:1.35;
+    }
+
     .sub{
       margin:0;
       color: var(--muted);
@@ -120,6 +150,7 @@
       border: 1px solid rgba(231,200,115,.25);
       box-shadow: var(--shadowSoft);
       backdrop-filter: blur(12px);
+      margin-top: 18px;
     }
 
     /* Breathing area */
@@ -165,8 +196,6 @@
       position: relative;
       display:grid;
       place-items:center;
-
-      /* soft glass */
       background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.90), rgba(255,255,255,.55));
       border: 1px solid rgba(231,200,115,.40);
       box-shadow: 0 22px 60px rgba(0,0,0,.22);
@@ -194,7 +223,7 @@
       border: 1px solid rgba(231,200,115,.35);
       box-shadow: inset 0 0 0 1px rgba(255,255,255,.35);
       transform: scale(0.88);
-      transition: transform 4s ease; /* will be overridden per phase */
+      transition: transform 4s ease;
     }
 
     .orbText{
@@ -293,190 +322,190 @@
       .orb{ width: 220px; height: 220px; }
       .controls{ grid-template-columns: 1fr; }
     }
-    :root{
-  --accent: #b79a4a;       /* oro elegante */
-  --accent2:#1b4d3b;       /* verde scuro */
-  --card: rgba(255,255,255,0.62);
-  --card2: rgba(255,255,255,0.48);
-  --border: rgba(255,255,255,0.35);
-  --text: #183b2f;
-  --muted: rgba(24,59,47,0.72);
-}
 
-/* Premium box più “luxury” e coerente */
-.premium-reset{
-  background: linear-gradient(180deg, var(--card), var(--card2)) !important;
-  border: 1px solid var(--border) !important;
-  box-shadow: 0 18px 45px rgba(0,0,0,0.10) !important;
-  backdrop-filter: blur(10px) !important;
-  border-radius: 22px !important;
-  padding: 26px !important;
-}
+    /* Premium Reset box */
+    .premium-reset{
+      margin-top:18px;
+      padding:22px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.62), rgba(255,255,255,0.48));
+      border: 1px solid rgba(255,255,255,0.35);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.10);
+      backdrop-filter: blur(10px);
+    }
 
-/* Titolo Premium */
-.premium-reset h2{
-  color: var(--text) !important;
-  letter-spacing: -0.3px;
-}
+    .premium-reset h2{
+      margin:0 0 12px;
+      font-family:"Playfair Display",serif;
+      font-size:22px;
+      color: rgba(15,30,23,.92);
+      letter-spacing:-0.02em;
+    }
 
-/* Testi e label */
-.premium-reset label,
-.premium-reset p{
-  color: var(--muted) !important;
-}
+    .premium-reset label{
+      display:block;
+      font-weight:800;
+      font-size:13px;
+      color: rgba(15,30,23,.72);
+      margin: 10px 0 8px;
+    }
 
-/* Bottone “Mein Premium Reset” più elegante */
-#generateResetBtn{
-  background: linear-gradient(135deg, var(--accent), #d8c07a) !important;
-  color: #ffffff !important;
-  border: 0 !important;
-  border-radius: 14px !important;
-  padding: 12px 18px !important;
-  font-weight: 700 !important;
-  box-shadow: 0 10px 22px rgba(183,154,74,0.28) !important;
-}
+    input[type="range"]{
+      -webkit-appearance:none;
+      width:100%;
+      height:8px;
+      border-radius:999px;
+      background: rgba(24,59,47,0.12);
+      outline:none;
+    }
+    input[type="range"]::-webkit-slider-thumb{
+      -webkit-appearance:none;
+      width:18px;
+      height:18px;
+      border-radius:50%;
+      background: var(--gold2);
+      border: 2px solid rgba(255,255,255,.85);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+      cursor:pointer;
+    }
+    input[type="range"]::-moz-range-thumb{
+      width:18px;
+      height:18px;
+      border-radius:50%;
+      background: var(--gold2);
+      border: 2px solid rgba(255,255,255,.85);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+      cursor:pointer;
+    }
+    input[type="range"]::-moz-range-track{
+      height:8px;
+      border-radius:999px;
+      background: rgba(24,59,47,0.12);
+    }
 
-#generateResetBtn:hover{
-  filter: brightness(1.03);
-  transform: translateY(-1px);
-}
+    #generateResetBtn{
+      margin-top:14px;
+      width:100%;
+      padding:12px 14px;
+      border-radius: 16px;
+      font-weight:900;
+      background: linear-gradient(135deg, var(--gold1), var(--gold2));
+      color:#fff;
+      border:1px solid rgba(255,255,255,.30);
+      box-shadow: 0 10px 22px rgba(183,154,74,0.28);
+    }
 
-/* Link “Mitglieder freischalten” più discreto */
-.premium-reset a{
-  color: var(--accent2) !important;
-  text-decoration: none !important;
-  border-bottom: 1px dotted rgba(27,77,59,0.45);
-}
-.premium-reset a:hover{
-  border-bottom-style: solid;
-}
+    .resetOut{
+      margin-top:14px;
+      padding:14px;
+      border-radius:18px;
+      background: rgba(255,255,255,.75);
+      border:1px solid rgba(231,200,115,.22);
+    }
+    .resetOut h3{
+      margin:0 0 8px;
+      font-size:16px;
+      font-weight:900;
+      color: rgba(15,30,23,.90);
+    }
+    .resetOut p{
+      margin:0;
+      font-size:14px;
+      line-height:1.45;
+      color: rgba(15,30,23,.78);
+      font-weight:600;
+    }
 
-/* Slider (togliamo il blu, mettiamo oro/verde) */
-input[type="range"]{
-  -webkit-appearance: none;
-  width: 100%;
-  height: 8px;
-  border-radius: 999px;
-  background: rgba(24,59,47,0.12);
-  outline: none;
-}
+    .memberLine{
+      margin-top:12px;
+      font-size:14px;
+      opacity:0.78;
+      color: rgba(15,30,23,.78);
+    }
+    .memberLine a{
+      color: rgba(15,30,23,.88);
+      text-decoration:none;
+      border-bottom:1px dotted rgba(15,30,23,.45);
+      font-weight:800;
+    }
+    .memberLine a:hover{ border-bottom-style: solid; }
 
-input[type="range"]::-webkit-slider-thumb{
-  -webkit-appearance: none;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: var(--accent);
-  border: 2px solid rgba(255,255,255,0.85);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
-  cursor: pointer;
-}
-
-input[type="range"]::-moz-range-thumb{
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: var(--accent);
-  border: 2px solid rgba(255,255,255,0.85);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
-  cursor: pointer;
-}
-
-input[type="range"]::-moz-range-track{
-  height: 8px;
-  border-radius: 999px;
-  background: rgba(24,59,47,0.12);
-}
-  .premium-reset{
-  margin-bottom: 70px !important;
-}
-
-    .app .panel{
-  margin-top: 80px !important;
-}
- .dailyFocusBox{
-  margin-bottom: 30px;
-  padding: 22px;
-  border-radius: 24px;
-
-  background: rgba(255,255,255,0.45);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-
-  border: 1px solid rgba(255,255,255,0.35);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-}   
+    .premiumInfo{
+      margin-top:14px;
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(231,200,115,.25);
+      background: rgba(255,255,255,.62);
+      box-shadow: 0 10px 22px rgba(0,0,0,.08);
+    }
+    .premiumInfo .t{
+      font-weight:900;
+      margin-bottom:8px;
+      color: rgba(15,30,23,.90);
+    }
+    .premiumInfo ul{
+      margin:0;
+      padding-left:18px;
+      line-height:1.5;
+      color: rgba(15,30,23,.78);
+      font-weight:600;
+      font-size:14px;
+    }
   </style>
 </head>
 
 <body>
   <div class="veil">
     <div class="app">
+
       <div class="topbar">
         <a class="back" href="index.html">← Home</a>
       </div>
 
       <div class="titleBox">
         <h1>Daily Reset</h1>
+
         <div class="dailyFocusBox">
-  <h3 id="dailyFocusTitle" style="margin-bottom:10px;"></h3>
-  <p id="dailyFocusText" style="margin-bottom:10px;"></p>
-  <p style="font-size:0.85rem; opacity:0.7;">
-    ✨ Premium: Atemrhythmus & Impuls passen sich deinem Stresslevel an.
-  </p>
-</div>
+          <h3 id="dailyFocusTitle">Heute</h3>
+          <p id="dailyFocusText">Lade…</p>
+          <p class="premiumHint">✨ Premium: Atemrhythmus & Impuls passen sich deinem Stresslevel an.</p>
+        </div>
+
         <p class="sub">3–5 Minuten für innere Stabilität: ruhig atmen, Körper spüren, Klarheit finden.</p>
       </div>
-      <!-- Premium Reset Box -->
-<div class="premium-reset" style="
-  margin-top:40px;
-  padding:30px;
-  border-radius:24px;
-  background:rgba(255,255,255,0.08);
-  backdrop-filter:blur(14px);
-  box-shadow:0 10px 30px rgba(0,0,0,0.08);
-">
-  
-  <h2 style="margin-bottom:15px;">Premium Reset</h2>
 
-  
+      <!-- Premium Reset Box (single, no duplicates) -->
+      <div class="premium-reset" id="premiumReset">
+        <h2>Premium Reset</h2>
 
-  <label>Stress Level (1–10)</label>
-  <input id="stressSlider" type="range" min="1" max="10" value="5" style="width:100%; margin-bottom:15px;">
+        <label for="stressSlider">Stress Level (1–10)</label>
+        <input id="stressSlider" type="range" min="1" max="10" value="5">
 
-  <label>Energy Level (1–10)</label>
-  <input id="energySlider" type="range" min="1" max="10" value="5" style="width:100%; margin-bottom:20px;">
+        <label for="energySlider">Energy Level (1–10)</label>
+        <input id="energySlider" type="range" min="1" max="10" value="5">
 
-  <button id="generateResetBtn" style="padding:10px 20px; border:none; border-radius:12px; cursor:pointer;">
-    Mein Premium Reset
-  </button>
+        <button id="generateResetBtn">Mein Premium Reset</button>
 
-  <div style="margin-top:25px;">
-    <h3 id="resetTitle"></h3>
-    <p id="resetText"></p>
-  </div>
-  
-  <div style="margin-top:12px; font-size:14px; opacity:0.75;">
-  <span id="memberStatus">Free-Version</span>
-  · <a href="#" id="unlockLink">Mitglieder freischalten</a>
-</div>
- <section class="premium-reset" style="margin-bottom: 80px;">
-  <h2>Premium Reset</h2>
+        <div class="resetOut" id="resetOut" style="display:none;">
+          <h3 id="resetTitle"></h3>
+          <p id="resetText"></p>
+        </div>
 
-  <label>Stress Level (1–10)</label>
-  <input type="range" min="1" max="10" value="5" id="stress">
+        <div class="memberLine">
+          <span id="memberStatus">Free-Version</span>
+          · <a href="mitglieder.html" id="unlockLink">Mitglieder freischalten</a>
+        </div>
 
-  <label>Energy Level (1–10)</label>
-  <input type="range" min="1" max="10" value="5" id="energy">
-
-  <button class="gold-button">Mein Premium Reset</button>
-
-  <p class="free-link">
-    Free-Version · <a href="mitglieder.html">Mitglieder freischalten</a>
-  </p>
-</section>
-}
-</div>
+        <!-- Teaser (shown only if NOT premium) -->
+        <div class="premiumInfo" id="premiumInfo" style="display:none;">
+          <div class="t">Was ist im Premium enthalten?</div>
+          <ul>
+            <li><b>Verbesserter Atemrhythmus</b> (automatisch angepasst)</li>
+            <li><b>Mehr Daily-Impulse</b> & personalisierte Reset-Texte</li>
+            <li><b>Mitgliederbereich</b> mit zusätzlichen Tools</li>
+          </ul>
+        </div>
+      </div>
 
       <div class="panel">
         <div class="breathWrap">
@@ -526,7 +555,53 @@ input[type="range"]::-moz-range-track{
   </div>
 
   <script>
-    // --- Elements
+    // ---------------- Daily Focus (7-day rotation) ----------------
+    const dailyFocus = [
+      { title: "Montag – Fokus", text: "Richte deine Aufmerksamkeit auf einen klaren nächsten Schritt. Nicht alles – nur den nächsten." },
+      { title: "Dienstag – Ruhe", text: "Verlängere heute bewusst dein Ausatmen. Dein Nervensystem liebt Sicherheit." },
+      { title: "Mittwoch – Klarheit", text: "Beobachte deine Gedanken wie Wolken. Du musst ihnen nicht folgen." },
+      { title: "Donnerstag – Struktur", text: "Plane nur die nächsten 30 Minuten – nicht den ganzen Tag." },
+      { title: "Freitag – Energie", text: "Atme tief ein, öffne den Brustraum, richte dich auf. Energie entsteht durch Haltung." },
+      { title: "Samstag – Regeneration", text: "Erlaube dir heute bewusst kleine Pausen. 3 Minuten reichen." },
+      { title: "Sonntag – Reflexion", text: "Was hat dir diese Woche Stabilität gegeben? Wiederhole genau das." }
+    ];
+    const today = new Date().getDay(); // 0=Sonntag
+    const idx = today === 0 ? 6 : today - 1;
+    document.getElementById("dailyFocusTitle").textContent = dailyFocus[idx].title;
+    document.getElementById("dailyFocusText").textContent = dailyFocus[idx].text;
+  </script>
+
+  <script>
+    // ---------------- Premium UI (logic later) ----------------
+    const PREMIUM_FLAG = "panacea_premium";
+    const isPremiumUser = localStorage.getItem(PREMIUM_FLAG) === "true";
+
+    const memberStatus = document.getElementById("memberStatus");
+    const premiumInfo = document.getElementById("premiumInfo");
+
+    if(memberStatus) memberStatus.textContent = isPremiumUser ? "Premium aktiv" : "Free-Version";
+    if(premiumInfo) premiumInfo.style.display = isPremiumUser ? "none" : "block";
+
+    // Premium reset output uses resetLogic.js later; for now keep safe UI
+    const resetOut = document.getElementById("resetOut");
+    document.getElementById("generateResetBtn").addEventListener("click", () => {
+      const s = Number(document.getElementById("stressSlider").value);
+      const e = Number(document.getElementById("energySlider").value);
+
+      // If resetLogic exists, use it. Otherwise show a placeholder.
+      if(typeof renderPremiumReset === "function"){
+        renderPremiumReset(s, e);
+      } else {
+        document.getElementById("resetTitle").textContent = "Dein Premium Reset";
+        document.getElementById("resetText").textContent =
+          `Stress: ${s}/10 · Energie: ${e}/10 — (Premium-Logik folgt)`;
+        resetOut.style.display = "block";
+      }
+    });
+  </script>
+
+  <script>
+    // ---------------- Breathing timer ----------------
     const phaseLabel = document.getElementById("phaseLabel");
     const timeLeftEl = document.getElementById("timeLeft");
     const pulse = document.getElementById("pulse");
@@ -540,16 +615,15 @@ input[type="range"]::-moz-range-track{
     const pauseBtn = document.getElementById("pauseBtn");
     const resetBtn = document.getElementById("resetBtn");
 
-    // --- State
     let running = false;
     let paused = false;
 
     let inhaleSec = 4;
     let exhaleSec = 6;
-    let totalSeconds = 180;     // default 3 min
+    let totalSeconds = 180;
     let remainingSeconds = 180;
 
-    let phase = "READY";        // INHALE | EXHALE
+    let phase = "READY";
     let phaseTimeout = null;
     let tickInterval = null;
 
@@ -567,21 +641,17 @@ input[type="range"]::-moz-range-track{
       totalSeconds = mins * 60;
     }
 
-    function updateTimeUI(){
-      timeLeftEl.textContent = fmtTime(remainingSeconds);
-    }
+    function updateTimeUI(){ timeLeftEl.textContent = fmtTime(remainingSeconds); }
 
     function setPhase(newPhase){
       phase = newPhase;
 
       if(newPhase === "INHALE"){
         phaseLabel.textContent = "Einatmen";
-        // smooth expand
         pulse.style.transition = `transform ${inhaleSec}s ease`;
         pulse.style.transform = "scale(1.06)";
       } else if(newPhase === "EXHALE"){
         phaseLabel.textContent = "Ausatmen";
-        // smooth contract
         pulse.style.transition = `transform ${exhaleSec}s ease`;
         pulse.style.transform = "scale(0.86)";
       } else {
@@ -669,6 +739,7 @@ input[type="range"]::-moz-range-track{
       startBtn.disabled = false;
       pauseBtn.disabled = true;
       pauseBtn.textContent = "Pausieren";
+      phaseLabel.textContent = "Bereit";
     }
 
     function finish(){
@@ -704,54 +775,8 @@ input[type="range"]::-moz-range-track{
     exhaleInput.addEventListener("change", resetAll);
     minutesInput.addEventListener("change", resetAll);
   </script>
+
+  <!-- Keep your premium logic file (we use later) -->
   <script src="./js/resetLogic.js"></script>
-
-<script>
-document.getElementById("generateResetBtn").addEventListener("click", function() {
-  const stressValue = Number(document.getElementById("stressSlider").value);
-  const energyValue = Number(document.getElementById("energySlider").value);
-
-  renderPremiumReset(stressValue, energyValue);
-});
-</script>
-  <script>
-const dailyFocus = [
-  {
-    title: "Montag – Fokus",
-    text: "Richte deine Aufmerksamkeit auf einen klaren nächsten Schritt. Nicht alles – nur den nächsten."
-  },
-  {
-    title: "Dienstag – Ruhe",
-    text: "Verlängere heute bewusst dein Ausatmen. Dein Nervensystem liebt Sicherheit."
-  },
-  {
-    title: "Mittwoch – Klarheit",
-    text: "Beobachte deine Gedanken wie Wolken. Du musst ihnen nicht folgen."
-  },
-  {
-    title: "Donnerstag – Struktur",
-    text: "Plane nur die nächsten 30 Minuten – nicht den ganzen Tag."
-  },
-  {
-    title: "Freitag – Energie",
-    text: "Atme tief ein, öffne den Brustraum, richte dich auf. Energie entsteht durch Haltung."
-  },
-  {
-    title: "Samstag – Regeneration",
-    text: "Erlaube dir heute bewusst kleine Pausen. 3 Minuten reichen."
-  },
-  {
-    title: "Sonntag – Reflexion",
-    text: "Was hat dir diese Woche Stabilität gegeben? Wiederhole genau das."
-  }
-];
-
-const today = new Date().getDay(); // 0=Sonntag
-const index = today === 0 ? 6 : today - 1;
-
-document.getElementById("dailyFocusTitle").textContent = dailyFocus[index].title;
-document.getElementById("dailyFocusText").textContent = dailyFocus[index].text;
-</script>
 </body>
-  
 </html>
