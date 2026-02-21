@@ -916,6 +916,30 @@
     exhaleInput.addEventListener("change", resetAll);
     minutesInput.addEventListener("change", resetAll);
   </script>
+<script>
+document.getElementById("btnDE")?.addEventListener("click", function() {
+  localStorage.setItem("lang","de");
 
+  let page = location.pathname.split("/").pop();
+
+  if(page.includes("IT.html")){
+    location.href = page.replace("IT.html",".html");
+  } else {
+    location.href = page;
+  }
+});
+
+document.getElementById("btnIT")?.addEventListener("click", function() {
+  localStorage.setItem("lang","it");
+
+  let page = location.pathname.split("/").pop();
+
+  if(!page.includes("IT.html")){
+    location.href = page.replace(".html","IT.html");
+  } else {
+    location.href = page;
+  }
+});
+</script>
 </body>
 </html>
