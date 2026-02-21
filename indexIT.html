@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Panacea – Body & Mind</title>
+
+  <style>
+    :root{
+      --bg1:#f6f1e6;
+      --bg2:#efe7d7;
+
+      --card:#ffffffde;
+      --card2:#ffffffef;
+
+      --text:#1f2a24;
+      --muted:#55635b;
+
+      --gold:#c8a24a;
+      --gold2:#e8d28a;
+      --green:#1f3b2f;
+
+      --shadow: 0 16px 42px rgba(0,0,0,.10);
+      --shadow2: 0 10px 26px rgba(0,0,0,.10);
+
+      --radius: 26px;
+      --radius2: 22px;
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text);
+      background: radial-gradient(1200px 800px at 30% 0%, var(--bg1), var(--bg2));
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      padding:26px 14px 40px;
+    }
+
+    /* App phone container */
+    .phone{
+      width:100%;
+      max-width:480px;   /* app telefono */
+      position:relative;
+    }
+
+    /* soft background image layer */
+    .bg{
+      position:fixed;
+      inset:0;
+      z-index:-2;
+      background:
+        radial-gradient(1200px 800px at 30% 0%, rgba(246,241,230,.92), rgba(239,231,215,.92));
+    }
+    .bg::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image: url("icons/sfondo.png");
+      background-size: cover;
+      background-position: center;
+      opacity:.20;
+      filter: blur(0px);
+    }
+
+    /* language toggle */
+    .langBar{
+      display:flex;
+      justify-content:center;
+      margin-bottom:16px;
+    }
+    .langWrap{
+      display:flex;
+      gap:8px;
+      padding:6px;
+      border-radius:999px;
+      background: linear-gradient(180deg, var(--card2), var(--card));
+      border:1px solid rgba(200,162,74,.18);
+      box-shadow: var(--shadow2);
+    }
+    .langBtn{
+      border:none;
+      cursor:pointer;
+      padding:10px 14px;
+      border-radius:999px;
+      font-weight:800;
+      background: transparent;
+      color:var(--text);
+      opacity:.70;
+    }
+    .langBtn.active{
+      opacity:1;
+      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      border:1px solid rgba(200,162,74,.25);
+      box-shadow: 0 0 16px rgba(200,162,74,.18);
+      color:#3a2c10;
+    }
+
+    /* header card */
+    .headerCard{
+      background: linear-gradient(180deg, var(--card2), var(--card));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border:1px solid rgba(200,162,74,.18);
+      padding:22px 22px 18px;
+      margin-bottom:16px;
+    }
+
+    .title{
+      margin:0;
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+      letter-spacing:.2px;
+      color:var(--green);
+      line-height:1.02;
+      font-weight:900;
+      font-size:44px;
+    }
+    .title .line2{
+      display:block;
+      margin-top:6px;
+      font-size:38px;
+    }
+
+    /* luxury glow for title */
+    .titleGlow{
+      text-shadow:
+        0 0 14px rgba(200,162,74,.18),
+        0 0 26px rgba(200,162,74,.12);
+    }
+
+    .subtitle{
+      margin:10px 0 0 0;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.35;
+      font-weight:600;
+    }
+
+    /* big hero image */
+    .hero{
+      background: linear-gradient(180deg, var(--card2), var(--card));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border:1px solid rgba(200,162,74,.18);
+      padding:18px;
+      margin-bottom:16px;
+      overflow:hidden;
+    }
+    .hero img{
+      width:100%;
+      height:auto;
+      display:block;
+      border-radius: var(--radius2);
+      border:1px solid rgba(200,162,74,.22);
+      box-shadow: 0 0 18px rgba(200,162,74,.12);
+    }
+    /* FIX DEFINITIVO: le icone del menu NON devono mai diventare 100% */
+    .grid .tile img,
+    .grid .tile .menuIcon{
+      width: min(220px, 82%) !important;
+      max-width: 220px !important;
+      height: auto !important;
+      max-height: 150px !important;
+      object-fit: contain !important;
+      display: block !important;
+      margin: 0 auto !important;
+    }
+
+    /* In caso qualche CSS esterno metta img{width:100%}, neutralizziamo SOLO nel menu */
+    .grid .tile{
+      overflow: hidden;
+    }
+
+    /* grid menu */
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      margin-bottom:18px;
+    }
+
+    .tile{
+      text-decoration:none;
+      color:inherit;
+      background: linear-gradient(180deg, var(--card2), var(--card));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border:1px solid rgba(200,162,74,.18);
+      padding:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:160px;
+      position:relative;
+      overflow:hidden;
+      transition: transform .12s ease;
+    }
+    .tile:hover{ transform: translateY(-2px); }
+
+    /* FIX: icone non devono mai esplodere */
+    .menuIcon{
+      width: min(220px, 82%);
+      max-width:220px;
+      max-height:150px;
+      height:auto !important;
+      object-fit: contain;
+      display:block;
+      margin:0 auto;
+    }
+
+    /* optional label under image if you want later */
+    .tileLabel{
+      position:absolute;
+      left:14px; right:14px; bottom:12px;
+      text-align:center;
+      font-weight:800;
+      color:var(--green);
+      opacity:.90;
+      font-size:14px;
+      display:none; /* per ora off */
+    }
+
+    /* footer spacing */
+    .spacer{ height:10px; }
+
+    @media (max-width:420px){
+      .title{ font-size:40px; }
+      .title .line2{ font-size:34px; }
+      .tile{ min-height:150px; }
+      .menuIcon{ max-width:210px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg"></div>
+
+  <div class="phone">
+
+    <!-- Language Toggle -->
+    <div class="langBar">
+      <div class="langWrap" role="tablist" aria-label="Language">
+        <button class="langBtn" id="btnDE" type="button">Deutsch</button>
+        <button class="langBtn" id="btnIT" type="button">Italiano</button>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <div class="headerCard">
+      <h1 class="title titleGlow">
+        <span id="t_panacea">Panacea</span>
+        <span class="line2" id="t_bodymind">Body &amp; Mind</span>
+      </h1>
+      <p class="subtitle" id="t_subtitle">Piccoli passi. Più stabilità. Ogni giorno.</p>
+    </div>
+
+    <!-- Menu grid -->
+    <div class="grid">
+
+      <a class="tile" href="daily-resetIT.html">
+        <img class="menuIcon" data-src="icons/daily-reset.png" alt="Reset Quotidiano">
+      </a>
+
+      <a class="tile" href="wissenIT.html">
+        <img class="menuIcon" data-src="icons/wissen-klarheit.png" alt="Conoscenza & Chiarezza">
+      </a>
+
+      <a class="tile" href="lifestyleIT.html">
+        <img class="menuIcon" data-src="icons/lifestyle.png" alt="Stile di Vita">
+      </a>
+
+      <a class="tile" href="uebungenIT.html">
+        <img class="menuIcon" data-src="icons/uebungen.png" alt="Esercizi">
+      </a>
+
+      <a class="tile" href="kurseIT.html">
+        <img class="menuIcon" data-src="icons/kurse.png" alt="Corsi">
+      </a>
+
+      <a class="tile" href="mitgliederIT.html">
+        <img class="menuIcon" data-src="icons/mitgliederbereich.png" alt="Area Membri">
+      </a>
+
+    </div>
+
+    <div class="spacer"></div>
+
+  </div>
+
+  <script>
+    // ---------- cache-busting for icons (solves "back => huge/old css/assets") ----------
+    // Adds ?v=timestamp to icon images only.
+    (function(){
+      const v = Date.now();
+      document.querySelectorAll('img[data-src]').forEach(img => {
+        img.src = img.getAttribute('data-src') + '?v=' + v;
+      });
+    })();
+
+    // ---------- Language handling ----------
+    // In questa pagina IT: Deutsch porta a index.html, Italiano resta qui.
+    const btnDE = document.getElementById("btnDE");
+    const btnIT = document.getElementById("btnIT");
+
+    function setActive(lang){
+      btnDE.classList.toggle("active", lang === "de");
+      btnIT.classList.toggle("active", lang === "it");
+      document.documentElement.lang = (lang === "it") ? "it" : "de";
+    }
+
+    setActive("it");
+
+    btnDE.addEventListener("click", () => {
+      // vai alla home tedesca
+      window.location.href = "index.html";
+    });
+
+    btnIT.addEventListener("click", () => {
+      // già qui
+      setActive("it");
+    });
+  </script>
+</body>
+</html>
