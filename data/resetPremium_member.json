@@ -2,11 +2,23 @@
   {
     "stress": "hoch",
     "energy": "niedrig",
-    "title": "Sicherheit & Beruhigung",
+    "title": {
+      "de": "Sicherheit & Beruhigung",
+      "it": "Sicurezza & calma"
+    },
     "texts": [
-      "Heute braucht dein Nervensystem Sicherheit. Atme ruhig aus und entspanne Schultern und Kiefer.",
-      "Reduziere Tempo und Reize. Längere Ausatmung gibt deinem System ein Signal von Sicherheit.",
-      "Heute gilt: weniger ist mehr. Ein kleiner Schritt – und dann Pause."
+      {
+        "de": "Heute braucht dein Nervensystem Sicherheit. Atme ruhig aus und entspanne Schultern und Kiefer.",
+        "it": "Oggi il tuo sistema nervoso ha bisogno di sicurezza. Espira con calma e rilassa spalle e mascella."
+      },
+      {
+        "de": "Reduziere Tempo und Reize. Längere Ausatmung gibt deinem System ein Signal von Sicherheit.",
+        "it": "Riduci ritmo e stimoli. Un’espirazione più lunga manda al corpo un segnale di sicurezza."
+      },
+      {
+        "de": "Heute gilt: weniger ist mehr. Ein kleiner Schritt – und dann Pause.",
+        "it": "Oggi vale: meno è meglio. Un piccolo passo – e poi una pausa."
+      }
     ],
     "breathing": { "inhale": 4, "exhale": 7, "minutes": 3 }
   }
