@@ -1,1 +1,920 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Panacea – Übungen</title>
 
+  <style>
+    :root{
+      --bg1:#f6f1e6;
+      --bg2:#efe7d7;
+      --card:#ffffffd9;
+      --card2:#ffffffee;
+      --gold:#c8a24a;
+      --gold2:#e8d28a;
+      --text:#2b2b2b;
+      --muted:#6b6b6b;
+      --shadow: 0 14px 40px rgba(0,0,0,.10);
+      --shadow2: 0 10px 26px rgba(0,0,0,.10);
+      --radius: 22px;
+      --radius2: 18px;
+    }
+
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background: radial-gradient(1200px 800px at 30% 0%, var(--bg1), var(--bg2));
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      padding:28px 14px;
+    }
+
+    .phone{ width:100%; max-width:480px; }
+
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:14px;
+    }
+
+    .back{
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:999px;
+      background: linear-gradient(180deg, var(--card2), var(--card));
+      box-shadow: var(--shadow2);
+      color:var(--text);
+      border:1px solid rgba(200,162,74,.20);
+    }
+    .back:hover{ transform: translateY(-1px); }
+
+    .brand{ text-align:right; line-height:1.1; }
+    .brand .t1{ font-size:14px; color:var(--muted); }
+    .brand .t2{ font-size:18px; font-weight:800; letter-spacing:.2px; }
+    .brand .glow{
+      color:var(--gold);
+      text-shadow: 0 0 10px rgba(200,162,74,.30);
+      font-weight:900;
+    }
+
+    .card{
+      background: linear-gradient(180deg, var(--card2), var(--card));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border:1px solid rgba(200,162,74,.18);
+      overflow:hidden;
+    }
+
+    .hero{
+      padding:18px 18px 14px 18px;
+      display:flex;
+      gap:14px;
+      align-items:center;
+    }
+
+    .daybadge{
+      width:64px;
+      height:64px;
+      border-radius:18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      font-size:16px;
+      color:#3a2c10;
+      background: radial-gradient(circle at 30% 20%, #fff6d6, #e8d28a);
+      border:1px solid rgba(200,162,74,.35);
+      box-shadow: 0 0 16px rgba(200,162,74,.25);
+      flex:0 0 auto;
+    }
+
+    .hero h1{ margin:0; font-size:18px; letter-spacing:.2px; }
+    .hero p{ margin:6px 0 0 0; color:var(--muted); font-size:13px; line-height:1.45; }
+
+    .imagewrap{ position:relative; padding:0 18px 16px 18px; }
+    /* spazio per foto esercizio: icons/1b.png, 2b.png, ... */
+    .dayimg{
+      width:100%;
+      height:auto;
+      max-height:260px;
+      object-fit:cover;
+      border-radius:18px;
+      display:block;
+    }
+
+    .content{ padding:16px 18px 18px 18px; }
+
+    .divider{
+      height:1px;
+      background: linear-gradient(90deg, transparent, rgba(200,162,74,.35), transparent);
+      margin:16px 0;
+    }
+
+    .pillRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .pill{
+      padding:8px 10px;
+      border-radius:999px;
+      background: rgba(255,255,255,.65);
+      border:1px solid rgba(200,162,74,.16);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+      font-size:12px;
+      color:var(--muted);
+      font-weight:800;
+    }
+
+    /* Blocks */
+    .block{
+      margin-top:12px;
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(200,162,74,.18);
+      background: linear-gradient(180deg, rgba(255,255,255,.78), rgba(255,255,255,.60));
+      box-shadow: 0 0 18px rgba(0,0,0,.05);
+    }
+
+    .blockHeader{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:10px;
+    }
+
+    .blockTitle{
+      margin:0;
+      font-size:14px;
+      font-weight:900;
+      color:#3a2c10;
+    }
+
+    .blockSub{
+      margin:6px 0 0 0;
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.45;
+    }
+
+    .tinyBtn{
+      appearance:none;
+      border:none;
+      cursor:pointer;
+      padding:10px 12px;
+      border-radius:14px;
+      font-weight:900;
+      letter-spacing:.2px;
+      box-shadow: var(--shadow2);
+      border:1px solid rgba(200,162,74,.22);
+      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      color:#3a2c10;
+      white-space:nowrap;
+      font-size:12px;
+    }
+    .tinyBtn:hover{ transform: translateY(-1px); }
+
+    /* checklist cards */
+    .list{
+      margin:12px 0 0 0;
+      padding:0;
+      list-style:none;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .item{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:12px 12px;
+      border-radius:16px;
+      background: rgba(255,255,255,.72);
+      border:1px solid rgba(200,162,74,.14);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+    }
+
+    .item input{
+      margin-top:3px;
+      width:18px;
+      height:18px;
+      accent-color: var(--gold);
+      flex:0 0 auto;
+    }
+
+    .itxt{
+      flex:1;
+    }
+
+    .iname{
+      font-weight:900;
+      margin:0;
+      font-size:14px;
+      color:#2b2b2b;
+      line-height:1.25;
+    }
+
+    .idesc{
+      margin:6px 0 0 0;
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.45;
+      white-space: pre-line;
+    }
+
+    .metaRow{
+      margin-top:8px;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .tag{
+      font-size:11px;
+      font-weight:900;
+      color:#3a2c10;
+      padding:6px 8px;
+      border-radius:999px;
+      background: rgba(232,210,138,.35);
+      border:1px solid rgba(200,162,74,.20);
+    }
+
+    /* timer modal */
+    .modalOverlay{
+      position:fixed;
+      inset:0;
+      background: rgba(0,0,0,.35);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:16px;
+      z-index:99;
+    }
+    .modal{
+      width:100%;
+      max-width:480px;
+      border-radius:22px;
+      background: linear-gradient(180deg, var(--card2), var(--card));
+      border:1px solid rgba(200,162,74,.18);
+      box-shadow: 0 24px 70px rgba(0,0,0,.25);
+      overflow:hidden;
+    }
+    .modalTop{
+      padding:16px 18px 10px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .modalTop h3{
+      margin:0;
+      font-size:15px;
+      font-weight:900;
+      color:#3a2c10;
+    }
+    .closeBtn{
+      border:none;
+      cursor:pointer;
+      padding:10px 12px;
+      border-radius:999px;
+      background: rgba(255,255,255,.75);
+      border:1px solid rgba(200,162,74,.20);
+      box-shadow: var(--shadow2);
+      font-weight:900;
+      color:#2b2b2b;
+    }
+    .modalBody{
+      padding: 0 18px 18px 18px;
+    }
+    .timerDisplay{
+      margin:12px 0 10px 0;
+      font-size:34px;
+      font-weight:900;
+      color:#2b2b2b;
+      font-variant-numeric: tabular-nums;
+      letter-spacing:.5px;
+    }
+    .timerHint{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.45;
+    }
+    .modalControls{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+    .btn{
+      appearance:none;
+      border:none;
+      cursor:pointer;
+      padding:12px 14px;
+      border-radius:14px;
+      font-weight:900;
+      letter-spacing:.2px;
+      box-shadow: var(--shadow2);
+      border:1px solid rgba(200,162,74,.20);
+      background: linear-gradient(180deg, #ffffff, #f7f2e6);
+      color:var(--text);
+      flex:1;
+      min-width:130px;
+    }
+    .btn:hover{ transform: translateY(-1px); }
+    .btn.primary{
+      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      border:1px solid rgba(200,162,74,.35);
+      color:#3a2c10;
+      text-shadow: 0 0 10px rgba(200,162,74,.25);
+    }
+
+    /* Mitglieder teaser */
+    .memberTeaser{
+      margin-top:14px;
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(200,162,74,.28);
+      background: linear-gradient(180deg, rgba(255,246,214,.75), rgba(255,255,255,.75));
+      box-shadow: 0 0 18px rgba(200,162,74,.15);
+      display:none;
+    }
+    .memberHeader{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:10px;
+    }
+    .memberBadge{
+      padding:6px 10px;
+      border-radius:999px;
+      font-weight:900;
+      font-size:12px;
+      color:#3a2c10;
+      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      border:1px solid rgba(200,162,74,.35);
+      box-shadow: 0 0 14px rgba(200,162,74,.18);
+    }
+    .memberTitle{
+      font-weight:900;
+      color:#3a2c10;
+      font-size:14px;
+    }
+    .memberList{
+      margin:10px 0 12px;
+      padding-left:18px;
+      color:#2b2b2b;
+      font-size:14px;
+      line-height:1.5;
+    }
+    .memberBtn{
+      display:block;
+      text-align:center;
+      text-decoration:none;
+      padding:12px 14px;
+      border-radius:14px;
+      font-weight:900;
+      letter-spacing:.2px;
+      color:#3a2c10;
+      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      border:1px solid rgba(200,162,74,.35);
+      box-shadow: 0 0 16px rgba(200,162,74,.20);
+    }
+    .memberNote{
+      margin-top:10px;
+      font-size:12px;
+      color:#6b6b6b;
+      text-align:center;
+    }
+
+    /* premium-only section (visible only if premium) */
+    .premiumOnly{
+      display:none;
+      margin-top:14px;
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(200,162,74,.28);
+      background: linear-gradient(180deg, rgba(255,246,214,.60), rgba(255,255,255,.72));
+      box-shadow: 0 0 18px rgba(200,162,74,.10);
+    }
+    .premiumOnly h3{
+      margin:0 0 8px 0;
+      font-size:14px;
+      font-weight:900;
+      color:#3a2c10;
+    }
+    .premiumOnly p{
+      margin:0;
+      font-size:14px;
+      line-height:1.5;
+      color:#2b2b2b;
+      white-space: pre-line;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="phone">
+
+    <div class="topbar">
+      <a class="back" href="index.html">← Home</a>
+      <div class="brand">
+        <div class="t1">Panacea</div>
+        <div class="t2"><span class="glow">Übungen</span> & Praxis</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="hero">
+        <div class="daybadge" id="dayBadge">ÜB</div>
+        <div>
+          <h1>4 Blöcke – kleine Übungen</h1>
+          <p>Wähle eine Karte, starte den Timer, hake ab. Kleine Schritte – große Wirkung.</p>
+        </div>
+      </div>
+
+      <!-- spazio immagine (opzionale): potrai cambiare via JS in base alla carta -->
+      <div class="imagewrap">
+        <img id="exerciseImage" class="dayimg" src="icons/1b.png" alt="Übungen – Bild (optional)">
+      </div>
+
+      <div class="content">
+
+        <div class="pillRow">
+          <div class="pill" id="donePill">Erledigt: 0</div>
+          <div class="pill" id="premiumPill">Premium: aus</div>
+        </div>
+
+        <!-- BLOCK 1 -->
+        <div class="block" data-block="sofort">
+          <div class="blockHeader">
+            <div>
+              <p class="blockTitle">Sofort beruhigen (2–5 Min)</p>
+              <p class="blockSub">Wenn der Kopf laut ist: runterregeln, sicher werden, atmen.</p>
+            </div>
+            <button class="tinyBtn" type="button" data-start-block="sofort">Timer</button>
+          </div>
+
+          <ul class="list" id="list_sofort"></ul>
+        </div>
+
+        <!-- BLOCK 2 -->
+        <div class="block" data-block="denken">
+          <div class="blockHeader">
+            <div>
+              <p class="blockTitle">Denken stabilisieren (5–10 Min)</p>
+              <p class="blockSub">Gedanken ordnen, Fokus finden, Grübeln unterbrechen.</p>
+            </div>
+            <button class="tinyBtn" type="button" data-start-block="denken">Timer</button>
+          </div>
+
+          <ul class="list" id="list_denken"></ul>
+        </div>
+
+        <!-- BLOCK 3 -->
+        <div class="block" data-block="wirksamkeit">
+          <div class="blockHeader">
+            <div>
+              <p class="blockTitle">Selbstwirksamkeit (5 Min)</p>
+              <p class="blockSub">Das Gefühl stärken: Ich kann etwas bewirken.</p>
+            </div>
+            <button class="tinyBtn" type="button" data-start-block="wirksamkeit">Timer</button>
+          </div>
+
+          <ul class="list" id="list_wirksamkeit"></ul>
+        </div>
+
+        <!-- BLOCK 4 -->
+        <div class="block" data-block="sozial">
+          <div class="blockHeader">
+            <div>
+              <p class="blockTitle">Soziale Stabilität (2–8 Min)</p>
+              <p class="blockSub">Verbindung ist ein Stress-Puffer: kleine Kontakte reichen.</p>
+            </div>
+            <button class="tinyBtn" type="button" data-start-block="sozial">Timer</button>
+          </div>
+
+          <ul class="list" id="list_sozial"></ul>
+        </div>
+
+        <!-- Premium-only content (visible only if premium flag true) -->
+        <div class="premiumOnly" id="premiumOnly">
+          <h3>Mitglieder – extra Übungen & Inhalte</h3>
+          <p id="premiumText">
+Mehr Übungen pro Block (z.B. Schlaf-Routinen, Körper-Reset, Ess-Strategien).
+Video-Anleitungen + geführte Meditationen.
+Zusätzliche Wochenpläne und Mini-Challenges.
+          </p>
+        </div>
+
+        <!-- Mitglieder teaser (free only) -->
+        <div class="memberTeaser" id="memberTeaser">
+          <div class="memberHeader">
+            <div class="memberBadge">Mitglieder</div>
+            <div class="memberTitle">Mehr Übungen. Video. Meditation. Struktur.</div>
+          </div>
+
+          <ul class="memberList">
+            <li><b>Viele zusätzliche Karten</b> in allen 4 Blöcken</li>
+            <li><b>Video-Anleitungen</b> & <b>geführte Meditationen</b></li>
+            <li><b>Wöchentliche Routinen</b> + Fortschritt im Mitgliederbereich</li>
+          </ul>
+
+          <a class="memberBtn" href="mitglieder.html">Mitglieder freischalten →</a>
+
+          <div class="memberNote">Premium wird automatisch sichtbar nach Freischaltung.</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TIMER MODAL -->
+  <div class="modalOverlay" id="modalOverlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true">
+      <div class="modalTop">
+        <h3 id="modalTitle">Timer</h3>
+        <button class="closeBtn" id="closeModal" type="button">✕</button>
+      </div>
+      <div class="modalBody">
+        <div class="timerDisplay" id="timerDisplay">05:00</div>
+        <p class="timerHint" id="timerHint">Starte den Timer und mach die Übung in Ruhe.</p>
+
+        <div class="modalControls">
+          <button class="btn primary" id="startTimerBtn" type="button">Start</button>
+          <button class="btn" id="pauseTimerBtn" type="button" disabled>Pausieren</button>
+          <button class="btn" id="resetTimerBtn" type="button">Reset</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ----------------- Storage -----------------
+    const PREMIUM_FLAG = "panacea_premium"; // "true" | "false"
+    const STORAGE_DONE = "panacea_uebungen_done"; // JSON object { [id]: true/false }
+    const STORAGE_LAST_TIMER = "panacea_uebungen_last_timer"; // seconds
+
+    // ----------------- Helpers -----------------
+    function isPremium(){ return localStorage.getItem(PREMIUM_FLAG) === "true"; }
+
+    function getDoneMap(){
+      try{
+        const raw = localStorage.getItem(STORAGE_DONE);
+        const obj = raw ? JSON.parse(raw) : {};
+        return (obj && typeof obj === "object") ? obj : {};
+      }catch(e){
+        return {};
+      }
+    }
+    function setDoneMap(obj){
+      localStorage.setItem(STORAGE_DONE, JSON.stringify(obj));
+    }
+
+    function pad(n){ return String(n).padStart(2,"0"); }
+    function fmt(s){
+      const m = Math.floor(s/60);
+      const r = s % 60;
+      return `${pad(m)}:${pad(r)}`;
+    }
+
+    // ----------------- Data (FREE) -----------------
+    // Ogni carta può avere:
+    // id, title, desc, minutes (timer default), image (placeholder icons/1b.png ...)
+    // NB: immagini NON obbligatorie -> mettiamo spazio e fallback.
+    const EX = {
+      sofort: [
+        {
+          id:"sofort_1",
+          title:"4–6 Atmung (2 Min)",
+          desc:"Atme 4 Sekunden ein, 6 Sekunden aus. Fokus auf das Ausatmen.\n→ Signal: Sicherheit fürs Nervensystem.",
+          minutes:2,
+          image:"icons/1b.png"
+        },
+        {
+          id:"sofort_2",
+          title:"5-4-3-2-1 Grounding (3 Min)",
+          desc:"5 sehen, 4 fühlen, 3 hören, 2 riechen, 1 schmecken.\n→ Hol dich in den Moment zurück.",
+          minutes:3,
+          image:"icons/2b.png"
+        },
+        {
+          id:"sofort_3",
+          title:"Kiefer & Schultern lösen (2 Min)",
+          desc:"Kiefer locker, Schultern sinken lassen, langsam ausatmen.\n→ Körpersignal: kein Alarm.",
+          minutes:2,
+          image:"icons/3b.png"
+        }
+      ],
+
+      denken: [
+        {
+          id:"denken_1",
+          title:"Gedanken parken (5 Min)",
+          desc:"Schreibe alles kurz auf. Dann entscheide: Jetzt / Später / Nicht wichtig.\n→ Reduziert Grübel-Schleifen.",
+          minutes:5,
+          image:"icons/4b.png"
+        },
+        {
+          id:"denken_2",
+          title:"Reframing in 3 Sätzen (7 Min)",
+          desc:"1) Was denke ich gerade?\n2) Was wäre eine alternative Erklärung?\n3) Was ist mein nächster kleiner Schritt?",
+          minutes:7,
+          image:"icons/5b.png"
+        },
+        {
+          id:"denken_3",
+          title:"Fokus 10 Minuten (10 Min)",
+          desc:"Wähle 1 Aufgabe. Stelle Timer. Keine Multitasks.\n→ Klarheit durch monotasking.",
+          minutes:10,
+          image:"icons/6b.png"
+        }
+      ],
+
+      wirksamkeit: [
+        {
+          id:"wirksamkeit_1",
+          title:"„Ich hab das geschafft“-Liste (5 Min)",
+          desc:"Schreibe abends 3 Dinge auf, die du heute bewältigt hast – auch Kleinigkeiten.\n→ Trainiert das Gefühl: Ich kann etwas bewirken.",
+          minutes:5,
+          image:"icons/7b.png"
+        },
+        {
+          id:"wirksamkeit_2",
+          title:"Mini-Ziel + Haken (5 Min)",
+          desc:"Definiere 1 Mini-Ziel für heute (max. 10 Minuten). Nachher: abhaken.\n→ Dopamin & Selbstwirksamkeit.",
+          minutes:5,
+          image:"icons/8b.png"
+        },
+        {
+          id:"wirksamkeit_3",
+          title:"„Trotzdem“-Satz (3 Min)",
+          desc:"Schreibe: „Trotz … habe ich … gemacht.“\n→ Stärkt Resilienz & Handlungsspielraum.",
+          minutes:3,
+          image:"icons/9b.png"
+        }
+      ],
+
+      sozial: [
+        {
+          id:"sozial_1",
+          title:"1 ehrliche Nachricht (2–3 Min)",
+          desc:"Schreibe: „Ich denke an dich. Wie geht’s dir heute?“\n→ Verbindung als Stresspuffer.",
+          minutes:3,
+          image:"icons/10b.png"
+        },
+        {
+          id:"sozial_2",
+          title:"Dankbarkeit konkret (3–5 Min)",
+          desc:"Nenne 1 Person + 1 konkreten Grund (und sag es ihr, wenn möglich).\n→ Stärkt Bindung und Stimmung.",
+          minutes:5,
+          image:"icons/11b.png"
+        },
+        {
+          id:"sozial_3",
+          title:"Mini-Kontakt im Alltag (2 Min)",
+          desc:"Kurzer Blickkontakt + Lächeln + „Danke“.\n→ Kleine soziale Signale zählen.",
+          minutes:2,
+          image:"icons/12b.png"
+        }
+      ]
+    };
+
+    // ----------------- Render lists -----------------
+    const doneMap = getDoneMap();
+    const donePill = document.getElementById("donePill");
+    const premiumPill = document.getElementById("premiumPill");
+    const memberTeaser = document.getElementById("memberTeaser");
+    const premiumOnly = document.getElementById("premiumOnly");
+    const exerciseImage = document.getElementById("exerciseImage");
+
+    function countDone(){
+      return Object.values(getDoneMap()).filter(Boolean).length;
+    }
+
+    function updateHeader(){
+      donePill.textContent = `Erledigt: ${countDone()}`;
+      premiumPill.textContent = `Premium: ${isPremium() ? "an" : "aus"}`;
+      if(isPremium()){
+        memberTeaser.style.display = "none";
+        premiumOnly.style.display = "block";
+      }else{
+        memberTeaser.style.display = "block";
+        premiumOnly.style.display = "none";
+      }
+    }
+
+    function makeItem(card){
+      const li = document.createElement("li");
+      li.className = "item";
+
+      const cb = document.createElement("input");
+      cb.type = "checkbox";
+      cb.checked = !!doneMap[card.id];
+      cb.addEventListener("change", () => {
+        const map = getDoneMap();
+        map[card.id] = cb.checked;
+        setDoneMap(map);
+        updateHeader();
+      });
+
+      const box = document.createElement("div");
+      box.className = "itxt";
+
+      const name = document.createElement("p");
+      name.className = "iname";
+      name.textContent = card.title;
+
+      const desc = document.createElement("p");
+      desc.className = "idesc";
+      desc.textContent = card.desc;
+
+      const meta = document.createElement("div");
+      meta.className = "metaRow";
+
+      const tagMin = document.createElement("span");
+      tagMin.className = "tag";
+      tagMin.textContent = `${card.minutes} Min`;
+
+      const startBtn = document.createElement("span");
+      startBtn.className = "tag";
+      startBtn.style.cursor = "pointer";
+      startBtn.textContent = "Timer starten";
+      startBtn.addEventListener("click", () => openTimer(card.title, card.minutes * 60, card.image));
+
+      meta.appendChild(tagMin);
+      meta.appendChild(startBtn);
+
+      box.appendChild(name);
+      box.appendChild(desc);
+      box.appendChild(meta);
+
+      li.appendChild(cb);
+      li.appendChild(box);
+
+      // click on card image change (optional)
+      li.addEventListener("click", (e) => {
+        // avoid toggling when click on checkbox or timer tag
+        if(e.target === cb) return;
+        if(e.target === startBtn) return;
+        setExerciseImage(card.image);
+      });
+
+      return li;
+    }
+
+    function setExerciseImage(src){
+      if(!exerciseImage) return;
+      exerciseImage.src = src || "icons/1b.png";
+    }
+
+    function renderBlock(blockKey, ulId){
+      const ul = document.getElementById(ulId);
+      ul.innerHTML = "";
+      EX[blockKey].forEach(card => ul.appendChild(makeItem(card)));
+    }
+
+    // ----------------- Timer Modal -----------------
+    const overlay = document.getElementById("modalOverlay");
+    const modalTitle = document.getElementById("modalTitle");
+    const timerDisplay = document.getElementById("timerDisplay");
+    const timerHint = document.getElementById("timerHint");
+    const closeModal = document.getElementById("closeModal");
+
+    const startTimerBtn = document.getElementById("startTimerBtn");
+    const pauseTimerBtn = document.getElementById("pauseTimerBtn");
+    const resetTimerBtn = document.getElementById("resetTimerBtn");
+
+    let baseSeconds = 300;
+    let remaining = 300;
+    let running = false;
+    let intervalId = null;
+
+    function openTimer(title, seconds, img){
+      modalTitle.textContent = title || "Timer";
+      baseSeconds = Number(seconds || 300);
+      remaining = baseSeconds;
+      timerDisplay.textContent = fmt(remaining);
+
+      running = false;
+      clearInterval(intervalId);
+      intervalId = null;
+
+      startTimerBtn.disabled = false;
+      pauseTimerBtn.disabled = true;
+      pauseTimerBtn.textContent = "Pausieren";
+      timerHint.textContent = "Starte den Timer und mach die Übung in Ruhe.";
+
+      setExerciseImage(img);
+
+      overlay.style.display = "flex";
+      overlay.setAttribute("aria-hidden","false");
+    }
+
+    function closeTimer(){
+      overlay.style.display = "none";
+      overlay.setAttribute("aria-hidden","true");
+      running = false;
+      clearInterval(intervalId);
+      intervalId = null;
+    }
+
+    function tick(){
+      if(!running) return;
+      remaining -= 1;
+      timerDisplay.textContent = fmt(Math.max(0, remaining));
+
+      if(remaining <= 0){
+        running = false;
+        clearInterval(intervalId);
+        intervalId = null;
+        startTimerBtn.disabled = false;
+        pauseTimerBtn.disabled = true;
+        pauseTimerBtn.textContent = "Pausieren";
+        timerHint.textContent = "Fertig. Kurzer Check-in: Wie fühlst du dich jetzt?";
+        // small vibration if supported
+        if(navigator.vibrate) navigator.vibrate([120, 80, 120]);
+      }
+    }
+
+    startTimerBtn.addEventListener("click", () => {
+      if(running) return;
+      running = true;
+      startTimerBtn.disabled = true;
+      pauseTimerBtn.disabled = false;
+      pauseTimerBtn.textContent = "Pausieren";
+      timerHint.textContent = "Lass den Timer laufen. Bleib bei der Übung.";
+
+      intervalId = setInterval(tick, 1000);
+    });
+
+    pauseTimerBtn.addEventListener("click", () => {
+      if(!running){
+        // resume
+        running = true;
+        pauseTimerBtn.textContent = "Pausieren";
+        timerHint.textContent = "Weiter. Ruhig bleiben – kleine Schritte.";
+        return;
+      }
+      // pause
+      running = false;
+      pauseTimerBtn.textContent = "Weiter";
+      timerHint.textContent = "Pause. Atme ruhig. Dann weiter.";
+      startTimerBtn.disabled = true; // keep disabled while paused (use Weiter)
+    });
+
+    resetTimerBtn.addEventListener("click", () => {
+      running = false;
+      clearInterval(intervalId);
+      intervalId = null;
+      remaining = baseSeconds;
+      timerDisplay.textContent = fmt(remaining);
+      startTimerBtn.disabled = false;
+      pauseTimerBtn.disabled = true;
+      pauseTimerBtn.textContent = "Pausieren";
+      timerHint.textContent = "Reset. Wenn du bereit bist: Start.";
+    });
+
+    closeModal.addEventListener("click", closeTimer);
+    overlay.addEventListener("click", (e) => { if(e.target === overlay) closeTimer(); });
+
+    // block timer buttons (default per block)
+    document.querySelectorAll("[data-start-block]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const block = btn.getAttribute("data-start-block");
+        const first = EX[block] && EX[block][0] ? EX[block][0] : null;
+        if(!first) return;
+        openTimer(`${block.toUpperCase()} – Timer`, first.minutes * 60, first.image);
+      });
+    });
+
+    // image fallback
+    exerciseImage.addEventListener("error", () => {
+      exerciseImage.src = "icons/sfondo.png";
+    });
+
+    // ----------------- Init -----------------
+    renderBlock("sofort", "list_sofort");
+    renderBlock("denken", "list_denken");
+    renderBlock("wirksamkeit", "list_wirksamkeit");
+    renderBlock("sozial", "list_sozial");
+    updateHeader();
+
+    // start with a stable image
+    setExerciseImage("icons/1b.png");
+  </script>
+</body>
+</html>
