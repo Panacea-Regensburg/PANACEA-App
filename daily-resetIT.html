@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Panacea – Reset Quotidiano</title>
+
+  <style>
+    :root{
+      --bg1:#f6f1e6;
+      --bg2:#efe7d7;
+      --card:#ffffffd9;
+      --card2:#ffffffee;
+      --gold:#c8a24a;
+      --gold2:#e8d28a;
+      --text:#2b2b2b;
+      --muted:#6b6b6b;
+      --shadow: 0 14px 40px rgba(0,0,0,.10);
+      --shadow2: 0 10px 26px rgba(0,0,0,.10);
+      --radius: 22px;
+      --radius2: 18px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text);
+      background: radial-gradient(1200px 800px at 30% 0%, var(--bg1), var(--bg2));
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      padding:28px 14px;
+    }
+
+    .phone{
+      width:100%;
+      max-width:480px;
+    }
+
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:14px;
+    }
+
+    .back{
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:999px;
+      background: linear-gradient(180deg, var(--card2), var(--card));
+      box-shadow: var(--shadow2);
+      color:var(--text);
+      border:1px solid rgba(200,162,74,.20);
+    }
+
+    .brand{
+      text-align:right;
+      line-height:1.1;
+    }
+    .brand .t1{
+      font-size:14px;
+      color:var(--muted);
+    }
+    .brand .t2{
+      font-size:18px;
+      font-weight:800;
+      letter-spacing:.2px;
+    }
+    .brand .glow{
+      color:var(--gold);
+      text-shadow: 0 0 10px rgba(200,162,74,.30);
+      font-weight:900;
+    }
+
+    .card{
+      background: linear-gradient(180deg, var(--card2), var(--card));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border:1px solid rgba(200,162,74,.18);
+      overflow:hidden;
+    }
+
+    .hero{
+      padding:18px;
+      display:flex;
+      gap:14px;
+      align-items:center;
+    }
+
+    .badge{
+      width:64px;
+      height:64px;
+      border-radius:18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      font-size:16px;
+      color:#3a2c10;
+      background: radial-gradient(circle at 30% 20%, #fff6d6, #e8d28a);
+      border:1px solid rgba(200,162,74,.35);
+      box-shadow: 0 0 16px rgba(200,162,74,.25);
+      flex:0 0 auto;
+    }
+
+    .content{
+      padding:16px 18px 18px 18px;
+    }
+
+    .resetOut{
+      padding:12px;
+      border-radius:16px;
+      background: rgba(255,255,255,.70);
+      border:1px solid rgba(200,162,74,.16);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+    }
+
+    .resetOut .rt{
+      margin:0 0 6px;
+      font-size:15px;
+      font-weight:900;
+    }
+
+    .resetOut .rx{
+      margin:0;
+      font-size:14px;
+      line-height:1.45;
+      font-weight:700;
+      white-space: pre-line;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="phone">
+
+    <div class="topbar">
+      <a class="back" href="index.html">← Home</a>
+      <div class="brand">
+        <div class="t1">Panacea</div>
+        <div class="t2"><span class="glow">Reset</span> Quotidiano</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="hero">
+        <div class="badge">DR</div>
+        <div>
+          <h1>Reset Quotidiano</h1>
+          <p>3–5 minuti per la tua stabilità interiore: respira con calma, ascolta il corpo, ritrova chiarezza.</p>
+        </div>
+      </div>
+
+      <div class="content">
+
+        <div class="resetOut">
+          <div class="rt" id="dailyFocusTitle">Oggi</div>
+          <p class="rx" id="dailyFocusText">Caricamento…</p>
+          <p class="rx" style="margin-top:10px; opacity:.8; font-weight:800;">
+            ✨ Premium: ritmo del respiro e impulso si adattano al tuo livello di stress.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const dailyFocus = [
+      { title: "Lunedì – Focus", text: "Porta l'attenzione su un solo prossimo passo. Non tutto – solo il prossimo." },
+      { title: "Martedì – Calma", text: "Allunga consapevolmente l'espirazione oggi. Il tuo sistema nervoso ama la sicurezza." },
+      { title: "Mercoledì – Chiarezza", text: "Osserva i tuoi pensieri come nuvole. Non devi seguirli." },
+      { title: "Giovedì – Struttura", text: "Pianifica solo i prossimi 30 minuti – non l'intera giornata." },
+      { title: "Venerdì – Energia", text: "Inspira profondamente, apri il torace, raddrizzati. L'energia nasce dalla postura." },
+      { title: "Sabato – Rigenerazione", text: "Concediti oggi piccole pause consapevoli. 3 minuti sono sufficienti." },
+      { title: "Domenica – Riflessione", text: "Cosa ti ha dato stabilità questa settimana? Ripeti esattamente quello." }
+    ];
+
+    const today = new Date().getDay();
+    const idx = today === 0 ? 6 : today - 1;
+    document.getElementById("dailyFocusTitle").textContent = dailyFocus[idx].title;
+    document.getElementById("dailyFocusText").textContent = dailyFocus[idx].text;
+  </script>
+
+</body>
+</html>
