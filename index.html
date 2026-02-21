@@ -1,290 +1,331 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Panacea – Body & Mind</title>
-
-  <!-- Font luxury -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --app-max: 480px;
-      --green: #1f3b2f;
-      --text: #21322b;
-      --muted: #4b5d53;
-      --gold: rgba(212,175,55,0.55);
-      --gold-soft: rgba(212,175,55,0.28);
-      --card: rgba(255,255,255,0.72);
-      --card-2: rgba(255,255,255,0.62);
-      --shadow: 0 14px 38px rgba(0,0,0,0.10);
-      --shadow-soft: 0 10px 28px rgba(0,0,0,0.08);
+      --bg1:#f6f1e6;
+      --bg2:#efe7d7;
+
+      --card:#ffffffde;
+      --card2:#ffffffef;
+
+      --text:#1f2a24;
+      --muted:#55635b;
+
+      --gold:#c8a24a;
+      --gold2:#e8d28a;
+      --green:#1f3b2f;
+
+      --shadow: 0 16px 42px rgba(0,0,0,.10);
+      --shadow2: 0 10px 26px rgba(0,0,0,.10);
+
       --radius: 26px;
+      --radius2: 22px;
     }
 
-    *{ box-sizing: border-box; }
+    *{ box-sizing:border-box; }
+
     body{
-      margin: 0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--text);
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text);
+      background: radial-gradient(1200px 800px at 30% 0%, var(--bg1), var(--bg2));
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      padding:26px 14px 40px;
+    }
 
-      /* SFONDO: se vuoi usare un'immagine tua, sostituisci qui sotto */
+    /* App phone container */
+    .phone{
+      width:100%;
+      max-width:480px;   /* app telefono */
+      position:relative;
+    }
+
+    /* soft background image layer */
+    .bg{
+      position:fixed;
+      inset:0;
+      z-index:-2;
       background:
-        radial-gradient(1200px 800px at 70% 20%, rgba(255,220,170,0.35), transparent 55%),
-        radial-gradient(1200px 800px at 30% 70%, rgba(200,255,230,0.25), transparent 55%),
-        linear-gradient(180deg, #f4efe7 0%, #efe9df 60%, #ede6dc 100%);
-      min-height: 100vh;
-
-      display: flex;
-      justify-content: center;
+        radial-gradient(1200px 800px at 30% 0%, rgba(246,241,230,.92), rgba(239,231,215,.92));
+    }
+    .bg::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image: url("icons/sfondo.png");
+      background-size: cover;
+      background-position: center;
+      opacity:.20;
+      filter: blur(0px);
     }
 
-    /* ====== APP SHELL (telefono) ====== */
-    .app-shell{
-      width: 100%;
-      max-width: var(--app-max);
-      padding: 22px 18px 34px;
-      position: relative;
+    /* language toggle */
+    .langBar{
+      display:flex;
+      justify-content:center;
+      margin-bottom:16px;
     }
-
-    /* (Anti “colonne strane”) se nel tuo vecchio CSS esisteva un frame laterale, qui lo neutralizziamo */
-    .phone-frame, .side-frame, .mockup, .device-frame, .right-panel, .phone-outline{
-      display: none !important;
+    .langWrap{
+      display:flex;
+      gap:8px;
+      padding:6px;
+      border-radius:999px;
+      background: linear-gradient(180deg, var(--card2), var(--card));
+      border:1px solid rgba(200,162,74,.18);
+      box-shadow: var(--shadow2);
     }
-
-    /* ====== Header row (language switch) ====== */
-    .top-row{
-      width: 100%;
-      display: flex;
-      justify-content: flex-start; /* più a sinistra */
-      align-items: center;
-      margin-bottom: 18px;
-    }
-
-    .lang-pill{
-      display: inline-flex;
-      gap: 8px;
-      padding: 6px 8px;
-      border-radius: 999px;
-      background: var(--card);
-      border: 1px solid rgba(212,175,55,0.25);
-      box-shadow: var(--shadow-soft);
-      backdrop-filter: blur(10px);
-    }
-    .lang-pill button{
-      border: none;
+    .langBtn{
+      border:none;
+      cursor:pointer;
+      padding:10px 14px;
+      border-radius:999px;
+      font-weight:800;
       background: transparent;
-      cursor: pointer;
-      font-size: 13px;
-      padding: 7px 12px;
-      border-radius: 999px;
-      color: #2b3a33;
-      font-weight: 600;
+      color:var(--text);
+      opacity:.70;
     }
-    .lang-pill button.active{
-      background: rgba(212,175,55,0.25);
-      border: 1px solid rgba(212,175,55,0.30);
+    .langBtn.active{
+      opacity:1;
+      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      border:1px solid rgba(200,162,74,.25);
+      box-shadow: 0 0 16px rgba(200,162,74,.18);
+      color:#3a2c10;
     }
 
-    /* ====== Hero title ====== */
-    .hero-card{
-      width: 100%;
-      background: var(--card);
-      border: 1px solid rgba(255,255,255,0.55);
+    /* header card */
+    .headerCard{
+      background: linear-gradient(180deg, var(--card2), var(--card));
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
-      padding: 20px 18px;
-      margin-bottom: 18px;
+      border:1px solid rgba(200,162,74,.18);
+      padding:22px 22px 18px;
+      margin-bottom:16px;
     }
 
-    .hero-title{
-      width: 100%;
+    .title{
+      margin:0;
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+      letter-spacing:.2px;
+      color:var(--green);
+      line-height:1.02;
+      font-weight:900;
+      font-size:44px;
+    }
+    .title .line2{
+      display:block;
+      margin-top:6px;
+      font-size:38px;
     }
 
-    .hero-title h1{
-      margin: 0;
-      font-family: "Playfair Display", serif;
-      color: var(--green);
-      letter-spacing: 0.6px;
-      line-height: 1.15;
-      font-size: 40px; /* elegante, non enorme */
-      text-shadow: 0 0 10px rgba(212,175,55,0.18);
-    }
-
-    /* Non andare a capo (come richiesto) */
-    .hero-title .line-2{
-      white-space: nowrap;
-      font-size: 32px;
-      display: inline-block;
+    /* luxury glow for title */
+    .titleGlow{
+      text-shadow:
+        0 0 14px rgba(200,162,74,.18),
+        0 0 26px rgba(200,162,74,.12);
     }
 
     .subtitle{
-      margin: 10px 0 0;
-      color: var(--muted);
-      font-size: 15px;
-      font-weight: 500;
-      white-space: nowrap; /* non andare a capo */
+      margin:10px 0 0 0;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.35;
+      font-weight:600;
     }
 
-    /* ====== Menu grid ====== */
-    .menu-card{
-      width: 100%;
-      background: var(--card-2);
-      border: 1px solid rgba(255,255,255,0.55);
+    /* big hero image */
+    .hero{
+      background: linear-gradient(180deg, var(--card2), var(--card));
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
-      padding: 18px;
+      border:1px solid rgba(200,162,74,.18);
+      padding:18px;
+      margin-bottom:16px;
+      overflow:hidden;
+    }
+    .hero img{
+      width:100%;
+      height:auto;
+      display:block;
+      border-radius: var(--radius2);
+      border:1px solid rgba(200,162,74,.22);
+      box-shadow: 0 0 18px rgba(200,162,74,.12);
     }
 
+    /* grid menu */
     .grid{
-      width: 100%;
-      display: grid;
+      display:grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
+      gap:14px;
+      margin-bottom:18px;
     }
 
     .tile{
-      aspect-ratio: 1 / 1;
-      border-radius: 22px;
-      background: rgba(255,255,255,0.70);
-      border: 1px solid rgba(212,175,55,0.18);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.08);
-      overflow: hidden;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      transition: transform 0.12s ease, box-shadow 0.12s ease;
-      cursor: pointer;
-      text-decoration: none;
+      text-decoration:none;
+      color:inherit;
+      background: linear-gradient(180deg, var(--card2), var(--card));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border:1px solid rgba(200,162,74,.18);
+      padding:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:160px;
+      position:relative;
+      overflow:hidden;
+      transition: transform .12s ease;
     }
+    .tile:hover{ transform: translateY(-2px); }
 
-    .tile:hover{
-      transform: translateY(-2px);
-      box-shadow: 0 16px 34px rgba(0,0,0,0.10);
-    }
-
-    /* immagini riempiono il 75% del quadrato */
-    .tile img{
-      width: 75%;
-      height: 75%;
+    /* FIX: icone non devono mai esplodere */
+    .menuIcon{
+      width: min(220px, 82%);
+      max-width:220px;
+      max-height:150px;
+      height:auto !important;
       object-fit: contain;
-      display: block;
-      filter: drop-shadow(0 6px 14px rgba(0,0,0,0.10));
-    }
-/* HOME ICONS: dimensione fissa, mai esplodere */
-.menuIcon{
-  width: min(220px, 70%);   /* dimensione “app telefono” */
-  height: auto !important;
-  max-width: 220px !important;
-  max-height: 170px !important;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-}
-    /* mini footer */
-    .footer{
-      margin-top: 14px;
-      text-align: right;
-      font-size: 12px;
-      color: rgba(33,50,43,0.55);
-      font-weight: 600;
+      display:block;
+      margin:0 auto;
     }
 
-    /* Responsive: se lo schermo è super stretto, lasciamo comunque respirare senza uscire */
-    @media (max-width: 360px){
-      .hero-title h1{ font-size: 36px; }
-      .hero-title .line-2{ font-size: 28px; }
-      .subtitle{ font-size: 14px; white-space: normal; } /* solo per schermi minuscoli */
+    /* optional label under image if you want later */
+    .tileLabel{
+      position:absolute;
+      left:14px; right:14px; bottom:12px;
+      text-align:center;
+      font-weight:800;
+      color:var(--green);
+      opacity:.90;
+      font-size:14px;
+      display:none; /* per ora off */
+    }
+
+    /* footer spacing */
+    .spacer{ height:10px; }
+
+    @media (max-width:420px){
+      .title{ font-size:40px; }
+      .title .line2{ font-size:34px; }
+      .tile{ min-height:150px; }
+      .menuIcon{ max-width:210px; }
     }
   </style>
 </head>
 
 <body>
-  <main class="app-shell">
+  <div class="bg"></div>
 
-    <!-- Language switch (small, left, inside app) -->
-    <div class="top-row">
-      <div class="lang-pill" aria-label="Language">
-        <button id="btnDE" class="active" type="button">Deutsch</button>
-        <button id="btnIT" type="button">Italiano</button>
+  <div class="phone">
+
+    <!-- Language Toggle -->
+    <div class="langBar">
+      <div class="langWrap" role="tablist" aria-label="Language">
+        <button class="langBtn" id="btnDE" type="button">Deutsch</button>
+        <button class="langBtn" id="btnIT" type="button">Italiano</button>
       </div>
     </div>
 
-    <!-- Hero -->
-    <section class="hero-card">
-      <div class="hero-title">
-        <h1>
-          <span id="tPanacea">Panacea</span><br>
-          <span class="line-2" id="tBodyMind">Body &amp; Mind</span>
-        </h1>
-        <p class="subtitle" id="tSub">Kleine Schritte. Mehr Stabilität. Jeden Tag.</p>
-      </div>
-    </section>
+    <!-- Header -->
+    <div class="headerCard">
+      <h1 class="title titleGlow">
+        <span id="t_panacea">Panacea</span>
+        <span class="line2" id="t_bodymind">Body &amp; Mind</span>
+      </h1>
+      <p class="subtitle" id="t_subtitle">Kleine Schritte. Mehr Stabilität. Jeden Tag.</p>
+    </div>
 
-    <!-- Menu tiles -->
-    <section class="menu-card">
-      <div class="grid">
+    <!-- Hero image (luxury visual) -->
+    <div class="hero">
+      <!-- puoi cambiare questo file se vuoi un'altra hero -->
+      <img src="icons/daily-reset.png" alt="Panacea Hero" />
+    </div>
 
-      <img src="icons/daily-reset.png" alt="Daily Reset">
-<img src="icons/wissen-klarheit.png" alt="Wissen & Klarheit">
-<img src="icons/lifestyle.png" alt="Life Style">
-<img src="icons/uebungen.png" alt="Übungen">
-<img src="icons/kurse.png" alt="Kurse">
-<img src="icons/mitgliederbereich.png" alt="Mitgliederbereich">
-      </div>
+    <!-- Menu grid -->
+    <div class="grid">
 
-      <div class="footer">© Panacea Regensburg</div>
-    </section>
+      <a class="tile" href="daily-reset.html">
+        <img class="menuIcon" data-src="icons/daily-reset.png" alt="Daily Reset">
+      </a>
 
-  </main>
+      <a class="tile" href="wissen.html">
+        <img class="menuIcon" data-src="icons/wissen-klarheit.png" alt="Wissen & Klarheit">
+      </a>
+
+      <a class="tile" href="lifestyle.html">
+        <img class="menuIcon" data-src="icons/lifestyle.png" alt="Life Style">
+      </a>
+
+      <a class="tile" href="uebungen.html">
+        <img class="menuIcon" data-src="icons/uebungen.png" alt="Übungen">
+      </a>
+
+      <a class="tile" href="kurse.html">
+        <img class="menuIcon" data-src="icons/kurse.png" alt="Kurse">
+      </a>
+
+      <a class="tile" href="mitglieder.html">
+        <img class="menuIcon" data-src="icons/mitgliederbereich.png" alt="Mitgliederbereich">
+      </a>
+
+    </div>
+
+    <div class="spacer"></div>
+
+  </div>
 
   <script>
-    // ===== Language handling (DE/IT) =====
+    // ---------- cache-busting for icons (solves "back => huge/old css/assets") ----------
+    // Adds ?v=timestamp to icon images only.
+    (function(){
+      const v = Date.now();
+      document.querySelectorAll('img[data-src]').forEach(img => {
+        img.src = img.getAttribute('data-src') + '?v=' + v;
+      });
+    })();
+
+    // ---------- Language handling ----------
+    const STORAGE_LANG = "panacea_lang"; // "de" | "it"
     const btnDE = document.getElementById("btnDE");
     const btnIT = document.getElementById("btnIT");
 
-    const tPanacea = document.getElementById("tPanacea");
-    const tBodyMind = document.getElementById("tBodyMind");
-    const tSub = document.getElementById("tSub");
-
-    const TEXT = {
+    const dict = {
       de: {
+        subtitle: "Kleine Schritte. Mehr Stabilität. Jeden Tag.",
         panacea: "Panacea",
-        bodymind: "Body & Mind",
-        sub: "Kleine Schritte. Mehr Stabilität. Jeden Tag."
+        bodymind: "Body & Mind"
       },
       it: {
+        subtitle: "Piccoli passi. Più stabilità. Ogni giorno.",
         panacea: "Panacea",
-        bodymind: "Body & Mind",
-        sub: "Piccoli passi. Più stabilità. Ogni giorno."
+        bodymind: "Body & Mind"
       }
     };
 
     function setLang(lang){
-      localStorage.setItem("panacea_lang", lang);
+      localStorage.setItem(STORAGE_LANG, lang);
+
       btnDE.classList.toggle("active", lang === "de");
       btnIT.classList.toggle("active", lang === "it");
 
-      tPanacea.textContent = TEXT[lang].panacea;
-      tBodyMind.textContent = TEXT[lang].bodymind;
-      tSub.textContent = TEXT[lang].sub;
+      document.getElementById("t_subtitle").textContent = dict[lang].subtitle;
+      document.getElementById("t_panacea").textContent = dict[lang].panacea;
+      document.getElementById("t_bodymind").textContent = dict[lang].bodymind;
 
-      document.documentElement.lang = lang;
+      document.documentElement.lang = (lang === "it") ? "it" : "de";
     }
+
+    const saved = localStorage.getItem(STORAGE_LANG);
+    setLang(saved === "it" ? "it" : "de");
 
     btnDE.addEventListener("click", () => setLang("de"));
     btnIT.addEventListener("click", () => setLang("it"));
-
-    // init
-    const saved = localStorage.getItem("panacea_lang") || "de";
-    setLang(saved);
   </script>
 </body>
 </html>
