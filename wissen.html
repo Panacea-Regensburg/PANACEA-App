@@ -135,11 +135,12 @@
     }
     .btn:active{ transform: scale(0.98); }
     .btn:hover{ background: rgba(31,77,58,0.18); }
+    .btn:disabled{ opacity:0.5; cursor:not-allowed; }
 
     .imgBox{
       display:flex;
       justify-content:center;
-      padding: 8px 0 6px;
+      padding: 10px 0 6px;
     }
 
     .imgBox img{
@@ -149,6 +150,7 @@
       border: 1px solid rgba(200,169,106,0.35);
       box-shadow: 0 10px 30px rgba(0,0,0,0.10);
       background: rgba(255,255,255,0.4);
+      display:block;
     }
 
     .contentTitle{
@@ -275,7 +277,6 @@
         const arr = Array.isArray(data) ? data : (Array.isArray(data.days) ? data.days : null);
         if (!arr) throw new Error("Formato JSON non valido");
 
-        // normalizza lunghezza
         wissenData = arr.slice(0, TOTAL_DAYS);
         while (wissenData.length < TOTAL_DAYS) wissenData.push(fallback[wissenData.length]);
 
@@ -304,12 +305,10 @@
       p.textContent = item.text || "";
 
       // ✅ percorso immagini: icons/1.png ... icons/21.png
-     img.src = bust(`./icons/icons/${day}.png`);
-      // disabilita prev/next ai limiti
+      img.src = bust(`./icons/${day}.png`);
+
       document.getElementById("prevBtn").disabled = (day <= 1);
       document.getElementById("nextBtn").disabled = (day >= TOTAL_DAYS);
-      document.getElementById("prevBtn").style.opacity = (day <= 1) ? "0.5" : "1";
-      document.getElementById("nextBtn").style.opacity = (day >= TOTAL_DAYS) ? "0.5" : "1";
     }
 
     // =========================
