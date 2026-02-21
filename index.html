@@ -178,7 +178,16 @@
       display: block;
       filter: drop-shadow(0 6px 14px rgba(0,0,0,0.10));
     }
-
+/* HOME ICONS: dimensione fissa, mai esplodere */
+.menuIcon{
+  width: min(220px, 70%);   /* dimensione “app telefono” */
+  height: auto !important;
+  max-width: 220px !important;
+  max-height: 170px !important;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
     /* mini footer */
     .footer{
       margin-top: 14px;
