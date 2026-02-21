@@ -1,29 +1,34 @@
-const CACHE_VERSION = "v14"; // aumenta quando fai modifiche importanti
+const CACHE_VERSION = "v14";
 const CACHE_NAME = `panacea-cache-${CACHE_VERSION}`;
 
-// Metti qui TUTTI i file principali (DE + IT) che vuoi sempre disponibili
-const CORE_ASSETS = [
+const ASSETS = [
   "./",
   "./index.html",
   "./indexIT.html",
   "./daily-reset.html",
   "./daily-resetIT.html",
   "./lifestyle.html",
-  "./lifestyleIT.html",      // se il file si chiama davvero così
-  "./wissen.html",
-  "./wissenIT.html",
+  "./lifestyleIT.html",
   "./mitglieder.html",
   "./mitgliederIT.html",
-  "./uebungen.html",
-  "./uebungenIT.html",
   "./manifest.webmanifest",
   "./manifest-it.webmanifest",
-  "./service-worker.js"
+  "./service-worker.js",
+
+  "./data/wissen.json",
+  "./data/resetPremium.json",
+  "./data/resetPremium_member.json",
+
+  "./js/resetLogic.js",
+
+  "./icons/icon-192.png",
+  "./icons/icon-512.png",
+  "./icons/sfondo.png"
 ];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(CORE_ASSETS))
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
   );
   self.skipWaiting();
 });
@@ -31,41 +36,37 @@ self.addEventListener("install", (event) => {
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
-      Promise.all(
-        keys
-          .filter((k) => k.startsWith("panacea-cache-") && k !== CACHE_NAME)
-          .map((k) => caches.delete(k))
-      )
+      Promise.all(keys.map((k) => (k.startsWith("panacea-cache-") && k !== CACHE_NAME) ? caches.delete(k) : null))
     )
   );
   self.clients.claim();
 });
 
-// Strategia semplice: HTML sempre dal network (così traduzioni e testi si aggiornano),
-// fallback su cache se offline. Altri file: cache-first.
+// Network-first per HTML, cache-first per il resto (semplice e stabile)
 self.addEventListener("fetch", (event) => {
   const req = event.request;
+  const url = new URL(req.url);
 
-  // Solo GET
   if (req.method !== "GET") return;
 
-  const accept = req.headers.get("accept") || "";
-  const isHTML = accept.includes("text/html");
+  const isHTML = req.headers.get("accept")?.includes("text/html");
 
   if (isHTML) {
     event.respondWith(
-      fetch(req)
-        .then((res) => {
-          const copy = res.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(req, copy));
-          return res;
-        })
-        .catch(() => caches.match(req))
+      fetch(req).then((res) => {
+        const copy = res.clone();
+        caches.open(CACHE_NAME).then((c) => c.put(req, copy));
+        return res;
+      }).catch(() => caches.match(req).then((r) => r || caches.match("./")))
     );
     return;
   }
 
   event.respondWith(
-    caches.match(req).then((cached) => cached || fetch(req))
+    caches.match(req).then((cached) => cached || fetch(req).then((res) => {
+      const copy = res.clone();
+      caches.open(CACHE_NAME).then((c) => c.put(req, copy));
+      return res;
+    }))
   );
 });
