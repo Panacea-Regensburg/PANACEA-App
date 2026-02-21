@@ -125,17 +125,16 @@
       padding:0 18px 16px 18px;
     }
 
-    /* FOTO WISSEN: mai gigante */
-.dayimg{
-  width: 100%;
-  height: auto;
-  max-height: 320px;        /* <-- cambia 280–360 a gusto */
-  object-fit: cover;         /* taglia elegante senza deformare */
-  border-radius: 18px;
-  display: block;
-}
-    .dayimg{ max-height: 260px; object-fit: cover; }
-    
+    /* FOTO WISSEN: app-like, non gigante */
+    .dayimg{
+      width:100%;
+      height:auto;
+      max-height:260px;
+      object-fit:cover;
+      border-radius:18px;
+      display:block;
+    }
+
     .content{
       padding:16px 18px 18px 18px;
     }
@@ -241,6 +240,70 @@
       color:#7a1d1d;
       display:none;
     }
+
+    /* --- Mitglieder / Upgrade teaser (solo per free) --- */
+    .memberTeaser{
+      margin-top:14px;
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(200,162,74,.28);
+      background: linear-gradient(180deg, rgba(255,246,214,.75), rgba(255,255,255,.75));
+      box-shadow: 0 0 18px rgba(200,162,74,.15);
+      display:none; /* JS lo gestisce */
+    }
+
+    .memberHeader{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:10px;
+    }
+
+    .memberBadge{
+      padding:6px 10px;
+      border-radius:999px;
+      font-weight:900;
+      font-size:12px;
+      color:#3a2c10;
+      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      border:1px solid rgba(200,162,74,.35);
+      box-shadow: 0 0 14px rgba(200,162,74,.18);
+    }
+
+    .memberTitle{
+      font-weight:900;
+      color:#3a2c10;
+      font-size:14px;
+    }
+
+    .memberList{
+      margin:10px 0 12px;
+      padding-left:18px;
+      color:#2b2b2b;
+      font-size:14px;
+      line-height:1.5;
+    }
+
+    .memberBtn{
+      display:block;
+      text-align:center;
+      text-decoration:none;
+      padding:12px 14px;
+      border-radius:14px;
+      font-weight:900;
+      letter-spacing:.2px;
+      color:#3a2c10;
+      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      border:1px solid rgba(200,162,74,.35);
+      box-shadow: 0 0 16px rgba(200,162,74,.20);
+    }
+
+    .memberNote{
+      margin-top:10px;
+      font-size:12px;
+      color:#6b6b6b;
+      text-align:center;
+    }
   </style>
 </head>
 
@@ -280,6 +343,26 @@
 
         <div class="error" id="errorBox"></div>
 
+        <!-- Mitglieder / Upgrade (free only) -->
+        <div class="memberTeaser" id="memberTeaser">
+          <div class="memberHeader">
+            <div class="memberBadge">Mitglieder</div>
+            <div class="memberTitle">Mehr Tiefe. Mehr Klarheit. Mehr Wirkung.</div>
+          </div>
+
+          <ul class="memberList">
+            <li><b>Premium-Impuls</b> & <b>Premium-Frage</b> pro Tag</li>
+            <li><b>Mehr Struktur</b> für Fokus & Umsetzung</li>
+            <li><b>Zugang</b> zum Mitgliederbereich</li>
+          </ul>
+
+          <a class="memberBtn" href="mitglieder.html">Mitglieder freischalten →</a>
+
+          <div class="memberNote">
+            Premium wird automatisch sichtbar nach Freischaltung.
+          </div>
+        </div>
+
         <div class="divider"></div>
 
         <div class="row">
@@ -302,7 +385,6 @@
     const STORAGE_DAY = "panacea_wissen_day";
     const STORAGE_DONE = "panacea_wissen_done"; // JSON array of numbers [1..21]
     const PREMIUM_FLAG = "panacea_premium";     // "true" | "false"
-
     const TOTAL_DAYS = 21;
 
     // ---------- Elements ----------
@@ -318,6 +400,7 @@
     const premiumQuestionEl = document.getElementById("premiumQuestion");
 
     const errorBox = document.getElementById("errorBox");
+    const memberTeaser = document.getElementById("memberTeaser");
 
     const prevBtn = document.getElementById("prevBtn");
     const nextBtn = document.getElementById("nextBtn");
@@ -341,7 +424,6 @@
         const raw = localStorage.getItem(STORAGE_DONE);
         const arr = raw ? JSON.parse(raw) : [];
         if(!Array.isArray(arr)) return [];
-        // keep only 1..21 unique
         return [...new Set(arr.map(x => parseInt(x,10)).filter(x => x>=1 && x<=TOTAL_DAYS))];
       }catch(e){
         return [];
@@ -388,7 +470,6 @@
         if(!res.ok) throw new Error("JSON nicht erreichbar");
         const data = await res.json();
 
-        // Erwartet: { days: [ {title, impulse, premiumInsight, premiumQuestion}, ... ] }
         if(!data || !Array.isArray(data.days) || data.days.length < TOTAL_DAYS){
           throw new Error("JSON-Format stimmt nicht (days[] fehlt oder zu kurz)");
         }
@@ -402,18 +483,15 @@
     function renderDay(day){
       hideError();
 
-      // Badge + image
       dayBadge.textContent = `Tag ${day}`;
       dayImage.src = `icons/${day}.png`;
       dayImage.alt = `Wissen – Tag ${day}`;
 
-      // Data
       const entry = (wissenData && wissenData[day - 1]) ? wissenData[day - 1] : FALLBACK_DAYS[day - 1];
 
       dayTitle.textContent = entry.title || `Tag ${day}`;
       dayImpulse.textContent = entry.impulse || "";
 
-      // Premium block
       if(isPremium()){
         premiumBox.style.display = "block";
         premiumInsightEl.textContent = entry.premiumInsight || "";
@@ -424,7 +502,11 @@
         premiumQuestionEl.textContent = "";
       }
 
-      // Buttons state
+      // Mitglieder teaser: show only if NOT premium
+      if(memberTeaser){
+        memberTeaser.style.display = isPremium() ? "none" : "block";
+      }
+
       prevBtn.disabled = (day <= 1);
       nextBtn.disabled = (day >= TOTAL_DAYS);
 
@@ -436,9 +518,8 @@
       updatePills();
     }
 
-    // If image missing, avoid broken icon look: swap to transparent placeholder
     dayImage.addEventListener("error", () => {
-      dayImage.src = "icons/sfondo.png"; // se esiste, altrimenti commenta questa riga
+      dayImage.src = "icons/sfondo.png";
       showError("Bild nicht gefunden. Prüfe: icons/1.png bis icons/21.png (genau so benannt).");
     });
 
@@ -463,7 +544,6 @@
       if(!done.includes(day)) done.push(day);
       setDone(done);
 
-      // auto-advance (optional)
       if(day < TOTAL_DAYS) setCurrentDay(day + 1);
 
       renderDay(getCurrentDay());
