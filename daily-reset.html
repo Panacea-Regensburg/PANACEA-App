@@ -414,6 +414,7 @@
       line-height:1.45;
       color: rgba(15,30,23,.78);
       font-weight:600;
+      white-space: pre-line; /* allow \n */
     }
 
     .memberLine{
@@ -474,7 +475,7 @@
         <p class="sub">3–5 Minuten für innere Stabilität: ruhig atmen, Körper spüren, Klarheit finden.</p>
       </div>
 
-      <!-- Premium Reset Box (single, no duplicates) -->
+      <!-- Premium Reset Box -->
       <div class="premium-reset" id="premiumReset">
         <h2>Premium Reset</h2>
 
@@ -496,7 +497,6 @@
           · <a href="mitglieder.html" id="unlockLink">Mitglieder freischalten</a>
         </div>
 
-        <!-- Teaser (shown only if NOT premium) -->
         <div class="premiumInfo" id="premiumInfo" style="display:none;">
           <div class="t">Was ist im Premium enthalten?</div>
           <ul>
@@ -572,7 +572,7 @@
   </script>
 
   <script>
-    // ---------------- Premium UI (logic later) ----------------
+    // ---------------- Premium UI + 3 reactions ----------------
     const PREMIUM_FLAG = "panacea_premium";
     const isPremiumUser = localStorage.getItem(PREMIUM_FLAG) === "true";
 
@@ -582,20 +582,84 @@
     if(memberStatus) memberStatus.textContent = isPremiumUser ? "Premium aktiv" : "Free-Version";
     if(premiumInfo) premiumInfo.style.display = isPremiumUser ? "none" : "block";
 
-    // Premium reset output uses resetLogic.js later; for now keep safe UI
     const resetOut = document.getElementById("resetOut");
-    document.getElementById("generateResetBtn").addEventListener("click", () => {
-      const s = Number(document.getElementById("stressSlider").value);
-      const e = Number(document.getElementById("energySlider").value);
+    const resetTitleEl = document.getElementById("resetTitle");
+    const resetTextEl  = document.getElementById("resetText");
 
-      // If resetLogic exists, use it. Otherwise show a placeholder.
+    function level(n){
+      if(n <= 3) return "LOW";
+      if(n >= 8) return "HIGH";
+      return "MID";
+    }
+
+    // 3 main reactions (plus a balanced fallback)
+    function pickReset(stress, energy){
+      const sL = level(stress);
+      const eL = level(energy);
+
+      // (1) Stress HIGH + Energy LOW
+      if(sL === "HIGH" && eL === "LOW"){
+        return {
+          title: "Beruhigen & entlasten",
+          text:
+            "Dein System ist gerade überlastet.\n" +
+            "Heute gilt: runterfahren statt pushen.\n\n" +
+            "• 2–3 Minuten: länger ausatmen (4 ein / 6–8 aus)\n" +
+            "• Schultern sinken lassen, Kiefer locker\n" +
+            "• Nur 1 kleine Aufgabe – den Rest parken"
+        };
+      }
+
+      // (2) Stress HIGH + Energy HIGH
+      if(sL === "HIGH" && eL === "HIGH"){
+        return {
+          title: "Runterregeln & Fokus bündeln",
+          text:
+            "Viel Energie + hoher Druck.\n" +
+            "Du brauchst Kanal, nicht Tempo.\n\n" +
+            "• 3 Minuten: ruhig zählen (4 ein / 6 aus)\n" +
+            "• Dann: eine Priorität – 10 Minuten nur diese Sache\n" +
+            "• Wasser trinken, kurz Boden spüren"
+        };
+      }
+
+      // (3) Energy LOW (typisch “leer/erschöpft”)
+      if(eL === "LOW"){
+        return {
+          title: "Regeneration & sanfte Aktivierung",
+          text:
+            "Dein Akku ist heute niedrig.\n" +
+            "Ziel: sanft stabilisieren.\n\n" +
+            "• 2 Minuten: ruhig atmen + Brustkorb öffnen\n" +
+            "• 1 Minute: langsame Bewegung (Nacken/Schultern)\n" +
+            "• Eine Sache, die dich nährt: Licht, Wasser, kurzer Gang"
+        };
+      }
+
+      // Balanced fallback (MID zone)
+      return {
+        title: "Reset – ruhig & klar",
+        text:
+          "Du bist im mittleren Bereich.\n" +
+          "Ziel: Stabilität + Klarheit.\n\n" +
+          "• 3 Minuten: gleichmäßig atmen (4 ein / 6 aus)\n" +
+          "• Frage: Was ist heute wirklich wichtig?\n" +
+          "• Dann: 15 Minuten fokussiert starten"
+      };
+    }
+
+    document.getElementById("generateResetBtn").addEventListener("click", () => {
+      const stressValue = Number(document.getElementById("stressSlider").value);
+      const energyValue = Number(document.getElementById("energySlider").value);
+
+      const res = pickReset(stressValue, energyValue);
+      resetTitleEl.textContent = res.title;
+      resetTextEl.textContent  = res.text;
+      resetOut.style.display   = "block";
+
+      // keep compatibility (logic later)
       if(typeof renderPremiumReset === "function"){
-        renderPremiumReset(s, e);
-      } else {
-        document.getElementById("resetTitle").textContent = "Dein Premium Reset";
-        document.getElementById("resetText").textContent =
-          `Stress: ${s}/10 · Energie: ${e}/10 — (Premium-Logik folgt)`;
-        resetOut.style.display = "block";
+        // optional later: renderPremiumReset(stressValue, energyValue);
       }
     });
   </script>
@@ -776,7 +840,7 @@
     minutesInput.addEventListener("change", resetAll);
   </script>
 
-  <!-- Keep your premium logic file (we use later) -->
+  <!-- Optional: keep your premium logic file for later -->
   <script src="./js/resetLogic.js"></script>
 </body>
 </html>
