@@ -236,9 +236,12 @@ h1 { font-size: 42px; }
   function renderDay(i) {
     const item = wissen21[i];
 
-    // usa i tuoi ID già presenti
     document.getElementById("wissenTitle").textContent = item.title;
     document.getElementById("wissenText").textContent  = item.text;
+
+    document.getElementById("wissenImage").src =
+    "icons/icons/1-21/" + (i + 1) + ".png";
+ }
 
     // Tag X/21
     const dayNumEl = document.getElementById("dayNum");
