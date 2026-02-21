@@ -112,16 +112,42 @@
       font-size:14.5px;
     }
 
-    .lang{
-      display:flex;
-      gap:8px;
-      background:rgba(255,255,255,.76);
-      border:1px solid rgba(255,255,255,.55);
-      border-radius:999px;
-      padding:7px;
-      box-shadow:0 10px 24px rgba(0,0,0,.12);
-      height:fit-content;
-    }
+    /* ===== Language switch: smaller + left inside app ===== */
+.lang-switch {
+  position: relative;
+  width: 100%;
+  max-width: 480px;     /* uguale al blocco app */
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.lang-switch .pill {
+  display: inline-flex;
+  gap: 10px;
+  padding: 6px 8px;     /* più piccolo */
+  border-radius: 999px;
+  background: rgba(255,255,255,0.72);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+  border: 1px solid rgba(212,175,55,0.25);
+  align-items: center;
+
+  /* più a sinistra */
+  justify-content: flex-start;
+}
+
+.lang-switch button {
+  font-size: 14px;      /* più piccolo */
+  padding: 8px 12px;    /* più piccolo */
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.lang-switch button.active {
+  background: rgba(212,175,55,0.25);
+  border: 1px solid rgba(212,175,55,0.35);
+}
     .pill{
       border:0;
       cursor:pointer;
@@ -202,11 +228,12 @@
   <p class="subtitle">Kleine Schritte. Mehr Stabilität. Jeden Tag.</p>
 </div>
 
-        <div class="lang" aria-label="Language">
-          <button class="pill active" type="button">Deutsch</button>
-          <button class="pill" type="button">Italiano</button>
-        </div>
-      </div>
+        <div class="lang-switch">
+  <div class="pill">
+    <button class="active">Deutsch</button>
+    <button>Italiano</button>
+  </div>
+</div>
 
       <div class="gridWrap">
         <div class="grid">
