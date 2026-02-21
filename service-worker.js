@@ -1,24 +1,33 @@
-const CACHE_VERSION = "v14"; // aumenta quando cambi files importanti
+const CACHE_VERSION = "v14"; // aumenta quando fai modifiche importanti
 const CACHE_NAME = `panacea-cache-${CACHE_VERSION}`;
 
-// Pagine/asset minimi da pre-cacheare (non bloccare le pagine IT)
+// Metti qui TUTTI i file principali (DE + IT) che vuoi sempre disponibili
 const CORE_ASSETS = [
   "./",
   "./index.html",
   "./indexIT.html",
+  "./daily-reset.html",
+  "./daily-resetIT.html",
+  "./lifestyle.html",
+  "./lifestyleIT.html",      // se il file si chiama davvero così
+  "./wissen.html",
+  "./wissenIT.html",
+  "./mitglieder.html",
+  "./mitgliederIT.html",
+  "./uebungen.html",
+  "./uebungenIT.html",
   "./manifest.webmanifest",
-  "./manifest-it.webmanifest"
+  "./manifest-it.webmanifest",
+  "./service-worker.js"
 ];
 
-// Install: crea cache nuova
 self.addEventListener("install", (event) => {
-  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => cache.addAll(CORE_ASSETS))
   );
+  self.skipWaiting();
 });
 
-// Activate: elimina cache vecchie
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
@@ -27,25 +36,21 @@ self.addEventListener("activate", (event) => {
           .filter((k) => k.startsWith("panacea-cache-") && k !== CACHE_NAME)
           .map((k) => caches.delete(k))
       )
-    ).then(() => self.clients.claim())
+    )
   );
+  self.clients.claim();
 });
 
-// Fetch strategy:
-// - HTML: network-first (così vedi subito traduzioni/aggiornamenti)
-// - altri asset: cache-first (veloce)
+// Strategia semplice: HTML sempre dal network (così traduzioni e testi si aggiornano),
+// fallback su cache se offline. Altri file: cache-first.
 self.addEventListener("fetch", (event) => {
   const req = event.request;
-  const url = new URL(req.url);
 
-  // Solo richieste same-origin
-  if (url.origin !== self.location.origin) return;
+  // Solo GET
+  if (req.method !== "GET") return;
 
-  // HTML = sempre aggiornato
-  const isHTML =
-    req.mode === "navigate" ||
-    (req.headers.get("accept") || "").includes("text/html") ||
-    url.pathname.endsWith(".html");
+  const accept = req.headers.get("accept") || "";
+  const isHTML = accept.includes("text/html");
 
   if (isHTML) {
     event.respondWith(
@@ -55,20 +60,12 @@ self.addEventListener("fetch", (event) => {
           caches.open(CACHE_NAME).then((cache) => cache.put(req, copy));
           return res;
         })
-        .catch(() => caches.match(req).then((r) => r || caches.match("./index.html")))
+        .catch(() => caches.match(req))
     );
     return;
   }
 
-  // Asset = cache-first
   event.respondWith(
-    caches.match(req).then((cached) => {
-      if (cached) return cached;
-      return fetch(req).then((res) => {
-        const copy = res.clone();
-        caches.open(CACHE_NAME).then((cache) => cache.put(req, copy));
-        return res;
-      });
-    })
+    caches.match(req).then((cached) => cached || fetch(req))
   );
 });
