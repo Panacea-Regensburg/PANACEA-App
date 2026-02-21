@@ -318,6 +318,8 @@
       btnDE.classList.toggle("active", lang === "de");
       btnIT.classList.toggle("active", lang === "it");
       document.documentElement.lang = (lang === "it") ? "it" : "de";
+      localStorage.setItem("lang","it");
+document.documentElement.lang = "it";
     }
 
     setActive("it");
