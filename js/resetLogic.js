@@ -1,86 +1,103 @@
 // js/resetLogic.js
-// Premium Reset Logic (DE/IT) – reads language from localStorage: panacea_lang ("de"|"it")
 
-const STORAGE_LANG = "panacea_lang";
-const RESET_CACHE_KEY = "panacea_resetPremium_cache_v1";
-
-function getLang(){
-  const saved = localStorage.getItem(STORAGE_LANG);
-  return (saved === "it") ? "it" : "de";
+// --- lingua app ---
+// usa localStorage.lang ("de" / "it") se presente, altrimenti <html lang="..">, fallback "de"
+export function getLang() {
+  const ls = (localStorage.getItem("lang") || "").toLowerCase();
+  if (ls === "it" || ls === "de") return ls;
+  const h = (document.documentElement.lang || "").toLowerCase();
+  if (h.startsWith("it")) return "it";
+  return "de";
 }
 
-// safe getter for bilingual fields
-function t(field, lang){
-  if(field == null) return "";
-  if(typeof field === "string") return field;         // backward compatible
-  if(typeof field === "object") return field[lang] || field.de || field.it || "";
-  return "";
+// --- carica i reset premium ---
+export async function loadPremiumResets() {
+  const response = await fetch("./data/resetPremium.json", { cache: "no-store" });
+  return await response.json();
 }
 
-// Load JSON (expected shape: { de:[...], it:[...] }  OR legacy: [...] )
-async function loadPremiumResets(){
-  const res = await fetch("./data/resetPremium.json", { cache: "no-store" });
-  if(!res.ok) throw new Error("resetPremium.json not reachable");
-  const data = await res.json();
-
-  // legacy: array
-  if(Array.isArray(data)) return { de: data, it: data };
-
-  // new: object with de/it arrays
-  if(data && Array.isArray(data.de) && Array.isArray(data.it)) return data;
-
-  throw new Error("resetPremium.json format invalid");
-}
-
-// value 1–10 -> level string used in JSON
-function level(value){
+// --- 1-10 -> livello ---
+export function level(value) {
   const v = Number(value);
-  if(v >= 7) return "hoch";
-  if(v >= 4) return "mittel";
+  if (v >= 7) return "hoch";
+  if (v >= 4) return "mittel";
   return "niedrig";
 }
 
-function pickReset(list, stressValue, energyValue){
-  const stressL = level(stressValue);
-  const energyL = level(energyValue);
+// --- trova combinazione migliore ---
+export function pickReset(resets, stressValue, energyValue) {
+  const stressLevel = level(stressValue);
+  const energyLevel = level(energyValue);
 
-  let match = list.find(r => r.stress === stressL && r.energy === energyL);
-  if(!match) match = list.find(r => r.stress === stressL);
-  if(!match) match = list[0];
+  let match = resets.find(r => r.stress === stressLevel && r.energy === energyLevel);
+  if (!match) match = resets.find(r => r.stress === stressLevel);
+  if (!match) match = resets[0];
   return match;
 }
 
-// Optional: cache in localStorage to avoid fetch every slider move
-async function getResetsCached(){
-  try{
-    const raw = localStorage.getItem(RESET_CACHE_KEY);
-    if(raw){
-      const cached = JSON.parse(raw);
-      if(cached && cached.de && cached.it) return cached;
+// --- helper: prendi testo bilingue (supporta string o {de,it}) ---
+function t(val, lang) {
+  if (val == null) return "";
+  if (typeof val === "string") return val;
+  if (typeof val === "object") return val[lang] || val.de || val.it || "";
+  return "";
+}
+
+// --- helper: random da texts (supporta array o {de:[], it:[]}) ---
+function pickText(entry, lang) {
+  // caso A: entry.text (singolo)
+  if (entry.text) return t(entry.text, lang);
+
+  // caso B: entry.texts (multipli)
+  if (entry.texts) {
+    let arr = entry.texts;
+    if (typeof arr === "object" && !Array.isArray(arr)) {
+      arr = arr[lang] || arr.de || arr.it || [];
     }
-  }catch(e){}
-
-  const data = await loadPremiumResets();
-  try{ localStorage.setItem(RESET_CACHE_KEY, JSON.stringify(data)); }catch(e){}
-  return data;
+    if (Array.isArray(arr) && arr.length) {
+      const idx = Math.floor(Math.random() * arr.length);
+      return arr[idx];
+    }
+  }
+  return "";
 }
 
-// Main render (uses current language)
-async function renderPremiumReset(stressValue, energyValue){
+// --- render: scrive titolo/testo e (se esiste) breathing ---
+export async function renderPremiumReset(stressValue, energyValue, opts = {}) {
+  const {
+    titleElId = "resetTitle",
+    textElId = "resetText",
+    breathElId = "resetBreath" // opzionale: se non c'è nel tuo HTML, non fa nulla
+  } = opts;
+
   const lang = getLang();
-  const data = await getResetsCached();
+  const resets = await loadPremiumResets();
+  const selectedReset = pickReset(resets, stressValue, energyValue);
 
-  const list = (lang === "it") ? data.it : data.de;
-  const selected = pickReset(list, stressValue, energyValue);
+  const title = t(selectedReset.title, lang);
+  const text = pickText(selectedReset, lang);
 
-  // These ids must exist in your page:
-  // #resetTitle, #resetText
-  const titleEl = document.getElementById("resetTitle");
-  const textEl  = document.getElementById("resetText");
+  const titleEl = document.getElementById(titleElId);
+  const textEl = document.getElementById(textElId);
 
-  if(titleEl) titleEl.textContent = t(selected.title, lang);
-  if(textEl)  textEl.textContent  = t(selected.text, lang);
+  if (titleEl) titleEl.textContent = title || "";
+  if (textEl) textEl.textContent = text || "";
+
+  // breathing opzionale
+  const breathEl = document.getElementById(breathElId);
+  if (breathEl) {
+    const b = selectedReset.breathing;
+    if (b && b.inhale && b.exhale && b.minutes) {
+      const label = (lang === "it")
+        ? `Respiro: In ${b.inhale}s · Out ${b.exhale}s · Durata ${b.minutes} min`
+        : `Atem: Ein ${b.inhale}s · Aus ${b.exhale}s · Dauer ${b.minutes} Min`;
+      breathEl.textContent = label;
+      breathEl.style.display = "block";
+    } else {
+      breathEl.textContent = "";
+      breathEl.style.display = "none";
+    }
+  }
+
+  return selectedReset;
 }
-
-// expose to window if you call it from inline script
-window.renderPremiumReset = renderPremiumReset;
