@@ -304,8 +304,7 @@
       p.textContent = item.text || "";
 
       // ✅ percorso immagini: icons/1.png ... icons/21.png
-      img.src = bust(`./icons/${day}.png`);
-
+     img.src = bust(`./icons/icons/${day}.png`);
       // disabilita prev/next ai limiti
       document.getElementById("prevBtn").disabled = (day <= 1);
       document.getElementById("nextBtn").disabled = (day >= TOTAL_DAYS);
