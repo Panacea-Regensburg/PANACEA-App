@@ -83,15 +83,18 @@
       align-items:center;
       margin-bottom:12px;
     }
-   .wissen-image {
-  width: 200px;
-  height: 200px;
-  border-radius: 22px;
-  object-fit: cover;
-  box-shadow: 0 10px 28px rgba(0,0,0,0.18);
-  border: 3px solid rgba(212,175,55,0.55);
+  .wissen-image {
+  width: 50%;              /* metà dello schermo */
+  max-width: 240px;        /* limite massimo elegante */
+  height: auto;
   display: block;
-  margin-bottom: 18px;
+  margin: 0 auto 18px auto;
+
+  border-radius: 18px;
+  object-fit: cover;
+
+  box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+  border: 2px solid rgba(212,175,55,0.35);
 }
     .dayMeta{ flex:1; min-width:0; }
     .tag{
