@@ -203,7 +203,6 @@
       overflow:hidden;
     }
 
-    /* gold ring glow */
     .orb::before{
       content:"";
       position:absolute;
@@ -214,7 +213,6 @@
       pointer-events:none;
     }
 
-    /* inner pulse element (we scale this) */
     .pulse{
       width: 72%;
       height: 72%;
@@ -244,7 +242,6 @@
       line-height:1.35;
     }
 
-    /* Controls */
     .controls{
       display:grid;
       grid-template-columns: 1fr 1fr 1fr;
@@ -323,7 +320,7 @@
       .controls{ grid-template-columns: 1fr; }
     }
 
-    /* Premium Reset box */
+    /* Premium Reset box (visible for FREE too) */
     .premium-reset{
       margin-top:18px;
       padding:22px;
@@ -414,7 +411,7 @@
       line-height:1.45;
       color: rgba(15,30,23,.78);
       font-weight:600;
-      white-space: pre-line; /* allow \n */
+      white-space: pre-line; /* show \n */
     }
 
     .memberLine{
@@ -475,7 +472,7 @@
         <p class="sub">3–5 Minuten für innere Stabilität: ruhig atmen, Körper spüren, Klarheit finden.</p>
       </div>
 
-      <!-- Premium Reset Box -->
+      <!-- Premium Reset Box (FREE visible) -->
       <div class="premium-reset" id="premiumReset">
         <h2>Premium Reset</h2>
 
@@ -487,7 +484,8 @@
 
         <button id="generateResetBtn">Mein Premium Reset</button>
 
-        <div class="resetOut" id="resetOut" style="display:none;">
+        <!-- ✅ NOW ALWAYS VISIBLE -->
+        <div class="resetOut" id="resetOut">
           <h3 id="resetTitle"></h3>
           <p id="resetText"></p>
         </div>
@@ -497,7 +495,7 @@
           · <a href="mitglieder.html" id="unlockLink">Mitglieder freischalten</a>
         </div>
 
-        <div class="premiumInfo" id="premiumInfo" style="display:none;">
+        <div class="premiumInfo" id="premiumInfo">
           <div class="t">Was ist im Premium enthalten?</div>
           <ul>
             <li><b>Verbesserter Atemrhythmus</b> (automatisch angepasst)</li>
@@ -572,17 +570,14 @@
   </script>
 
   <script>
-    // ---------------- Premium UI + 3 reactions ----------------
+    // ---------------- Premium (FREE visible) + 3 reactions ----------------
     const PREMIUM_FLAG = "panacea_premium";
     const isPremiumUser = localStorage.getItem(PREMIUM_FLAG) === "true";
-
     const memberStatus = document.getElementById("memberStatus");
-    const premiumInfo = document.getElementById("premiumInfo");
-
     if(memberStatus) memberStatus.textContent = isPremiumUser ? "Premium aktiv" : "Free-Version";
-    if(premiumInfo) premiumInfo.style.display = isPremiumUser ? "none" : "block";
 
-    const resetOut = document.getElementById("resetOut");
+    const stressSlider = document.getElementById("stressSlider");
+    const energySlider = document.getElementById("energySlider");
     const resetTitleEl = document.getElementById("resetTitle");
     const resetTextEl  = document.getElementById("resetText");
 
@@ -592,7 +587,7 @@
       return "MID";
     }
 
-    // 3 main reactions (plus a balanced fallback)
+    // 3 main reactions (+ balanced fallback)
     function pickReset(stress, energy){
       const sL = level(stress);
       const eL = level(energy);
@@ -648,20 +643,23 @@
       };
     }
 
-    document.getElementById("generateResetBtn").addEventListener("click", () => {
-      const stressValue = Number(document.getElementById("stressSlider").value);
-      const energyValue = Number(document.getElementById("energySlider").value);
-
-      const res = pickReset(stressValue, energyValue);
+    function render3Reactions(){
+      const s = Number(stressSlider.value);
+      const e = Number(energySlider.value);
+      const res = pickReset(s, e);
       resetTitleEl.textContent = res.title;
       resetTextEl.textContent  = res.text;
-      resetOut.style.display   = "block";
+    }
 
-      // keep compatibility (logic later)
-      if(typeof renderPremiumReset === "function"){
-        // optional later: renderPremiumReset(stressValue, energyValue);
-      }
-    });
+    // ✅ Auto-update on slider move
+    stressSlider.addEventListener("input", render3Reactions);
+    energySlider.addEventListener("input", render3Reactions);
+
+    // ✅ Button also works (same output)
+    document.getElementById("generateResetBtn").addEventListener("click", render3Reactions);
+
+    // ✅ Initial render on page load
+    render3Reactions();
   </script>
 
   <script>
@@ -840,7 +838,7 @@
     minutesInput.addEventListener("change", resetAll);
   </script>
 
-  <!-- Optional: keep your premium logic file for later -->
+  <!-- keep for later, not used now -->
   <script src="./js/resetLogic.js"></script>
 </body>
 </html>
