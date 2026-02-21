@@ -330,6 +330,8 @@
       document.getElementById("t_bodymind").textContent = dict[lang].bodymind;
 
       document.documentElement.lang = (lang === "it") ? "it" : "de";
+      localStorage.setItem("lang","de");
+document.documentElement.lang = "de";
     }
 
     const saved = localStorage.getItem(STORAGE_LANG);
