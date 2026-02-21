@@ -170,35 +170,25 @@ h1 { font-size: 42px; }
         <div class="mini" id="premiumTeaser">
           ✨ Premium: Extra-Insight + Mini-Reflexionsfrage (täglich wechselnd).
         </div>
-
-        <div class="ctaRow">
-  <button class="btn" id="prevDayBtn" type="button">←</button>
-  <button class="btn" id="nextDayBtn" type="button">→</button>
-  <button class="btn" id="resetCycleBtn" type="button">Reset</button>
-
-  <span class="mini">Tag <b id="dayNum">1</b>/21</span>
-  <span class="mini">Free-Version · <a class="link" href="mitglieder.html">Mitglieder freischalten</a></span>
-</div>
-
-        </div>
+<img id="wissenImg" alt="Tagesbild" style="width:100%; max-height:260px; object-fit:cover; border-radius:18px; margin-top:14px; border:1px solid rgba(255,255,255,.55); box-shadow:0 12px 30px rgba(0,0,0,.12);" />    
+      </div>
       </div>
 
     </div>
   </div>
 
   <script>
+  <script>
   // ====== 21 Tage Wissen & Klarheit (progressione salvata) ======
-  // IMPORTANTE: mettiamo 21 elementi. Per ora ti lascio 7 esempi + placeholder.
   const wissen21 = [
-    { title:"Tag 1 – Klarer Fokus", text:"...", img:"icons/wissen/01.jpg" },
-    { title:"Tag 2 – Nervensystem beruhigen", text:"...", img:"icons/wissen/02.jpg" },
+    { title: "Tag 1 – Klarer Fokus", text: "Wähle EIN Thema für heute. Notiere den nächsten kleinsten Schritt – und starte." },
+    { title: "Tag 2 – Nervensystem beruhigen", text: "Langes Ausatmen aktiviert den Parasympathikus. 6 Atemzüge: 4 ein, 6 aus." },
     { title: "Tag 3 – Gedanken entkoppeln", text: "Gedanken sind Ereignisse – keine Befehle. Sag: „Ich habe den Gedanken, dass…“" },
     { title: "Tag 4 – Struktur statt Druck", text: "Plane nur die nächsten 30 Minuten. Das reicht – und macht dich handlungsfähig." },
     { title: "Tag 5 – Energie durch Haltung", text: "Brustraum öffnen, Schultern weich. Haltung sendet Sicherheit ans Nervensystem." },
     { title: "Tag 6 – Regeneration", text: "10 Minuten draußen (auch langsam). Tageslicht + Bewegung = sanfter Reset." },
     { title: "Tag 7 – Klarheit & Ausrichtung", text: "Was war diese Woche hilfreich? Was lässt du weg? Ein Satz reicht." },
 
-    // ---- Placeholder: qui mettiamo Tag 8–21 (posso scriverteli io dopo) ----
     { title: "Tag 8 – …", text: "…" },
     { title: "Tag 9 – …", text: "…" },
     { title: "Tag 10 – …", text: "…" },
@@ -215,8 +205,7 @@ h1 { font-size: 42px; }
     { title: "Tag 21 – …", text: "…" },
   ];
 
-  // Progress salvato per questa sezione
-  const KEY = "panacea_wissen_day"; // valore 0..20
+  const KEY = "panacea_wissen_day"; // 0..20
 
   function clamp(n, min, max) { return Math.max(min, Math.min(max, n)); }
 
@@ -236,39 +225,39 @@ h1 { font-size: 42px; }
   function renderDay(i) {
     const item = wissen21[i];
 
-    document.getElementById("wissenTitle").textContent = item.title;
-    document.getElementById("wissenText").textContent  = item.text;
-
-    document.getElementById("wissenImage").src =
-    "icons/icons/1-21/" + (i + 1) + ".png";
- }
+    const t = document.getElementById("wissenTitle");
+    const p = document.getElementById("wissenText");
+    if (t) t.textContent = item.title;
+    if (p) p.textContent = item.text;
 
     // Tag X/21
     const dayNumEl = document.getElementById("dayNum");
     if (dayNumEl) dayNumEl.textContent = String(i + 1);
 
-    // disabilita ai bordi
+    // immagine del giorno (1..21) - SENZA zero davanti
+    const img = document.getElementById("wissenImg");
+    if (img) {
+      img.src = `icons/icons/1-21/${i + 1}.png?v=${Date.now()}`;
+    }
+
+    // bottoni ai bordi
     const prevBtn = document.getElementById("prevDayBtn");
     const nextBtn = document.getElementById("nextDayBtn");
     if (prevBtn) prevBtn.disabled = (i === 0);
     if (nextBtn) nextBtn.disabled = (i === wissen21.length - 1);
   }
 
-  // Bottoni
+  // collega bottoni (safe)
   const prevBtn = document.getElementById("prevDayBtn");
-const nextBtn = document.getElementById("nextDayBtn");
-const resetBtn = document.getElementById("resetCycleBtn");
+  const nextBtn = document.getElementById("nextDayBtn");
+  const resetBtn = document.getElementById("resetCycleBtn");
 
-if (prevBtn) prevBtn.addEventListener("click", () => setDayIndex(getDayIndex() - 1));
-if (nextBtn) nextBtn.addEventListener("click", () => setDayIndex(getDayIndex() + 1));
-if (resetBtn) resetBtn.addEventListener("click", () => setDayIndex(0));
+  if (prevBtn) prevBtn.addEventListener("click", () => setDayIndex(getDayIndex() - 1));
+  if (nextBtn) nextBtn.addEventListener("click", () => setDayIndex(getDayIndex() + 1));
+  if (resetBtn) resetBtn.addEventListener("click", () => setDayIndex(0));
 
-// Init solo se esistono gli elementi testo
-if (document.getElementById("wissenTitle") && document.getElementById("wissenText")) {
+  // init
   renderDay(getDayIndex());
-const imgEl = document.getElementById("wissenImg");
-if (imgEl && item.img) imgEl.src = item.img;
-}
 </script>
 </body>
 </html>
