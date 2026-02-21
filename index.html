@@ -1,284 +1,184 @@
 <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#113a2d" />
-  <title>Panacea – Body & Mind</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#113a2d" />
+<title>Panacea – Body & Mind</title>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    :root{
-      --gold1:#e7c873;
-      --gold2:#c9a94f;
-      --deepGreen:#123b2e;
-      --text:#0f1e17;
+<style>
+:root{
+  --accent:#113a2d;
+  --text:#0f1e17;
+  --muted:rgba(15,30,23,.7);
+  --glass:rgba(255,255,255,.75);
+  --radius:22px;
+  --shadow:0 24px 60px rgba(0,0,0,.22);
+}
 
-      --glass: rgba(255,255,255,.86);
-      --glassSoft: rgba(255,255,255,.75);
+html, body { height:100%; }
 
-      --radius: 28px;
-      --radiusCard: 26px;
-      --maxW: 560px;
-    }
+body{
+  margin:0;
+  font-family:"Plus Jakarta Sans", system-ui, sans-serif;
+  background:url("icons/sfondo.png") center / cover no-repeat fixed;
+  color:var(--text);
+}
 
-    *{box-sizing:border-box;}
-    html,body{height:100%;}
-    body{
-      margin:0;
-      font-family:"Plus Jakarta Sans",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      color:var(--text);
-      background:url("icons/sfondo.png") center/cover no-repeat fixed;
-    }
+.veil{
+  min-height:100%;
+  padding:40px 18px 60px;
+  background:radial-gradient(circle at 30% 5%, rgba(255,255,255,.6), rgba(255,255,255,0) 60%);
+}
 
-    /* Nebbia elegante */
-    .veil{
-      min-height:100%;
-      padding:22px 14px 28px;
-      background:
-        radial-gradient(circle at top, rgba(255,255,255,.22), rgba(0,0,0,.25));
-      display:flex;
-      justify-content:center;
-    }
+.app{
+  max-width:920px;
+  margin:0 auto;
+}
 
-    /* Container "app-like" */
-    .app{
-      width:100%;
-      max-width:var(--maxW);
-    }
+/* ===== BRAND TITLE ===== */
 
-    /* Header */
-    header{
-      display:flex;
-      gap:12px;
-      align-items:flex-start;
-      justify-content:space-between;
-      margin-bottom:18px;
-    }
+.brand-title{
+  margin:0 0 18px;
+  font-family:"Playfair Display", serif;
+  font-size:56px;
+  line-height:1.05;
+  color:var(--accent);
+  letter-spacing:0.5px;
+  position:relative;
+}
 
-    .brand{
-      flex:1;
-      padding:22px 20px 18px;
-      border-radius:var(--radius);
-      background:var(--glass);
-      backdrop-filter:blur(16px);
-      -webkit-backdrop-filter:blur(16px);
-      border:1px solid rgba(231,200,115,.45);
-      box-shadow:
-        0 0 0 1px rgba(231,200,115,.25),
-        0 24px 60px rgba(0,0,0,.25);
-    }
+.brand-title::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:120px;
+  height:3px;
+  background:linear-gradient(90deg,#c6a545,#f3dc9b,#c6a545);
+  border-radius:4px;
+  box-shadow:
+    0 0 8px rgba(198,165,69,0.6),
+    0 0 16px rgba(198,165,69,0.35);
+}
 
-    h1{
-      margin:0 0 10px;
-      font-family:"Playfair Display",serif;
-      font-size:34px;
-      font-weight:700;
-      letter-spacing:-0.02em;
-      line-height:1.12;
-      background:linear-gradient(135deg,#1b4d3b,#0f2f25 40%,#1b4d3b);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
+.brand-sub{
+  display:block;
+  font-size:30px;
+  font-weight:500;
+  margin-top:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  background:linear-gradient(90deg,#c6a545,#f3dc9b,#c6a545);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:
+    0 0 8px rgba(198,165,69,0.4),
+    0 0 18px rgba(198,165,69,0.25);
+}
 
-    .tagline{
-      margin:0;
-      font-size:15px;
-      font-weight:500;
-      line-height:1.5;
-      color:#204c3d;
-      position:relative;
-      padding-top:12px;
-    }
-    .tagline::before{
-      content:"";
-      position:absolute;
-      top:0;
-      left:0;
-      width:64px;
-      height:2px;
-      background:linear-gradient(90deg,var(--gold1),var(--gold2));
-      border-radius:2px;
-    }
+.subtitle{
+  margin-top:18px;
+  font-size:18px;
+  color:var(--muted);
+}
 
-    /* Language */
-    .lang{
-      display:flex;
-      gap:6px;
-      padding:8px;
-      border-radius:999px;
-      background:var(--glassSoft);
-      backdrop-filter:blur(10px);
-      -webkit-backdrop-filter:blur(10px);
-      border:1px solid rgba(231,200,115,.35);
-      box-shadow:0 10px 22px rgba(0,0,0,.15);
-      height:fit-content;
-    }
-    .lang button{
-      border:0;
-      padding:9px 13px;
-      border-radius:999px;
-      font-weight:700;
-      font-size:13px;
-      cursor:pointer;
-      background:transparent;
-      color:#244a3c;
-    }
-    .lang button.active{
-      background:linear-gradient(135deg,var(--gold1),var(--gold2));
-      color:#fff;
-      box-shadow:0 4px 12px rgba(0,0,0,.25);
-    }
+/* ===== CARDS GRID ===== */
 
-    /* Main panel */
-    main{
-      padding:18px;
-      border-radius:32px;
-      background:rgba(255,255,255,.35);
-      backdrop-filter:blur(14px);
-      -webkit-backdrop-filter:blur(14px);
-      border:1px solid rgba(231,200,115,.25);
-      box-shadow:0 18px 40px rgba(0,0,0,.22);
-    }
+.grid{
+  margin-top:40px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:26px;
+}
 
-    .grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:16px;
-    }
+.card{
+  background:var(--glass);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:40px 20px;
+  text-align:center;
+  transition:.3s ease;
+  text-decoration:none;
+  color:var(--accent);
+}
 
-    .card{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:18px;
-      border-radius:var(--radiusCard);
-      min-height:190px;
-      background:rgba(255,255,255,.92);
-      border:1px solid rgba(231,200,115,.30);
-      box-shadow:0 14px 32px rgba(0,0,0,.16);
-      transition:transform .15s ease, box-shadow .15s ease, border .15s ease;
-      text-decoration:none;
-    }
-    .card:hover{
-      transform:translateY(-3px);
-      box-shadow:0 18px 42px rgba(0,0,0,.22);
-      border:1px solid rgba(231,200,115,.55);
-    }
-    .card:focus{
-      outline:3px solid rgba(231,200,115,.55);
-      outline-offset:3px;
-    }
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 30px 70px rgba(0,0,0,.25);
+}
 
-    .icon{
-      width:170px;
-      height:170px;
-      object-fit:contain;
-      display:block;
-      filter:drop-shadow(0 10px 16px rgba(0,0,0,.18));
-    }
+.card img{
+  width:140px;
+  height:auto;
+  margin-bottom:14px;
+}
 
-    footer{
-      text-align:center;
-      margin-top:16px;
-      font-size:13px;
-      font-weight:700;
-      color:rgba(255,255,255,.82);
-      text-shadow:0 6px 18px rgba(0,0,0,.35);
-      padding-bottom:6px;
-    }
-
-    /* App feel on mobile */
-    @media (max-width: 420px){
-      h1{font-size:30px;}
-      .icon{width:150px;height:150px;}
-      .card{min-height:175px;}
-      main{padding:16px;}
-    }
-  </style>
+.footer{
+  text-align:center;
+  margin-top:60px;
+  font-size:14px;
+  color:rgba(0,0,0,.5);
+}
+</style>
 </head>
 
 <body>
-  <div class="veil">
-    <div class="app">
+<div class="veil">
+<div class="app">
 
-      <header>
-        <div class="brand">
-          <h1 id="title">Panacea – Body &amp; Mind</h1>
-          <p class="tagline" id="subtitle">Kleine Schritte. Mehr Stabilität. Jeden Tag.</p>
-        </div>
+<h1 class="brand-title">
+  Panacea<br>
+  <span class="brand-sub">Body &amp; Mind</span>
+</h1>
 
-        <div class="lang" aria-label="Language">
-          <button id="btnDE" class="active" type="button">Deutsch</button>
-          <button id="btnIT" type="button">Italiano</button>
-        </div>
-      </header>
+<p class="subtitle">
+  Kleine Schritte. Mehr Stabilität. Jeden Tag.
+</p>
 
-      <main>
-        <div class="grid">
-          <a class="card" href="daily-reset.html" aria-label="Daily Reset">
-            <img class="icon" src="icons/daily-reset.png" alt="Daily Reset">
-          </a>
+<div class="grid">
 
-          <a class="card" href="wissen.html" aria-label="Wissen & Klarheit">
-            <img class="icon" src="icons/wissen-klarheit.png" alt="Wissen & Klarheit">
-          </a>
-
-          <a class="card" href="#lifestyle" aria-label="Life Style">
-            <img class="icon" src="icons/lifestyle.png" alt="Life Style">
-          </a>
-
-          <a class="card" href="#uebungen" aria-label="Übungen">
-            <img class="icon" src="icons/uebungen.png" alt="Übungen">
-          </a>
-
-          <a class="card" href="#kurse" aria-label="Kurse">
-            <img class="icon" src="icons/kurse.png" alt="Kurse">
-          </a>
-
-          <a class="card" href="./mitglieder.html" aria-label="Mitgliederbereich">
-  <img class="icon" src="icons/mitgliederbereich.png" alt="Mitgliederbereich">
+<a href="daily-reset.html" class="card">
+  <img src="icons/daily.png" alt="">
+  <div>Daily Reset</div>
 </a>
-        </div>
-      </main>
 
-      <footer>© Panacea Regensburg</footer>
+<a href="wissen.html" class="card">
+  <img src="icons/wissen.png" alt="">
+  <div>Wissen & Klarheit</div>
+</a>
 
-    </div>
-  </div>
+<a href="lifestyle.html" class="card">
+  <img src="icons/lifestyle.png" alt="">
+  <div>Life Style</div>
+</a>
 
-  <script>
-    const copy = {
-      de: {
-        title: "Panacea – Body & Mind",
-        subtitle: "Kleine Schritte. Mehr Stabilität. Jeden Tag."
-      },
-      it: {
-        title: "Panacea – Body & Mind",
-        subtitle: "Piccoli passi. Più stabilità. Ogni giorno."
-      }
-    };
+<a href="uebungen.html" class="card">
+  <img src="icons/uebungen.png" alt="">
+  <div>Übungen</div>
+</a>
 
-    const titleEl = document.getElementById("title");
-    const subEl = document.getElementById("subtitle");
-    const btnDE = document.getElementById("btnDE");
-    const btnIT = document.getElementById("btnIT");
+<a href="kurse.html" class="card">
+  <img src="icons/kurse.png" alt="">
+  <div>Kurse</div>
+</a>
 
-    function setLang(lang){
-      titleEl.textContent = copy[lang].title;
-      subEl.textContent = copy[lang].subtitle;
+<a href="mitglieder.html" class="card">
+  <img src="icons/mitglieder.png" alt="">
+  <div>Mitgliederbereich</div>
+</a>
 
-      btnDE.classList.toggle("active", lang === "de");
-      btnIT.classList.toggle("active", lang === "it");
-      document.documentElement.lang = lang;
-    }
+</div>
 
-    btnDE.addEventListener("click", () => setLang("de"));
-    btnIT.addEventListener("click", () => setLang("it"));
-  </script>
+<div class="footer">
+© Panacea Regensburg
+</div>
+
+</div>
+</div>
 </body>
 </html>
