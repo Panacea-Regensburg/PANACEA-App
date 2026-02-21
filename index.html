@@ -157,7 +157,22 @@
       border:1px solid rgba(200,162,74,.22);
       box-shadow: 0 0 18px rgba(200,162,74,.12);
     }
+/* FIX DEFINITIVO: le icone del menu NON devono mai diventare 100% */
+.grid .tile img,
+.grid .tile .menuIcon{
+  width: min(220px, 82%) !important;
+  max-width: 220px !important;
+  height: auto !important;
+  max-height: 150px !important;
+  object-fit: contain !important;
+  display: block !important;
+  margin: 0 auto !important;
+}
 
+/* In caso qualche CSS esterno metta img{width:100%}, neutralizziamo SOLO nel menu */
+.grid .tile{
+  overflow: hidden;
+}
     /* grid menu */
     .grid{
       display:grid;
