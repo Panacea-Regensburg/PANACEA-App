@@ -411,7 +411,20 @@
       errorBox.style.display = "none";
       errorBox.textContent = "";
     }
+function getLangLocal(){
+  const ls = (localStorage.getItem("lang") || "").toLowerCase();
+  if(ls === "it" || ls === "de") return ls;
+  const html = (document.documentElement.lang || "").toLowerCase();
+  return (html === "it" || html === "de") ? html : "de";
+}
 
+function pick(v){
+  const lang = getLangLocal();
+  if(v == null) return "";
+  if(typeof v === "string") return v;         // compatibilità vecchi dati
+  if(typeof v === "object") return v[lang] || v.de || v.it || "";
+  return String(v);
+}
     // ---------- Content loading ----------
     let wissenData = null;
 
