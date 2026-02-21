@@ -474,8 +474,13 @@ function pick(v){
 
       const entry = (wissenData && wissenData[day - 1]) ? wissenData[day - 1] : FALLBACK_DAYS[day - 1];
 
-      dayTitle.textContent = entry.title || `Giorno ${day}`;
-      dayImpulse.textContent = entry.impulse || "";
+      dayTitle.textContent = pick(entry.title) || `Giorno ${day}`;
+dayImpulse.textContent = pick(entry.impulse) || "";
+
+premiumInsightEl.textContent = pick(entry.premiumInsight) || "";
+
+const q = pick(entry.premiumQuestion);
+premiumQuestionEl.textContent = q ? `Domanda: ${q}` : "";
 
       if(isPremium()){
         premiumBox.style.display = "block";
