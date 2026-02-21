@@ -1,263 +1,328 @@
 <!doctype html>
 <html lang="de">
 <head>
-  
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#113a2d" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Wissen & Klarheit – Panacea</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --text:#0f1e17;
-      --muted:rgba(15,30,23,.72);
-      --glass:rgba(255,255,255,.68);
-      --glass2:rgba(255,255,255,.55);
-      --shadow:0 24px 60px rgba(0,0,0,.22);
-      --radius:22px;
-      --accent:#113a2d;
-      --line:rgba(231,200,115,.45);
+      --green:#1f4d3a;
+      --gold:#c8a96a;
+      --card: rgba(255,255,255,0.78);
+      --card2: rgba(255,255,255,0.65);
+      --shadow: 0 10px 30px rgba(0,0,0,0.12);
     }
-    html, body { height: 100%; }
+
     body{
       margin:0;
-      font-family:"Plus Jakarta Sans",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      color:var(--text);
-      background:url("icons/sfondo.png") center / cover no-repeat fixed;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:#1b1b1b;
+      background: url("sfondo.png") center/cover no-repeat fixed;
+      min-height:100vh;
     }
-    .dayImg{
-  width:100%;
-  max-height:220px;
-  object-fit:cover;
-  border-radius:18px;
-  margin-bottom:14px;
-  border:1px solid rgba(255,255,255,.55);
-  box-shadow:0 14px 28px rgba(0,0,0,.12);
-}
-    .veil{
-      min-height:100%;
-      background: radial-gradient(circle at 30% 5%, rgba(255,255,255,.55), rgba(255,255,255,.0) 60%);
-      padding:22px 14px 50px;
-      box-sizing:border-box;
+
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 18px 16px 40px;
     }
-    .app{
-      max-width:860px;
-      margin:0 auto;
-    }
+
     .topbar{
       display:flex;
       align-items:center;
-      gap:10px;
-      margin-bottom:14px;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom: 14px;
     }
-    .back{
-      display:inline-block;
-      padding:10px 14px;
-      border-radius:999px;
-      background:rgba(255,255,255,.75);
-      border:1px solid rgba(255,255,255,.55);
-      text-decoration:none;
-      color:var(--accent);
-      font-weight:600;
-      box-shadow:0 10px 22px rgba(0,0,0,.10);
-    }
-    .titleBox{
-      background:rgba(255,255,255,.78);
-      border:1px solid rgba(255,255,255,.55);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:26px 26px 18px;
-      margin-bottom:22px;
-    }
-    h1{
-      margin:0 0 10px;
-      font-family:"Playfair Display",serif;
-      font-size:38px;
-      line-height:1.1;
-      color:var(--accent);
-    }
-    .sub{
-      margin:0;
-      color:var(--muted);
-      font-size:15px;
-    }
-    .card{
-      background:var(--glass);
-      border:1px solid rgba(255,255,255,.55);
-      border-radius:var(--radius);
-      box-shadow:0 18px 40px rgba(0,0,0,.16);
-      padding:22px;
-      margin-bottom:18px;
-      backdrop-filter: blur(8px);
-    }
-    .card h2{
-      margin:0 0 10px;
-      font-size:24px;
-      color:var(--accent);
-      font-weight:800;
-    }
-    .card p{ margin:0; color:var(--muted); font-size:16px; line-height:1.45; }
-    .mini{
-      margin-top:12px;
-      padding-top:12px;
-      border-top:1px solid var(--line);
-      color:rgba(15,30,23,.65);
-      font-size:14px;
-    }
-    .ctaRow{
-      margin-top:12px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
+
+    .homeBtn{
+      display:inline-flex;
       align-items:center;
-    }
-    .btn{
-      appearance:none;
-      border:0;
-      cursor:pointer;
+      gap:8px;
       padding:10px 14px;
-      border-radius:14px;
-      font-weight:800;
-      background:rgba(255,255,255,.85);
-      color:var(--accent);
-      border:1px solid rgba(255,255,255,.55);
-      box-shadow:0 10px 18px rgba(0,0,0,.10);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.75);
+      border: 1px solid rgba(200,169,106,0.35);
+      box-shadow: var(--shadow);
+      color: var(--green);
+      text-decoration:none;
+      font-weight:600;
+      backdrop-filter: blur(6px);
     }
-    .link{
-      color:var(--accent);
-      font-weight:800;
-      text-decoration:underline;
+
+    .hero{
+      background: var(--card);
+      border-radius: 26px;
+      padding: 20px 22px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(200,169,106,0.35);
+      margin-bottom: 14px;
     }
-    .titleBox { padding: 30px 30px 22px; }
-h1 { font-size: 42px; }
 
-.card { padding: 28px; }
-.card h2 { font-size: 30px; }
-.card p { font-size: 18px; }
+    h1{
+      margin: 0 0 6px 0;
+      color: var(--green);
+      font-size: 46px;
+      letter-spacing: 0.2px;
+    }
 
-.btn{
-  padding: 12px 18px;
-  font-size: 16px;
-  border-radius: 16px;
-}
+    .sub{
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.35;
+      opacity: 0.88;
+    }
 
-.mini{ font-size: 15px; }
-    <img id="wissenImg" class="dayImg" src="icons/wissen/01.jpg" alt="">
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .card{
+      background: var(--card2);
+      border-radius: 26px;
+      padding: 18px 18px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(200,169,106,0.30);
+      backdrop-filter: blur(6px);
+    }
+
+    .premium{
+      font-size: 18px;
+      line-height: 1.4;
+    }
+
+    .premium b{ color: var(--green); }
+    .premium .star{ color: var(--gold); }
+
+    .dayRow{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom: 10px;
+    }
+
+    .dayTag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(200,169,106,0.35);
+      background: rgba(255,255,255,0.6);
+      color: var(--green);
+      font-weight:700;
+    }
+
+    .navBtns{
+      display:flex;
+      gap:8px;
+    }
+
+    .btn{
+      cursor:pointer;
+      border:none;
+      border-radius: 14px;
+      padding: 10px 12px;
+      font-weight: 800;
+      background: rgba(31,77,58,0.12);
+      color: var(--green);
+      border: 1px solid rgba(31,77,58,0.18);
+      transition: transform .06s ease, background .12s ease;
+    }
+    .btn:active{ transform: scale(0.98); }
+    .btn:hover{ background: rgba(31,77,58,0.18); }
+
+    .imgBox{
+      display:flex;
+      justify-content:center;
+      padding: 8px 0 6px;
+    }
+
+    .imgBox img{
+      width: min(520px, 100%);
+      height: auto;
+      border-radius: 18px;
+      border: 1px solid rgba(200,169,106,0.35);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.10);
+      background: rgba(255,255,255,0.4);
+    }
+
+    .contentTitle{
+      margin: 6px 0 6px;
+      color: var(--green);
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 0.2px;
+    }
+
+    .contentText{
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.5;
+      opacity: 0.92;
+      white-space: pre-line;
+    }
+
+    .hint{
+      margin-top:10px;
+      font-size: 14px;
+      opacity: 0.7;
+    }
   </style>
 </head>
 
 <body>
-  <div class="veil">
-    <div class="app">
+  <div class="wrap">
 
-      <div class="topbar">
-        <a class="back" href="index.html">← Home</a>
-      </div>
+    <div class="topbar">
+      <a class="homeBtn" href="./index.html">← Home</a>
+    </div>
 
-      <div class="titleBox">
-        <h1>Wissen &amp; Klarheit</h1>
-        <p class="sub">Jeden Tag ein kurzer Impuls – klar, wissenschaftlich fundiert, leicht umsetzbar.</p>
+    <div class="hero">
+      <h1>Wissen &amp; Klarheit</h1>
+      <p class="sub">Jeden Tag ein kurzer Impuls – klar, wissenschaftlich fundiert, leicht umsetzbar.</p>
+    </div>
+
+    <div class="grid">
+
+      <div class="card premium">
+        <div><span class="star">✨</span> <b>Premium:</b> Extra-Insight + Mini-Reflexionsfrage (täglich wechselnd).</div>
       </div>
 
       <div class="card">
-        <h2 id="wissenTitle"></h2>
-        <p id="wissenText"></p>
-
-        <div class="mini" id="premiumTeaser">
-          ✨ Premium: Extra-Insight + Mini-Reflexionsfrage (täglich wechselnd).
+        <div class="dayRow">
+          <div class="dayTag">🗓️ Tag <span id="dayNum">1</span>/21</div>
+          <div class="navBtns">
+            <button class="btn" id="prevBtn" type="button">←</button>
+            <button class="btn" id="nextBtn" type="button">→</button>
+          </div>
         </div>
-<img id="wissenImg" alt="Tagesbild" style="width:100%; max-height:260px; object-fit:cover; border-radius:18px; margin-top:14px; border:1px solid rgba(255,255,255,.55); box-shadow:0 12px 30px rgba(0,0,0,.12);" />    
-      </div>
+
+        <div class="contentTitle" id="wissenTitle">Heute</div>
+        <p class="contentText" id="wissenText">Lade Inhalt…</p>
+
+        <div class="imgBox">
+          <img id="wissenImg" src="./icons/1.png" alt="Tagesbild" />
+        </div>
+
+        <div class="hint" id="hint"></div>
       </div>
 
     </div>
   </div>
 
   <script>
-  <script>
-  // ====== 21 Tage Wissen & Klarheit (progressione salvata) ======
-  const wissen21 = [
-    { title: "Tag 1 – Klarer Fokus", text: "Wähle EIN Thema für heute. Notiere den nächsten kleinsten Schritt – und starte." },
-    { title: "Tag 2 – Nervensystem beruhigen", text: "Langes Ausatmen aktiviert den Parasympathikus. 6 Atemzüge: 4 ein, 6 aus." },
-    { title: "Tag 3 – Gedanken entkoppeln", text: "Gedanken sind Ereignisse – keine Befehle. Sag: „Ich habe den Gedanken, dass…“" },
-    { title: "Tag 4 – Struktur statt Druck", text: "Plane nur die nächsten 30 Minuten. Das reicht – und macht dich handlungsfähig." },
-    { title: "Tag 5 – Energie durch Haltung", text: "Brustraum öffnen, Schultern weich. Haltung sendet Sicherheit ans Nervensystem." },
-    { title: "Tag 6 – Regeneration", text: "10 Minuten draußen (auch langsam). Tageslicht + Bewegung = sanfter Reset." },
-    { title: "Tag 7 – Klarheit & Ausrichtung", text: "Was war diese Woche hilfreich? Was lässt du weg? Ein Satz reicht." },
+    // =========================
+    // SETTINGS
+    // =========================
+    const TOTAL_DAYS = 21;
+    const LS_KEY = "panacea_wissen_day";
 
-    { title: "Tag 8 – …", text: "…" },
-    { title: "Tag 9 – …", text: "…" },
-    { title: "Tag 10 – …", text: "…" },
-    { title: "Tag 11 – …", text: "…" },
-    { title: "Tag 12 – …", text: "…" },
-    { title: "Tag 13 – …", text: "…" },
-    { title: "Tag 14 – …", text: "…" },
-    { title: "Tag 15 – …", text: "…" },
-    { title: "Tag 16 – …", text: "…" },
-    { title: "Tag 17 – …", text: "…" },
-    { title: "Tag 18 – …", text: "…" },
-    { title: "Tag 19 – …", text: "…" },
-    { title: "Tag 20 – …", text: "…" },
-    { title: "Tag 21 – …", text: "…" },
-  ];
+    // Fallback contenuti (se data/wissen.json non esiste o non si carica)
+    const fallback = Array.from({ length: TOTAL_DAYS }, (_, i) => ({
+      title: `Impuls – Tag ${i + 1}`,
+      text:
+        "1 kleiner Gedanke für heute:\n" +
+        "• Atme einmal bewusst aus.\n" +
+        "• Frage dich: Was brauche ich JETZT – 1% leichter?\n" +
+        "• Wähle eine Mini-Handlung (30 Sekunden)."
+    }));
 
-  const KEY = "panacea_wissen_day"; // 0..20
-
-  function clamp(n, min, max) { return Math.max(min, Math.min(max, n)); }
-
-  function getDayIndex() {
-    const raw = localStorage.getItem(KEY);
-    const n = raw === null ? 0 : parseInt(raw, 10);
-    if (Number.isNaN(n)) return 0;
-    return clamp(n, 0, wissen21.length - 1);
-  }
-
-  function setDayIndex(i) {
-    const v = clamp(i, 0, wissen21.length - 1);
-    localStorage.setItem(KEY, String(v));
-    renderDay(v);
-  }
-
-  function renderDay(i) {
-    const item = wissen21[i];
-
-    const t = document.getElementById("wissenTitle");
-    const p = document.getElementById("wissenText");
-    if (t) t.textContent = item.title;
-    if (p) p.textContent = item.text;
-
-    // Tag X/21
-    const dayNumEl = document.getElementById("dayNum");
-    if (dayNumEl) dayNumEl.textContent = String(i + 1);
-
-    // immagine del giorno (1..21) - SENZA zero davanti
-    const img = document.getElementById("wissenImg");
-    if (img) {
-      img.src = `icons/${i + 1}.png?v=${Date.now()}`;
+    // =========================
+    // HELPERS
+    // =========================
+    function clampDay(n){
+      if (!Number.isFinite(n)) return 1;
+      if (n < 1) return 1;
+      if (n > TOTAL_DAYS) return TOTAL_DAYS;
+      return n;
     }
 
-    // bottoni ai bordi
-    const prevBtn = document.getElementById("prevDayBtn");
-    const nextBtn = document.getElementById("nextDayBtn");
-    if (prevBtn) prevBtn.disabled = (i === 0);
-    if (nextBtn) nextBtn.disabled = (i === wissen21.length - 1);
-  }
+    function setDay(n){
+      const day = clampDay(n);
+      localStorage.setItem(LS_KEY, String(day));
+      render(day);
+    }
 
-  // collega bottoni (safe)
-  const prevBtn = document.getElementById("prevDayBtn");
-  const nextBtn = document.getElementById("nextDayBtn");
-  const resetBtn = document.getElementById("resetCycleBtn");
+    function getDay(){
+      const raw = localStorage.getItem(LS_KEY);
+      const n = parseInt(raw, 10);
+      return clampDay(Number.isFinite(n) ? n : 1);
+    }
 
-  if (prevBtn) prevBtn.addEventListener("click", () => setDayIndex(getDayIndex() - 1));
-  if (nextBtn) nextBtn.addEventListener("click", () => setDayIndex(getDayIndex() + 1));
-  if (resetBtn) resetBtn.addEventListener("click", () => setDayIndex(0));
+    function bust(url){
+      return url + "?v=" + Date.now();
+    }
 
-  // init
-  renderDay(getDayIndex());
-</script>
+    // =========================
+    // DATA LOAD
+    // =========================
+    let wissenData = null;
+
+    async function loadWissenJson(){
+      try{
+        const res = await fetch("./data/wissen.json", { cache: "no-store" });
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        const data = await res.json();
+
+        // accetta due formati:
+        // A) array: [{title,text}, ...]
+        // B) oggetto: { days: [{title,text}, ...] }
+        const arr = Array.isArray(data) ? data : (Array.isArray(data.days) ? data.days : null);
+        if (!arr) throw new Error("Formato JSON non valido");
+
+        // normalizza lunghezza
+        wissenData = arr.slice(0, TOTAL_DAYS);
+        while (wissenData.length < TOTAL_DAYS) wissenData.push(fallback[wissenData.length]);
+
+        document.getElementById("hint").textContent = "";
+      }catch(err){
+        wissenData = fallback;
+        document.getElementById("hint").textContent =
+          "Hinweis: ./data/wissen.json konnte nicht geladen werden – Fallback aktiv.";
+      }
+    }
+
+    // =========================
+    // RENDER
+    // =========================
+    function render(day){
+      const idx = day - 1;
+      const item = (wissenData && wissenData[idx]) ? wissenData[idx] : fallback[idx];
+
+      const t = document.getElementById("wissenTitle");
+      const p = document.getElementById("wissenText");
+      const d = document.getElementById("dayNum");
+      const img = document.getElementById("wissenImg");
+
+      d.textContent = String(day);
+      t.textContent = item.title || `Impuls – Tag ${day}`;
+      p.textContent = item.text || "";
+
+      // ✅ percorso immagini: icons/1.png ... icons/21.png
+      img.src = bust(`./icons/${day}.png`);
+
+      // disabilita prev/next ai limiti
+      document.getElementById("prevBtn").disabled = (day <= 1);
+      document.getElementById("nextBtn").disabled = (day >= TOTAL_DAYS);
+      document.getElementById("prevBtn").style.opacity = (day <= 1) ? "0.5" : "1";
+      document.getElementById("nextBtn").style.opacity = (day >= TOTAL_DAYS) ? "0.5" : "1";
+    }
+
+    // =========================
+    // INIT
+    // =========================
+    (async function init(){
+      await loadWissenJson();
+      render(getDay());
+
+      document.getElementById("prevBtn").addEventListener("click", () => setDay(getDay() - 1));
+      document.getElementById("nextBtn").addEventListener("click", () => setDay(getDay() + 1));
+    })();
+  </script>
 </body>
 </html>
