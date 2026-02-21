@@ -2,270 +2,479 @@
 <html lang="de">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#113a2d" />
-  <title>Wissen & Klarheit – Panacea</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Panacea – Wissen & Klarheit</title>
 
   <style>
     :root{
-      --text:#0f1e17;
-      --muted:rgba(15,30,23,.72);
-      --glass:rgba(255,255,255,.70);
-      --shadow:0 24px 60px rgba(0,0,0,.22);
-      --radius:22px;
-      --accent:#113a2d;
-      --line:rgba(231,200,115,.45);
-      --goldGlow: 0 0 18px rgba(231,200,115,.28), 0 18px 50px rgba(0,0,0,.16);
+      --bg1:#f6f1e6;
+      --bg2:#efe7d7;
+      --card:#ffffffd9;
+      --card2:#ffffffee;
+      --gold:#c8a24a;
+      --gold2:#e8d28a;
+      --text:#2b2b2b;
+      --muted:#6b6b6b;
+      --shadow: 0 14px 40px rgba(0,0,0,.10);
+      --shadow2: 0 10px 26px rgba(0,0,0,.10);
+      --radius: 22px;
+      --radius2: 18px;
     }
-    html, body { height: 100%; }
+
     body{
       margin:0;
-      font-family:"Plus Jakarta Sans",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color:var(--text);
-      background:url("icons/sfondo.png") center / cover no-repeat fixed;
+      background: radial-gradient(1200px 800px at 30% 0%, var(--bg1), var(--bg2));
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      padding:28px 14px;
     }
-    .veil{
-      min-height:100%;
-      background: radial-gradient(circle at 30% 5%, rgba(255,255,255,.55), rgba(255,255,255,.0) 60%);
-      padding:22px 14px 60px;
-      box-sizing:border-box;
+
+    .phone{
+      width:100%;
+      max-width:480px;
     }
-    .app{
-      max-width:420px;           /* TELEFONO */
-      margin:0 auto;
+
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:14px;
     }
-    .topbar{ display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+
     .back{
-      display:inline-block;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
       padding:10px 14px;
       border-radius:999px;
-      background:rgba(255,255,255,.78);
-      border:1px solid rgba(255,255,255,.55);
-      text-decoration:none;
-      color:var(--accent);
-      font-weight:700;
-      box-shadow:0 10px 22px rgba(0,0,0,.10);
+      background: linear-gradient(180deg, var(--card2), var(--card));
+      box-shadow: var(--shadow2);
+      color:var(--text);
+      border:1px solid rgba(200,162,74,.20);
     }
+    .back:hover{ transform: translateY(-1px); }
 
-    .titleBox{
-      background:rgba(255,255,255,.78);
-      border:1px solid rgba(255,255,255,.55);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:24px 22px 16px;
-      margin-bottom:18px;
+    .brand{
+      text-align:right;
+      line-height:1.1;
     }
-    h1{
-      margin:0 0 8px;
-      font-family:"Playfair Display",serif;
-      font-size:34px;
-      line-height:1.08;
-      color:var(--accent);
+    .brand .t1{
+      font-size:14px;
+      color:var(--muted);
     }
-    .sub{ margin:0; color:var(--muted); font-size:14px; }
+    .brand .t2{
+      font-size:18px;
+      font-weight:800;
+      letter-spacing:.2px;
+    }
+    .brand .glow{
+      color:var(--gold);
+      text-shadow: 0 0 10px rgba(200,162,74,.30);
+      font-weight:900;
+    }
 
     .card{
-      background:var(--glass);
-      border:1px solid rgba(255,255,255,.55);
-      border-radius:var(--radius);
-      box-shadow:var(--goldGlow);
-      padding:18px;
-      margin-bottom:16px;
-      backdrop-filter: blur(8px);
+      background: linear-gradient(180deg, var(--card2), var(--card));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border:1px solid rgba(200,162,74,.18);
+      overflow:hidden;
     }
-    .dayHero{
+
+    .hero{
+      padding:18px 18px 14px 18px;
       display:flex;
       gap:14px;
       align-items:center;
-      margin-bottom:12px;
     }
-  .wissen-image {
-  width: 50%;              /* metà dello schermo */
-  max-width: 240px;        /* limite massimo elegante */
-  height: auto;
-  display: block;
-  margin: 0 auto 18px auto;
 
-  border-radius: 18px;
-  object-fit: cover;
-
-  box-shadow: 0 8px 22px rgba(0,0,0,0.12);
-  border: 2px solid rgba(212,175,55,0.35);
-}
-    .dayMeta{ flex:1; min-width:0; }
-    .tag{
-      display:inline-block;
-      font-size:12px;
-      padding:6px 10px;
-      border-radius:999px;
-      background:rgba(255,255,255,.70);
-      border:1px solid rgba(231,200,115,.30);
-      color:rgba(15,30,23,.70);
-      font-weight:800;
-      margin-bottom:8px;
-    }
-    .card h2{
-      margin:0 0 6px;
-      font-size:20px;
-      color:var(--accent);
+    .daybadge{
+      width:64px;
+      height:64px;
+      border-radius:18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
       font-weight:900;
-      line-height:1.15;
-    }
-    .card p{ margin:0; color:var(--muted); font-size:15px; line-height:1.45; }
-
-    .mini{
-      margin-top:12px;
-      padding-top:12px;
-      border-top:1px solid var(--line);
-      color:rgba(15,30,23,.65);
-      font-size:13.5px;
+      font-size:16px;
+      color:#3a2c10;
+      background: radial-gradient(circle at 30% 20%, #fff6d6, #e8d28a);
+      border:1px solid rgba(200,162,74,.35);
+      box-shadow: 0 0 16px rgba(200,162,74,.25);
+      flex:0 0 auto;
     }
 
-    .ctaRow{
-      margin-top:12px;
+    .hero h1{
+      margin:0;
+      font-size:18px;
+      letter-spacing:.2px;
+    }
+    .hero p{
+      margin:6px 0 0 0;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .imagewrap{
+      position:relative;
+      padding:0 18px 16px 18px;
+    }
+
+    .dayimg{
+      width:100%;
+      border-radius: var(--radius2);
+      display:block;
+      border:1px solid rgba(200,162,74,.22);
+      box-shadow: 0 0 18px rgba(200,162,74,.16);
+      background:#fff;
+    }
+
+    .content{
+      padding:16px 18px 18px 18px;
+    }
+
+    .title{
+      margin:0 0 10px 0;
+      font-size:18px;
+      font-weight:900;
+    }
+
+    .impulse{
+      margin:0;
+      font-size:15px;
+      line-height:1.55;
+    }
+
+    .divider{
+      height:1px;
+      background: linear-gradient(90deg, transparent, rgba(200,162,74,.35), transparent);
+      margin:16px 0;
+    }
+
+    .row{
       display:flex;
       gap:10px;
       flex-wrap:wrap;
-      align-items:center;
     }
+
     .btn{
       appearance:none;
-      border:0;
+      border:none;
       cursor:pointer;
-      padding:10px 14px;
+      padding:12px 14px;
       border-radius:14px;
-      font-weight:900;
-      background:rgba(255,255,255,.86);
-      color:var(--accent);
-      border:1px solid rgba(255,255,255,.55);
-      box-shadow:0 10px 18px rgba(0,0,0,.10);
+      font-weight:800;
+      letter-spacing:.2px;
+      box-shadow: var(--shadow2);
+      border:1px solid rgba(200,162,74,.20);
+      background: linear-gradient(180deg, #ffffff, #f7f2e6);
+      color:var(--text);
+      flex:1;
+      min-width:130px;
     }
-    .btn:disabled{ opacity:.45; cursor:not-allowed; }
-    .link{ color:var(--accent); font-weight:900; text-decoration:underline; }
-    .spacer{ flex:1; }
+    .btn:hover{ transform: translateY(-1px); }
+
+    .btn.primary{
+      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      border:1px solid rgba(200,162,74,.35);
+      color:#3a2c10;
+      text-shadow: 0 0 10px rgba(200,162,74,.25);
+    }
+
+    .small{
+      margin-top:12px;
+      font-size:12px;
+      color:var(--muted);
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .pill{
+      padding:8px 10px;
+      border-radius:999px;
+      background: rgba(255,255,255,.65);
+      border:1px solid rgba(200,162,74,.16);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+    }
+
+    .premiumBox{
+      margin-top:14px;
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(200,162,74,.28);
+      background: linear-gradient(180deg, rgba(255,246,214,.75), rgba(255,255,255,.75));
+      box-shadow: 0 0 18px rgba(200,162,74,.15);
+      display:none;
+    }
+    .premiumBox h3{
+      margin:0 0 8px 0;
+      font-size:14px;
+      font-weight:900;
+      color:#3a2c10;
+    }
+    .premiumBox p{
+      margin:0;
+      font-size:14px;
+      line-height:1.5;
+    }
+    .premiumBox .q{
+      margin-top:10px;
+      color:#3a2c10;
+      font-weight:800;
+    }
+
+    .error{
+      margin-top:10px;
+      padding:12px 14px;
+      border-radius:16px;
+      border:1px solid rgba(190,40,40,.25);
+      background: rgba(255,240,240,.8);
+      color:#7a1d1d;
+      display:none;
+    }
   </style>
 </head>
 
 <body>
-  <div class="veil">
-    <div class="app">
+  <div class="phone">
 
-      <div class="topbar">
-        <a class="back" href="index.html">← Home</a>
+    <div class="topbar">
+      <a class="back" href="index.html">← Home</a>
+      <div class="brand">
+        <div class="t1">Panacea</div>
+        <div class="t2"><span class="glow">Wissen</span> & Klarheit</div>
       </div>
-
-      <div class="titleBox">
-        <h1>Wissen &amp; Klarheit</h1>
-        <p class="sub">Jeden Tag ein kurzer Impuls – klar, wissenschaftlich fundiert, leicht umsetzbar.</p>
-      </div>
-
-      <div class="card">
-
-        <div class="dayHero">
-          <img id="dayImg" class="dayImg" src="icons/1.png" alt="Impuls Bild">
-          <div class="dayMeta">
-            <div class="tag">Tag <span id="dayNum">1</span>/21</div>
-            <h2 id="wissenTitle">…</h2>
-          </div>
-        </div>
-
-        <p id="wissenText">…</p>
-
-        <div class="mini" id="premiumTeaser">
-          ✨ Premium: Extra-Insight + Mini-Reflexionsfrage (täglich wechselnd).
-        </div>
-
-        <div class="ctaRow">
-          <button class="btn" id="prevDayBtn">←</button>
-          <button class="btn" id="nextDayBtn">→</button>
-          <button class="btn" id="resetCycleBtn">Reset</button>
-
-          <div class="spacer"></div>
-          <span style="color:rgba(15,30,23,.65); font-weight:800;">Free-Version ·</span>
-          <a class="link" href="mitglieder.html">Mitglieder freischalten</a>
-        </div>
-      </div>
-
     </div>
+
+    <div class="card">
+      <div class="hero">
+        <div class="daybadge" id="dayBadge">Tag 1</div>
+        <div>
+          <h1 id="dayHeadline">Dein 21-Tage Impuls</h1>
+          <p>Ein kurzer Gedanke pro Tag — ruhig, klar, umsetzbar.</p>
+        </div>
+      </div>
+
+      <div class="imagewrap">
+        <img id="dayImage" class="dayimg" src="icons/1.png" alt="Wissen – Tag Bild">
+      </div>
+
+      <div class="content">
+        <h2 class="title" id="dayTitle">Lade Inhalt…</h2>
+        <p class="impulse" id="dayImpulse">Bitte einen Moment.</p>
+
+        <div class="premiumBox" id="premiumBox">
+          <h3>Premium</h3>
+          <p id="premiumInsight"></p>
+          <p class="q" id="premiumQuestion"></p>
+        </div>
+
+        <div class="error" id="errorBox"></div>
+
+        <div class="divider"></div>
+
+        <div class="row">
+          <button class="btn" id="prevBtn">← Zurück</button>
+          <button class="btn primary" id="doneBtn">✔ Heute abgeschlossen</button>
+          <button class="btn" id="nextBtn">Weiter →</button>
+        </div>
+
+        <div class="small">
+          <div class="pill" id="progressPill">Fortschritt: 0/21</div>
+          <div class="pill" id="premiumPill">Premium: aus</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <script>
-    // ====== 21 Tage Wissen & Klarheit (progressione salvata) ======
-    const wissen21 = [
-      { title: "Tag 1 – Klarer Fokus", text: "Wähle EIN Thema für heute. Notiere den nächsten kleinsten Schritt – und starte." },
-      { title: "Tag 2 – Nervensystem beruhigen", text: "Langes Ausatmen aktiviert den Parasympathikus. 6 Atemzüge: 4 ein, 6 aus." },
-      { title: "Tag 3 – Gedanken entkoppeln", text: "Gedanken sind Ereignisse – keine Befehle. Sag: „Ich habe den Gedanken, dass…“" },
-      { title: "Tag 4 – Struktur statt Druck", text: "Plane nur die nächsten 30 Minuten. Das reicht – und macht dich handlungsfähig." },
-      { title: "Tag 5 – Energie durch Haltung", text: "Brustraum öffnen, Schultern weich. Haltung sendet Sicherheit ans Nervensystem." },
-      { title: "Tag 6 – Regeneration", text: "10 Minuten draußen (auch langsam). Tageslicht + Bewegung = sanfter Reset." },
-      { title: "Tag 7 – Klarheit & Ausrichtung", text: "Was war diese Woche hilfreich? Was lässt du weg? Ein Satz reicht." },
+    // ---------- Settings / Storage ----------
+    const STORAGE_DAY = "panacea_wissen_day";
+    const STORAGE_DONE = "panacea_wissen_done"; // JSON array of numbers [1..21]
+    const PREMIUM_FLAG = "panacea_premium";     // "true" | "false"
 
-      { title: "Tag 8 – Reiz filtern", text: "Weniger Input = mehr Klarheit. 2× am Tag 10 Minuten ohne Handy." },
-      { title: "Tag 9 – Körper als Anker", text: "Spüre 3 Kontaktpunkte (Füße, Hände, Rücken). Das bringt dich ins Jetzt." },
-      { title: "Tag 10 – Mini-Pause", text: "60 Sekunden Pause: ausatmen, Schultern sinken lassen, Blick weich." },
-      { title: "Tag 11 – Selbstgespräch", text: "Sag dir: „Es ist gerade viel. Ich mache einen kleinen Schritt.“" },
-      { title: "Tag 12 – Priorität", text: "Was ist heute wirklich wichtig? Streiche 1 Sache bewusst von der Liste." },
-      { title: "Tag 13 – Grenzen", text: "Ein klares „Nein“ ist Nervensystem-Schutz. Formuliere es freundlich und kurz." },
-      { title: "Tag 14 – Energiehaushalt", text: "Plane zuerst Erholung, dann Leistung. 1 Regenerationsblock = Pflicht." },
-      { title: "Tag 15 – Fokus-Ritual", text: "Startsignal: Wasser trinken + 3 Atemzüge + eine Aufgabe öffnen." },
-      { title: "Tag 16 – Gedanken testen", text: "Frage: „Welche Beweise habe ich wirklich?“ – statt automatisch zu glauben." },
-      { title: "Tag 17 – Bewegung klein", text: "2 Minuten gehen oder dehnen. Kleine Aktivierung senkt Stresschemie." },
-      { title: "Tag 18 – Soziale Sicherheit", text: "Schreibe einer Person: „Kurz Hallo – wie geht’s?“ Verbindung reguliert." },
-      { title: "Tag 19 – Schlafschutz", text: "Heute Abend: Bildschirm 30 Min früher aus. Dein Gehirn wird es lieben." },
-      { title: "Tag 20 – Dank/Orientierung", text: "Notiere 1 Sache, die funktioniert. Das trainiert den Aufmerksamkeitsfilter." },
-      { title: "Tag 21 – Integration", text: "Was nimmst du mit? Lass 1 Gewohnheit als „Mini-Standard“ drin." },
-    ];
+    const TOTAL_DAYS = 21;
 
-    const KEY = "panacea_wissen_day"; // 0..20
+    // ---------- Elements ----------
+    const dayBadge = document.getElementById("dayBadge");
+    const dayTitle = document.getElementById("dayTitle");
+    const dayImpulse = document.getElementById("dayImpulse");
+    const dayImage = document.getElementById("dayImage");
+    const progressPill = document.getElementById("progressPill");
+    const premiumPill = document.getElementById("premiumPill");
 
+    const premiumBox = document.getElementById("premiumBox");
+    const premiumInsightEl = document.getElementById("premiumInsight");
+    const premiumQuestionEl = document.getElementById("premiumQuestion");
+
+    const errorBox = document.getElementById("errorBox");
+
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const doneBtn = document.getElementById("doneBtn");
+
+    // ---------- Helpers ----------
     function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
-    function getDayIndex(){
-      const raw = localStorage.getItem(KEY);
-      const n = raw === null ? 0 : parseInt(raw, 10);
-      if (Number.isNaN(n)) return 0;
-      return clamp(n, 0, wissen21.length - 1);
-    }
-    function setDayIndex(i){
-      const v = clamp(i, 0, wissen21.length - 1);
-      localStorage.setItem(KEY, String(v));
-      renderDay(v);
+
+    function getCurrentDay(){
+      const raw = localStorage.getItem(STORAGE_DAY);
+      const n = parseInt(raw || "1", 10);
+      return clamp(isNaN(n) ? 1 : n, 1, TOTAL_DAYS);
     }
 
-    function renderDay(i){
-      const item = wissen21[i];
-
-      const titleEl = document.getElementById("wissenTitle");
-      const textEl  = document.getElementById("wissenText");
-      const dayNum  = document.getElementById("dayNum");
-      const dayImg  = document.getElementById("dayImg");
-
-      if (titleEl) titleEl.textContent = item.title;
-      if (textEl)  textEl.textContent  = item.text;
-      if (dayNum)  dayNum.textContent  = String(i + 1);
-
-      // immagine del giorno: icons/1.png..21.png
-      if (dayImg) dayImg.src = `icons/${i + 1}.png`;
-
-      const prevBtn = document.getElementById("prevDayBtn");
-      const nextBtn = document.getElementById("nextDayBtn");
-      if (prevBtn) prevBtn.disabled = (i === 0);
-      if (nextBtn) nextBtn.disabled = (i === wissen21.length - 1);
+    function setCurrentDay(day){
+      localStorage.setItem(STORAGE_DAY, String(clamp(day, 1, TOTAL_DAYS)));
     }
 
-    // Bind bottoni (sicuro)
-    const prevBtn = document.getElementById("prevDayBtn");
-    const nextBtn = document.getElementById("nextDayBtn");
-    const resetBtn = document.getElementById("resetCycleBtn");
+    function getDone(){
+      try{
+        const raw = localStorage.getItem(STORAGE_DONE);
+        const arr = raw ? JSON.parse(raw) : [];
+        if(!Array.isArray(arr)) return [];
+        // keep only 1..21 unique
+        return [...new Set(arr.map(x => parseInt(x,10)).filter(x => x>=1 && x<=TOTAL_DAYS))];
+      }catch(e){
+        return [];
+      }
+    }
 
-    if (prevBtn)  prevBtn.addEventListener("click", () => setDayIndex(getDayIndex() - 1));
-    if (nextBtn)  nextBtn.addEventListener("click", () => setDayIndex(getDayIndex() + 1));
-    if (resetBtn) resetBtn.addEventListener("click", () => setDayIndex(0));
+    function setDone(arr){
+      localStorage.setItem(STORAGE_DONE, JSON.stringify(arr));
+    }
 
-    renderDay(getDayIndex());
+    function isPremium(){
+      return (localStorage.getItem(PREMIUM_FLAG) === "true");
+    }
+
+    function updatePills(){
+      const done = getDone();
+      progressPill.textContent = `Fortschritt: ${done.length}/${TOTAL_DAYS}`;
+      premiumPill.textContent = `Premium: ${isPremium() ? "an" : "aus"}`;
+    }
+
+    function showError(msg){
+      errorBox.style.display = "block";
+      errorBox.textContent = msg;
+    }
+
+    function hideError(){
+      errorBox.style.display = "none";
+      errorBox.textContent = "";
+    }
+
+    // ---------- Content loading ----------
+    let wissenData = null;
+
+    const FALLBACK_DAYS = Array.from({length: TOTAL_DAYS}, (_,i) => ({
+      title: `Tag ${i+1}`,
+      impulse: "Heute: Ein kleiner Schritt zählt. Atme ruhig ein. Spüre den Körper. Wähle eine Sache, die du heute sanft ordnest.",
+      premiumInsight: "Premium-Impuls: Fokus + Klarheit. Ein kurzer, tieferer Blick auf deinen nächsten kleinen Hebel.",
+      premiumQuestion: "Premium-Frage: Was ist heute das Wichtigste – und was darf warten?"
+    }));
+
+    async function loadJson(){
+      try{
+        const res = await fetch("./data/wissen.json", { cache: "no-store" });
+        if(!res.ok) throw new Error("JSON nicht erreichbar");
+        const data = await res.json();
+
+        // Erwartet: { days: [ {title, impulse, premiumInsight, premiumQuestion}, ... ] }
+        if(!data || !Array.isArray(data.days) || data.days.length < TOTAL_DAYS){
+          throw new Error("JSON-Format stimmt nicht (days[] fehlt oder zu kurz)");
+        }
+        wissenData = data.days;
+      }catch(err){
+        wissenData = FALLBACK_DAYS;
+        showError("Hinweis: Inhalt wurde im Fallback geladen (wissen.json nicht gefunden oder fehlerhaft).");
+      }
+    }
+
+    function renderDay(day){
+      hideError();
+
+      // Badge + image
+      dayBadge.textContent = `Tag ${day}`;
+      dayImage.src = `icons/${day}.png`;
+      dayImage.alt = `Wissen – Tag ${day}`;
+
+      // Data
+      const entry = (wissenData && wissenData[day - 1]) ? wissenData[day - 1] : FALLBACK_DAYS[day - 1];
+
+      dayTitle.textContent = entry.title || `Tag ${day}`;
+      dayImpulse.textContent = entry.impulse || "";
+
+      // Premium block
+      if(isPremium()){
+        premiumBox.style.display = "block";
+        premiumInsightEl.textContent = entry.premiumInsight || "";
+        premiumQuestionEl.textContent = entry.premiumQuestion ? `Frage: ${entry.premiumQuestion}` : "";
+      }else{
+        premiumBox.style.display = "none";
+        premiumInsightEl.textContent = "";
+        premiumQuestionEl.textContent = "";
+      }
+
+      // Buttons state
+      prevBtn.disabled = (day <= 1);
+      nextBtn.disabled = (day >= TOTAL_DAYS);
+
+      const done = getDone();
+      const isDoneToday = done.includes(day);
+      doneBtn.textContent = isDoneToday ? "✔ Abgeschlossen" : "✔ Heute abgeschlossen";
+      doneBtn.classList.toggle("primary", !isDoneToday);
+
+      updatePills();
+    }
+
+    // If image missing, avoid broken icon look: swap to transparent placeholder
+    dayImage.addEventListener("error", () => {
+      dayImage.src = "icons/sfondo.png"; // se esiste, altrimenti commenta questa riga
+      showError("Bild nicht gefunden. Prüfe: icons/1.png bis icons/21.png (genau so benannt).");
+    });
+
+    // ---------- Events ----------
+    prevBtn.addEventListener("click", () => {
+      const d = getCurrentDay();
+      setCurrentDay(d - 1);
+      renderDay(getCurrentDay());
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    nextBtn.addEventListener("click", () => {
+      const d = getCurrentDay();
+      setCurrentDay(d + 1);
+      renderDay(getCurrentDay());
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    doneBtn.addEventListener("click", () => {
+      const day = getCurrentDay();
+      const done = getDone();
+      if(!done.includes(day)) done.push(day);
+      setDone(done);
+
+      // auto-advance (optional)
+      if(day < TOTAL_DAYS) setCurrentDay(day + 1);
+
+      renderDay(getCurrentDay());
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // ---------- Init ----------
+    (async function init(){
+      updatePills();
+      await loadJson();
+      renderDay(getCurrentDay());
+      updatePills();
+    })();
   </script>
 </body>
 </html>
