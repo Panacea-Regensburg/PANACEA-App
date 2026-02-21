@@ -2,27 +2,23 @@
 <html lang="de">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#113a2d" />
-  <title>Daily Reset – Panacea</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Panacea – Daily Reset</title>
 
   <style>
     :root{
-      --gold1:#e7c873;
-      --gold2:#c9a94f;
-      --deep:#0f2f25;
-      --text:#0f1e17;
-      --muted: rgba(15,30,23,.72);
-      --glass: rgba(255,255,255,.86);
-      --line: rgba(231,200,115,.40);
-      --shadow: 0 24px 60px rgba(0,0,0,.25);
-      --shadowSoft: 0 14px 30px rgba(0,0,0,.14);
-      --radius: 28px;
-      --maxW: 560px;
+      --bg1:#f6f1e6;
+      --bg2:#efe7d7;
+      --card:#ffffffd9;
+      --card2:#ffffffee;
+      --gold:#c8a24a;
+      --gold2:#e8d28a;
+      --text:#2b2b2b;
+      --muted:#6b6b6b;
+      --shadow: 0 14px 40px rgba(0,0,0,.10);
+      --shadow2: 0 10px 26px rgba(0,0,0,.10);
+      --radius: 22px;
+      --radius2: 18px;
     }
 
     *{ box-sizing:border-box; }
@@ -30,22 +26,18 @@
 
     body{
       margin:0;
-      font-family:"Plus Jakarta Sans",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color:var(--text);
-      background:url("icons/sfondo.png") center/cover no-repeat fixed;
-    }
-
-    .veil{
-      min-height:100%;
-      padding:22px 14px 28px;
-      background: radial-gradient(circle at top, rgba(255,255,255,.18), rgba(0,0,0,.25));
+      background: radial-gradient(1200px 800px at 30% 0%, var(--bg1), var(--bg2));
+      min-height:100vh;
       display:flex;
       justify-content:center;
+      padding:28px 14px;
     }
 
-    .app{
+    .phone{
       width:100%;
-      max-width:var(--maxW);
+      max-width:480px;
     }
 
     .topbar{
@@ -57,116 +49,105 @@
     }
 
     .back{
+      text-decoration:none;
       display:inline-flex;
       align-items:center;
-      gap:10px;
+      gap:8px;
       padding:10px 14px;
       border-radius:999px;
-      text-decoration:none;
-      background: rgba(255,255,255,.82);
-      border:1px solid rgba(231,200,115,.35);
-      box-shadow: var(--shadowSoft);
-      color: rgba(15,30,23,.85);
-      font-weight:700;
-      font-size:13px;
-      backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, var(--card2), var(--card));
+      box-shadow: var(--shadow2);
+      color:var(--text);
+      border:1px solid rgba(200,162,74,.20);
     }
-    .back:hover{ text-decoration: underline; }
+    .back:hover{ transform: translateY(-1px); }
 
-    .titleBox{
-      padding:20px 20px 16px;
-      border-radius: var(--radius);
-      background: var(--glass);
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(14px);
-      margin-bottom:16px;
+    .brand{
+      text-align:right;
+      line-height:1.1;
     }
-
-    h1{
-      margin:0 0 10px;
-      font-family:"Playfair Display",serif;
-      font-size:32px;
-      line-height:1.12;
-      letter-spacing:-0.02em;
-      background: linear-gradient(135deg, #1b4d3b, #0f2f25 45%, #1b4d3b);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
+    .brand .t1{
+      font-size:14px;
+      color:var(--muted);
     }
-
-    .dailyFocusBox{
-      margin: 6px 0 12px;
-      padding: 18px;
-      border-radius: 24px;
-      background: rgba(255,255,255,0.45);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(255,255,255,0.35);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    .brand .t2{
+      font-size:18px;
+      font-weight:800;
+      letter-spacing:.2px;
     }
-    .dailyFocusBox h3{
-      margin:0 0 8px;
-      font-size:16px;
+    .brand .glow{
+      color:var(--gold);
+      text-shadow: 0 0 10px rgba(200,162,74,.30);
       font-weight:900;
-      color: rgba(15,30,23,.92);
-    }
-    .dailyFocusBox p{
-      margin:0 0 10px;
-      font-size:14px;
-      line-height:1.45;
-      color: rgba(15,30,23,.78);
-      font-weight:600;
-    }
-    .dailyFocusBox .premiumHint{
-      margin:0;
-      font-size:12.5px;
-      opacity:.75;
-      line-height:1.35;
     }
 
-    .sub{
-      margin:0;
-      color: var(--muted);
-      font-size:14px;
-      line-height:1.45;
-      position:relative;
-      padding-top:12px;
+    .card{
+      background: linear-gradient(180deg, var(--card2), var(--card));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border:1px solid rgba(200,162,74,.18);
+      overflow:hidden;
     }
-    .sub::before{
-      content:"";
-      position:absolute;
-      top:0;
-      left:0;
+
+    .hero{
+      padding:18px 18px 14px 18px;
+      display:flex;
+      gap:14px;
+      align-items:center;
+    }
+
+    .badge{
       width:64px;
-      height:2px;
-      background: linear-gradient(90deg, var(--gold1), var(--gold2));
-      border-radius:2px;
+      height:64px;
+      border-radius:18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      font-size:16px;
+      color:#3a2c10;
+      background: radial-gradient(circle at 30% 20%, #fff6d6, #e8d28a);
+      border:1px solid rgba(200,162,74,.35);
+      box-shadow: 0 0 16px rgba(200,162,74,.25);
+      flex:0 0 auto;
     }
 
-    .panel{
-      padding:18px;
-      border-radius: 32px;
-      background: rgba(255,255,255,.35);
-      border: 1px solid rgba(231,200,115,.25);
-      box-shadow: var(--shadowSoft);
-      backdrop-filter: blur(12px);
-      margin-top: 18px;
+    .hero h1{
+      margin:0;
+      font-size:18px;
+      letter-spacing:.2px;
+    }
+    .hero p{
+      margin:6px 0 0 0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.45;
     }
 
-    /* Breathing area */
+    .content{
+      padding:16px 18px 18px 18px;
+    }
+
+    .divider{
+      height:1px;
+      background: linear-gradient(90deg, transparent, rgba(200,162,74,.35), transparent);
+      margin:16px 0;
+    }
+
+    /* --------- Breath area (Wissen-style) --------- */
     .breathWrap{
       display:flex;
       flex-direction:column;
       align-items:center;
-      gap:14px;
-      padding:12px 0 6px;
+      gap:12px;
+      padding:6px 0 8px;
     }
 
     .phase{
-      font-weight:800;
-      letter-spacing:.02em;
-      color: rgba(15,30,23,.86);
-      font-size:14px;
+      font-weight:900;
+      letter-spacing:.06em;
+      color: rgba(43,43,43,.85);
+      font-size:12px;
       text-transform: uppercase;
     }
 
@@ -174,40 +155,38 @@
       display:flex;
       align-items:center;
       gap:10px;
-      color: rgba(15,30,23,.80);
-      font-weight:700;
-      font-size:14px;
+      color: rgba(43,43,43,.78);
+      font-weight:800;
+      font-size:13px;
     }
 
     .time{
       font-variant-numeric: tabular-nums;
       padding:8px 12px;
       border-radius:999px;
-      background: rgba(255,255,255,.82);
-      border: 1px solid rgba(231,200,115,.28);
-      box-shadow: 0 10px 22px rgba(0,0,0,.10);
+      background: rgba(255,255,255,.70);
+      border:1px solid rgba(200,162,74,.16);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
     }
 
-    /* Circle */
     .orb{
-      width: 240px;
-      height: 240px;
+      width: 230px;
+      height: 230px;
       border-radius: 999px;
       position: relative;
       display:grid;
       place-items:center;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.90), rgba(255,255,255,.55));
-      border: 1px solid rgba(231,200,115,.40);
-      box-shadow: 0 22px 60px rgba(0,0,0,.22);
-      backdrop-filter: blur(10px);
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.92), rgba(255,255,255,.55));
+      border: 1px solid rgba(200,162,74,.28);
+      box-shadow: 0 22px 60px rgba(0,0,0,.10);
       overflow:hidden;
     }
 
     .orb::before{
       content:"";
       position:absolute;
-      inset:-30px;
-      background: radial-gradient(circle, rgba(231,200,115,.22), transparent 60%);
+      inset:-28px;
+      background: radial-gradient(circle, rgba(200,162,74,.20), transparent 60%);
       filter: blur(6px);
       opacity: .9;
       pointer-events:none;
@@ -217,9 +196,9 @@
       width: 72%;
       height: 72%;
       border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, rgba(231,200,115,.45), rgba(18,59,46,.18));
-      border: 1px solid rgba(231,200,115,.35);
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,.35);
+      background: radial-gradient(circle at 30% 30%, rgba(200,162,74,.38), rgba(43,43,43,.06));
+      border: 1px solid rgba(200,162,74,.22);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.40);
       transform: scale(0.88);
       transition: transform 4s ease;
     }
@@ -231,58 +210,55 @@
       z-index:2;
     }
     .orbText .focus{
-      font-weight:800;
-      font-size:16px;
-      color: rgba(15,30,23,.86);
+      font-weight:900;
+      font-size:15px;
+      color: rgba(43,43,43,.85);
       margin-bottom:6px;
     }
     .orbText .hint{
       font-size:13px;
-      color: rgba(15,30,23,.70);
+      color: rgba(43,43,43,.70);
       line-height:1.35;
     }
 
     .controls{
-      display:grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      display:flex;
       gap:10px;
+      flex-wrap:wrap;
       margin-top:14px;
     }
 
     button{
-      border:0;
+      appearance:none;
+      border:none;
       cursor:pointer;
-      padding:12px 12px;
-      border-radius: 18px;
-      font-weight:800;
-      font-size:14px;
-      background: rgba(255,255,255,.88);
-      border: 1px solid rgba(231,200,115,.28);
-      box-shadow: 0 10px 22px rgba(0,0,0,.12);
-      color: rgba(15,30,23,.86);
-      transition: transform .12s ease, box-shadow .12s ease;
+      padding:12px 14px;
+      border-radius:14px;
+      font-weight:900;
+      letter-spacing:.2px;
+      box-shadow: var(--shadow2);
+      border:1px solid rgba(200,162,74,.20);
+      background: linear-gradient(180deg, #ffffff, #f7f2e6);
+      color:var(--text);
+      flex:1;
+      min-width:130px;
     }
-    button:hover{
-      transform: translateY(-1px);
-      box-shadow: 0 14px 28px rgba(0,0,0,.16);
-    }
+    button:hover{ transform: translateY(-1px); }
 
-    .primary{
-      background: linear-gradient(135deg, var(--gold1), var(--gold2));
-      color: #fff;
-      border: 1px solid rgba(255,255,255,.30);
-    }
-
-    .ghost{
-      background: rgba(255,255,255,.78);
+    button.primary{
+      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      border:1px solid rgba(200,162,74,.35);
+      color:#3a2c10;
+      text-shadow: 0 0 10px rgba(200,162,74,.25);
     }
 
     .settings{
       margin-top:14px;
-      padding: 14px 14px;
-      border-radius: 22px;
-      background: rgba(255,255,255,.72);
-      border: 1px solid rgba(231,200,115,.20);
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(200,162,74,.16);
+      background: rgba(255,255,255,.65);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
     }
 
     .row{
@@ -292,58 +268,51 @@
       gap:12px;
       margin: 10px 0;
       font-size:14px;
-      color: rgba(15,30,23,.82);
-      font-weight:700;
+      color: rgba(43,43,43,.80);
+      font-weight:800;
     }
 
     input[type="number"]{
       width: 88px;
       padding:10px 10px;
       border-radius: 14px;
-      border: 1px solid rgba(231,200,115,.25);
+      border: 1px solid rgba(200,162,74,.18);
       background: rgba(255,255,255,.90);
-      font-weight:800;
-      color: rgba(15,30,23,.86);
+      font-weight:900;
+      color: rgba(43,43,43,.90);
       box-shadow: inset 0 0 0 1px rgba(255,255,255,.35);
     }
 
     .mini{
       font-size:12px;
-      font-weight:600;
-      color: rgba(15,30,23,.65);
+      font-weight:700;
+      color: rgba(43,43,43,.62);
       margin-top: 8px;
       line-height: 1.4;
     }
 
-    @media (max-width: 420px){
-      .orb{ width: 220px; height: 220px; }
-      .controls{ grid-template-columns: 1fr; }
+    /* --------- Premium box (Wissen-style) --------- */
+    .premiumBox{
+      margin-top:14px;
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(200,162,74,.28);
+      background: linear-gradient(180deg, rgba(255,246,214,.75), rgba(255,255,255,.75));
+      box-shadow: 0 0 18px rgba(200,162,74,.15);
+    }
+    .premiumBox h3{
+      margin:0 0 10px 0;
+      font-size:14px;
+      font-weight:900;
+      color:#3a2c10;
+      letter-spacing:.2px;
     }
 
-    /* Premium Reset box (visible for FREE too) */
-    .premium-reset{
-      margin-top:18px;
-      padding:22px;
-      border-radius: 24px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.62), rgba(255,255,255,0.48));
-      border: 1px solid rgba(255,255,255,0.35);
-      box-shadow: 0 18px 45px rgba(0,0,0,0.10);
-      backdrop-filter: blur(10px);
-    }
-
-    .premium-reset h2{
-      margin:0 0 12px;
-      font-family:"Playfair Display",serif;
-      font-size:22px;
-      color: rgba(15,30,23,.92);
-      letter-spacing:-0.02em;
-    }
-
-    .premium-reset label{
+    .premiumBox label{
       display:block;
-      font-weight:800;
+      font-weight:900;
       font-size:13px;
-      color: rgba(15,30,23,.72);
+      color: rgba(43,43,43,.75);
       margin: 10px 0 8px;
     }
 
@@ -352,7 +321,7 @@
       width:100%;
       height:8px;
       border-radius:999px;
-      background: rgba(24,59,47,0.12);
+      background: rgba(43,43,43,0.10);
       outline:none;
     }
     input[type="range"]::-webkit-slider-thumb{
@@ -360,152 +329,119 @@
       width:18px;
       height:18px;
       border-radius:50%;
-      background: var(--gold2);
+      background: var(--gold);
       border: 2px solid rgba(255,255,255,.85);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.12);
       cursor:pointer;
     }
     input[type="range"]::-moz-range-thumb{
       width:18px;
       height:18px;
       border-radius:50%;
-      background: var(--gold2);
+      background: var(--gold);
       border: 2px solid rgba(255,255,255,.85);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.12);
       cursor:pointer;
-    }
-    input[type="range"]::-moz-range-track{
-      height:8px;
-      border-radius:999px;
-      background: rgba(24,59,47,0.12);
-    }
-
-    #generateResetBtn{
-      margin-top:14px;
-      width:100%;
-      padding:12px 14px;
-      border-radius: 16px;
-      font-weight:900;
-      background: linear-gradient(135deg, var(--gold1), var(--gold2));
-      color:#fff;
-      border:1px solid rgba(255,255,255,.30);
-      box-shadow: 0 10px 22px rgba(183,154,74,0.28);
     }
 
     .resetOut{
-      margin-top:14px;
-      padding:14px;
-      border-radius:18px;
-      background: rgba(255,255,255,.75);
-      border:1px solid rgba(231,200,115,.22);
+      margin-top:12px;
+      padding:12px 12px;
+      border-radius:16px;
+      background: rgba(255,255,255,.70);
+      border:1px solid rgba(200,162,74,.16);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
     }
-    .resetOut h3{
-      margin:0 0 8px;
-      font-size:16px;
+    .resetOut .rt{
+      margin:0 0 6px;
+      font-size:15px;
       font-weight:900;
-      color: rgba(15,30,23,.90);
+      color: rgba(43,43,43,.88);
     }
-    .resetOut p{
+    .resetOut .rx{
       margin:0;
       font-size:14px;
       line-height:1.45;
-      color: rgba(15,30,23,.78);
-      font-weight:600;
-      white-space: pre-line; /* show \n */
+      color: rgba(43,43,43,.76);
+      font-weight:700;
+      white-space: pre-line;
     }
 
     .memberLine{
       margin-top:12px;
       font-size:14px;
-      opacity:0.78;
-      color: rgba(15,30,23,.78);
+      color: rgba(43,43,43,.72);
+      font-weight:800;
     }
     .memberLine a{
-      color: rgba(15,30,23,.88);
+      color: rgba(43,43,43,.92);
       text-decoration:none;
-      border-bottom:1px dotted rgba(15,30,23,.45);
-      font-weight:800;
+      border-bottom:1px dotted rgba(43,43,43,.45);
+      font-weight:900;
     }
     .memberLine a:hover{ border-bottom-style: solid; }
 
     .premiumInfo{
-      margin-top:14px;
-      padding:14px;
-      border-radius:18px;
-      border:1px solid rgba(231,200,115,.25);
-      background: rgba(255,255,255,.62);
-      box-shadow: 0 10px 22px rgba(0,0,0,.08);
+      margin-top:12px;
+      padding:12px;
+      border-radius:16px;
+      border:1px solid rgba(200,162,74,.18);
+      background: rgba(255,255,255,.65);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
     }
     .premiumInfo .t{
       font-weight:900;
       margin-bottom:8px;
-      color: rgba(15,30,23,.90);
+      color: rgba(43,43,43,.86);
     }
     .premiumInfo ul{
       margin:0;
       padding-left:18px;
       line-height:1.5;
-      color: rgba(15,30,23,.78);
-      font-weight:600;
+      color: rgba(43,43,43,.74);
+      font-weight:700;
       font-size:14px;
+    }
+
+    @media (max-width: 420px){
+      .orb{ width: 215px; height: 215px; }
+      .controls button{ min-width: 100%; }
     }
   </style>
 </head>
 
 <body>
-  <div class="veil">
-    <div class="app">
+  <div class="phone">
 
-      <div class="topbar">
-        <a class="back" href="index.html">← Home</a>
+    <div class="topbar">
+      <a class="back" href="index.html">← Home</a>
+      <div class="brand">
+        <div class="t1">Panacea</div>
+        <div class="t2"><span class="glow">Daily</span> Reset</div>
       </div>
+    </div>
 
-      <div class="titleBox">
-        <h1>Daily Reset</h1>
-
-        <div class="dailyFocusBox">
-          <h3 id="dailyFocusTitle">Heute</h3>
-          <p id="dailyFocusText">Lade…</p>
-          <p class="premiumHint">✨ Premium: Atemrhythmus & Impuls passen sich deinem Stresslevel an.</p>
-        </div>
-
-        <p class="sub">3–5 Minuten für innere Stabilität: ruhig atmen, Körper spüren, Klarheit finden.</p>
-      </div>
-
-      <!-- Premium Reset Box (FREE visible) -->
-      <div class="premium-reset" id="premiumReset">
-        <h2>Premium Reset</h2>
-
-        <label for="stressSlider">Stress Level (1–10)</label>
-        <input id="stressSlider" type="range" min="1" max="10" value="5">
-
-        <label for="energySlider">Energy Level (1–10)</label>
-        <input id="energySlider" type="range" min="1" max="10" value="5">
-
-        <button id="generateResetBtn">Mein Premium Reset</button>
-
-        <!-- ✅ NOW ALWAYS VISIBLE -->
-        <div class="resetOut" id="resetOut">
-          <h3 id="resetTitle"></h3>
-          <p id="resetText"></p>
-        </div>
-
-        <div class="memberLine">
-          <span id="memberStatus">Free-Version</span>
-          · <a href="mitglieder.html" id="unlockLink">Mitglieder freischalten</a>
-        </div>
-
-        <div class="premiumInfo" id="premiumInfo">
-          <div class="t">Was ist im Premium enthalten?</div>
-          <ul>
-            <li><b>Verbesserter Atemrhythmus</b> (automatisch angepasst)</li>
-            <li><b>Mehr Daily-Impulse</b> & personalisierte Reset-Texte</li>
-            <li><b>Mitgliederbereich</b> mit zusätzlichen Tools</li>
-          </ul>
+    <div class="card">
+      <div class="hero">
+        <div class="badge">DR</div>
+        <div>
+          <h1>Daily Reset</h1>
+          <p>3–5 Minuten für innere Stabilität: ruhig atmen, Körper spüren, Klarheit finden.</p>
         </div>
       </div>
 
-      <div class="panel">
+      <div class="content">
+
+        <!-- Daily focus -->
+        <div class="resetOut" style="margin-top:0;">
+          <div class="rt" id="dailyFocusTitle">Heute</div>
+          <p class="rx" id="dailyFocusText">Lade…</p>
+          <p class="rx" style="margin-top:10px; opacity:.8; font-weight:800;">✨ Premium: Atemrhythmus & Impuls passen sich deinem Stresslevel an.</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Breathing -->
         <div class="breathWrap">
           <div class="phase" id="phaseLabel">Bereit</div>
 
@@ -525,7 +461,7 @@
 
         <div class="controls">
           <button class="primary" id="startBtn">Start</button>
-          <button class="ghost" id="pauseBtn" disabled>Pausieren</button>
+          <button id="pauseBtn" disabled>Pausieren</button>
           <button id="resetBtn">Reset</button>
         </div>
 
@@ -547,9 +483,43 @@
             Tipp: Längeres Ausatmen (z. B. 4–6) unterstützt die Beruhigung des Nervensystems.
           </div>
         </div>
-      </div>
 
+        <div class="divider"></div>
+
+        <!-- Premium Reset (visible for free) -->
+        <div class="premiumBox" id="premiumReset">
+          <h3>Premium Reset</h3>
+
+          <label for="stressSlider">Stress Level (1–10)</label>
+          <input id="stressSlider" type="range" min="1" max="10" value="5">
+
+          <label for="energySlider">Energy Level (1–10)</label>
+          <input id="energySlider" type="range" min="1" max="10" value="5">
+
+          <button class="primary" id="generateResetBtn" style="margin-top:12px;">Mein Premium Reset</button>
+
+          <div class="resetOut" id="resetOut">
+            <div class="rt" id="resetTitle"></div>
+            <p class="rx" id="resetText"></p>
+          </div>
+
+          <div class="memberLine">
+            <span id="memberStatus">Free-Version</span> · <a href="mitglieder.html" id="unlockLink">Mitglieder freischalten</a>
+          </div>
+
+          <div class="premiumInfo">
+            <div class="t">Was ist im Premium enthalten?</div>
+            <ul>
+              <li><b>Verbesserter Atemrhythmus</b> (automatisch angepasst)</li>
+              <li><b>Mehr Daily-Impulse</b> & personalisierte Reset-Texte</li>
+              <li><b>Mitgliederbereich</b> mit zusätzlichen Tools</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
     </div>
+
   </div>
 
   <script>
@@ -574,7 +544,7 @@
     const PREMIUM_FLAG = "panacea_premium";
     const isPremiumUser = localStorage.getItem(PREMIUM_FLAG) === "true";
     const memberStatus = document.getElementById("memberStatus");
-    if(memberStatus) memberStatus.textContent = isPremiumUser ? "Premium aktiv" : "Free-Version";
+    memberStatus.textContent = isPremiumUser ? "Premium aktiv" : "Free-Version";
 
     const stressSlider = document.getElementById("stressSlider");
     const energySlider = document.getElementById("energySlider");
@@ -587,7 +557,6 @@
       return "MID";
     }
 
-    // 3 main reactions (+ balanced fallback)
     function pickReset(stress, energy){
       const sL = level(stress);
       const eL = level(energy);
@@ -618,7 +587,7 @@
         };
       }
 
-      // (3) Energy LOW (typisch “leer/erschöpft”)
+      // (3) Energy LOW
       if(eL === "LOW"){
         return {
           title: "Regeneration & sanfte Aktivierung",
@@ -631,7 +600,7 @@
         };
       }
 
-      // Balanced fallback (MID zone)
+      // Balanced fallback
       return {
         title: "Reset – ruhig & klar",
         text:
@@ -651,14 +620,9 @@
       resetTextEl.textContent  = res.text;
     }
 
-    // ✅ Auto-update on slider move
     stressSlider.addEventListener("input", render3Reactions);
     energySlider.addEventListener("input", render3Reactions);
-
-    // ✅ Button also works (same output)
     document.getElementById("generateResetBtn").addEventListener("click", render3Reactions);
-
-    // ✅ Initial render on page load
     render3Reactions();
   </script>
 
@@ -838,7 +802,5 @@
     minutesInput.addEventListener("change", resetAll);
   </script>
 
-  <!-- keep for later, not used now -->
-  <script src="./js/resetLogic.js"></script>
 </body>
 </html>
