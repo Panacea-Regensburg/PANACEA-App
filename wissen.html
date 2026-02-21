@@ -213,7 +213,11 @@
 
         <div class="hint" id="hint"></div>
       </div>
-
+<div class="premiumBox">
+  <div class="premiumTitle">✨ Premium</div>
+  <p id="premiumInsight"></p>
+  <p id="premiumQuestion"></p>
+</div>
     </div>
   </div>
 
@@ -280,12 +284,8 @@
         wissenData = arr.slice(0, TOTAL_DAYS);
         while (wissenData.length < TOTAL_DAYS) wissenData.push(fallback[wissenData.length]);
 
-        document.getElementById("hint").textContent = "";
-      }catch(err){
-        wissenData = fallback;
-        document.getElementById("hint").textContent =
-          "Hinweis: ./data/wissen.json konnte nicht geladen werden – Fallback aktiv.";
-      }
+        document.getElementById("premiumInsight").textContent = item.premiumInsight || "";
+document.getElementById("premiumQuestion").textContent = item.premiumQuestion || "";
     }
 
     // =========================
