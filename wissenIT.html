@@ -32,7 +32,41 @@
       padding:28px 14px;
     }
 
-    .phone{ width:100%; max-width:480px; }
+    .phone{
+      width:100%;
+      max-width:480px;
+    }
+
+    /* ===== Language toggle (same style) ===== */
+    .langRow{
+      display:flex;
+      justify-content:flex-start;
+      margin-bottom:10px;
+    }
+    .langToggle{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .langBtn{
+      appearance:none;
+      border:none;
+      cursor:pointer;
+      padding:10px 14px;
+      border-radius:999px;
+      font-weight:900;
+      letter-spacing:.2px;
+      background: rgba(255,255,255,.65);
+      border:1px solid rgba(200,162,74,.16);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+      color:var(--text);
+    }
+    .langBtn.active{
+      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      border:1px solid rgba(200,162,74,.35);
+      color:#3a2c10;
+      text-shadow: 0 0 10px rgba(200,162,74,.25);
+    }
 
     .topbar{
       display:flex;
@@ -56,9 +90,19 @@
     }
     .back:hover{ transform: translateY(-1px); }
 
-    .brand{ text-align:right; line-height:1.1; }
-    .brand .t1{ font-size:14px; color:var(--muted); }
-    .brand .t2{ font-size:18px; font-weight:800; letter-spacing:.2px; }
+    .brand{
+      text-align:right;
+      line-height:1.1;
+    }
+    .brand .t1{
+      font-size:14px;
+      color:var(--muted);
+    }
+    .brand .t2{
+      font-size:18px;
+      font-weight:800;
+      letter-spacing:.2px;
+    }
     .brand .glow{
       color:var(--gold);
       text-shadow: 0 0 10px rgba(200,162,74,.30);
@@ -96,10 +140,21 @@
       flex:0 0 auto;
     }
 
-    .hero h1{ margin:0; font-size:18px; letter-spacing:.2px; }
-    .hero p{ margin:6px 0 0 0; color:var(--muted); font-size:13px; }
+    .hero h1{
+      margin:0;
+      font-size:18px;
+      letter-spacing:.2px;
+    }
+    .hero p{
+      margin:6px 0 0 0;
+      color:var(--muted);
+      font-size:13px;
+    }
 
-    .imagewrap{ position:relative; padding:0 18px 16px 18px; }
+    .imagewrap{
+      position:relative;
+      padding:0 18px 16px 18px;
+    }
 
     .dayimg{
       width:100%;
@@ -110,7 +165,9 @@
       display:block;
     }
 
-    .content{ padding:16px 18px 18px 18px; }
+    .content{
+      padding:16px 18px 18px 18px;
+    }
 
     .title{
       margin:0 0 10px 0;
@@ -122,6 +179,7 @@
       margin:0;
       font-size:15px;
       line-height:1.55;
+      white-space: pre-line;
     }
 
     .divider{
@@ -130,7 +188,11 @@
       margin:16px 0;
     }
 
-    .row{ display:flex; gap:10px; flex-wrap:wrap; }
+    .row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
 
     .btn{
       appearance:none;
@@ -193,11 +255,13 @@
       margin:0;
       font-size:14px;
       line-height:1.5;
+      white-space: pre-line;
     }
     .premiumBox .q{
       margin-top:10px;
       color:#3a2c10;
       font-weight:800;
+      white-space: pre-line;
     }
 
     .error{
@@ -220,7 +284,12 @@
       display:none;
     }
 
-    .memberHeader{ display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+    .memberHeader{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:10px;
+    }
 
     .memberBadge{
       padding:6px 10px;
@@ -233,7 +302,11 @@
       box-shadow: 0 0 14px rgba(200,162,74,.18);
     }
 
-    .memberTitle{ font-weight:900; color:#3a2c10; font-size:14px; }
+    .memberTitle{
+      font-weight:900;
+      color:#3a2c10;
+      font-size:14px;
+    }
 
     .memberList{
       margin:10px 0 12px;
@@ -269,6 +342,14 @@
 <body>
   <div class="phone">
 
+    <!-- ===== Language toggle ===== -->
+    <div class="langRow">
+      <div class="langToggle">
+        <button class="langBtn" id="btnDE" type="button">DE</button>
+        <button class="langBtn" id="btnIT" type="button">IT</button>
+      </div>
+    </div>
+
     <div class="topbar">
       <a class="back" href="indexIT.html">← Home</a>
       <div class="brand">
@@ -291,8 +372,8 @@
       </div>
 
       <div class="content">
-        <h2 class="title" id="dayTitle">Caricamento contenuto…</h2>
-        <p class="impulse" id="dayImpulse">Un attimo.</p>
+        <h2 class="title" id="dayTitle">Caricamento…</h2>
+        <p class="impulse" id="dayImpulse">Solo un momento.</p>
 
         <div class="premiumBox" id="premiumBox">
           <h3>Premium</h3>
@@ -309,12 +390,12 @@
           </div>
 
           <ul class="memberList">
-            <li><b>Impulso Premium</b> + <b>Domanda Premium</b> ogni giorno</li>
-            <li><b>Più struttura</b> per focus e applicazione</li>
-            <li><b>Accesso</b> all’Area Membri</li>
+            <li><b>Impulso Premium</b> & <b>Domanda Premium</b> ogni giorno</li>
+            <li><b>Più struttura</b> per focus & applicazione</li>
+            <li><b>Accesso</b> all’area membri</li>
           </ul>
 
-          <a class="memberBtn" href="mitgliederIT.html">Sblocca area membri →</a>
+          <a class="memberBtn" href="mitgliederIT.html">Sblocca Membri →</a>
 
           <div class="memberNote">
             Il Premium diventa visibile automaticamente dopo lo sblocco.
@@ -325,13 +406,13 @@
 
         <div class="row">
           <button class="btn" id="prevBtn">← Indietro</button>
-          <button class="btn primary" id="doneBtn">✔ Fatto per oggi</button>
+          <button class="btn primary" id="doneBtn">✔ Completato oggi</button>
           <button class="btn" id="nextBtn">Avanti →</button>
         </div>
 
         <div class="small">
           <div class="pill" id="progressPill">Progresso: 0/21</div>
-          <div class="pill" id="premiumPill">Premium: off</div>
+          <div class="pill" id="premiumPill">Premium: no</div>
         </div>
       </div>
     </div>
@@ -339,10 +420,50 @@
   </div>
 
   <script>
+    /* ===== Language logic ===== */
+    (function(){
+      const KEY = "lang";
+      const btnDE = document.getElementById("btnDE");
+      const btnIT = document.getElementById("btnIT");
+
+      function getLang(){
+        const v = (localStorage.getItem(KEY) || "it").toLowerCase();
+        return (v === "de") ? "de" : "it";
+      }
+      function setLang(v){ localStorage.setItem(KEY, v); }
+
+      function paint(){
+        const l = getLang();
+        btnDE.classList.toggle("active", l === "de");
+        btnIT.classList.toggle("active", l === "it");
+        document.documentElement.lang = l;
+      }
+
+      btnIT.addEventListener("click", () => {
+        setLang("it");
+        paint();
+        // already on IT page
+      });
+
+      btnDE.addEventListener("click", () => {
+        setLang("de");
+        paint();
+        window.location.href = "wissen.html";
+      });
+
+      // highlight IT by default on IT page
+      if(getLang() === "de"){
+        setLang("it");
+      }
+      paint();
+    })();
+  </script>
+
+  <script>
     // ---------- Settings / Storage ----------
-    const STORAGE_DAY = "panacea_wissen_day";   // stesso progresso DE/IT (voluto)
-    const STORAGE_DONE = "panacea_wissen_done"; // stesso progresso DE/IT (voluto)
-    const PREMIUM_FLAG = "panacea_premium";
+    const STORAGE_DAY = "panacea_wissen_day";
+    const STORAGE_DONE = "panacea_wissen_done"; // JSON array of numbers [1..21]
+    const PREMIUM_FLAG = "panacea_premium";     // "true" | "false"
     const TOTAL_DAYS = 21;
 
     // ---------- Elements ----------
@@ -399,7 +520,7 @@
     function updatePills(){
       const done = getDone();
       progressPill.textContent = `Progresso: ${done.length}/${TOTAL_DAYS}`;
-      premiumPill.textContent = `Premium: ${isPremium() ? "on" : "off"}`;
+      premiumPill.textContent = `Premium: ${isPremium() ? "sì" : "no"}`;
     }
 
     function showError(msg){
@@ -411,57 +532,30 @@
       errorBox.style.display = "none";
       errorBox.textContent = "";
     }
-function getLangLocal(){
-  const ls = (localStorage.getItem("lang") || "").toLowerCase();
-  if(ls === "it" || ls === "de") return ls;
-  const html = (document.documentElement.lang || "").toLowerCase();
-  return (html === "it" || html === "de") ? html : "de";
-}
 
-function pick(v){
-  const lang = getLangLocal();
-  if(v == null) return "";
-  if(typeof v === "string") return v;         // compatibilità vecchi dati
-  if(typeof v === "object") return v[lang] || v.de || v.it || "";
-  return String(v);
-}
     // ---------- Content loading ----------
     let wissenData = null;
 
     const FALLBACK_DAYS = Array.from({length: TOTAL_DAYS}, (_,i) => ({
       title: `Giorno ${i+1}`,
-      impulse:
-        "Oggi: conta un piccolo passo.\n" +
-        "Respira lentamente. Senti il corpo.\n" +
-        "Scegli una cosa sola da rendere più semplice e ordinata.",
-      premiumInsight:
-        "Impulso Premium: un passo più profondo verso chiarezza e focus. Un piccolo “leva” per oggi.",
-      premiumQuestion:
-        "Qual è la cosa più importante oggi — e cosa può aspettare?"
+      impulse: "Oggi: conta un piccolo passo. Respira con calma. Senti il corpo. Scegli una cosa semplice da mettere in ordine.",
+      premiumInsight: "Impulso Premium: focus + chiarezza. Uno sguardo più profondo sul tuo prossimo piccolo punto di leva.",
+      premiumQuestion: "Domanda Premium: Qual è la cosa più importante oggi – e cosa può aspettare?"
     }));
 
     async function loadJson(){
       try{
-        // prima tenta IT
-        let res = await fetch("./data/wissenIT.json", { cache: "no-store" });
-
-        // fallback a DE se non esiste
-        if(!res.ok){
-          res = await fetch("./data/wissen.json", { cache: "no-store" });
-        }
-
+        const res = await fetch("./data/wissen.json", { cache: "no-store" });
         if(!res.ok) throw new Error("JSON non raggiungibile");
-
         const data = await res.json();
 
         if(!data || !Array.isArray(data.days) || data.days.length < TOTAL_DAYS){
           throw new Error("Formato JSON non valido (days[] mancante o troppo corto)");
         }
-
         wissenData = data.days;
       }catch(err){
         wissenData = FALLBACK_DAYS;
-        showError("Nota: contenuto caricato in modalità Fallback (wissenIT.json non trovato o con errori).");
+        showError("Nota: contenuto caricato in modalità fallback (wissen.json mancante o con errori).");
       }
     }
 
@@ -474,13 +568,8 @@ function pick(v){
 
       const entry = (wissenData && wissenData[day - 1]) ? wissenData[day - 1] : FALLBACK_DAYS[day - 1];
 
-      dayTitle.textContent = pick(entry.title) || `Giorno ${day}`;
-dayImpulse.textContent = pick(entry.impulse) || "";
-
-premiumInsightEl.textContent = pick(entry.premiumInsight) || "";
-
-const q = pick(entry.premiumQuestion);
-premiumQuestionEl.textContent = q ? `Domanda: ${q}` : "";
+      dayTitle.textContent = entry.title || `Giorno ${day}`;
+      dayImpulse.textContent = entry.impulse || "";
 
       if(isPremium()){
         premiumBox.style.display = "block";
@@ -501,7 +590,7 @@ premiumQuestionEl.textContent = q ? `Domanda: ${q}` : "";
 
       const done = getDone();
       const isDoneToday = done.includes(day);
-      doneBtn.textContent = isDoneToday ? "✔ Completato" : "✔ Fatto per oggi";
+      doneBtn.textContent = isDoneToday ? "✔ Completato" : "✔ Completato oggi";
       doneBtn.classList.toggle("primary", !isDoneToday);
 
       updatePills();
@@ -509,7 +598,7 @@ premiumQuestionEl.textContent = q ? `Domanda: ${q}` : "";
 
     dayImage.addEventListener("error", () => {
       dayImage.src = "icons/sfondo.png";
-      showError("Immagine non trovata. Controlla: icons/1.png … icons/21.png (nomi esatti).");
+      showError("Immagine non trovata. Controlla: icons/1.png fino a icons/21.png (nome esatto).");
     });
 
     // ---------- Events ----------
