@@ -37,6 +37,37 @@
       max-width:480px;
     }
 
+    /* ===== Language toggle (added, minimal, same style) ===== */
+    .langRow{
+      display:flex;
+      justify-content:flex-start;
+      margin-bottom:10px;
+    }
+    .langToggle{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .langBtn{
+      appearance:none;
+      border:none;
+      cursor:pointer;
+      padding:10px 14px;
+      border-radius:999px;
+      font-weight:900;
+      letter-spacing:.2px;
+      background: rgba(255,255,255,.65);
+      border:1px solid rgba(200,162,74,.16);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+      color:var(--text);
+    }
+    .langBtn.active{
+      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      border:1px solid rgba(200,162,74,.35);
+      color:#3a2c10;
+      text-shadow: 0 0 10px rgba(200,162,74,.25);
+    }
+
     .topbar{
       display:flex;
       align-items:center;
@@ -149,6 +180,7 @@
       margin:0;
       font-size:15px;
       line-height:1.55;
+      white-space: pre-line;
     }
 
     .divider{
@@ -229,6 +261,7 @@
       margin-top:10px;
       color:#3a2c10;
       font-weight:800;
+      white-space: pre-line;
     }
 
     .error{
@@ -310,6 +343,14 @@
 <body>
   <div class="phone">
 
+    <!-- ===== Language toggle (added) ===== -->
+    <div class="langRow">
+      <div class="langToggle">
+        <button class="langBtn" id="btnDE" type="button">DE</button>
+        <button class="langBtn" id="btnIT" type="button">IT</button>
+      </div>
+    </div>
+
     <div class="topbar">
       <a class="back" href="index.html">← Home</a>
       <div class="brand">
@@ -379,6 +420,48 @@
     </div>
 
   </div>
+
+  <script>
+    /* ===== Language logic (added, does not touch your settings) ===== */
+    (function(){
+      const KEY = "lang"; // "de" | "it"
+      const btnDE = document.getElementById("btnDE");
+      const btnIT = document.getElementById("btnIT");
+
+      function getLang(){
+        const v = (localStorage.getItem(KEY) || "de").toLowerCase();
+        return (v === "it") ? "it" : "de";
+      }
+      function setLang(v){ localStorage.setItem(KEY, v); }
+
+      function paint(){
+        const l = getLang();
+        btnDE.classList.toggle("active", l === "de");
+        btnIT.classList.toggle("active", l === "it");
+        document.documentElement.lang = l;
+      }
+
+      btnDE.addEventListener("click", () => {
+        setLang("de");
+        paint();
+        // already on DE page
+      });
+
+      btnIT.addEventListener("click", () => {
+        setLang("it");
+        paint();
+        window.location.href = "wissenIT.html";
+      });
+
+      // default highlight
+      if(getLang() === "it"){
+        // if user saved IT but opened DE manually, keep DE open (no auto redirect) -> stable
+        // just highlight DE as active since this is DE page
+        setLang("de");
+      }
+      paint();
+    })();
+  </script>
 
   <script>
     // ---------- Settings / Storage ----------
