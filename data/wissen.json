@@ -1,317 +1,151 @@
-[
-  {
-    "title": { "de": "Impuls – Tag 1: 1% leichter", "it": "Impulso – Giorno 1: 1% più leggero" },
-    "text": {
-      "de": "Mini-Reset (60 Sek.):\n• Atme einmal bewusst AUS.\n• Frage dich: Was brauche ich JETZT – 1% leichter?\n• Wähle eine Mini-Handlung (30 Sekunden).\n\nWarum das wirkt:\nEin längeres Ausatmen sendet dem Nervensystem ein Sicherheits-Signal.",
-      "it": "Mini-reset (60 sec.):\n• Espira UNA volta in modo consapevole.\n• Chiediti: di cosa ho bisogno ADESSO – per sentirmi 1% più leggero/a?\n• Scegli una micro-azione (30 secondi).\n\nPerché funziona:\nUn’espirazione più lunga manda al sistema nervoso un segnale di sicurezza."
+{
+  "days": [
+    {
+      "day": 1,
+      "title": "Stress verstehen",
+      "text": "Stress ist keine Schwäche. Er ist ein intelligenter Schutzmechanismus deines Körpers. Doch was kurzfristig schützt, kann langfristig erschöpfen.",
+      "premiumInsight": "Chronischer Stress aktiviert dauerhaft die HPA-Achse. Cortisol bleibt erhöht – Regeneration wird blockiert.",
+      "premiumQuestion": "Wo in deinem Alltag reagiert dein Körper noch im Alarmmodus, obwohl keine reale Gefahr besteht?"
     },
-    "premiumInsight": {
-      "de": "Extra-Insight:\nStress wird nicht nur „im Kopf“ gemacht – er ist eine Körperreaktion. Wenn du den Körper beruhigst, wird Denken klarer.",
-      "it": "Extra insight:\nLo stress non nasce solo “nella testa”: è una reazione del corpo. Quando calmi il corpo, anche il pensiero diventa più chiaro."
+    {
+      "day": 2,
+      "title": "Das Nervensystem",
+      "text": "Dein Nervensystem entscheidet in Sekunden: Sicherheit oder Gefahr. Es arbeitet schneller als dein Verstand.",
+      "premiumInsight": "Der Sympathikus aktiviert Energie. Der Parasympathikus schenkt Regeneration. Balance ist wahre Stärke.",
+      "premiumQuestion": "Was gibt deinem Nervensystem heute ein klares Signal von Sicherheit?"
     },
-    "premiumQuestion": {
-      "de": "Mini-Frage:\nWas ist heute die kleinste Sache, die dir wirklich hilft – ohne Perfektion?",
-      "it": "Mini-domanda:\nQual è oggi la cosa più piccola che ti aiuta davvero – senza perfezione?"
+    {
+      "day": 3,
+      "title": "Energie bewusst steuern",
+      "text": "Energie ist kein Zufall. Sie folgt Rhythmus, Schlaf, Bewegung und innerer Haltung.",
+      "premiumInsight": "Dopamin motiviert. Serotonin stabilisiert. Beide reagieren sensibel auf Schlaf, Licht und Struktur.",
+      "premiumQuestion": "Welcher kleine Schritt könnte heute deine Energiequalität verbessern?"
+    },
+    {
+      "day": 4,
+      "title": "Emotionale Regulation",
+      "text": "Gefühle sind Information. Sie wollen verstanden werden – nicht unterdrückt.",
+      "premiumInsight": "Bewusstes Atmen beeinflusst direkt den Vagusnerv und reduziert physiologische Stressreaktionen.",
+      "premiumQuestion": "Welche Emotion braucht heute Akzeptanz statt Bewertung?"
+    },
+    {
+      "day": 5,
+      "title": "Innere Stabilität",
+      "text": "Stabilität entsteht nicht durch Kontrolle, sondern durch Selbstregulation.",
+      "premiumInsight": "Regelmäßige Mikro-Pausen senken messbar Stressmarker im Körper.",
+      "premiumQuestion": "Wo kannst du heute 3 Minuten bewusste Pause integrieren?"
+    },
+    {
+      "day": 6,
+      "title": "Gedankenqualität",
+      "text": "Nicht jeder Gedanke ist wahr. Aber jeder Gedanke beeinflusst dein Nervensystem.",
+      "premiumInsight": "Kognitive Neubewertung verändert nachweislich Aktivität in präfrontalem Cortex und Amygdala.",
+      "premiumQuestion": "Welchen Gedanken darfst du heute bewusst neu formulieren?"
+    },
+    {
+      "day": 7,
+      "title": "Regeneration ist Luxus",
+      "text": "Erholung ist kein Bonus. Sie ist Voraussetzung für mentale Stärke.",
+      "premiumInsight": "Im Tiefschlaf regenerieren synaptische Verbindungen und Stresshormone sinken.",
+      "premiumQuestion": "Was unterstützt heute deine Schlafqualität?"
+    },
+    {
+      "day": 8,
+      "title": "Sicherheit im Körper",
+      "text": "Ein regulierter Körper fühlt sich ruhig, warm und präsent an.",
+      "premiumInsight": "Somatische Wahrnehmung stärkt die Verbindung zwischen Körper und präfrontaler Kontrolle.",
+      "premiumQuestion": "Wo spürst du gerade Anspannung – und kannst sie sanft lösen?"
+    },
+    {
+      "day": 9,
+      "title": "Selbstwirksamkeit",
+      "text": "Das Gefühl von Einfluss stärkt Resilienz mehr als perfekte Umstände.",
+      "premiumInsight": "Selbstwirksamkeit korreliert mit geringerer Cortisolreaktion auf Stress.",
+      "premiumQuestion": "Welche Entscheidung liegt heute bewusst in deiner Hand?"
+    },
+    {
+      "day": 10,
+      "title": "Struktur & Klarheit",
+      "text": "Struktur beruhigt das Gehirn. Vorhersehbarkeit schafft Sicherheit.",
+      "premiumInsight": "Klare Tagesstruktur reduziert kognitive Überlastung messbar.",
+      "premiumQuestion": "Wo kannst du heute bewusst Ordnung schaffen?"
+    },
+    {
+      "day": 11,
+      "title": "Grenzen setzen",
+      "text": "Gesunde Grenzen schützen deine Energie.",
+      "premiumInsight": "Überforderung entsteht häufig durch fehlende Regenerationsfenster.",
+      "premiumQuestion": "Wo darfst du heute bewusst Nein sagen?"
+    },
+    {
+      "day": 12,
+      "title": "Körperliche Aktivierung",
+      "text": "Bewegung ist eines der stärksten natürlichen Antidepressiva.",
+      "premiumInsight": "Moderate Bewegung steigert BDNF – ein Protein für neuronale Plastizität.",
+      "premiumQuestion": "Welche Form von Bewegung tut dir heute gut?"
+    },
+    {
+      "day": 13,
+      "title": "Atem als Reset",
+      "text": "Der Atem ist dein schnellster Zugang zur Regulation.",
+      "premiumInsight": "Langsame Ausatmung aktiviert den Parasympathikus gezielt.",
+      "premiumQuestion": "Kannst du jetzt drei ruhige Atemzüge bewusst verlängern?"
+    },
+    {
+      "day": 14,
+      "title": "Mentale Hygiene",
+      "text": "Wie dein Körper braucht auch dein Geist Pflege.",
+      "premiumInsight": "Informationsreduktion senkt neuronale Überreizung.",
+      "premiumQuestion": "Was darf heute bewusst weniger Raum bekommen?"
+    },
+    {
+      "day": 15,
+      "title": "Resilienz aufbauen",
+      "text": "Resilienz ist trainierbar – durch kleine, konstante Schritte.",
+      "premiumInsight": "Wiederholte Regulation stärkt langfristig neuronale Stabilität.",
+      "premiumQuestion": "Welcher Mini-Schritt stärkt heute deine innere Widerstandskraft?"
+    },
+    {
+      "day": 16,
+      "title": "Soziale Verbundenheit",
+      "text": "Verbundenheit wirkt regulierend auf dein Nervensystem.",
+      "premiumInsight": "Oxytocin reduziert Stressreaktionen und fördert Vertrauen.",
+      "premiumQuestion": "Mit wem kannst du heute bewusst in echten Kontakt gehen?"
+    },
+    {
+      "day": 17,
+      "title": "Selbstmitgefühl",
+      "text": "Freundlichkeit mit dir selbst stärkt langfristige Stabilität.",
+      "premiumInsight": "Selbstkritik aktiviert Stresszentren im Gehirn messbar stärker.",
+      "premiumQuestion": "Wie würdest du heute mit einem guten Freund sprechen – und kannst es dir selbst sagen?"
+    },
+    {
+      "day": 18,
+      "title": "Innere Ruhe kultivieren",
+      "text": "Ruhe ist kein Stillstand – sie ist Regulation.",
+      "premiumInsight": "Regelmäßige Entspannungszustände verändern neuronale Verschaltung positiv.",
+      "premiumQuestion": "Wo kannst du heute bewusst Tempo reduzieren?"
+    },
+    {
+      "day": 19,
+      "title": "Werte & Sinn",
+      "text": "Sinn gibt Richtung. Richtung gibt Stabilität.",
+      "premiumInsight": "Sinnerleben korreliert mit höherer Resilienz und geringerer Depressionsanfälligkeit.",
+      "premiumQuestion": "Was gibt deinem heutigen Handeln Bedeutung?"
+    },
+    {
+      "day": 20,
+      "title": "Gesunde Gewohnheiten",
+      "text": "Routinen entscheiden über Energie – nicht Motivation.",
+      "premiumInsight": "Automatisierte Gewohnheiten entlasten kognitive Ressourcen.",
+      "premiumQuestion": "Welche kleine Gewohnheit darf heute beginnen?"
+    },
+    {
+      "day": 21,
+      "title": "Integration",
+      "text": "Wissen wird erst durch Anwendung zu echter Transformation.",
+      "premiumInsight": "Nachhaltige Veränderung entsteht durch Wiederholung und bewusste Integration.",
+      "premiumQuestion": "Was nimmst du aus diesen 21 Tagen langfristig mit?"
     }
-  },
-  {
-    "title": { "de": "Impuls – Tag 2: Nervensystem zuerst", "it": "Impulso – Giorno 2: Prima il sistema nervoso" },
-    "text": {
-      "de": "Heute:\n• Bevor du „funktionierst“: 3 ruhige Atemzüge.\n• Schultern 2× heben–fallen lassen.\n• Dann erst starten.\n\nMerksatz:\nRegulation kommt vor Motivation.",
-      "it": "Oggi:\n• Prima di “funzionare”: 3 respiri calmi.\n• Spalle: solleva–lascia cadere 2×.\n• Solo dopo, inizia.\n\nPromemoria:\nLa regolazione viene prima della motivazione."
-    },
-    "premiumInsight": {
-      "de": "Extra-Insight:\nDein Nervensystem reagiert auf Signale: Tempo, Körperhaltung, Atmung, Druck. Du kannst diese Signale aktiv verändern.",
-      "it": "Extra insight:\nIl sistema nervoso reagisce a segnali: ritmo, postura, respiro, pressione. Puoi modificare attivamente questi segnali."
-    },
-    "premiumQuestion": {
-      "de": "Mini-Frage:\nWelche 1 Sache lässt dich heute innerlich „sicherer“ fühlen?",
-      "it": "Mini-domanda:\nQual è 1 cosa che oggi ti fa sentire “più al sicuro” dentro?"
-    }
-  },
-  {
-    "title": { "de": "Impuls – Tag 3: Mikro-Pause", "it": "Impulso – Giorno 3: Micro-pausa" },
-    "text": {
-      "de": "Mikro-Pause (45 Sek.):\n• Hände warm reiben.\n• Eine Hand auf Brust oder Bauch.\n• Spüre 10 Sekunden Wärme.\n\nWarum:\nKörperkontakt kann Stress senken und Fokus zurückholen.",
-      "it": "Micro-pausa (45 sec.):\n• Strofina le mani per scaldarle.\n• Una mano su petto o pancia.\n• Senti il calore per 10 secondi.\n\nPerché:\nIl contatto corporeo può ridurre lo stress e riportare il focus."
-    },
-    "premiumInsight": {
-      "de": "Extra-Insight:\nKurze Pausen wirken wie ein Reset-Knopf: Sie unterbrechen Stress-Schleifen, bevor sie groß werden.",
-      "it": "Extra insight:\nLe pause brevi sono come un tasto reset: interrompono i loop di stress prima che diventino grandi."
-    },
-    "premiumQuestion": {
-      "de": "Mini-Frage:\nWo könntest du heute 2 Mikro-Pausen einbauen – ohne extra Zeit?",
-      "it": "Mini-domanda:\nDove potresti inserire oggi 2 micro-pause – senza tempo extra?"
-    }
-  },
-  {
-    "title": { "de": "Impuls – Tag 4: Tempo rausnehmen", "it": "Impulso – Giorno 4: Togliere velocità" },
-    "text": {
-      "de": "Wenn alles zu schnell ist:\n• Sprich 1 Satz bewusst langsamer.\n• Geh 10 Schritte langsamer.\n\nWarum:\nLangsamkeit signalisiert dem Gehirn: „Keine akute Gefahr.“",
-      "it": "Quando tutto è troppo veloce:\n• Pronuncia 1 frase più lentamente.\n• Fai 10 passi più lenti.\n\nPerché:\nLa lentezza dice al cervello: “Non c’è un pericolo immediato.”"
-    },
-    "premiumInsight": {
-      "de": "Extra-Insight:\nTempo ist ein Stress-Signal. Selbst kleine Verlangsamung kann den Alarm im System senken.",
-      "it": "Extra insight:\nIl ritmo è un segnale di stress. Anche un piccolo rallentamento può abbassare l’allarme nel sistema."
-    },
-    "premiumQuestion": {
-      "de": "Mini-Frage:\nIn welchem Moment heute würdest du gern 10% weniger Tempo spüren?",
-      "it": "Mini-domanda:\nIn quale momento oggi vorresti sentire il 10% di velocità in meno?"
-    }
-  },
-  {
-    "title": { "de": "Impuls – Tag 5: Fokus klein machen", "it": "Impulso – Giorno 5: Ridurre il focus" },
-    "text": {
-      "de": "Heute nur das Nächste:\n• Was ist der nächste kleinste Schritt?\n• Nicht der ganze Plan.\n\nTipp:\nSchreib den 1 Schritt auf. Dann erst der zweite.",
-      "it": "Oggi solo il prossimo:\n• Qual è il passo più piccolo, adesso?\n• Non tutto il piano.\n\nTip:\nScrivi il 1° passo. Poi, solo dopo, il 2°."
-    },
-    "premiumInsight": {
-      "de": "Extra-Insight:\nÜberforderung entsteht oft durch „zu viel auf einmal“. Ein kleiner Fokus gibt dem Gehirn Struktur und Kontrolle.",
-      "it": "Extra insight:\nIl sovraccarico nasce spesso dal “troppo tutto insieme”. Un focus piccolo dà al cervello struttura e controllo."
-    },
-    "premiumQuestion": {
-      "de": "Mini-Frage:\nWas ist dein nächster Schritt – so klein, dass du sofort starten kannst?",
-      "it": "Mini-domanda:\nQual è il tuo prossimo passo – così piccolo da poter iniziare subito?"
-    }
-  },
-  {
-    "title": { "de": "Impuls – Tag 6: Druck raus aus Gedanken", "it": "Impulso – Giorno 6: Togliere pressione dai pensieri" },
-    "text": {
-      "de": "Gedanken-Reset:\n• Ersetze „Ich MUSS“ durch „Ich WÄHLE“.\n• Beispiel: „Ich wähle, jetzt 10 Minuten anzufangen.“\n\nWarum:\nWahlgefühl reduziert inneren Stress.",
-      "it": "Reset dei pensieri:\n• Sostituisci “Devo” con “Scelgo”.\n• Esempio: “Scelgo di iniziare adesso per 10 minuti.”\n\nPerché:\nSentire scelta riduce lo stress interno."
-    },
-    "premiumInsight": {
-      "de": "Extra-Insight:\n„Muss“-Sätze machen inneren Druck. „Ich wähle“ stärkt Autonomie – das ist ein Schutzfaktor für Resilienz.",
-      "it": "Extra insight:\nLe frasi “devo” creano pressione. “Scelgo” rafforza l’autonomia: è un fattore protettivo della resilienza."
-    },
-    "premiumQuestion": {
-      "de": "Mini-Frage:\nWo könntest du heute aus „muss“ ein „ich wähle“ machen?",
-      "it": "Mini-domanda:\nDove oggi puoi trasformare un “devo” in un “scelgo”?"
-    }
-  },
-  {
-    "title": { "de": "Impuls – Tag 7: Nervensystem-Check", "it": "Impulso – Giorno 7: Check del sistema nervoso" },
-    "text": {
-      "de": "Kurz-Check (30 Sek.):\n• Wo im Körper spürst du Stress?\n• 1 Wort dafür.\n• 1 Atemzug genau dorthin.\n\nZiel:\nNicht wegdrücken – kurz wahrnehmen, dann regulieren.",
-      "it": "Check veloce (30 sec.):\n• Dove nel corpo senti stress?\n• 1 parola per dirlo.\n• 1 respiro proprio lì.\n\nObiettivo:\nNon scacciare via: nota per un attimo, poi regola."
-    },
-    "premiumInsight": {
-      "de": "Extra-Insight:\nBenennen hilft: Wenn du etwas klar wahrnimmst, wird es oft schon kleiner. Das Nervensystem liebt Orientierung.",
-      "it": "Extra insight:\nDare un nome aiuta: quando percepisci chiaramente qualcosa, spesso diventa già più piccolo. Il sistema nervoso ama l’orientamento."
-    },
-    "premiumQuestion": {
-      "de": "Mini-Frage:\nWelche Körperstelle braucht heute am meisten Entlastung?",
-      "it": "Mini-domanda:\nQuale parte del corpo oggi ha più bisogno di sollievo?"
-    }
-  },
-  {
-    "title": { "de": "Impuls – Tag 8: Stress raus aus den Schultern", "it": "Impulso – Giorno 8: Stress via dalle spalle" },
-    "text": {
-      "de": "2-Minuten-Reset:\n• Schulterkreisen (10× langsam).\n• Kiefer lösen: Mund leicht öffnen.\n• Dann 1 tiefer Ausatem.\n\nWarum:\nWenn Muskeln loslassen, folgt das Nervensystem oft nach.",
-      "it": "Reset di 2 minuti:\n• Circonduzioni delle spalle (10× lente).\n• Rilascia la mascella: bocca leggermente aperta.\n• Poi 1 espirazione profonda.\n\nPerché:\nQuando i muscoli mollano, spesso il sistema nervoso segue."
-    },
-    "premiumInsight": {
-      "de": "Extra-Insight:\nSchultern und Kiefer sind typische Stress-Speicher. Wenn du sie weich machst, sinkt oft auch der innere Druck.",
-      "it": "Extra insight:\nSpalle e mascella sono tipici “depositi” di stress. Se li ammorbidisci, spesso cala anche la pressione interna."
-    },
-    "premiumQuestion": {
-      "de": "Mini-Frage:\nWas würde sich verändern, wenn du heute 3× kurz Schultern + Kiefer entspannst?",
-      "it": "Mini-domanda:\nCosa cambierebbe se oggi 3× rilassassi spalle + mascella per pochi secondi?"
-    }
-  },
-  {
-    "title": { "de": "Impuls – Tag 9: Sinnes-Anker für sofort", "it": "Impulso – Giorno 9: Ancora sensoriale immediata" },
-    "text": {
-      "de": "1 Minute „Hier & Jetzt“:\n• Nenne 3 Dinge, die du siehst.\n• Nenne 2 Dinge, die du hörst.\n• Nenne 1 Sache, die du im Körper spürst.\n\nEffekt:\nDer Kopf wird leiser, weil der Fokus wieder im Moment ist.",
-      "it": "1 minuto “Qui & Ora”:\n• Nomina 3 cose che vedi.\n• Nomina 2 cose che senti (suoni).\n• Nomina 1 cosa che percepisci nel corpo.\n\nEffetto:\nLa mente si fa più silenziosa perché il focus torna nel presente."
-    },
-    "premiumInsight": {
-      "de": "Extra-Insight:\nBei Stress springt das Gehirn in „Zukunft“ oder „Vergangenheit“. Sinnesfokus holt dich zurück in Sicherheit im Jetzt.",
-      "it": "Extra insight:\nCon lo stress il cervello salta nel “futuro” o nel “passato”. Il focus sensoriale ti riporta alla sicurezza del presente."
-    },
-    "premiumQuestion": {
-      "de": "Mini-Frage:\nWelcher Sinn (sehen/hören/spüren) beruhigt dich am schnellsten?",
-      "it": "Mini-domanda:\nQuale senso (vedere/sentire/percepire) ti calma più velocemente?"
-    }
-  },
-  {
-    "title": { "de": "Impuls – Tag 10: Mini-Grenze (ohne Schuldgefühl)", "it": "Impulso – Giorno 10: Mini-confine (senza sensi di colpa)" },
-    "text": {
-      "de": "Heute üben:\n• Ein Satz reicht: „Ich schaue das später an.“\n• Oder: „Heute schaffe ich nur X – das ist ok.“\n\nWarum:\nGrenzen sind Selbstschutz, nicht Egoismus.",
-      "it": "Oggi esercita:\n• Basta una frase: “Lo guardo più tardi.”\n• Oppure: “Oggi riesco solo a fare X – va bene così.”\n\nPerché:\nI confini sono protezione di sé, non egoismo."
-    },
-    "premiumInsight": {
-      "de": "Extra-Insight:\nGrenzen reduzieren Stress, weil sie dein System vor „zu viel“ schützen. Kleine Grenzen reichen oft.",
-      "it": "Extra insight:\nI confini riducono lo stress perché proteggono il sistema dal “troppo”. Spesso bastano confini piccoli."
-    },
-    "premiumQuestion": {
-      "de": "Mini-Frage:\nWelche 1 Grenze würde dir heute spürbar Energie sparen?",
-      "it": "Mini-domanda:\nQuale 1 confine oggi ti farebbe risparmiare energia in modo evidente?"
-    }
-  },
-  {
-    "title": { "de": "Impuls – Tag 11: Abend-Abschluss fürs Gehirn", "it": "Impulso – Giorno 11: Chiusura serale per la mente" },
-    "text": {
-      "de": "Vor dem Schlaf (90 Sek.):\n• 3 Dinge: „Das war heute gut genug.“\n• 1 Sache: „Das darf warten.“\n\nWarum:\nEin Abschluss reduziert Grübeln.",
-      "it": "Prima di dormire (90 sec.):\n• 3 cose: “Oggi è stato abbastanza.”\n• 1 cosa: “Può aspettare.”\n\nPerché:\nUna chiusura riduce il rimuginio."
-    },
-    "premiumInsight": {
-      "de": "Extra-Insight:\nGrübeln ist oft ein Versuch, Kontrolle zu behalten. Ein bewusstes „Heute ist genug“ hilft dem Gehirn loszulassen.",
-      "it": "Extra insight:\nIl rimuginio è spesso un tentativo di mantenere controllo. Un “oggi basta così” aiuta la mente a lasciare andare."
-    },
-    "premiumQuestion": {
-      "de": "Mini-Frage:\nWas darf heute wirklich warten – ohne dass etwas Schlimmes passiert?",
-      "it": "Mini-domanda:\nCosa può davvero aspettare oggi – senza che succeda nulla di grave?"
-    }
-  },
-  {
-    "title": { "de": "Impuls – Tag 12: Reiz-Diät (10 Minuten)", "it": "Impulso – Giorno 12: Dieta di stimoli (10 minuti)" },
-    "text": {
-      "de": "10 Minuten ohne Extra-Input:\n• Kein Handy.\n• Kein Multitasking.\n• Nur 1 Sache.\n\nWarum:\nWeniger Reize = weniger innerer Alarm.",
-      "it": "10 minuti senza input extra:\n• Niente telefono.\n• Niente multitasking.\n• Solo 1 cosa.\n\nPerché:\nMeno stimoli = meno allarme interno."
-    },
-    "premiumInsight": {
-      "de": "Extra-Insight:\nDauer-Input hält das Nervensystem aktiv. Reizreduktion ist wie „Luft holen“ fürs Gehirn.",
-      "it": "Extra insight:\nInput continuo mantiene il sistema nervoso attivo. Ridurre stimoli è come “prendere aria” per la mente."
-    },
-    "premiumQuestion": {
-      "de": "Mini-Frage:\nWelche 10 Minuten heute kannst du als „reizarm“ schützen?",
-      "it": "Mini-domanda:\nQuali 10 minuti oggi puoi proteggere come “a basso stimolo”?"
-    }
-  },
-  {
-    "title": { "de": "Impuls – Tag 13: Energie-Ampel (statt Stimmung)", "it": "Impulso – Giorno 13: Semaforo energia (non umore)" },
-    "text": {
-      "de": "Frag dich:\n• Energie 1–10?\n\nDann:\n• 1–4: vereinfachen + Pause.\n• 5–7: 1 klarer Schritt.\n• 8–10: nutzen, aber nicht überziehen.\n\nZiel:\nDu führst – nicht dein Stress.",
-      "it": "Chiediti:\n• Energia 1–10?\n\nPoi:\n• 1–4: semplifica + pausa.\n• 5–7: 1 passo chiaro.\n• 8–10: usa l’energia, senza esagerare.\n\nObiettivo:\nGuida tu – non lo stress."
-    },
-    "premiumInsight": {
-      "de": "Extra-Insight:\nEnergie ist oft objektiver als Stimmung. Wenn du nach Energie steuerst, wirst du stabiler und planbarer.",
-      "it": "Extra insight:\nL’energia è spesso più oggettiva dell’umore. Se ti regoli sull’energia, diventi più stabile e prevedibile."
-    },
-    "premiumQuestion": {
-      "de": "Mini-Frage:\nWelche Aktivität gibt dir heute +1 Energiepunkt?",
-      "it": "Mini-domanda:\nQuale attività oggi ti dà +1 punto energia?"
-    }
-  },
-  {
-    "title": { "de": "Impuls – Tag 14: Freundlicher innerer Ton", "it": "Impulso – Giorno 14: Un tono interno gentile" },
-    "text": {
-      "de": "Ein Satz für heute:\n• „Ich darf freundlich mit mir sein – auch wenn es schwer ist.“\n\nMini-Übung:\n• Hand auf den Brustkorb, 3 ruhige Atemzüge.\n\nWarum:\nSelbstkritik macht enger. Freundlichkeit macht wieder handlungsfähig.",
-      "it": "Una frase per oggi:\n• “Posso essere gentile con me – anche se è difficile.”\n\nMini-esercizio:\n• Mano sul petto, 3 respiri calmi.\n\nPerché:\nL’autocritica stringe. La gentilezza rende di nuovo capaci di agire."
-    },
-    "premiumInsight": {
-      "de": "Extra-Insight:\nDer innere Ton ist ein Stressverstärker oder Stresspuffer. Freundlicher Ton = weniger Alarm im System.",
-      "it": "Extra insight:\nIl tono interno può amplificare o attenuare lo stress. Tono gentile = meno allarme nel sistema."
-    },
-    "premiumQuestion": {
-      "de": "Mini-Frage:\nWie würdest du mit einer guten Freundin sprechen – in deiner Situation?",
-      "it": "Mini-domanda:\nCome parleresti a una buona amica – nella tua situazione?"
-    }
-  },
-  {
-    "title": { "de": "Impuls – Tag 15: Boden unter den Füßen", "it": "Impulso – Giorno 15: Terra sotto i piedi" },
-    "text": {
-      "de": "Sicherheits-Signal (60 Sek.):\n• Füße fest in den Boden drücken (5 Sek.).\n• Lösen (5 Sek.).\n• Wiederhole 5×.\n\nWarum:\nStabiler Körperkontakt = stabileres Nervensystem.",
-      "it": "Segnale di sicurezza (60 sec.):\n• Spingi i piedi a terra (5 sec.).\n• Rilascia (5 sec.).\n• Ripeti 5×.\n\nPerché:\nContatto stabile col corpo = sistema nervoso più stabile."
-    },
-    "premiumInsight": {
-      "de": "Extra-Insight:\nKörperliche Stabilität sendet „Sicherheit“ nach innen. Das ist eine einfache, sehr schnelle Regulation.",
-      "it": "Extra insight:\nLa stabilità fisica manda “sicurezza” dentro. È una regolazione semplice e molto rapida."
-    },
-    "premiumQuestion": {
-      "de": "Mini-Frage:\nIn welchem Moment heute brauchst du besonders „Boden“?",
-      "it": "Mini-domanda:\nIn quale momento oggi hai più bisogno di “terra” e stabilità?"
-    }
-  },
-  {
-    "title": { "de": "Impuls – Tag 16: Atmung 4–6 (sanft, effektiv)", "it": "Impulso – Giorno 16: Respiro 4–6 (dolce, efficace)" },
-    "text": {
-      "de": "1 Minute:\n• 4 Sek. einatmen\n• 6 Sek. ausatmen\n• 5 Runden\n\nWarum:\nLänger ausatmen aktiviert Beruhigungs-Systeme im Körper.",
-      "it": "1 minuto:\n• 4 sec. inspira\n• 6 sec. espira\n• 5 giri\n\nPerché:\nEspìrare più a lungo attiva sistemi di calma nel corpo."
-    },
-    "premiumInsight": {
-      "de": "Extra-Insight:\nNicht die Tiefe zählt, sondern Rhythmus. Sanft + länger ausatmen ist oft besser als „zu stark“ atmen.",
-      "it": "Extra insight:\nNon conta la profondità, ma il ritmo. Dolce + espirazione più lunga spesso è meglio che respirare “troppo forte”."
-    },
-    "premiumQuestion": {
-      "de": "Mini-Frage:\nWann heute könntest du 3 Runden 4–6 einbauen?",
-      "it": "Mini-domanda:\nQuando oggi puoi inserire 3 giri di 4–6?"
-    }
-  },
-  {
-    "title": { "de": "Impuls – Tag 17: Neutral denken (statt Drama)", "it": "Impulso – Giorno 17: Pensiero neutro (niente drama)" },
-    "text": {
-      "de": "Wenn der Kopf alarmiert:\n• „Was wäre eine neutrale Erklärung?“\n• „Was ist der kleinste sichere Schritt?“\n\nZiel:\nRealistisch bleiben – ohne Katastrophenfilm.",
-      "it": "Quando la mente va in allarme:\n• “Quale potrebbe essere una spiegazione neutra?”\n• “Qual è il passo più piccolo e sicuro?”\n\nObiettivo:\nRestare realistici – senza film catastrofici."
-    },
-    "premiumInsight": {
-      "de": "Extra-Insight:\nStress macht das Denken enger. Neutralität öffnet wieder Optionen – und das beruhigt.",
-      "it": "Extra insight:\nLo stress restringe il pensiero. La neutralità riapre opzioni – e questo calma."
-    },
-    "premiumQuestion": {
-      "de": "Mini-Frage:\nWas ist heute deine neutralste, freundlichste Erklärung für eine schwierige Situation?",
-      "it": "Mini-domanda:\nQual è oggi la tua spiegazione più neutra e gentile per una situazione difficile?"
-    }
-  },
-  {
-    "title": { "de": "Impuls – Tag 18: Mini-Ordnung, Maxi-Klarheit", "it": "Impulso – Giorno 18: Mini-ordine, maxi-chiarezza" },
-    "text": {
-      "de": "2 Minuten:\n• Eine Fläche aufräumen (nur 1!).\n• Danach: 1 tiefer Ausatem.\n\nWarum:\nKleine Ordnung kann den Kopf entlasten.",
-      "it": "2 minuti:\n• Riordina una superficie (solo 1!).\n• Poi: 1 espirazione profonda.\n\nPerché:\nUn piccolo ordine può alleggerire la mente."
-    },
-    "premiumInsight": {
-      "de": "Extra-Insight:\nOrdnung ist nicht Perfektion. Es ist ein Signal: „Ich kann etwas beeinflussen.“ Das gibt Ruhe.",
-      "it": "Extra insight:\nOrdine non è perfezione. È un segnale: “Posso influenzare qualcosa.” Questo dà calma."
-    },
-    "premiumQuestion": {
-      "de": "Mini-Frage:\nWelche kleine Ecke würdest du heute gern „leichter“ machen?",
-      "it": "Mini-domanda:\nQuale angolino oggi vorresti rendere “più leggero”?"
-    }
-  },
-  {
-    "title": { "de": "Impuls – Tag 19: Co-Regulation (nicht allein tragen)", "it": "Impulso – Giorno 19: Co-regolazione (non portare tutto da solo/a)" },
-    "text": {
-      "de": "Heute:\n• Eine kurze Nachricht an einen „sicheren“ Menschen.\n• Oder 1 Minute eine vertraute Stimme hören.\n\nWarum:\nDas Nervensystem beruhigt sich oft schneller in Verbindung.",
-      "it": "Oggi:\n• Un messaggio breve a una persona “sicura”.\n• Oppure 1 minuto ad ascoltare una voce familiare.\n\nPerché:\nIl sistema nervoso spesso si calma più in fretta nella connessione."
-    },
-    "premiumInsight": {
-      "de": "Extra-Insight:\nWir regulieren uns nicht nur allein. Verbindung ist Biologie – nicht Schwäche.",
-      "it": "Extra insight:\nNon ci regoliamo solo da soli. La connessione è biologia, non debolezza."
-    },
-    "premiumQuestion": {
-      "de": "Mini-Frage:\nWer ist dein „sicherer Mensch“ – und was wäre ein einfacher Kontakt heute?",
-      "it": "Mini-domanda:\nChi è la tua “persona sicura” – e quale contatto semplice puoi fare oggi?"
-    }
-  },
-  {
-    "title": { "de": "Impuls – Tag 20: Ressourcen-Blick (ohne Kitsch)", "it": "Impulso – Giorno 20: Sguardo alle risorse (senza zucchero)" },
-    "text": {
-      "de": "3 Sätze:\n• „Das hat heute funktioniert: ___.“\n• „Das hat mich unterstützt: ___.“\n• „Morgen mache ich es 1% leichter durch: ___.“\n\nWarum:\nRessourcen sehen stärkt Resilienz.",
-      "it": "3 frasi:\n• “Oggi ha funzionato: ___.“\n• “Mi ha sostenuto: ___.“\n• “Domani lo rendo 1% più leggero facendo: ___.“\n\nPerché:\nVedere risorse rafforza la resilienza."
-    },
-    "premiumInsight": {
-      "de": "Extra-Insight:\nDas Gehirn sieht Stress schneller als Ressourcen. Training heißt: Ressourcen bewusst sichtbar machen.",
-      "it": "Extra insight:\nIl cervello vede lo stress più velocemente delle risorse. Allenamento = rendere le risorse visibili in modo consapevole."
-    },
-    "premiumQuestion": {
-      "de": "Mini-Frage:\nWas war heute eine kleine Ressource – selbst wenn der Tag schwer war?",
-      "it": "Mini-domanda:\nQual è stata oggi una piccola risorsa – anche se la giornata è stata dura?"
-    }
-  },
-  {
-    "title": { "de": "Impuls – Tag 21: Dein persönlicher Reset-Plan", "it": "Impulso – Giorno 21: Il tuo piano reset personale" },
-    "text": {
-      "de": "Abschluss:\n• Welche 3 Tools haben dir geholfen?\n• Wann nutzt du sie (morgens / mittags / abends)?\n• Dein Satz: „Wenn Stress steigt, dann…“\n\nZiel:\nEin einfacher Plan schlägt perfekte Theorie.",
-      "it": "Chiusura:\n• Quali 3 strumenti ti hanno aiutato?\n• Quando li usi (mattina / mezzogiorno / sera)?\n• La tua frase: “Quando lo stress sale, allora…”\n\nObiettivo:\nUn piano semplice batte una teoria perfetta."
-    },
-    "premiumInsight": {
-      "de": "Extra-Insight:\nResilienz ist Wiederholung. Ein Plan hilft dir, nicht jedes Mal neu zu kämpfen.",
-      "it": "Extra insight:\nLa resilienza è ripetizione. Un piano ti aiuta a non dover lottare ogni volta da capo."
-    },
-    "premiumQuestion": {
-      "de": "Mini-Frage:\nWelche 3 Tools bleiben ab morgen fix – und wann genau nutzt du sie?",
-      "it": "Mini-domanda:\nQuali 3 strumenti restano fissi da domani – e quando esattamente li userai?"
-    }
-  }
-]
+  ]
+}
