@@ -21,6 +21,9 @@
       --radius2: 18px;
     }
 
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
@@ -39,7 +42,7 @@
       align-items:center;
       justify-content:space-between;
       gap:10px;
-      margin-bottom:14px;
+      margin-bottom:12px;
     }
 
     .back{
@@ -65,6 +68,36 @@
       font-weight:900;
     }
 
+    .langRow{
+      display:flex;
+      justify-content:flex-start;
+      margin-bottom:10px;
+    }
+    .langToggle{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .langBtn{
+      appearance:none;
+      border:none;
+      cursor:pointer;
+      padding:10px 14px;
+      border-radius:999px;
+      font-weight:900;
+      letter-spacing:.2px;
+      background: rgba(255,255,255,.70);
+      border:1px solid rgba(200,162,74,.18);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+      color: var(--text);
+    }
+    .langBtn.active{
+      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      border:1px solid rgba(200,162,74,.35);
+      color:#3a2c10;
+      text-shadow: 0 0 10px rgba(200,162,74,.22);
+    }
+
     .card{
       background: linear-gradient(180deg, var(--card2), var(--card));
       border-radius: var(--radius);
@@ -80,7 +113,7 @@
       align-items:center;
     }
 
-    .daybadge{
+    .badge{
       width:64px;
       height:64px;
       border-radius:18px;
@@ -99,17 +132,6 @@
     .hero h1{ margin:0; font-size:18px; letter-spacing:.2px; }
     .hero p{ margin:6px 0 0 0; color:var(--muted); font-size:13px; line-height:1.45; }
 
-    .imagewrap{ position:relative; padding:0 18px 16px 18px; }
-    /* spazio per foto esercizio: icons/1b.png, 2b.png, ... */
-    .dayimg{
-      width:100%;
-      height:auto;
-      max-height:260px;
-      object-fit:cover;
-      border-radius:18px;
-      display:block;
-    }
-
     .content{ padding:16px 18px 18px 18px; }
 
     .divider{
@@ -118,200 +140,163 @@
       margin:16px 0;
     }
 
-    .pillRow{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:10px;
-    }
-    .pill{
-      padding:8px 10px;
-      border-radius:999px;
-      background: rgba(255,255,255,.65);
+    .block{
+      background: rgba(255,255,255,.70);
       border:1px solid rgba(200,162,74,.16);
       box-shadow: 0 10px 22px rgba(0,0,0,.06);
-      font-size:12px;
-      color:var(--muted);
-      font-weight:800;
-    }
-
-    /* Blocks */
-    .block{
-      margin-top:12px;
-      padding:14px;
       border-radius:18px;
-      border:1px solid rgba(200,162,74,.18);
-      background: linear-gradient(180deg, rgba(255,255,255,.78), rgba(255,255,255,.60));
-      box-shadow: 0 0 18px rgba(0,0,0,.05);
+      padding:14px;
+      margin-bottom:12px;
+      overflow:hidden;
     }
 
-    .blockHeader{
+    .blockHead{
       display:flex;
-      align-items:flex-start;
+      align-items:center;
       justify-content:space-between;
       gap:10px;
       margin-bottom:10px;
     }
 
     .blockTitle{
+      font-weight:900;
+      font-size:15px;
+      color: rgba(43,43,43,.90);
       margin:0;
-      font-size:14px;
-      font-weight:900;
-      color:#3a2c10;
     }
 
-    .blockSub{
-      margin:6px 0 0 0;
-      font-size:13px;
-      color:var(--muted);
-      line-height:1.45;
-    }
-
-    .tinyBtn{
-      appearance:none;
-      border:none;
-      cursor:pointer;
-      padding:10px 12px;
-      border-radius:14px;
+    .tag{
+      padding:6px 10px;
+      border-radius:999px;
       font-weight:900;
-      letter-spacing:.2px;
-      box-shadow: var(--shadow2);
-      border:1px solid rgba(200,162,74,.22);
-      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
-      color:#3a2c10;
-      white-space:nowrap;
       font-size:12px;
+      color:#3a2c10;
+      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      border:1px solid rgba(200,162,74,.35);
+      box-shadow: 0 0 14px rgba(200,162,74,.18);
+      flex:0 0 auto;
+      white-space:nowrap;
     }
-    .tinyBtn:hover{ transform: translateY(-1px); }
 
-    /* checklist cards */
-    .list{
-      margin:12px 0 0 0;
-      padding:0;
+    .blockDesc{
+      margin:0 0 10px 0;
+      font-size:13px;
+      line-height:1.5;
+      color: rgba(43,43,43,.72);
+      font-weight:700;
+    }
+
+    .imgSlot{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      margin:10px 0 12px;
+    }
+    .imgSlot img{
+      width:68px;
+      height:68px;
+      border-radius:16px;
+      object-fit:cover;
+      border:1px solid rgba(200,162,74,.20);
+      background: rgba(255,255,255,.75);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+      flex:0 0 auto;
+    }
+    .imgNote{
+      font-size:12px;
+      color: rgba(43,43,43,.60);
+      font-weight:800;
+      line-height:1.35;
+    }
+
+    .checklist{
       list-style:none;
+      padding:0;
+      margin:0;
       display:flex;
       flex-direction:column;
       gap:10px;
     }
 
-    .item{
+    .checkItem{
       display:flex;
-      gap:10px;
       align-items:flex-start;
-      padding:12px 12px;
-      border-radius:16px;
-      background: rgba(255,255,255,.72);
+      gap:10px;
+      padding:10px 10px;
+      border-radius:14px;
       border:1px solid rgba(200,162,74,.14);
-      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+      background: rgba(255,255,255,.72);
     }
-
-    .item input{
+    .checkItem input{
       margin-top:3px;
       width:18px;
       height:18px;
       accent-color: var(--gold);
+      cursor:pointer;
       flex:0 0 auto;
     }
-
-    .itxt{ flex:1; }
-
-    .iname{
-      font-weight:900;
-      margin:0;
+    .checkText{
       font-size:14px;
-      color:#2b2b2b;
-      line-height:1.25;
-    }
-
-    .idesc{
-      margin:6px 0 0 0;
-      font-size:13px;
-      color:var(--muted);
       line-height:1.45;
-      white-space: pre-line;
+      color: rgba(43,43,43,.78);
+      font-weight:800;
     }
+    .checkText b{ color: rgba(43,43,43,.90); }
 
-    .metaRow{
-      margin-top:8px;
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
+    .timerBox{
+      margin-top:12px;
+      padding:12px;
+      border-radius:16px;
+      border:1px solid rgba(200,162,74,.16);
+      background: rgba(255,255,255,.65);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
     }
-
-    .tag{
-      font-size:11px;
-      font-weight:900;
-      color:#3a2c10;
-      padding:6px 8px;
-      border-radius:999px;
-      background: rgba(232,210,138,.35);
-      border:1px solid rgba(200,162,74,.20);
-    }
-
-    /* timer modal */
-    .modalOverlay{
-      position:fixed;
-      inset:0;
-      background: rgba(0,0,0,.35);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      padding:16px;
-      z-index:99;
-    }
-    .modal{
-      width:100%;
-      max-width:480px;
-      border-radius:22px;
-      background: linear-gradient(180deg, var(--card2), var(--card));
-      border:1px solid rgba(200,162,74,.18);
-      box-shadow: 0 24px 70px rgba(0,0,0,.25);
-      overflow:hidden;
-    }
-    .modalTop{
-      padding:16px 18px 10px 18px;
+    .timerTop{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:10px;
+      margin-bottom:10px;
     }
-    .modalTop h3{
-      margin:0;
-      font-size:15px;
+    .timerLabel{
       font-weight:900;
-      color:#3a2c10;
+      color: rgba(43,43,43,.86);
+      font-size:13px;
     }
-    .closeBtn{
-      border:none;
-      cursor:pointer;
-      padding:10px 12px;
+    .timePill{
+      font-variant-numeric: tabular-nums;
+      padding:8px 12px;
       border-radius:999px;
       background: rgba(255,255,255,.75);
-      border:1px solid rgba(200,162,74,.20);
-      box-shadow: var(--shadow2);
+      border:1px solid rgba(200,162,74,.16);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
       font-weight:900;
-      color:#2b2b2b;
+      color: rgba(43,43,43,.85);
+      min-width:82px;
+      text-align:center;
     }
-    .modalBody{ padding: 0 18px 18px 18px; }
-    .timerDisplay{
-      margin:12px 0 10px 0;
-      font-size:34px;
+    .timerRow{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .timerRow input{
+      width:110px;
+      padding:10px 10px;
+      border-radius:14px;
+      border: 1px solid rgba(200,162,74,.18);
+      background: rgba(255,255,255,.90);
       font-weight:900;
-      color:#2b2b2b;
-      font-variant-numeric: tabular-nums;
-      letter-spacing:.5px;
+      color: rgba(43,43,43,.90);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.35);
     }
-    .timerHint{
-      margin:0;
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.45;
-    }
-    .modalControls{
+    .btnRow{
       display:flex;
       gap:10px;
       flex-wrap:wrap;
-      margin-top:14px;
+      margin-top:10px;
     }
     .btn{
       appearance:none;
@@ -336,7 +321,6 @@
       text-shadow: 0 0 10px rgba(200,162,74,.25);
     }
 
-    /* Mitglieder teaser */
     .memberTeaser{
       margin-top:14px;
       padding:14px;
@@ -346,6 +330,7 @@
       box-shadow: 0 0 18px rgba(200,162,74,.15);
       display:none;
     }
+
     .memberHeader{
       display:flex;
       align-items:center;
@@ -394,28 +379,21 @@
       text-align:center;
     }
 
-    /* premium-only section */
-    .premiumOnly{
-      display:none;
-      margin-top:14px;
-      padding:14px;
-      border-radius:18px;
-      border:1px solid rgba(200,162,74,.28);
-      background: linear-gradient(180deg, rgba(255,246,214,.60), rgba(255,255,255,.72));
-      box-shadow: 0 0 18px rgba(200,162,74,.10);
+    .small{
+      margin-top:12px;
+      font-size:12px;
+      color:var(--muted);
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
     }
-    .premiumOnly h3{
-      margin:0 0 8px 0;
-      font-size:14px;
-      font-weight:900;
-      color:#3a2c10;
-    }
-    .premiumOnly p{
-      margin:0;
-      font-size:14px;
-      line-height:1.5;
-      color:#2b2b2b;
-      white-space: pre-line;
+    .pill{
+      padding:8px 10px;
+      border-radius:999px;
+      background: rgba(255,255,255,.65);
+      border:1px solid rgba(200,162,74,.16);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
     }
   </style>
 </head>
@@ -423,476 +401,531 @@
 <body>
   <div class="phone">
 
+    <!-- Language toggle -->
+    <div class="langRow">
+      <div class="langToggle" aria-label="Language toggle">
+        <button class="langBtn" id="btnDE" type="button">Deutsch</button>
+        <button class="langBtn" id="btnIT" type="button">Italiano</button>
+      </div>
+    </div>
+
     <div class="topbar">
       <a class="back" href="indexIT.html">← Home</a>
       <div class="brand">
         <div class="t1">Panacea</div>
-        <div class="t2"><span class="glow">Esercizi</span> &amp; Pratica</div>
+        <div class="t2"><span class="glow">Esercizi</span> & Reset</div>
       </div>
     </div>
 
     <div class="card">
       <div class="hero">
-        <div class="daybadge" id="dayBadge">ES</div>
+        <div class="badge">ES</div>
         <div>
-          <h1>4 blocchi – micro-esercizi</h1>
-          <p>Scegli una carta, avvia il timer, spunta. Piccoli passi – grande effetto.</p>
+          <h1>Esercizi (4 blocchi)</h1>
+          <p>Passi brevi e chiari. Checklist da spuntare. Timer per ogni blocco.</p>
         </div>
-      </div>
-
-      <div class="imagewrap">
-        <img id="exerciseImage" class="dayimg" src="icons/1b.png" alt="Esercizi – immagine (opzionale)">
       </div>
 
       <div class="content">
 
-        <div class="pillRow">
-          <div class="pill" id="donePill">Fatto: 0</div>
-          <div class="pill" id="premiumPill">Premium: off</div>
-        </div>
-
-        <!-- BLOCCO 1 -->
-        <div class="block" data-block="sofort">
-          <div class="blockHeader">
-            <div>
-              <p class="blockTitle">Calmare subito (2–5 min)</p>
-              <p class="blockSub">Quando la testa è rumorosa: abbassa l’allarme, torna nel corpo, respira.</p>
-            </div>
-            <button class="tinyBtn" type="button" data-start-block="sofort">Timer</button>
+        <!-- Block 1 -->
+        <div class="block" data-block="1">
+          <div class="blockHead">
+            <h2 class="blockTitle">Blocco 1 – Iniziare</h2>
+            <div class="tag">2–4 min</div>
           </div>
-          <ul class="list" id="list_sofort"></ul>
-        </div>
 
-        <!-- BLOCCO 2 -->
-        <div class="block" data-block="denken">
-          <div class="blockHeader">
-            <div>
-              <p class="blockTitle">Stabilizzare i pensieri (5–10 min)</p>
-              <p class="blockSub">Metti ordine, ritrova il focus, interrompi il rimuginio.</p>
-            </div>
-            <button class="tinyBtn" type="button" data-start-block="denken">Timer</button>
+          <p class="blockDesc">Partenza dolce. Calma nel corpo. Orientamento nel presente.</p>
+
+          <div class="imgSlot">
+            <img src="icons/1b.png" alt="Immagine esercizio 1" onerror="this.style.display='none'">
+            <div class="imgNote">Spazio foto: <b>icons/1b.png</b> (opzionale)</div>
           </div>
-          <ul class="list" id="list_denken"></ul>
-        </div>
 
-        <!-- BLOCCO 3 -->
-        <div class="block" data-block="wirksamkeit">
-          <div class="blockHeader">
-            <div>
-              <p class="blockTitle">Autoefficacia (5 min)</p>
-              <p class="blockSub">Rinforza la sensazione: posso fare qualcosa.</p>
+          <ul class="checklist" id="checklist-1"></ul>
+
+          <div class="timerBox" data-timer="1">
+            <div class="timerTop">
+              <div class="timerLabel">Timer – Inizio esercizio</div>
+              <div class="timePill" id="time-1">03:00</div>
             </div>
-            <button class="tinyBtn" type="button" data-start-block="wirksamkeit">Timer</button>
-          </div>
-          <ul class="list" id="list_wirksamkeit"></ul>
-        </div>
-
-        <!-- BLOCCO 4 -->
-        <div class="block" data-block="sozial">
-          <div class="blockHeader">
-            <div>
-              <p class="blockTitle">Stabilità sociale (2–8 min)</p>
-              <p class="blockSub">La connessione è un “cuscinetto” anti-stress: bastano micro-contatti.</p>
+            <div class="timerRow">
+              <div style="font-weight:900; color:rgba(43,43,43,.75); font-size:13px;">Minuti</div>
+              <input type="number" id="mins-1" min="1" max="30" value="3">
             </div>
-            <button class="tinyBtn" type="button" data-start-block="sozial">Timer</button>
+            <div class="btnRow">
+              <button class="btn primary" id="start-1" type="button">Start</button>
+              <button class="btn" id="pause-1" type="button" disabled>Pausa</button>
+              <button class="btn" id="reset-1" type="button">Reset</button>
+            </div>
           </div>
-          <ul class="list" id="list_sozial"></ul>
         </div>
 
-        <!-- Premium-only content -->
-        <div class="premiumOnly" id="premiumOnly">
-          <h3>Membri – esercizi extra & contenuti</h3>
-          <p id="premiumText">
-Più esercizi per ogni blocco (es. routine sonno, body reset, strategie alimentari).
-Video-guida + meditazioni guidate.
-Piani settimanali e mini-challenge.
-          </p>
+        <!-- Block 2 -->
+        <div class="block" data-block="2">
+          <div class="blockHead">
+            <h2 class="blockTitle">Blocco 2 – Respiro</h2>
+            <div class="tag">3–5 min</div>
+          </div>
+
+          <p class="blockDesc">Espirazione più lunga. Regolazione. Ritorno al focus.</p>
+
+          <div class="imgSlot">
+            <img src="icons/2b.png" alt="Immagine esercizio 2" onerror="this.style.display='none'">
+            <div class="imgNote">Spazio foto: <b>icons/2b.png</b> (opzionale)</div>
+          </div>
+
+          <ul class="checklist" id="checklist-2"></ul>
+
+          <div class="timerBox" data-timer="2">
+            <div class="timerTop">
+              <div class="timerLabel">Timer – Inizio esercizio</div>
+              <div class="timePill" id="time-2">04:00</div>
+            </div>
+            <div class="timerRow">
+              <div style="font-weight:900; color:rgba(43,43,43,.75); font-size:13px;">Minuti</div>
+              <input type="number" id="mins-2" min="1" max="30" value="4">
+            </div>
+            <div class="btnRow">
+              <button class="btn primary" id="start-2" type="button">Start</button>
+              <button class="btn" id="pause-2" type="button" disabled>Pausa</button>
+              <button class="btn" id="reset-2" type="button">Reset</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Block 3 -->
+        <div class="block" data-block="3">
+          <div class="blockHead">
+            <h2 class="blockTitle">Blocco 3 – Sciogliere il corpo</h2>
+            <div class="tag">3–6 min</div>
+          </div>
+
+          <p class="blockDesc">Spalle e mandibola morbide. Meno tensione. Più spazio.</p>
+
+          <div class="imgSlot">
+            <img src="icons/3b.png" alt="Immagine esercizio 3" onerror="this.style.display='none'">
+            <div class="imgNote">Spazio foto: <b>icons/3b.png</b> (opzionale)</div>
+          </div>
+
+          <ul class="checklist" id="checklist-3"></ul>
+
+          <div class="timerBox" data-timer="3">
+            <div class="timerTop">
+              <div class="timerLabel">Timer – Inizio esercizio</div>
+              <div class="timePill" id="time-3">05:00</div>
+            </div>
+            <div class="timerRow">
+              <div style="font-weight:900; color:rgba(43,43,43,.75); font-size:13px;">Minuti</div>
+              <input type="number" id="mins-3" min="1" max="30" value="5">
+            </div>
+            <div class="btnRow">
+              <button class="btn primary" id="start-3" type="button">Start</button>
+              <button class="btn" id="pause-3" type="button" disabled>Pausa</button>
+              <button class="btn" id="reset-3" type="button">Reset</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Block 4 -->
+        <div class="block" data-block="4">
+          <div class="blockHead">
+            <h2 class="blockTitle">Blocco 4 – Chiusura chiara</h2>
+            <div class="tag">2–4 min</div>
+          </div>
+
+          <p class="blockDesc">Mini piano. Un focus. Chiudere con calma.</p>
+
+          <div class="imgSlot">
+            <img src="icons/4b.png" alt="Immagine esercizio 4" onerror="this.style.display='none'">
+            <div class="imgNote">Spazio foto: <b>icons/4b.png</b> (opzionale)</div>
+          </div>
+
+          <ul class="checklist" id="checklist-4"></ul>
+
+          <div class="timerBox" data-timer="4">
+            <div class="timerTop">
+              <div class="timerLabel">Timer – Inizio esercizio</div>
+              <div class="timePill" id="time-4">03:00</div>
+            </div>
+            <div class="timerRow">
+              <div style="font-weight:900; color:rgba(43,43,43,.75); font-size:13px;">Minuti</div>
+              <input type="number" id="mins-4" min="1" max="30" value="3">
+            </div>
+            <div class="btnRow">
+              <button class="btn primary" id="start-4" type="button">Start</button>
+              <button class="btn" id="pause-4" type="button" disabled>Pausa</button>
+              <button class="btn" id="reset-4" type="button">Reset</button>
+            </div>
+          </div>
         </div>
 
         <!-- Mitglieder teaser (free only) -->
         <div class="memberTeaser" id="memberTeaser">
           <div class="memberHeader">
-            <div class="memberBadge">Membri</div>
-            <div class="memberTitle">Più esercizi. Video. Meditazione. Struttura.</div>
+            <div class="memberBadge">Mitglieder</div>
+            <div class="memberTitle">Più esercizi. Più profondità. Più strumenti.</div>
           </div>
 
           <ul class="memberList">
-            <li><b>Tante carte extra</b> in tutti e 4 i blocchi</li>
-            <li><b>Video-guida</b> &amp; <b>meditazioni guidate</b></li>
-            <li><b>Routine settimanali</b> + progressi nell’area membri</li>
+            <li><b>Più blocchi</b> (stress / sonno / focus / corpo)</li>
+            <li><b>Video</b> & <b>meditazione</b> (sessioni guidate)</li>
+            <li><b>Checklist</b> + struttura per la pratica</li>
           </ul>
 
-          <a class="memberBtn" href="mitgliederIT.html">Sblocca area membri →</a>
+          <a class="memberBtn" href="mitgliederIT.html">Sblocca membri →</a>
+          <div class="memberNote">Il Premium diventa visibile automaticamente dopo lo sblocco.</div>
 
-          <div class="memberNote">Il premium diventa visibile automaticamente dopo lo sblocco.</div>
+          <div class="divider"></div>
+
+          <div class="block" style="margin:0;">
+            <div class="blockHead">
+              <h2 class="blockTitle">Sessione membri – Contenuti extra</h2>
+              <div class="tag">10–20 min</div>
+            </div>
+            <p class="blockDesc">Esempi (poi puoi sostituire/espandere tutto):</p>
+
+            <ul class="checklist" id="checklist-premium"></ul>
+
+            <div class="timerBox" data-timer="P">
+              <div class="timerTop">
+                <div class="timerLabel">Timer – Sessione Premium</div>
+                <div class="timePill" id="time-P">12:00</div>
+              </div>
+              <div class="timerRow">
+                <div style="font-weight:900; color:rgba(43,43,43,.75); font-size:13px;">Minuti</div>
+                <input type="number" id="mins-P" min="1" max="60" value="12">
+              </div>
+              <div class="btnRow">
+                <button class="btn primary" id="start-P" type="button">Start</button>
+                <button class="btn" id="pause-P" type="button" disabled>Pausa</button>
+                <button class="btn" id="reset-P" type="button">Reset</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="small">
+          <div class="pill" id="premiumPill">Premium: off</div>
+          <div class="pill" id="progressPill">Checklist: 0%</div>
         </div>
 
       </div>
     </div>
 
-  </div>
-
-  <!-- TIMER MODAL -->
-  <div class="modalOverlay" id="modalOverlay" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true">
-      <div class="modalTop">
-        <h3 id="modalTitle">Timer</h3>
-        <button class="closeBtn" id="closeModal" type="button">✕</button>
-      </div>
-      <div class="modalBody">
-        <div class="timerDisplay" id="timerDisplay">05:00</div>
-        <p class="timerHint" id="timerHint">Avvia il timer e fai l’esercizio con calma.</p>
-
-        <div class="modalControls">
-          <button class="btn primary" id="startTimerBtn" type="button">Start</button>
-          <button class="btn" id="pauseTimerBtn" type="button" disabled>Pausa</button>
-          <button class="btn" id="resetTimerBtn" type="button">Reset</button>
-        </div>
-      </div>
-    </div>
   </div>
 
   <script>
-    // ----------------- Storage -----------------
-    const PREMIUM_FLAG = "panacea_premium"; // "true" | "false"
-    const STORAGE_DONE = "panacea_uebungen_done"; // JSON object { [id]: true/false }
+    // =========================================================
+    // 1) Language switch (DE/IT)
+    // =========================================================
+    (function(){
+      const KEY = "lang"; // "de" | "it"
 
-    // ----------------- Helpers -----------------
+      function setLang(l){ localStorage.setItem(KEY, l); }
+      function getLang(){
+        const v = (localStorage.getItem(KEY) || "").toLowerCase();
+        return (v === "it" || v === "de") ? v : "de";
+      }
+
+      function getTwinUrl(targetLang){
+        const path = location.pathname.split("/").pop() || "index.html";
+        const map = {
+          "index.html": "indexIT.html",
+          "indexIT.html": "index.html",
+
+          "wissen.html": "wissenIT.html",
+          "wissenIT.html": "wissen.html",
+
+          "daily-reset.html": "daily-resetIT.html",
+          "daily-resetIT.html": "daily-reset.html",
+
+          "lifestyle.html": "lifestyleIT.html",
+          "lifestyleIT.html": "lifestyle.html",
+
+          "mitglieder.html": "mitgliederIT.html",
+          "mitgliederIT.html": "mitglieder.html",
+
+          "uebungen.html": "uebungenIT.html",
+          "uebungenIT.html": "uebungen.html",
+        };
+
+        if(targetLang === "it") return map[path] || path.replace(".html","IT.html");
+        if(targetLang === "de") return map[path] || path.replace("IT.html",".html");
+        return path;
+      }
+
+      const btnDE = document.getElementById("btnDE");
+      const btnIT = document.getElementById("btnIT");
+      if(!btnDE || !btnIT) return;
+
+      function paint(){
+        const l = getLang();
+        btnDE.classList.toggle("active", l === "de");
+        btnIT.classList.toggle("active", l === "it");
+      }
+
+      btnDE.addEventListener("click", () => {
+        setLang("de");
+        location.href = getTwinUrl("de");
+      });
+
+      btnIT.addEventListener("click", () => {
+        setLang("it");
+        location.href = getTwinUrl("it");
+      });
+
+      // Auto-redirect coerente con lang salvato
+      const current = location.pathname.split("/").pop() || "";
+      const stored = getLang();
+      const isITpage = current.includes("IT.html");
+
+      if(stored === "it" && !isITpage){
+        const twin = getTwinUrl("it");
+        if(twin !== current) location.replace(twin);
+        return;
+      }
+      if(stored === "de" && isITpage){
+        const twin = getTwinUrl("de");
+        if(twin !== current) location.replace(twin);
+        return;
+      }
+
+      document.documentElement.lang = stored;
+      paint();
+    })();
+  </script>
+
+  <script>
+    // =========================================================
+    // 2) Premium flag – NON CAMBIO NIENTE
+    // =========================================================
+    const PREMIUM_FLAG = "panacea_premium";
     function isPremium(){ return localStorage.getItem(PREMIUM_FLAG) === "true"; }
 
-    function getDoneMap(){
-      try{
-        const raw = localStorage.getItem(STORAGE_DONE);
-        const obj = raw ? JSON.parse(raw) : {};
-        return (obj && typeof obj === "object") ? obj : {};
-      }catch(e){
-        return {};
-      }
+    const premiumPill = document.getElementById("premiumPill");
+    const memberTeaser = document.getElementById("memberTeaser");
+
+    function updatePremiumUI(){
+      premiumPill.textContent = `Premium: ${isPremium() ? "on" : "off"}`;
+      memberTeaser.style.display = isPremium() ? "none" : "block";
     }
-    function setDoneMap(obj){
-      localStorage.setItem(STORAGE_DONE, JSON.stringify(obj));
-    }
+    updatePremiumUI();
+  </script>
 
-    function pad(n){ return String(n).padStart(2,"0"); }
-    function fmt(s){
-      const m = Math.floor(s/60);
-      const r = s % 60;
-      return `${pad(m)}:${pad(r)}`;
-    }
-
-    // ----------------- Data (FREE) -----------------
-    const EX = {
-      sofort: [
-        {
-          id:"sofort_1",
-          title:"Respiro 4–6 (2 min)",
-          desc:"Inspira 4 secondi, espira 6 secondi. Porta l’attenzione sull’espirazione.\n→ Segnale di sicurezza per il sistema nervoso.",
-          minutes:2,
-          image:"icons/1b.png"
-        },
-        {
-          id:"sofort_2",
-          title:"Grounding 5-4-3-2-1 (3 min)",
-          desc:"5 cose che vedi, 4 che senti (tatto), 3 che ascolti, 2 che annusi, 1 che gusti.\n→ Ti riporta nel momento presente.",
-          minutes:3,
-          image:"icons/2b.png"
-        },
-        {
-          id:"sofort_3",
-          title:"Rilassa mandibola & spalle (2 min)",
-          desc:"Mandibola morbida, spalle che scendono, espira lentamente.\n→ Il corpo capisce: non c’è allarme.",
-          minutes:2,
-          image:"icons/3b.png"
-        }
+  <script>
+    // =========================================================
+    // 3) Checklists – localStorage (stesse chiavi del DE)
+    // =========================================================
+    const LISTS = {
+      1: [
+        "Un’espirazione profonda (senza forzare).",
+        "Sentire il terreno: spingi i piedi a terra (5 sec.).",
+        "Una frase: <b>“Sono qui – e va bene così, adesso.”</b>"
       ],
-
-      denken: [
-        {
-          id:"denken_1",
-          title:"Parcheggia i pensieri (5 min)",
-          desc:"Scrivi tutto veloce. Poi decidi: Ora / Dopo / Non importante.\n→ Riduce il rimuginio.",
-          minutes:5,
-          image:"icons/4b.png"
-        },
-        {
-          id:"denken_2",
-          title:"Reframing in 3 frasi (7 min)",
-          desc:"1) Cosa sto pensando?\n2) Qual è un’interpretazione alternativa?\n3) Qual è il prossimo piccolo passo?",
-          minutes:7,
-          image:"icons/5b.png"
-        },
-        {
-          id:"denken_3",
-          title:"Focus 10 minuti (10 min)",
-          desc:"Scegli 1 cosa. Metti il timer. Niente multitasking.\n→ Chiarezza con una cosa alla volta.",
-          minutes:10,
-          image:"icons/6b.png"
-        }
+      2: [
+        "5 cicli: <b>4 sec. inspiro</b> / <b>6–8 sec. espiro</b>.",
+        "Spalle giù – mandibola morbida.",
+        "Se arrivano pensieri: torna con gentilezza all’espirazione."
       ],
-
-      wirksamkeit: [
-        {
-          id:"wirksamkeit_1",
-          title:"Lista “ce l’ho fatta” (5 min)",
-          desc:"La sera scrivi 3 cose che hai gestito oggi – anche piccole.\n→ Allena: posso farcela.",
-          minutes:5,
-          image:"icons/7b.png"
-        },
-        {
-          id:"wirksamkeit_2",
-          title:"Mini-obiettivo + spunta (5 min)",
-          desc:"Definisci 1 mini-obiettivo per oggi (max 10 minuti). Poi: spunta.\n→ Dopamina & autoefficacia.",
-          minutes:5,
-          image:"icons/8b.png"
-        },
-        {
-          id:"wirksamkeit_3",
-          title:"Frase “nonostante” (3 min)",
-          desc:"Scrivi: “Nonostante …, ho … fatto.”\n→ Rinforza resilienza e spazio d’azione.",
-          minutes:3,
-          image:"icons/9b.png"
-        }
+      3: [
+        "Rotazioni delle spalle lente (10×).",
+        "Collo morbido: testa a destra/sinistra (10 sec. per lato).",
+        "1 minuto: mano sul petto, respiro calmo."
       ],
-
-      sozial: [
-        {
-          id:"sozial_1",
-          title:"1 messaggio sincero (2–3 min)",
-          desc:"Scrivi: “Ti penso. Come stai oggi?”\n→ La connessione è un cuscinetto anti-stress.",
-          minutes:3,
-          image:"icons/10b.png"
-        },
-        {
-          id:"sozial_2",
-          title:"Gratitudine concreta (3–5 min)",
-          desc:"Nomina 1 persona + 1 motivo specifico (e dillo, se puoi).\n→ Migliora legame e umore.",
-          minutes:5,
-          image:"icons/11b.png"
-        },
-        {
-          id:"sozial_3",
-          title:"Micro-contatto quotidiano (2 min)",
-          desc:"Sguardo + sorriso + “grazie”.\n→ I piccoli segnali sociali contano.",
-          minutes:2,
-          image:"icons/12b.png"
-        }
+      4: [
+        "Scegli una cosa: il <b>prossimo</b> passo (non tutto).",
+        "10 minuti solo su questo – poi pausa.",
+        "Frase finale: <b>“Oggi è abbastanza.”</b>"
+      ],
+      premium: [
+        "<b>Video:</b> 8 min – respiro & corpo (guidato).",
+        "<b>Meditazione:</b> 10 min – sicurezza interiore.",
+        "<b>Tool:</b> 5 min – calma mentale (stile CBT).",
+        "<b>Bonus:</b> 3 min – reset serale per il sonno."
       ]
     };
 
-    // ----------------- Render lists -----------------
-    const doneMap = getDoneMap();
-    const donePill = document.getElementById("donePill");
-    const premiumPill = document.getElementById("premiumPill");
-    const memberTeaser = document.getElementById("memberTeaser");
-    const premiumOnly = document.getElementById("premiumOnly");
-    const exerciseImage = document.getElementById("exerciseImage");
+    function keyFor(blockId){ return `panacea_uebungen_checks_${blockId}`; }
 
-    function countDone(){
-      return Object.values(getDoneMap()).filter(Boolean).length;
-    }
-
-    function updateHeader(){
-      donePill.textContent = `Fatto: ${countDone()}`;
-      premiumPill.textContent = `Premium: ${isPremium() ? "on" : "off"}`;
-      if(isPremium()){
-        memberTeaser.style.display = "none";
-        premiumOnly.style.display = "block";
-      }else{
-        memberTeaser.style.display = "block";
-        premiumOnly.style.display = "none";
+    function loadChecks(blockId){
+      try{
+        const raw = localStorage.getItem(keyFor(blockId));
+        const arr = raw ? JSON.parse(raw) : [];
+        return Array.isArray(arr) ? arr.map(Boolean) : [];
+      }catch(e){
+        return [];
       }
     }
 
-    function makeItem(card){
-      const li = document.createElement("li");
-      li.className = "item";
-
-      const cb = document.createElement("input");
-      cb.type = "checkbox";
-      cb.checked = !!doneMap[card.id];
-      cb.addEventListener("change", () => {
-        const map = getDoneMap();
-        map[card.id] = cb.checked;
-        setDoneMap(map);
-        updateHeader();
-      });
-
-      const box = document.createElement("div");
-      box.className = "itxt";
-
-      const name = document.createElement("p");
-      name.className = "iname";
-      name.textContent = card.title;
-
-      const desc = document.createElement("p");
-      desc.className = "idesc";
-      desc.textContent = card.desc;
-
-      const meta = document.createElement("div");
-      meta.className = "metaRow";
-
-      const tagMin = document.createElement("span");
-      tagMin.className = "tag";
-      tagMin.textContent = `${card.minutes} min`;
-
-      const startBtn = document.createElement("span");
-      startBtn.className = "tag";
-      startBtn.style.cursor = "pointer";
-      startBtn.textContent = "Avvia timer";
-      startBtn.addEventListener("click", () => openTimer(card.title, card.minutes * 60, card.image));
-
-      meta.appendChild(tagMin);
-      meta.appendChild(startBtn);
-
-      box.appendChild(name);
-      box.appendChild(desc);
-      box.appendChild(meta);
-
-      li.appendChild(cb);
-      li.appendChild(box);
-
-      li.addEventListener("click", (e) => {
-        if(e.target === cb) return;
-        if(e.target === startBtn) return;
-        setExerciseImage(card.image);
-      });
-
-      return li;
+    function saveChecks(blockId, arr){
+      localStorage.setItem(keyFor(blockId), JSON.stringify(arr));
     }
 
-    function setExerciseImage(src){
-      if(!exerciseImage) return;
-      exerciseImage.src = src || "icons/1b.png";
-    }
+    function renderChecklist(blockId, containerId, items){
+      const ul = document.getElementById(containerId);
+      if(!ul) return;
 
-    function renderBlock(blockKey, ulId){
-      const ul = document.getElementById(ulId);
+      const state = loadChecks(blockId);
+      while(state.length < items.length) state.push(false);
+      if(state.length > items.length) state.length = items.length;
+
       ul.innerHTML = "";
-      EX[blockKey].forEach(card => ul.appendChild(makeItem(card)));
-    }
+      items.forEach((txt, i) => {
+        const li = document.createElement("li");
+        li.className = "checkItem";
 
-    // ----------------- Timer Modal -----------------
-    const overlay = document.getElementById("modalOverlay");
-    const modalTitle = document.getElementById("modalTitle");
-    const timerDisplay = document.getElementById("timerDisplay");
-    const timerHint = document.getElementById("timerHint");
-    const closeModal = document.getElementById("closeModal");
+        const cb = document.createElement("input");
+        cb.type = "checkbox";
+        cb.checked = !!state[i];
 
-    const startTimerBtn = document.getElementById("startTimerBtn");
-    const pauseTimerBtn = document.getElementById("pauseTimerBtn");
-    const resetTimerBtn = document.getElementById("resetTimerBtn");
+        const p = document.createElement("div");
+        p.className = "checkText";
+        p.innerHTML = txt;
 
-    let baseSeconds = 300;
-    let remaining = 300;
-    let running = false;
-    let intervalId = null;
+        cb.addEventListener("change", () => {
+          state[i] = cb.checked;
+          saveChecks(blockId, state);
+          updateProgressPill();
+        });
 
-    function openTimer(title, seconds, img){
-      modalTitle.textContent = title || "Timer";
-      baseSeconds = Number(seconds || 300);
-      remaining = baseSeconds;
-      timerDisplay.textContent = fmt(remaining);
-
-      running = false;
-      clearInterval(intervalId);
-      intervalId = null;
-
-      startTimerBtn.disabled = false;
-      pauseTimerBtn.disabled = true;
-      pauseTimerBtn.textContent = "Pausa";
-      timerHint.textContent = "Avvia il timer e fai l’esercizio con calma.";
-
-      setExerciseImage(img);
-
-      overlay.style.display = "flex";
-      overlay.setAttribute("aria-hidden","false");
-    }
-
-    function closeTimer(){
-      overlay.style.display = "none";
-      overlay.setAttribute("aria-hidden","true");
-      running = false;
-      clearInterval(intervalId);
-      intervalId = null;
-    }
-
-    function tick(){
-      if(!running) return;
-      remaining -= 1;
-      timerDisplay.textContent = fmt(Math.max(0, remaining));
-
-      if(remaining <= 0){
-        running = false;
-        clearInterval(intervalId);
-        intervalId = null;
-        startTimerBtn.disabled = false;
-        pauseTimerBtn.disabled = true;
-        pauseTimerBtn.textContent = "Pausa";
-        timerHint.textContent = "Finito. Check-in: come si sente il tuo corpo adesso?";
-        if(navigator.vibrate) navigator.vibrate([120, 80, 120]);
-      }
-    }
-
-    startTimerBtn.addEventListener("click", () => {
-      if(running) return;
-      running = true;
-      startTimerBtn.disabled = true;
-      pauseTimerBtn.disabled = false;
-      pauseTimerBtn.textContent = "Pausa";
-      timerHint.textContent = "Lascia scorrere il timer. Resta nell’esercizio.";
-      intervalId = setInterval(tick, 1000);
-    });
-
-    pauseTimerBtn.addEventListener("click", () => {
-      if(!running){
-        running = true;
-        pauseTimerBtn.textContent = "Pausa";
-        timerHint.textContent = "Riprendi. Piccoli passi.";
-        return;
-      }
-      running = false;
-      pauseTimerBtn.textContent = "Continua";
-      timerHint.textContent = "Pausa. Respira. Poi continua.";
-      startTimerBtn.disabled = true;
-    });
-
-    resetTimerBtn.addEventListener("click", () => {
-      running = false;
-      clearInterval(intervalId);
-      intervalId = null;
-      remaining = baseSeconds;
-      timerDisplay.textContent = fmt(remaining);
-      startTimerBtn.disabled = false;
-      pauseTimerBtn.disabled = true;
-      pauseTimerBtn.textContent = "Pausa";
-      timerHint.textContent = "Reset. Quando sei pronta: Start.";
-    });
-
-    closeModal.addEventListener("click", closeTimer);
-    overlay.addEventListener("click", (e) => { if(e.target === overlay) closeTimer(); });
-
-    // block timer buttons (default per block)
-    document.querySelectorAll("[data-start-block]").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const block = btn.getAttribute("data-start-block");
-        const first = EX[block] && EX[block][0] ? EX[block][0] : null;
-        if(!first) return;
-        openTimer(`TIMER – ${block.toUpperCase()}`, first.minutes * 60, first.image);
+        li.appendChild(cb);
+        li.appendChild(p);
+        ul.appendChild(li);
       });
-    });
 
-    // image fallback
-    exerciseImage.addEventListener("error", () => {
-      exerciseImage.src = "icons/sfondo.png";
-    });
+      saveChecks(blockId, state);
+    }
 
-    // ----------------- Init -----------------
-    renderBlock("sofort", "list_sofort");
-    renderBlock("denken", "list_denken");
-    renderBlock("wirksamkeit", "list_wirksamkeit");
-    renderBlock("sozial", "list_sozial");
-    updateHeader();
-    setExerciseImage("icons/1b.png");
+    renderChecklist(1, "checklist-1", LISTS[1]);
+    renderChecklist(2, "checklist-2", LISTS[2]);
+    renderChecklist(3, "checklist-3", LISTS[3]);
+    renderChecklist(4, "checklist-4", LISTS[4]);
+    renderChecklist("premium", "checklist-premium", LISTS.premium);
+
+    function updateProgressPill(){
+      const pill = document.getElementById("progressPill");
+
+      const blocks = [1,2,3,4,"premium"];
+      let total = 0;
+      let done = 0;
+
+      blocks.forEach(b => {
+        const items = (b === "premium") ? LISTS.premium : LISTS[b];
+        const st = loadChecks(b);
+        total += items.length;
+        done += st.filter(Boolean).length;
+      });
+
+      const pct = total ? Math.round((done/total)*100) : 0;
+      pill.textContent = `Checklist: ${pct}%`;
+    }
+    updateProgressPill();
   </script>
+
+  <script>
+    // =========================================================
+    // 4) Timers – uno per blocco
+    // =========================================================
+    function pad(n){ return String(n).padStart(2,"0"); }
+    function fmt(seconds){
+      const m = Math.floor(seconds/60);
+      const s = seconds % 60;
+      return `${pad(m)}:${pad(s)}`;
+    }
+
+    function setupTimer(id){
+      const timeEl = document.getElementById(`time-${id}`);
+      const minsEl = document.getElementById(`mins-${id}`);
+      const startBtn = document.getElementById(`start-${id}`);
+      const pauseBtn = document.getElementById(`pause-${id}`);
+      const resetBtn = document.getElementById(`reset-${id}`);
+
+      if(!timeEl || !minsEl || !startBtn || !pauseBtn || !resetBtn) return;
+
+      let running = false;
+      let paused = false;
+      let total = Math.max(1, Math.min(Number(minsEl.value || 3), Number(minsEl.max || 30))) * 60;
+      let remaining = total;
+      let interval = null;
+
+      function refresh(){ timeEl.textContent = fmt(remaining); }
+
+      function recalc(){
+        total = Math.max(1, Math.min(Number(minsEl.value || 3), Number(minsEl.max || 30))) * 60;
+        remaining = total;
+        refresh();
+      }
+
+      function start(){
+        if(running) return;
+        recalc();
+        running = true;
+        paused = false;
+        startBtn.disabled = true;
+        pauseBtn.disabled = false;
+        pauseBtn.textContent = "Pausa";
+
+        interval = setInterval(() => {
+          if(!running || paused) return;
+          remaining -= 1;
+          if(remaining <= 0){
+            remaining = 0;
+            refresh();
+            finish();
+            return;
+          }
+          refresh();
+        }, 1000);
+      }
+
+      function finish(){
+        running = false;
+        paused = false;
+        clearInterval(interval);
+        interval = null;
+        startBtn.disabled = false;
+        pauseBtn.disabled = true;
+        pauseBtn.textContent = "Pausa";
+      }
+
+      function togglePause(){
+        if(!running) return;
+        paused = !paused;
+        pauseBtn.textContent = paused ? "Continua" : "Pausa";
+      }
+
+      function reset(){
+        running = false;
+        paused = false;
+        clearInterval(interval);
+        interval = null;
+        recalc();
+        startBtn.disabled = false;
+        pauseBtn.disabled = true;
+        pauseBtn.textContent = "Pausa";
+      }
+
+      // init
+      recalc();
+      pauseBtn.disabled = true;
+
+      startBtn.addEventListener("click", start);
+      pauseBtn.addEventListener("click", togglePause);
+      resetBtn.addEventListener("click", reset);
+
+      minsEl.addEventListener("change", () => {
+        if(running) reset();
+        else recalc();
+      });
+    }
+
+    setupTimer(1);
+    setupTimer(2);
+    setupTimer(3);
+    setupTimer(4);
+    setupTimer("P");
+  </script>
+
 </body>
 </html>
