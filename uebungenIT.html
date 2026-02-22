@@ -36,18 +36,11 @@
     .phone{ width:100%; max-width:480px; }
 
     /* Language toggle */
-    .langRow{
-      display:flex;
-      justify-content:center;   /* ✅ CENTER */
-      align-items:center;       /* ✅ CENTER */
-      margin-bottom:10px;
-      width:100%;
-    }
     .langToggle{
       display:flex;
       gap:10px;
       align-items:center;
-      justify-content:center;   /* ✅ CENTER */
+      justify-content:center;
     }
     .langBtn{
       appearance:none;
@@ -61,6 +54,7 @@
       border:1px solid rgba(200,162,74,.18);
       box-shadow: 0 10px 22px rgba(0,0,0,.06);
       color: var(--text);
+      white-space:nowrap;
     }
     .langBtn.active{
       background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
@@ -70,13 +64,14 @@
     }
 
     .topbar{
-      display:flex;
+      display:grid;
+      grid-template-columns: 1fr auto 1fr; /* ✅ left | center | right */
       align-items:center;
-      justify-content:space-between;
       gap:10px;
       margin-bottom:14px;
     }
     .back{
+      justify-self:start;
       text-decoration:none;
       display:inline-flex;
       align-items:center;
@@ -87,10 +82,16 @@
       box-shadow: var(--shadow2);
       color:var(--text);
       border:1px solid rgba(200,162,74,.20);
+      white-space:nowrap;
     }
     .back:hover{ transform: translateY(-1px); }
 
-    .brand{ text-align:right; line-height:1.1; }
+    .brand{
+      justify-self:end;
+      text-align:right;
+      line-height:1.1;
+      white-space:nowrap;
+    }
     .brand .t1{ font-size:14px; color:var(--muted); }
     .brand .t2{ font-size:18px; font-weight:800; letter-spacing:.2px; }
     .brand .glow{
@@ -329,16 +330,15 @@
 <body>
   <div class="phone">
 
-    <!-- Language toggle -->
-    <div class="langRow">
+    <div class="topbar">
+      <a class="back" href="indexIT.html">← Home</a>
+
+      <!-- ✅ Language toggle now centered in the same row -->
       <div class="langToggle" aria-label="Language toggle">
         <button class="langBtn" id="btnDE" type="button">Deutsch</button>
         <button class="langBtn" id="btnIT" type="button">Italiano</button>
       </div>
-    </div>
 
-    <div class="topbar">
-      <a class="back" href="indexIT.html">← Home</a>
       <div class="brand">
         <div class="t1">Panacea</div>
         <div class="t2"><span class="glow">Esercizi</span> & Reset</div>
