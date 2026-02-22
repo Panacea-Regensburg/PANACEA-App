@@ -36,15 +36,17 @@
 
     .phone{ width:100%; max-width:480px; }
 
+    /* --- TOPBAR: left back, centered language, right brand --- */
     .topbar{
-      display:flex;
+      display:grid;
+      grid-template-columns: 1fr auto 1fr;
       align-items:flex-start;
-      justify-content:space-between;
       gap:10px;
       margin-bottom:14px;
     }
 
     .back{
+      justify-self:start;
       text-decoration:none;
       display:inline-flex;
       align-items:center;
@@ -55,25 +57,15 @@
       box-shadow: var(--shadow2);
       color:var(--text);
       border:1px solid rgba(200,162,74,.20);
-      flex:0 0 auto;
     }
     .back:hover{ transform: translateY(-1px); }
 
-    .rightTop{
-      display:flex;
-      flex-direction:column;
-      align-items:flex-end;
-      gap:10px;
-      min-width:210px;
-    }
-
-    /* --- Centered language toggle (like the other pages) --- */
     .langToggle{
+      justify-self:center;
       display:flex;
       gap:10px;
       align-items:center;
       justify-content:center;
-      width:100%;
     }
 
     .langBtn{
@@ -96,7 +88,11 @@
       text-shadow: 0 0 10px rgba(200,162,74,.22);
     }
 
-    .brand{ text-align:right; line-height:1.1; }
+    .brand{
+      justify-self:end;
+      text-align:right;
+      line-height:1.1;
+    }
     .brand .t1{ font-size:14px; color:var(--muted); }
     .brand .t2{ font-size:18px; font-weight:800; letter-spacing:.2px; }
     .brand .glow{
@@ -120,20 +116,36 @@
       align-items:center;
     }
 
+    /* --- Day badge: perfectly centered label + number --- */
     .daybadge{
       width:64px;
       height:64px;
       border-radius:18px;
       display:flex;
+      flex-direction:column;
       align-items:center;
       justify-content:center;
-      font-weight:900;
-      font-size:16px;
+      text-align:center;
       color:#3a2c10;
       background: radial-gradient(circle at 30% 20%, #fff6d6, #e8d28a);
       border:1px solid rgba(200,162,74,.35);
       box-shadow: 0 0 16px rgba(200,162,74,.25);
       flex:0 0 auto;
+      padding:6px 6px 5px;
+      line-height:1.05;
+    }
+    .daybadge .dbLabel{
+      font-weight:900;
+      font-size:11px;
+      letter-spacing:.2px;
+      opacity:.95;
+      margin-bottom:3px;
+    }
+    .daybadge .dbNum{
+      font-weight:950;
+      font-size:18px;
+      letter-spacing:.2px;
+      transform: translateY(-1px);
     }
 
     .hero h1{ margin:0; font-size:18px; letter-spacing:.2px; }
@@ -331,22 +343,23 @@
     <div class="topbar">
       <a class="back" href="indexIT.html">← Home</a>
 
-      <div class="rightTop">
-        <div class="langToggle" aria-label="Language toggle">
-          <button class="langBtn" id="btnDE" type="button">Deutsch</button>
-          <button class="langBtn" id="btnIT" type="button">Italiano</button>
-        </div>
+      <div class="langToggle" aria-label="Language toggle">
+        <button class="langBtn" id="btnDE" type="button">Deutsch</button>
+        <button class="langBtn" id="btnIT" type="button">Italiano</button>
+      </div>
 
-        <div class="brand">
-          <div class="t1">Panacea</div>
-          <div class="t2"><span class="glow">Lifestyle</span> Reset</div>
-        </div>
+      <div class="brand">
+        <div class="t1">Panacea</div>
+        <div class="t2"><span class="glow">Lifestyle</span> Reset</div>
       </div>
     </div>
 
     <div class="card">
       <div class="hero">
-        <div class="daybadge" id="dayBadge">Giorno 1</div>
+        <div class="daybadge" id="dayBadge">
+          <span class="dbLabel">Giorno</span>
+          <span class="dbNum">1</span>
+        </div>
         <div>
           <h1 id="dayHeadline">21 giorni Lifestyle (Salutogenesi)</h1>
           <p>Micro-scelte quotidiane per alimentazione, calma, movimento e connessione — concrete, sostenibili.</p>
@@ -510,6 +523,11 @@
 
     // ---------- Helpers ----------
     function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
+
+    function setBadge(day){
+      // label + number, perfectly centered
+      dayBadge.innerHTML = `<span class="dbLabel">Giorno</span><span class="dbNum">${day}</span>`;
+    }
 
     function getCurrentDay(){
       const raw = localStorage.getItem(STORAGE_DAY);
@@ -705,7 +723,8 @@ Festeggia: la stabilità nasce dalla ripetizione, non dalla perfezione.` }
     function renderDay(day){
       hideError();
 
-      dayBadge.textContent = `Giorno ${day}`;
+      setBadge(day);
+
       dayImage.src = `icons/${day}a.png`;
       dayImage.alt = `Lifestyle – Giorno ${day}`;
 
