@@ -36,7 +36,7 @@
 
     .topbar{
       display:flex;
-      align-items:center;
+      align-items:flex-start;
       justify-content:space-between;
       gap:10px;
       margin-bottom:14px;
@@ -53,8 +53,42 @@
       box-shadow: var(--shadow2);
       color:var(--text);
       border:1px solid rgba(200,162,74,.20);
+      flex:0 0 auto;
     }
     .back:hover{ transform: translateY(-1px); }
+
+    .rightTop{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-end;
+      gap:10px;
+      min-width:210px;
+    }
+
+    .langToggle{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .langBtn{
+      appearance:none;
+      border:none;
+      cursor:pointer;
+      padding:10px 14px;
+      border-radius:999px;
+      font-weight:900;
+      letter-spacing:.2px;
+      background: rgba(255,255,255,.70);
+      border:1px solid rgba(200,162,74,.18);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+      color: var(--text);
+    }
+    .langBtn.active{
+      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      border:1px solid rgba(200,162,74,.35);
+      color:#3a2c10;
+      text-shadow: 0 0 10px rgba(200,162,74,.22);
+    }
 
     .brand{ text-align:right; line-height:1.1; }
     .brand .t1{ font-size:14px; color:var(--muted); }
@@ -101,7 +135,6 @@
 
     .imagewrap{ position:relative; padding:0 18px 16px 18px; }
 
-    /* FOTO: app-like, non gigante */
     .dayimg{
       width:100%;
       height:auto;
@@ -176,7 +209,6 @@
       box-shadow: 0 10px 22px rgba(0,0,0,.06);
     }
 
-    /* Premium box: contenuti li date voi */
     .premiumBox{
       margin-top:14px;
       padding:14px;
@@ -228,7 +260,6 @@
       display:none;
     }
 
-    /* Mitglieder teaser (solo free) */
     .memberTeaser{
       margin-top:14px;
       padding:14px;
@@ -293,9 +324,17 @@
 
     <div class="topbar">
       <a class="back" href="indexIT.html">← Home</a>
-      <div class="brand">
-        <div class="t1">Panacea</div>
-        <div class="t2"><span class="glow">Lifestyle</span> Reset</div>
+
+      <div class="rightTop">
+        <div class="langToggle" aria-label="Language toggle">
+          <button class="langBtn" id="btnDE" type="button">Deutsch</button>
+          <button class="langBtn" id="btnIT" type="button">Italiano</button>
+        </div>
+
+        <div class="brand">
+          <div class="t1">Panacea</div>
+          <div class="t2"><span class="glow">Lifestyle</span> Reset</div>
+        </div>
       </div>
     </div>
 
@@ -303,21 +342,19 @@
       <div class="hero">
         <div class="daybadge" id="dayBadge">Giorno 1</div>
         <div>
-          <h1 id="dayHeadline">21 giorni Lifestyle (Salutogenesi)</h1>
-          <p>Piccoli passi per alimentazione, riposo, movimento, stabilità sociale — pratici per la vita reale.</p>
+          <h1 id="dayHeadline">21 Giorni Lifestyle (Salutogenesi)</h1>
+          <p>Piccoli passi per alimentazione, calma, movimento e stabilità sociale — pratici.</p>
         </div>
       </div>
 
       <div class="imagewrap">
-        <!-- CHANGED: icons/1a.png -->
         <img id="dayImage" class="dayimg" src="icons/1a.png" alt="Lifestyle – immagine del giorno">
       </div>
 
       <div class="content">
-        <h2 class="title" id="dayTitle">Caricamento contenuto…</h2>
-        <p class="impulse" id="dayImpulse">Un momento, per favore.</p>
+        <h2 class="title" id="dayTitle">Caricamento…</h2>
+        <p class="impulse" id="dayImpulse">Un momento.</p>
 
-        <!-- PREMIUM (contenuti li date voi) -->
         <div class="premiumBox" id="premiumBox">
           <h3>Premium</h3>
           <p class="p" id="premiumExtra"></p>
@@ -327,35 +364,34 @@
 
         <div class="error" id="errorBox"></div>
 
-        <!-- Mitglieder teaser (free only) -->
         <div class="memberTeaser" id="memberTeaser">
           <div class="memberHeader">
             <div class="memberBadge">Membri</div>
-            <div class="memberTitle">Più profondità. Più struttura. Più risultati quotidiani.</div>
+            <div class="memberTitle">Più profondità. Più struttura. Più risultati.</div>
           </div>
 
           <ul class="memberList">
-            <li><b>Più impulsi al giorno</b> + strategia concreta settimanale</li>
+            <li><b>Più impulsi al giorno</b> + strategia settimanale concreta</li>
             <li><b>Consigli extra</b> (alimentazione, sonno, movimento, stress)</li>
-            <li><b>Link & strumenti</b> nell’Area Membri</li>
+            <li><b>Link & strumenti</b> nell’area membri</li>
           </ul>
 
-          <a class="memberBtn" href="mitgliederIT.html">Sblocca Area Membri →</a>
+          <a class="memberBtn" href="mitgliederIT.html">Sblocca area membri →</a>
 
-          <div class="memberNote">Premium diventa visibile automaticamente dopo lo sblocco.</div>
+          <div class="memberNote">Il Premium diventa visibile automaticamente dopo lo sblocco.</div>
         </div>
 
         <div class="divider"></div>
 
         <div class="row">
           <button class="btn" id="prevBtn">← Indietro</button>
-          <button class="btn primary" id="doneBtn">✔ Oggi completato</button>
+          <button class="btn primary" id="doneBtn">✔ Completato oggi</button>
           <button class="btn" id="nextBtn">Avanti →</button>
         </div>
 
         <div class="small">
           <div class="pill" id="progressPill">Progresso: 0/21</div>
-          <div class="pill" id="premiumPill">Premium: disattivo</div>
+          <div class="pill" id="premiumPill">Premium: off</div>
         </div>
       </div>
     </div>
@@ -363,10 +399,87 @@
   </div>
 
   <script>
+    // --- PANACEA Language Switch (DE/IT) ---
+    (function(){
+      const KEY = "lang";
+      function setLang(l){ localStorage.setItem(KEY, l); }
+      function getLang(){
+        const v = (localStorage.getItem(KEY) || "").toLowerCase();
+        return (v === "it" || v === "de") ? v : "it";
+      }
+
+      function getTwinUrl(targetLang){
+        const path = location.pathname.split("/").pop() || "indexIT.html";
+        const map = {
+          "index.html": "indexIT.html",
+          "indexIT.html": "index.html",
+
+          "daily-reset.html": "daily-resetIT.html",
+          "daily-resetIT.html": "daily-reset.html",
+
+          "wissen.html": "wissenIT.html",
+          "wissenIT.html": "wissen.html",
+
+          "lifestyle.html": "lifestyleIT.html",
+          "lifestyleIT.html": "lifestyle.html",
+
+          "mitglieder.html": "mitgliederIT.html",
+          "mitgliederIT.html": "mitglieder.html",
+        };
+
+        if(targetLang === "it"){
+          return map[path] || (path.includes("IT.html") ? path : path.replace(".html","IT.html"));
+        }
+        if(targetLang === "de"){
+          return map[path] || (path.includes("IT.html") ? path.replace("IT.html",".html") : path);
+        }
+        return path;
+      }
+
+      const btnDE = document.getElementById("btnDE");
+      const btnIT = document.getElementById("btnIT");
+      if(!btnDE || !btnIT) return;
+
+      function paint(){
+        const l = getLang();
+        btnDE.classList.toggle("active", l === "de");
+        btnIT.classList.toggle("active", l === "it");
+      }
+
+      btnDE.addEventListener("click", () => {
+        setLang("de");
+        location.href = getTwinUrl("de");
+      });
+
+      btnIT.addEventListener("click", () => {
+        setLang("it");
+        location.href = getTwinUrl("it");
+      });
+
+      const current = location.pathname.split("/").pop() || "";
+      const stored = getLang();
+      const isITpage = current.includes("IT.html");
+      if(stored === "it" && !isITpage){
+        const twin = getTwinUrl("it");
+        if(twin !== current) location.replace(twin);
+        return;
+      }
+      if(stored === "de" && isITpage){
+        const twin = getTwinUrl("de");
+        if(twin !== current) location.replace(twin);
+        return;
+      }
+
+      document.documentElement.lang = getLang();
+      paint();
+    })();
+  </script>
+
+  <script>
     // ---------- Settings / Storage ----------
     const STORAGE_DAY = "panacea_lifestyle_day";
-    const STORAGE_DONE = "panacea_lifestyle_done"; // JSON array of numbers [1..21]
-    const PREMIUM_FLAG = "panacea_premium";        // "true" | "false"
+    const STORAGE_DONE = "panacea_lifestyle_done";
+    const PREMIUM_FLAG = "panacea_premium";
     const TOTAL_DAYS = 21;
 
     // ---------- Elements ----------
@@ -424,7 +537,7 @@
     function updatePills(){
       const done = getDone();
       progressPill.textContent = `Progresso: ${done.length}/${TOTAL_DAYS}`;
-      premiumPill.textContent = `Premium: ${isPremium() ? "attivo" : "disattivo"}`;
+      premiumPill.textContent = `Premium: ${isPremium() ? "on" : "off"}`;
     }
 
     function showError(msg){
@@ -437,133 +550,113 @@
       errorBox.textContent = "";
     }
 
-    // ---------- FREE content (21 giorni) ----------
+    // ---------- FREE content (IT) ----------
     const FREE_DAYS = [
       { title:"Giorno 1 – Start: piccoli passi", impulse:
-`Oggi conta la fattibilità: scegli UN piccolo passo che puoi davvero fare.
-Fai un pasto normale e stabile (proteine + fibre) invece della “perfezione”.
-Bevi un bicchiere d’acqua in più e senti: di cosa ha bisogno il tuo corpo adesso?
-Sera: inizia a “scendere” 10 minuti prima (luci più basse, pausa schermo).` },
-
-      { title:"Giorno 2 – Glicemia stabile", impulse:
+`Oggi conta la fattibilità: scegli UN solo passo piccolo, davvero realizzabile.
+Fai un pasto “stabile” (proteine + fibre) invece della perfezione.
+Bevi un bicchiere d’acqua in più e chiediti: di cosa ha bisogno il mio corpo adesso?
+Sera: rallenta 10 minuti prima (luci più basse, pausa schermo).` },
+      { title:"Giorno 2 – Glicemia più stabile", impulse:
 `Inizia con struttura: un pasto con proteine (es. yogurt/ricotta, uova, legumi) + fibre.
-Evita “solo caffè” a colazione: per molti aumenta la risposta da stress.
+Evita “solo caffè” a colazione: per molti aumenta la reattività allo stress.
 Dopo aver mangiato: 10 minuti di camminata (riduce i picchi e calma).
-Mini-check: fame o stress? Espira lentamente 3 volte prima di fare uno snack.` },
-
+Mini-check: fame o stress? 3 espiri lenti prima di fare uno snack.` },
       { title:"Giorno 3 – Il sonno come regolatore", impulse:
 `Il sonno è un sistema di regolazione dello stress: oggi conta il ritmo, non la durata.
-Scegli un orario fisso per “rallentare” (es. 21:30) – il più possibile costante.
-Evita cene molto pesanti troppo tardi → meno agitazione notturna.
-Mini-rituale: doccia calda o pediluvio + espirazione lenta (4 inspiro / 6 espiro).` },
-
+Scegli un orario fisso per “iniziare a scendere” (es. 21:30).
+Evita pasti pesanti molto tardi → meno agitazione notturna.
+Mini-rituale: doccia calda o pediluvio + espirazione lenta (4 in / 6 out).` },
       { title:"Giorno 4 – Movimento senza pressione", impulse:
-`Il movimento è un “reset” per il sistema nervoso – basta che sia dolce.
-10–15 minuti di camminata leggera o stretching: obiettivo circolazione, non performance.
-Se sei teso: allunga l’espirazione durante il movimento.
+`Il movimento è un “reset” per il sistema nervoso: basta dolcezza.
+10–15 minuti di camminata tranquilla o stretching: obiettivo = circolazione, non performance.
+Se sei tesa: allunga l’espirazione mentre ti muovi.
 Scrivi 1 frase: “Come si sente il mio corpo dopo 10 minuti?”` },
-
       { title:"Giorno 5 – Micro-pause", impulse:
-`Pause brevi = segnale di sicurezza: 60–90 secondi bastano.
-Metti 2 mini-timer oggi (mattina/pomeriggio) per respiro + spalle morbide.
-Bevi lentamente 5 sorsi d’acqua e senti l’appoggio dei piedi.
-È salutogenesi: rinforzare le risorse prima che la cosa “crolli”.` },
-
+`Le pause brevi danno un segnale di sicurezza: 60–90 secondi bastano.
+Metti 2 mini-timer oggi (mattina/pomeriggio): respiro + spalle morbide.
+Bevi lentamente 5 sorsi d’acqua e senti i piedi a terra.
+Salutogenesi = rafforzare risorse prima che “crolli”.` },
       { title:"Giorno 6 – Risorsa sociale", impulse:
-`La connessione sociale attenua lo stress (anche a livello biologico).
-Invia un messaggio breve e reale a una persona: “Come stai?”
-Se è troppo: sorridi consapevolmente o dì “Grazie” – i micro-segnali contano.
+`La connessione sociale riduce lo stress (mente e corpo).
+Manda un messaggio breve e vero a una persona: “Come stai?”
+Se è troppo: sorridi consapevolmente o dì “grazie” — i micro-segnali contano.
 Sera: 1 minuto: “Chi/cosa mi ha sostenuto oggi?”` },
-
-      { title:"Giorno 7 – Reset della settimana", impulse:
-`Riflettere crea coerenza (comprensibilità/gestibilità/senso).
-Scegli 1 abitudine che resta anche la prossima settimana (es. 10 min di passeggiata).
-Pianifica 1 pasto “semplice” per domani (verdure + proteine + grassi buoni).
-Celebra: scrivi 3 cose che oggi sono state “abbastanza buone”.` },
-
+      { title:"Giorno 7 – Reset di settimana", impulse:
+`La riflessione crea coerenza (capisco / gestisco / ha senso).
+Scegli 1 abitudine che resta la prossima settimana (es. 10 min camminata).
+Pianifica 1 pasto “leggero e stabile” per domani (verdure + proteine + grassi buoni).
+Celebra: scrivi 3 cose che oggi sono state “abbastanza”.` },
       { title:"Giorno 8 – Basi anti-infiammatorie", impulse:
 `Più piante, più varietà: obiettivo 20–30 piante diverse a settimana (anche erbe).
-Oggi aggiungi 1 porzione extra di frutta/verdura – qualsiasi va bene.
-Usa grassi buoni (olio EVO, frutta secca, semi) per sazietà ed energia stabile.
+Oggi: aggiungi 1 porzione extra di frutta/verdura — qualunque va bene.
+Usa grassi buoni (olio EVO, noci, semi) per sazietà ed energia più stabile.
 Se puoi: sostituisci snack zuccherati con yogurt/noci/frutta.` },
-
-      { title:"Giorno 9 – Caffeina & stress", impulse:
-`La caffeina può amplificare i sintomi da stress – il timing aiuta.
+      { title:"Giorno 9 – Caffeina e stress", impulse:
+`La caffeina può amplificare i sintomi: il timing aiuta.
 Se bevi caffè: dopo colazione, non a digiuno.
-Ascolta i segnali: tachicardia/agitazione? Oggi 1 tazza in meno o più tardi.
-Alternativa: tisana + 3 espirazioni lente.` },
-
-      { title:"Giorno 10 – Sistema nervoso & respiro", impulse:
-`Espirare più a lungo attiva la modalità calma (parasimpatico).
-2 minuti: 4 secondi inspiro, 6–8 secondi espiro – senza forzare.
-Poi: lascia scendere le spalle, rilassa la mandibola.
+Segnali (tachicardia/ansia)? Oggi 1 tazza in meno o più tardi.
+Alternativa: tisana + 3 espiri lenti.` },
+      { title:"Giorno 10 – Sistema nervoso e respiro", impulse:
+`Espirare più a lungo attiva la modalità di calma (parasimpatico).
+2 minuti: 4 secondi inspiro, 6–8 secondi espiro — senza forzare.
+Poi: spalle giù, mandibola morbida.
 Ricorda: non “fare di più”, ma “meno allarme” nel corpo.` },
-
-      { title:"Giorno 11 – Senso & valori", impulse:
+      { title:"Giorno 11 – Senso e valori", impulse:
 `La salutogenesi ha bisogno di senso: le azioni pesano di più se hanno significato.
-Domanda: “Perché lo faccio – salute, energia, libertà, famiglia?”
-Scegli 1 micro-azione coerente (pasto fresco, passeggiata, sonno anticipato).
+Domanda: “Per cosa lo faccio? salute, energia, libertà, famiglia?”
+Scegli 1 mini-azione coerente (pasto fresco, camminata, sonno prima).
 Scrivi 1 frase: “Oggi è stato importante perché…”` },
-
-      { title:"Giorno 12 – Ordine & alleggerimento", impulse:
-`L’ambiente parla al sistema nervoso: meno stimoli = meno stress.
-Oggi: 5 minuti per riordinare una superficie (tavolo, borsa, cucina).
-Poi: respira e nota se ti senti “più leggero”.
-Un piccolo ordine è anche una scarica corporea.` },
-
-      { title:"Giorno 13 – Proteine & stabilità", impulse:
-`Le proteine supportano sazietà, muscoli ed energia più stabile.
-Oggi: inserisci una fonte proteica in 2 pasti (pesce, uova, tofu, legumi, ricotta/yogurt).
+      { title:"Giorno 12 – Ordine e alleggerimento", impulse:
+`L’ambiente influenza il sistema nervoso: meno stimoli = meno stress.
+Oggi: 5 minuti per sistemare una sola superficie.
+Poi: respira e nota se diventa più “leggero”.
+Piccolo ordine = alleggerimento anche nel corpo.` },
+      { title:"Giorno 13 – Proteine e stabilità", impulse:
+`Le proteine aiutano sazietà, metabolismo e energia più stabile.
+Oggi: aggiungi una fonte proteica in 2 pasti (pesce, uova, tofu, legumi, ricotta/yogurt).
 Abbina fibre (verdure/avena/integrale).
-Bevi acqua: spesso la sete viene scambiata per fame.` },
-
+Bevi acqua: spesso la sete si confonde con fame.` },
       { title:"Giorno 14 – Piacere senza colpa", impulse:
-`Stress + regole rigide spesso portano a “tutto o niente”.
-Concediti oggi un piacere in piccola porzione – lentamente, senza distrazioni.
+`Stress + regole rigide = “tutto o niente”.
+Concedi oggi un piacere in piccola porzione, lentamente, senza distrazioni.
 Domanda: “Lo sto davvero assaporando?” → l’attenzione riduce l’eccesso.
-Obiettivo: stabilità, non divieto.` },
-
-      { title:"Giorno 15 – Natura & luce", impulse:
+Obiettivo: stabilità, non divieti.` },
+      { title:"Giorno 15 – Natura e luce", impulse:
 `La luce diurna stabilizza il ritmo circadiano e migliora il sonno.
 Oggi: 10 minuti fuori al mattino, anche con nuvole.
-Se puoi: aggiungi movimento leggero (cammino, scale, mobilità).
-Sera: riduci luce → più facile rallentare.` },
-
-      { title:"Giorno 16 – Confini & dire No", impulse:
-`Salute mentale significa anche “mettere confini”.
-Oggi: dì no con gentilezza a una cosa o spostala.
-Frase utile: “Oggi non riesco, mi faccio sentire domani.”
-Proteggi energia – è prevenzione.` },
-
-      { title:"Giorno 17 – Micro-forza", impulse:
-`La forza protegge nel tempo: metabolismo, postura, autoefficacia.
+Se puoi: aggiungi un po’ di movimento (cammina, scale, leggero).
+Sera: riduci la luce → scendi più facilmente.` },
+      { title:"Giorno 16 – Confini e “no”", impulse:
+`La salute mentale è anche saper mettere confini.
+Oggi: dì no con gentilezza a una cosa, o rimandala.
+Frase utile: “Oggi non riesco, ti scrivo domani.”
+Proteggi energia: è prevenzione.` },
+      { title:"Giorno 17 – Micro-allenamento", impulse:
+`La forza protegge nel lungo periodo: metabolismo, postura, autoefficacia.
 Oggi: 6 minuti mini-forza (es. 2×: 10 squat + 10 push-up al muro).
-Lento e pulito – niente dolore.
+Lento e pulito — niente dolore.
 Poi acqua e un attimo di orgoglio.` },
-
-      { title:"Giorno 18 – Rituale culturale", impulse:
-`Cultura & rituali danno sicurezza: musica, cucina, lingua, tradizioni.
+      { title:"Giorno 18 – Ritualità e cultura", impulse:
+`Rituali danno sicurezza: musica, cucina, lingua, tradizione.
 Oggi: 10 minuti di un rituale che ti fa sentire “a casa”.
-Se puoi, condividilo (messaggio/foto/chiamata breve).
+Se puoi, condividilo (messaggio/foto/mini chiamata).
 Le risorse sono anche culturali.` },
-
-      { title:"Giorno 19 – Digestione & calma", impulse:
-`Lo stress influenza la digestione: oggi calma dolce dopo i pasti.
-Dopo un pasto: 5–10 minuti cammina piano o siediti in quiete.
-Mastica più lentamente: meno segnali di stress.
-Se pancia agitata: bevanda calda + espirazione lunga.` },
-
+      { title:"Giorno 19 – Digestione e calma", impulse:
+`Lo stress influenza la digestione: oggi rilassamento dolce dopo i pasti.
+Dopo un pasto: 5–10 minuti camminata lenta o seduta tranquilla.
+Mangia più lentamente: meno segnali di stress.
+Se la pancia è agitata: bevanda calda + espirazione lunga.` },
       { title:"Giorno 20 – Piano invece di pressione", impulse:
-`La struttura riduce il carico mentale (meno caos = meno stress).
+`La struttura riduce il carico mentale.
 Oggi: pianifica 1 pasto sano per domani + 1 alternativa snack.
-Prepara qualcosa “a vista” (frutta, noci, yogurt).
-Il tuo “te” di domani ti ringrazierà.` },
-
-      { title:"Giorno 21 – Integrazione", impulse:
-`Hai costruito risorse: questa è salutogenesi in pratica.
-Scegli 3 cose che restano: 1 nutrizione, 1 movimento, 1 rituale di calma.
+Lascia qualcosa “a vista” (frutta, noci, yogurt).
+Il tuo “te di domani” ti ringrazia.` },
+      { title:"Giorno 21 – Integrare", impulse:
+`Hai costruito risorse: questa è salutogenesi in azione.
+Scegli 3 cose che restano: 1 alimentazione, 1 movimento, 1 rituale di calma.
 Scrivi un piano semplice: “Quando esattamente lo faccio?”
-Festeggia: la stabilità nasce dalla ripetizione, non dalla perfezione.` }
+Festeggia: la stabilità nasce da ripetizione, non perfezione.` }
     ];
 
     // ---------- Premium data loading (optional) ----------
@@ -571,7 +664,7 @@ Festeggia: la stabilità nasce dalla ripetizione, non dalla perfezione.` }
 
     async function loadPremiumJson(){
       try{
-        const res = await fetch("./data/lifestyle.json", { cache: "no-store" });
+        const res = await fetch("./data/lifestyleIT.json", { cache: "no-store" });
         if(!res.ok) throw new Error("premium json not reachable");
         const data = await res.json();
         if(!data || !Array.isArray(data.days) || data.days.length < TOTAL_DAYS){
@@ -587,7 +680,6 @@ Festeggia: la stabilità nasce dalla ripetizione, non dalla perfezione.` }
       hideError();
 
       dayBadge.textContent = `Giorno ${day}`;
-      /* CHANGED: icons/1a.png ... icons/21a.png */
       dayImage.src = `icons/${day}a.png`;
       dayImage.alt = `Lifestyle – Giorno ${day}`;
 
@@ -630,19 +722,17 @@ Festeggia: la stabilità nasce dalla ripetizione, non dalla perfezione.` }
 
       const done = getDone();
       const isDoneToday = done.includes(day);
-      doneBtn.textContent = isDoneToday ? "✔ Completato" : "✔ Oggi completato";
+      doneBtn.textContent = isDoneToday ? "✔ Completato" : "✔ Completato oggi";
       doneBtn.classList.toggle("primary", !isDoneToday);
 
       updatePills();
     }
 
-    // Image fallback
     dayImage.addEventListener("error", () => {
       dayImage.src = "icons/sfondo.png";
-      showError("Immagine non trovata. Controlla: icons/1a.png fino a icons/21a.png (nomi esatti).");
+      showError("Immagine non trovata. Controlla: icons/1a.png fino a icons/21a.png (nomi identici).");
     });
 
-    // Events
     prevBtn.addEventListener("click", () => {
       const d = getCurrentDay();
       setCurrentDay(d - 1);
@@ -668,8 +758,11 @@ Festeggia: la stabilità nasce dalla ripetizione, non dalla perfezione.` }
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
-    // Init
     (async function init(){
+      // forza lingua IT su questa pagina
+      localStorage.setItem("lang","it");
+      document.documentElement.lang = "it";
+
       updatePills();
       await loadPremiumJson();
       renderDay(getCurrentDay());
