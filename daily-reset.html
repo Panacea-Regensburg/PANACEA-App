@@ -59,12 +59,14 @@
       box-shadow: var(--shadow2);
       color:var(--text);
       border:1px solid rgba(200,162,74,.20);
+      white-space:nowrap;
     }
     .back:hover{ transform: translateY(-1px); }
 
     .brand{
       text-align:right;
       line-height:1.1;
+      white-space:nowrap;
     }
     .brand .t1{
       font-size:14px;
@@ -403,940 +405,57 @@
       font-size:14px;
     }
 
-    @media (max-width: 420px){
-      .orb{ width: 215px; height: 215px; }
-      .controls button{ min-width: 100%; }
-    }
-  </style>
-</head>
-
-<body>
-  <div class="phone">
-
-    <div class="topbar">
-      <a class="back" href="index.html">← Home</a>
-      <div class="brand">
-        <div class="t1">Panacea</div>
-        <div class="t2"><span class="glow">Daily</span> Reset</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="hero">
-        <div class="badge">DR</div>
-        <div>
-          <h1>Daily Reset</h1>
-          <p>3–5 Minuten für innere Stabilität: ruhig atmen, Körper spüren, Klarheit finden.</p>
-        </div>
-      </div>
-
-      <div class="content">
-
-        <!-- Daily focus -->
-        <div class="resetOut" style="margin-top:0;">
-          <div class="rt" id="dailyFocusTitle">Heute</div>
-          <p class="rx" id="dailyFocusText">Lade…</p>
-          <p class="rx" style="margin-top:10px; opacity:.8; font-weight:800;">✨ Premium: Atemrhythmus & Impuls passen sich deinem Stresslevel an.</p>
-        </div>
-
-        <div class="divider"></div>
-
-        <!-- Breathing -->
-        <div class="breathWrap">
-          <div class="phase" id="phaseLabel">Bereit</div>
-
-          <div class="timerRow">
-            <span>Restzeit</span>
-            <span class="time" id="timeLeft">03:00</span>
-          </div>
-
-          <div class="orb" aria-label="Atem-Animation">
-            <div class="pulse" id="pulse"></div>
-            <div class="orbText">
-              <div class="focus" id="focusText">Heute: langsamer ausatmen</div>
-              <div class="hint" id="hintText">Tippe auf Start. Folge dem Kreis: Einatmen → Ausatmen.</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="controls">
-          <button class="primary" id="startBtn">Start</button>
-          <button id="pauseBtn" disabled>Pausieren</button>
-          <button id="resetBtn">Reset</button>
-        </div>
-
-        <div class="settings">
-          <div class="row">
-            <span>Einatmen (Sek.)</span>
-            <input id="inhale" type="number" min="2" max="8" value="4">
-          </div>
-          <div class="row">
-            <span>Ausatmen (Sek.)</span>
-            <input id="exhale" type="number" min="3" max="10" value="6">
-          </div>
-          <div class="row">
-            <span>Dauer (Min.)</span>
-            <input id="minutes" type="number" min="1" max="10" value="3">
-          </div>
-
-          <div class="mini">
-            Tipp: Längeres Ausatmen (z. B. 4–6) unterstützt die Beruhigung des Nervensystems.
-          </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <!-- Premium Reset (visible for free) -->
-        <div class="premiumBox" id="premiumReset">
-          <h3>Premium Reset</h3>
-
-          <label for="stressSlider">Stress Level (1–10)</label>
-          <input id="stressSlider" type="range" min="1" max="10" value="5">
-
-          <label for="energySlider">Energy Level (1–10)</label>
-          <input id="energySlider" type="range" min="1" max="10" value="5">
-
-          <button class="primary" id="generateResetBtn" style="margin-top:12px;">Mein Premium Reset</button>
-
-          <div class="resetOut" id="resetOut">
-            <div class="rt" id="resetTitle"></div>
-            <p class="rx" id="resetText"></p>
-          </div>
-
-          <div class="memberLine">
-            <span id="memberStatus">Free-Version</span> · <a href="mitglieder.html" id="unlockLink">Mitglieder freischalten</a>
-          </div>
-
-          <div class="premiumInfo">
-            <div class="t">Was ist im Premium enthalten?</div>
-            <ul>
-              <li><b>Verbesserter Atemrhythmus</b> (automatisch angepasst)</li>
-              <li><b>Mehr Daily-Impulse</b> & personalisierte Reset-Texte</li>
-              <li><b>Mitgliederbereich</b> mit zusätzlichen Tools</li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-
-  <script>
-    // ---------------- Daily Focus (7-day rotation) ----------------
-    const dailyFocus = [
-      { title: "Montag – Fokus", text: "Richte deine Aufmerksamkeit auf einen klaren nächsten Schritt. Nicht alles – nur den nächsten." },
-      { title: "Dienstag – Ruhe", text: "Verlängere heute bewusst dein Ausatmen. Dein Nervensystem liebt Sicherheit." },
-      { title: "Mittwoch – Klarheit", text: "Beobachte deine Gedanken wie Wolken. Du musst ihnen nicht folgen." },
-      { title: "Donnerstag – Struktur", text: "Plane nur die nächsten 30 Minuten – nicht den ganzen Tag." },
-      { title: "Freitag – Energie", text: "Atme tief ein, öffne den Brustraum, richte dich auf. Energie entsteht durch Haltung." },
-      { title: "Samstag – Regeneration", text: "Erlaube dir heute bewusst kleine Pausen. 3 Minuten reichen." },
-      { title: "Sonntag – Reflexion", text: "Was hat dir diese Woche Stabilität gegeben? Wiederhole genau das." }
-    ];
-    const today = new Date().getDay(); // 0=Sonntag
-    const idx = today === 0 ? 6 : today - 1;
-    document.getElementById("dailyFocusTitle").textContent = dailyFocus[idx].title;
-    document.getElementById("dailyFocusText").textContent = dailyFocus[idx].text;
-  </script>
-
-  <script>
-    // ---------------- Premium (FREE visible) + 3 reactions ----------------
-    const PREMIUM_FLAG = "panacea_premium";
-    const isPremiumUser = localStorage.getItem(PREMIUM_FLAG) === "true";
-    const memberStatus = document.getElementById("memberStatus");
-    memberStatus.textContent = isPremiumUser ? "Premium aktiv" : "Free-Version";
-
-    const stressSlider = document.getElementById("stressSlider");
-    const energySlider = document.getElementById("energySlider");
-    const resetTitleEl = document.getElementById("resetTitle");
-    const resetTextEl  = document.getElementById("resetText");
-
-    function level(n){
-      if(n <= 3) return "LOW";
-      if(n >= 8) return "HIGH";
-      return "MID";
-    }
-
-    function pickReset(stress, energy){
-      const sL = level(stress);
-      const eL = level(energy);
-
-      // (1) Stress HIGH + Energy LOW
-      if(sL === "HIGH" && eL === "LOW"){
-        return {
-          title: "Beruhigen & entlasten",
-          text:
-            "Dein System ist gerade überlastet.\n" +
-            "Heute gilt: runterfahren statt pushen.\n\n" +
-            "• 2–3 Minuten: länger ausatmen (4 ein / 6–8 aus)\n" +
-            "• Schultern sinken lassen, Kiefer locker\n" +
-            "• Nur 1 kleine Aufgabe – den Rest parken"
-        };
-      }
-
-      // (2) Stress HIGH + Energy HIGH
-      if(sL === "HIGH" && eL === "HIGH"){
-        return {
-          title: "Runterregeln & Fokus bündeln",
-          text:
-            "Viel Energie + hoher Druck.\n" +
-            "Du brauchst Kanal, nicht Tempo.\n\n" +
-            "• 3 Minuten: ruhig zählen (4 ein / 6 aus)\n" +
-            "• Dann: eine Priorität – 10 Minuten nur diese Sache\n" +
-            "• Wasser trinken, kurz Boden spüren"
-        };
-      }
-
-      // (3) Energy LOW
-      if(eL === "LOW"){
-        return {
-          title: "Regeneration & sanfte Aktivierung",
-          text:
-            "Dein Akku ist heute niedrig.\n" +
-            "Ziel: sanft stabilisieren.\n\n" +
-            "• 2 Minuten: ruhig atmen + Brustkorb öffnen\n" +
-            "• 1 Minute: langsame Bewegung (Nacken/Schultern)\n" +
-            "• Eine Sache, die dich nährt: Licht, Wasser, kurzer Gang"
-        };
-      }
-
-      // Balanced fallback
-      return {
-        title: "Reset – ruhig & klar",
-        text:
-          "Du bist im mittleren Bereich.\n" +
-          "Ziel: Stabilität + Klarheit.\n\n" +
-          "• 3 Minuten: gleichmäßig atmen (4 ein / 6 aus)\n" +
-          "• Frage: Was ist heute wirklich wichtig?\n" +
-          "• Dann: 15 Minuten fokussiert starten"
-      };
-    }
-
-    function render3Reactions(){
-      const s = Number(stressSlider.value);
-      const e = Number(energySlider.value);
-      const res = pickReset(s, e);
-      resetTitleEl.textContent = res.title;
-      resetTextEl.textContent  = res.text;
-    }
-
-    stressSlider.addEventListener("input", render3Reactions);
-    energySlider.addEventListener("input", render3Reactions);
-    document.getElementById("generateResetBtn").addEventListener("click", render3Reactions);
-    render3Reactions();
-  </script>
-
-  <script>
-    // ---------------- Breathing timer ----------------
-    const phaseLabel = document.getElementById("phaseLabel");
-    const timeLeftEl = document.getElementById("timeLeft");
-    const pulse = document.getElementById("pulse");
-    const hintText = document.getElementById("hintText");
-
-    const inhaleInput = document.getElementById("inhale");
-    const exhaleInput = document.getElementById("exhale");
-    const minutesInput = document.getElementById("minutes");
-
-    const startBtn = document.getElementById("startBtn");
-    const pauseBtn = document.getElementById("pauseBtn");
-    const resetBtn = document.getElementById("resetBtn");
-
-    let running = false;
-    let paused = false;
-
-    let inhaleSec = 4;
-    let exhaleSec = 6;
-    let totalSeconds = 180;
-    let remainingSeconds = 180;
-
-    let phase = "READY";
-    let phaseTimeout = null;
-    let tickInterval = null;
-
-    function pad(n){ return String(n).padStart(2,"0"); }
-    function fmtTime(s){
-      const m = Math.floor(s/60);
-      const r = s % 60;
-      return `${pad(m)}:${pad(r)}`;
-    }
-
-    function readSettings(){
-      inhaleSec = Math.max(2, Math.min(8, Number(inhaleInput.value || 4)));
-      exhaleSec = Math.max(3, Math.min(10, Number(exhaleInput.value || 6)));
-      const mins = Math.max(1, Math.min(10, Number(minutesInput.value || 3)));
-      totalSeconds = mins * 60;
-    }
-
-    function updateTimeUI(){ timeLeftEl.textContent = fmtTime(remainingSeconds); }
-
-    function setPhase(newPhase){
-      phase = newPhase;
-
-      if(newPhase === "INHALE"){
-        phaseLabel.textContent = "Einatmen";
-        pulse.style.transition = `transform ${inhaleSec}s ease`;
-        pulse.style.transform = "scale(1.06)";
-      } else if(newPhase === "EXHALE"){
-        phaseLabel.textContent = "Ausatmen";
-        pulse.style.transition = `transform ${exhaleSec}s ease`;
-        pulse.style.transform = "scale(0.86)";
-      } else {
-        phaseLabel.textContent = "Bereit";
-        pulse.style.transition = "transform 0.6s ease";
-        pulse.style.transform = "scale(0.88)";
-      }
-    }
-
-    function scheduleNextPhase(){
-      if(!running || paused) return;
-
-      if(phase === "INHALE"){
-        phaseTimeout = setTimeout(() => {
-          setPhase("EXHALE");
-          scheduleNextPhase();
-        }, inhaleSec * 1000);
-      } else if(phase === "EXHALE"){
-        phaseTimeout = setTimeout(() => {
-          setPhase("INHALE");
-          scheduleNextPhase();
-        }, exhaleSec * 1000);
-      }
-    }
-
-    function start(){
-      readSettings();
-      remainingSeconds = totalSeconds;
-      updateTimeUI();
-
-      running = true;
-      paused = false;
-      startBtn.disabled = true;
-      pauseBtn.disabled = false;
-      pauseBtn.textContent = "Pausieren";
-      hintText.textContent = "Folge dem Kreis. Wenn Gedanken kommen: sanft zurück zum Ausatmen.";
-
-      setPhase("INHALE");
-      scheduleNextPhase();
-
-      tickInterval = setInterval(() => {
-        if(!running || paused) return;
-
-        remainingSeconds -= 1;
-        updateTimeUI();
-
-        if(remainingSeconds <= 0){
-          finish();
-        }
-      }, 1000);
-    }
-
-    function togglePause(){
-      if(!running) return;
-
-      paused = !paused;
-
-      if(paused){
-        pauseBtn.textContent = "Weiter";
-        hintText.textContent = "Pause. Wenn du bereit bist: Weiter.";
-        clearTimeout(phaseTimeout);
-      } else {
-        pauseBtn.textContent = "Pausieren";
-        hintText.textContent = "Weiter. Folge dem Kreis.";
-        scheduleNextPhase();
-      }
-    }
-
-    function resetAll(){
-      running = false;
-      paused = false;
-
-      clearTimeout(phaseTimeout);
-      clearInterval(tickInterval);
-      phaseTimeout = null;
-      tickInterval = null;
-
-      readSettings();
-      remainingSeconds = totalSeconds;
-      updateTimeUI();
-
-      setPhase("READY");
-      hintText.textContent = "Tippe auf Start. Folge dem Kreis: Einatmen → Ausatmen.";
-
-      startBtn.disabled = false;
-      pauseBtn.disabled = true;
-      pauseBtn.textContent = "Pausieren";
-      phaseLabel.textContent = "Bereit";
-    }
-
-    function finish(){
-      running = false;
-      paused = false;
-
-      clearTimeout(phaseTimeout);
-      clearInterval(tickInterval);
-
-      setPhase("READY");
-      remainingSeconds = 0;
-      updateTimeUI();
-
-      hintText.textContent = "Fertig. Spüre kurz nach: Wie fühlt sich dein Körper jetzt an?";
-      startBtn.disabled = false;
-      pauseBtn.disabled = true;
-      pauseBtn.textContent = "Pausieren";
-      phaseLabel.textContent = "Geschafft";
-    }
-
-    // Init
-    readSettings();
-    remainingSeconds = totalSeconds;
-    updateTimeUI();
-    setPhase("READY");
-
-    // Events
-    startBtn.addEventListener("click", start);
-    pauseBtn.addEventListener("click", togglePause);
-    resetBtn.addEventListener("click", resetAll);
-
-    inhaleInput.addEventListener("change", resetAll);
-    exhaleInput.addEventListener("change", resetAll);
-    minutesInput.addEventListener("change", resetAll);
-  </script>
-
-</body>
-</html>
-<!doctype html>
-<html lang="de">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Panacea – Daily Reset</title>
-
-  <style>
-    :root{
-      --bg1:#f6f1e6;
-      --bg2:#efe7d7;
-      --card:#ffffffd9;
-      --card2:#ffffffee;
-      --gold:#c8a24a;
-      --gold2:#e8d28a;
-      --text:#2b2b2b;
-      --muted:#6b6b6b;
-      --shadow: 0 14px 40px rgba(0,0,0,.10);
-      --shadow2: 0 10px 26px rgba(0,0,0,.10);
-      --radius: 22px;
-      --radius2: 18px;
-    }
-
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--text);
-      background: radial-gradient(1200px 800px at 30% 0%, var(--bg1), var(--bg2));
-      min-height:100vh;
+    /* ---------- LANG TOGGLE (FIX: IN STYLE, not outside) ---------- */
+    .langToggle{
       display:flex;
-      justify-content:center;
-      padding:28px 14px;
-    }
-
-    .phone{
-      width:100%;
-      max-width:480px;
-    }
-
-    .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
       gap:10px;
-      margin-bottom:14px;
+      align-items:center;
+      justify-content:center;
+      flex: 0 0 auto;
     }
 
-    .back{
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
+    .langBtn{
+      appearance:none;
+      border:none;
+      cursor:pointer;
       padding:10px 14px;
       border-radius:999px;
-      background: linear-gradient(180deg, var(--card2), var(--card));
-      box-shadow: var(--shadow2);
-      color:var(--text);
-      border:1px solid rgba(200,162,74,.20);
-    }
-    .back:hover{ transform: translateY(-1px); }
-
-    .brand{
-      text-align:right;
-      line-height:1.1;
-    }
-    .brand .t1{
-      font-size:14px;
-      color:var(--muted);
-    }
-    .brand .t2{
-      font-size:18px;
-      font-weight:800;
+      font-weight:900;
       letter-spacing:.2px;
-    }
-    .brand .glow{
-      color:var(--gold);
-      text-shadow: 0 0 10px rgba(200,162,74,.30);
-      font-weight:900;
-    }
-
-    .card{
-      background: linear-gradient(180deg, var(--card2), var(--card));
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      border:1px solid rgba(200,162,74,.18);
-      overflow:hidden;
-    }
-
-    .hero{
-      padding:18px 18px 14px 18px;
-      display:flex;
-      gap:14px;
-      align-items:center;
-    }
-
-    .badge{
-      width:64px;
-      height:64px;
-      border-radius:18px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:900;
-      font-size:16px;
-      color:#3a2c10;
-      background: radial-gradient(circle at 30% 20%, #fff6d6, #e8d28a);
-      border:1px solid rgba(200,162,74,.35);
-      box-shadow: 0 0 16px rgba(200,162,74,.25);
-      flex:0 0 auto;
-    }
-
-    .hero h1{
-      margin:0;
-      font-size:18px;
-      letter-spacing:.2px;
-    }
-    .hero p{
-      margin:6px 0 0 0;
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.45;
-    }
-
-    .content{
-      padding:16px 18px 18px 18px;
-    }
-
-    .divider{
-      height:1px;
-      background: linear-gradient(90deg, transparent, rgba(200,162,74,.35), transparent);
-      margin:16px 0;
-    }
-
-    /* --------- Breath area (Wissen-style) --------- */
-    .breathWrap{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:12px;
-      padding:6px 0 8px;
-    }
-
-    .phase{
-      font-weight:900;
-      letter-spacing:.06em;
-      color: rgba(43,43,43,.85);
-      font-size:12px;
-      text-transform: uppercase;
-    }
-
-    .timerRow{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      color: rgba(43,43,43,.78);
-      font-weight:800;
-      font-size:13px;
-    }
-
-    .time{
-      font-variant-numeric: tabular-nums;
-      padding:8px 12px;
-      border-radius:999px;
       background: rgba(255,255,255,.70);
-      border:1px solid rgba(200,162,74,.16);
+      border:1px solid rgba(200,162,74,.18);
       box-shadow: 0 10px 22px rgba(0,0,0,.06);
+      color: var(--text);
+      white-space:nowrap;
     }
 
-    .orb{
-      width: 230px;
-      height: 230px;
-      border-radius: 999px;
-      position: relative;
-      display:grid;
-      place-items:center;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.92), rgba(255,255,255,.55));
-      border: 1px solid rgba(200,162,74,.28);
-      box-shadow: 0 22px 60px rgba(0,0,0,.10);
-      overflow:hidden;
-    }
-
-    .orb::before{
-      content:"";
-      position:absolute;
-      inset:-28px;
-      background: radial-gradient(circle, rgba(200,162,74,.20), transparent 60%);
-      filter: blur(6px);
-      opacity: .9;
-      pointer-events:none;
-    }
-
-    .pulse{
-      width: 72%;
-      height: 72%;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, rgba(200,162,74,.38), rgba(43,43,43,.06));
-      border: 1px solid rgba(200,162,74,.22);
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,.40);
-      transform: scale(0.88);
-      transition: transform 4s ease;
-    }
-
-    .orbText{
-      position:absolute;
-      text-align:center;
-      padding: 0 18px;
-      z-index:2;
-    }
-    .orbText .focus{
-      font-weight:900;
-      font-size:15px;
-      color: rgba(43,43,43,.85);
-      margin-bottom:6px;
-    }
-    .orbText .hint{
-      font-size:13px;
-      color: rgba(43,43,43,.70);
-      line-height:1.35;
-    }
-
-    .controls{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:14px;
-    }
-
-    button{
-      appearance:none;
-      border:none;
-      cursor:pointer;
-      padding:12px 14px;
-      border-radius:14px;
-      font-weight:900;
-      letter-spacing:.2px;
-      box-shadow: var(--shadow2);
-      border:1px solid rgba(200,162,74,.20);
-      background: linear-gradient(180deg, #ffffff, #f7f2e6);
-      color:var(--text);
-      flex:1;
-      min-width:130px;
-    }
-    button:hover{ transform: translateY(-1px); }
-
-    button.primary{
+    .langBtn.active{
       background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
       border:1px solid rgba(200,162,74,.35);
       color:#3a2c10;
-      text-shadow: 0 0 10px rgba(200,162,74,.25);
-    }
-
-    .settings{
-      margin-top:14px;
-      padding:14px;
-      border-radius:18px;
-      border:1px solid rgba(200,162,74,.16);
-      background: rgba(255,255,255,.65);
-      box-shadow: 0 10px 22px rgba(0,0,0,.06);
-    }
-
-    .row{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      margin: 10px 0;
-      font-size:14px;
-      color: rgba(43,43,43,.80);
-      font-weight:800;
-    }
-
-    input[type="number"]{
-      width: 88px;
-      padding:10px 10px;
-      border-radius: 14px;
-      border: 1px solid rgba(200,162,74,.18);
-      background: rgba(255,255,255,.90);
-      font-weight:900;
-      color: rgba(43,43,43,.90);
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,.35);
-    }
-
-    .mini{
-      font-size:12px;
-      font-weight:700;
-      color: rgba(43,43,43,.62);
-      margin-top: 8px;
-      line-height: 1.4;
-    }
-
-    /* --------- Premium box (Wissen-style) --------- */
-    .premiumBox{
-      margin-top:14px;
-      padding:14px;
-      border-radius:18px;
-      border:1px solid rgba(200,162,74,.28);
-      background: linear-gradient(180deg, rgba(255,246,214,.75), rgba(255,255,255,.75));
-      box-shadow: 0 0 18px rgba(200,162,74,.15);
-    }
-    .premiumBox h3{
-      margin:0 0 10px 0;
-      font-size:14px;
-      font-weight:900;
-      color:#3a2c10;
-      letter-spacing:.2px;
-    }
-
-    .premiumBox label{
-      display:block;
-      font-weight:900;
-      font-size:13px;
-      color: rgba(43,43,43,.75);
-      margin: 10px 0 8px;
-    }
-
-    input[type="range"]{
-      -webkit-appearance:none;
-      width:100%;
-      height:8px;
-      border-radius:999px;
-      background: rgba(43,43,43,0.10);
-      outline:none;
-    }
-    input[type="range"]::-webkit-slider-thumb{
-      -webkit-appearance:none;
-      width:18px;
-      height:18px;
-      border-radius:50%;
-      background: var(--gold);
-      border: 2px solid rgba(255,255,255,.85);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.12);
-      cursor:pointer;
-    }
-    input[type="range"]::-moz-range-thumb{
-      width:18px;
-      height:18px;
-      border-radius:50%;
-      background: var(--gold);
-      border: 2px solid rgba(255,255,255,.85);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.12);
-      cursor:pointer;
-    }
-
-    .resetOut{
-      margin-top:12px;
-      padding:12px 12px;
-      border-radius:16px;
-      background: rgba(255,255,255,.70);
-      border:1px solid rgba(200,162,74,.16);
-      box-shadow: 0 10px 22px rgba(0,0,0,.06);
-    }
-    .resetOut .rt{
-      margin:0 0 6px;
-      font-size:15px;
-      font-weight:900;
-      color: rgba(43,43,43,.88);
-    }
-    .resetOut .rx{
-      margin:0;
-      font-size:14px;
-      line-height:1.45;
-      color: rgba(43,43,43,.76);
-      font-weight:700;
-      white-space: pre-line;
-    }
-
-    .memberLine{
-      margin-top:12px;
-      font-size:14px;
-      color: rgba(43,43,43,.72);
-      font-weight:800;
-    }
-    .memberLine a{
-      color: rgba(43,43,43,.92);
-      text-decoration:none;
-      border-bottom:1px dotted rgba(43,43,43,.45);
-      font-weight:900;
-    }
-    .memberLine a:hover{ border-bottom-style: solid; }
-
-    .premiumInfo{
-      margin-top:12px;
-      padding:12px;
-      border-radius:16px;
-      border:1px solid rgba(200,162,74,.18);
-      background: rgba(255,255,255,.65);
-      box-shadow: 0 10px 22px rgba(0,0,0,.06);
-    }
-    .premiumInfo .t{
-      font-weight:900;
-      margin-bottom:8px;
-      color: rgba(43,43,43,.86);
-    }
-    .premiumInfo ul{
-      margin:0;
-      padding-left:18px;
-      line-height:1.5;
-      color: rgba(43,43,43,.74);
-      font-weight:700;
-      font-size:14px;
+      text-shadow: 0 0 10px rgba(200,162,74,.22);
     }
 
     @media (max-width: 420px){
       .orb{ width: 215px; height: 215px; }
       .controls button{ min-width: 100%; }
+      .topbar{ flex-wrap:wrap; }
+      .brand{ flex:1 1 100%; text-align:right; }
     }
   </style>
 </head>
-.langToggle{
-  display:flex;
-  gap:10px;
-  align-items:center;
-}
 
-.langBtn{
-  appearance:none;
-  border:none;
-  cursor:pointer;
-  padding:10px 14px;
-  border-radius:999px;
-  font-weight:900;
-  letter-spacing:.2px;
-  background: rgba(255,255,255,.70);
-  border:1px solid rgba(200,162,74,.18);
-  box-shadow: 0 10px 22px rgba(0,0,0,.06);
-  color: var(--text);
-}
-
-.langBtn.active{
-  background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
-  border:1px solid rgba(200,162,74,.35);
-  color:#3a2c10;
-  text-shadow: 0 0 10px rgba(200,162,74,.22);
-}
-  <script>
-  // --- PANACEA Language Switch (DE/IT) ---
-  (function(){
-    const KEY = "lang"; // "de" | "it"
-
-    function setLang(l){
-      localStorage.setItem(KEY, l);
-    }
-    function getLang(){
-      const v = (localStorage.getItem(KEY) || "").toLowerCase();
-      return (v === "it" || v === "de") ? v : "de";
-    }
-
-    // Mappa pagina corrente -> pagina gemella
-    function getTwinUrl(targetLang){
-      const path = location.pathname.split("/").pop() || "index.html";
-
-      const map = {
-        "index.html": "indexIT.html",
-        "indexIT.html": "index.html",
-
-        "daily-reset.html": "daily-resetIT.html",
-        "daily-resetIT.html": "daily-reset.html",
-
-        "wissen.html": "wissenIT.html",
-        "wissenIT.html": "wissen.html",
-
-        "lifestyle.html": "lifestyleIT.html",
-        "lifestyleIT.html": "lifestyle.html",
-
-        "mitglieder.html": "mitgliederIT.html",
-        "mitgliederIT.html": "mitglieder.html",
-      };
-
-      // se voglio IT e sono su DE -> vai alla gemella IT
-      if(targetLang === "it"){
-        return map[path] || path.replace(".html", "IT.html");
-      }
-      // se voglio DE e sono su IT -> vai alla gemella DE
-      if(targetLang === "de"){
-        return map[path] || path.replace("IT.html", ".html");
-      }
-      return path;
-    }
-
-    // UI state
-    const btnDE = document.getElementById("btnDE");
-    const btnIT = document.getElementById("btnIT");
-    if(!btnDE || !btnIT) return;
-
-    function paint(){
-      const l = getLang();
-      btnDE.classList.toggle("active", l === "de");
-      btnIT.classList.toggle("active", l === "it");
-    }
-
-    btnDE.addEventListener("click", () => {
-      setLang("de");
-      location.href = getTwinUrl("de");
-    });
-
-    btnIT.addEventListener("click", () => {
-      setLang("it");
-      location.href = getTwinUrl("it");
-    });
-
-    // se la pagina è IT ma lang salvato è DE (o viceversa), puoi auto-correggere:
-    // (opzionale: io lo consiglio)
-    const current = location.pathname.split("/").pop() || "";
-    const stored = getLang();
-    const isITpage = current.includes("IT.html");
-    if(stored === "it" && !isITpage){
-      // sei su DE ma preferisci IT
-      const twin = getTwinUrl("it");
-      if(twin !== current) location.replace(twin);
-      return;
-    }
-    if(stored === "de" && isITpage){
-      // sei su IT ma preferisci DE
-      const twin = getTwinUrl("de");
-      if(twin !== current) location.replace(twin);
-      return;
-    }
-
-    paint();
-  })();
-</script>
-  
 <body>
   <div class="phone">
-<div class="langToggle" aria-label="Language toggle">
-  <button class="langBtn" id="btnDE" type="button">Deutsch</button>
-  <button class="langBtn" id="btnIT" type="button">Italiano</button>
-</div>
+
     <div class="topbar">
       <a class="back" href="index.html">← Home</a>
+
+      <div class="langToggle" aria-label="Language toggle">
+        <button class="langBtn active" id="btnDE" type="button">Deutsch</button>
+        <button class="langBtn" id="btnIT" type="button">Italiano</button>
+      </div>
+
       <div class="brand">
         <div class="t1">Panacea</div>
         <div class="t2"><span class="glow">Daily</span> Reset</div>
@@ -1408,7 +527,7 @@
 
         <div class="divider"></div>
 
-        <!-- Premium Reset (visible for free) -->
+        <!-- Premium Reset -->
         <div class="premiumBox" id="premiumReset">
           <h3>Premium Reset</h3>
 
@@ -1483,7 +602,6 @@
       const sL = level(stress);
       const eL = level(energy);
 
-      // (1) Stress HIGH + Energy LOW
       if(sL === "HIGH" && eL === "LOW"){
         return {
           title: "Beruhigen & entlasten",
@@ -1496,7 +614,6 @@
         };
       }
 
-      // (2) Stress HIGH + Energy HIGH
       if(sL === "HIGH" && eL === "HIGH"){
         return {
           title: "Runterregeln & Fokus bündeln",
@@ -1509,7 +626,6 @@
         };
       }
 
-      // (3) Energy LOW
       if(eL === "LOW"){
         return {
           title: "Regeneration & sanfte Aktivierung",
@@ -1522,7 +638,6 @@
         };
       }
 
-      // Balanced fallback
       return {
         title: "Reset – ruhig & klar",
         text:
@@ -1708,13 +823,11 @@
       phaseLabel.textContent = "Geschafft";
     }
 
-    // Init
     readSettings();
     remainingSeconds = totalSeconds;
     updateTimeUI();
     setPhase("READY");
 
-    // Events
     startBtn.addEventListener("click", start);
     pauseBtn.addEventListener("click", togglePause);
     resetBtn.addEventListener("click", resetAll);
@@ -1723,30 +836,36 @@
     exhaleInput.addEventListener("change", resetAll);
     minutesInput.addEventListener("change", resetAll);
   </script>
-<script>
-document.getElementById("btnDE")?.addEventListener("click", function() {
-  localStorage.setItem("lang","de");
 
-  let page = location.pathname.split("/").pop();
+  <!-- ---------- Language toggle (ONLY THIS ONE) ---------- -->
+  <script>
+    function paintLang(){
+      const v = (localStorage.getItem("lang") || "de").toLowerCase();
+      document.getElementById("btnDE")?.classList.toggle("active", v === "de");
+      document.getElementById("btnIT")?.classList.toggle("active", v === "it");
+    }
+    paintLang();
 
-  if(page.includes("IT.html")){
-    location.href = page.replace("IT.html",".html");
-  } else {
-    location.href = page;
-  }
-});
+    document.getElementById("btnDE")?.addEventListener("click", function() {
+      localStorage.setItem("lang","de");
+      let page = location.pathname.split("/").pop() || "daily-reset.html";
+      if(page.includes("IT.html")){
+        location.href = page.replace("IT.html",".html");
+      } else {
+        location.href = page;
+      }
+    });
 
-document.getElementById("btnIT")?.addEventListener("click", function() {
-  localStorage.setItem("lang","it");
+    document.getElementById("btnIT")?.addEventListener("click", function() {
+      localStorage.setItem("lang","it");
+      let page = location.pathname.split("/").pop() || "daily-reset.html";
+      if(!page.includes("IT.html")){
+        location.href = page.replace(".html","IT.html");
+      } else {
+        location.href = page;
+      }
+    });
+  </script>
 
-  let page = location.pathname.split("/").pop();
-
-  if(!page.includes("IT.html")){
-    location.href = page.replace(".html","IT.html");
-  } else {
-    location.href = page;
-  }
-});
-</script>
 </body>
 </html>
