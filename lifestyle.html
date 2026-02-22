@@ -36,7 +36,7 @@
 
     .topbar{
       display:flex;
-      align-items:center;
+      align-items:flex-start;
       justify-content:space-between;
       gap:10px;
       margin-bottom:14px;
@@ -53,8 +53,44 @@
       box-shadow: var(--shadow2);
       color:var(--text);
       border:1px solid rgba(200,162,74,.20);
+      flex:0 0 auto;
     }
     .back:hover{ transform: translateY(-1px); }
+
+    /* Right side: language + brand */
+    .rightTop{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-end;
+      gap:10px;
+      min-width:210px;
+    }
+
+    /* Language toggle */
+    .langToggle{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .langBtn{
+      appearance:none;
+      border:none;
+      cursor:pointer;
+      padding:10px 14px;
+      border-radius:999px;
+      font-weight:900;
+      letter-spacing:.2px;
+      background: rgba(255,255,255,.70);
+      border:1px solid rgba(200,162,74,.18);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+      color: var(--text);
+    }
+    .langBtn.active{
+      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      border:1px solid rgba(200,162,74,.35);
+      color:#3a2c10;
+      text-shadow: 0 0 10px rgba(200,162,74,.22);
+    }
 
     .brand{ text-align:right; line-height:1.1; }
     .brand .t1{ font-size:14px; color:var(--muted); }
@@ -287,18 +323,24 @@
     }
   </style>
 </head>
-<script>
-  localStorage.setItem("lang", "de");
-  document.documentElement.lang = "de";
-</script>
+
 <body>
   <div class="phone">
 
     <div class="topbar">
       <a class="back" href="index.html">← Home</a>
-      <div class="brand">
-        <div class="t1">Panacea</div>
-        <div class="t2"><span class="glow">Lifestyle</span> Reset</div>
+
+      <!-- ADDED: language toggle (DE/IT) like first page -->
+      <div class="rightTop">
+        <div class="langToggle" aria-label="Language toggle">
+          <button class="langBtn" id="btnDE" type="button">Deutsch</button>
+          <button class="langBtn" id="btnIT" type="button">Italiano</button>
+        </div>
+
+        <div class="brand">
+          <div class="t1">Panacea</div>
+          <div class="t2"><span class="glow">Lifestyle</span> Reset</div>
+        </div>
       </div>
     </div>
 
@@ -364,6 +406,85 @@
     </div>
 
   </div>
+
+  <script>
+    // --- PANACEA Language Switch (DE/IT) ---
+    (function(){
+      const KEY = "lang"; // "de" | "it"
+      function setLang(l){ localStorage.setItem(KEY, l); }
+      function getLang(){
+        const v = (localStorage.getItem(KEY) || "").toLowerCase();
+        return (v === "it" || v === "de") ? v : "de";
+      }
+
+      function getTwinUrl(targetLang){
+        const path = location.pathname.split("/").pop() || "index.html";
+        const map = {
+          "index.html": "indexIT.html",
+          "indexIT.html": "index.html",
+
+          "daily-reset.html": "daily-resetIT.html",
+          "daily-resetIT.html": "daily-reset.html",
+
+          "wissen.html": "wissenIT.html",
+          "wissenIT.html": "wissen.html",
+
+          "lifestyle.html": "lifestyleIT.html",
+          "lifestyleIT.html": "lifestyle.html",
+
+          "mitglieder.html": "mitgliederIT.html",
+          "mitgliederIT.html": "mitglieder.html",
+        };
+
+        if(targetLang === "it"){
+          return map[path] || (path.includes("IT.html") ? path : path.replace(".html","IT.html"));
+        }
+        if(targetLang === "de"){
+          return map[path] || (path.includes("IT.html") ? path.replace("IT.html",".html") : path);
+        }
+        return path;
+      }
+
+      const btnDE = document.getElementById("btnDE");
+      const btnIT = document.getElementById("btnIT");
+      if(!btnDE || !btnIT) return;
+
+      function paint(){
+        const l = getLang();
+        btnDE.classList.toggle("active", l === "de");
+        btnIT.classList.toggle("active", l === "it");
+      }
+
+      btnDE.addEventListener("click", () => {
+        setLang("de");
+        location.href = getTwinUrl("de");
+      });
+
+      btnIT.addEventListener("click", () => {
+        setLang("it");
+        location.href = getTwinUrl("it");
+      });
+
+      // Auto-correct if mismatch
+      const current = location.pathname.split("/").pop() || "";
+      const stored = getLang();
+      const isITpage = current.includes("IT.html");
+      if(stored === "it" && !isITpage){
+        const twin = getTwinUrl("it");
+        if(twin !== current) location.replace(twin);
+        return;
+      }
+      if(stored === "de" && isITpage){
+        const twin = getTwinUrl("de");
+        if(twin !== current) location.replace(twin);
+        return;
+      }
+
+      // Paint + set html lang
+      document.documentElement.lang = getLang();
+      paint();
+    })();
+  </script>
 
   <script>
     // ---------- Settings / Storage ----------
