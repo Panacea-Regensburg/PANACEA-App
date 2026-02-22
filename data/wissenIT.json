@@ -1,130 +1,221 @@
 {
   "days": [
     {
-      "title": "Giorno 1 — Inizio: chiarezza gentile",
-      "impulse": "Oggi non serve fare tutto. Serve iniziare bene.\nScegli un solo gesto semplice che ti aiuti a sentirti più stabile.\nRespira lentamente e chiediti: “Qual è la cosa più importante, adesso?”",
-      "premiumInsight": "Quando sei sotto pressione, il cervello cerca soluzioni rapide e spesso amplifica il rumore.\nLa chiarezza nasce quando riduci le opzioni e scegli un passo piccolo ma reale.",
-      "premiumQuestion": "Quale micro-azione, oggi, rende la tua giornata anche solo del 5% più leggera?"
+      "day": 1,
+      "title": "Stabilità",
+      "explanation": "Stabilità interiore non significa che tutto è calmo. Significa trovare un punto fermo dentro di te, anche quando fuori c’è movimento.",
+      "impuls": "La stabilità inizia dentro, non fuori.",
+      "reflection": "Cosa mi dà sostegno, anche quando le cose cambiano?",
+      "premiumInsight": "Routine stabili riducono l’attivazione da stress nel sistema nervoso.",
+      "premiumQuestion": "Quale piccola routine posso fissare ogni giorno?"
     },
     {
-      "title": "Giorno 2 — Attenzione e presenza",
-      "impulse": "L’attenzione è energia: dove la metti, cresce.\nPer 60 secondi, nota tre cose che vedi, due che senti, una che percepisci nel corpo.\nQuesto ti riporta “qui”.",
-      "premiumInsight": "La presenza non è perfetta calma. È orientamento.\nQuando ti orienti, il sistema nervoso legge più sicurezza.",
-      "premiumQuestion": "In quale momento di oggi ti accorgi di essere “altrove” con la mente?"
+      "day": 2,
+      "title": "Respiro",
+      "explanation": "Il respiro è il collegamento più diretto con il sistema nervoso. Respirare in modo calmo e consapevole invia un segnale di sicurezza.",
+      "impuls": "Un respiro più lento cambia il tuo stato.",
+      "reflection": "Cosa succede nel mio corpo quando allungo l’espirazione?",
+      "premiumInsight": "Espiri più lunghi favoriscono l’attivazione parasimpatica.",
+      "premiumQuestion": "In quale momento della giornata posso inserire 3 respiri consapevoli?"
     },
     {
-      "title": "Giorno 3 — Il corpo come bussola",
-      "impulse": "Il corpo parla prima delle parole.\nFai un check veloce: mandibola, spalle, pancia.\nAllenta un punto solo e fai un’espirazione più lunga.",
-      "premiumInsight": "Ridurre tensione fisica non è “debolezza”: è regolazione.\nUna piccola distensione invia un segnale di sicurezza al cervello.",
-      "premiumQuestion": "Qual è il primo segnale fisico che ti dice: “sto andando oltre il limite”?"
+      "day": 3,
+      "title": "Consapevolezza del corpo",
+      "explanation": "Tornare nel corpo riduce il rimuginio e l’ansia per il futuro. La percezione ti riporta nel presente.",
+      "impuls": "Torno nel corpo, torno nel presente.",
+      "reflection": "Dove sento tensione oggi? Posso ammorbidirla un po’?",
+      "exercise": {
+        "title": "Mini-esercizio",
+        "text": "Metti una mano sul petto. Respira calmo per 1 minuto e senti il movimento."
+      },
+      "premiumInsight": "Il focus corporeo può ridurre l’attività dei circuiti di allarme.",
+      "premiumQuestion": "Qual è la prima zona del corpo che reagisce quando mi stressò?"
     },
     {
-      "title": "Giorno 4 — Una scelta alla volta",
-      "impulse": "Quando tutto sembra urgente, scegli l’ordine.\nScrivi: 1 cosa necessaria, 1 cosa utile, 1 cosa rimandabile.\nPoi fai solo il primo passo della cosa necessaria.",
-      "premiumInsight": "La mente si calma quando vede un percorso.\nNon serve risolvere tutto: serve iniziare con una direzione.",
-      "premiumQuestion": "Cosa stai cercando di fare “tutto insieme” che potresti spezzare in due parti?"
+      "day": 4,
+      "title": "Capire lo stress",
+      "explanation": "Lo stress è un’attivazione biologica. Non è un nemico: è un segnale.",
+      "impuls": "Capire riduce la minaccia.",
+      "reflection": "Cosa sta cercando di dirmi lo stress oggi?",
+      "premiumInsight": "Lo stress cronico può alterare i ritmi del cortisolo.",
+      "premiumQuestion": "Dove posso regolarmi prima, invece di arrivare al limite?"
     },
     {
-      "title": "Giorno 5 — Respiro: più spazio dentro",
-      "impulse": "Oggi alleniamo lo spazio.\nPer 2 minuti: inspira 4, espira 6.\nNon forzare: cerca solo morbidezza e continuità.",
-      "premiumInsight": "L’espirazione più lunga favorisce un passaggio verso modalità di recupero.\nÈ un interruttore sottile, ma potente, se ripetuto con costanza.",
-      "premiumQuestion": "Dove nel corpo senti più “spazio” dopo 2 minuti di respiro lento?"
+      "day": 5,
+      "title": "Controllo",
+      "explanation": "Controllo significa influenza, non perfezione. Piccole decisioni rafforzano la sensazione di poter agire.",
+      "impuls": "Un piccolo passo conta.",
+      "reflection": "Dove posso scegliere oggi, invece di reagire?",
+      "premiumInsight": "La percezione di controllo sostiene motivazione e resilienza.",
+      "premiumQuestion": "Quale area della mia vita sento troppo “decisa dagli altri”?"
     },
     {
-      "title": "Giorno 6 — Confini: proteggere energia",
-      "impulse": "Dire “no” è una forma di cura.\nOggi scegli un limite gentile: un messaggio dopo, una richiesta rimandata, un impegno ridotto.\nUn confine chiaro salva risorse.",
-      "premiumInsight": "I confini non allontanano: ordinano.\nQuando i confini sono chiari, aumenta la sicurezza interna e diminuisce l’attrito mentale.",
-      "premiumQuestion": "Quale “sì” automatico ti costa troppo, e potrebbe diventare un “non oggi”?"
+      "day": 6,
+      "title": "Confini",
+      "explanation": "Confini sani proteggono energia e focus. Non è egoismo: è cura di sé.",
+      "impuls": "Un “no” chiaro è un “sì” a te.",
+      "reflection": "Dove ho bisogno di più chiarezza nei miei confini?",
+      "exercise": {
+        "title": "Mini-esercizio",
+        "text": "Formula dentro di te una frase: “Oggi mi permetto di non …”."
+      },
+      "premiumInsight": "Il sovraccarico nasce spesso da confini poco chiari.",
+      "premiumQuestion": "Quale confine mi renderebbe più stabile nel lungo periodo?"
     },
     {
-      "title": "Giorno 7 — Riepilogo: stabilità",
-      "impulse": "Riguarda la settimana con gentilezza.\nScrivi 3 cose che hai fatto “abbastanza bene”.\nLa stabilità non nasce da perfezione, ma da continuità.",
-      "premiumInsight": "Riconoscere i progressi crea motivazione reale.\nIl cervello impara anche dal “ce l’ho fatta”, non solo dagli errori.",
-      "premiumQuestion": "Qual è una piccola abitudine che vuoi portare con te nella prossima settimana?"
+      "day": 7,
+      "title": "Focus",
+      "explanation": "Il focus riduce il rumore mentale. La chiarezza nasce dalla scelta.",
+      "impuls": "Meno, ma con intenzione.",
+      "reflection": "Cosa è davvero importante oggi?",
+      "premiumInsight": "Ridurre i “micro-task” aumenta la qualità dell’attenzione.",
+      "premiumQuestion": "Qual è una cosa che posso eliminare o rimandare con serenità?"
     },
     {
-      "title": "Giorno 8 — Mente e ambiente",
-      "impulse": "L’ambiente influenza la mente.\nOggi ordina un solo spazio (anche piccolo): tavolo, borsa, un cassetto.\nPoi fermati 10 secondi: nota la differenza.",
-      "premiumInsight": "Ridurre stimoli visivi riduce carico cognitivo.\nPiù ordine fuori può diventare più ordine dentro.",
-      "premiumQuestion": "Quale area della tua giornata è più “caotica” e avrebbe bisogno di una regola semplice?"
+      "day": 8,
+      "title": "Valori",
+      "explanation": "I valori danno direzione. Quando azioni e valori coincidono, nasce coerenza interiore.",
+      "impuls": "Agisco in armonia con me.",
+      "reflection": "Quale scelta oggi rispetta i miei valori?",
+      "premiumInsight": "Valori chiari aumentano la stabilità nelle decisioni.",
+      "premiumQuestion": "Quale valore voglio vivere di più questa settimana?"
     },
     {
-      "title": "Giorno 9 — Pensieri: non tutto è vero",
-      "impulse": "Un pensiero non è un fatto.\nQuando arriva una frase dura, aggiungi: “Sto avendo il pensiero che…”\nCrea distanza e ti ridà scelta.",
-      "premiumInsight": "Mettere un’etichetta ai pensieri riduce la fusione mentale.\nNon elimini il pensiero: ne cambi il potere su di te.",
-      "premiumQuestion": "Qual è il pensiero ricorrente che ti pesa di più, e come potresti riformularlo con più realismo?"
+      "day": 9,
+      "title": "Autoefficacia",
+      "explanation": "Auto-efficacia significa sentire: io posso influenzare qualcosa. Questo rafforza la resilienza.",
+      "impuls": "Io agisco, quindi posso.",
+      "reflection": "Dove ho creato un cambiamento con una mia scelta?",
+      "exercise": {
+        "title": "Mini-esercizio",
+        "text": "Scegli una piccola azione che decidi tu oggi, in modo intenzionale."
+      },
+      "premiumInsight": "L’autoefficacia sostiene motivazione e sistemi di ricompensa.",
+      "premiumQuestion": "Come posso rendere visibili i miei piccoli successi?"
     },
     {
-      "title": "Giorno 10 — Energia: ritmo, non sprint",
-      "impulse": "Oggi scegli ritmo.\nLavora a blocchi brevi: 25 minuti + 3 minuti di pausa.\nIl recupero frequente rende la mente più lucida.",
-      "premiumInsight": "Lo stress aumenta quando il recupero viene saltato.\nMicro-pause regolari sono prevenzione, non perdita di tempo.",
-      "premiumQuestion": "In quale momento della giornata potresti inserire una pausa breve “non negoziabile”?"
+      "day": 10,
+      "title": "Pensieri",
+      "explanation": "I pensieri sono interpretazioni, non fatti. Creare distanza porta chiarezza.",
+      "impuls": "Non ogni pensiero è vero.",
+      "reflection": "Quale pensiero mi stressa ora? Qual è un’alternativa possibile?",
+      "premiumInsight": "Riformulare un pensiero riduce reattività emotiva.",
+      "premiumQuestion": "Quale frase mi aiuterebbe a vedere la situazione con più calma?"
     },
     {
-      "title": "Giorno 11 — Autocompassione pratica",
-      "impulse": "Parlati come parleresti a una persona che stimi.\nSostituisci “non sono capace” con “sto imparando / oggi è difficile”.\nÈ realismo, non indulgenza.",
-      "premiumInsight": "La durezza interna spesso aumenta allarme e blocco.\nLa compassione pratica abbassa la minaccia e riattiva la capacità di agire.",
-      "premiumQuestion": "Quale frase gentile ma vera potresti dirti oggi, senza “zuccherare” la realtà?"
+      "day": 11,
+      "title": "Emozioni",
+      "explanation": "Le emozioni sono informazioni. Vogliono essere ascoltate, non eliminate.",
+      "impuls": "Le emozioni possono stare qui.",
+      "reflection": "Quale emozione è presente oggi?",
+      "premiumInsight": "Nominare l’emozione può abbassare l’intensità.",
+      "premiumQuestion": "Cosa mi sta comunicando questa emozione?"
     },
     {
-      "title": "Giorno 12 — Piccoli ancoraggi",
-      "impulse": "Scegli un ancoraggio quotidiano.\nUn gesto che ti riporta al corpo: una tazza calda, 10 passi, una mano sul petto.\nRipetilo oggi 2 volte.",
-      "premiumInsight": "Gli ancoraggi creano prevedibilità.\nLa prevedibilità è un nutriente per il sistema nervoso.",
-      "premiumQuestion": "Quale gesto ti fa sentire subito “a casa” dentro di te?"
+      "day": 12,
+      "title": "Regolazione",
+      "explanation": "Regolazione significa influenzare consapevolmente il tuo stato interno.",
+      "impuls": "Posso influenzare il mio stato.",
+      "reflection": "Quale strategia mi aiuta di più oggi?",
+      "exercise": {
+        "title": "Mini-esercizio",
+        "text": "Fai 3 respiri profondi e abbassa le spalle lentamente."
+      },
+      "premiumInsight": "Micro-regolazioni frequenti proteggono dall’esaurimento.",
+      "premiumQuestion": "Qual è il mio segnale più precoce di “troppa attivazione”?"
     },
     {
-      "title": "Giorno 13 — Priorità: una cosa che conta",
-      "impulse": "Oggi scegli la tua priorità reale.\nScrivi una frase: “Se oggi faccio solo X, va bene così”.\nE fai X per primi, anche in piccolo.",
-      "premiumInsight": "La priorità riduce rumore e decisioni.\nUna sola decisione buona può cambiare il tono di tutta la giornata.",
-      "premiumQuestion": "Qual è la tua “X” oggi: quella cosa che dà senso e ordine al resto?"
+      "day": 13,
+      "title": "Energia",
+      "explanation": "L’energia è limitata. Distribuirla con consapevolezza previene l’esaurimento.",
+      "impuls": "Scelgo dove va la mia energia.",
+      "reflection": "Cosa mi costa energia senza darmi valore?",
+      "premiumInsight": "Saper dire “stop” protegge energia mentale e fisica.",
+      "premiumQuestion": "Quale attività mi ricarica davvero, anche se breve?"
     },
     {
-      "title": "Giorno 14 — Recupero: dare spazio al riposo",
-      "impulse": "Il riposo non è premio, è base.\nScegli un momento breve di recupero: 15 minuti senza schermo.\nRespira, cammina, o fai silenzio.",
-      "premiumInsight": "Il cervello non si spegne: si rigenera.\nIl recupero regolare aumenta lucidità e resilienza emotiva.",
-      "premiumQuestion": "Che cosa ti ricarica davvero (non solo ti distrae)?"
+      "day": 14,
+      "title": "Recupero",
+      "explanation": "Il recupero non è un lusso: è la base della performance e della salute.",
+      "impuls": "La pausa è parte del progresso.",
+      "reflection": "Quando mi sono concessa l’ultima vera pausa?",
+      "premiumInsight": "Il riposo migliora concentrazione e regolazione emotiva.",
+      "premiumQuestion": "Quale micro-pausa posso inserire oggi (2–5 minuti)?"
     },
     {
-      "title": "Giorno 15 — Relazioni: un gesto vero",
-      "impulse": "Oggi fai un gesto di connessione.\nUn messaggio sincero, una domanda reale, un “grazie”.\nLa connessione è un regolatore dello stress.",
-      "premiumInsight": "La qualità del contatto conta più della quantità.\nPiccoli segnali sociali aumentano senso di sicurezza.",
-      "premiumQuestion": "Chi potrebbe beneficiare oggi di un tuo gesto semplice e autentico?"
+      "day": 15,
+      "title": "Resilienza",
+      "explanation": "Resilienza è la capacità di tornare in equilibrio dopo una difficoltà.",
+      "impuls": "Posso ritrovare il mio centro.",
+      "reflection": "Come ho superato difficoltà in passato?",
+      "exercise": {
+        "title": "Mini-esercizio",
+        "text": "Scrivi 2 situazioni che hai gestito bene e cosa ti ha aiutata."
+      },
+      "premiumInsight": "Ricordare successi passati rafforza fiducia e stabilità.",
+      "premiumQuestion": "Qual è la mia risorsa più forte quando le cose si complicano?"
     },
     {
-      "title": "Giorno 16 — Mentalità: flessibilità",
-      "impulse": "La flessibilità è forza.\nQuando ti accorgi di un “tutto o niente”, prova una via di mezzo.\nOggi scegli “abbastanza” invece di “perfetto”.",
-      "premiumInsight": "La rigidità spesso nasce da paura.\nLa flessibilità riduce allarme e permette soluzioni pratiche.",
-      "premiumQuestion": "Dove stai chiedendo troppo a te stessa, e cosa sarebbe “abbastanza”?"
+      "day": 16,
+      "title": "Senso",
+      "explanation": "Il senso unisce azione e significato. Dà energia nel lungo periodo.",
+      "impuls": "Il “perché” cambia tutto.",
+      "reflection": "Cosa dà significato alla mia giornata?",
+      "premiumInsight": "Il senso riduce la percezione di fatica cronica.",
+      "premiumQuestion": "Quale obiettivo è davvero mio e non “degli altri”?"
     },
     {
-      "title": "Giorno 17 — Reazione vs risposta",
-      "impulse": "Tra stimolo e risposta c’è uno spazio.\nOggi, prima di rispondere a qualcosa che ti attiva: una sola espirazione lenta.\nPoi scegli la risposta.",
-      "premiumInsight": "Un secondo di pausa può cambiare un’intera conversazione.\nLa pausa crea scelta, e la scelta crea potere personale.",
-      "premiumQuestion": "In quale situazione ti farebbe bene una pausa di 3 secondi prima di agire?"
+      "day": 17,
+      "title": "Accettazione",
+      "explanation": "Accettare non significa arrendersi. Significa vedere la realtà per agire meglio.",
+      "impuls": "Accetto per scegliere bene.",
+      "reflection": "Cosa in questo momento non posso cambiare?",
+      "premiumInsight": "Accettazione riduce lotta interna e stress inutile.",
+      "premiumQuestion": "Quale parte della situazione posso controllare, anche solo un 5%?"
     },
     {
-      "title": "Giorno 18 — Valori: la tua direzione",
-      "impulse": "I valori danno orientamento.\nScrivi una parola guida per oggi (es.: calma, coraggio, cura, chiarezza).\nPoi scegli un’azione che la rappresenti.",
-      "premiumInsight": "Quando vivi in linea con i valori, aumenta senso di coerenza.\nLa coerenza riduce stress “interno”.",
-      "premiumQuestion": "Quale valore vuoi incarnare oggi, anche in un gesto minuscolo?"
+      "day": 18,
+      "title": "Responsabilità",
+      "explanation": "Responsabilità non è colpa. È potere di scelta e di direzione.",
+      "impuls": "Mi riprendo la mia direzione.",
+      "reflection": "Dove posso scegliere oggi con chiarezza?",
+      "exercise": {
+        "title": "Mini-esercizio",
+        "text": "Prendi una decisione oggi senza rimandare: piccola ma chiara."
+      },
+      "premiumInsight": "Decisioni piccole e ripetute costruiscono fiducia.",
+      "premiumQuestion": "Quale decisione rimando da troppo tempo?"
     },
     {
-      "title": "Giorno 19 — Autostima: fatti, non giudizi",
-      "impulse": "Oggi separa fatti e giudizi.\nFatto: “Ho rimandato.” Giudizio: “Sono un disastro.”\nResta al fatto: ti permette di cambiare.",
-      "premiumInsight": "I giudizi globali bloccano.\nI fatti aprono possibilità: cosa posso fare adesso, concretamente?",
-      "premiumQuestion": "Quale giudizio su di te puoi trasformare in una descrizione concreta e utile?"
+      "day": 19,
+      "title": "Chiarezza",
+      "explanation": "La chiarezza nasce quando togli il superfluo. Meno rumore, più orientamento.",
+      "impuls": "La chiarezza ha bisogno di spazio.",
+      "reflection": "Cosa può diventare “non importante” oggi?",
+      "premiumInsight": "Ridurre input aumenta calma e lucidità.",
+      "premiumQuestion": "Quale confusione posso semplificare in una frase?"
     },
     {
-      "title": "Giorno 20 — Focus: meno, ma meglio",
-      "impulse": "Il focus si protegge.\nScegli una sola cosa da fare senza interruzioni per 20 minuti.\nMetti il telefono lontano e torna a una cosa sola.",
-      "premiumInsight": "Il multitasking aumenta frammentazione e stanchezza.\nUn focus breve e pieno restituisce energia mentale.",
-      "premiumQuestion": "Qual è la “cosa sola” che, se fatta oggi, ti farebbe sentire più in ordine?"
+      "day": 20,
+      "title": "Integrazione",
+      "explanation": "Integrare significa portare i tuoi impulsi nella vita reale. La ripetizione crea cambiamento.",
+      "impuls": "La ripetizione trasforma in forza.",
+      "reflection": "Quale impulso voglio portare con me ogni giorno?",
+      "premiumInsight": "Piccoli rituali consolidano nuove abitudini.",
+      "premiumQuestion": "Quale gesto quotidiano può diventare la mia “ancora”?"
     },
     {
-      "title": "Giorno 21 — Integrazione: portare con sé",
-      "impulse": "Oggi integri.\nScegli 3 cose che vuoi mantenere: una per il corpo, una per la mente, una per la vita pratica.\nScrivi quando le farai: il “quando” fa la differenza.",
-      "premiumInsight": "La trasformazione è ripetizione, non intensità.\nUn piano semplice e realistico vince su mille buone intenzioni.",
-      "premiumQuestion": "Quali tre scelte ti hanno aiutata di più in questi 21 giorni, e come le rendi sostenibili?"
+      "day": 21,
+      "title": "Nuovo inizio",
+      "explanation": "Ogni ciclo finisce e ricomincia. La crescita è un processo, non un evento.",
+      "impuls": "Mi riallineo con intenzione.",
+      "reflection": "Cosa voglio rafforzare nei prossimi 21 giorni?",
+      "exercise": {
+        "title": "Mini-esercizio",
+        "text": "Scrivi un’intenzione chiara per il prossimo ciclo e leggila ogni mattina."
+      },
+      "premiumInsight": "Una intenzione scritta aumenta coerenza e continuità.",
+      "premiumQuestion": "Qual è il mio segno concreto che sto crescendo davvero?"
     }
   ]
 }
