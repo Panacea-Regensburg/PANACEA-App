@@ -551,6 +551,7 @@
 
         if(!data || !Array.isArray(data.days) || data.days.length < TOTAL_DAYS){
           throw new Error("Formato JSON non valido (days[] mancante o troppo corto)");
+          const res = await fetch("./data/wissenIT.json", { cache: "no-store" });
         }
         wissenData = data.days;
       }catch(err){
