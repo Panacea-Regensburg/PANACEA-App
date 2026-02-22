@@ -36,18 +36,11 @@
     .phone{ width:100%; max-width:480px; }
 
     /* Language toggle */
-    .langRow{
-      display:flex;
-      justify-content:center;   /* ✅ CENTER */
-      align-items:center;       /* ✅ CENTER */
-      margin-bottom:10px;
-      width:100%;
-    }
     .langToggle{
       display:flex;
       gap:10px;
       align-items:center;
-      justify-content:center;   /* ✅ CENTER */
+      justify-content:center;
     }
     .langBtn{
       appearance:none;
@@ -61,6 +54,7 @@
       border:1px solid rgba(200,162,74,.18);
       box-shadow: 0 10px 22px rgba(0,0,0,.06);
       color: var(--text);
+      white-space:nowrap;
     }
     .langBtn.active{
       background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
@@ -69,14 +63,16 @@
       text-shadow: 0 0 10px rgba(200,162,74,.22);
     }
 
+    /* ✅ TOPBAR with centered language toggle (not "center-top") */
     .topbar{
-      display:flex;
+      display:grid;
+      grid-template-columns: 1fr auto 1fr; /* left | center | right */
       align-items:center;
-      justify-content:space-between;
       gap:10px;
       margin-bottom:14px;
     }
     .back{
+      justify-self:start;
       text-decoration:none;
       display:inline-flex;
       align-items:center;
@@ -87,10 +83,16 @@
       box-shadow: var(--shadow2);
       color:var(--text);
       border:1px solid rgba(200,162,74,.20);
+      white-space:nowrap;
     }
     .back:hover{ transform: translateY(-1px); }
 
-    .brand{ text-align:right; line-height:1.1; }
+    .brand{
+      justify-self:end;
+      text-align:right;
+      line-height:1.1;
+      white-space:nowrap;
+    }
     .brand .t1{ font-size:14px; color:var(--muted); }
     .brand .t2{ font-size:18px; font-weight:800; letter-spacing:.2px; }
     .brand .glow{
@@ -182,6 +184,7 @@
       border:1px solid rgba(200,162,74,.16);
       box-shadow: 0 10px 22px rgba(0,0,0,.06);
       font-variant-numeric: tabular-nums;
+      white-space:nowrap;
     }
 
     .blockBody{ padding:12px 14px 14px 14px; }
@@ -269,6 +272,7 @@
       color:var(--text);
       flex:1;
       min-width:120px;
+      white-space:nowrap;
     }
     .btn:hover{ transform: translateY(-1px); }
     .btn.primary{
@@ -329,16 +333,15 @@
 <body>
   <div class="phone">
 
-    <!-- Language toggle -->
-    <div class="langRow">
+    <!-- ✅ TOPBAR with centered language toggle -->
+    <div class="topbar">
+      <a class="back" href="index.html">← Home</a>
+
       <div class="langToggle" aria-label="Language toggle">
         <button class="langBtn" id="btnDE" type="button">Deutsch</button>
         <button class="langBtn" id="btnIT" type="button">Italiano</button>
       </div>
-    </div>
 
-    <div class="topbar">
-      <a class="back" href="index.html">← Home</a>
       <div class="brand">
         <div class="t1">Panacea</div>
         <div class="t2"><span class="glow">Übungen</span> & Reset</div>
@@ -373,14 +376,14 @@
             <img class="imgSlot" id="img1" alt="Übung Bild 1" src="icons/1b.png">
 
             <ul class="checklist">
-              <li class="item"><input type="checkbox" id="b1i1"><label for="b1i1">1 bewusster Ausatem (ohne Druck)</label></li>
+              <li class="item"><input type="checkbox" id="b1i1"><label for="b1i1">1 bewusste Ausatmung (ohne Druck)</label></li>
               <li class="item"><input type="checkbox" id="b1i2"><label for="b1i2">5 Atemzüge: 4 ein / 6 aus</label></li>
               <li class="item"><input type="checkbox" id="b1i3"><label for="b1i3">Schultern sinken lassen, Kiefer weich</label></li>
-              <li class="item"><input type="checkbox" id="b1i4"><label for="b1i4">1 Satz: „Ich darf heute langsam machen.“</label></li>
+              <li class="item"><input type="checkbox" id="b1i4"><label for="b1i4">1 Satz: „Ich darf heute langsamer machen.“</label></li>
             </ul>
 
             <div class="timerRow">
-              <button class="btn primary" data-action="start" data-min="5">Start Timer</button>
+              <button class="btn primary" data-action="start" data-min="5">Timer starten</button>
               <button class="btn" data-action="pause" disabled>Pause</button>
               <button class="btn" data-action="reset">Reset</button>
             </div>
@@ -400,20 +403,20 @@
           </div>
 
           <div class="blockBody">
-            <p class="miniText">Ziel: Spannung lösen, Durchblutung, ruhige Aktivierung.</p>
+            <p class="miniText">Ziel: Spannung lösen, Durchblutung fördern, ruhig aktivieren.</p>
 
             <!-- Platz für Foto: icons/2b.png -->
             <img class="imgSlot" id="img2" alt="Übung Bild 2" src="icons/2b.png">
 
             <ul class="checklist">
-              <li class="item"><input type="checkbox" id="b2i1"><label for="b2i1">10× Schulterkreisen langsam</label></li>
+              <li class="item"><input type="checkbox" id="b2i1"><label for="b2i1">10× langsames Schulterkreisen</label></li>
               <li class="item"><input type="checkbox" id="b2i2"><label for="b2i2">30 Sek. Nacken dehnen (sanft)</label></li>
-              <li class="item"><input type="checkbox" id="b2i3"><label for="b2i3">60 Sek. lockeres Gehen (oder Treppen langsam)</label></li>
-              <li class="item"><input type="checkbox" id="b2i4"><label for="b2i4">1 tiefer Ausatem + kurz nachspüren</label></li>
+              <li class="item"><input type="checkbox" id="b2i3"><label for="b2i3">60 Sek. lockeres Gehen (oder Treppe langsam)</label></li>
+              <li class="item"><input type="checkbox" id="b2i4"><label for="b2i4">1 tiefe Ausatmung + kurz nachspüren</label></li>
             </ul>
 
             <div class="timerRow">
-              <button class="btn primary" data-action="start" data-min="6">Start Timer</button>
+              <button class="btn primary" data-action="start" data-min="6">Timer starten</button>
               <button class="btn" data-action="pause" disabled>Pause</button>
               <button class="btn" data-action="reset">Reset</button>
             </div>
@@ -433,7 +436,7 @@
           </div>
 
           <div class="blockBody">
-            <p class="miniText">Ziel: Gedanken entlasten, Fokus klein machen, handlungsfähig bleiben.</p>
+            <p class="miniText">Ziel: Gedanken entlasten, Fokus verkleinern, handlungsfähig bleiben.</p>
 
             <!-- Platz für Foto: icons/3b.png -->
             <img class="imgSlot" id="img3" alt="Übung Bild 3" src="icons/3b.png">
@@ -442,11 +445,11 @@
               <li class="item"><input type="checkbox" id="b3i1"><label for="b3i1">3 Dinge sehen · 2 hören · 1 im Körper spüren</label></li>
               <li class="item"><input type="checkbox" id="b3i2"><label for="b3i2">1 neutraler Satz: „Vielleicht ist es nur ein stressiger Moment.“</label></li>
               <li class="item"><input type="checkbox" id="b3i3"><label for="b3i3">1 nächster Schritt (so klein, dass du starten kannst)</label></li>
-              <li class="item"><input type="checkbox" id="b3i4"><label for="b3i4">10 Sekunden: Schultern weich + Blick in die Ferne</label></li>
+              <li class="item"><input type="checkbox" id="b3i4"><label for="b3i4">10 Sek.: Schultern weich + Blick in die Ferne</label></li>
             </ul>
 
             <div class="timerRow">
-              <button class="btn primary" data-action="start" data-min="4">Start Timer</button>
+              <button class="btn primary" data-action="start" data-min="4">Timer starten</button>
               <button class="btn" data-action="pause" disabled>Pause</button>
               <button class="btn" data-action="reset">Reset</button>
             </div>
@@ -466,7 +469,7 @@
           </div>
 
           <div class="blockBody">
-            <p class="miniText">Ziel: Abschluss setzen, Nervensystem “rund” machen, einen Anker mitnehmen.</p>
+            <p class="miniText">Ziel: Abschluss setzen, Nervensystem abrunden, einen Anker mitnehmen.</p>
 
             <!-- Platz für Foto: icons/4b.png -->
             <img class="imgSlot" id="img4" alt="Übung Bild 4" src="icons/4b.png">
@@ -479,7 +482,7 @@
             </ul>
 
             <div class="timerRow">
-              <button class="btn primary" data-action="start" data-min="3">Start Timer</button>
+              <button class="btn primary" data-action="start" data-min="3">Timer starten</button>
               <button class="btn" data-action="pause" disabled>Pause</button>
               <button class="btn" data-action="reset">Reset</button>
             </div>
@@ -499,14 +502,14 @@
               <li><b>Videos</b> & Bonus-Module</li>
             </ul>
             <a class="memberBtn" href="mitglieder.html">Mitglieder freischalten →</a>
-            <div class="note">Premium wird automatisch sichtbar nach Freischaltung.</div>
+            <div class="note">Premium wird nach Freischaltung automatisch sichtbar.</div>
           </div>
 
           <div id="premiumOn" style="display:none;">
             <ul>
               <li><b>Premium aktiv</b> ✅</li>
-              <li>Hier kannst du später deine <b>zusätzlichen Übungen / Videos / Meditationen</b> einbauen.</li>
-              <li>Platzhalter: <b>icons/1b.png, 2b.png …</b> für Übungsbilder.</li>
+              <li>Hier kannst du später <b>zusätzliche Übungen / Videos / Meditationen</b> einbauen.</li>
+              <li>Platzhalter: <b>icons/1b.png, 2b.png …</b></li>
             </ul>
             <div class="note">Du siehst diese Box nur, wenn <b>panacea_premium=true</b>.</div>
           </div>
@@ -571,7 +574,7 @@
       btnDE.addEventListener("click", () => { setLang("de"); location.href = getTwinUrl("de"); });
       btnIT.addEventListener("click", () => { setLang("it"); location.href = getTwinUrl("it"); });
 
-      // Auto-redirect coerente col lang salvato
+      // Auto-redirect coherently with stored lang
       const current = location.pathname.split("/").pop() || "";
       const stored = getLang();
       const isITpage = current.includes("IT.html");
@@ -632,7 +635,6 @@
         if(pill) pill.textContent = `${done}/${total}`;
       }
 
-      // init: restore all checkboxes
       document.querySelectorAll('.block').forEach(block => {
         const n = block.getAttribute("data-block");
         const inputs = block.querySelectorAll('input[type="checkbox"]');
@@ -658,10 +660,10 @@
 
   <script>
     // =========================================================
-    // Timers (one per block) - minutes from button data-min
+    // Timers (one per block)
     // =========================================================
     (function(){
-      const timers = {}; // blockN -> { total, left, running, interval, paused }
+      const timers = {};
 
       function pad(n){ return String(n).padStart(2,"0"); }
       function fmt(sec){
@@ -702,12 +704,11 @@
         const minutes = Number(btnStart.getAttribute("data-min") || 3);
         ensure(blockN, minutes);
 
-        // show image only if it exists (no ugly broken icon)
+        // show image only if it exists
         const img = block.querySelector(".imgSlot");
         if(img){
           img.addEventListener("error", ()=>{ img.style.display="none"; });
           img.addEventListener("load", ()=>{ img.style.display="block"; });
-          // try show
           img.style.display = "block";
         }
 
@@ -716,7 +717,6 @@
           const t = timers[blockN];
           if(t.running) return;
 
-          // reset to full each start (simple + clean)
           t.left = t.total;
           setPillTime(blockN, t.left);
 
@@ -738,9 +738,8 @@
               btnStart.disabled = false;
               btnPause.disabled = true;
               btnPause.textContent = "Pause";
-              // little “done glow” feedback
               btnStart.textContent = "Start (fertig ✅)";
-              setTimeout(()=>{ btnStart.textContent = "Start Timer"; }, 1200);
+              setTimeout(()=>{ btnStart.textContent = "Timer starten"; }, 1200);
             }
           }, 1000);
         });
@@ -748,7 +747,6 @@
         btnPause.addEventListener("click", () => {
           const t = timers[blockN];
           if(!t || !t.running) return;
-
           t.paused = !t.paused;
           btnPause.textContent = t.paused ? "Weiter" : "Pause";
         });
@@ -765,7 +763,6 @@
           btnPause.textContent = "Pause";
         });
 
-        // init pause disabled
         btnPause.disabled = true;
       }
 
