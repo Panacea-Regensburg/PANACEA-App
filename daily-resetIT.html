@@ -1,930 +1,207 @@
 <!doctype html>
 <html lang="it">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Panacea – Reset Quotidiano</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Panacea – Reset Quotidiano</title>
 
-  <style>
-    :root{
-      --bg1:#f6f1e6;
-      --bg2:#efe7d7;
-      --card:#ffffffd9;
-      --card2:#ffffffee;
-      --gold:#c8a24a;
-      --gold2:#e8d28a;
-      --text:#2b2b2b;
-      --muted:#6b6b6b;
-      --shadow: 0 14px 40px rgba(0,0,0,.10);
-      --shadow2: 0 10px 26px rgba(0,0,0,.10);
-      --radius: 22px;
-      --radius2: 18px;
-    }
+<style>
+:root{
+  --bg1:#f6f1e6;
+  --bg2:#efe7d7;
+  --card:#ffffffd9;
+  --card2:#ffffffee;
+  --gold:#c8a24a;
+  --gold2:#e8d28a;
+  --text:#2b2b2b;
+  --muted:#6b6b6b;
+  --shadow:0 14px 40px rgba(0,0,0,.10);
+  --shadow2:0 10px 26px rgba(0,0,0,.10);
+  --radius:22px;
+}
 
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:ui-sans-serif,system-ui;
+  background:radial-gradient(1200px 800px at 30% 0%,var(--bg1),var(--bg2));
+  display:flex;
+  justify-content:center;
+  padding:28px 14px;
+  color:var(--text);
+}
 
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--text);
-      background: radial-gradient(1200px 800px at 30% 0%, var(--bg1), var(--bg2));
-      min-height:100vh;
-      display:flex;
-      justify-content:center;
-      padding:28px 14px;
-    }
+.phone{width:100%;max-width:480px}
 
-    .phone{
-      width:100%;
-      max-width:480px;
-    }
+/* ===== TOPBAR ===== */
+.topbar{
+  position:relative;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  margin-bottom:14px;
+}
 
-    .topbar{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:10px;
-      margin-bottom:14px;
-    }
+.back{
+  text-decoration:none;
+  padding:10px 14px;
+  border-radius:999px;
+  background:linear-gradient(180deg,var(--card2),var(--card));
+  border:1px solid rgba(200,162,74,.20);
+  box-shadow:var(--shadow2);
+  color:var(--text);
+}
 
-    .back{
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:10px 14px;
-      border-radius:999px;
-      background: linear-gradient(180deg, var(--card2), var(--card));
-      box-shadow: var(--shadow2);
-      color:var(--text);
-      border:1px solid rgba(200,162,74,.20);
-      flex:0 0 auto;
-    }
-    .back:hover{ transform: translateY(-1px); }
+.rightTop{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:10px;
+  min-width:210px;
+  padding-top:52px;
+}
 
-    .rightTop{
-      display:flex;
-      flex-direction:column;
-      align-items:flex-end;
-      gap:10px;
-      min-width: 210px;
-    }
+/* === LANGUAGE CENTERED === */
+.langToggle{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  top:0;
+  display:flex;
+  gap:10px;
+  z-index:10;
+}
 
-    /* Language toggle */
-    .langToggle{
-      display:flex;
-      gap:10px;
-      align-items:center;
-    }
+.langBtn{
+  border:none;
+  cursor:pointer;
+  padding:10px 14px;
+  border-radius:999px;
+  font-weight:900;
+  background:rgba(255,255,255,.7);
+  border:1px solid rgba(200,162,74,.18);
+}
 
-    .langBtn{
-      appearance:none;
-      border:none;
-      cursor:pointer;
-      padding:10px 14px;
-      border-radius:999px;
-      font-weight:900;
-      letter-spacing:.2px;
-      background: rgba(255,255,255,.70);
-      border:1px solid rgba(200,162,74,.18);
-      box-shadow: 0 10px 22px rgba(0,0,0,.06);
-      color: var(--text);
-    }
+.langBtn.active{
+  background:radial-gradient(circle at 20% 10%,#fff6d6,#e8d28a);
+  border:1px solid rgba(200,162,74,.35);
+  color:#3a2c10;
+}
 
-    .langBtn.active{
-      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
-      border:1px solid rgba(200,162,74,.35);
-      color:#3a2c10;
-      text-shadow: 0 0 10px rgba(200,162,74,.22);
-    }
+.brand{text-align:right;line-height:1.1}
+.brand .t1{font-size:14px;color:var(--muted)}
+.brand .t2{font-size:18px;font-weight:800}
+.brand .glow{color:var(--gold);font-weight:900}
 
-    .brand{
-      text-align:right;
-      line-height:1.1;
-    }
-    .brand .t1{
-      font-size:14px;
-      color:var(--muted);
-    }
-    .brand .t2{
-      font-size:18px;
-      font-weight:800;
-      letter-spacing:.2px;
-    }
-    .brand .glow{
-      color:var(--gold);
-      text-shadow: 0 0 10px rgba(200,162,74,.30);
-      font-weight:900;
-    }
+/* ===== CARD ===== */
+.card{
+  background:linear-gradient(180deg,var(--card2),var(--card));
+  border-radius:var(--radius);
+  border:1px solid rgba(200,162,74,.18);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
 
-    .card{
-      background: linear-gradient(180deg, var(--card2), var(--card));
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      border:1px solid rgba(200,162,74,.18);
-      overflow:hidden;
-    }
+.hero{display:flex;gap:14px;padding:18px}
+.badge{
+  width:64px;height:64px;border-radius:18px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;background:radial-gradient(circle,#fff6d6,#e8d28a);
+}
+.hero h1{margin:0;font-size:18px}
+.hero p{margin:6px 0 0;font-size:13px;color:var(--muted)}
 
-    .hero{
-      padding:18px 18px 14px 18px;
-      display:flex;
-      gap:14px;
-      align-items:center;
-    }
+.content{padding:16px 18px 18px}
 
-    .badge{
-      width:64px;
-      height:64px;
-      border-radius:18px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:900;
-      font-size:16px;
-      color:#3a2c10;
-      background: radial-gradient(circle at 30% 20%, #fff6d6, #e8d28a);
-      border:1px solid rgba(200,162,74,.35);
-      box-shadow: 0 0 16px rgba(200,162,74,.25);
-      flex:0 0 auto;
-    }
+.resetOut{
+  padding:12px;border-radius:16px;
+  background:rgba(255,255,255,.70);
+  border:1px solid rgba(200,162,74,.16);
+}
 
-    .hero h1{
-      margin:0;
-      font-size:18px;
-      letter-spacing:.2px;
-    }
-    .hero p{
-      margin:6px 0 0 0;
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.45;
-    }
+.divider{
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(200,162,74,.35),transparent);
+  margin:16px 0;
+}
 
-    .content{
-      padding:16px 18px 18px 18px;
-    }
+.phase{text-transform:uppercase;font-weight:900;font-size:12px;text-align:center}
+.timerRow{text-align:center;font-weight:800;margin-top:6px}
+.time{
+  padding:8px 12px;border-radius:999px;
+  background:white;border:1px solid rgba(200,162,74,.16)
+}
 
-    .divider{
-      height:1px;
-      background: linear-gradient(90deg, transparent, rgba(200,162,74,.35), transparent);
-      margin:16px 0;
-    }
+.controls{
+  display:flex;gap:10px;margin-top:14px
+}
+button{
+  flex:1;padding:12px;border-radius:14px;
+  font-weight:900;border:1px solid rgba(200,162,74,.20);
+  background:linear-gradient(180deg,#fff,#f7f2e6);
+}
+button.primary{
+  background:radial-gradient(circle,#fff6d6,#e8d28a);
+}
 
-    /* --------- Breath area (Wissen-style) --------- */
-    .breathWrap{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:12px;
-      padding:6px 0 8px;
-    }
-
-    .phase{
-      font-weight:900;
-      letter-spacing:.06em;
-      color: rgba(43,43,43,.85);
-      font-size:12px;
-      text-transform: uppercase;
-    }
-
-    .timerRow{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      color: rgba(43,43,43,.78);
-      font-weight:800;
-      font-size:13px;
-    }
-
-    .time{
-      font-variant-numeric: tabular-nums;
-      padding:8px 12px;
-      border-radius:999px;
-      background: rgba(255,255,255,.70);
-      border:1px solid rgba(200,162,74,.16);
-      box-shadow: 0 10px 22px rgba(0,0,0,.06);
-    }
-
-    .orb{
-      width: 230px;
-      height: 230px;
-      border-radius: 999px;
-      position: relative;
-      display:grid;
-      place-items:center;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.92), rgba(255,255,255,.55));
-      border: 1px solid rgba(200,162,74,.28);
-      box-shadow: 0 22px 60px rgba(0,0,0,.10);
-      overflow:hidden;
-    }
-
-    .orb::before{
-      content:"";
-      position:absolute;
-      inset:-28px;
-      background: radial-gradient(circle, rgba(200,162,74,.20), transparent 60%);
-      filter: blur(6px);
-      opacity: .9;
-      pointer-events:none;
-    }
-
-    .pulse{
-      width: 72%;
-      height: 72%;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, rgba(200,162,74,.38), rgba(43,43,43,.06));
-      border: 1px solid rgba(200,162,74,.22);
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,.40);
-      transform: scale(0.88);
-      transition: transform 4s ease;
-    }
-
-    .orbText{
-      position:absolute;
-      text-align:center;
-      padding: 0 18px;
-      z-index:2;
-    }
-    .orbText .focus{
-      font-weight:900;
-      font-size:15px;
-      color: rgba(43,43,43,.85);
-      margin-bottom:6px;
-    }
-    .orbText .hint{
-      font-size:13px;
-      color: rgba(43,43,43,.70);
-      line-height:1.35;
-    }
-
-    .controls{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:14px;
-    }
-
-    button{
-      appearance:none;
-      border:none;
-      cursor:pointer;
-      padding:12px 14px;
-      border-radius:14px;
-      font-weight:900;
-      letter-spacing:.2px;
-      box-shadow: var(--shadow2);
-      border:1px solid rgba(200,162,74,.20);
-      background: linear-gradient(180deg, #ffffff, #f7f2e6);
-      color:var(--text);
-      flex:1;
-      min-width:130px;
-    }
-    button:hover{ transform: translateY(-1px); }
-
-    button.primary{
-      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
-      border:1px solid rgba(200,162,74,.35);
-      color:#3a2c10;
-      text-shadow: 0 0 10px rgba(200,162,74,.25);
-    }
-
-    .settings{
-      margin-top:14px;
-      padding:14px;
-      border-radius:18px;
-      border:1px solid rgba(200,162,74,.16);
-      background: rgba(255,255,255,.65);
-      box-shadow: 0 10px 22px rgba(0,0,0,.06);
-    }
-
-    .row{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      margin: 10px 0;
-      font-size:14px;
-      color: rgba(43,43,43,.80);
-      font-weight:800;
-    }
-
-    input[type="number"]{
-      width: 88px;
-      padding:10px 10px;
-      border-radius: 14px;
-      border: 1px solid rgba(200,162,74,.18);
-      background: rgba(255,255,255,.90);
-      font-weight:900;
-      color: rgba(43,43,43,.90);
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,.35);
-    }
-
-    .mini{
-      font-size:12px;
-      font-weight:700;
-      color: rgba(43,43,43,.62);
-      margin-top: 8px;
-      line-height: 1.4;
-    }
-
-    /* --------- Premium box (Wissen-style) --------- */
-    .premiumBox{
-      margin-top:14px;
-      padding:14px;
-      border-radius:18px;
-      border:1px solid rgba(200,162,74,.28);
-      background: linear-gradient(180deg, rgba(255,246,214,.75), rgba(255,255,255,.75));
-      box-shadow: 0 0 18px rgba(200,162,74,.15);
-    }
-    .premiumBox h3{
-      margin:0 0 10px 0;
-      font-size:14px;
-      font-weight:900;
-      color:#3a2c10;
-      letter-spacing:.2px;
-    }
-
-    .premiumBox label{
-      display:block;
-      font-weight:900;
-      font-size:13px;
-      color: rgba(43,43,43,.75);
-      margin: 10px 0 8px;
-    }
-
-    input[type="range"]{
-      -webkit-appearance:none;
-      width:100%;
-      height:8px;
-      border-radius:999px;
-      background: rgba(43,43,43,0.10);
-      outline:none;
-    }
-    input[type="range"]::-webkit-slider-thumb{
-      -webkit-appearance:none;
-      width:18px;
-      height:18px;
-      border-radius:50%;
-      background: var(--gold);
-      border: 2px solid rgba(255,255,255,.85);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.12);
-      cursor:pointer;
-    }
-    input[type="range"]::-moz-range-thumb{
-      width:18px;
-      height:18px;
-      border-radius:50%;
-      background: var(--gold);
-      border: 2px solid rgba(255,255,255,.85);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.12);
-      cursor:pointer;
-    }
-
-    .resetOut{
-      margin-top:12px;
-      padding:12px 12px;
-      border-radius:16px;
-      background: rgba(255,255,255,.70);
-      border:1px solid rgba(200,162,74,.16);
-      box-shadow: 0 10px 22px rgba(0,0,0,.06);
-    }
-    .resetOut .rt{
-      margin:0 0 6px;
-      font-size:15px;
-      font-weight:900;
-      color: rgba(43,43,43,.88);
-    }
-    .resetOut .rx{
-      margin:0;
-      font-size:14px;
-      line-height:1.45;
-      color: rgba(43,43,43,.76);
-      font-weight:700;
-      white-space: pre-line;
-    }
-
-    .memberLine{
-      margin-top:12px;
-      font-size:14px;
-      color: rgba(43,43,43,.72);
-      font-weight:800;
-    }
-    .memberLine a{
-      color: rgba(43,43,43,.92);
-      text-decoration:none;
-      border-bottom:1px dotted rgba(43,43,43,.45);
-      font-weight:900;
-    }
-    .memberLine a:hover{ border-bottom-style: solid; }
-
-    .premiumInfo{
-      margin-top:12px;
-      padding:12px;
-      border-radius:16px;
-      border:1px solid rgba(200,162,74,.18);
-      background: rgba(255,255,255,.65);
-      box-shadow: 0 10px 22px rgba(0,0,0,.06);
-    }
-    .premiumInfo .t{
-      font-weight:900;
-      margin-bottom:8px;
-      color: rgba(43,43,43,.86);
-    }
-    .premiumInfo ul{
-      margin:0;
-      padding-left:18px;
-      line-height:1.5;
-      color: rgba(43,43,43,.74);
-      font-weight:700;
-      font-size:14px;
-    }
-
-    @media (max-width: 420px){
-      .orb{ width: 215px; height: 215px; }
-      .controls button{ min-width: 100%; }
-    }
-  </style>
+/* ===== Responsive ===== */
+@media(max-width:420px){
+  .controls button{min-width:100%}
+}
+</style>
 </head>
 
 <body>
-  <div class="phone">
+<div class="phone">
 
-    <div class="topbar">
-      <a class="back" href="indexIT.html">← Home</a>
+<div class="topbar">
+  <a class="back" href="indexIT.html">← Home</a>
 
-      <div class="rightTop">
-        <div class="langToggle" aria-label="Language toggle">
-          <button class="langBtn" id="btnDE" type="button">Deutsch</button>
-          <button class="langBtn" id="btnIT" type="button">Italiano</button>
-        </div>
+  <div class="langToggle">
+    <button class="langBtn" id="btnDE">Deutsch</button>
+    <button class="langBtn active" id="btnIT">Italiano</button>
+  </div>
 
-        <div class="brand">
-          <div class="t1">Panacea</div>
-          <div class="t2"><span class="glow">Reset</span> Quotidiano</div>
-        </div>
-      </div>
+  <div class="rightTop">
+    <div class="brand">
+      <div class="t1">Panacea</div>
+      <div class="t2"><span class="glow">Reset</span> Quotidiano</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="hero">
+    <div class="badge">DR</div>
+    <div>
+      <h1>Reset Quotidiano</h1>
+      <p>3–5 minuti per la tua stabilità interiore: respira con calma e ritrova chiarezza.</p>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <div class="resetOut">
+      <strong>Oggi</strong><br>
+      Porta l’attenzione sul prossimo passo chiaro.
     </div>
 
-    <div class="card">
-      <div class="hero">
-        <div class="badge">DR</div>
-        <div>
-          <h1>Reset Quotidiano</h1>
-          <p>3–5 minuti per la tua stabilità interiore: respira con calma, ascolta il corpo, ritrova chiarezza.</p>
-        </div>
-      </div>
+    <div class="divider"></div>
 
-      <div class="content">
+    <div class="phase">Pronto</div>
+    <div class="timerRow">
+      Tempo restante <span class="time">03:00</span>
+    </div>
 
-        <!-- Daily focus -->
-        <div class="resetOut" style="margin-top:0;">
-          <div class="rt" id="dailyFocusTitle">Oggi</div>
-          <p class="rx" id="dailyFocusText">Carico…</p>
-          <p class="rx" style="margin-top:10px; opacity:.8; font-weight:800;">✨ Premium: ritmo del respiro e impulso si adattano al tuo livello di stress.</p>
-        </div>
-
-        <div class="divider"></div>
-
-        <!-- Breathing -->
-        <div class="breathWrap">
-          <div class="phase" id="phaseLabel">Pronto</div>
-
-          <div class="timerRow">
-            <span>Tempo restante</span>
-            <span class="time" id="timeLeft">03:00</span>
-          </div>
-
-          <div class="orb" aria-label="Animazione respirazione">
-            <div class="pulse" id="pulse"></div>
-            <div class="orbText">
-              <div class="focus" id="focusText">Oggi: espira più lentamente</div>
-              <div class="hint" id="hintText">Tocca Start. Segui il cerchio: Inspira → Espira.</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="controls">
-          <button class="primary" id="startBtn">Start</button>
-          <button id="pauseBtn" disabled>Pausa</button>
-          <button id="resetBtn">Reset</button>
-        </div>
-
-        <div class="settings">
-          <div class="row">
-            <span>Inspira (sec.)</span>
-            <input id="inhale" type="number" min="2" max="8" value="4">
-          </div>
-          <div class="row">
-            <span>Espira (sec.)</span>
-            <input id="exhale" type="number" min="3" max="10" value="6">
-          </div>
-          <div class="row">
-            <span>Durata (min.)</span>
-            <input id="minutes" type="number" min="1" max="10" value="3">
-          </div>
-
-          <div class="mini">
-            Tip: un’espirazione più lunga (es. 4–6) aiuta a calmare il sistema nervoso.
-          </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <!-- Premium Reset (visible for free) -->
-        <div class="premiumBox" id="premiumReset">
-          <h3>Premium Reset</h3>
-
-          <label for="stressSlider">Livello di stress (1–10)</label>
-          <input id="stressSlider" type="range" min="1" max="10" value="5">
-
-          <label for="energySlider">Livello di energia (1–10)</label>
-          <input id="energySlider" type="range" min="1" max="10" value="5">
-
-          <button class="primary" id="generateResetBtn" style="margin-top:12px;">Il mio Premium Reset</button>
-
-          <div class="resetOut" id="resetOut">
-            <div class="rt" id="resetTitle"></div>
-            <p class="rx" id="resetText"></p>
-          </div>
-
-          <div class="memberLine">
-            <span id="memberStatus">Versione Free</span> · <a href="mitgliederIT.html" id="unlockLink">Sblocca area membri</a>
-          </div>
-
-          <div class="premiumInfo">
-            <div class="t">Cosa include Premium?</div>
-            <ul>
-              <li><b>Ritmo respiratorio migliorato</b> (adattato automaticamente)</li>
-              <li><b>Più impulsi quotidiani</b> & testi reset personalizzati</li>
-              <li><b>Area membri</b> con strumenti extra</li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
+    <div class="controls">
+      <button class="primary">Start</button>
+      <button>Pausa</button>
+      <button>Reset</button>
     </div>
 
   </div>
+</div>
 
-  <script>
-    // ---------------- Daily Focus (7-day rotation) ----------------
-    const dailyFocus = [
-      { title: "Lunedì – Focus",        text: "Porta l’attenzione sul prossimo passo chiaro. Non tutto: solo il prossimo." },
-      { title: "Martedì – Calma",       text: "Allunga consapevolmente l’espirazione. Il sistema nervoso ama la sicurezza." },
-      { title: "Mercoledì – Chiarezza", text: "Osserva i pensieri come nuvole. Non devi seguirli." },
-      { title: "Giovedì – Struttura",   text: "Pianifica solo i prossimi 30 minuti – non l’intera giornata." },
-      { title: "Venerdì – Energia",     text: "Inspira a fondo, apri il torace, raddrizzati. L’energia nasce anche dalla postura." },
-      { title: "Sabato – Recupero",     text: "Concediti piccole pause consapevoli. Bastano 3 minuti." },
-      { title: "Domenica – Riflessione",text: "Cosa ti ha dato stabilità questa settimana? Ripeti esattamente quello." }
-    ];
-
-    const today = new Date().getDay(); // 0=domenica
-    const idx = today === 0 ? 6 : today - 1;
-
-    document.getElementById("dailyFocusTitle").textContent = dailyFocus[idx].title;
-    document.getElementById("dailyFocusText").textContent  = dailyFocus[idx].text;
-  </script>
-
-  <script>
-    // ---------------- Premium (FREE visible) + 3 reactions ----------------
-    const PREMIUM_FLAG = "panacea_premium";
-    const isPremiumUser = localStorage.getItem(PREMIUM_FLAG) === "true";
-    const memberStatus = document.getElementById("memberStatus");
-    memberStatus.textContent = isPremiumUser ? "Premium attivo" : "Versione Free";
-
-    const stressSlider = document.getElementById("stressSlider");
-    const energySlider = document.getElementById("energySlider");
-    const resetTitleEl = document.getElementById("resetTitle");
-    const resetTextEl  = document.getElementById("resetText");
-
-    function level(n){
-      if(n <= 3) return "LOW";
-      if(n >= 8) return "HIGH";
-      return "MID";
-    }
-
-    function pickReset(stress, energy){
-      const sL = level(stress);
-      const eL = level(energy);
-
-      // (1) Stress HIGH + Energy LOW
-      if(sL === "HIGH" && eL === "LOW"){
-        return {
-          title: "Calma & alleggerisci",
-          text:
-            "Il tuo sistema è sovraccarico.\n" +
-            "Oggi: rallenta invece di spingere.\n\n" +
-            "• 2–3 minuti: espira più a lungo (4 in / 6–8 out)\n" +
-            "• Spalle giù, mandibola morbida\n" +
-            "• Una sola piccola cosa – il resto lo metti in pausa"
-        };
-      }
-
-      // (2) Stress HIGH + Energy HIGH
-      if(sL === "HIGH" && eL === "HIGH"){
-        return {
-          title: "Riduci l’attivazione & concentra",
-          text:
-            "Tanta energia + tanta pressione.\n" +
-            "Serve un canale, non più velocità.\n\n" +
-            "• 3 minuti: conta con calma (4 in / 6 out)\n" +
-            "• Poi: una priorità – 10 minuti solo su quella\n" +
-            "• Bevi acqua, senti i piedi a terra"
-        };
-      }
-
-      // (3) Energy LOW
-      if(eL === "LOW"){
-        return {
-          title: "Recupero & attivazione dolce",
-          text:
-            "Batteria bassa oggi.\n" +
-            "Obiettivo: stabilizzare con gentilezza.\n\n" +
-            "• 2 minuti: respiro calmo + torace aperto\n" +
-            "• 1 minuto: movimento lento (collo/spalle)\n" +
-            "• Una cosa che nutre: luce, acqua, una breve passeggiata"
-        };
-      }
-
-      // Balanced fallback
-      return {
-        title: "Reset – calmo & chiaro",
-        text:
-          "Sei in una zona intermedia.\n" +
-          "Obiettivo: stabilità + chiarezza.\n\n" +
-          "• 3 minuti: respiro regolare (4 in / 6 out)\n" +
-          "• Domanda: cosa conta davvero oggi?\n" +
-          "• Poi: 15 minuti di focus per partire"
-      };
-    }
-
-    function render3Reactions(){
-      const s = Number(stressSlider.value);
-      const e = Number(energySlider.value);
-      const res = pickReset(s, e);
-      resetTitleEl.textContent = res.title;
-      resetTextEl.textContent  = res.text;
-    }
-
-    stressSlider.addEventListener("input", render3Reactions);
-    energySlider.addEventListener("input", render3Reactions);
-    document.getElementById("generateResetBtn").addEventListener("click", render3Reactions);
-    render3Reactions();
-  </script>
-
-  <script>
-    // ---------------- Breathing timer ----------------
-    const phaseLabel = document.getElementById("phaseLabel");
-    const timeLeftEl = document.getElementById("timeLeft");
-    const pulse = document.getElementById("pulse");
-    const hintText = document.getElementById("hintText");
-
-    const inhaleInput = document.getElementById("inhale");
-    const exhaleInput = document.getElementById("exhale");
-    const minutesInput = document.getElementById("minutes");
-
-    const startBtn = document.getElementById("startBtn");
-    const pauseBtn = document.getElementById("pauseBtn");
-    const resetBtn = document.getElementById("resetBtn");
-
-    let running = false;
-    let paused = false;
-
-    let inhaleSec = 4;
-    let exhaleSec = 6;
-    let totalSeconds = 180;
-    let remainingSeconds = 180;
-
-    let phase = "READY";
-    let phaseTimeout = null;
-    let tickInterval = null;
-
-    function pad(n){ return String(n).padStart(2,"0"); }
-    function fmtTime(s){
-      const m = Math.floor(s/60);
-      const r = s % 60;
-      return `${pad(m)}:${pad(r)}`;
-    }
-
-    function readSettings(){
-      inhaleSec = Math.max(2, Math.min(8, Number(inhaleInput.value || 4)));
-      exhaleSec = Math.max(3, Math.min(10, Number(exhaleInput.value || 6)));
-      const mins = Math.max(1, Math.min(10, Number(minutesInput.value || 3)));
-      totalSeconds = mins * 60;
-    }
-
-    function updateTimeUI(){ timeLeftEl.textContent = fmtTime(remainingSeconds); }
-
-    function setPhase(newPhase){
-      phase = newPhase;
-
-      if(newPhase === "INHALE"){
-        phaseLabel.textContent = "Inspira";
-        pulse.style.transition = `transform ${inhaleSec}s ease`;
-        pulse.style.transform = "scale(1.06)";
-      } else if(newPhase === "EXHALE"){
-        phaseLabel.textContent = "Espira";
-        pulse.style.transition = `transform ${exhaleSec}s ease`;
-        pulse.style.transform = "scale(0.86)";
-      } else {
-        phaseLabel.textContent = "Pronto";
-        pulse.style.transition = "transform 0.6s ease";
-        pulse.style.transform = "scale(0.88)";
-      }
-    }
-
-    function scheduleNextPhase(){
-      if(!running || paused) return;
-
-      if(phase === "INHALE"){
-        phaseTimeout = setTimeout(() => {
-          setPhase("EXHALE");
-          scheduleNextPhase();
-        }, inhaleSec * 1000);
-      } else if(phase === "EXHALE"){
-        phaseTimeout = setTimeout(() => {
-          setPhase("INHALE");
-          scheduleNextPhase();
-        }, exhaleSec * 1000);
-      }
-    }
-
-    function start(){
-      readSettings();
-      remainingSeconds = totalSeconds;
-      updateTimeUI();
-
-      running = true;
-      paused = false;
-      startBtn.disabled = true;
-      pauseBtn.disabled = false;
-      pauseBtn.textContent = "Pausa";
-      hintText.textContent = "Segui il cerchio. Se arrivano pensieri: torna gentilmente all’espirazione.";
-
-      setPhase("INHALE");
-      scheduleNextPhase();
-
-      tickInterval = setInterval(() => {
-        if(!running || paused) return;
-
-        remainingSeconds -= 1;
-        updateTimeUI();
-
-        if(remainingSeconds <= 0){
-          finish();
-        }
-      }, 1000);
-    }
-
-    function togglePause(){
-      if(!running) return;
-
-      paused = !paused;
-
-      if(paused){
-        pauseBtn.textContent = "Continua";
-        hintText.textContent = "Pausa. Quando sei pronta: Continua.";
-        clearTimeout(phaseTimeout);
-      } else {
-        pauseBtn.textContent = "Pausa";
-        hintText.textContent = "Continua. Segui il cerchio.";
-        scheduleNextPhase();
-      }
-    }
-
-    function resetAll(){
-      running = false;
-      paused = false;
-
-      clearTimeout(phaseTimeout);
-      clearInterval(tickInterval);
-      phaseTimeout = null;
-      tickInterval = null;
-
-      readSettings();
-      remainingSeconds = totalSeconds;
-      updateTimeUI();
-
-      setPhase("READY");
-      hintText.textContent = "Tocca Start. Segui il cerchio: Inspira → Espira.";
-
-      startBtn.disabled = false;
-      pauseBtn.disabled = true;
-      pauseBtn.textContent = "Pausa";
-      phaseLabel.textContent = "Pronto";
-    }
-
-    function finish(){
-      running = false;
-      paused = false;
-
-      clearTimeout(phaseTimeout);
-      clearInterval(tickInterval);
-
-      setPhase("READY");
-      remainingSeconds = 0;
-      updateTimeUI();
-
-      hintText.textContent = "Finito. Nota: com’è il corpo adesso?";
-      startBtn.disabled = false;
-      pauseBtn.disabled = true;
-      pauseBtn.textContent = "Pausa";
-      phaseLabel.textContent = "Fatto";
-    }
-
-    // Init
-    readSettings();
-    remainingSeconds = totalSeconds;
-    updateTimeUI();
-    setPhase("READY");
-
-    // Events
-    startBtn.addEventListener("click", start);
-    pauseBtn.addEventListener("click", togglePause);
-    resetBtn.addEventListener("click", resetAll);
-
-    inhaleInput.addEventListener("change", resetAll);
-    exhaleInput.addEventListener("change", resetAll);
-    minutesInput.addEventListener("change", resetAll);
-  </script>
-
-  <script>
-    // --- PANACEA Language Switch (DE/IT) ---
-    (function(){
-      const KEY = "lang"; // "de" | "it"
-      function setLang(l){ localStorage.setItem(KEY, l); }
-      function getLang(){
-        const v = (localStorage.getItem(KEY) || "").toLowerCase();
-        return (v === "it" || v === "de") ? v : "it";
-      }
-
-      function getTwinUrl(targetLang){
-        const path = location.pathname.split("/").pop() || "index.html";
-        const map = {
-          "index.html": "indexIT.html",
-          "indexIT.html": "index.html",
-
-          "daily-reset.html": "daily-resetIT.html",
-          "daily-resetIT.html": "daily-reset.html",
-
-          "wissen.html": "wissenIT.html",
-          "wissenIT.html": "wissen.html",
-
-          "lifestyle.html": "lifestyleIT.html",
-          "lifestyleIT.html": "lifestyle.html",
-
-          "mitglieder.html": "mitgliederIT.html",
-          "mitgliederIT.html": "mitglieder.html",
-        };
-
-        if(targetLang === "it"){
-          return map[path] || (path.includes("IT.html") ? path : path.replace(".html","IT.html"));
-        }
-        if(targetLang === "de"){
-          return map[path] || (path.includes("IT.html") ? path.replace("IT.html",".html") : path);
-        }
-        return path;
-      }
-
-      const btnDE = document.getElementById("btnDE");
-      const btnIT = document.getElementById("btnIT");
-      if(!btnDE || !btnIT) return;
-
-      function paint(){
-        const l = getLang();
-        btnDE.classList.toggle("active", l === "de");
-        btnIT.classList.toggle("active", l === "it");
-      }
-
-      btnDE.addEventListener("click", () => {
-        setLang("de");
-        location.href = getTwinUrl("de");
-      });
-
-      btnIT.addEventListener("click", () => {
-        setLang("it");
-        location.href = getTwinUrl("it");
-      });
-
-      // Auto-correct page if mismatch
-      const current = location.pathname.split("/").pop() || "";
-      const stored = getLang();
-      const isITpage = current.includes("IT.html");
-      if(stored === "it" && !isITpage){
-        const twin = getTwinUrl("it");
-        if(twin !== current) location.replace(twin);
-        return;
-      }
-      if(stored === "de" && isITpage){
-        const twin = getTwinUrl("de");
-        if(twin !== current) location.replace(twin);
-        return;
-      }
-
-      paint();
-    })();
-  </script>
-
+</div>
 </body>
 </html>
