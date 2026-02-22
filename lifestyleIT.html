@@ -21,6 +21,8 @@
       --radius2: 18px;
     }
 
+    *{ box-sizing:border-box; }
+
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
@@ -65,11 +67,15 @@
       min-width:210px;
     }
 
+    /* --- Centered language toggle (like the other pages) --- */
     .langToggle{
       display:flex;
       gap:10px;
       align-items:center;
+      justify-content:center;
+      width:100%;
     }
+
     .langBtn{
       appearance:none;
       border:none;
@@ -342,8 +348,8 @@
       <div class="hero">
         <div class="daybadge" id="dayBadge">Giorno 1</div>
         <div>
-          <h1 id="dayHeadline">21 Giorni Lifestyle (Salutogenesi)</h1>
-          <p>Piccoli passi per alimentazione, calma, movimento e stabilità sociale — pratici.</p>
+          <h1 id="dayHeadline">21 giorni Lifestyle (Salutogenesi)</h1>
+          <p>Micro-scelte quotidiane per alimentazione, calma, movimento e connessione — concrete, sostenibili.</p>
         </div>
       </div>
 
@@ -371,14 +377,14 @@
           </div>
 
           <ul class="memberList">
-            <li><b>Più impulsi al giorno</b> + strategia settimanale concreta</li>
-            <li><b>Consigli extra</b> (alimentazione, sonno, movimento, stress)</li>
-            <li><b>Link & strumenti</b> nell’area membri</li>
+            <li><b>Più impulsi al giorno</b> + una strategia settimanale chiara</li>
+            <li><b>Indicazioni extra</b> (alimentazione, sonno, movimento, stress)</li>
+            <li><b>Link & strumenti</b> disponibili nell’area membri</li>
           </ul>
 
           <a class="memberBtn" href="mitgliederIT.html">Sblocca area membri →</a>
 
-          <div class="memberNote">Il Premium diventa visibile automaticamente dopo lo sblocco.</div>
+          <div class="memberNote">Il contenuto Premium diventa visibile automaticamente dopo lo sblocco.</div>
         </div>
 
         <div class="divider"></div>
@@ -550,113 +556,133 @@
       errorBox.textContent = "";
     }
 
-    // ---------- FREE content (IT) ----------
+    // ---------- FREE content (IT) — revised deluxe/professional ----------
     const FREE_DAYS = [
-      { title:"Giorno 1 – Start: piccoli passi", impulse:
-`Oggi conta la fattibilità: scegli UN solo passo piccolo, davvero realizzabile.
-Fai un pasto “stabile” (proteine + fibre) invece della perfezione.
-Bevi un bicchiere d’acqua in più e chiediti: di cosa ha bisogno il mio corpo adesso?
-Sera: rallenta 10 minuti prima (luci più basse, pausa schermo).` },
-      { title:"Giorno 2 – Glicemia più stabile", impulse:
-`Inizia con struttura: un pasto con proteine (es. yogurt/ricotta, uova, legumi) + fibre.
-Evita “solo caffè” a colazione: per molti aumenta la reattività allo stress.
-Dopo aver mangiato: 10 minuti di camminata (riduce i picchi e calma).
-Mini-check: fame o stress? 3 espiri lenti prima di fare uno snack.` },
+      { title:"Giorno 1 – Inizio: un passo alla volta", impulse:
+`Oggi vince la semplicità: scegli UN solo passo piccolo, davvero realizzabile.
+Crea un pasto “stabile” (proteine + fibre), senza inseguire la perfezione.
+Bevi un bicchiere d’acqua in più e chiediti: di cosa ha bisogno il mio corpo, adesso?
+Sera: rallenta 10 minuti prima di dormire (luci più basse, pausa schermo).` },
+
+      { title:"Giorno 2 – Energia più costante", impulse:
+`Parti dalla struttura: un pasto con proteine (yogurt/ricotta, uova, legumi) + fibre.
+Evita la colazione “solo caffè”: per molte persone aumenta la reattività allo stress.
+Dopo aver mangiato: 10 minuti di camminata (aiuta a ridurre i picchi e favorisce calma).
+Mini-check: è fame o è stress? Fai 3 espiri lenti prima di scegliere uno snack.` },
+
       { title:"Giorno 3 – Il sonno come regolatore", impulse:
-`Il sonno è un sistema di regolazione dello stress: oggi conta il ritmo, non la durata.
+`Il sonno è un alleato della regolazione dello stress: oggi conta il ritmo, non la durata perfetta.
 Scegli un orario fisso per “iniziare a scendere” (es. 21:30).
-Evita pasti pesanti molto tardi → meno agitazione notturna.
-Mini-rituale: doccia calda o pediluvio + espirazione lenta (4 in / 6 out).` },
+Evita pasti molto pesanti troppo tardi: aiuta a ridurre l’agitazione notturna.
+Mini-rituale: doccia calda o pediluvio + respiro lento (4 in / 6 out).` },
+
       { title:"Giorno 4 – Movimento senza pressione", impulse:
-`Il movimento è un “reset” per il sistema nervoso: basta dolcezza.
+`Il movimento è un reset per il sistema nervoso: basta una dose gentile.
 10–15 minuti di camminata tranquilla o stretching: obiettivo = circolazione, non performance.
-Se sei tesa: allunga l’espirazione mentre ti muovi.
-Scrivi 1 frase: “Come si sente il mio corpo dopo 10 minuti?”` },
-      { title:"Giorno 5 – Micro-pause", impulse:
-`Le pause brevi danno un segnale di sicurezza: 60–90 secondi bastano.
+Se senti tensione: allunga l’espirazione mentre ti muovi.
+Scrivi una frase: “Come si sente il mio corpo dopo 10 minuti?”` },
+
+      { title:"Giorno 5 – Micro-pause rigeneranti", impulse:
+`Le pause brevi comunicano sicurezza al corpo: 60–90 secondi possono bastare.
 Metti 2 mini-timer oggi (mattina/pomeriggio): respiro + spalle morbide.
 Bevi lentamente 5 sorsi d’acqua e senti i piedi a terra.
-Salutogenesi = rafforzare risorse prima che “crolli”.` },
+Salutogenesi = rafforzare risorse prima che arrivi il sovraccarico.` },
+
       { title:"Giorno 6 – Risorsa sociale", impulse:
-`La connessione sociale riduce lo stress (mente e corpo).
-Manda un messaggio breve e vero a una persona: “Come stai?”
-Se è troppo: sorridi consapevolmente o dì “grazie” — i micro-segnali contano.
-Sera: 1 minuto: “Chi/cosa mi ha sostenuto oggi?”` },
-      { title:"Giorno 7 – Reset di settimana", impulse:
-`La riflessione crea coerenza (capisco / gestisco / ha senso).
-Scegli 1 abitudine che resta la prossima settimana (es. 10 min camminata).
+`La connessione riduce lo stress, nel corpo e nella mente.
+Invia un messaggio breve e autentico a una persona: “Come stai?”
+Se oggi è troppo: un sorriso consapevole o un “grazie” — i micro-segnali contano.
+Sera, 1 minuto: “Chi o cosa mi ha sostenuto oggi?”` },
+
+      { title:"Giorno 7 – Reset di fine settimana", impulse:
+`La riflessione crea coerenza: capisco, gestisco, do un senso.
+Scegli 1 abitudine che rimane anche la prossima settimana (es. 10 min di camminata).
 Pianifica 1 pasto “leggero e stabile” per domani (verdure + proteine + grassi buoni).
-Celebra: scrivi 3 cose che oggi sono state “abbastanza”.` },
+Celebra il “sufficiente”: scrivi 3 cose che oggi sono state abbastanza.` },
+
       { title:"Giorno 8 – Basi anti-infiammatorie", impulse:
-`Più piante, più varietà: obiettivo 20–30 piante diverse a settimana (anche erbe).
-Oggi: aggiungi 1 porzione extra di frutta/verdura — qualunque va bene.
-Usa grassi buoni (olio EVO, noci, semi) per sazietà ed energia più stabile.
-Se puoi: sostituisci snack zuccherati con yogurt/noci/frutta.` },
+`Più varietà, più nutrienti: obiettivo 20–30 alimenti vegetali diversi a settimana (anche erbe e spezie).
+Oggi aggiungi 1 porzione extra di frutta o verdura: qualunque scelta va bene.
+Usa grassi buoni (olio EVO, frutta secca, semi) per sazietà ed energia più stabile.
+Se puoi: sostituisci snack zuccherati con yogurt, frutta secca o frutta.` },
+
       { title:"Giorno 9 – Caffeina e stress", impulse:
-`La caffeina può amplificare i sintomi: il timing aiuta.
-Se bevi caffè: dopo colazione, non a digiuno.
-Segnali (tachicardia/ansia)? Oggi 1 tazza in meno o più tardi.
-Alternativa: tisana + 3 espiri lenti.` },
-      { title:"Giorno 10 – Sistema nervoso e respiro", impulse:
-`Espirare più a lungo attiva la modalità di calma (parasimpatico).
+`La caffeina può amplificare alcuni sintomi: il timing fa la differenza.
+Se bevi caffè, prendilo dopo colazione, non a digiuno.
+Segnali come tachicardia o ansia? Oggi prova 1 tazza in meno, oppure più tardi.
+Alternativa: tisana calda + 3 espiri lenti.` },
+
+      { title:"Giorno 10 – Respiro e sistema nervoso", impulse:
+`Un’espirazione più lunga favorisce la modalità di calma (parasimpatico).
 2 minuti: 4 secondi inspiro, 6–8 secondi espiro — senza forzare.
-Poi: spalle giù, mandibola morbida.
-Ricorda: non “fare di più”, ma “meno allarme” nel corpo.` },
+Poi: spalle giù, mandibola morbida, lingua rilassata.
+Obiettivo: meno allarme nel corpo, non “fare di più”.` },
+
       { title:"Giorno 11 – Senso e valori", impulse:
-`La salutogenesi ha bisogno di senso: le azioni pesano di più se hanno significato.
-Domanda: “Per cosa lo faccio? salute, energia, libertà, famiglia?”
-Scegli 1 mini-azione coerente (pasto fresco, camminata, sonno prima).
-Scrivi 1 frase: “Oggi è stato importante perché…”` },
+`La salutogenesi si nutre di significato: le azioni pesano di più quando hanno un “perché”.
+Domanda: “Per cosa lo faccio?” (salute, energia, libertà, famiglia, lavoro…)
+Scegli 1 mini-azione coerente: un pasto fresco, una camminata, un sonno anticipato.
+Scrivi una frase: “Oggi è stato importante perché…”` },
+
       { title:"Giorno 12 – Ordine e alleggerimento", impulse:
-`L’ambiente influenza il sistema nervoso: meno stimoli = meno stress.
-Oggi: 5 minuti per sistemare una sola superficie.
-Poi: respira e nota se diventa più “leggero”.
-Piccolo ordine = alleggerimento anche nel corpo.` },
+`L’ambiente influenza il sistema nervoso: meno stimoli = più spazio mentale.
+Oggi: 5 minuti per sistemare UNA sola superficie (scrivania, tavolo, ingresso).
+Poi respira e nota se dentro “si fa più leggero”.
+Piccolo ordine fuori = piccolo ordine dentro.` },
+
       { title:"Giorno 13 – Proteine e stabilità", impulse:
-`Le proteine aiutano sazietà, metabolismo e energia più stabile.
+`Le proteine sostengono sazietà, metabolismo ed energia più costante.
 Oggi: aggiungi una fonte proteica in 2 pasti (pesce, uova, tofu, legumi, ricotta/yogurt).
-Abbina fibre (verdure/avena/integrale).
-Bevi acqua: spesso la sete si confonde con fame.` },
-      { title:"Giorno 14 – Piacere senza colpa", impulse:
-`Stress + regole rigide = “tutto o niente”.
-Concedi oggi un piacere in piccola porzione, lentamente, senza distrazioni.
-Domanda: “Lo sto davvero assaporando?” → l’attenzione riduce l’eccesso.
+Abbina fibre (verdure, avena, cereali integrali).
+Bevi acqua: spesso la sete si confonde con la fame.` },
+
+      { title:"Giorno 14 – Piacere, senza colpa", impulse:
+`Stress + regole rigide = dinamica “tutto o niente”.
+Concediti oggi un piacere in piccola porzione, lentamente, senza distrazioni.
+Domanda: “Lo sto davvero assaporando?” L’attenzione riduce l’eccesso.
 Obiettivo: stabilità, non divieti.` },
+
       { title:"Giorno 15 – Natura e luce", impulse:
-`La luce diurna stabilizza il ritmo circadiano e migliora il sonno.
-Oggi: 10 minuti fuori al mattino, anche con nuvole.
-Se puoi: aggiungi un po’ di movimento (cammina, scale, leggero).
-Sera: riduci la luce → scendi più facilmente.` },
-      { title:"Giorno 16 – Confini e “no”", impulse:
-`La salute mentale è anche saper mettere confini.
-Oggi: dì no con gentilezza a una cosa, o rimandala.
+`La luce diurna stabilizza il ritmo circadiano e sostiene il sonno.
+Oggi: 10 minuti fuori al mattino, anche con cielo coperto.
+Se puoi: aggiungi un po’ di movimento (camminata, scale, attivazione leggera).
+Sera: riduci la luce artificiale per favorire la discesa.` },
+
+      { title:"Giorno 16 – Confini e un “no” gentile", impulse:
+`La salute mentale è anche proteggere le proprie energie.
+Oggi: dì no con gentilezza a una cosa, oppure rimandala con chiarezza.
 Frase utile: “Oggi non riesco, ti scrivo domani.”
-Proteggi energia: è prevenzione.` },
-      { title:"Giorno 17 – Micro-allenamento", impulse:
+Difendere spazio e tempo è prevenzione.` },
+
+      { title:"Giorno 17 – Micro-forza", impulse:
 `La forza protegge nel lungo periodo: metabolismo, postura, autoefficacia.
-Oggi: 6 minuti mini-forza (es. 2×: 10 squat + 10 push-up al muro).
+Oggi: 6 minuti di mini-forza (es. 2 giri: 10 squat + 10 push-up al muro).
 Lento e pulito — niente dolore.
-Poi acqua e un attimo di orgoglio.` },
-      { title:"Giorno 18 – Ritualità e cultura", impulse:
-`Rituali danno sicurezza: musica, cucina, lingua, tradizione.
+Poi acqua e un attimo di orgoglio: hai investito su di te.` },
+
+      { title:"Giorno 18 – Ritualità e identità", impulse:
+`I rituali danno sicurezza: musica, cucina, lingua, tradizioni.
 Oggi: 10 minuti di un rituale che ti fa sentire “a casa”.
-Se puoi, condividilo (messaggio/foto/mini chiamata).
-Le risorse sono anche culturali.` },
+Se vuoi, condividilo (messaggio, foto, mini-chiamata).
+Le risorse sono anche culturali e affettive.` },
+
       { title:"Giorno 19 – Digestione e calma", impulse:
-`Lo stress influenza la digestione: oggi rilassamento dolce dopo i pasti.
-Dopo un pasto: 5–10 minuti camminata lenta o seduta tranquilla.
-Mangia più lentamente: meno segnali di stress.
+`Lo stress influenza la digestione: oggi cura il “dopo”.
+Dopo un pasto: 5–10 minuti di camminata lenta o seduta tranquilla.
+Mangia più lentamente: il corpo riceve un segnale di sicurezza.
 Se la pancia è agitata: bevanda calda + espirazione lunga.` },
+
       { title:"Giorno 20 – Piano invece di pressione", impulse:
-`La struttura riduce il carico mentale.
+`La struttura riduce il carico mentale e rende più facile “fare bene”.
 Oggi: pianifica 1 pasto sano per domani + 1 alternativa snack.
-Lascia qualcosa “a vista” (frutta, noci, yogurt).
+Lascia qualcosa “a vista” (frutta, frutta secca, yogurt).
 Il tuo “te di domani” ti ringrazia.` },
-      { title:"Giorno 21 – Integrare", impulse:
+
+      { title:"Giorno 21 – Integrare e continuare", impulse:
 `Hai costruito risorse: questa è salutogenesi in azione.
 Scegli 3 cose che restano: 1 alimentazione, 1 movimento, 1 rituale di calma.
-Scrivi un piano semplice: “Quando esattamente lo faccio?”
-Festeggia: la stabilità nasce da ripetizione, non perfezione.` }
+Scrivi un piano semplice: “Quando, esattamente, lo faccio?”
+Festeggia: la stabilità nasce dalla ripetizione, non dalla perfezione.` }
     ];
 
     // ---------- Premium data loading (optional) ----------
