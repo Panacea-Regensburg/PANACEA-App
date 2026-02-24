@@ -19,6 +19,11 @@
       --shadow2: 0 10px 26px rgba(0,0,0,.10);
       --radius: 22px;
       --radius2: 18px;
+
+      /* responsive sizing */
+      --pad: clamp(14px, 3.6vw, 22px);
+      --gap: clamp(10px, 2.8vw, 14px);
+      --orb: clamp(210px, 58vw, 270px);
     }
 
     *{ box-sizing:border-box; }
@@ -32,23 +37,25 @@
       min-height:100vh;
       display:flex;
       justify-content:center;
-      padding:28px 14px;
+      padding: clamp(16px, 3.5vw, 28px) 14px;
     }
 
     .phone{
       width:100%;
-      max-width:480px;
+      max-width: min(520px, 100%);
     }
 
+    /* ===== Topbar (true centered language buttons) ===== */
     .topbar{
-      display:flex;
+      display:grid;
+      grid-template-columns: 1fr auto 1fr;
       align-items:center;
-      justify-content:space-between;
-      gap:10px;
+      gap: var(--gap);
       margin-bottom:14px;
     }
 
     .back{
+      justify-self:start;
       text-decoration:none;
       display:inline-flex;
       align-items:center;
@@ -60,23 +67,18 @@
       color:var(--text);
       border:1px solid rgba(200,162,74,.20);
       white-space:nowrap;
+      transition: transform .15s ease;
     }
     .back:hover{ transform: translateY(-1px); }
 
     .brand{
+      justify-self:end;
       text-align:right;
       line-height:1.1;
       white-space:nowrap;
     }
-    .brand .t1{
-      font-size:14px;
-      color:var(--muted);
-    }
-    .brand .t2{
-      font-size:18px;
-      font-weight:800;
-      letter-spacing:.2px;
-    }
+    .brand .t1{ font-size:13px; color:var(--muted); }
+    .brand .t2{ font-size:18px; font-weight:800; letter-spacing:.2px; }
     .brand .glow{
       color:var(--gold);
       text-shadow: 0 0 10px rgba(200,162,74,.30);
@@ -92,7 +94,7 @@
     }
 
     .hero{
-      padding:18px 18px 14px 18px;
+      padding: var(--pad);
       display:flex;
       gap:14px;
       align-items:center;
@@ -114,11 +116,7 @@
       flex:0 0 auto;
     }
 
-    .hero h1{
-      margin:0;
-      font-size:18px;
-      letter-spacing:.2px;
-    }
+    .hero h1{ margin:0; font-size:18px; letter-spacing:.2px; }
     .hero p{
       margin:6px 0 0 0;
       color:var(--muted);
@@ -126,9 +124,7 @@
       line-height:1.45;
     }
 
-    .content{
-      padding:16px 18px 18px 18px;
-    }
+    .content{ padding: 0 var(--pad) var(--pad) var(--pad); }
 
     .divider{
       height:1px;
@@ -136,7 +132,74 @@
       margin:16px 0;
     }
 
-    /* --------- Breath area (Wissen-style) --------- */
+    /* ---------- language toggle (DE/IT only) ---------- */
+    .langToggle{
+      justify-self:center;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .langBtn{
+      appearance:none;
+      border:none;
+      cursor:pointer;
+      padding:10px 14px;
+      border-radius:999px;
+      font-weight:950;
+      letter-spacing:.12em;
+      background: rgba(255,255,255,.70);
+      border:1px solid rgba(200,162,74,.18);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+      color: var(--text);
+      white-space:nowrap;
+      transition: transform .15s ease;
+      min-width: 56px;
+      text-align:center;
+    }
+    .langBtn:hover{ transform: translateY(-1px); }
+    .langBtn.active{
+      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      border:1px solid rgba(200,162,74,.35);
+      color:#3a2c10;
+      text-shadow: 0 0 10px rgba(200,162,74,.22);
+    }
+
+    /* --------- Focus box --------- */
+    .focusBox{
+      margin-top:0;
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(200,162,74,.16);
+      background: rgba(255,255,255,.72);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+    }
+
+    .focusBox .rt{
+      margin:0 0 6px;
+      font-size:15px;
+      font-weight:900;
+      color: rgba(43,43,43,.88);
+    }
+    .focusBox .rx{
+      margin:0;
+      font-size:14px;
+      line-height:1.48;
+      color: rgba(43,43,43,.76);
+      font-weight:750;
+      white-space: pre-line;
+    }
+    .focusHint{
+      margin-top:10px;
+      font-size:13.3px;
+      line-height:1.45;
+      color: rgba(43,43,43,.72);
+      font-weight:800;
+      white-space: pre-line;
+    }
+
+    /* --------- Breath area --------- */
     .breathWrap{
       display:flex;
       flex-direction:column;
@@ -172,8 +235,8 @@
     }
 
     .orb{
-      width: 230px;
-      height: 230px;
+      width: var(--orb);
+      height: var(--orb);
       border-radius: 999px;
       position: relative;
       display:grid;
@@ -212,7 +275,7 @@
       z-index:2;
     }
     .orbText .focus{
-      font-weight:900;
+      font-weight:950;
       font-size:15px;
       color: rgba(43,43,43,.85);
       margin-bottom:6px;
@@ -236,7 +299,7 @@
       cursor:pointer;
       padding:12px 14px;
       border-radius:14px;
-      font-weight:900;
+      font-weight:950;
       letter-spacing:.2px;
       box-shadow: var(--shadow2);
       border:1px solid rgba(200,162,74,.20);
@@ -244,6 +307,7 @@
       color:var(--text);
       flex:1;
       min-width:130px;
+      transition: transform .15s ease;
     }
     button:hover{ transform: translateY(-1px); }
 
@@ -275,7 +339,7 @@
     }
 
     input[type="number"]{
-      width: 88px;
+      width: 92px;
       padding:10px 10px;
       border-radius: 14px;
       border: 1px solid rgba(200,162,74,.18);
@@ -287,160 +351,406 @@
 
     .mini{
       font-size:12px;
-      font-weight:700;
+      font-weight:750;
       color: rgba(43,43,43,.62);
       margin-top: 8px;
       line-height: 1.4;
     }
 
-    /* --------- Premium box (Wissen-style) --------- */
-    .premiumBox{
+    /* ===== Premium teaser ===== */
+    .premiumTeaser{
       margin-top:14px;
       padding:14px;
       border-radius:18px;
-      border:1px solid rgba(200,162,74,.28);
-      background: linear-gradient(180deg, rgba(255,246,214,.75), rgba(255,255,255,.75));
-      box-shadow: 0 0 18px rgba(200,162,74,.15);
+      border:1px solid rgba(200,162,74,.34);
+      background:
+        radial-gradient(800px 260px at 20% 0%, rgba(255,246,214,.92), rgba(255,255,255,.72)),
+        linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.75));
+      box-shadow:
+        0 0 22px rgba(200,162,74,.18),
+        0 16px 42px rgba(0,0,0,.08);
+      position:relative;
+      overflow:hidden;
     }
-    .premiumBox h3{
-      margin:0 0 10px 0;
-      font-size:14px;
-      font-weight:900;
+    .premiumTeaser::before{
+      content:"";
+      position:absolute;
+      inset:-40px;
+      background: radial-gradient(circle at 30% 20%, rgba(200,162,74,.22), transparent 55%);
+      filter: blur(8px);
+      opacity:.9;
+      pointer-events:none;
+    }
+
+    .premiumHead{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      position:relative;
+      z-index:2;
+    }
+
+    .premiumTeaser h3{
+      margin:0 0 6px 0;
+      font-size:14.5px;
+      font-weight:950;
       color:#3a2c10;
       letter-spacing:.2px;
     }
 
-    .premiumBox label{
-      display:block;
-      font-weight:900;
-      font-size:13px;
-      color: rgba(43,43,43,.75);
-      margin: 10px 0 8px;
-    }
-
-    input[type="range"]{
-      -webkit-appearance:none;
-      width:100%;
-      height:8px;
-      border-radius:999px;
-      background: rgba(43,43,43,0.10);
-      outline:none;
-    }
-    input[type="range"]::-webkit-slider-thumb{
-      -webkit-appearance:none;
-      width:18px;
-      height:18px;
-      border-radius:50%;
-      background: var(--gold);
-      border: 2px solid rgba(255,255,255,.85);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.12);
-      cursor:pointer;
-    }
-    input[type="range"]::-moz-range-thumb{
-      width:18px;
-      height:18px;
-      border-radius:50%;
-      background: var(--gold);
-      border: 2px solid rgba(255,255,255,.85);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.12);
-      cursor:pointer;
-    }
-
-    .resetOut{
-      margin-top:12px;
-      padding:12px 12px;
-      border-radius:16px;
-      background: rgba(255,255,255,.70);
-      border:1px solid rgba(200,162,74,.16);
-      box-shadow: 0 10px 22px rgba(0,0,0,.06);
-    }
-    .resetOut .rt{
-      margin:0 0 6px;
-      font-size:15px;
-      font-weight:900;
-      color: rgba(43,43,43,.88);
-    }
-    .resetOut .rx{
+    .premiumTeaser p{
       margin:0;
-      font-size:14px;
+      color: rgba(43,43,43,.78);
+      font-weight:780;
+      font-size:13.6px;
       line-height:1.45;
-      color: rgba(43,43,43,.76);
-      font-weight:700;
-      white-space: pre-line;
     }
 
-    .memberLine{
-      margin-top:12px;
-      font-size:14px;
-      color: rgba(43,43,43,.72);
-      font-weight:800;
+    .premiumBadge{
+      flex:0 0 auto;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      background: rgba(200,162,74,.18);
+      border:1px solid rgba(200,162,74,.35);
+      color:#3a2c10;
+      font-weight:950;
+      white-space:nowrap;
+      position:relative;
+      z-index:2;
     }
-    .memberLine a{
-      color: rgba(43,43,43,.92);
-      text-decoration:none;
-      border-bottom:1px dotted rgba(43,43,43,.45);
-      font-weight:900;
-    }
-    .memberLine a:hover{ border-bottom-style: solid; }
 
-    .premiumInfo{
-      margin-top:12px;
-      padding:12px;
-      border-radius:16px;
-      border:1px solid rgba(200,162,74,.18);
-      background: rgba(255,255,255,.65);
-      box-shadow: 0 10px 22px rgba(0,0,0,.06);
-    }
-    .premiumInfo .t{
-      font-weight:900;
-      margin-bottom:8px;
-      color: rgba(43,43,43,.86);
-    }
-    .premiumInfo ul{
-      margin:0;
+    .premiumList{
+      margin:12px 0 0;
       padding-left:18px;
-      line-height:1.5;
-      color: rgba(43,43,43,.74);
-      font-weight:700;
-      font-size:14px;
+      line-height:1.55;
+      color: rgba(43,43,43,.78);
+      font-weight:780;
+      font-size:13.6px;
+      position:relative;
+      z-index:2;
     }
 
-    /* ---------- LANG TOGGLE (CENTRO: come DE) ---------- */
-    .langToggle{
+    .premiumActions{
       display:flex;
       gap:10px;
+      flex-wrap:wrap;
+      margin-top:12px;
+      position:relative;
+      z-index:2;
+    }
+
+    .linkBtn{
+      text-decoration:none;
+      display:inline-flex;
       align-items:center;
       justify-content:center;
-      flex: 0 0 auto;
-    }
-
-    .langBtn{
-      appearance:none;
-      border:none;
-      cursor:pointer;
-      padding:10px 14px;
-      border-radius:999px;
-      font-weight:900;
+      padding:12px 14px;
+      border-radius:14px;
+      font-weight:950;
       letter-spacing:.2px;
-      background: rgba(255,255,255,.70);
-      border:1px solid rgba(200,162,74,.18);
-      box-shadow: 0 10px 22px rgba(0,0,0,.06);
-      color: var(--text);
+      border:1px solid rgba(200,162,74,.35);
+      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      color:#3a2c10;
+      box-shadow: 0 14px 30px rgba(200,162,74,.18);
+      flex:1;
+      min-width: 180px;
+      transition: transform .15s ease;
       white-space:nowrap;
     }
+    .linkBtn:hover{ transform: translateY(-1px); }
 
-    .langBtn.active{
+    .subLink{
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 14px;
+      border-radius:14px;
+      font-weight:950;
+      letter-spacing:.2px;
+      border:1px solid rgba(0,0,0,0.10);
+      background: rgba(255,255,255,0.78);
+      color: rgba(43,43,43,.88);
+      flex:1;
+      min-width: 180px;
+      transition: transform .15s ease;
+      white-space:nowrap;
+    }
+    .subLink:hover{ transform: translateY(-1px); }
+
+    .smallNote{
+      margin-top:10px;
+      font-size:12.6px;
+      color: rgba(43,43,43,.62);
+      font-weight:780;
+      line-height:1.45;
+      position:relative;
+      z-index:2;
+    }
+
+    /* ===== Premium Deluxe Block (Pergamena + Gioco + Chiusura) ===== */
+    .premiumBlock{
+      margin-top:14px;
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(200,162,74,.38);
+      background:
+        radial-gradient(900px 340px at 20% 0%, rgba(255,246,214,.88), rgba(255,255,255,.70)),
+        linear-gradient(180deg, rgba(255,255,255,.60), rgba(255,255,255,.78));
+      box-shadow:
+        0 0 26px rgba(200,162,74,.18),
+        0 16px 44px rgba(0,0,0,.08);
+      position:relative;
+      overflow:hidden;
+      display:none; /* shown only for members */
+    }
+    .premiumBlock::before{
+      content:"";
+      position:absolute;
+      inset:-50px;
+      background:
+        radial-gradient(circle at 28% 12%, rgba(200,162,74,.24), transparent 55%),
+        radial-gradient(circle at 75% 40%, rgba(232,210,138,.22), transparent 55%);
+      filter: blur(9px);
+      opacity:.95;
+      pointer-events:none;
+    }
+
+    .premiumTop{
+      position:relative;
+      z-index:2;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .premiumTitle{
+      margin:0 0 6px 0;
+      font-size:15px;
+      font-weight:950;
+      color:#3a2c10;
+      letter-spacing:.2px;
+    }
+    .premiumSub{
+      margin:0;
+      font-size:13.6px;
+      line-height:1.45;
+      color: rgba(43,43,43,.78);
+      font-weight:800;
+    }
+
+    .pill{
+      flex:0 0 auto;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      background: rgba(200,162,74,.18);
+      border:1px solid rgba(200,162,74,.35);
+      color:#3a2c10;
+      font-weight:950;
+      white-space:nowrap;
+      position:relative;
+      z-index:2;
+    }
+
+    .paper{
+      position:relative;
+      z-index:2;
+      margin-top:12px;
+      padding:14px 14px 12px;
+      border-radius:18px;
+      border:1px solid rgba(58,44,16,.16);
+      background:
+        linear-gradient(180deg, rgba(255,250,238,.86), rgba(245,235,214,.82));
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.40),
+        0 12px 28px rgba(0,0,0,.08);
+    }
+    .paper::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(200,162,74,.10), transparent 60%),
+        radial-gradient(circle at 100% 40%, rgba(200,162,74,.08), transparent 55%);
+      opacity:.9;
+      pointer-events:none;
+      border-radius:18px;
+    }
+    .paper h4{
+      position:relative;
+      margin:0 0 8px 0;
+      font-size:14px;
+      font-weight:950;
+      color:#3a2c10;
+      letter-spacing:.2px;
+    }
+    .paper .paperText{
+      position:relative;
+      margin:0;
+      font-size:13.8px;
+      line-height:1.56;
+      color: rgba(43,43,43,.86);
+      font-weight:780;
+      white-space:pre-line;
+    }
+
+    .paperMeta{
+      position:relative;
+      margin-top:10px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      color: rgba(43,43,43,.72);
+      font-size:12.6px;
+      font-weight:820;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(200,162,74,.25);
+      background: rgba(255,255,255,.62);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+    }
+
+    /* Game area */
+    .gameCard{
+      position:relative;
+      z-index:2;
+      margin-top:12px;
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(200,162,74,.22);
+      background: rgba(255,255,255,.70);
+      box-shadow: 0 12px 26px rgba(0,0,0,.06);
+      overflow:hidden;
+    }
+    .gameHead{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .gameCard h4{
+      margin:0 0 6px;
+      font-size:14px;
+      font-weight:950;
+      color:#3a2c10;
+    }
+    .gameCard p{
+      margin:0;
+      font-size:13.6px;
+      line-height:1.45;
+      color: rgba(43,43,43,.78);
+      font-weight:780;
+    }
+
+    .gameArea{
+      margin-top:12px;
+      height: 210px;
+      border-radius:18px;
+      border:1px dashed rgba(200,162,74,.38);
+      background:
+        radial-gradient(900px 300px at 20% 0%, rgba(255,246,214,.55), rgba(255,255,255,.58));
+      position:relative;
+      overflow:hidden;
+    }
+
+    .dot{
+      position:absolute;
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      display:grid;
+      place-items:center;
+      cursor:pointer;
+      user-select:none;
+      background: radial-gradient(circle at 30% 20%, #fff6d6, #e8d28a);
+      border:1px solid rgba(200,162,74,.45);
+      box-shadow: 0 0 18px rgba(200,162,74,.22);
+      color:#3a2c10;
+      font-weight:950;
+      transform: translate(-50%, -50%) scale(1);
+      transition: transform .12s ease, opacity .18s ease;
+    }
+    .dot:active{ transform: translate(-50%, -50%) scale(.94); }
+    .dot.collected{ opacity:0; transform: translate(-50%, -50%) scale(.60); pointer-events:none; }
+
+    .gameFooter{
+      margin-top:10px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      color: rgba(43,43,43,.74);
+      font-size:12.8px;
+      font-weight:860;
+    }
+    .gameBtns{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      width:100%;
+    }
+    .miniBtn{
+      padding:10px 12px;
+      border-radius:14px;
+      font-weight:950;
+      letter-spacing:.2px;
+      border:1px solid rgba(200,162,74,.22);
+      background: rgba(255,255,255,.78);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+      flex:1;
+      min-width:140px;
+    }
+    .miniBtn.primary{
       background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
       border:1px solid rgba(200,162,74,.35);
       color:#3a2c10;
-      text-shadow: 0 0 10px rgba(200,162,74,.22);
+      text-shadow: 0 0 10px rgba(200,162,74,.18);
+    }
+
+    .closing{
+      position:relative;
+      z-index:2;
+      margin-top:12px;
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(200,162,74,.22);
+      background: rgba(255,255,255,.74);
+      box-shadow: 0 12px 26px rgba(0,0,0,.06);
+    }
+    .closing h4{
+      margin:0 0 6px;
+      font-size:14px;
+      font-weight:950;
+      color:#3a2c10;
+    }
+    .closing p{
+      margin:0;
+      font-size:13.8px;
+      line-height:1.52;
+      color: rgba(43,43,43,.82);
+      font-weight:820;
+      white-space:pre-line;
     }
 
     @media (max-width: 420px){
-      .orb{ width: 215px; height: 215px; }
+      .topbar{ grid-template-columns: 1fr auto 1fr; }
       .controls button{ min-width: 100%; }
-      .topbar{ flex-wrap:wrap; }
-      .brand{ flex:1 1 100%; text-align:right; }
+      input[type="number"]{ width: 88px; }
+      .gameArea{ height: 200px; }
     }
   </style>
 </head>
@@ -451,10 +761,9 @@
     <div class="topbar">
       <a class="back" href="indexIT.html">← Home</a>
 
-      <!-- BOTTONI IN CENTRO: IDENTICO ALLA VERSIONE DE -->
       <div class="langToggle" aria-label="Language toggle">
-        <button class="langBtn" id="btnDE" type="button">Deutsch</button>
-        <button class="langBtn active" id="btnIT" type="button">Italiano</button>
+        <button class="langBtn" id="btnDE" type="button">DE</button>
+        <button class="langBtn active" id="btnIT" type="button">IT</button>
       </div>
 
       <div class="brand">
@@ -474,16 +783,16 @@
 
       <div class="content">
 
-        <!-- Daily focus -->
-        <div class="resetOut" style="margin-top:0;">
+        <!-- Focus (FREE) -->
+        <div class="focusBox">
           <div class="rt" id="dailyFocusTitle">Oggi</div>
           <p class="rx" id="dailyFocusText">Caricamento…</p>
-          <p class="rx" style="margin-top:10px; opacity:.8; font-weight:800;">✨ Premium: ritmo del respiro e impulso si adattano al tuo livello di stress.</p>
+          <div class="focusHint" id="dailyFocusHint">✨ Piccolo promemoria: vai piano. Anche un passo minuscolo è un passo.</div>
         </div>
 
         <div class="divider"></div>
 
-        <!-- Breathing -->
+        <!-- Breathing (FREE) -->
         <div class="breathWrap">
           <div class="phase" id="phaseLabel">Pronto</div>
 
@@ -522,40 +831,86 @@
           </div>
 
           <div class="mini">
-            Tip: un’espirazione più lunga (es. 4–6) sostiene la regolazione del sistema nervoso.
+            Tip: un’espirazione più lunga (es. 4–6) aiuta il sistema nervoso a sentirsi più al sicuro.
           </div>
         </div>
 
         <div class="divider"></div>
 
-        <!-- Premium Reset -->
-        <div class="premiumBox" id="premiumReset">
-          <h3>Premium Reset</h3>
-
-          <label for="stressSlider">Livello di stress (1–10)</label>
-          <input id="stressSlider" type="range" min="1" max="10" value="5">
-
-          <label for="energySlider">Livello di energia (1–10)</label>
-          <input id="energySlider" type="range" min="1" max="10" value="5">
-
-          <button class="primary" id="generateResetBtn" style="margin-top:12px;">Il mio Premium Reset</button>
-
-          <div class="resetOut" id="resetOut">
-            <div class="rt" id="resetTitle"></div>
-            <p class="rx" id="resetText"></p>
+        <!-- PREMIUM TEASER -->
+        <div class="premiumTeaser" id="premiumTeaser">
+          <div class="premiumHead">
+            <div>
+              <h3>Premium Reset (Area Membri)</h3>
+              <p>
+                Una versione più profonda: una riflessione “in pergamena” (lunga e calda),
+                un mini-gioco visivo e una frase finale che ti accompagna davvero.
+              </p>
+            </div>
+            <div class="premiumBadge" id="premiumBadge">Status: Free</div>
           </div>
 
-          <div class="memberLine">
-            <span id="memberStatus">Versione Free</span> · <a href="mitgliederIT.html" id="unlockLink">Sblocca area membri</a>
+          <ul class="premiumList">
+            <li><b>Pergamena settimanale</b>: testo lungo, empatico, pratico</li>
+            <li><b>3 varianti per ogni giorno</b>: rotazione per combinazioni sempre diverse</li>
+            <li><b>Mini-gioco</b>: semplice, visivo, calmante</li>
+            <li><b>Frase conclusiva</b>: ogni giorno diversa</li>
+          </ul>
+
+          <div class="premiumActions">
+            <a class="linkBtn" id="memberBtn" href="mitgliederIT.html">Vai all’Area Membri</a>
+            <a class="subLink" id="unlockBtnLink" href="mitgliederIT.html">Sblocca Premium</a>
           </div>
 
-          <div class="premiumInfo">
-            <div class="t">Cosa include Premium?</div>
-            <ul>
-              <li><b>Ritmo respiratorio ottimizzato</b> (adattato automaticamente)</li>
-              <li><b>Più impulsi quotidiani</b> e testi reset personalizzati</li>
-              <li><b>Area membri</b> con strumenti extra</li>
-            </ul>
+          <div class="smallNote">
+            Nota: quando Premium è attivo, il blocco Deluxe si apre automaticamente qui sotto.
+          </div>
+        </div>
+
+        <!-- PREMIUM BLOCK (shown only for members) -->
+        <div class="premiumBlock" id="premiumBlock" aria-label="Premium Reset Deluxe">
+          <div class="premiumTop">
+            <div>
+              <h3 class="premiumTitle" id="pTitle">Premium Reset Deluxe</h3>
+              <p class="premiumSub" id="pSub">Caricamento…</p>
+            </div>
+            <div class="pill" id="pPill">Variante A</div>
+          </div>
+
+          <div class="paper">
+            <h4 id="paperTitle">Pergamena</h4>
+            <p class="paperText" id="paperText">Caricamento…</p>
+            <div class="paperMeta">
+              <span class="chip" id="paperAnchor">🧭 Focus: …</span>
+              <span class="chip" id="paperMicro">✨ Micro-passo: …</span>
+            </div>
+          </div>
+
+          <div class="gameCard">
+            <div class="gameHead">
+              <div>
+                <h4 id="gameTitle">Gioco</h4>
+                <p id="gamePrompt">Caricamento…</p>
+              </div>
+              <div class="pill" id="gameScore">0/0</div>
+            </div>
+
+            <div class="gameArea" id="gameArea" aria-label="Mini-gioco: raccogli i punti dorati"></div>
+
+            <div class="gameFooter">
+              <div id="gameHint">Tip: espira con calma mentre tocchi.</div>
+              <div id="gameResult"></div>
+            </div>
+
+            <div class="gameBtns">
+              <button class="miniBtn primary" id="spawnBtn" type="button">Ricomincia</button>
+              <button class="miniBtn" id="finishBtn" type="button">Mostra chiusura</button>
+            </div>
+          </div>
+
+          <div class="closing" id="closingBox" style="display:none;">
+            <h4>Per concludere</h4>
+            <p id="closingText">…</p>
           </div>
         </div>
 
@@ -565,114 +920,622 @@
   </div>
 
   <script>
-    // ---------------- Daily Focus (7-day rotation) ----------------
-    // Coerente con i giorni della versione tedesca (stessa sequenza/tema)
+    // ---------------- Focus quotidiano (7 giorni) ----------------
     const dailyFocus = [
-      { title: "Lunedì – Focus",        text: "Porta l’attenzione su un unico prossimo passo chiaro. Non tutto: solo il prossimo." },
-      { title: "Martedì – Calma",       text: "Allunga consapevolmente l’espirazione. Il sistema nervoso risponde alla sicurezza." },
-      { title: "Mercoledì – Chiarezza", text: "Osserva i pensieri come nuvole: passano. Non devi inseguirli." },
-      { title: "Giovedì – Struttura",   text: "Definisci solo i prossimi 30 minuti. La chiarezza nasce dal piccolo." },
-      { title: "Venerdì – Energia",     text: "Inspira a fondo, apri il torace, raddrizzati. Anche la postura crea energia." },
-      { title: "Sabato – Recupero",     text: "Concediti micro-pause intenzionali. Tre minuti possono bastare." },
-      { title: "Domenica – Riflessione",text: "Cosa ti ha dato stabilità questa settimana? Ripeti esattamente quello." }
+      { title: "Lunedì – Focus",         text: "Scegli un prossimo passo chiaro. Non tutto: solo il prossimo.", hint:"Se oggi è pieno, va bene. Fai una cosa sola, con calma." },
+      { title: "Martedì – Calma",        text: "Allunga consapevolmente l’espirazione. Il sistema nervoso ama la sicurezza.", hint:"Non devi stringere i denti. Puoi rilassare le spalle e respirare." },
+      { title: "Mercoledì – Chiarezza",  text: "Osserva i pensieri come nuvole: passano. Non devi seguirli.", hint:"Se la mente corre, torna al corpo: piedi a terra, respiro lento." },
+      { title: "Giovedì – Struttura",    text: "Pianifica solo i prossimi 30 minuti. Il piccolo crea ordine.", hint:"Un mini-piano è già un’ancora. Non serve fare tutto." },
+      { title: "Venerdì – Energia",      text: "Apri il torace, raddrizzati. Anche la postura può creare energia.", hint:"Energia non significa correre. Significa trovare direzione." },
+      { title: "Sabato – Recupero",      text: "Concediti micro-pause intenzionali. Tre minuti possono bastare.", hint:"Recuperare non è perdere tempo. È prenderti cura di te." },
+      { title: "Domenica – Riflessione", text: "Cosa ti ha dato stabilità questa settimana? Ripeti proprio quello.", hint:"Niente giudizi. Solo osservazione gentile e una scelta per domani." }
+    ];
+    const today0 = new Date().getDay(); // 0=domenica
+    const idxFree = today0 === 0 ? 6 : today0 - 1; // lun=0..dom=6
+    document.getElementById("dailyFocusTitle").textContent = dailyFocus[idxFree].title;
+    document.getElementById("dailyFocusText").textContent  = dailyFocus[idxFree].text;
+    document.getElementById("dailyFocusHint").textContent  = "✨ " + dailyFocus[idxFree].hint;
+  </script>
+
+  <script>
+    // ---------------- Stato Premium (legge flag membro) ----------------
+    const MEMBER_KEY = "panacea_member"; // uguale a mitglieder.html
+    const isMember = localStorage.getItem(MEMBER_KEY) === "true";
+
+    const premiumBadge = document.getElementById("premiumBadge");
+    const unlockBtnLink = document.getElementById("unlockBtnLink");
+    const memberBtn = document.getElementById("memberBtn");
+
+    const premiumBlock  = document.getElementById("premiumBlock");
+
+    if(isMember){
+      premiumBadge.textContent = "Status: Premium ✅";
+      unlockBtnLink.style.display = "none";
+      memberBtn.textContent = "Area Membri";
+      premiumBlock.style.display = "block";
+      // Se vuoi nascondere il teaser quando Premium è attivo:
+      // document.getElementById("premiumTeaser").style.display = "none";
+    } else {
+      premiumBadge.textContent = "Status: Free";
+      unlockBtnLink.style.display = "";
+      memberBtn.textContent = "Vai all’Area Membri";
+      premiumBlock.style.display = "none";
+    }
+  </script>
+
+  <script>
+    // ---------------- Premium Deluxe: 7 giorni × 3 varianti ----------------
+    // Rotazione: variante in base a settimana ISO + indice giorno -> cambia ogni settimana, resta deterministica.
+    function getISOWeek(d){
+      const date = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+      const dayNum = date.getUTCDay() || 7; // lun=1..dom=7
+      date.setUTCDate(date.getUTCDate() + 4 - dayNum);
+      const yearStart = new Date(Date.UTC(date.getUTCFullYear(),0,1));
+      const weekNo = Math.ceil((((date - yearStart) / 86400000) + 1) / 7);
+      return weekNo;
+    }
+    function dayIndexMon0(d){
+      const wd0 = d.getDay(); // 0 dom
+      return wd0 === 0 ? 6 : wd0 - 1;
+    }
+    const weekdays = ["Lunedì","Martedì","Mercoledì","Giovedì","Venerdì","Sabato","Domenica"];
+    function variantLabel(v){ return v === 0 ? "Variante A" : (v === 1 ? "Variante B" : "Variante C"); }
+
+    const premiumByDay = [
+      // LUNEDÌ
+      {
+        anchor: "Focus & ripartenza",
+        variants: [
+          {
+            title: "Lunedì – Ripartenza gentile",
+            sub: "Non ricominciamo con forza. Ricominciamo con cura: calma, chiarezza, un passo alla volta.",
+            text:
+`Immagina che oggi il tuo sistema nervoso sia come una stanza “piena”: non è un disastro, ma c’è tanto dentro. Non devi sistemare tutto adesso. Prima serve un po’ di luce e un po’ di ordine nel piccolo.
+
+Fai un mini check-in: dove senti tensione? Mandibola, petto, pancia? Appoggia una mano lì e fai due espirazioni più lunghe dell’inspirazione. È un messaggio semplice: “Ci sono. Sto con me.”
+
+Poi scegli UNA cosa che conta oggi. Non la più grande: la prossima. Se la mente apre dieci finestre, torna a una frase sola: “Solo una. Solo adesso.”`,
+            micro: "Scegli 1 passo fattibile in 10 minuti.",
+            gameTitle: "Oro-Focus (mini-gioco)",
+            gamePrompt: "Raccogli i punti dorati. A ogni tocco: una lunga espirazione. Allenamento di calma + concentrazione.",
+            goal: 5
+          },
+          {
+            title: "Lunedì – Un piccolo telaio",
+            sub: "Oggi non serve dimostrare. Serve direzione: la direzione fa sentire al sicuro.",
+            text:
+`Il lunedì può essere rumoroso dentro: liste, aspettative, pensieri che si accavallano. Il trucco non è “controllare di più”, ma costruire un telaio gentile.
+
+Rendila semplice: per la prossima ora scegli due obiettivi.
+1) Un obiettivo per il corpo: acqua, spalle morbide, una boccata d’aria.
+2) Un obiettivo pratico: iniziare una cosa senza perfezionismo.
+
+E quando noti “devo”, prova a cambiare tono: “posso”. Sembra piccolo, ma il tuo sistema nervoso ascolta soprattutto il modo in cui ti parli.`,
+            micro: "Scrivi 2 mini-obiettivi per la prossima ora.",
+            gameTitle: "Oro-Telaio",
+            gamePrompt: "Raccogli i punti con calma. Tra un tocco e l’altro: lascia scendere le spalle.",
+            goal: 6
+          },
+          {
+            title: "Lunedì – Guidarti come faresti con chi ami",
+            sub: "Non sei in ritardo. Sei qui. E questo è già un buon inizio.",
+            text:
+`Oggi puoi guidarti come guideresti una persona a cui vuoi bene: con chiarezza, gentilezza e senza dramma.
+
+Ripeti un pensiero che accompagna, non giudica: “Inizio piccolo.” Poi: sguardo morbido, mandibola rilassata, espirazione lenta. È guida sul piano del corpo.
+
+E una cosa importante: scegli cosa NON fai oggi. Sì, davvero. Un “no” consapevole è un confine che protegge. I confini abbassano l’allarme interno e restituiscono energia.`,
+            micro: "Lascia andare 1 cosa non essenziale.",
+            gameTitle: "Oro-Confine",
+            gamePrompt: "Raccogli i punti. A ogni punto: “No alla pressione. Sì alla chiarezza.”",
+            goal: 5
+          }
+        ]
+      },
+
+      // MARTEDÌ
+      {
+        anchor: "Calma & sicurezza",
+        variants: [
+          {
+            title: "Martedì – Sicurezza nel corpo",
+            sub: "Oggi costruiamo sicurezza nel corpo, non nella testa. È più rapido e più vero.",
+            text:
+`Quando il sistema è agitato, spesso non serve un pensiero in più. Serve un segnale fisico: “Sono al sicuro.”
+
+Tre passi, in ordine:
+1) Espira più a lungo di quanto inspiri (almeno due volte).
+2) Senti i piedi: premi leggermente le dita sul pavimento e poi rilascia.
+3) Rilassa gli occhi: non fissare, “guarda lo spazio”.
+
+Poi scegli un ritmo gentile. Meglio un 80% costante che un 120% e poi crollo. La stabilità non è uno sprint. È ripetizione.`,
+            micro: "2 espirazioni lunghe + piedi a terra.",
+            gameTitle: "Oro-Calma",
+            gamePrompt: "Raccogli i punti lentamente. A ogni tocco: espira più lungo dell’inspirazione.",
+            goal: 6
+          },
+          {
+            title: "Martedì – Calore interno",
+            sub: "Non devi stringerti. Puoi calmarti. Un passo alla volta.",
+            text:
+`Immagina di mettere una coperta calda sulle spalle del tuo sistema nervoso. La coperta si chiama: rallenta, ammorbidisci, respira.
+
+Un trucco: parla a te stessa più lentamente. Non più forte, non più duro: più lento. E se arriva autocritica, metti un punto: “Stop.”
+
+Poi trasformi il prossimo compito in “una cosa piccola”. Un’email, un bicchiere d’acqua, una telefonata. Non una montagna: un sasso.
+
+Quando il sistema riceve calore, la mente diventa più chiara. La chiarezza arriva dalla distensione, non dalla pressione.`,
+            micro: "Scegli 1 cosa piccola e falla con calma.",
+            gameTitle: "Oro-Coperta",
+            gamePrompt: "Raccogli i punti. Ogni punto: spalle morbide, respiro lento. Sei al sicuro.",
+            goal: 5
+          },
+          {
+            title: "Martedì – Confini gentili",
+            sub: "A volte la calma è un confine. E un confine è rispetto per te.",
+            text:
+`Oggi puoi mettere un confine: non contro qualcuno, ma per te. Un confine è un segnale al sistema nervoso: “Mi proteggo.”
+
+Inizia con un confine minuscolo: 10 minuti senza input nuovi. Niente scroll, niente messaggi. Solo respiro e presenza.
+
+Quando dici “sì”, fallo consapevolmente. Quando dici “no”, fallo con gentilezza. Non devi convincere nessuno. Puoi semplicemente prenderti spazio.
+
+La calma non si merita. La calma si pratica. E oggi te la puoi concedere.`,
+            micro: "10 minuti senza telefono.",
+            gameTitle: "Oro-Spazio",
+            gamePrompt: "Raccogli i punti. Poi: 60 secondi con occhi chiusi. È il tuo spazio.",
+            goal: 7
+          }
+        ]
+      },
+
+      // MERCOLEDÌ
+      {
+        anchor: "Chiarezza & pensieri",
+        variants: [
+          {
+            title: "Mercoledì – Pensieri come nuvole",
+            sub: "Non devi risolvere ogni pensiero. Puoi lasciarlo passare.",
+            text:
+`Oggi alleniamo una cosa che alleggerisce subito: prendere distanza dai pensieri. I pensieri sono veloci, convincenti, a volte rumorosi… ma non sono sempre veri.
+
+Quando arriva un pensiero (“Non ce la faccio”, “È troppo”), prova a dire: “Ah, ecco un pensiero.” Non combatterlo. Non seguirlo. Nominalo.
+
+Poi torna a qualcosa di concreto: i piedi sul pavimento, l’aria sul viso, un suono nella stanza. Il concreto calma. L’astratto spesso stressa.
+
+E ricorda: la chiarezza cresce nella gentilezza. La durezza restringe.`,
+            micro: "Un pensiero → “Ah, ecco un pensiero.”",
+            gameTitle: "Oro-Chiarezza",
+            gamePrompt: "Raccogli i punti. A ogni punto: nota un fatto neutro (“Sono qui. Respiro.”).",
+            goal: 6
+          },
+          {
+            title: "Mercoledì – Meno ‘perché’, più ‘cosa ora’",
+            sub: "Oggi scambiamo il rimuginare con un’azione piccola e giusta.",
+            text:
+`Il rimuginio sembra soluzione, ma spesso è stress in loop. Il cambio è semplice: dal “Perché è così?” al “Cosa posso fare ora, in piccolo?”
+
+Chiediti: cosa aiuterebbe il mio corpo adesso? Cosa aiuterebbe questa giornata, adesso? Sono domande “qui e ora”.
+
+Se torni a perderti: espira come se volessi muovere una candela, non spegnerla. Lento e dolce. È un rientro nel presente.
+
+Non devi capire tutto per stare meglio. Puoi accompagnarti verso stabilità, passo dopo passo.`,
+            micro: "Chiediti 1 volta: “Cosa posso fare ora, in piccolo?”",
+            gameTitle: "Oro-‘Ora’",
+            gamePrompt: "Raccogli i punti. Dopo ogni punto: “Cosa ora?” e prendi la prima risposta semplice.",
+            goal: 5
+          },
+          {
+            title: "Mercoledì – Chiarezza dal corpo",
+            sub: "A volte la chiarezza è un corpo più calmo, non un pensiero migliore.",
+            text:
+`Se ti senti “annebbiata”, non provare a uscirne con la testa. Passa dal corpo: è la via più veloce.
+
+Mini-reset:
+- mandibola morbida,
+- lingua rilassata,
+- spalle che scendono,
+- espirazione più lunga.
+
+Poi alza lo sguardo nello spazio, non solo sullo schermo. È un segnale: “Non sono in pericolo.” E, spesso, dentro si abbassa il rumore.
+
+Oggi: meno input, meno multitasking, più presenza. Una cosa alla volta. Non è un passo indietro: è igiene del sistema nervoso.`,
+            micro: "90 secondi: mandibola morbida + sguardo nello spazio.",
+            gameTitle: "Oro-Presenza",
+            gamePrompt: "Raccogli i punti con calma. Tra un punto e l’altro: senti il respiro nel ventre.",
+            goal: 7
+          }
+        ]
+      },
+
+      // GIOVEDÌ
+      {
+        anchor: "Struttura & efficacia",
+        variants: [
+          {
+            title: "Giovedì – La struttura calma",
+            sub: "La struttura non è una gabbia. È un corrimano per il tuo sistema.",
+            text:
+`Oggi diamo alla giornata un corrimano: due finestre semplici. Non serve pianificare tutto. Solo il prossimo tratto.
+
+Scegli:
+1) un blocco Focus (25 minuti): una cosa, zero cambi.
+2) un blocco Cura (5 minuti): acqua, allungo, finestra, respiro.
+
+Succede qualcosa di importante: senti auto-efficacia. Il sistema nervoso capisce: “Posso guidare.” E questo riduce lo stress più di mille frasi motivazionali.
+
+E sì: celebra il piccolo. La stabilità nasce da micro-successi ripetuti.`,
+            micro: "25 minuti focus + 5 minuti cura.",
+            gameTitle: "Oro-Corrimano",
+            gamePrompt: "Raccogli i punti. Poi avvia il tuo blocco da 25 minuti, senza perfezionismo.",
+            goal: 6
+          },
+          {
+            title: "Giovedì – Una cosa per volta",
+            sub: "Il multitasking per il sistema nervoso è rumore di fondo. Oggi abbassiamo il volume.",
+            text:
+`Oggi pratichiamo: una cosa. Non tutto. Una.
+
+Scegli il compito che ti pesa di più e dividilo in tre micro-passaggi. Adesso conta solo il primo. Gli altri sono “dopo”.
+
+Se ti distrai, non giudicarti. Dì: “Il mio sistema cerca sollievo.” E offrilo in modo migliore: tre espirazioni lunghe, spalle giù, occhi morbidi.
+
+Guidarti non significa essere dura. Significa essere intelligente: meno caos, più ritmo.`,
+            micro: "Dividi 1 compito in 3 micro-step. Inizia dal primo.",
+            gameTitle: "Oro-Ritmo",
+            gamePrompt: "Raccogli i punti come un metronomo gentile. Ogni punto è un ‘uno alla volta’.",
+            goal: 5
+          },
+          {
+            title: "Giovedì – Sentire di poter farcela",
+            sub: "Non ti serve più forza. Ti servono piccoli successi che si sentono.",
+            text:
+`Oggi lavoriamo su un senso: “Posso.” Questo è un antidoto allo stress.
+
+Scegli un’azione da 3 minuti: sistemare una piccola cosa, scrivere una nota, aprire una pratica (solo aprire!), bere acqua e prendere fiato. Finire conta.
+
+Poi fermati 10 secondi e registra: “Fatto.” Non correre subito oltre. Il cervello impara quando c’è una pausa dopo il successo.
+
+Ripetuto nel tempo, questo costruisce fiducia. E la fiducia è la base dell’energia.`,
+            micro: "Scegli 1 azione da 3 minuti e chiudila.",
+            gameTitle: "Oro-Fatto",
+            gamePrompt: "Raccogli i punti. Poi: fai la tua azione da 3 minuti. Torna qui per la chiusura.",
+            goal: 7
+          }
+        ]
+      },
+
+      // VENERDÌ
+      {
+        anchor: "Energia & postura",
+        variants: [
+          {
+            title: "Venerdì – Energia dalla postura",
+            sub: "L’energia non è solo riposo. È anche come ti reggi: fuori e dentro.",
+            text:
+`Oggi usiamo una leva semplice: la postura. Quando ti chiudi, il respiro si accorcia e il sistema interpreta “stress”.
+
+Mini-reset:
+- piedi stabili,
+- sterno leggermente su,
+- spalle indietro e giù,
+- espirazione lenta.
+
+Poi scegli cosa è “abbastanza” oggi. Venerdì può essere più leggero. Non devi dimostrare nulla. Puoi chiudere, riordinare, completare.
+
+L’energia cresce anche quando smetti di perderla: in lotte interne, perfezionismo, rimuginio. Oggi: meno lotta. Più direzione.`,
+            micro: "30 secondi di postura aperta + 2 espirazioni lunghe.",
+            gameTitle: "Oro-Slancio",
+            gamePrompt: "Raccogli i punti (se puoi, in piedi). Senti i piedi: è il tuo punto di forza.",
+            goal: 6
+          },
+          {
+            title: "Venerdì – Chiudere per respirare",
+            sub: "Le cose aperte consumano energia. Oggi chiudiamo una piccola ‘fila’ nella mente.",
+            text:
+`Le “cose in sospeso” costano energia perché continuano a girare nella testa. Oggi ne chiudiamo una.
+
+Scegli UNA piccola cosa e portala a fine: rispondere a un messaggio, fissare un appuntamento, mettere via qualcosa. Poi respira e nota: “Ora è meno.”
+
+Il sistema nervoso ama le chiusure. Le chiusure fanno sentire al sicuro. E no, non è perdita: è sollievo.
+
+Anche tu puoi mettere un punto. E riprendere fiato.`,
+            micro: "Chiudi 1 cosa piccola rimasta aperta.",
+            gameTitle: "Oro-Punto",
+            gamePrompt: "Raccogli i punti. A ogni punto: “Una cosa in meno.” Poi chiudi la tua 1 cosa.",
+            goal: 5
+          },
+          {
+            title: "Venerdì – Energia gentile",
+            sub: "L’energia aumenta quando non la forzi con la pressione.",
+            text:
+`Oggi rendiamo l’energia “gentile”. Non una scossa, ma luce.
+
+Scegli un rifornimento:
+- 2 minuti d’aria,
+- 8 respiri profondi,
+- un bicchiere d’acqua,
+- musica per 90 secondi.
+
+Fallo con presenza, non “mentre fai altro”. La presenza vale doppio.
+
+E ripeti un pensiero che accompagna: “Posso andare al mio ritmo.” Non è debolezza. È stabilità.`,
+            micro: "Scegli 1 rifornimento e fallo con presenza.",
+            gameTitle: "Oro-Luce",
+            gamePrompt: "Raccogli i punti. Immagina calore morbido nel petto. Piccolo e reale.",
+            goal: 7
+          }
+        ]
+      },
+
+      // SABATO
+      {
+        anchor: "Recupero & morbidezza",
+        variants: [
+          {
+            title: "Sabato – Recuperare è allenamento",
+            sub: "Riposo non è pausa dalla vita. È parte della vita.",
+            text:
+`Oggi puoi diventare più morbida dentro. Non “pigra”, non “in ritardo”: morbida. La morbidezza è lo stato in cui il corpo ripara.
+
+Regalati 5 minuti senza obiettivo. Seduta, respiro, sensazioni. Se arrivano pensieri, lasciali come rumore di fondo.
+
+Poi scegli una cosa che nutre il corpo: un allungo, una doccia calda, luce, un passo lento. Non “devo”: “posso”.
+
+Il recupero non si merita. Si pratica. E oggi te lo puoi concedere.`,
+            micro: "5 minuti senza obiettivo: solo respiro e sensazioni.",
+            gameTitle: "Oro-Morbidezza",
+            gamePrompt: "Raccogli i punti lentamente. L’obiettivo non è finire in fretta: è calmarti.",
+            goal: 5
+          },
+          {
+            title: "Sabato – Reset in casa",
+            sub: "Non ti serve più input. Ti serve più silenzio interno.",
+            text:
+`Oggi facciamo un reset “da casa”: piccolo e potente.
+
+1) Libera una piccola superficie (anche solo 1 metro).
+2) Apri una finestra o fai tre respiri profondi.
+3) Tocca qualcosa di piacevole: una tazza calda, una coperta, un tessuto.
+
+Sembra semplice. Ed è proprio per questo che funziona: il sistema nervoso ama segnali chiari e facili.
+
+Se oggi non va tutto, va bene. È sabato. E il sabato è fatto per ricaricare.`,
+            micro: "1 piccola superficie in ordine + 3 respiri profondi.",
+            gameTitle: "Oro-Casa",
+            gamePrompt: "Raccogli i punti. Poi: 60 secondi di ordine. Stop. Basta così.",
+            goal: 6
+          },
+          {
+            title: "Sabato – Contatto che calma",
+            sub: "Spesso la calma passa dalla pelle: un contatto semplice e vero.",
+            text:
+`Metti una mano sul petto o sulla pancia. Senti il contatto. Dì: “Ci sono.” Non è magia. È biologia: il corpo risponde alla sicurezza.
+
+Poi fai tre respiri:
+- inspira morbido,
+- espira più lungo,
+- una pausa piccola.
+
+Se oggi ti senti sensibile, non è un errore. A volte è il segno che stai tornando a sentire. E questo è un buon segnale.
+
+Non serve perfezione. Serve presenza. E tu ce l’hai, perché sei qui.`,
+            micro: "Mano su petto/pancia + 3 respiri con espirazione lunga.",
+            gameTitle: "Oro-Contatto",
+            gamePrompt: "Raccogli i punti con una mano. L’altra resta sul corpo: è il tuo ancoraggio.",
+            goal: 7
+          }
+        ]
+      },
+
+      // DOMENICA
+      {
+        anchor: "Integrazione & direzione",
+        variants: [
+          {
+            title: "Domenica – Integrare senza giudicare",
+            sub: "Oggi guardiamo indietro con calore. Niente durezza: solo chiarezza.",
+            text:
+`Domenica è perfetta per integrare: cosa è stato buono, cosa è stato difficile, cosa può diventare più leggero.
+
+Tre frasi:
+1) Questa settimana sono stata forte perché…
+2) È stato difficile perché…
+3) La prossima settimana mi sostengo così…
+
+Non serve dramma. Non serve colpa. Serve verità gentile. Il sistema nervoso non ha bisogno di colpe: ha bisogno di orientamento.
+
+Poi scegli un’ancora per domani: acqua appena sveglia, 2 minuti di respiro, 10 minuti senza telefono. Piccole ancore reggono grandi settimane.`,
+            micro: "Scrivi 3 frasi (forte/difficile/mi sostengo).",
+            gameTitle: "Oro-Integrazione",
+            gamePrompt: "Raccogli i punti. Dopo ogni punto: completa mentalmente una delle tre frasi, con gentilezza.",
+            goal: 6
+          },
+          {
+            title: "Domenica – Pianificare con cura",
+            sub: "Pianificare non è controllare. È sostenerti.",
+            text:
+`Oggi non pianifichiamo “tutto”. Pianifichiamo sostegno.
+
+Scegli 2 cose che ti danno stabilità:
+- un momento di movimento,
+- un momento di pausa,
+- un momento di connessione,
+- un momento di “niente”.
+
+Scrivile. Così la mente smette di ricordare tutto da sola. La visibilità riduce il carico interno.
+
+Domenica non è una fine. È un passaggio. E i passaggi sono più leggeri quando li fai con gentilezza.`,
+            micro: "Scrivi 2 momenti di sostegno (pausa/movimento/connessione).",
+            gameTitle: "Oro-Passaggio",
+            gamePrompt: "Raccogli i punti. Poi: segna 2 momenti in agenda. Brevi, realistici, tuoi.",
+            goal: 5
+          },
+          {
+            title: "Domenica – Gratitudine piccola e vera",
+            sub: "Gratitudine non è ‘va tutto bene’. È: ‘qualcosa c’è’.",
+            text:
+`Oggi facciamo gratitudine senza pressione. Piccola e reale.
+
+Tre mini-gratitudini:
+- qualcosa nel corpo (mani calde, respiro),
+- qualcosa nella giornata (un tè, una luce),
+- qualcosa dentro (coraggio, costanza, tenerezza).
+
+Se ti sembra difficile, va bene. Scegline solo una. Il sistema nervoso impara con la ripetizione, non con l’obbligo.
+
+Non sei qui per essere perfetta. Sei qui per accompagnarti. E lo stai facendo.`,
+            micro: "Trova 1 mini-gratitudine vera.",
+            gameTitle: "Oro-Sostegno",
+            gamePrompt: "Raccogli i punti. A ogni punto: nomina una cosa minuscola che ti sostiene.",
+            goal: 7
+          }
+        ]
+      }
     ];
 
-    const today = new Date().getDay(); // 0=domenica
-    const idx = today === 0 ? 6 : today - 1;
+    const closingPool = [
+      "Non devi brillare oggi. Basta esserci — e trattarti con gentilezza.",
+      "Un’espirazione lenta è un piccolo nuovo inizio. E puoi ricominciare quante volte vuoi.",
+      "Hai appena fatto una cosa importante: ti sei regolata. Questa è forza vera.",
+      "Se oggi vacilla, resta morbida. La morbidezza è stabilità senza lotta.",
+      "Non sei ‘troppo’. Sei umana, con un sistema nervoso. E stai imparando a guidarlo.",
+      "I passi piccoli non sono un giro lungo. Sono la strada.",
+      "Oggi non conta la perfezione. Conta la presenza. E tu ce l’hai.",
+      "Puoi andare piano. A volte è proprio il ritmo giusto.",
+      "Il tuo sistema può sentirsi al sicuro. E tu puoi aiutarlo, come stai facendo ora.",
+      "Non sei sola in questo. E hai risorse per accompagnarti fuori.",
+      "Meno pressione. Più direzione. Questo è il tuo lusso di oggi.",
+      "Puoi prenderti sul serio senza trattarti duramente.",
+      "Anche un piccolo ‘continuo’ è una promessa grande a te stessa.",
+      "La stabilità non è un punto d’arrivo. È una pratica. E tu stai praticando.",
+      "Espira. Lascia andare. E porta con te solo ciò che ti fa bene.",
+      "Oggi è stato un reset. Domani è un nuovo tentativo — e tu hai tutto il necessario.",
+      "Non sei indietro. Sei in cammino. Ed è abbastanza.",
+      "La tua calma non è tempo perso. È la tua energia che torna."
+    ];
 
-    document.getElementById("dailyFocusTitle").textContent = dailyFocus[idx].title;
-    document.getElementById("dailyFocusText").textContent  = dailyFocus[idx].text;
+    function renderPremium(){
+      if(!isMember) return;
+
+      const now = new Date();
+      const dIdx = dayIndexMon0(now); // 0..6
+      const isoWeek = getISOWeek(now);
+      const vIdx = (isoWeek + dIdx) % 3; // 0..2
+      const day = premiumByDay[dIdx];
+      const v = day.variants[vIdx];
+
+      document.getElementById("pTitle").textContent = `Premium Reset Deluxe – ${weekdays[dIdx]}`;
+      document.getElementById("pSub").textContent   = v.sub;
+      document.getElementById("pPill").textContent  = variantLabel(vIdx);
+
+      document.getElementById("paperTitle").textContent = v.title;
+      document.getElementById("paperText").textContent  = v.text;
+      document.getElementById("paperAnchor").textContent = `🧭 Focus: ${day.anchor}`;
+      document.getElementById("paperMicro").textContent  = `✨ Micro-passo: ${v.micro}`;
+
+      document.getElementById("gameTitle").textContent  = v.gameTitle;
+      document.getElementById("gamePrompt").textContent = v.gamePrompt;
+
+      const closeIdx = (isoWeek * 7 + dIdx + vIdx * 3) % closingPool.length;
+      document.getElementById("closingText").textContent = closingPool[closeIdx];
+
+      startGame(v.goal, vIdx, dIdx);
+    }
+
+    // -------- Mini-game: raccogli punti dorati (calma + focus) --------
+    const gameArea = document.getElementById("gameArea");
+    const gameScore = document.getElementById("gameScore");
+    const gameHint = document.getElementById("gameHint");
+    const gameResult = document.getElementById("gameResult");
+    const spawnBtn = document.getElementById("spawnBtn");
+    const finishBtn = document.getElementById("finishBtn");
+    const closingBox = document.getElementById("closingBox");
+
+    let goal = 5;
+    let collected = 0;
+
+    function pseudoRand(seed){
+      let x = Math.sin(seed) * 10000;
+      return x - Math.floor(x);
+    }
+
+    function clearDots(){
+      gameArea.innerHTML = "";
+      collected = 0;
+      gameResult.textContent = "";
+      closingBox.style.display = "none";
+      updateScore();
+    }
+
+    function updateScore(){
+      gameScore.textContent = `${collected}/${goal}`;
+    }
+
+    function startGame(newGoal, vIdx, dIdx){
+      goal = newGoal;
+      clearDots();
+      spawnDots(vIdx, dIdx);
+      gameHint.textContent = "Tip: a ogni tocco, fai 1 espirazione lenta. Piccola cosa, grande effetto.";
+    }
+
+    function spawnDots(vIdx, dIdx){
+      const now = new Date();
+      const isoWeek = getISOWeek(now);
+      const seedBase = isoWeek * 100 + dIdx * 10 + vIdx;
+
+      const rect = gameArea.getBoundingClientRect();
+      const w = Math.max(260, rect.width);
+      const h = gameArea.clientHeight;
+
+      for(let i=0;i<goal;i++){
+        const dot = document.createElement("div");
+        dot.className = "dot";
+        dot.textContent = "✦";
+
+        const rx = pseudoRand(seedBase + i * 1.13);
+        const ry = pseudoRand(seedBase + i * 2.07);
+
+        const x = 20 + rx * (w - 40);
+        const y = 20 + ry * (h - 40);
+
+        dot.style.left = `${x}px`;
+        dot.style.top  = `${y}px`;
+
+        dot.addEventListener("click", () => {
+          if(dot.classList.contains("collected")) return;
+          dot.classList.add("collected");
+          collected += 1;
+          updateScore();
+
+          if(collected === goal){
+            gameResult.textContent = "Fatto. Prenditi 10 secondi: spalle morbide, espirazione lenta. Sei qui.";
+          }
+        });
+
+        gameArea.appendChild(dot);
+      }
+      updateScore();
+    }
+
+    spawnBtn.addEventListener("click", () => {
+      renderPremium(); // riavvia coerente con giorno/variante
+    });
+
+    finishBtn.addEventListener("click", () => {
+      if(collected < goal){
+        gameResult.textContent = "Puoi continuare a raccogliere… oppure chiudere adesso con gentilezza. Entrambe vanno bene.";
+      }
+      closingBox.style.display = "block";
+      closingBox.scrollIntoView({ behavior:"smooth", block:"start" });
+    });
+
+    // Run once
+    renderPremium();
   </script>
 
   <script>
-    // ---------------- Premium (FREE visible) + 3 reactions ----------------
-    const PREMIUM_FLAG = "panacea_premium";
-    const isPremiumUser = localStorage.getItem(PREMIUM_FLAG) === "true";
-    const memberStatus = document.getElementById("memberStatus");
-    memberStatus.textContent = isPremiumUser ? "Premium attivo" : "Versione Free";
-
-    const stressSlider = document.getElementById("stressSlider");
-    const energySlider = document.getElementById("energySlider");
-    const resetTitleEl = document.getElementById("resetTitle");
-    const resetTextEl  = document.getElementById("resetText");
-
-    function level(n){
-      if(n <= 3) return "LOW";
-      if(n >= 8) return "HIGH";
-      return "MID";
-    }
-
-    function pickReset(stress, energy){
-      const sL = level(stress);
-      const eL = level(energy);
-
-      // (1) Stress HIGH + Energy LOW
-      if(sL === "HIGH" && eL === "LOW"){
-        return {
-          title: "Calma & alleggerisci",
-          text:
-            "Il tuo sistema è sotto pressione.\n" +
-            "Oggi: riduci il carico, non aumentare lo sforzo.\n\n" +
-            "• 2–3 minuti: espira più a lungo (4 in / 6–8 out)\n" +
-            "• Spalle morbide, mandibola rilassata\n" +
-            "• Una sola cosa essenziale — il resto può aspettare"
-        };
-      }
-
-      // (2) Stress HIGH + Energy HIGH
-      if(sL === "HIGH" && eL === "HIGH"){
-        return {
-          title: "Canalizza l’energia & focalizza",
-          text:
-            "Energia alta + pressione alta.\n" +
-            "Serve direzione, non velocità.\n\n" +
-            "• 3 minuti: respiro regolare (4 in / 6 out)\n" +
-            "• Poi: una priorità — 10 minuti solo su quella\n" +
-            "• Acqua, piedi a terra, uno sguardo chiaro"
-        };
-      }
-
-      // (3) Energy LOW
-      if(eL === "LOW"){
-        return {
-          title: "Recupero & attivazione gentile",
-          text:
-            "Batteria bassa oggi.\n" +
-            "Obiettivo: stabilità con delicatezza.\n\n" +
-            "• 2 minuti: respiro calmo + torace aperto\n" +
-            "• 1 minuto: movimento lento (collo/spalle)\n" +
-            "• Una cosa che ti nutre: luce, acqua, una breve passeggiata"
-        };
-      }
-
-      // Balanced fallback
-      return {
-        title: "Reset – calmo & chiaro",
-        text:
-          "Sei in una zona intermedia.\n" +
-          "Obiettivo: stabilità e chiarezza.\n\n" +
-          "• 3 minuti: respiro regolare (4 in / 6 out)\n" +
-          "• Domanda: cosa conta davvero oggi?\n" +
-          "• Poi: 15 minuti di focus per iniziare bene"
-      };
-    }
-
-    function render3Reactions(){
-      const s = Number(stressSlider.value);
-      const e = Number(energySlider.value);
-      const res = pickReset(s, e);
-      resetTitleEl.textContent = res.title;
-      resetTextEl.textContent  = res.text;
-    }
-
-    stressSlider.addEventListener("input", render3Reactions);
-    energySlider.addEventListener("input", render3Reactions);
-    document.getElementById("generateResetBtn").addEventListener("click", render3Reactions);
-    render3Reactions();
-  </script>
-
-  <script>
-    // ---------------- Breathing timer ----------------
+    // ---------------- Timer respirazione ----------------
     const phaseLabel = document.getElementById("phaseLabel");
     const timeLeftEl = document.getElementById("timeLeft");
     const pulse = document.getElementById("pulse");
@@ -782,11 +1645,11 @@
 
       if(paused){
         pauseBtn.textContent = "Continua";
-        hintText.textContent = "Pausa. Quando sei pronta: Continua.";
+        hintText.textContent = "Pausa. Quando sei pronta, riprendiamo piano piano.";
         clearTimeout(phaseTimeout);
       } else {
         pauseBtn.textContent = "Pausa";
-        hintText.textContent = "Continua. Segui il cerchio.";
+        hintText.textContent = "Vai. Segui il cerchio con calma.";
         scheduleNextPhase();
       }
     }
@@ -824,20 +1687,18 @@
       remainingSeconds = 0;
       updateTimeUI();
 
-      hintText.textContent = "Finito. Nota un istante: com’è il corpo adesso?";
+      hintText.textContent = "Finito. Nota un istante: com’è il corpo adesso? Senza giudizio.";
       startBtn.disabled = false;
       pauseBtn.disabled = true;
       pauseBtn.textContent = "Pausa";
       phaseLabel.textContent = "Fatto";
     }
 
-    // Init
     readSettings();
     remainingSeconds = totalSeconds;
     updateTimeUI();
     setPhase("READY");
 
-    // Events
     startBtn.addEventListener("click", start);
     pauseBtn.addEventListener("click", togglePause);
     resetBtn.addEventListener("click", resetAll);
@@ -847,81 +1708,34 @@
     minutesInput.addEventListener("change", resetAll);
   </script>
 
+  <!-- Language toggle: DE/IT only -->
   <script>
-    // --- PANACEA Language Switch (DE/IT) ---
-    (function(){
-      const KEY = "lang"; // "de" | "it"
-      function setLang(l){ localStorage.setItem(KEY, l); }
-      function getLang(){
-        const v = (localStorage.getItem(KEY) || "").toLowerCase();
-        return (v === "it" || v === "de") ? v : "it";
+    function paintLang(){
+      const v = (localStorage.getItem("lang") || "it").toLowerCase();
+      document.getElementById("btnDE")?.classList.toggle("active", v === "de");
+      document.getElementById("btnIT")?.classList.toggle("active", v === "it");
+    }
+    paintLang();
+
+    document.getElementById("btnDE")?.addEventListener("click", function() {
+      localStorage.setItem("lang","de");
+      let page = location.pathname.split("/").pop() || "daily-resetIT.html";
+      if(page.includes("IT.html")){
+        location.href = page.replace("IT.html",".html");
+      } else {
+        location.href = page;
       }
+    });
 
-      function getTwinUrl(targetLang){
-        const path = location.pathname.split("/").pop() || "index.html";
-        const map = {
-          "index.html": "indexIT.html",
-          "indexIT.html": "index.html",
-
-          "daily-reset.html": "daily-resetIT.html",
-          "daily-resetIT.html": "daily-reset.html",
-
-          "wissen.html": "wissenIT.html",
-          "wissenIT.html": "wissen.html",
-
-          "lifestyle.html": "lifestyleIT.html",
-          "lifestyleIT.html": "lifestyle.html",
-
-          "mitglieder.html": "mitgliederIT.html",
-          "mitgliederIT.html": "mitglieder.html",
-        };
-
-        if(targetLang === "it"){
-          return map[path] || (path.includes("IT.html") ? path : path.replace(".html","IT.html"));
-        }
-        if(targetLang === "de"){
-          return map[path] || (path.includes("IT.html") ? path.replace("IT.html",".html") : path);
-        }
-        return path;
+    document.getElementById("btnIT")?.addEventListener("click", function() {
+      localStorage.setItem("lang","it");
+      let page = location.pathname.split("/").pop() || "daily-resetIT.html";
+      if(!page.includes("IT.html")){
+        location.href = page.replace(".html","IT.html");
+      } else {
+        location.href = page;
       }
-
-      const btnDE = document.getElementById("btnDE");
-      const btnIT = document.getElementById("btnIT");
-      if(!btnDE || !btnIT) return;
-
-      function paint(){
-        const l = getLang();
-        btnDE.classList.toggle("active", l === "de");
-        btnIT.classList.toggle("active", l === "it");
-      }
-
-      btnDE.addEventListener("click", () => {
-        setLang("de");
-        location.href = getTwinUrl("de");
-      });
-
-      btnIT.addEventListener("click", () => {
-        setLang("it");
-        location.href = getTwinUrl("it");
-      });
-
-      // Auto-correct page if mismatch
-      const current = location.pathname.split("/").pop() || "";
-      const stored = getLang();
-      const isITpage = current.includes("IT.html");
-      if(stored === "it" && !isITpage){
-        const twin = getTwinUrl("it");
-        if(twin !== current) location.replace(twin);
-        return;
-      }
-      if(stored === "de" && isITpage){
-        const twin = getTwinUrl("de");
-        if(twin !== current) location.replace(twin);
-        return;
-      }
-
-      paint();
-    })();
+    });
   </script>
 
 </body>
