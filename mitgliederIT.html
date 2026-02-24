@@ -7,7 +7,7 @@
 
   <style>
     :root{
-      /* Luxury-minimal palette (beige + gold + charcoal) */
+      /* Luxury-minimal palette */
       --bg1:#f6f1e6;
       --bg2:#efe7d7;
       --card:rgba(255,255,255,0.86);
@@ -36,7 +36,7 @@
       min-height:100vh;
     }
 
-    /* fixed topbar (stabile su qualsiasi telefono) */
+    /* fixed topbar */
     .fixedTopbar{
       position:fixed; top:0; left:0; right:0;
       z-index:9999;
@@ -49,7 +49,7 @@
       max-width: 980px;
       margin:0 auto;
       display:grid;
-      grid-template-columns: 1fr auto 1fr; /* left center right */
+      grid-template-columns: 1fr auto 1fr;
       align-items:center;
       gap:10px;
     }
@@ -111,7 +111,7 @@
     .wrap{
       max-width: 980px;
       margin:0 auto;
-      padding:84px 14px 36px; /* topbar space */
+      padding:84px 14px 36px;
     }
 
     .card{
@@ -284,7 +284,41 @@
     }
     .btnSoft:active{ transform: translateY(1px); }
 
-    /* breathing module - elegant ribbon + progress + cues */
+    /* sound toggle */
+    .toggle{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(0,0,0,0.10);
+      background: rgba(255,255,255,0.78);
+      font-weight:900;
+      cursor:pointer;
+      user-select:none;
+    }
+    .switch{
+      width:44px; height:24px;
+      border-radius:999px;
+      background: rgba(0,0,0,0.10);
+      position:relative;
+      border:1px solid rgba(0,0,0,0.10);
+    }
+    .knob{
+      width:20px; height:20px;
+      border-radius:999px;
+      position:absolute; top:1px; left:1px;
+      background: #fff;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+      transition: left .18s ease;
+    }
+    .switch.on{
+      background: rgba(200,162,74,0.30);
+      border-color: rgba(200,162,74,0.40);
+    }
+    .switch.on .knob{ left:22px; }
+
+    /* breathing module */
     .breathWrap{
       margin-top:12px;
       background: rgba(255,255,255,0.78);
@@ -326,6 +360,7 @@
       border:1px solid rgba(0,0,0,0.06);
     }
 
+    /* overall progress */
     .progress{
       margin-top:10px;
       height:10px;
@@ -343,25 +378,90 @@
       transition: width .15s linear;
     }
 
-    .ribbon{
+    /* NEW VISUAL: dual phase gauge (easy to follow) */
+    .gauge{
       margin-top:12px;
-      width:100%;
-      height:120px;
       border-radius:18px;
-      background: radial-gradient(800px 220px at 50% 0%, rgba(232,210,138,0.22), rgba(255,255,255,0.0)),
-                  linear-gradient(180deg, rgba(255,255,255,0.58), rgba(255,255,255,0.28));
+      background: radial-gradient(900px 200px at 50% 0%, rgba(232,210,138,0.20), rgba(255,255,255,0.0)),
+                  linear-gradient(180deg, rgba(255,255,255,0.62), rgba(255,255,255,0.32));
       border:1px solid rgba(200,162,74,0.14);
-      overflow:hidden;
-      position:relative;
+      padding:12px;
     }
-    .ribbon svg{ width:100%; height:100%; display:block; }
-    .cue{
+    .gaugeRow{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .gLbl{
+      min-width:88px;
+      font-weight:950;
+      font-size:12.5px;
+      color: rgba(0,0,0,0.70);
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .gDot{
+      width:8px; height:8px;
+      border-radius:999px;
+      background: rgba(0,0,0,0.18);
+      box-shadow:none;
+      flex:0 0 auto;
+    }
+    .gDot.onIn{
+      background: rgba(200,162,74,0.95);
+      box-shadow: 0 0 18px rgba(200,162,74,0.35);
+    }
+    .gDot.onOut{
+      background: rgba(0,0,0,0.50);
+      box-shadow: 0 0 18px rgba(0,0,0,0.20);
+    }
+
+    .track{
+      position:relative;
+      flex: 1 1 320px;
+      height:16px;
+      border-radius:999px;
+      background: rgba(0,0,0,0.06);
+      border:1px solid rgba(0,0,0,0.06);
+      overflow:hidden;
+    }
+    .fill{
       position:absolute;
-      left:14px; right:14px;
-      bottom:12px;
+      top:0; left:0;
+      height:100%;
+      width:0%;
+      border-radius:999px;
+      transition: width .12s linear;
+    }
+    .fill.in{
+      background: linear-gradient(90deg, rgba(232,210,138,.40), rgba(200,162,74,.95));
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.03);
+    }
+    .fill.out{
+      background: linear-gradient(90deg, rgba(0,0,0,0.18), rgba(0,0,0,0.48));
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.03);
+    }
+    .dot{
+      position:absolute;
+      top:50%;
+      transform: translate(-50%,-50%);
+      width:14px; height:14px;
+      border-radius:999px;
+      background: rgba(255,255,255,0.95);
+      border:1px solid rgba(0,0,0,0.10);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.14);
+      left:0%;
+      transition: left .12s linear;
+    }
+
+    .cueLine{
+      margin-top:10px;
       display:flex;
       justify-content:space-between;
-      gap:12px;
+      gap:10px;
+      flex-wrap:wrap;
       font-size:12.5px;
       color: rgba(0,0,0,0.60);
       font-weight:800;
@@ -375,42 +475,10 @@
       align-items:center;
     }
 
-    .toggle{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 12px;
-      border-radius: 14px;
-      border:1px solid rgba(0,0,0,0.10);
-      background: rgba(255,255,255,0.78);
-      font-weight:900;
-      cursor:pointer;
-      user-select:none;
-    }
-    .switch{
-      width:44px; height:24px;
-      border-radius:999px;
-      background: rgba(0,0,0,0.10);
-      position:relative;
-      border:1px solid rgba(0,0,0,0.10);
-    }
-    .knob{
-      width:20px; height:20px;
-      border-radius:999px;
-      position:absolute; top:1px; left:1px;
-      background: #fff;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.18);
-      transition: left .18s ease;
-    }
-    .switch.on{
-      background: rgba(200,162,74,0.30);
-      border-color: rgba(200,162,74,0.40);
-    }
-    .switch.on .knob{ left:22px; }
-
     @media (max-width:780px){
       .grid2{ grid-template-columns: 1fr; }
       .brandTitle{ font-size:28px; }
+      .gLbl{ min-width:76px; }
     }
     @media (max-width:520px){
       .wrap{ padding-left:12px; padding-right:12px; }
@@ -563,36 +631,29 @@
 
         <div class="progress"><div id="progressBar"></div></div>
 
-        <!-- Elegant ribbon visualization (not a simple circle) -->
-        <div class="ribbon" aria-label="Visualizzazione respiro">
-          <svg viewBox="0 0 900 120" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="goldGrad" x1="0" x2="1">
-                <stop offset="0" stop-color="rgba(200,162,74,0.25)"></stop>
-                <stop offset="0.5" stop-color="rgba(232,210,138,0.55)"></stop>
-                <stop offset="1" stop-color="rgba(200,162,74,0.25)"></stop>
-              </linearGradient>
-              <linearGradient id="goldLine" x1="0" x2="1">
-                <stop offset="0" stop-color="rgba(200,162,74,0.35)"></stop>
-                <stop offset="0.5" stop-color="rgba(232,210,138,0.85)"></stop>
-                <stop offset="1" stop-color="rgba(200,162,74,0.35)"></stop>
-              </linearGradient>
-              <filter id="softGlow">
-                <feGaussianBlur stdDeviation="6" result="blur"></feGaussianBlur>
-                <feMerge>
-                  <feMergeNode in="blur"></feMergeNode>
-                  <feMergeNode in="SourceGraphic"></feMergeNode>
-                </feMerge>
-              </filter>
-            </defs>
+        <!-- NEW EASY VISUAL -->
+        <div class="gauge" aria-label="Guida visiva del respiro">
+          <div class="gaugeRow" style="margin-bottom:10px;">
+            <div class="gLbl">
+              <span class="gDot" id="dotIn"></span> Inspira
+            </div>
+            <div class="track">
+              <div class="fill in" id="fillIn"></div>
+              <div class="dot" id="dotInMove"></div>
+            </div>
+          </div>
 
-            <!-- background ribbon fill -->
-            <path id="ribbonFill" d="" fill="url(#goldGrad)" opacity="0.9"></path>
-            <!-- highlight line -->
-            <path id="ribbonLine" d="" fill="none" stroke="url(#goldLine)" stroke-width="3" filter="url(#softGlow)"></path>
-          </svg>
+          <div class="gaugeRow">
+            <div class="gLbl">
+              <span class="gDot" id="dotOut"></span> Espira
+            </div>
+            <div class="track">
+              <div class="fill out" id="fillOut"></div>
+              <div class="dot" id="dotOutMove"></div>
+            </div>
+          </div>
 
-          <div class="cue">
+          <div class="cueLine">
             <span id="cueLeft">Espira lunga = sicurezza</span>
             <span id="cueRight">Ritmo gentile, non forza</span>
           </div>
@@ -651,8 +712,7 @@
       document.getElementById("codeInput").value = "";
       alert("Sbloccato ✅");
       setAccessUI();
-      // genera subito un reset coerente per dare effetto “wow”
-      generateReset();
+      generateReset(); // effetto wow
     } else {
       alert("Password errata ❌");
     }
@@ -693,8 +753,6 @@
     return "basso";
   }
 
-  // Pool “premium” (innovativo): 3 fasi sempre, con varianti random per non risultare ripetitivo.
-  // Ogni profilo ha: label, titolo, sintesi, varianti per 1/2/3 e piano respiro.
   const PREMIUM_MAP = {
     "alto|basso": {
       label: "Sovraccarico + energia bassa",
@@ -721,10 +779,10 @@
     "alto|medio": {
       label: "Tensione alta + energia media",
       title: "Scarico controllato → focus",
-      summary: "Scarichiamo l’eccesso senza “andare a mille”, poi costruiamo chiarezza e direzione.",
+      summary: "Scarichiamo l’eccesso senza ‘andare a mille’, poi costruiamo chiarezza e direzione.",
       phase1: [
         "60–90 secondi di scarico: cammina o scuoti braccia. Poi fermati. Il contrasto resetta.",
-        "Rilassa spalle e addome: lascia uscire l’aria lentamente. Il corpo “abbassa volume”.",
+        "Rilassa spalle e addome: lascia uscire l’aria lentamente. Il corpo abbassa volume.",
         "Postura: lungo dietro, morbido davanti. Stabilità senza rigidità."
       ],
       phase2: [
@@ -734,7 +792,7 @@
       ],
       phase3: [
         "Timer 12 minuti: fai solo l’inizio. Poi pausa breve (2–3 minuti).",
-        "Dai un “no” ad una distrazione. Un solo no cambia tutto.",
+        "Dai un ‘no’ a una distrazione. Un solo no cambia tutto.",
         "Chiudi con 3 respiri lenti: integri lo sforzo senza restare attivata."
       ],
       breath: { inhale:4, exhale:6, minutes:4, cueL:"Scarico + respiro lento", cueR:"Chiarezza dopo calma" }
@@ -746,8 +804,8 @@
       summary: "Energia alta: ottimo. La chiave è direzione e recupero, per non trasformarla in stress.",
       phase1: [
         "Prima di partire: 20 secondi di pausa. Spalle giù. Espira lentamente.",
-        "Scegli un ritmo al 80% (non 120%). L’energia diventa sostenibile.",
-        "Micro-rilascio: apri e chiudi mani 10 volte. Poi respira."
+        "Scegli un ritmo all’80% (non 120%). L’energia diventa sostenibile.",
+        "Micro-rilascio: apri e chiudi le mani 10 volte. Poi respira."
       ],
       phase2: [
         "Decidi 1 direzione e 1 limite (quando mi fermo).",
@@ -791,7 +849,7 @@
       phase1: [
         "Postura: raddrizza dolcemente. Mandibola morbida. Espira più lunga.",
         "Rilassa il collo con un micro-movimento (sinistra/destra lento).",
-        "Fai 5 respiri con pausa naturale dopo l’espirazione."
+        "Fai 5 respiri con una pausa naturale dopo l’espirazione."
       ],
       phase2: [
         "Pianifica solo i prossimi 30 minuti (non la giornata intera).",
@@ -813,7 +871,7 @@
       phase1: [
         "Stop 10 secondi. Espira lentamente. Poi parti.",
         "Spalle giù, petto morbido: energia senza tensione.",
-        "Un respiro lungo: ‘sintonizza’ il ritmo."
+        "Un respiro lungo: sintonizza il ritmo."
       ],
       phase2: [
         "Decidi: 1 obiettivo, 1 criterio di successo (semplice).",
@@ -857,7 +915,7 @@
       phase1: [
         "6 respiri lenti. Spalle morbide. Ritmo costante.",
         "Mandibola rilassata: crea spazio mentale.",
-        "Espira lunga 2 volte: chiude il ‘rumore’ interno."
+        "Espira lunga 2 volte: chiude il rumore interno."
       ],
       phase2: [
         "Scegli 1 priorità. Scrivi 3 punti massimo.",
@@ -867,7 +925,7 @@
       phase3: [
         "Fai il primo passo subito (2 minuti).",
         "Blocchi brevi: 15 minuti focus, 3 minuti pausa.",
-        "Chiudi un micro-risultato e celebralo (silenziosamente)."
+        "Chiudi un micro-risultato e celebralo (anche in silenzio)."
       ],
       breath: { inhale:4, exhale:6, minutes:3, cueL:"Stabilità", cueR:"Progresso semplice" }
     },
@@ -878,13 +936,13 @@
       summary: "Energia pulita: la usi per creare, con un limite per non svuotarti.",
       phase1: [
         "Fai un respiro lungo e morbido. Senti il corpo stabile.",
-        "Scegli ritmo al 85%: energia sostenibile.",
+        "Scegli ritmo all’85%: energia sostenibile.",
         "Micro-rilascio di spalle e mani."
       ],
       phase2: [
         "Decidi: cosa voglio creare / chiudere oggi in 20 minuti?",
         "Metti un limite: stop prima di stancarti (energia in banca).",
-        "Scrivi 1 frase di intent: “Oggi scelgo…”"
+        "Scrivi 1 frase di intento: “Oggi scelgo…”"
       ],
       phase3: [
         "Fai 15–20 minuti di focus. Poi pausa vera.",
@@ -901,13 +959,12 @@
     return PREMIUM_MAP[`${s}|${e}`] || PREMIUM_MAP["medio|medio"];
   }
 
-  function pick3(arr){
-    // sceglie 1 frase random (senza ripetizioni immediate)
+  function pick1(arr){
     return arr[Math.floor(Math.random() * arr.length)];
   }
 
   // =========================
-  // AUDIO (opzionale, elegante) - piccolo “tick” a cambio fase
+  // SUONO (opzionale) - tick leggero a cambio fase
   // =========================
   let soundOn = false;
   const soundToggle = document.getElementById("soundToggle");
@@ -931,30 +988,22 @@
       o.type = "sine";
       o.frequency.value = 523.25; // C5
       g.gain.value = 0.0001;
-
-      o.connect(g);
-      g.connect(ctx.destination);
+      o.connect(g); g.connect(ctx.destination);
       o.start();
-
-      // quick gentle envelope
       g.gain.exponentialRampToValueAtTime(0.03, ctx.currentTime + 0.02);
       g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.18);
-
-      setTimeout(()=>{
-        o.stop();
-        ctx.close();
-      }, 220);
+      setTimeout(()=>{ o.stop(); ctx.close(); }, 220);
     } catch(e){}
   }
 
   // =========================
-  // RESPIRO GUIDATO - ribbon eleganza (non cerchio)
+  // RESPIRO GUIDATO
   // =========================
   let breathInterval = null;
   let breathRunning = false;
 
   let plan = { inhale:4, exhale:6, minutes:3, cueL:"", cueR:"" };
-  let phase = "pronta"; // insp / exp / fine / pronta
+  let phase = "pronta"; // inspira | espira | fine | pronta
   let phaseRemaining = 0;
   let totalRemaining = 0;
   let totalStart = 0;
@@ -963,10 +1012,17 @@
   const breathTimerEl = document.getElementById("breathTimer");
   const breathPlanEl  = document.getElementById("breathPlan");
   const progressBarEl = document.getElementById("progressBar");
-  const ribbonFill = document.getElementById("ribbonFill");
-  const ribbonLine = document.getElementById("ribbonLine");
+
   const cueLeft = document.getElementById("cueLeft");
   const cueRight = document.getElementById("cueRight");
+
+  // gauge elements
+  const fillIn = document.getElementById("fillIn");
+  const fillOut = document.getElementById("fillOut");
+  const dotInMove = document.getElementById("dotInMove");
+  const dotOutMove = document.getElementById("dotOutMove");
+  const dotIn = document.getElementById("dotIn");
+  const dotOut = document.getElementById("dotOut");
 
   function fmt(sec){
     sec = Math.max(0, Math.floor(sec));
@@ -981,35 +1037,53 @@
     cueRight.textContent = plan.cueR || "Ritmo gentile, non forza";
 
     stopBreathing(true);
+
     breathPlanEl.textContent = `Piano: Inspira ${plan.inhale}s · Espira ${plan.exhale}s · Durata ${plan.minutes} min`;
     breathTimerEl.textContent = fmt(plan.minutes * 60);
     progressBarEl.style.width = "0%";
-    renderRibbon(0.15, 0); // idle ribbon
+
+    // reset gauge
+    fillIn.style.width = "0%";
+    fillOut.style.width = "0%";
+    dotInMove.style.left = "0%";
+    dotOutMove.style.left = "0%";
+    dotIn.className = "gDot";
+    dotOut.className = "gDot";
+
     breathStateEl.textContent = "Pronta";
   }
 
-  // Ribbon wave generator (amp + phaseShift)
-  function renderRibbon(amp, shift){
-    // amp: 0..1, shift: grows over time
-    const W = 900, H = 120;
-    const mid = 52;
-    const A = 28 * amp; // amplitude px
-    const freq = 2.2;   // wave frequency
-    const steps = 18;
+  function renderGauge(phaseName, p){
+    // p: 0..1 progress in current phase
+    p = Math.max(0, Math.min(1, p));
+    const pct = (p * 100).toFixed(1) + "%";
 
-    let dLine = `M 0 ${mid}`;
-    for(let i=1;i<=steps;i++){
-      const x = (W/steps)*i;
-      const t = (i/steps) * Math.PI * 2 * freq + shift;
-      const y = mid + Math.sin(t) * A;
-      dLine += ` L ${x.toFixed(2)} ${y.toFixed(2)}`;
+    if(phaseName === "inspira"){
+      dotIn.className = "gDot onIn";
+      dotOut.className = "gDot";
+      fillIn.style.width = pct;
+      dotInMove.style.left = pct;
+
+      // keep exhale bar calm
+      fillOut.style.width = "0%";
+      dotOutMove.style.left = "0%";
+    } else if(phaseName === "espira"){
+      dotOut.className = "gDot onOut";
+      dotIn.className = "gDot";
+
+      fillOut.style.width = pct;
+      dotOutMove.style.left = pct;
+
+      fillIn.style.width = "0%";
+      dotInMove.style.left = "0%";
+    } else {
+      dotIn.className = "gDot";
+      dotOut.className = "gDot";
+      fillIn.style.width = "0%";
+      fillOut.style.width = "0%";
+      dotInMove.style.left = "0%";
+      dotOutMove.style.left = "0%";
     }
-
-    // Fill: close to bottom with soft curvature
-    let dFill = dLine + ` L ${W} ${H} L 0 ${H} Z`;
-
-    ribbonLine.setAttribute("d", dLine);
-    ribbonFill.setAttribute("d", dFill);
   }
 
   function renderBreathUI(){
@@ -1017,7 +1091,7 @@
       breathStateEl.textContent = "Pronta";
       breathTimerEl.textContent = fmt(plan.minutes*60);
       progressBarEl.style.width = "0%";
-      renderRibbon(0.15, 0);
+      renderGauge("idle", 0);
       return;
     }
 
@@ -1025,29 +1099,26 @@
       breathStateEl.textContent = "Finito ✅";
       breathTimerEl.textContent = "00:00";
       progressBarEl.style.width = "100%";
-      renderRibbon(0.18, 0.8);
+      renderGauge("idle", 0);
       return;
     }
 
-    // progress
+    // overall progress
     const done = totalStart - totalRemaining;
-    const pct = totalStart > 0 ? Math.min(100, Math.max(0, (done/totalStart)*100)) : 0;
-    progressBarEl.style.width = pct.toFixed(1) + "%";
-
+    const pctAll = totalStart > 0 ? Math.min(100, Math.max(0, (done/totalStart)*100)) : 0;
+    progressBarEl.style.width = pctAll.toFixed(1) + "%";
     breathTimerEl.textContent = fmt(totalRemaining);
 
-    // amplitude effect: inhale grows, exhale softens
-    const base = 0.22;
-    const amp = phase === "inspira"
-      ? base + (1 - (phaseRemaining/plan.inhale)) * 0.55
-      : base + (phaseRemaining/plan.exhale) * 0.45;
-
-    const phaseLabel = phase === "inspira" ? "Inspira" : "Espira";
-    breathStateEl.textContent = `${phaseLabel} (${phaseRemaining}s)`;
-
-    // shift: gentle motion
-    const shift = (done * 0.22);
-    renderRibbon(amp, shift);
+    // phase progress (0..1) for gauge
+    if(phase === "inspira"){
+      const p = 1 - (phaseRemaining / plan.inhale);
+      breathStateEl.textContent = `Inspira (${phaseRemaining}s)`;
+      renderGauge("inspira", p);
+    } else {
+      const p = 1 - (phaseRemaining / plan.exhale);
+      breathStateEl.textContent = `Espira (${phaseRemaining}s)`;
+      renderGauge("espira", p);
+    }
   }
 
   function startBreathing(){
@@ -1139,15 +1210,12 @@
     mTitle.textContent = data.title;
     mSummary.textContent = data.summary;
 
-    // Innovazione: 3 fasi sempre (stabilizza → chiarisci → agisci), con varianti random per evitare monotonia
-    mText1.textContent = pick3(data.phase1);
-    mText2.textContent = pick3(data.phase2);
-    mText3.textContent = pick3(data.phase3);
+    mText1.textContent = pick1(data.phase1);
+    mText2.textContent = pick1(data.phase2);
+    mText3.textContent = pick1(data.phase3);
 
-    // Piano respiro personalizzato
     setBreathPlan(data.breath);
 
-    // salva ultimo profilo (utile per continuità premium)
     try{
       localStorage.setItem("panacea_last_profile_it", JSON.stringify({stress, energy, label:data.label, title:data.title, ts: Date.now()}));
     } catch(e){}
@@ -1161,9 +1229,7 @@
   setAccessUI();
   syncSliderLabels();
 
-  // se già membro, genera subito un reset (premium feel)
   if(isMember()){
-    // prova a ripristinare ultimo profilo, se presente
     try{
       const last = JSON.parse(localStorage.getItem("panacea_last_profile_it") || "null");
       if(last && last.stress && last.energy){
@@ -1173,7 +1239,6 @@
     } catch(e){}
     generateReset();
   } else {
-    // prepara UI respiro in idle (non visibile finché non sblocca, ma ok)
     setBreathPlan({ inhale:4, exhale:6, minutes:3, cueL:"Espira lunga = sicurezza", cueR:"Ritmo gentile, non forza" });
     renderBreathUI();
   }
