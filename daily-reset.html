@@ -45,16 +45,17 @@
       max-width: min(520px, 100%);
     }
 
+    /* ===== Topbar (FIX: true centered language buttons) ===== */
     .topbar{
-      display:flex;
+      display:grid;
+      grid-template-columns: 1fr auto 1fr;
       align-items:center;
-      justify-content:space-between;
       gap: var(--gap);
       margin-bottom:14px;
-      flex-wrap:wrap;
     }
 
     .back{
+      justify-self:start;
       text-decoration:none;
       display:inline-flex;
       align-items:center;
@@ -71,10 +72,11 @@
     .back:hover{ transform: translateY(-1px); }
 
     .brand{
+      justify-self:end;
       text-align:right;
       line-height:1.1;
       white-space:nowrap;
-      margin-left:auto;
+      margin-left:0; /* FIX */
     }
     .brand .t1{
       font-size:13px;
@@ -146,12 +148,11 @@
 
     /* ---------- language toggle (DE/IT only) ---------- */
     .langToggle{
+      justify-self:center; /* FIX */
       display:flex;
       gap:10px;
       align-items:center;
       justify-content:center;
-      flex: 0 0 auto;
-      order: 2;
     }
 
     .langBtn{
@@ -499,9 +500,8 @@
     }
 
     @media (max-width: 420px){
-      .topbar{ justify-content:flex-start; }
-      .brand{ order:3; width:100%; text-align:right; }
-      .langToggle{ order:2; margin-left:auto; }
+      /* keep centered language stable on mobile */
+      .topbar{ grid-template-columns: 1fr auto 1fr; }
       .controls button{ min-width: 100%; }
       input[type="number"]{ width: 88px; }
     }
@@ -603,7 +603,7 @@
           </div>
 
           <ul class="premiumList">
-            <li><b>Personalisierter Reset</b> je nach Stress & Energie</li>
+            <li><b>Personalisierter Reset</b> je nach Stress &amp; Energie</li>
             <li><b>Mehr Impulse</b> (Auswahl + Variation, statt immer derselbe Text)</li>
             <li><b>Premium Atemführung</b> mit schöneren Modi (Wolke/Linien) – passend zur Situation</li>
           </ul>
@@ -614,7 +614,7 @@
           </div>
 
           <div class="smallNote">
-            Hinweis: Der Premium-Teil wird aktuell im <b>Mitgliederbereich</b> geöffnet (eigene Seite).  
+            Hinweis: Der Premium-Teil wird aktuell im <b>Mitgliederbereich</b> geöffnet (eigene Seite).
             Den “Premium-Block” direkt hier auf dieser Seite bauen wir als nächsten Schritt dazu.
           </div>
         </div>
