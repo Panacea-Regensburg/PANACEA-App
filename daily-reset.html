@@ -19,6 +19,11 @@
       --shadow2: 0 10px 26px rgba(0,0,0,.10);
       --radius: 22px;
       --radius2: 18px;
+
+      /* responsive sizing */
+      --pad: clamp(14px, 3.6vw, 22px);
+      --gap: clamp(10px, 2.8vw, 14px);
+      --orb: clamp(210px, 58vw, 270px);
     }
 
     *{ box-sizing:border-box; }
@@ -32,20 +37,21 @@
       min-height:100vh;
       display:flex;
       justify-content:center;
-      padding:28px 14px;
+      padding: clamp(16px, 3.5vw, 28px) 14px;
     }
 
     .phone{
       width:100%;
-      max-width:480px;
+      max-width: min(520px, 100%);
     }
 
     .topbar{
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:10px;
+      gap: var(--gap);
       margin-bottom:14px;
+      flex-wrap:wrap;
     }
 
     .back{
@@ -60,6 +66,7 @@
       color:var(--text);
       border:1px solid rgba(200,162,74,.20);
       white-space:nowrap;
+      transition: transform .15s ease;
     }
     .back:hover{ transform: translateY(-1px); }
 
@@ -67,9 +74,10 @@
       text-align:right;
       line-height:1.1;
       white-space:nowrap;
+      margin-left:auto;
     }
     .brand .t1{
-      font-size:14px;
+      font-size:13px;
       color:var(--muted);
     }
     .brand .t2{
@@ -92,7 +100,7 @@
     }
 
     .hero{
-      padding:18px 18px 14px 18px;
+      padding: var(--pad);
       display:flex;
       gap:14px;
       align-items:center;
@@ -127,7 +135,7 @@
     }
 
     .content{
-      padding:16px 18px 18px 18px;
+      padding: 0 var(--pad) var(--pad) var(--pad);
     }
 
     .divider{
@@ -136,7 +144,67 @@
       margin:16px 0;
     }
 
-    /* --------- Breath area (Wissen-style) --------- */
+    /* ---------- language toggle (DE/IT only) ---------- */
+    .langToggle{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:center;
+      flex: 0 0 auto;
+      order: 2;
+    }
+
+    .langBtn{
+      appearance:none;
+      border:none;
+      cursor:pointer;
+      padding:10px 14px;
+      border-radius:999px;
+      font-weight:950;
+      letter-spacing:.12em;
+      background: rgba(255,255,255,.70);
+      border:1px solid rgba(200,162,74,.18);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+      color: var(--text);
+      white-space:nowrap;
+      transition: transform .15s ease;
+      min-width: 56px;
+      text-align:center;
+    }
+    .langBtn:hover{ transform: translateY(-1px); }
+    .langBtn.active{
+      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      border:1px solid rgba(200,162,74,.35);
+      color:#3a2c10;
+      text-shadow: 0 0 10px rgba(200,162,74,.22);
+    }
+
+    /* --------- Free box --------- */
+    .freeBox{
+      margin-top:0;
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(200,162,74,.16);
+      background: rgba(255,255,255,.72);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+    }
+
+    .freeBox .rt{
+      margin:0 0 6px;
+      font-size:15px;
+      font-weight:900;
+      color: rgba(43,43,43,.88);
+    }
+    .freeBox .rx{
+      margin:0;
+      font-size:14px;
+      line-height:1.48;
+      color: rgba(43,43,43,.76);
+      font-weight:700;
+      white-space: pre-line;
+    }
+
+    /* --------- Breath area --------- */
     .breathWrap{
       display:flex;
       flex-direction:column;
@@ -172,8 +240,8 @@
     }
 
     .orb{
-      width: 230px;
-      height: 230px;
+      width: var(--orb);
+      height: var(--orb);
       border-radius: 999px;
       position: relative;
       display:grid;
@@ -212,7 +280,7 @@
       z-index:2;
     }
     .orbText .focus{
-      font-weight:900;
+      font-weight:950;
       font-size:15px;
       color: rgba(43,43,43,.85);
       margin-bottom:6px;
@@ -236,7 +304,7 @@
       cursor:pointer;
       padding:12px 14px;
       border-radius:14px;
-      font-weight:900;
+      font-weight:950;
       letter-spacing:.2px;
       box-shadow: var(--shadow2);
       border:1px solid rgba(200,162,74,.20);
@@ -244,6 +312,7 @@
       color:var(--text);
       flex:1;
       min-width:130px;
+      transition: transform .15s ease;
     }
     button:hover{ transform: translateY(-1px); }
 
@@ -275,7 +344,7 @@
     }
 
     input[type="number"]{
-      width: 88px;
+      width: 92px;
       padding:10px 10px;
       border-radius: 14px;
       border: 1px solid rgba(200,162,74,.18);
@@ -293,154 +362,148 @@
       line-height: 1.4;
     }
 
-    /* --------- Premium box (Wissen-style) --------- */
-    .premiumBox{
+    /* ===== Premium teaser box (golden / more premium) ===== */
+    .premiumTeaser{
       margin-top:14px;
       padding:14px;
       border-radius:18px;
-      border:1px solid rgba(200,162,74,.28);
-      background: linear-gradient(180deg, rgba(255,246,214,.75), rgba(255,255,255,.75));
-      box-shadow: 0 0 18px rgba(200,162,74,.15);
+      border:1px solid rgba(200,162,74,.34);
+      background:
+        radial-gradient(800px 260px at 20% 0%, rgba(255,246,214,.92), rgba(255,255,255,.72)),
+        linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.75));
+      box-shadow:
+        0 0 22px rgba(200,162,74,.18),
+        0 16px 42px rgba(0,0,0,.08);
+      position:relative;
+      overflow:hidden;
     }
-    .premiumBox h3{
-      margin:0 0 10px 0;
-      font-size:14px;
-      font-weight:900;
+
+    .premiumTeaser::before{
+      content:"";
+      position:absolute;
+      inset:-40px;
+      background: radial-gradient(circle at 30% 20%, rgba(200,162,74,.22), transparent 55%);
+      filter: blur(8px);
+      opacity:.9;
+      pointer-events:none;
+    }
+
+    .premiumHead{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      position:relative;
+      z-index:2;
+    }
+
+    .premiumTeaser h3{
+      margin:0 0 6px 0;
+      font-size:14.5px;
+      font-weight:950;
       color:#3a2c10;
       letter-spacing:.2px;
     }
 
-    .premiumBox label{
-      display:block;
-      font-weight:900;
-      font-size:13px;
-      color: rgba(43,43,43,.75);
-      margin: 10px 0 8px;
-    }
-
-    input[type="range"]{
-      -webkit-appearance:none;
-      width:100%;
-      height:8px;
-      border-radius:999px;
-      background: rgba(43,43,43,0.10);
-      outline:none;
-    }
-    input[type="range"]::-webkit-slider-thumb{
-      -webkit-appearance:none;
-      width:18px;
-      height:18px;
-      border-radius:50%;
-      background: var(--gold);
-      border: 2px solid rgba(255,255,255,.85);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.12);
-      cursor:pointer;
-    }
-    input[type="range"]::-moz-range-thumb{
-      width:18px;
-      height:18px;
-      border-radius:50%;
-      background: var(--gold);
-      border: 2px solid rgba(255,255,255,.85);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.12);
-      cursor:pointer;
-    }
-
-    .resetOut{
-      margin-top:12px;
-      padding:12px 12px;
-      border-radius:16px;
-      background: rgba(255,255,255,.70);
-      border:1px solid rgba(200,162,74,.16);
-      box-shadow: 0 10px 22px rgba(0,0,0,.06);
-    }
-    .resetOut .rt{
-      margin:0 0 6px;
-      font-size:15px;
-      font-weight:900;
-      color: rgba(43,43,43,.88);
-    }
-    .resetOut .rx{
+    .premiumTeaser p{
       margin:0;
-      font-size:14px;
+      color: rgba(43,43,43,.78);
+      font-weight:750;
+      font-size:13.6px;
       line-height:1.45;
-      color: rgba(43,43,43,.76);
-      font-weight:700;
-      white-space: pre-line;
     }
 
-    .memberLine{
-      margin-top:12px;
-      font-size:14px;
-      color: rgba(43,43,43,.72);
-      font-weight:800;
-    }
-    .memberLine a{
-      color: rgba(43,43,43,.92);
-      text-decoration:none;
-      border-bottom:1px dotted rgba(43,43,43,.45);
-      font-weight:900;
-    }
-    .memberLine a:hover{ border-bottom-style: solid; }
-
-    .premiumInfo{
-      margin-top:12px;
-      padding:12px;
-      border-radius:16px;
-      border:1px solid rgba(200,162,74,.18);
-      background: rgba(255,255,255,.65);
-      box-shadow: 0 10px 22px rgba(0,0,0,.06);
-    }
-    .premiumInfo .t{
-      font-weight:900;
-      margin-bottom:8px;
-      color: rgba(43,43,43,.86);
-    }
-    .premiumInfo ul{
-      margin:0;
-      padding-left:18px;
-      line-height:1.5;
-      color: rgba(43,43,43,.74);
-      font-weight:700;
-      font-size:14px;
-    }
-
-    /* ---------- LANG TOGGLE (FIX: IN STYLE, not outside) ---------- */
-    .langToggle{
-      display:flex;
-      gap:10px;
+    .premiumBadge{
+      flex:0 0 auto;
+      display:inline-flex;
       align-items:center;
-      justify-content:center;
-      flex: 0 0 auto;
-    }
-
-    .langBtn{
-      appearance:none;
-      border:none;
-      cursor:pointer;
-      padding:10px 14px;
+      gap:8px;
+      padding:8px 10px;
       border-radius:999px;
-      font-weight:900;
-      letter-spacing:.2px;
-      background: rgba(255,255,255,.70);
-      border:1px solid rgba(200,162,74,.18);
-      box-shadow: 0 10px 22px rgba(0,0,0,.06);
-      color: var(--text);
-      white-space:nowrap;
-    }
-
-    .langBtn.active{
-      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      background: rgba(200,162,74,.18);
       border:1px solid rgba(200,162,74,.35);
       color:#3a2c10;
-      text-shadow: 0 0 10px rgba(200,162,74,.22);
+      font-weight:950;
+      white-space:nowrap;
+      position:relative;
+      z-index:2;
+    }
+
+    .premiumList{
+      margin:12px 0 0;
+      padding-left:18px;
+      line-height:1.55;
+      color: rgba(43,43,43,.78);
+      font-weight:750;
+      font-size:13.6px;
+      position:relative;
+      z-index:2;
+    }
+
+    .premiumActions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:12px;
+      position:relative;
+      z-index:2;
+    }
+
+    .linkBtn{
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 14px;
+      border-radius:14px;
+      font-weight:950;
+      letter-spacing:.2px;
+      border:1px solid rgba(200,162,74,.35);
+      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      color:#3a2c10;
+      box-shadow: 0 14px 30px rgba(200,162,74,.18);
+      flex:1;
+      min-width: 180px;
+      transition: transform .15s ease;
+      white-space:nowrap;
+    }
+    .linkBtn:hover{ transform: translateY(-1px); }
+
+    .subLink{
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 14px;
+      border-radius:14px;
+      font-weight:950;
+      letter-spacing:.2px;
+      border:1px solid rgba(0,0,0,0.10);
+      background: rgba(255,255,255,0.78);
+      color: rgba(43,43,43,.88);
+      flex:1;
+      min-width: 180px;
+      transition: transform .15s ease;
+      white-space:nowrap;
+    }
+    .subLink:hover{ transform: translateY(-1px); }
+
+    .smallNote{
+      margin-top:10px;
+      font-size:12.6px;
+      color: rgba(43,43,43,.62);
+      font-weight:750;
+      line-height:1.45;
+      position:relative;
+      z-index:2;
     }
 
     @media (max-width: 420px){
-      .orb{ width: 215px; height: 215px; }
+      .topbar{ justify-content:flex-start; }
+      .brand{ order:3; width:100%; text-align:right; }
+      .langToggle{ order:2; margin-left:auto; }
       .controls button{ min-width: 100%; }
-      .topbar{ flex-wrap:wrap; }
-      .brand{ flex:1 1 100%; text-align:right; }
+      input[type="number"]{ width: 88px; }
     }
   </style>
 </head>
@@ -452,8 +515,8 @@
       <a class="back" href="index.html">← Home</a>
 
       <div class="langToggle" aria-label="Language toggle">
-        <button class="langBtn active" id="btnDE" type="button">Deutsch</button>
-        <button class="langBtn" id="btnIT" type="button">Italiano</button>
+        <button class="langBtn active" id="btnDE" type="button">DE</button>
+        <button class="langBtn" id="btnIT" type="button">IT</button>
       </div>
 
       <div class="brand">
@@ -473,16 +536,15 @@
 
       <div class="content">
 
-        <!-- Daily focus -->
-        <div class="resetOut" style="margin-top:0;">
+        <!-- FREE -->
+        <div class="freeBox">
           <div class="rt" id="dailyFocusTitle">Heute</div>
           <p class="rx" id="dailyFocusText">Lade…</p>
-          <p class="rx" style="margin-top:10px; opacity:.8; font-weight:800;">✨ Premium: Atemrhythmus & Impuls passen sich deinem Stresslevel an.</p>
         </div>
 
         <div class="divider"></div>
 
-        <!-- Breathing -->
+        <!-- Breathing (FREE) -->
         <div class="breathWrap">
           <div class="phase" id="phaseLabel">Bereit</div>
 
@@ -527,34 +589,33 @@
 
         <div class="divider"></div>
 
-        <!-- Premium Reset -->
-        <div class="premiumBox" id="premiumReset">
-          <h3>Premium Reset</h3>
-
-          <label for="stressSlider">Stress Level (1–10)</label>
-          <input id="stressSlider" type="range" min="1" max="10" value="5">
-
-          <label for="energySlider">Energy Level (1–10)</label>
-          <input id="energySlider" type="range" min="1" max="10" value="5">
-
-          <button class="primary" id="generateResetBtn" style="margin-top:12px;">Mein Premium Reset</button>
-
-          <div class="resetOut" id="resetOut">
-            <div class="rt" id="resetTitle"></div>
-            <p class="rx" id="resetText"></p>
+        <!-- PREMIUM (teaser only — mitglieder.html remains the only premium tool for now) -->
+        <div class="premiumTeaser" id="premiumTeaser">
+          <div class="premiumHead">
+            <div>
+              <h3>Premium Reset (Mitglieder)</h3>
+              <p>
+                Eine intensivere Version – mit personalisierter Führung (Stress/Energie) und einer Atem-Guidance,
+                die sich an dich anpasst. Keine Standardtexte.
+              </p>
+            </div>
+            <div class="premiumBadge" id="premiumBadge">Status: Free</div>
           </div>
 
-          <div class="memberLine">
-            <span id="memberStatus">Free-Version</span> · <a href="mitglieder.html" id="unlockLink">Mitglieder freischalten</a>
+          <ul class="premiumList">
+            <li><b>Personalisierter Reset</b> je nach Stress & Energie</li>
+            <li><b>Mehr Impulse</b> (Auswahl + Variation, statt immer derselbe Text)</li>
+            <li><b>Premium Atemführung</b> mit schöneren Modi (Wolke/Linien) – passend zur Situation</li>
+          </ul>
+
+          <div class="premiumActions">
+            <a class="linkBtn" id="memberBtn" href="mitglieder.html">Zum Mitgliederbereich</a>
+            <a class="subLink" id="unlockBtnLink" href="mitglieder.html">Mitglieder freischalten</a>
           </div>
 
-          <div class="premiumInfo">
-            <div class="t">Was ist im Premium enthalten?</div>
-            <ul>
-              <li><b>Verbesserter Atemrhythmus</b> (automatisch angepasst)</li>
-              <li><b>Mehr Daily-Impulse</b> & personalisierte Reset-Texte</li>
-              <li><b>Mitgliederbereich</b> mit zusätzlichen Tools</li>
-            </ul>
+          <div class="smallNote">
+            Hinweis: Der Premium-Teil wird aktuell im <b>Mitgliederbereich</b> geöffnet (eigene Seite).  
+            Den “Premium-Block” direkt hier auf dieser Seite bauen wir als nächsten Schritt dazu.
           </div>
         </div>
 
@@ -581,86 +642,24 @@
   </script>
 
   <script>
-    // ---------------- Premium (FREE visible) + 3 reactions ----------------
-    const PREMIUM_FLAG = "panacea_premium";
-    const isPremiumUser = localStorage.getItem(PREMIUM_FLAG) === "true";
-    const memberStatus = document.getElementById("memberStatus");
-    memberStatus.textContent = isPremiumUser ? "Premium aktiv" : "Free-Version";
+    // ---------------- Premium status (reads member flag) ----------------
+    // Use the SAME key you already use in mitglieder.html:
+    const MEMBER_KEY = "panacea_member";
+    const isMember = localStorage.getItem(MEMBER_KEY) === "true";
 
-    const stressSlider = document.getElementById("stressSlider");
-    const energySlider = document.getElementById("energySlider");
-    const resetTitleEl = document.getElementById("resetTitle");
-    const resetTextEl  = document.getElementById("resetText");
+    const premiumBadge = document.getElementById("premiumBadge");
+    const unlockBtnLink = document.getElementById("unlockBtnLink");
+    const memberBtn = document.getElementById("memberBtn");
 
-    function level(n){
-      if(n <= 3) return "LOW";
-      if(n >= 8) return "HIGH";
-      return "MID";
+    if(isMember){
+      premiumBadge.textContent = "Status: Mitglied ✅";
+      unlockBtnLink.style.display = "none";
+      memberBtn.textContent = "Premium Reset öffnen";
+    } else {
+      premiumBadge.textContent = "Status: Free";
+      unlockBtnLink.style.display = "";
+      memberBtn.textContent = "Zum Mitgliederbereich";
     }
-
-    function pickReset(stress, energy){
-      const sL = level(stress);
-      const eL = level(energy);
-
-      if(sL === "HIGH" && eL === "LOW"){
-        return {
-          title: "Beruhigen & entlasten",
-          text:
-            "Dein System ist gerade überlastet.\n" +
-            "Heute gilt: runterfahren statt pushen.\n\n" +
-            "• 2–3 Minuten: länger ausatmen (4 ein / 6–8 aus)\n" +
-            "• Schultern sinken lassen, Kiefer locker\n" +
-            "• Nur 1 kleine Aufgabe – den Rest parken"
-        };
-      }
-
-      if(sL === "HIGH" && eL === "HIGH"){
-        return {
-          title: "Runterregeln & Fokus bündeln",
-          text:
-            "Viel Energie + hoher Druck.\n" +
-            "Du brauchst Kanal, nicht Tempo.\n\n" +
-            "• 3 Minuten: ruhig zählen (4 ein / 6 aus)\n" +
-            "• Dann: eine Priorität – 10 Minuten nur diese Sache\n" +
-            "• Wasser trinken, kurz Boden spüren"
-        };
-      }
-
-      if(eL === "LOW"){
-        return {
-          title: "Regeneration & sanfte Aktivierung",
-          text:
-            "Dein Akku ist heute niedrig.\n" +
-            "Ziel: sanft stabilisieren.\n\n" +
-            "• 2 Minuten: ruhig atmen + Brustkorb öffnen\n" +
-            "• 1 Minute: langsame Bewegung (Nacken/Schultern)\n" +
-            "• Eine Sache, die dich nährt: Licht, Wasser, kurzer Gang"
-        };
-      }
-
-      return {
-        title: "Reset – ruhig & klar",
-        text:
-          "Du bist im mittleren Bereich.\n" +
-          "Ziel: Stabilität + Klarheit.\n\n" +
-          "• 3 Minuten: gleichmäßig atmen (4 ein / 6 aus)\n" +
-          "• Frage: Was ist heute wirklich wichtig?\n" +
-          "• Dann: 15 Minuten fokussiert starten"
-      };
-    }
-
-    function render3Reactions(){
-      const s = Number(stressSlider.value);
-      const e = Number(energySlider.value);
-      const res = pickReset(s, e);
-      resetTitleEl.textContent = res.title;
-      resetTextEl.textContent  = res.text;
-    }
-
-    stressSlider.addEventListener("input", render3Reactions);
-    energySlider.addEventListener("input", render3Reactions);
-    document.getElementById("generateResetBtn").addEventListener("click", render3Reactions);
-    render3Reactions();
   </script>
 
   <script>
@@ -837,7 +836,7 @@
     minutesInput.addEventListener("change", resetAll);
   </script>
 
-  <!-- ---------- Language toggle (ONLY THIS ONE) ---------- -->
+  <!-- Language toggle: DE/IT only -->
   <script>
     function paintLang(){
       const v = (localStorage.getItem("lang") || "de").toLowerCase();
