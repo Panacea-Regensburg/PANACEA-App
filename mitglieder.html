@@ -165,7 +165,7 @@
       padding:12px 14px;
       border-radius:14px;
       border:1px solid rgba(0,0,0,0.12);
-      width: 320px;
+      width: 360px;
       max-width:100%;
       font-size:16px;
       background:#fff;
@@ -428,7 +428,7 @@
       box-shadow: 0 10px 22px rgba(200,162,74,0.10);
     }
 
-    /* ===== MODE 1: LINIEN (Ein/Aus) ===== */
+    /* ===== MODE 1: LINIEN ===== */
     .linesWrap{
       margin-top:12px;
       padding:14px;
@@ -477,7 +477,7 @@
       line-height:1.45;
     }
 
-    /* ===== MODE 2: WOLKE (runde „Blase“ die sich füllt/entleert) ===== */
+    /* ===== MODE 2: WOLKE ===== */
     .cloudWrap{
       margin-top:12px;
       display:none;
@@ -515,9 +515,7 @@
       -webkit-mask: radial-gradient(circle, transparent 62%, #000 63%);
       pointer-events:none;
     }
-    @keyframes sheen{
-      to { transform: rotate(360deg); }
-    }
+    @keyframes sheen{ to { transform: rotate(360deg); } }
 
     .cloudFill{
       position:absolute;
@@ -646,7 +644,7 @@
       <div class="goldLine"></div>
 
       <div class="row">
-        <input id="codeInput" class="input" placeholder="Passwort eingeben (am besten копieren & einfügen)" autocomplete="off" />
+        <input id="codeInput" class="input" placeholder="Passwort eingeben (am besten kopieren & einfügen)" autocomplete="off" />
         <button id="unlockBtn" class="btnGold" type="button">Freischalten</button>
         <span id="status" class="statusLocked">Gesperrt</span>
       </div>
@@ -822,6 +820,15 @@
   const PREMIUM_KEY = "panacea_member";
   const isMember = () => localStorage.getItem(PREMIUM_KEY) === "true";
 
+  // Optional: clean logout of member-related client state (luxury clean)
+  function cleanupMemberState(){
+    const keysToClear = [
+      "panacea_last_profile_de",
+      "panacea_breath_mode_de"
+    ];
+    keysToClear.forEach(k => localStorage.removeItem(k));
+  }
+
   function setAccessUI(){
     const unlockBox = document.getElementById("unlockBox");
     const premiumArea = document.getElementById("premiumArea");
@@ -859,6 +866,7 @@
 
   document.getElementById("logoutBtn").addEventListener("click", () => {
     localStorage.removeItem(PREMIUM_KEY);
+    cleanupMemberState();
     stopBreathing(true);
     setAccessUI();
   });
@@ -1367,13 +1375,8 @@
       phaseRemaining -= 1;
 
       if(phaseRemaining <= 0){
-        if(phase === "ein"){
-          phase = "aus";
-          phaseRemaining = plan.exhale;
-        } else {
-          phase = "ein";
-          phaseRemaining = plan.inhale;
-        }
+        phase = (phase === "ein") ? "aus" : "ein";
+        phaseRemaining = (phase === "ein") ? plan.inhale : plan.exhale;
         softBeep();
       }
 
