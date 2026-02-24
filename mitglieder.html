@@ -4,111 +4,307 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mitgliederbereich – Panacea</title>
+
   <style>
-    body{
-      margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      background: #0b0b0b;
-      color:#111;
+    :root{
+      --bg:#0b0b0b;
+      --card:rgba(255,255,255,0.86);
+      --card2:rgba(255,255,255,0.76);
+      --text:#111;
+      --muted:rgba(0,0,0,0.72);
+      --gold:#d7b55b;
+      --gold2:#e8d28a;
+      --shadow:0 10px 35px rgba(0,0,0,0.18);
+      --shadow2:0 8px 20px rgba(0,0,0,0.10);
+      --radius:22px;
+      --radius2:18px;
     }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background: var(--bg);
+      color: var(--text);
+    }
+
     .bg{
       min-height:100vh;
       display:flex;
       justify-content:center;
-      padding:40px 16px;
+      padding:84px 16px 40px; /* spazio per topbar fissa */
       background: url("./icons/background.jpg") center/cover no-repeat fixed;
     }
+
     .card{
       width:min(900px, 100%);
-      background: rgba(255,255,255,0.86);
+      background: var(--card);
       backdrop-filter: blur(12px);
-      border-radius: 22px;
-      box-shadow: 0 10px 35px rgba(0,0,0,0.18);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
       padding: 26px;
+      border:1px solid rgba(255,255,255,0.35);
     }
-    .topbar{
-      display:flex; align-items:center; gap:10px; margin-bottom:16px;
+
+    /* TOPBAR FIXED (non si sforma su mobile) */
+    .fixedTopbar{
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      z-index:9999;
+      padding:10px 10px;
+      background: rgba(255,255,255,0.55);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.35);
     }
-    .back{
+    .fixedTopbarInner{
+      max-width: 920px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns: 1fr auto 1fr; /* sinistra | centro | destra */
+      align-items:center;
+      gap:10px;
+    }
+
+    .navLeft{
+      display:flex;
+      justify-content:flex-start;
+      align-items:center;
+      min-width:0;
+    }
+    .navCenter{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:8px;
+      min-width:0;
+    }
+    .navRight{
+      display:flex;
+      justify-content:flex-end;
+      align-items:center;
+      min-width:0;
+    }
+
+    .btn{
       text-decoration:none;
-      display:inline-block;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
       padding:10px 14px;
       border-radius: 14px;
-      background: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.82);
       color:#111;
-      font-weight:600;
+      font-weight:700;
+      border:1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+      cursor:pointer;
+      user-select:none;
+      white-space:nowrap;
     }
+    .btn:active{ transform: translateY(1px); }
+
+    .btnGold{
+      background: linear-gradient(180deg, rgba(232,210,138,.95), rgba(215,181,91,.92));
+      border:1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 10px 22px rgba(215,181,91,0.22);
+      color:#111;
+    }
+
+    .langBtn{
+      padding:9px 12px;
+      border-radius: 999px;
+      font-weight:800;
+      font-size:13px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(0,0,0,0.08);
+      cursor:pointer;
+      white-space:nowrap;
+    }
+    .langBtn.active{
+      background: rgba(215,181,91,0.28);
+      border-color: rgba(215,181,91,0.55);
+    }
+
+    /* Titolo a destra (bello + non si rompe) */
+    .pageTitle{
+      font-weight:900;
+      letter-spacing: .2px;
+      font-size: 14px;
+      padding:10px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.62);
+      border:1px solid rgba(0,0,0,0.06);
+      max-width: 100%;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+    }
+
     h1{ margin: 10px 0 6px; font-size: 34px; }
-    .sub{ margin:0 0 18px; opacity:0.85; }
+    .sub{ margin:0 0 18px; opacity:0.88; }
     .box{
       margin-top:18px;
       padding:18px;
-      border-radius:18px;
-      background: rgba(255,255,255,0.75);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      border-radius:var(--radius2);
+      background: var(--card2);
+      box-shadow: var(--shadow2);
+      border:1px solid rgba(0,0,0,0.05);
     }
+
     .row{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+
     input{
       padding:12px 14px;
       border-radius:14px;
       border:1px solid rgba(0,0,0,0.12);
-      width: 260px;
+      width: 280px;
+      max-width:100%;
       font-size:16px;
       background:#fff;
+      outline:none;
     }
+    input:focus{
+      border-color: rgba(215,181,91,0.55);
+      box-shadow: 0 0 0 3px rgba(215,181,91,0.20);
+    }
+
     button{
       padding:12px 16px;
       border-radius:14px;
       border:0;
-      font-weight:700;
+      font-weight:900;
       cursor:pointer;
-      background: #d7b55b;
+      background: var(--gold);
       color:#111;
+      white-space:nowrap;
     }
-    .muted{ opacity:0.75; font-size:14px; }
-    .locked{ color:#8a1f1f; font-weight:700; }
-    .ok{ color:#116b2e; font-weight:800; }
-    .hr{ height:1px; background: rgba(0,0,0,0.08); margin:18px 0; }
+
+    .muted{ opacity:0.8; font-size:14px; line-height:1.35; }
+    .locked{ color:#8a1f1f; font-weight:900; }
+    .ok{ color:#116b2e; font-weight:950; }
+    .hr{ height:1px; background: rgba(0,0,0,0.10); margin:18px 0; }
+
+    /* Slider layout mobile-proof */
+    .rangeRow{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      flex-wrap:wrap;
+      margin:12px 0 8px;
+    }
+    .rangeRow label{
+      min-width:160px;
+      font-weight:800;
+      opacity:.9;
+    }
+    input[type="range"]{
+      width:min(420px, 100%);
+      padding:0;
+      border:0;
+      background:transparent;
+    }
+
+    .miniNote{
+      margin-top:12px;
+      padding:12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.60);
+      border:1px solid rgba(0,0,0,0.06);
+      font-size:13px;
+      line-height:1.35;
+      opacity:.88;
+    }
+
+    .actionsRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      margin-top:12px;
+    }
+
+    /* Mobile tweaks */
+    @media (max-width:520px){
+      .card{ padding:18px; }
+      h1{ font-size:28px; }
+      .fixedTopbarInner{ gap:8px; }
+      .btn{ padding:9px 12px; border-radius: 13px; }
+      .pageTitle{ font-size:13px; padding:9px 10px; }
+    }
   </style>
 </head>
 
 <body>
-  <div class="bg">
-    <div class="card">
-      <div class="topbar">
-        <a class="back" href="./index.html">← Home</a>
+
+  <!-- TOPBAR FISSA: Home sinistra | DE/IT centro | Titolo destra -->
+  <div class="fixedTopbar">
+    <div class="fixedTopbarInner">
+      <div class="navLeft">
+        <a class="btn" href="./index.html">← Home</a>
       </div>
 
-      <h1>Mitgliederbereich</h1>
-      <p class="sub">Premium-Funktionen: 3 Impulse pro Reset + automatische Atemführung.</p>
+      <div class="navCenter" aria-label="Language Switch">
+        <button class="langBtn active" id="btnDE" type="button" onclick="setLang('de')">DE</button>
+        <button class="langBtn" id="btnIT" type="button" onclick="setLang('it')">IT</button>
+      </div>
 
-      <div class="box">
+      <div class="navRight">
+        <div class="pageTitle" id="pageTitle">Mitgliederbereich · Basis</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg">
+    <div class="card">
+
+      <!-- HERO -->
+      <h1 id="h1Title">Mitgliederbereich</h1>
+      <p class="sub" id="subTitle">Premium-Funktionen: 3 Impulse pro Reset + automatische Atemführung.</p>
+
+      <!-- UNLOCK BOX -->
+      <div class="box" id="unlockBox">
         <div class="row">
-          <input id="codeInput" placeholder="Mitglieder-Code eingeben" />
-          <button id="unlockBtn">Freischalten</button>
+          <input id="codeInput" placeholder="Passwort eingeben (kopieren & einfügen)" autocomplete="off" />
+          <button id="unlockBtn" class="btnGold" type="button">Freischalten</button>
           <span id="status" class="locked">Gesperrt</span>
         </div>
-        <p class="muted" style="margin-top:10px;">
-          Hinweis: Der Mitglieder-Code wird nach Kauf bereitgestellt (z.B. über Jimdo).
+        <p class="muted" id="unlockHint" style="margin-top:10px;">
+          Hinweis: Das Passwort erhalten Sie nach dem Kauf automatisch per E-Mail.
         </p>
+        <div class="miniNote" id="deterrence">
+          Zugang ist personengebunden. Bei öffentlicher Weitergabe wird der Zugang deaktiviert.
+        </div>
       </div>
 
       <div class="hr"></div>
 
+      <!-- PREMIUM AREA -->
       <div id="premiumArea" class="box" style="display:none;">
-        <h2 style="margin-top:0;">Premium Reset (Mitglieder)</h2>
-        <p class="muted" style="margin-top:-6px;">Wähle Stress & Energie. Du bekommst 3 mögliche Impulse (random) + passende Atemzeiten.</p>
+        <h2 id="pTitle" style="margin-top:0;">Premium Reset (Mitglieder)</h2>
+        <p class="muted" id="pSub" style="margin-top:-6px;">
+          Wähle Stress & Energie. Du bekommst 3 mögliche Impulse (random) + passende Atemzeiten.
+        </p>
 
-        <div class="row" style="margin:14px 0 8px;">
-          <label style="min-width:170px;">Stress (1–10)</label>
-          <input id="stressM" type="range" min="1" max="10" value="5" style="width:320px;">
+        <div class="rangeRow">
+          <label id="lblStress">Stress (1–10)</label>
+          <input id="stressM" type="range" min="1" max="10" value="5">
         </div>
 
-        <div class="row" style="margin:6px 0 14px;">
-          <label style="min-width:170px;">Energie (1–10)</label>
-          <input id="energyM" type="range" min="1" max="10" value="5" style="width:320px;">
+        <div class="rangeRow" style="margin-top:4px;">
+          <label id="lblEnergy">Energie (1–10)</label>
+          <input id="energyM" type="range" min="1" max="10" value="5">
         </div>
 
-        <button id="genM">Mein Premium Reset</button>
+        <div class="actionsRow">
+          <button id="genM" type="button">Mein Premium Reset</button>
+          <button id="logoutBtn" type="button" style="background: rgba(255,255,255,0.8); border:1px solid rgba(0,0,0,0.10); font-weight:900;">
+            Logout
+          </button>
+        </div>
 
         <div class="box" style="margin-top:14px;">
           <h3 id="mTitle" style="margin:0 0 8px;"></h3>
@@ -120,62 +316,165 @@
       <p class="muted" style="margin-top:18px;">
         © Panacea Regensburg
       </p>
+
     </div>
   </div>
 
 <script>
-  // --- Simple code unlock (Level 1) ---
-  const MEMBER_CODE = "PANACEA2026"; // (später ersetzen / rotieren)
-  const isMember = () => localStorage.getItem("panacea_member") === "true";
+  // ====== CONFIG ======
+  // Password (poi allineiamo con Jimdo email)
+  const BASIS_PASSWORD = "PNC-79xL!qR26-Z";
+  const PREMIUM_KEY = "panacea_member"; // mantiene compatibilità col tuo vecchio file
 
+  const isMember = () => localStorage.getItem(PREMIUM_KEY) === "true";
+
+  // ====== UI ======
   function setUI() {
     const status = document.getElementById("status");
     const area = document.getElementById("premiumArea");
+    const unlockBox = document.getElementById("unlockBox");
+
     if (isMember()) {
-      status.textContent = "Freigeschaltet ✅";
+      status.textContent = currentLang === "it" ? "Sbloccato ✅" : "Freigeschaltet ✅";
       status.className = "ok";
       area.style.display = "block";
+      unlockBox.style.display = "none";
     } else {
-      status.textContent = "Gesperrt";
+      status.textContent = currentLang === "it" ? "Bloccato" : "Gesperrt";
       status.className = "locked";
       area.style.display = "none";
+      unlockBox.style.display = "block";
     }
   }
 
+  // ====== LANGUAGE (DE/IT) ======
+  let currentLang = localStorage.getItem("panacea_lang") || "de";
+
+  const T = {
+    de: {
+      topRight: "Mitgliederbereich · Basis",
+      h1: "Mitgliederbereich",
+      sub: "Premium-Funktionen: 3 Impulse pro Reset + automatische Atemführung.",
+      placeholder: "Passwort eingeben (kopieren & einfügen)",
+      unlock: "Freischalten",
+      locked: "Gesperrt",
+      hint: "Hinweis: Das Passwort erhalten Sie nach dem Kauf automatisch per E-Mail.",
+      deterrence: "Zugang ist personengebunden. Bei öffentlicher Weitergabe wird der Zugang deaktiviert.",
+      pTitle: "Premium Reset (Mitglieder)",
+      pSub: "Wähle Stress & Energie. Du bekommst 3 mögliche Impulse (random) + passende Atemzeiten.",
+      stress: "Stress (1–10)",
+      energy: "Energie (1–10)",
+      gen: "Mein Premium Reset",
+      logout: "Logout",
+      wrong: "Passwort falsch ❌",
+      ok: "Freigeschaltet ✅",
+      notReady: "Noch nicht hinterlegt",
+      fallback: "Für diese Kombination ergänzen wir Inhalte.",
+      breath: (i,e,m)=>`Atem: Ein ${i}s · Aus ${e}s · Dauer ${m} Min`,
+      alertInfo: "Wenn Sie noch kein Mitglied sind, erhalten Sie den Zugang nach dem Kauf automatisch per E-Mail."
+    },
+    it: {
+      topRight: "Area Membri · Base",
+      h1: "Area Membri",
+      sub: "Funzioni Premium: 3 impulsi per reset + guida respiratoria automatica.",
+      placeholder: "Inserisci password (copia e incolla)",
+      unlock: "Sblocca",
+      locked: "Bloccato",
+      hint: "Nota: riceverai la password automaticamente via e-mail dopo l’acquisto.",
+      deterrence: "L’accesso è personale. In caso di condivisione pubblica, l’accesso verrà disattivato.",
+      pTitle: "Premium Reset (Membri)",
+      pSub: "Scegli stress & energia. Ricevi 3 impulsi possibili (random) + tempi respiratori adatti.",
+      stress: "Stress (1–10)",
+      energy: "Energia (1–10)",
+      gen: "Il mio Premium Reset",
+      logout: "Logout",
+      wrong: "Password errata ❌",
+      ok: "Sbloccato ✅",
+      notReady: "Non ancora disponibile",
+      fallback: "Per questa combinazione aggiungeremo i contenuti.",
+      breath: (i,e,m)=>`Respiro: Inspira ${i}s · Espira ${e}s · Durata ${m} min`,
+      alertInfo: "Se non sei ancora membro, riceverai l’accesso automaticamente via e-mail dopo l’acquisto."
+    }
+  };
+
+  function applyLang(lang){
+    currentLang = lang;
+    localStorage.setItem("panacea_lang", lang);
+
+    document.getElementById("btnDE").classList.toggle("active", lang === "de");
+    document.getElementById("btnIT").classList.toggle("active", lang === "it");
+
+    document.getElementById("pageTitle").textContent = T[lang].topRight;
+    document.getElementById("h1Title").textContent = T[lang].h1;
+    document.getElementById("subTitle").textContent = T[lang].sub;
+
+    document.getElementById("codeInput").placeholder = T[lang].placeholder;
+    document.getElementById("unlockBtn").textContent = T[lang].unlock;
+    document.getElementById("unlockHint").textContent = T[lang].hint;
+    document.getElementById("deterrence").textContent = T[lang].deterrence;
+
+    document.getElementById("pTitle").textContent = T[lang].pTitle;
+    document.getElementById("pSub").textContent = T[lang].pSub;
+    document.getElementById("lblStress").textContent = T[lang].stress;
+    document.getElementById("lblEnergy").textContent = T[lang].energy;
+    document.getElementById("genM").textContent = T[lang].gen;
+    document.getElementById("logoutBtn").textContent = T[lang].logout;
+
+    setUI();
+  }
+
+  function setLang(lang){ applyLang(lang); }
+
+  // ====== UNLOCK ======
   document.getElementById("unlockBtn").addEventListener("click", () => {
     const code = document.getElementById("codeInput").value.trim();
-    if (code === MEMBER_CODE) {
-      localStorage.setItem("panacea_member", "true");
-      alert("Freigeschaltet ✅");
+
+    if (code === BASIS_PASSWORD) {
+      localStorage.setItem(PREMIUM_KEY, "true");
+      document.getElementById("codeInput").value = "";
+      alert(T[currentLang].ok);
       setUI();
     } else {
-      alert("Code falsch ❌");
+      alert(T[currentLang].wrong);
     }
   });
 
-  setUI();
+  // ENTER = unlock
+  document.getElementById("codeInput").addEventListener("keydown", (e) => {
+    if (e.key === "Enter") document.getElementById("unlockBtn").click();
+  });
 
-  // --- Premium content (placeholder) ---
-  function level(v){ v=Number(v); if(v>=7) return "hoch"; if(v>=4) return "mittel"; return "niedrig"; }
+  // Logout
+  document.getElementById("logoutBtn").addEventListener("click", () => {
+    localStorage.removeItem(PREMIUM_KEY);
+    setUI();
+  });
 
-  // TEMP: qui poi mettiamo il JSON avanzato con 3 testi + breathing
+  // ====== PREMIUM CONTENT (demo placeholder) ======
+  function level(v){
+    v = Number(v);
+    if(v >= 7) return "hoch";
+    if(v >= 4) return "mittel";
+    return "niedrig";
+  }
+
   const demo = {
     "hoch|niedrig": { title:"Sicherheit & Beruhigung", texts:[
-      "Heute braucht dein Nervensystem Sicherheit…",
-      "Reduziere Tempo und Reize…",
-      "Weniger ist mehr: ein kleiner Schritt…"
+      "Heute braucht dein Nervensystem Sicherheit. Reduziere Reize und wähle den kleinsten nächsten Schritt.",
+      "Gib dem Körper ein klares Signal: langsam, weich, sicher. Dann erst entscheiden.",
+      "Weniger ist heute mehr. Stabilität entsteht durch sanfte Wiederholung, nicht durch Druck."
     ], breathing:{ inhale:4, exhale:7, minutes:3 }},
 
     "niedrig|mittel": { title:"Stabil & klar", texts:[
-      "6 ruhige Atemzüge…",
-      "Fokus: ein Schritt nach dem anderen…",
-      "Klarheit: eine Sache auswählen…"
+      "Atme 6 ruhige Atemzüge. Dann wähle genau eine Sache – und beginne klein.",
+      "Klarheit entsteht, wenn du Komplexität reduzierst: ein Fokus, ein Schritt, jetzt.",
+      "Heute zählt Stabilität: sanft aufrichten, Blick weiten, Tempo herunter."
     ], breathing:{ inhale:4, exhale:6, minutes:3 }},
 
     "mittel|mittel": { title:"Reset & Struktur", texts:[
-      "Struktur: Schultern locker…",
-      "Plane nur die nächsten 30 Minuten…",
-      "Weich werden, dann handeln…"
+      "Lockere Schultern, Kiefer weich. Plane nur die nächsten 30 Minuten – nicht den ganzen Tag.",
+      "Struktur gibt Sicherheit: ein kurzer Plan, dann Handlung ohne Perfektion.",
+      "Werde weich – und bleib klar: erst regulieren, dann umsetzen."
     ], breathing:{ inhale:4, exhale:6, minutes:4 }}
   };
 
@@ -183,13 +482,25 @@
     const stress = level(document.getElementById("stressM").value);
     const energy = level(document.getElementById("energyM").value);
     const key = `${stress}|${energy}`;
-    const data = demo[key] || { title:"Noch nicht hinterlegt", texts:["Für diese Kombination ergänzen wir Inhalte."], breathing:{ inhale:4, exhale:6, minutes:3 }};
+
+    const data = demo[key] || {
+      title: T[currentLang].notReady,
+      texts: [T[currentLang].fallback],
+      breathing: { inhale:4, exhale:6, minutes:3 }
+    };
 
     const idx = Math.floor(Math.random() * data.texts.length);
+
     document.getElementById("mTitle").textContent = data.title;
     document.getElementById("mText").textContent = data.texts[idx];
-    document.getElementById("mBreath").textContent = `Atem: Ein ${data.breathing.inhale}s · Aus ${data.breathing.exhale}s · Dauer ${data.breathing.minutes} Min`;
+    document.getElementById("mBreath").textContent = T[currentLang].breath(
+      data.breathing.inhale, data.breathing.exhale, data.breathing.minutes
+    );
   });
+
+  // ====== INIT ======
+  applyLang(currentLang);
+  setUI();
 </script>
 
 </body>
