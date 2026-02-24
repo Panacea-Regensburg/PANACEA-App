@@ -165,7 +165,7 @@
       padding:12px 14px;
       border-radius:14px;
       border:1px solid rgba(0,0,0,0.12);
-      width: 320px;
+      width: 360px;
       max-width:100%;
       font-size:16px;
       background:#fff;
@@ -428,7 +428,7 @@
       box-shadow: 0 10px 22px rgba(200,162,74,0.10);
     }
 
-    /* ===== MODE 1: LINEE (Inspira/Espira) ===== */
+    /* ===== MODE 1: LINEE ===== */
     .linesWrap{
       margin-top:12px;
       padding:14px;
@@ -477,7 +477,7 @@
       line-height:1.45;
     }
 
-    /* ===== MODE 2: NUVOLA (cerchio/nuvola che si riempie e si svuota) ===== */
+    /* ===== MODE 2: NUVOLA ===== */
     .cloudWrap{
       margin-top:12px;
       display:none;
@@ -515,9 +515,7 @@
       -webkit-mask: radial-gradient(circle, transparent 62%, #000 63%);
       pointer-events:none;
     }
-    @keyframes sheen{
-      to { transform: rotate(360deg); }
-    }
+    @keyframes sheen{ to { transform: rotate(360deg); } }
 
     .cloudFill{
       position:absolute;
@@ -818,8 +816,17 @@
   // ACCESSO
   // =========================
   const BASIS_PASSWORD = "PNC-79xL!qR26-Z";
-  const PREMIUM_KEY = "panacea_member";
+  const PREMIUM_KEY = "panacea_member"; // <-- se vuoi cambiare nome: "panacea_menber" (typo) o "panacea_member"
   const isMember = () => localStorage.getItem(PREMIUM_KEY) === "true";
+
+  // Optional: pulizia elegante dei dati locali “membri”
+  function cleanupMemberState(){
+    const keysToClear = [
+      "panacea_last_profile_it",
+      "panacea_breath_mode_it"
+    ];
+    keysToClear.forEach(k => localStorage.removeItem(k));
+  }
 
   function setAccessUI(){
     const unlockBox = document.getElementById("unlockBox");
@@ -858,6 +865,7 @@
 
   document.getElementById("logoutBtn").addEventListener("click", () => {
     localStorage.removeItem(PREMIUM_KEY);
+    cleanupMemberState();
     stopBreathing(true);
     setAccessUI();
   });
@@ -1116,11 +1124,11 @@
       phase2: [
         "Decidi cosa vuoi creare/chiudere oggi in 20 minuti (una cosa).",
         "Metti un limite: fermati prima di esaurirti. È intelligenza, non pigrizia.",
-        "Scrivi una frase di intento: “Oggi scelgo…”"
+        "Scrivi una frase di intento: “Oggi scelgo…”."
       ],
       phase3: [
         "Fai 10–20 minuti di focus. Poi pausa vera.",
-        "Chiudi con tre respiri tranquilli: così non resti ‘accelera-ta’ anche dopo.",
+        "Chiudi con tre respiri tranquilli: così non resti ‘accelerata’ anche dopo.",
         "Nota una cosa che funziona. Rinforza fiducia."
       ],
       breath: { inhale:4, exhale:6, minutes:2, cueL:"Energia pulita", cueR:"Limite gentile" },
@@ -1199,7 +1207,7 @@
   });
 
   // =========================
-  // RESPIRO GUIDATO (motore unico + due visual)
+  // RESPIRO GUIDATO
   // =========================
   let breathInterval = null;
   let breathRunning = false;
@@ -1266,7 +1274,6 @@
   }
 
   function renderBreathUI(){
-    // ready
     if(!breathRunning && phase === "pronta"){
       breathStateEl.textContent = "Pronta";
       breathTimerEl.textContent = fmt(plan.minutes*60);
@@ -1284,7 +1291,6 @@
       return;
     }
 
-    // done
     if(phase === "fine"){
       breathStateEl.textContent = "Finito ✅";
       breathTimerEl.textContent = "00:00";
@@ -1302,50 +1308,43 @@
       return;
     }
 
-    // overall progress
     const done = totalStart - totalRemaining;
     const pctAll = totalStart > 0 ? Math.min(100, Math.max(0, (done/totalStart)*100)) : 0;
     progressBarEl.style.width = pctAll.toFixed(1) + "%";
     breathTimerEl.textContent = fmt(totalRemaining);
 
-    // phase progress
     if(phase === "inspira"){
-      const p = 1 - (phaseRemaining / plan.inhale); // 0..1
+      const p = 1 - (phaseRemaining / plan.inhale);
       const sec = phaseRemaining;
 
       breathStateEl.textContent = `Inspira (${sec}s)`;
 
-      // Lines
       inFill.style.width = (p*100).toFixed(0) + "%";
       outFill.style.width = "0%";
       inSec.textContent = `${sec}s`;
       outSec.textContent = "—";
       linesHint.textContent = "Inspira: lascia entrare l’aria, senza forzare. Il petto si apre da solo, piano piano.";
 
-      // Cloud (fill rises)
       cloudPhase.textContent = "Inspira";
       cloudCount.textContent = String(sec);
       cloudHint.textContent = "Lascia entrare l’aria… con calma.";
-      cloudFill.style.height = (10 + p*80).toFixed(0) + "%"; // 10%..90%
-
+      cloudFill.style.height = (10 + p*80).toFixed(0) + "%";
     } else {
-      const p = 1 - (phaseRemaining / plan.exhale); // 0..1
+      const p = 1 - (phaseRemaining / plan.exhale);
       const sec = phaseRemaining;
 
       breathStateEl.textContent = `Espira (${sec}s)`;
 
-      // Lines
       outFill.style.width = (p*100).toFixed(0) + "%";
       inFill.style.width = "0%";
       outSec.textContent = `${sec}s`;
       inSec.textContent = "—";
       linesHint.textContent = "Espira: lascia uscire l’aria lentamente, come se svuotassi i polmoni senza fretta.";
 
-      // Cloud (fill falls)
       cloudPhase.textContent = "Espira";
       cloudCount.textContent = String(sec);
       cloudHint.textContent = "Lascia uscire l’aria… lunga e lenta.";
-      cloudFill.style.height = (90 - p*80).toFixed(0) + "%"; // 90%..10%
+      cloudFill.style.height = (90 - p*80).toFixed(0) + "%";
     }
   }
 
