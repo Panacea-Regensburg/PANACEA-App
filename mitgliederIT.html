@@ -7,7 +7,6 @@
 
   <style>
     :root{
-      /* Luxury-minimal palette */
       --bg1:#f6f1e6;
       --bg2:#efe7d7;
 
@@ -51,7 +50,7 @@
       max-width: 980px;
       margin:0 auto;
       display:grid;
-      grid-template-columns: 1fr auto 1fr; /* left center right */
+      grid-template-columns: 1fr auto 1fr;
       align-items:center;
       gap:10px;
     }
@@ -158,7 +157,6 @@
       border:1px solid rgba(200,162,74,0.28);
       color:#2a2316;
     }
-
     .muted{ color:var(--muted); }
 
     /* unlock */
@@ -320,7 +318,7 @@
       font-size:14.3px;
     }
 
-    /* new 10-min goal */
+    /* 10-min goal */
     .goal{
       margin-top:12px;
       padding:14px;
@@ -400,33 +398,109 @@
       transition: width .15s linear;
     }
 
-    /* ====== NEW VISUAL: Halo-Orbit Circle (easy + elegant + original) ====== */
-    .haloWrap{
+    /* mode switch */
+    .modeRow{
       margin-top:12px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .modeBtns{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .modeBtn{
+      padding:10px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(0,0,0,0.10);
+      background: rgba(255,255,255,0.80);
+      font-weight:950;
+      cursor:pointer;
+      user-select:none;
+    }
+    .modeBtn.active{
+      background: rgba(200,162,74,0.18);
+      border-color: rgba(200,162,74,0.35);
+      box-shadow: 0 10px 22px rgba(200,162,74,0.10);
+    }
+
+    /* ===== MODE 1: LINEE (Inspira/Espira) ===== */
+    .linesWrap{
+      margin-top:12px;
+      padding:14px;
+      border-radius:18px;
+      background: rgba(255,255,255,0.62);
+      border:1px solid rgba(0,0,0,0.06);
+      display:none;
+    }
+    .lineRow{
       display:grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: 86px 1fr 44px;
+      gap:10px;
+      align-items:center;
+      margin:10px 0;
+    }
+    .lineLabel{
+      font-weight:950;
+      color: rgba(0,0,0,0.78);
+      font-size:13.5px;
+    }
+    .lineBar{
+      height:12px;
+      border-radius:999px;
+      background: rgba(0,0,0,0.06);
+      border:1px solid rgba(0,0,0,0.06);
+      overflow:hidden;
+    }
+    .lineFill{
+      height:100%;
+      width:0%;
+      border-radius:999px;
+      background: linear-gradient(90deg, rgba(232,210,138,0.95), rgba(200,162,74,0.65));
+      box-shadow: 0 0 18px rgba(200,162,74,0.18);
+      transition: width .12s linear;
+    }
+    .lineSec{
+      font-weight:950;
+      color: rgba(0,0,0,0.72);
+      text-align:right;
+      font-size:13.5px;
+    }
+    .linesHint{
+      margin-top:8px;
+      font-size:12.7px;
+      color: rgba(0,0,0,0.66);
+      line-height:1.45;
+    }
+
+    /* ===== MODE 2: NUVOLA (cerchio/nuvola che si riempie e si svuota) ===== */
+    .cloudWrap{
+      margin-top:12px;
+      display:none;
       gap:10px;
     }
-    .halo{
+    .cloud{
       width: 240px;
       height: 240px;
       margin: 0 auto;
       position: relative;
-      border-radius: 999px;
+      border-radius: 44% 56% 52% 48% / 48% 44% 56% 52%;
       background:
-        radial-gradient(circle at 50% 45%, rgba(255,255,255,0.86) 0 48%, rgba(255,255,255,0.0) 70%),
-        radial-gradient(180px 180px at 50% 55%, rgba(232,210,138,0.14), rgba(255,255,255,0));
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,0.95), rgba(255,255,255,0.72)),
+        radial-gradient(220px 220px at 50% 65%, rgba(232,210,138,0.16), rgba(255,255,255,0));
+      border: 1px solid rgba(200,162,74,0.16);
       box-shadow: 0 18px 50px rgba(0,0,0,0.10);
-      border: 1px solid rgba(200,162,74,0.14);
       overflow:hidden;
     }
 
-    /* rotating sheen ring */
-    .halo::before{
-      content:"";
+    .cloudSheen{
       position:absolute;
-      inset:18px;
-      border-radius:999px;
+      inset: 10px;
+      border-radius: 44% 56% 52% 48% / 48% 44% 56% 52%;
       background: conic-gradient(
         from 180deg,
         rgba(200,162,74,0.10),
@@ -435,99 +509,62 @@
         rgba(255,255,255,0.0),
         rgba(200,162,74,0.12)
       );
-      filter: blur(0.3px);
       opacity: 0.95;
-      transform: rotate(0deg);
-      animation: sheen 9s linear infinite;
-      mask: radial-gradient(circle, transparent 60%, #000 61%);
-      -webkit-mask: radial-gradient(circle, transparent 60%, #000 61%);
+      animation: sheen 10s linear infinite;
+      mask: radial-gradient(circle, transparent 62%, #000 63%);
+      -webkit-mask: radial-gradient(circle, transparent 62%, #000 63%);
       pointer-events:none;
     }
-
     @keyframes sheen{
       to { transform: rotate(360deg); }
     }
 
-    /* pulse core (breathing) */
-    .core{
+    .cloudFill{
       position:absolute;
-      inset:54px;
-      border-radius:999px;
-      background: radial-gradient(circle at 40% 35%, rgba(255,255,255,0.95), rgba(255,255,255,0.72));
-      border: 1px solid rgba(0,0,0,0.06);
-      box-shadow: inset 0 0 0 1px rgba(232,210,138,0.14);
-      transform: scale(1);
-      transition: transform .25s ease;
+      left:0; right:0; bottom:0;
+      height: 0%;
+      background: linear-gradient(180deg, rgba(232,210,138,0.82), rgba(200,162,74,0.58));
+      box-shadow: 0 -18px 44px rgba(200,162,74,0.16);
+      transition: height .18s linear;
+      filter: saturate(1.03);
+    }
+
+    .cloudText{
+      position:absolute;
+      inset: 22px;
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:16px;
       text-align:center;
+      padding:14px;
     }
-
-    .coreText{
+    .cloudTextInner{
       display:flex;
       flex-direction:column;
       gap:6px;
+      line-height:1.1;
       align-items:center;
       justify-content:center;
-      line-height:1.1;
+      max-width: 190px;
     }
-    .corePhase{
+    .cloudPhase{
       font-weight:950;
       font-size:18px;
-      letter-spacing:.2px;
     }
-    .coreCount{
+    .cloudCount{
       font-weight:950;
       font-size:30px;
       letter-spacing:.2px;
     }
-    .coreHint{
-      font-size:12.5px;
-      color: rgba(0,0,0,0.60);
+    .cloudHint{
       font-weight:800;
-      line-height:1.3;
-      max-width: 170px;
-    }
-
-    /* orbit dot (progress within current phase) */
-    .orbit{
-      position:absolute;
-      inset:22px;
-      border-radius:999px;
-      pointer-events:none;
-    }
-    .orbitDot{
-      position:absolute;
-      left:50%; top:50%;
-      width:14px; height:14px;
-      border-radius:999px;
-      transform: translate(-50%,-50%) rotate(0deg) translate(95px) rotate(0deg);
-      background: rgba(255,255,255,0.95);
-      border:1px solid rgba(0,0,0,0.10);
-      box-shadow: 0 12px 26px rgba(0,0,0,0.18), 0 0 18px rgba(200,162,74,0.22);
-      transition: transform .12s linear, box-shadow .12s linear;
-    }
-
-    /* phase progress ring (overall) */
-    .ring{
-      position:absolute;
-      inset:22px;
-      border-radius:999px;
-      background: conic-gradient(
-        rgba(232,210,138,0.95) 0deg,
-        rgba(200,162,74,0.60) 0deg,
-        rgba(0,0,0,0.06) 0deg
-      );
-      mask: radial-gradient(circle, transparent 67%, #000 68%);
-      -webkit-mask: radial-gradient(circle, transparent 67%, #000 68%);
-      pointer-events:none;
-      opacity: 0.95;
-      filter: saturate(1.05);
+      font-size:12.5px;
+      color: rgba(0,0,0,0.62);
+      line-height:1.35;
     }
 
     .cueLine{
+      margin-top:10px;
       display:flex;
       justify-content:space-between;
       gap:10px;
@@ -550,11 +587,7 @@
     @media (max-width:780px){
       .grid2{ grid-template-columns: 1fr; }
       .brandTitle{ font-size:28px; }
-      .halo{ width: 220px; height:220px; }
-      .core{ inset:50px; }
-      .orbitDot{
-        transform: translate(-50%,-50%) rotate(0deg) translate(86px) rotate(0deg);
-      }
+      .cloud{ width: 220px; height:220px; }
     }
     @media (max-width:520px){
       .wrap{ padding-left:12px; padding-right:12px; }
@@ -562,6 +595,7 @@
       .brandTitle{ font-size:26px; }
       .pageTitle{ font-size:13px; padding:9px 10px; }
       .btn{ padding:9px 12px; }
+      .lineRow{ grid-template-columns: 80px 1fr 40px; }
     }
   </style>
 </head>
@@ -588,22 +622,20 @@
 
   <div class="wrap">
 
-    <!-- HEADER / VALUE -->
+    <!-- HEADER -->
     <div class="card">
-      <div class="pill">Reset adattivo • guida gentile • respiro personalizzato</div>
+      <div class="pill">Reset adattivo • parole che ti accompagnano • respiro personalizzato</div>
       <div class="goldLine"></div>
 
       <h1 class="brandTitle">Area Membri</h1>
       <p class="sub">
-        Benvenuta. Qui non devi “fare tutto bene”: devi solo tornare un po’ a te.
+        Benvenuta. Qui non devi “fare tutto bene”: devi solo ritrovare un po’ di spazio dentro di te.
         <br><br>
-        Questo Reset cambia in base a <strong>stress</strong> ed <strong>energia</strong>: ti accompagna con parole semplici,
-        con un tono vicino e umano, e ti aiuta a fare tre cose in pochi minuti:
-        <strong>calmare il corpo</strong>, <strong>mettere ordine nella testa</strong>, <strong>scegliere un passo piccolo ma reale</strong>.
+        Questo Reset cambia in base a <strong>stress</strong> ed <strong>energia</strong>. Ti guida con un tono vicino e umano,
+        e ti aiuta a fare tre cose in pochi minuti: <strong>calmare</strong>, <strong>mettere ordine</strong>, <strong>scegliere un passo possibile</strong>.
         <br><br>
-        <span class="muted">La differenza rispetto alle app gratuite?</span>
-        Non ti propone sempre la stessa cosa. Qui la guida si adatta al tuo momento — e ti porta verso un risultato pratico,
-        anche quando hai poco tempo o poca forza.
+        <span class="muted">Cosa lo rende diverso dalle app gratuite?</span>
+        Non ti dice sempre la stessa cosa. Qui la guida si adatta al tuo momento, con indicazioni brevi ma utili: non “motivazione”, ma direzione.
       </p>
     </div>
 
@@ -620,7 +652,7 @@
 
       <div class="note">
         Riceverai la password <strong>automaticamente</strong> via e-mail dopo l’acquisto.
-        <br>Nota: l’accesso è personale. Se la password viene condivisa pubblicamente, verrà sostituita per tutelare i membri.
+        <br>Nota: l’accesso è personale. Se una password viene condivisa pubblicamente, verrà sostituita per tutelare i membri.
       </div>
     </div>
 
@@ -636,7 +668,7 @@
       <h2 style="margin:0; font-size:20px; font-weight:950;">Il tuo Reset, adesso</h2>
       <p class="sub" style="margin-top:8px;">
         Regola i cursori come ti senti <em>in questo momento</em>. Poi premi <strong>Genera</strong>:
-        ti darò un protocollo breve ma “vivo”, e un respiro guidato con tempi coerenti.
+        ricevi un Reset in 3 passi e un respiro guidato con tempi coerenti.
       </p>
 
       <div class="grid2">
@@ -658,7 +690,7 @@
           </div>
           <input id="energyM" type="range" min="1" max="10" value="5" />
           <p class="muted" style="margin:10px 0 0; font-size:13.3px; line-height:1.45;">
-            Se l’energia è bassa, non ti chiederò “di più”: ti chiederò “il minimo utile”.
+            Se l’energia è bassa, non ti chiederò “di più”: ti chiederò “il minimo che aiuta davvero”.
           </p>
         </div>
       </div>
@@ -693,18 +725,18 @@
         </div>
       </div>
 
-      <!-- NEW IDEA: 10-min goal -->
       <div class="goal">
         <h3>Obiettivo dei prossimi 10 minuti</h3>
         <p id="goalText">—</p>
       </div>
 
+      <!-- RESPIRO -->
       <div class="breathWrap">
         <div class="breathTop">
           <div>
             <p class="breathTitle" style="margin:0;">Respiro guidato</p>
             <div class="muted" style="margin-top:6px; font-size:13px;">
-              Un ritmo semplice, chiaro e facile da seguire.
+              Scegli lo stile che ti è più naturale: <strong>Linee</strong> o <strong>Nuvola</strong>.
             </div>
           </div>
           <div style="display:flex; gap:12px; align-items:baseline; flex-wrap:wrap; justify-content:flex-end;">
@@ -714,22 +746,43 @@
         </div>
 
         <div class="breathPlan" id="breathPlan">—</div>
-
         <div class="progress"><div id="progressBar"></div></div>
 
-        <!-- Halo-Orbit Circle -->
-        <div class="haloWrap">
-          <div class="halo" aria-label="Guida visiva del respiro">
-            <div class="ring" id="phaseRing"></div>
-            <div class="orbit">
-              <div class="orbitDot" id="orbitDot"></div>
-            </div>
+        <div class="modeRow">
+          <div class="modeBtns">
+            <button class="modeBtn active" id="modeLinesBtn" type="button">Guida: Linee</button>
+            <button class="modeBtn" id="modeCloudBtn" type="button">Guida: Nuvola</button>
+          </div>
+          <div class="pill" id="modePill">Linee</div>
+        </div>
 
-            <div class="core" id="core">
-              <div class="coreText">
-                <div class="corePhase" id="corePhase">Pronta</div>
-                <div class="coreCount" id="coreCount">—</div>
-                <div class="coreHint" id="coreHint">Quando vuoi, iniziamo insieme.</div>
+        <!-- MODE 1: LINEE -->
+        <div class="linesWrap" id="linesWrap">
+          <div class="lineRow">
+            <div class="lineLabel">Inspira</div>
+            <div class="lineBar"><div class="lineFill" id="inFill"></div></div>
+            <div class="lineSec" id="inSec">—</div>
+          </div>
+          <div class="lineRow">
+            <div class="lineLabel">Espira</div>
+            <div class="lineBar"><div class="lineFill" id="outFill"></div></div>
+            <div class="lineSec" id="outSec">—</div>
+          </div>
+          <div class="linesHint" id="linesHint">
+            Segui la barra: quando si riempie, inspiri. Quando lavora l’altra, lasci uscire l’aria.
+          </div>
+        </div>
+
+        <!-- MODE 2: NUVOLA -->
+        <div class="cloudWrap" id="cloudWrap">
+          <div class="cloud" aria-label="Guida visiva del respiro">
+            <div class="cloudFill" id="cloudFill"></div>
+            <div class="cloudSheen"></div>
+            <div class="cloudText">
+              <div class="cloudTextInner">
+                <div class="cloudPhase" id="cloudPhase">Pronta</div>
+                <div class="cloudCount" id="cloudCount">—</div>
+                <div class="cloudHint" id="cloudHint">Quando vuoi, iniziamo insieme.</div>
               </div>
             </div>
           </div>
@@ -834,32 +887,31 @@
     return "basso";
   }
 
-  // Nota: frasi più “umane”, meno protocollo, più guida empatica.
   const PREMIUM_MAP = {
     "alto|basso": {
       label: "Tanta tensione, poca energia",
       title: "Prima sicurezza, poi il resto",
-      summary: "Oggi non devi dimostrare niente. Ti accompagno a rallentare, a sentirti più al sicuro e a scegliere un passo piccolo, possibile.",
+      summary: "Oggi non devi dimostrare niente. Ti accompagno a rallentare, a sentirti più stabile e a scegliere un passo piccolo, possibile.",
       phase1: [
-        "Facciamo una cosa semplice: trova una posizione comoda. Appoggia bene i piedi e lascia uscire l’aria lentamente. Non serve “fare bene”: basta esserci.",
-        "Metti una mano sul petto e una sull’addome. Sentile calde. Poi fai un’espirazione un po’ più lunga del solito: è come dire al corpo “va tutto ok, adesso”.",
-        "Sciogli appena la mandibola e le spalle. Se noti tensione, non combatterla: riconoscila e lasciala ammorbidire di un millimetro."
+        "Trova una posizione comoda. Appoggia bene i piedi. Fai uscire l’aria lentamente… e poi ricomincia. È già un buon inizio.",
+        "Metti una mano sul petto e una sull’addome. Sentile. Poi lascia uscire l’aria un po’ più a lungo: come dire al corpo “adesso può andare bene”.",
+        "Se noti tensione, non combatterla. Dille solo: “ti ho vista”. E prova a sciogliere un millimetro."
       ],
       phase2: [
-        "Adesso scegliamo chiarezza: cosa ti aiuterebbe a stare solo un 10% meglio? Non di più. Solo un piccolo miglioramento.",
-        "Se la mente corre, facciamo ordine con una frase: “In questo momento mi serve…” e completa. Una sola cosa.",
+        "Scegliamo chiarezza: cosa ti aiuterebbe a stare solo un 10% meglio? Non di più. Solo un piccolo miglioramento.",
+        "Se la mente corre, scrivi una frase: “In questo momento mi serve…” e completa. Una cosa sola.",
         "Se senti confusione, è normale. Torna al respiro e scegli la priorità più gentile verso di te."
       ],
       phase3: [
-        "Scegli un gesto piccolo ma reale (2–3 minuti): bere acqua, aprire una finestra, mettere in ordine un punto. Piccolo, ma vero: il corpo ama la concretezza.",
-        "Metti un confine gentile: una cosa che oggi puoi rimandare, senza colpa. Proteggere energia è anche cura.",
+        "Scegli un gesto piccolo ma reale (2–3 minuti): acqua, aria, ordine visivo. Piccolo, ma vero: il corpo ama la concretezza.",
+        "Metti un confine gentile: una cosa che oggi puoi rimandare, senza colpa. Proteggere energia è cura.",
         "Quando hai fatto, chiudi con una frase semplice: “Va bene così”. Non è resa: è regolazione."
       ],
-      breath: { inhale:4, exhale:7, minutes:3, cueL:"Espira lunga = più calma", cueR:"Lascia che il corpo si fidi" },
+      breath: { inhale:4, exhale:7, minutes:3, cueL:"Espira lunga = più calma", cueR:"Non forzare: lascia che succeda" },
       goal: [
-        "Metti un timer di 10 minuti e fai solo la cosa più piccola che ti alleggerisce: un gesto concreto, poi ti fermi.",
-        "Scegli un solo compito micro. In 10 minuti fai l’inizio, non la perfezione. Poi pausa.",
-        "In 10 minuti: acqua + ordine visivo (un cassetto / una scrivania). Poco, ma ti rimette in carreggiata."
+        "Metti un timer di 10 minuti e fai solo una cosa che ti alleggerisce un po’. Poi ti fermi.",
+        "Scegli un compito micro. In 10 minuti fai l’inizio, non la perfezione. Poi pausa.",
+        "In 10 minuti: acqua + ordine visivo (un punto solo). Poco, ma ti rimette in carreggiata."
       ]
     },
 
@@ -868,36 +920,36 @@
       title: "Scarico dolce → chiarezza",
       summary: "Hai abbastanza energia per ripartire, ma prima abbassiamo un po’ il volume. Poi scegliamo una direzione semplice.",
       phase1: [
-        "Per un minuto muovi il corpo in modo leggero (cammina, scuoti le braccia). Poi fermati. Il contrasto spesso resetta più di mille pensieri.",
-        "Fai un’espirazione lenta, come se spegnessi una candela senza fretta. Il corpo capisce il messaggio.",
-        "Senti le spalle: non devono “crollare”, solo diventare meno dure. Anche un 5% è già tanto."
+        "Per un minuto muovi il corpo in modo leggero (due passi, scuoti le braccia). Poi fermati. Spesso basta questo per cambiare marcia.",
+        "Fai un’espirazione lenta, come se spegnessi una candela senza fretta. Il corpo capisce al volo.",
+        "Senti spalle e mandibola: non devi ‘sistemare tutto’. Solo togliere un po’ di tensione."
       ],
       phase2: [
-        "Scegli un obiettivo realistico per oggi (uno). Se ne scegli tre, non è forza: è sovraccarico.",
-        "Scrivi una frase: “La cosa più importante adesso è…” e completa. Poi basta.",
+        "Scegli un obiettivo realistico per oggi (uno). Se ne scegli tre, diventa sovraccarico.",
+        "Scrivi: “La cosa più importante adesso è…” e completa. Poi basta.",
         "Se senti irritazione, riduci stimoli prima di decidere: ti aiuta a scegliere meglio."
       ],
       phase3: [
         "Timer 10 minuti: fai solo l’inizio. L’inizio è più potente della motivazione.",
         "Dai un “no” a una distrazione sola. Un solo “no” ti restituisce spazio.",
-        "Chiudi con 3 respiri lenti: così non resti “su di giri” dopo lo sforzo."
+        "Concludi con tre respiri tranquilli: è il tuo modo di dire al corpo “possiamo rallentare”."
       ],
       breath: { inhale:4, exhale:6, minutes:4, cueL:"Rallenta il volume", cueR:"Chiarezza dopo calma" },
       goal: [
         "In 10 minuti: fai l’inizio del compito più importante. Solo l’inizio. Poi pausa breve.",
-        "Scegli una cosa da chiudere in piccolo: un’email, una prenotazione, un passo operativo.",
+        "Scegli una cosa da chiudere in piccolo: un passo operativo concreto.",
         "Metti tutto su “modalità semplice”: una sola priorità, 10 minuti di focus, stop."
       ]
     },
 
     "alto|alto": {
       label: "Attivazione alta",
-      title: "Usa l’energia senza bruciarti",
-      summary: "C’è spinta. Bene. La rendiamo intelligente: una direzione e un limite, così resta tua e non ti consuma.",
+      title: "Usa l’energia senza consumarti",
+      summary: "C’è spinta. Bene. La rendiamo intelligente: una direzione e un limite, così resta tua e non ti brucia.",
       phase1: [
-        "Fermati 10 secondi. Sì, proprio ora. Un’espirazione lunga e poi riparti: è come mettere una mano sul volante.",
-        "Scegli un ritmo all’80%. Non devi andare al massimo per valere: il massimo spesso è solo stress travestito.",
-        "Senti mani e spalle: morbide. Energia non significa tensione."
+        "Fermati 10 secondi. Un’espirazione lunga. Poi riparti: è come rimettere le mani sul volante.",
+        "Scegli un ritmo sostenibile (non ‘al massimo’). Il massimo spesso è stress travestito.",
+        "Energia non significa rigidità: controlla spalle e mandibola e toglie un po’ di tensione."
       ],
       phase2: [
         "Decidi una direzione sola: cosa vuoi portare avanti oggi, davvero?",
@@ -912,18 +964,18 @@
       breath: { inhale:4, exhale:6, minutes:3, cueL:"Energia sì, fretta no", cueR:"Limite = stabilità" },
       goal: [
         "In 10 minuti: chiudi un micro-risultato concreto (una cosa finita). Poi stop.",
-        "Scegli un compito “a alto impatto” e fai solo il pezzo più importante.",
-        "Fai 10 minuti con ritmo sostenibile (80%). Finisci prima di stancarti."
+        "Scegli un compito ad alto impatto e fai solo il pezzo più importante.",
+        "Fai 10 minuti con un ritmo sostenibile. Finisci prima di stancarti."
       ]
     },
 
     "medio|basso": {
       label: "Stress medio, energia bassa",
       title: "Gentilezza e un passo possibile",
-      summary: "Oggi non serve “spingere”. Serve rientrare in contatto e fare il minimo che ti aiuta davvero.",
+      summary: "Oggi non serve ‘spingere’. Serve rientrare in contatto e fare il minimo che ti aiuta davvero.",
       phase1: [
-        "Fai due respiri un po’ più lenti e senti il corpo appoggiato. Come se dicessi: “Ok, ci sono”.",
-        "Una cosa piccola: un sorso d’acqua, una mano sul petto, uno sguardo morbido. Non è banalità: è regolazione.",
+        "Fai due respiri un po’ più lenti e senti il corpo appoggiato. Come dire: “Ok, ci sono”.",
+        "Una cosa piccola: un sorso d’acqua, una mano sul petto, uno sguardo rilassato. Non è banalità: è regolazione.",
         "Se ti senti stanca, non è colpa tua. Trattati come tratteresti una persona che ami."
       ],
       phase2: [
@@ -949,7 +1001,7 @@
       title: "Reset e struttura leggera",
       summary: "Sei nel mezzo: perfetto per fare ordine senza rigidità. Un passo alla volta, con calma.",
       phase1: [
-        "Senti la schiena un po’ più lunga e lascia uscire l’aria lentamente. È un reset molto più potente di quanto sembri.",
+        "Allunga un po’ la schiena e lascia uscire l’aria lentamente. È un reset più potente di quanto sembri.",
         "Fai un micro-movimento del collo (lento). Poi torna al respiro.",
         "Concediti cinque respiri regolari. Niente di speciale: solo presenza."
       ],
@@ -974,11 +1026,11 @@
     "medio|alto": {
       label: "Stress medio, energia alta",
       title: "Energia focalizzata",
-      summary: "Hai energia: bellissimo. La rendiamo chiara e sostenibile: direzione, azione breve, poi micro-recupero.",
+      summary: "Hai energia: bellissimo. La rendiamo chiara e sostenibile: direzione, azione breve, poi pausa.",
       phase1: [
         "Un respiro lungo. Poi parti. È come mettere una bussola prima del movimento.",
-        "Senti il corpo: energia non deve essere tensione. Ammorbidisci spalle e mascella.",
-        "Parti con ritmo buono, non con urgenza."
+        "Controlla il corpo: energia non deve diventare tensione. Se serve, sciogli un po’ spalle e mandibola.",
+        "Inizia con un passo sostenibile, senza fretta."
       ],
       phase2: [
         "Decidi un obiettivo solo e un criterio semplice di successo (tipo: “faccio l’inizio / chiudo un pezzo”).",
@@ -986,14 +1038,14 @@
         "Scrivi una frase: “Ora faccio…” e completa. Poi fallo."
       ],
       phase3: [
-        "Blocchi 10+2: dieci minuti di azione, due minuti di respiro/pausa. Ripeti se vuoi.",
+        "Blocchi 10+2: dieci minuti di azione, due minuti di pausa. Ripeti se vuoi.",
         "Chiudi un micro-risultato prima di passare oltre. Il cervello ama le chiusure.",
-        "Poi tre respiri lenti: così l’energia resta tua."
+        "Concludi con tre respiri tranquilli: così esci dal ‘fare’ e torni presente."
       ],
-      breath: { inhale:4, exhale:6, minutes:3, cueL:"Energia focalizzata", cueR:"Micro-recupero" },
+      breath: { inhale:4, exhale:6, minutes:3, cueL:"Energia focalizzata", cueR:"Pausa breve, ma vera" },
       goal: [
         "In 10 minuti: fai un blocco secco sulla tua priorità. Poi 2 minuti di pausa.",
-        "Chiudi un micro-risultato oggi: qualcosa di finito, anche piccolo.",
+        "Chiudi un micro-risultato: qualcosa di finito, anche piccolo.",
         "Fai 10 minuti di focus “pulito” (una sola cosa)."
       ]
     },
@@ -1003,23 +1055,23 @@
       title: "Riaccensione gentile",
       summary: "Non serve sforzarti. Serve una scintilla piccola e possibile: corpo, respiro, un gesto.",
       phase1: [
-        "Alzati un attimo, se puoi. Anche solo 30–60 secondi. Il corpo aiuta la mente più di quanto immagini.",
-        "Fai un respiro un po’ più profondo e poi lascia uscire l’aria. Senza fretta.",
-        "Senti il viso e le mani: portare attenzione qui è già una forma di presenza."
+        "Se puoi, alzati un attimo. Anche 30–60 secondi. Il corpo spesso aiuta la mente più delle parole.",
+        "Fai un respiro un po’ più profondo e poi lascia uscire l’aria lentamente. Senza fretta.",
+        "Senti mani e viso: portare attenzione qui è già una forma di presenza."
       ],
       phase2: [
-        "Chiediti: qual è la cosa più piccola che posso iniziare? Piccola davvero.",
-        "Scegli un compito da 2 minuti. Iniziare riaccende energia.",
+        "Qual è la cosa più piccola che puoi iniziare? Piccola davvero.",
+        "Scegli un compito da 2 minuti. Iniziare spesso riaccende energia.",
         "Non pensare “tutto”. Pensa “uno”. Un passo."
       ],
       phase3: [
         "Fai 2 minuti e poi stop. Lascia un ‘gancio’ per riprendere facile.",
         "Prepara l’ambiente: togli un ostacolo. Un solo ostacolo.",
-        "Chiudi con una frase morbida: “Va bene così, sto ripartendo”."
+        "Chiudi con una frase gentile: “Va bene così, sto ripartendo”."
       ],
       breath: { inhale:4, exhale:4, minutes:2, cueL:"Semplice", cueR:"Gentile" },
       goal: [
-        "In 10 minuti: fai 2 minuti di azione + 1 minuto di pausa. Ripeti 3 volte.",
+        "In 10 minuti: 2 minuti di azione + 1 minuto di pausa. Ripeti 3 volte.",
         "Scegli un compito minuscolo e inizia. Poi stop.",
         "Ordine minimo: sistema un punto e lascia tutto il resto."
       ]
@@ -1030,8 +1082,8 @@
       title: "Stabile e chiaro",
       summary: "Sei in una zona buona. Manteniamo calma e trasformiamola in un progresso semplice.",
       phase1: [
-        "Fai 6 respiri regolari. Lascia che l’espirazione sia leggermente più lunga.",
-        "Rilassa la mandibola: spesso è la prima a irrigidirsi senza che ce ne accorgiamo.",
+        "Fai 6 respiri regolari. Lascia che l’espirazione sia appena più lunga.",
+        "Rilassa la mandibola: spesso è la prima a irrigidirsi senza accorgercene.",
         "Senti il corpo stabile. È una base ottima per decidere bene."
       ],
       phase2: [
@@ -1057,9 +1109,9 @@
       title: "Slancio senza fretta",
       summary: "Energia pulita: la usi per creare. Mettiamo un limite gentile così domani ne hai ancora.",
       phase1: [
-        "Un respiro lungo e morbido. Poi parti con ritmo buono (non urgente).",
-        "Senti le spalle leggere: energia non significa durezza.",
-        "Fai spazio: un gesto lento prima di un’azione veloce."
+        "Un respiro lungo e tranquillo. Poi parti senza fretta.",
+        "Controlla spalle e mandibola: energia non deve diventare durezza.",
+        "Fai spazio prima dell’azione: anche solo dieci secondi."
       ],
       phase2: [
         "Decidi cosa vuoi creare/chiudere oggi in 20 minuti (una cosa).",
@@ -1068,7 +1120,7 @@
       ],
       phase3: [
         "Fai 10–20 minuti di focus. Poi pausa vera.",
-        "Chiudi con 3 respiri lenti: integri e resti calma.",
+        "Chiudi con tre respiri tranquilli: così non resti ‘accelera-ta’ anche dopo.",
         "Nota una cosa che funziona. Rinforza fiducia."
       ],
       breath: { inhale:4, exhale:6, minutes:2, cueL:"Energia pulita", cueR:"Limite gentile" },
@@ -1085,25 +1137,17 @@
     const e = band(energy);
     return PREMIUM_MAP[`${s}|${e}`] || PREMIUM_MAP["medio|medio"];
   }
-
-  function pick1(arr){
-    return arr[Math.floor(Math.random() * arr.length)];
-  }
+  function pick1(arr){ return arr[Math.floor(Math.random() * arr.length)]; }
 
   // =========================
-  // SUONO (opzionale) - tick a cambio fase
+  // SUONO (opzionale)
   // =========================
   let soundOn = false;
   const soundToggle = document.getElementById("soundToggle");
   const soundSwitch = document.getElementById("soundSwitch");
 
-  function setSoundUI(){
-    soundSwitch.classList.toggle("on", soundOn);
-  }
-  soundToggle.addEventListener("click", ()=>{
-    soundOn = !soundOn;
-    setSoundUI();
-  });
+  function setSoundUI(){ soundSwitch.classList.toggle("on", soundOn); }
+  soundToggle.addEventListener("click", ()=>{ soundOn = !soundOn; setSoundUI(); });
   setSoundUI();
 
   function softBeep(){
@@ -1124,7 +1168,38 @@
   }
 
   // =========================
-  // RESPIRO GUIDATO (Halo-Orbit)
+  // MODALITÀ GUIDA RESPIRO
+  // =========================
+  const modeLinesBtn = document.getElementById("modeLinesBtn");
+  const modeCloudBtn = document.getElementById("modeCloudBtn");
+  const modePill = document.getElementById("modePill");
+  const linesWrap = document.getElementById("linesWrap");
+  const cloudWrap = document.getElementById("cloudWrap");
+
+  let breathMode = localStorage.getItem("panacea_breath_mode_it") || "lines"; // lines | cloud
+
+  function setModeUI(){
+    const isLines = breathMode === "lines";
+    modeLinesBtn.classList.toggle("active", isLines);
+    modeCloudBtn.classList.toggle("active", !isLines);
+    linesWrap.style.display = isLines ? "block" : "none";
+    cloudWrap.style.display = isLines ? "none" : "grid";
+    modePill.textContent = isLines ? "Linee" : "Nuvola";
+  }
+
+  modeLinesBtn.addEventListener("click", ()=>{
+    breathMode = "lines";
+    localStorage.setItem("panacea_breath_mode_it", breathMode);
+    setModeUI();
+  });
+  modeCloudBtn.addEventListener("click", ()=>{
+    breathMode = "cloud";
+    localStorage.setItem("panacea_breath_mode_it", breathMode);
+    setModeUI();
+  });
+
+  // =========================
+  // RESPIRO GUIDATO (motore unico + due visual)
   // =========================
   let breathInterval = null;
   let breathRunning = false;
@@ -1143,24 +1218,24 @@
   const cueLeft = document.getElementById("cueLeft");
   const cueRight = document.getElementById("cueRight");
 
-  const core = document.getElementById("core");
-  const corePhase = document.getElementById("corePhase");
-  const coreCount = document.getElementById("coreCount");
-  const coreHint  = document.getElementById("coreHint");
-  const orbitDot  = document.getElementById("orbitDot");
-  const phaseRing = document.getElementById("phaseRing");
+  // Lines
+  const inFill = document.getElementById("inFill");
+  const outFill = document.getElementById("outFill");
+  const inSec = document.getElementById("inSec");
+  const outSec = document.getElementById("outSec");
+  const linesHint = document.getElementById("linesHint");
+
+  // Cloud
+  const cloudFill = document.getElementById("cloudFill");
+  const cloudPhase = document.getElementById("cloudPhase");
+  const cloudCount = document.getElementById("cloudCount");
+  const cloudHint  = document.getElementById("cloudHint");
 
   function fmt(sec){
     sec = Math.max(0, Math.floor(sec));
     const m = String(Math.floor(sec/60)).padStart(2,"0");
     const s = String(sec%60).padStart(2,"0");
     return `${m}:${s}`;
-  }
-
-  function ringConic(deg){
-    // ring: first segment gold, rest light gray
-    const d = Math.max(0, Math.min(360, deg));
-    return `conic-gradient(rgba(232,210,138,0.95) 0deg, rgba(200,162,74,0.65) ${d}deg, rgba(0,0,0,0.06) ${d}deg)`;
   }
 
   function setBreathPlan(newPlan){
@@ -1175,39 +1250,55 @@
     breathTimerEl.textContent = fmt(plan.minutes * 60);
     progressBarEl.style.width = "0%";
 
-    phaseRing.style.background = ringConic(0);
-    core.style.transform = "scale(1)";
-    corePhase.textContent = "Pronta";
-    coreCount.textContent = "—";
-    coreHint.textContent = "Quando vuoi, iniziamo insieme.";
-    orbitDot.style.transform = "translate(-50%,-50%) rotate(0deg) translate(95px) rotate(0deg)";
+    // reset visuals
+    inFill.style.width = "0%";
+    outFill.style.width = "0%";
+    inSec.textContent = "—";
+    outSec.textContent = "—";
+    linesHint.textContent = "Segui la barra: inspiri quando si riempie “Inspira”, lasci uscire l’aria quando lavora “Espira”.";
+
+    cloudFill.style.height = "0%";
+    cloudPhase.textContent = "Pronta";
+    cloudCount.textContent = "—";
+    cloudHint.textContent = "Quando vuoi, iniziamo insieme.";
+
     breathStateEl.textContent = "Pronta";
   }
 
   function renderBreathUI(){
+    // ready
     if(!breathRunning && phase === "pronta"){
       breathStateEl.textContent = "Pronta";
       breathTimerEl.textContent = fmt(plan.minutes*60);
       progressBarEl.style.width = "0%";
-      phaseRing.style.background = ringConic(0);
-      core.style.transform = "scale(1)";
-      corePhase.textContent = "Pronta";
-      coreCount.textContent = "—";
-      coreHint.textContent = "Quando vuoi, iniziamo insieme.";
-      orbitDot.style.transform = "translate(-50%,-50%) rotate(0deg) translate(95px) rotate(0deg)";
+
+      inFill.style.width = "0%";
+      outFill.style.width = "0%";
+      inSec.textContent = "—";
+      outSec.textContent = "—";
+
+      cloudFill.style.height = "0%";
+      cloudPhase.textContent = "Pronta";
+      cloudCount.textContent = "—";
+      cloudHint.textContent = "Quando vuoi, iniziamo insieme.";
       return;
     }
 
+    // done
     if(phase === "fine"){
       breathStateEl.textContent = "Finito ✅";
       breathTimerEl.textContent = "00:00";
       progressBarEl.style.width = "100%";
-      phaseRing.style.background = ringConic(360);
-      core.style.transform = "scale(1)";
-      corePhase.textContent = "Finito";
-      coreCount.textContent = "✓";
-      coreHint.textContent = "Brava. Anche pochi minuti contano davvero.";
-      orbitDot.style.transform = "translate(-50%,-50%) rotate(360deg) translate(95px) rotate(-360deg)";
+
+      inFill.style.width = "0%";
+      outFill.style.width = "0%";
+      inSec.textContent = "✓";
+      outSec.textContent = "✓";
+
+      cloudFill.style.height = "0%";
+      cloudPhase.textContent = "Finito";
+      cloudCount.textContent = "✓";
+      cloudHint.textContent = "Brava. Anche pochi minuti contano davvero.";
       return;
     }
 
@@ -1215,40 +1306,46 @@
     const done = totalStart - totalRemaining;
     const pctAll = totalStart > 0 ? Math.min(100, Math.max(0, (done/totalStart)*100)) : 0;
     progressBarEl.style.width = pctAll.toFixed(1) + "%";
-
-    // overall ring
-    const ringDeg = (pctAll/100) * 360;
-    phaseRing.style.background = ringConic(ringDeg);
-
     breathTimerEl.textContent = fmt(totalRemaining);
 
-    // phase progress within current phase
+    // phase progress
     if(phase === "inspira"){
       const p = 1 - (phaseRemaining / plan.inhale); // 0..1
       const sec = phaseRemaining;
+
       breathStateEl.textContent = `Inspira (${sec}s)`;
-      corePhase.textContent = "Inspira";
-      coreCount.textContent = String(sec);
-      coreHint.textContent = "Lascia entrare l’aria… senza fretta.";
-      // expand core smoothly
-      const scale = 1 + (0.10 * p);
-      core.style.transform = `scale(${scale.toFixed(3)})`;
-      // orbit dot moves along circle (phase arc)
-      const angle = 20 + (p * 160); // visual arc for inhale
-      orbitDot.style.transform = `translate(-50%,-50%) rotate(${angle}deg) translate(95px) rotate(-${angle}deg)`;
+
+      // Lines
+      inFill.style.width = (p*100).toFixed(0) + "%";
+      outFill.style.width = "0%";
+      inSec.textContent = `${sec}s`;
+      outSec.textContent = "—";
+      linesHint.textContent = "Inspira: lascia entrare l’aria, senza forzare. Il petto si apre da solo, piano piano.";
+
+      // Cloud (fill rises)
+      cloudPhase.textContent = "Inspira";
+      cloudCount.textContent = String(sec);
+      cloudHint.textContent = "Lascia entrare l’aria… con calma.";
+      cloudFill.style.height = (10 + p*80).toFixed(0) + "%"; // 10%..90%
+
     } else {
       const p = 1 - (phaseRemaining / plan.exhale); // 0..1
       const sec = phaseRemaining;
+
       breathStateEl.textContent = `Espira (${sec}s)`;
-      corePhase.textContent = "Espira";
-      coreCount.textContent = String(sec);
-      coreHint.textContent = "Lascia uscire… e ammorbidisci.";
-      // contract core smoothly
-      const scale = 1.10 - (0.10 * p);
-      core.style.transform = `scale(${scale.toFixed(3)})`;
-      // orbit dot moves along different arc
-      const angle = 200 + (p * 160);
-      orbitDot.style.transform = `translate(-50%,-50%) rotate(${angle}deg) translate(95px) rotate(-${angle}deg)`;
+
+      // Lines
+      outFill.style.width = (p*100).toFixed(0) + "%";
+      inFill.style.width = "0%";
+      outSec.textContent = `${sec}s`;
+      inSec.textContent = "—";
+      linesHint.textContent = "Espira: lascia uscire l’aria lentamente, come se svuotassi i polmoni senza fretta.";
+
+      // Cloud (fill falls)
+      cloudPhase.textContent = "Espira";
+      cloudCount.textContent = String(sec);
+      cloudHint.textContent = "Lascia uscire l’aria… lunga e lenta.";
+      cloudFill.style.height = (90 - p*80).toFixed(0) + "%"; // 90%..10%
     }
   }
 
@@ -1342,15 +1439,12 @@
     mTitle.textContent = data.title;
     mSummary.textContent = data.summary;
 
-    // 3 frasi empatiche, ma operative
     mText1.textContent = pick1(data.phase1);
     mText2.textContent = pick1(data.phase2);
     mText3.textContent = pick1(data.phase3);
 
-    // 10-min goal “innovativo”
     goalText.textContent = pick1(data.goal || ["In 10 minuti: scegli un passo piccolo e fai solo quello. Poi pausa."]);
 
-    // Piano respiro personalizzato
     setBreathPlan(data.breath);
 
     try{
@@ -1363,6 +1457,7 @@
   // =========================
   // INIT
   // =========================
+  setModeUI();
   setAccessUI();
   syncSliderLabels();
 
