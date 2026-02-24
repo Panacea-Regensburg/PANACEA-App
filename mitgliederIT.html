@@ -4,113 +4,304 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Area Membri – Panacea</title>
+
   <style>
-    body{
-      margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      background: #0b0b0b;
-      color:#111;
+    :root{
+      --bg:#0b0b0b;
+      --card:rgba(255,255,255,0.86);
+      --card2:rgba(255,255,255,0.76);
+      --text:#111;
+      --muted:rgba(0,0,0,0.72);
+      --gold:#d7b55b;
+      --gold2:#e8d28a;
+      --shadow:0 10px 35px rgba(0,0,0,0.18);
+      --shadow2:0 8px 20px rgba(0,0,0,0.10);
+      --radius:22px;
+      --radius2:18px;
     }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background: var(--bg);
+      color: var(--text);
+    }
+
     .bg{
       min-height:100vh;
       display:flex;
       justify-content:center;
-      padding:40px 16px;
+      padding:84px 16px 40px; /* spazio per topbar fissa */
       background: url("./icons/background.jpg") center/cover no-repeat fixed;
     }
+
     .card{
       width:min(900px, 100%);
-      background: rgba(255,255,255,0.86);
+      background: var(--card);
       backdrop-filter: blur(12px);
-      border-radius: 22px;
-      box-shadow: 0 10px 35px rgba(0,0,0,0.18);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
       padding: 26px;
+      border:1px solid rgba(255,255,255,0.35);
     }
-    .topbar{
-      display:flex; align-items:center; gap:10px; margin-bottom:16px;
+
+    /* TOPBAR FIXED: Home sinistra | DE/IT centro | Titolo destra */
+    .fixedTopbar{
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      z-index:9999;
+      padding:10px 10px;
+      background: rgba(255,255,255,0.55);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.35);
     }
-    .back{
+    .fixedTopbarInner{
+      max-width: 920px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns: 1fr auto 1fr; /* sinistra | centro | destra */
+      align-items:center;
+      gap:10px;
+    }
+
+    .navLeft{
+      display:flex;
+      justify-content:flex-start;
+      align-items:center;
+      min-width:0;
+    }
+    .navCenter{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:8px;
+      min-width:0;
+    }
+    .navRight{
+      display:flex;
+      justify-content:flex-end;
+      align-items:center;
+      min-width:0;
+    }
+
+    .btn{
       text-decoration:none;
-      display:inline-block;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
       padding:10px 14px;
       border-radius: 14px;
-      background: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.82);
       color:#111;
-      font-weight:600;
+      font-weight:800;
+      border:1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+      cursor:pointer;
+      user-select:none;
+      white-space:nowrap;
     }
+    .btn:active{ transform: translateY(1px); }
+
+    .btnGold{
+      background: linear-gradient(180deg, rgba(232,210,138,.95), rgba(215,181,91,.92));
+      border:1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 10px 22px rgba(215,181,91,0.22);
+      color:#111;
+    }
+
+    .langBtn{
+      padding:9px 12px;
+      border-radius: 999px;
+      font-weight:900;
+      font-size:13px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(0,0,0,0.08);
+      cursor:pointer;
+      white-space:nowrap;
+    }
+    .langBtn.active{
+      background: rgba(215,181,91,0.28);
+      border-color: rgba(215,181,91,0.55);
+    }
+
+    .pageTitle{
+      font-weight:950;
+      letter-spacing: .2px;
+      font-size: 14px;
+      padding:10px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.62);
+      border:1px solid rgba(0,0,0,0.06);
+      max-width: 100%;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+    }
+
     h1{ margin: 10px 0 6px; font-size: 34px; }
-    .sub{ margin:0 0 18px; opacity:0.85; }
+    .sub{ margin:0 0 18px; opacity:0.88; }
+
     .box{
       margin-top:18px;
       padding:18px;
-      border-radius:18px;
-      background: rgba(255,255,255,0.75);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      border-radius:var(--radius2);
+      background: var(--card2);
+      box-shadow: var(--shadow2);
+      border:1px solid rgba(0,0,0,0.05);
     }
+
     .row{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+
     input{
       padding:12px 14px;
       border-radius:14px;
       border:1px solid rgba(0,0,0,0.12);
-      width: 260px;
+      width: 280px;
+      max-width:100%;
       font-size:16px;
       background:#fff;
+      outline:none;
     }
+    input:focus{
+      border-color: rgba(215,181,91,0.55);
+      box-shadow: 0 0 0 3px rgba(215,181,91,0.20);
+    }
+
     button{
       padding:12px 16px;
       border-radius:14px;
       border:0;
-      font-weight:700;
+      font-weight:950;
       cursor:pointer;
-      background: #d7b55b;
+      background: var(--gold);
       color:#111;
+      white-space:nowrap;
     }
-    .muted{ opacity:0.75; font-size:14px; }
-    .locked{ color:#8a1f1f; font-weight:700; }
-    .ok{ color:#116b2e; font-weight:800; }
-    .hr{ height:1px; background: rgba(0,0,0,0.08); margin:18px 0; }
+
+    .muted{ opacity:0.8; font-size:14px; line-height:1.35; }
+    .locked{ color:#8a1f1f; font-weight:900; }
+    .ok{ color:#116b2e; font-weight:950; }
+    .hr{ height:1px; background: rgba(0,0,0,0.10); margin:18px 0; }
+
+    .rangeRow{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      flex-wrap:wrap;
+      margin:12px 0 8px;
+    }
+    .rangeRow label{
+      min-width:160px;
+      font-weight:900;
+      opacity:.9;
+    }
+    input[type="range"]{
+      width:min(420px, 100%);
+      padding:0;
+      border:0;
+      background:transparent;
+    }
+
+    .miniNote{
+      margin-top:12px;
+      padding:12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.60);
+      border:1px solid rgba(0,0,0,0.06);
+      font-size:13px;
+      line-height:1.35;
+      opacity:.88;
+    }
+
+    .actionsRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      margin-top:12px;
+    }
+
+    @media (max-width:520px){
+      .card{ padding:18px; }
+      h1{ font-size:28px; }
+      .fixedTopbarInner{ gap:8px; }
+      .btn{ padding:9px 12px; border-radius: 13px; }
+      .pageTitle{ font-size:13px; padding:9px 10px; }
+    }
   </style>
 </head>
 
 <body>
+
+  <!-- TOPBAR FISSA -->
+  <div class="fixedTopbar">
+    <div class="fixedTopbarInner">
+      <div class="navLeft">
+        <a class="btn" href="./indexIT.html">← Home</a>
+      </div>
+
+      <div class="navCenter" aria-label="Selettore lingua">
+        <button class="langBtn active" id="btnIT" type="button" onclick="goIT()">IT</button>
+        <button class="langBtn" id="btnDE" type="button" onclick="goDE()">DE</button>
+      </div>
+
+      <div class="navRight">
+        <div class="pageTitle" id="pageTitle">Area Membri · Base</div>
+      </div>
+    </div>
+  </div>
+
   <div class="bg">
     <div class="card">
-      <div class="topbar">
-        <a class="back" href="./indexIT.html">← Home</a>
-      </div>
 
       <h1>Area Membri</h1>
       <p class="sub">Funzioni Premium: 3 impulsi per reset + guida respiratoria automatica.</p>
 
-      <div class="box">
+      <!-- UNLOCK -->
+      <div class="box" id="unlockBox">
         <div class="row">
-          <input id="codeInput" placeholder="Inserisci codice membri" />
-          <button id="unlockBtn">Sblocca</button>
+          <input id="codeInput" placeholder="Inserisci password (copia e incolla)" autocomplete="off" />
+          <button id="unlockBtn" class="btnGold" type="button">Sblocca</button>
           <span id="status" class="locked">Bloccato</span>
         </div>
         <p class="muted" style="margin-top:10px;">
-          Nota: il codice membri viene fornito dopo l’acquisto (ad es. tramite Jimdo).
+          Nota: riceverai la password automaticamente via e-mail dopo l’acquisto.
         </p>
+        <div class="miniNote">
+          L’accesso è personale. In caso di condivisione pubblica, l’accesso verrà disattivato.
+        </div>
       </div>
 
       <div class="hr"></div>
 
+      <!-- PREMIUM -->
       <div id="premiumArea" class="box" style="display:none;">
         <h2 style="margin-top:0;">Premium Reset (Membri)</h2>
         <p class="muted" style="margin-top:-6px;">
-          Scegli Stress &amp; Energia. Ricevi 3 possibili impulsi (random) + tempi di respiro adatti.
+          Scegli stress &amp; energia. Ricevi 3 impulsi possibili (random) + tempi di respiro adatti.
         </p>
 
-        <div class="row" style="margin:14px 0 8px;">
-          <label style="min-width:170px;">Stress (1–10)</label>
-          <input id="stressM" type="range" min="1" max="10" value="5" style="width:320px;">
+        <div class="rangeRow">
+          <label>Stress (1–10)</label>
+          <input id="stressM" type="range" min="1" max="10" value="5">
         </div>
 
-        <div class="row" style="margin:6px 0 14px;">
-          <label style="min-width:170px;">Energia (1–10)</label>
-          <input id="energyM" type="range" min="1" max="10" value="5" style="width:320px;">
+        <div class="rangeRow" style="margin-top:4px;">
+          <label>Energia (1–10)</label>
+          <input id="energyM" type="range" min="1" max="10" value="5">
         </div>
 
-        <button id="genM">Il mio Premium Reset</button>
+        <div class="actionsRow">
+          <button id="genM" type="button">Il mio Premium Reset</button>
+          <button id="logoutBtn" type="button" style="background: rgba(255,255,255,0.8); border:1px solid rgba(0,0,0,0.10); font-weight:950;">
+            Logout
+          </button>
+        </div>
 
         <div class="box" style="margin-top:14px;">
           <h3 id="mTitle" style="margin:0 0 8px;"></h3>
@@ -122,42 +313,68 @@
       <p class="muted" style="margin-top:18px;">
         © Panacea Regensburg
       </p>
+
     </div>
   </div>
 
 <script>
-  // --- Simple code unlock (Level 1) ---
-  const MEMBER_CODE = "PANACEA2026"; // (poi sostituire / ruotare)
-  const isMember = () => localStorage.getItem("panacea_member") === "true";
+  // ====== CONFIG ======
+  const BASIS_PASSWORD = "PNC-79xL!qR26-Z";
+  const PREMIUM_KEY = "panacea_member"; // compatibile con la tua app
+
+  const isMember = () => localStorage.getItem(PREMIUM_KEY) === "true";
 
   function setUI() {
     const status = document.getElementById("status");
     const area = document.getElementById("premiumArea");
+    const unlockBox = document.getElementById("unlockBox");
+
     if (isMember()) {
       status.textContent = "Sbloccato ✅";
       status.className = "ok";
       area.style.display = "block";
+      unlockBox.style.display = "none";
     } else {
       status.textContent = "Bloccato";
       status.className = "locked";
       area.style.display = "none";
+      unlockBox.style.display = "block";
     }
   }
 
+  // ====== UNLOCK ======
   document.getElementById("unlockBtn").addEventListener("click", () => {
     const code = document.getElementById("codeInput").value.trim();
-    if (code === MEMBER_CODE) {
-      localStorage.setItem("panacea_member", "true");
+    if (code === BASIS_PASSWORD) {
+      localStorage.setItem(PREMIUM_KEY, "true");
+      document.getElementById("codeInput").value = "";
       alert("Sbloccato ✅");
       setUI();
     } else {
-      alert("Codice errato ❌");
+      alert("Password errata ❌");
     }
   });
 
-  setUI();
+  document.getElementById("codeInput").addEventListener("keydown", (e) => {
+    if (e.key === "Enter") document.getElementById("unlockBtn").click();
+  });
 
-  // --- Premium content (placeholder) ---
+  document.getElementById("logoutBtn").addEventListener("click", () => {
+    localStorage.removeItem(PREMIUM_KEY);
+    setUI();
+  });
+
+  // ====== LANGUAGE SWITCH (senza ricaricare layout / solo cambio pagina) ======
+  function goDE(){
+    // Se hai la versione DE equivalente:
+    window.location.href = "./mitglieder.html";
+  }
+  function goIT(){
+    // Sei già qui:
+    window.location.href = "./mitgliederIT.html";
+  }
+
+  // ====== PREMIUM CONTENT (placeholder) ======
   function level(v){
     v = Number(v);
     if(v >= 7) return "alto";
@@ -165,24 +382,23 @@
     return "basso";
   }
 
-  // TEMP: qui poi mettiamo il JSON avanzato con 3 testi + breathing
   const demo = {
     "alto|basso": { title:"Sicurezza & calma", texts:[
-      "Oggi il tuo sistema nervoso ha bisogno di sicurezza…",
-      "Riduci ritmo e stimoli…",
-      "Meno è meglio: un piccolo passo…"
+      "Oggi il tuo sistema nervoso ha bisogno di sicurezza. Riduci stimoli e scegli il prossimo micro-passo.",
+      "Dai al corpo un segnale chiaro: lento, morbido, sicuro. Poi decidi.",
+      "Oggi meno è meglio. La stabilità nasce dalla ripetizione gentile, non dalla pressione."
     ], breathing:{ inhale:4, exhale:7, minutes:3 }},
 
     "basso|medio": { title:"Stabile & chiaro", texts:[
-      "6 respiri calmi…",
-      "Focus: un passo alla volta…",
-      "Chiarezza: scegli una cosa sola…"
+      "Fai 6 respiri lenti. Poi scegli una sola cosa – e inizia in piccolo.",
+      "La chiarezza arriva quando riduci la complessità: un focus, un passo, adesso.",
+      "Oggi conta la stabilità: raddrizza dolcemente la postura, amplia lo sguardo, rallenta."
     ], breathing:{ inhale:4, exhale:6, minutes:3 }},
 
     "medio|medio": { title:"Reset & struttura", texts:[
-      "Struttura: spalle morbide…",
-      "Pianifica solo i prossimi 30 minuti…",
-      "Ammorbidisci, poi agisci…"
+      "Spalle morbide, mandibola rilassata. Pianifica solo i prossimi 30 minuti, non tutta la giornata.",
+      "La struttura dà sicurezza: un mini piano, poi azione senza perfezionismo.",
+      "Ammorbidisci – e resta chiara: prima regola, poi agisci."
     ], breathing:{ inhale:4, exhale:6, minutes:4 }}
   };
 
@@ -201,8 +417,11 @@
     document.getElementById("mTitle").textContent = data.title;
     document.getElementById("mText").textContent = data.texts[idx];
     document.getElementById("mBreath").textContent =
-      `Respiro: Inspiro ${data.breathing.inhale}s · Espiro ${data.breathing.exhale}s · Durata ${data.breathing.minutes} min`;
+      `Respiro: Inspira ${data.breathing.inhale}s · Espira ${data.breathing.exhale}s · Durata ${data.breathing.minutes} min`;
   });
+
+  // INIT
+  setUI();
 </script>
 
 </body>
