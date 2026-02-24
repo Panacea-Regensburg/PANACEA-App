@@ -7,14 +7,22 @@
 
   <style>
     :root{
-      --bg:#0b0b0b;
+      /* Luxury-minimal palette (beige + gold + charcoal) */
+      --bg1:#f6f1e6;
+      --bg2:#efe7d7;
       --card:rgba(255,255,255,0.86);
-      --card2:rgba(255,255,255,0.76);
-      --text:#111;
-      --muted:rgba(0,0,0,0.72);
-      --gold:#d7b55b;
-      --shadow:0 10px 35px rgba(0,0,0,0.18);
-      --shadow2:0 8px 20px rgba(0,0,0,0.10);
+      --card2:rgba(255,255,255,0.72);
+      --text:#1f1f1f;
+      --muted:#5c5c5c;
+
+      --gold:#c8a24a;
+      --gold2:#e8d28a;
+
+      --ink:#1a1a1a;
+      --line:rgba(0,0,0,0.08);
+
+      --shadow:0 14px 40px rgba(0,0,0,0.10);
+      --shadow2:0 10px 26px rgba(0,0,0,0.10);
       --radius:22px;
       --radius2:18px;
     }
@@ -22,46 +30,26 @@
     *{ box-sizing:border-box; }
     body{
       margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      background: var(--bg);
-      color: var(--text);
-    }
-
-    .bg{
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color:var(--text);
+      background: radial-gradient(1200px 800px at 20% 0%, var(--bg2), var(--bg1));
       min-height:100vh;
-      display:flex;
-      justify-content:center;
-      padding:84px 16px 40px;
-      background: url("./icons/background.jpg") center/cover no-repeat fixed;
     }
 
-    .card{
-      width:min(900px, 100%);
-      background: var(--card);
-      backdrop-filter: blur(12px);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 26px;
-      border:1px solid rgba(255,255,255,0.35);
-    }
-
-    /* TOPBAR FISSA */
+    /* fixed topbar (stabile su qualsiasi telefono) */
     .fixedTopbar{
-      position:fixed;
-      top:0;
-      left:0;
-      right:0;
+      position:fixed; top:0; left:0; right:0;
       z-index:9999;
       padding:10px 10px;
-      background: rgba(255,255,255,0.55);
+      background: rgba(255,255,255,0.58);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(255,255,255,0.35);
     }
     .fixedTopbarInner{
-      max-width: 920px;
+      max-width: 980px;
       margin:0 auto;
       display:grid;
-      grid-template-columns: 1fr auto 1fr;
+      grid-template-columns: 1fr auto 1fr; /* left center right */
       align-items:center;
       gap:10px;
     }
@@ -77,9 +65,9 @@
       justify-content:center;
       gap:8px;
       padding:10px 14px;
-      border-radius: 14px;
+      border-radius: 999px;
       background: rgba(255,255,255,0.82);
-      color:#111;
+      color:var(--ink);
       font-weight:800;
       border:1px solid rgba(0,0,0,0.06);
       box-shadow: 0 6px 16px rgba(0,0,0,0.08);
@@ -88,14 +76,6 @@
       white-space:nowrap;
     }
     .btn:active{ transform: translateY(1px); }
-
-    .btnGold{
-      background: linear-gradient(180deg, rgba(232,210,138,.95), rgba(215,181,91,.92));
-      border:1px solid rgba(0,0,0,0.06);
-      box-shadow: 0 10px 22px rgba(215,181,91,0.22);
-      color:#111;
-      font-weight:950;
-    }
 
     .langBtn{
       padding:9px 12px;
@@ -108,8 +88,9 @@
       white-space:nowrap;
     }
     .langBtn.active{
-      background: rgba(215,181,91,0.28);
-      border-color: rgba(215,181,91,0.55);
+      background: rgba(200,162,74,0.20);
+      border-color: rgba(200,162,74,0.45);
+      box-shadow: 0 10px 22px rgba(200,162,74,0.10);
     }
 
     .pageTitle{
@@ -117,7 +98,7 @@
       letter-spacing: .2px;
       font-size: 14px;
       padding:10px 12px;
-      border-radius: 14px;
+      border-radius: 999px;
       background: rgba(255,255,255,0.62);
       border:1px solid rgba(0,0,0,0.06);
       max-width: 100%;
@@ -126,79 +107,162 @@
       white-space:nowrap;
     }
 
-    h1{ margin: 10px 0 6px; font-size: 34px; }
-    .sub{ margin:0 0 18px; opacity:0.88; }
-
-    .box{
-      margin-top:18px;
-      padding:18px;
-      border-radius:var(--radius2);
-      background: var(--card2);
-      box-shadow: var(--shadow2);
-      border:1px solid rgba(0,0,0,0.05);
+    /* layout */
+    .wrap{
+      max-width: 980px;
+      margin:0 auto;
+      padding:84px 14px 36px; /* topbar space */
     }
 
-    .row{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+    .card{
+      background: var(--card);
+      backdrop-filter: blur(12px);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+      border: 1px solid rgba(200,162,74,0.14);
+    }
+    .card + .card{ margin-top:14px; }
 
-    input{
+    .brandTitle{
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+      margin:0;
+      font-size:32px;
+      letter-spacing:.2px;
+      line-height:1.05;
+    }
+    .sub{
+      margin:10px 0 0;
+      color:var(--muted);
+      line-height:1.35;
+      font-size:14.5px;
+    }
+
+    .goldLine{
+      height:1px;
+      width:100%;
+      margin:14px 0 14px;
+      background: linear-gradient(90deg, transparent, rgba(200,162,74,.55), transparent);
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:900;
+      background: rgba(200,162,74,0.16);
+      border:1px solid rgba(200,162,74,0.28);
+      color:#2a2316;
+    }
+
+    .muted{ color:var(--muted); }
+
+    /* unlock */
+    .row{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+    .input{
       padding:12px 14px;
       border-radius:14px;
       border:1px solid rgba(0,0,0,0.12);
-      width: 280px;
+      width: 320px;
       max-width:100%;
       font-size:16px;
       background:#fff;
       outline:none;
     }
-    input:focus{
-      border-color: rgba(215,181,91,0.55);
-      box-shadow: 0 0 0 3px rgba(215,181,91,0.20);
+    .input:focus{
+      border-color: rgba(200,162,74,0.55);
+      box-shadow: 0 0 0 3px rgba(200,162,74,0.18);
     }
 
-    button{
-      padding:12px 16px;
-      border-radius:14px;
+    .btnGold{
       border:0;
       font-weight:950;
+      padding:12px 16px;
+      border-radius: 14px;
       cursor:pointer;
-      background: var(--gold);
-      color:#111;
+      color:#1f1a10;
+      background: linear-gradient(180deg, rgba(232,210,138,.95), rgba(200,162,74,.92));
+      box-shadow: 0 14px 36px rgba(200,162,74,.18);
       white-space:nowrap;
     }
+    .btnGold:active{ transform: translateY(1px); }
 
-    .muted{ opacity:0.8; font-size:14px; line-height:1.35; }
-    .locked{ color:#8a1f1f; font-weight:900; }
-    .ok{ color:#116b2e; font-weight:950; }
-    .hr{ height:1px; background: rgba(0,0,0,0.10); margin:18px 0; }
+    .statusLocked{ color:#8a1f1f; font-weight:950; }
+    .statusOk{ color:#116b2e; font-weight:950; }
 
-    .rangeRow{
-      display:flex;
-      gap:12px;
-      align-items:center;
-      flex-wrap:wrap;
-      margin:12px 0 8px;
-    }
-    .rangeRow label{
-      min-width:160px;
-      font-weight:900;
-      opacity:.9;
-    }
-    input[type="range"]{
-      width:min(420px, 100%);
-      padding:0;
-      border:0;
-      background:transparent;
-    }
-
-    .miniNote{
+    .note{
       margin-top:12px;
       padding:12px 14px;
       border-radius: 14px;
-      background: rgba(255,255,255,0.60);
+      background: rgba(255,255,255,0.62);
       border:1px solid rgba(0,0,0,0.06);
       font-size:13px;
       line-height:1.35;
-      opacity:.88;
+      color:rgba(0,0,0,0.72);
+    }
+
+    /* sliders */
+    .grid2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      margin-top:12px;
+    }
+    .miniCard{
+      background: var(--card2);
+      border-radius: var(--radius2);
+      padding:14px;
+      border:1px solid rgba(0,0,0,0.06);
+      box-shadow: var(--shadow2);
+    }
+    .labelRow{
+      display:flex;
+      justify-content:space-between;
+      align-items:baseline;
+      gap:10px;
+      margin-bottom:8px;
+    }
+    .labelRow .lbl{
+      font-weight:900;
+      letter-spacing:.1px;
+    }
+    .labelRow .val{
+      font-weight:900;
+      color: rgba(0,0,0,0.70);
+    }
+    input[type="range"]{
+      width:100%;
+      accent-color: var(--gold);
+    }
+
+    /* output */
+    .protoGrid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:12px;
+      margin-top:12px;
+    }
+    .protoBlock{
+      background: rgba(255,255,255,0.78);
+      border-radius: 18px;
+      padding:14px;
+      border:1px solid rgba(0,0,0,0.06);
+      box-shadow: var(--shadow2);
+    }
+    .protoBlock h3{
+      margin:0 0 8px;
+      font-size:15px;
+      font-weight:950;
+      letter-spacing:.2px;
+    }
+    .protoBlock p{
+      margin:0;
+      line-height:1.45;
+      color: rgba(0,0,0,0.78);
+      font-size:14px;
     }
 
     .actionsRow{
@@ -209,78 +273,167 @@
       justify-content:space-between;
       margin-top:12px;
     }
-
-    .pill{
-      display:inline-block;
-      padding:6px 10px;
-      border-radius:999px;
-      font-size:12px;
-      font-weight:900;
-      background: rgba(215,181,91,0.22);
-      border:1px solid rgba(215,181,91,0.35);
-      margin-top:6px;
+    .btnSoft{
+      padding:12px 16px;
+      border-radius:14px;
+      border:1px solid rgba(0,0,0,0.10);
+      background: rgba(255,255,255,0.85);
+      font-weight:950;
+      cursor:pointer;
+      color:#1f1f1f;
     }
+    .btnSoft:active{ transform: translateY(1px); }
 
-    .breathBox{
-      margin-top:14px;
-      border-radius:18px;
+    /* breathing module - elegant ribbon + progress + cues */
+    .breathWrap{
+      margin-top:12px;
       background: rgba(255,255,255,0.78);
+      border-radius: 18px;
       border:1px solid rgba(0,0,0,0.06);
-      padding:14px;
       box-shadow: var(--shadow2);
+      padding:14px;
     }
     .breathTop{
       display:flex;
       justify-content:space-between;
       align-items:center;
-      gap:10px;
+      gap:12px;
       flex-wrap:wrap;
+    }
+    .breathTitle{
+      font-weight:950;
+      font-size:15px;
+      margin:0;
     }
     .breathState{
       font-weight:950;
       font-size:18px;
+      letter-spacing:.2px;
     }
     .breathTimer{
       font-weight:950;
       font-size:16px;
-      opacity:.9;
+      color: rgba(0,0,0,0.72);
     }
+    .breathPlan{
+      margin-top:10px;
+      font-size:13px;
+      line-height:1.35;
+      color: rgba(0,0,0,0.70);
+      padding:10px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.62);
+      border:1px solid rgba(0,0,0,0.06);
+    }
+
+    .progress{
+      margin-top:10px;
+      height:10px;
+      border-radius:999px;
+      background: rgba(0,0,0,0.06);
+      overflow:hidden;
+      border:1px solid rgba(0,0,0,0.06);
+    }
+    .progress > div{
+      height:100%;
+      width:0%;
+      background: linear-gradient(90deg, rgba(200,162,74,.65), rgba(232,210,138,.95));
+      box-shadow: 0 0 18px rgba(200,162,74,.22);
+      border-radius:999px;
+      transition: width .15s linear;
+    }
+
+    .ribbon{
+      margin-top:12px;
+      width:100%;
+      height:120px;
+      border-radius:18px;
+      background: radial-gradient(800px 220px at 50% 0%, rgba(232,210,138,0.22), rgba(255,255,255,0.0)),
+                  linear-gradient(180deg, rgba(255,255,255,0.58), rgba(255,255,255,0.28));
+      border:1px solid rgba(200,162,74,0.14);
+      overflow:hidden;
+      position:relative;
+    }
+    .ribbon svg{ width:100%; height:100%; display:block; }
+    .cue{
+      position:absolute;
+      left:14px; right:14px;
+      bottom:12px;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      font-size:12.5px;
+      color: rgba(0,0,0,0.60);
+      font-weight:800;
+    }
+
     .breathControls{
       display:flex;
       gap:10px;
       flex-wrap:wrap;
-      margin-top:10px;
-    }
-    .breathControls button{
-      background: rgba(255,255,255,0.85);
-      border:1px solid rgba(0,0,0,0.10);
-    }
-    .breathControls .start{
-      background: linear-gradient(180deg, rgba(232,210,138,.95), rgba(215,181,91,.92));
-      border:1px solid rgba(0,0,0,0.06);
+      margin-top:12px;
+      align-items:center;
     }
 
+    .toggle{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(0,0,0,0.10);
+      background: rgba(255,255,255,0.78);
+      font-weight:900;
+      cursor:pointer;
+      user-select:none;
+    }
+    .switch{
+      width:44px; height:24px;
+      border-radius:999px;
+      background: rgba(0,0,0,0.10);
+      position:relative;
+      border:1px solid rgba(0,0,0,0.10);
+    }
+    .knob{
+      width:20px; height:20px;
+      border-radius:999px;
+      position:absolute; top:1px; left:1px;
+      background: #fff;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+      transition: left .18s ease;
+    }
+    .switch.on{
+      background: rgba(200,162,74,0.30);
+      border-color: rgba(200,162,74,0.40);
+    }
+    .switch.on .knob{ left:22px; }
+
+    @media (max-width:780px){
+      .grid2{ grid-template-columns: 1fr; }
+      .brandTitle{ font-size:28px; }
+    }
     @media (max-width:520px){
+      .wrap{ padding-left:12px; padding-right:12px; }
       .card{ padding:18px; }
-      h1{ font-size:28px; }
-      .fixedTopbarInner{ gap:8px; }
-      .btn{ padding:9px 12px; border-radius: 13px; }
+      .brandTitle{ font-size:26px; }
       .pageTitle{ font-size:13px; padding:9px 10px; }
+      .btn{ padding:9px 12px; }
     }
   </style>
 </head>
 
 <body>
 
+  <!-- TOPBAR -->
   <div class="fixedTopbar">
     <div class="fixedTopbarInner">
       <div class="navLeft">
         <a class="btn" href="./indexIT.html">← Home</a>
       </div>
 
-      <div class="navCenter" aria-label="Selettore lingua">
-        <button class="langBtn active" id="btnIT" type="button" onclick="goIT()">IT</button>
-        <button class="langBtn" id="btnDE" type="button" onclick="goDE()">DE</button>
+      <div class="navCenter">
+        <button class="langBtn active" type="button" onclick="goIT()">IT</button>
+        <button class="langBtn" type="button" onclick="goDE()">DE</button>
       </div>
 
       <div class="navRight">
@@ -289,317 +442,629 @@
     </div>
   </div>
 
-  <div class="bg">
+  <div class="wrap">
+
+    <!-- HEADER / VALUE -->
     <div class="card">
+      <div class="pill">Protocollo adattivo • 3 fasi • respiro guidato</div>
+      <div class="goldLine"></div>
 
-      <h1>Area Membri</h1>
-      <p class="sub">Premium: 3 impulsi mirati + respiro guidato (in base a stress ed energia).</p>
+      <h1 class="brandTitle">Area Membri</h1>
+      <p class="sub">
+        Qui non trovi “una meditazione generica”: trovi un <strong>protocollo personalizzato</strong> che si adatta al tuo livello di
+        <strong>stress</strong> e <strong>energia</strong> in tempo reale. In 2–4 minuti ti guida in tre fasi pratiche:
+        <strong>stabilizzare</strong> il sistema nervoso, <strong>chiarire</strong> la priorità, <strong>tradurre</strong> in un’azione minima.
+        <br><br>
+        <span class="muted">Differenza rispetto alle app gratuite:</span>
+        qui la guida non è uguale per tutti: cambia <em>cosa</em> fai e <em>come</em> respiri, in base al tuo profilo del momento.
+      </p>
+    </div>
 
-      <!-- UNLOCK -->
-      <div class="box" id="unlockBox">
-        <div class="row">
-          <input id="codeInput" placeholder="Inserisci password (copia e incolla)" autocomplete="off" />
-          <button id="unlockBtn" class="btnGold" type="button">Sblocca</button>
-          <span id="status" class="locked">Bloccato</span>
-        </div>
-        <p class="muted" style="margin-top:10px;">
-          Nota: riceverai la password automaticamente via e-mail dopo l’acquisto.
-        </p>
-        <div class="miniNote">
-          L’accesso è personale. In caso di condivisione pubblica, l’accesso verrà disattivato.
-        </div>
+    <!-- UNLOCK -->
+    <div class="card" id="unlockBox">
+      <div class="pill">Accesso riservato ai membri</div>
+      <div class="goldLine"></div>
+
+      <div class="row">
+        <input id="codeInput" class="input" placeholder="Inserisci la password (copia e incolla)" autocomplete="off" />
+        <button id="unlockBtn" class="btnGold" type="button">Sblocca</button>
+        <span id="status" class="statusLocked">Bloccato</span>
       </div>
 
-      <div class="hr"></div>
+      <div class="note">
+        Riceverai la password <strong>automaticamente</strong> via e-mail dopo l’acquisto.
+        <br>Nota: l’accesso è personale; in caso di condivisione pubblica la password verrà cambiata per tutelare i membri.
+      </div>
+    </div>
 
-      <!-- PREMIUM -->
-      <div id="premiumArea" class="box" style="display:none;">
-        <h2 style="margin-top:0;">Premium Reset (Membri)</h2>
-        <p class="muted" style="margin-top:-6px;">
-          Imposta stress ed energia. Otterrai 3 impulsi coerenti + un respiro guidato adatto.
-        </p>
-
-        <div class="rangeRow">
-          <label>Stress (1–10)</label>
-          <input id="stressM" type="range" min="1" max="10" value="5">
-        </div>
-
-        <div class="rangeRow" style="margin-top:4px;">
-          <label>Energia (1–10)</label>
-          <input id="energyM" type="range" min="1" max="10" value="5">
-        </div>
-
-        <div class="actionsRow">
-          <button id="genM" type="button" class="btnGold">Genera Premium Reset</button>
-          <button id="logoutBtn" type="button" style="background: rgba(255,255,255,0.85); border:1px solid rgba(0,0,0,0.10); font-weight:950;">
-            Logout
-          </button>
-        </div>
-
-        <div class="box" style="margin-top:14px;">
-          <div id="statePill" class="pill">—</div>
-          <h3 id="mTitle" style="margin:10px 0 8px;"></h3>
-
-          <p id="mText1" style="margin:0 0 10px;"></p>
-          <p id="mText2" style="margin:0 0 10px;"></p>
-          <p id="mText3" style="margin:0;"></p>
-
-          <div class="breathBox">
-            <div class="breathTop">
-              <div>
-                <div class="muted" style="margin-bottom:6px;">Respiro guidato</div>
-                <div class="breathState" id="breathState">Pronta</div>
-              </div>
-              <div class="breathTimer" id="breathTimer">00:00</div>
-            </div>
-
-            <div class="miniNote" id="breathPlan" style="margin-top:10px;">
-              — 
-            </div>
-
-            <div class="breathControls">
-              <button class="start" id="breathStart" type="button">Avvia</button>
-              <button id="breathPause" type="button">Pausa</button>
-              <button id="breathReset" type="button">Reset</button>
-            </div>
-          </div>
-        </div>
+    <!-- PREMIUM -->
+    <div class="card" id="premiumArea" style="display:none;">
+      <div class="row" style="justify-content:space-between;">
+        <div class="pill" id="statePill">Profilo: —</div>
+        <button id="logoutBtn" class="btnSoft" type="button">Logout</button>
       </div>
 
-      <p class="muted" style="margin-top:18px;">
-        © Panacea Regensburg
+      <div class="goldLine"></div>
+
+      <h2 style="margin:0; font-size:20px; font-weight:950;">Premium Reset personalizzato</h2>
+      <p class="sub" style="margin-top:8px;">
+        Imposta stress ed energia: Panacea seleziona un protocollo coerente e regola il <strong>respiro guidato</strong> (tempi e durata).
       </p>
 
+      <div class="grid2">
+        <div class="miniCard">
+          <div class="labelRow">
+            <div class="lbl">Stress</div>
+            <div class="val" id="stressVal">5/10</div>
+          </div>
+          <input id="stressM" type="range" min="1" max="10" value="5" />
+          <p class="muted" style="margin:10px 0 0; font-size:13px; line-height:1.35;">
+            Alto stress = priorità alla <strong>sicurezza</strong> e allo <strong>scarico</strong> (prima del ragionamento).
+          </p>
+        </div>
+
+        <div class="miniCard">
+          <div class="labelRow">
+            <div class="lbl">Energia</div>
+            <div class="val" id="energyVal">5/10</div>
+          </div>
+          <input id="energyM" type="range" min="1" max="10" value="5" />
+          <p class="muted" style="margin:10px 0 0; font-size:13px; line-height:1.35;">
+            Bassa energia = protocollo più <strong>gentile</strong> e <strong>realistico</strong> (minimo efficace).
+          </p>
+        </div>
+      </div>
+
+      <div class="actionsRow">
+        <button id="genM" class="btnGold" type="button">Genera il mio Reset</button>
+
+        <div class="toggle" id="soundToggle" title="Suono leggero (opzionale)">
+          <span>Suono</span>
+          <span class="switch" id="soundSwitch"><span class="knob"></span></span>
+        </div>
+      </div>
+
+      <div class="goldLine"></div>
+
+      <div class="pill" style="margin-bottom:10px;">Protocollo 3 fasi</div>
+      <h3 id="mTitle" style="margin:0 0 8px; font-size:18px; font-weight:950;">—</h3>
+      <p class="muted" id="mSummary" style="margin:0 0 12px; font-size:13.5px; line-height:1.45;">—</p>
+
+      <div class="protoGrid">
+        <div class="protoBlock">
+          <h3>1) Stabilizza (corpo)</h3>
+          <p id="mText1">—</p>
+        </div>
+        <div class="protoBlock">
+          <h3>2) Chiarisci (mente)</h3>
+          <p id="mText2">—</p>
+        </div>
+        <div class="protoBlock">
+          <h3>3) Agisci (minimo efficace)</h3>
+          <p id="mText3">—</p>
+        </div>
+      </div>
+
+      <div class="breathWrap">
+        <div class="breathTop">
+          <div>
+            <p class="breathTitle" style="margin:0;">Respiro guidato adattivo</p>
+            <div class="muted" style="margin-top:6px; font-size:13px;">
+              Tempi e durata cambiano in base al tuo profilo.
+            </div>
+          </div>
+          <div style="display:flex; gap:12px; align-items:baseline; flex-wrap:wrap; justify-content:flex-end;">
+            <div class="breathState" id="breathState">Pronta</div>
+            <div class="breathTimer" id="breathTimer">00:00</div>
+          </div>
+        </div>
+
+        <div class="breathPlan" id="breathPlan">—</div>
+
+        <div class="progress"><div id="progressBar"></div></div>
+
+        <!-- Elegant ribbon visualization (not a simple circle) -->
+        <div class="ribbon" aria-label="Visualizzazione respiro">
+          <svg viewBox="0 0 900 120" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="goldGrad" x1="0" x2="1">
+                <stop offset="0" stop-color="rgba(200,162,74,0.25)"></stop>
+                <stop offset="0.5" stop-color="rgba(232,210,138,0.55)"></stop>
+                <stop offset="1" stop-color="rgba(200,162,74,0.25)"></stop>
+              </linearGradient>
+              <linearGradient id="goldLine" x1="0" x2="1">
+                <stop offset="0" stop-color="rgba(200,162,74,0.35)"></stop>
+                <stop offset="0.5" stop-color="rgba(232,210,138,0.85)"></stop>
+                <stop offset="1" stop-color="rgba(200,162,74,0.35)"></stop>
+              </linearGradient>
+              <filter id="softGlow">
+                <feGaussianBlur stdDeviation="6" result="blur"></feGaussianBlur>
+                <feMerge>
+                  <feMergeNode in="blur"></feMergeNode>
+                  <feMergeNode in="SourceGraphic"></feMergeNode>
+                </feMerge>
+              </filter>
+            </defs>
+
+            <!-- background ribbon fill -->
+            <path id="ribbonFill" d="" fill="url(#goldGrad)" opacity="0.9"></path>
+            <!-- highlight line -->
+            <path id="ribbonLine" d="" fill="none" stroke="url(#goldLine)" stroke-width="3" filter="url(#softGlow)"></path>
+          </svg>
+
+          <div class="cue">
+            <span id="cueLeft">Espira lunga = sicurezza</span>
+            <span id="cueRight">Ritmo gentile, non forza</span>
+          </div>
+        </div>
+
+        <div class="breathControls">
+          <button class="btnGold" id="breathStart" type="button">Avvia</button>
+          <button class="btnSoft" id="breathPause" type="button">Pausa</button>
+          <button class="btnSoft" id="breathReset" type="button">Reset</button>
+        </div>
+      </div>
+
+      <p class="muted" style="margin-top:16px; font-size:12.5px; line-height:1.35;">
+        © Panacea Regensburg • Questo strumento non sostituisce un consulto medico/psicologico, ma supporta la regolazione quotidiana.
+      </p>
     </div>
+
   </div>
 
 <script>
   // =========================
-  // CONFIG ACCESSO
+  // NAV
+  // =========================
+  function goDE(){ window.location.href = "./mitglieder.html"; }
+  function goIT(){ window.location.href = "./mitgliederIT.html"; }
+
+  // =========================
+  // ACCESSO
   // =========================
   const BASIS_PASSWORD = "PNC-79xL!qR26-Z";
   const PREMIUM_KEY = "panacea_member";
   const isMember = () => localStorage.getItem(PREMIUM_KEY) === "true";
 
-  function setUI() {
-    const status = document.getElementById("status");
-    const area = document.getElementById("premiumArea");
+  function setAccessUI(){
     const unlockBox = document.getElementById("unlockBox");
+    const premiumArea = document.getElementById("premiumArea");
+    const status = document.getElementById("status");
 
-    if (isMember()) {
+    if(isMember()){
       status.textContent = "Sbloccato ✅";
-      status.className = "ok";
-      area.style.display = "block";
+      status.className = "statusOk";
       unlockBox.style.display = "none";
+      premiumArea.style.display = "block";
     } else {
       status.textContent = "Bloccato";
-      status.className = "locked";
-      area.style.display = "none";
+      status.className = "statusLocked";
       unlockBox.style.display = "block";
+      premiumArea.style.display = "none";
     }
   }
 
   document.getElementById("unlockBtn").addEventListener("click", () => {
-    const code = document.getElementById("codeInput").value.trim();
-    if (code === BASIS_PASSWORD) {
+    const code = (document.getElementById("codeInput").value || "").trim();
+    if(code === BASIS_PASSWORD){
       localStorage.setItem(PREMIUM_KEY, "true");
       document.getElementById("codeInput").value = "";
       alert("Sbloccato ✅");
-      setUI();
+      setAccessUI();
+      // genera subito un reset coerente per dare effetto “wow”
+      generateReset();
     } else {
       alert("Password errata ❌");
     }
   });
 
-  document.getElementById("codeInput").addEventListener("keydown", (e) => {
-    if (e.key === "Enter") document.getElementById("unlockBtn").click();
+  document.getElementById("codeInput").addEventListener("keydown", (e)=>{
+    if(e.key === "Enter") document.getElementById("unlockBtn").click();
   });
 
   document.getElementById("logoutBtn").addEventListener("click", () => {
     localStorage.removeItem(PREMIUM_KEY);
     stopBreathing(true);
-    setUI();
+    setAccessUI();
   });
 
-  function goDE(){ window.location.href = "./mitglieder.html"; }
-  function goIT(){ window.location.href = "./mitgliederIT.html"; }
+  // =========================
+  // SLIDERS UI
+  // =========================
+  const stressM = document.getElementById("stressM");
+  const energyM = document.getElementById("energyM");
+  const stressVal = document.getElementById("stressVal");
+  const energyVal = document.getElementById("energyVal");
+
+  function syncSliderLabels(){
+    stressVal.textContent = `${stressM.value}/10`;
+    energyVal.textContent = `${energyM.value}/10`;
+  }
+  stressM.addEventListener("input", syncSliderLabels);
+  energyM.addEventListener("input", syncSliderLabels);
 
   // =========================
-  // LOGICA STATO (stress/energia)
+  // LOGICA PROFILO
   // =========================
   function band(v){
     v = Number(v);
-    if (v >= 7) return "alto";
-    if (v >= 4) return "medio";
+    if(v >= 7) return "alto";
+    if(v >= 4) return "medio";
     return "basso";
   }
 
-  // 9 combinazioni -> 3 impulsi + piano respiro
-  // NB: testi “premium” ma semplici e coerenti.
+  // Pool “premium” (innovativo): 3 fasi sempre, con varianti random per non risultare ripetitivo.
+  // Ogni profilo ha: label, titolo, sintesi, varianti per 1/2/3 e piano respiro.
   const PREMIUM_MAP = {
     "alto|basso": {
-      label: "Sovraccarico + scarica energia",
-      title: "Calma & sicurezza immediata",
-      impulses: [
-        "Riduci stimoli per 5 minuti: schermo giù, luce più morbida, spalle basse.",
-        "Appoggia una mano sul torace e una sull’addome: lascia che l’espirazione diventi più lunga dell’inspirazione.",
-        "Scegli un’unica micro-azione (2 minuti). Non devi risolvere tutto: devi solo stabilizzare."
+      label: "Sovraccarico + energia bassa",
+      title: "Sicurezza prima di tutto",
+      summary: "Riduciamo l’attivazione e riportiamo il corpo in sicurezza. Poi una sola decisione minima.",
+      phase1: [
+        "Abbassa stimoli per 2 minuti: schermo giù, spalle basse, sguardo morbido. Metti i piedi a terra e senti il peso.",
+        "Porta una mano sul torace e una sull’addome. Allunga l’espirazione: è il segnale più rapido di sicurezza.",
+        "Sciogli mandibola e lingua (micro-rilascio). Il corpo capisce: non c’è pericolo immediato."
       ],
-      breath: { inhale: 4, exhale: 7, minutes: 3 }
+      phase2: [
+        "Domanda guida: cosa mi serve ADESSO per stare un 10% meglio? (non 100%).",
+        "Riduci complessità: scegli una sola priorità. Il resto oggi è “secondario”.",
+        "Se la mente corre: scrivi 1 frase. Solo una. Poi torna al respiro."
+      ],
+      phase3: [
+        "Azione minima (2 minuti): acqua / doccia viso / aprire finestra / sistemare un punto. Piccolo, ma reale.",
+        "Metti un confine: una cosa che oggi NON farai per proteggere energia.",
+        "Chiudi con un gesto: “fatto”. Il sistema nervoso ama le chiusure."
+      ],
+      breath: { inhale:4, exhale:7, minutes:3, cueL:"Espira lunga = sicurezza", cueR:"Ritmo gentile, non forza" }
     },
+
     "alto|medio": {
       label: "Tensione alta + energia media",
-      title: "Scarico controllato, poi focus",
-      impulses: [
-        "Muovi il corpo 60–90 secondi (cammina, scuoti braccia). Poi fermati e respira.",
-        "Rilassa mandibola e lingua: è una leva rapida sul sistema nervoso.",
-        "Scrivi 1 priorità + 1 limite: oggi basta questo. Il resto è opzionale."
+      title: "Scarico controllato → focus",
+      summary: "Scarichiamo l’eccesso senza “andare a mille”, poi costruiamo chiarezza e direzione.",
+      phase1: [
+        "60–90 secondi di scarico: cammina o scuoti braccia. Poi fermati. Il contrasto resetta.",
+        "Rilassa spalle e addome: lascia uscire l’aria lentamente. Il corpo “abbassa volume”.",
+        "Postura: lungo dietro, morbido davanti. Stabilità senza rigidità."
       ],
-      breath: { inhale: 4, exhale: 6, minutes: 4 }
+      phase2: [
+        "Scegli 1 obiettivo realistico (max 20 minuti). Non più di uno.",
+        "Scrivi: “La cosa più importante è…” e completa la frase.",
+        "Se sei irritata: riduci stimoli (notifiche off) prima di decidere."
+      ],
+      phase3: [
+        "Timer 12 minuti: fai solo l’inizio. Poi pausa breve (2–3 minuti).",
+        "Dai un “no” ad una distrazione. Un solo no cambia tutto.",
+        "Chiudi con 3 respiri lenti: integri lo sforzo senza restare attivata."
+      ],
+      breath: { inhale:4, exhale:6, minutes:4, cueL:"Scarico + respiro lento", cueR:"Chiarezza dopo calma" }
     },
+
     "alto|alto": {
       label: "Attivazione alta",
       title: "Canalizza l’energia senza bruciarti",
-      impulses: [
-        "Usa l’energia per chiudere un task breve (max 10 minuti). Poi stop intenzionale.",
-        "Regola il ritmo: fai tutto al 80% (non al 120%).",
-        "Dopo l’azione: 10 respiri lenti per “sigillare” il risultato e non rimanere in allarme."
+      summary: "Energia alta: ottimo. La chiave è direzione e recupero, per non trasformarla in stress.",
+      phase1: [
+        "Prima di partire: 20 secondi di pausa. Spalle giù. Espira lentamente.",
+        "Scegli un ritmo al 80% (non 120%). L’energia diventa sostenibile.",
+        "Micro-rilascio: apri e chiudi mani 10 volte. Poi respira."
       ],
-      breath: { inhale: 4, exhale: 6, minutes: 3 }
+      phase2: [
+        "Decidi 1 direzione e 1 limite (quando mi fermo).",
+        "Domanda: cosa posso concludere oggi che mi farà sentire più leggera?",
+        "Evita multitasking: una cosa alla volta, ma veloce."
+      ],
+      phase3: [
+        "Sblocca un ‘finito’ rapido (10–15 minuti). Poi stop intenzionale.",
+        "Inserisci una pausa vera (3 minuti): acqua, sguardo lontano, respiro.",
+        "Chiudi: “ho fatto abbastanza”. È una frase di regolazione."
+      ],
+      breath: { inhale:4, exhale:6, minutes:3, cueL:"Energia sì, fretta no", cueR:"Recupero integrato" }
     },
 
     "medio|basso": {
       label: "Stress medio + energia bassa",
       title: "Recupero dolce e chiarezza",
-      impulses: [
-        "Abbassa l’asticella: oggi vinci con il minimo efficace (minimum viable day).",
-        "Bevi acqua e fai 5 respiri profondi, poi un piccolo riordino visivo (30–60 sec).",
-        "Scegli un confine: una cosa che NON farai oggi per proteggere energia."
+      summary: "Oggi vince il minimo efficace: recupero, confini, e un solo passo concreto.",
+      phase1: [
+        "Abbassa l’asticella: 2 respiri lenti e rilassa le spalle (senza giudizio).",
+        "Un sorso d’acqua. Sembra banale, ma regola corpo e attenzione.",
+        "Occhi: guarda un punto fermo 10 secondi. Stabilizza il sistema."
       ],
-      breath: { inhale: 4, exhale: 7, minutes: 3 }
+      phase2: [
+        "Scrivi 1 priorità e 1 rinuncia: oggi proteggi energia.",
+        "Domanda: cosa posso rimandare senza danni? (scegli una cosa).",
+        "Semplifica: 3 punti massimo, non una lista infinita."
+      ],
+      phase3: [
+        "Azione minima (3 minuti): prepara il primo passo per domani (anche solo aprire un file).",
+        "Riduci attrito: metti tutto pronto (acqua, scarpe, spazio).",
+        "Chiudi con una micro-gratitudine concreta: “oggi ho fatto…”"
+      ],
+      breath: { inhale:4, exhale:7, minutes:3, cueL:"Recupero prima", cueR:"Minimo efficace" }
     },
+
     "medio|medio": {
       label: "Equilibrio instabile",
       title: "Reset & struttura leggera",
-      impulses: [
-        "Raddrizza la postura (senza rigidità) e abbassa le spalle: il corpo guida la mente.",
-        "Pianifica solo i prossimi 30 minuti: chiarezza breve, azione semplice.",
-        "Scegli una cosa e portala a “finito” oggi. Chiudere crea calma."
+      summary: "Né troppo né troppo poco: regola, organizza, poi agisci con semplicità.",
+      phase1: [
+        "Postura: raddrizza dolcemente. Mandibola morbida. Espira più lunga.",
+        "Rilassa il collo con un micro-movimento (sinistra/destra lento).",
+        "Fai 5 respiri con pausa naturale dopo l’espirazione."
       ],
-      breath: { inhale: 4, exhale: 6, minutes: 4 }
+      phase2: [
+        "Pianifica solo i prossimi 30 minuti (non la giornata intera).",
+        "Scegli una cosa da finire: chiudere riduce stress.",
+        "Domanda: qual è la prossima azione visibile? (non un’idea, un gesto)."
+      ],
+      phase3: [
+        "Timer 15 minuti: focus. Poi pausa 3 minuti.",
+        "Taglia una distrazione: notifiche off per un blocco.",
+        "Chiudi con una mini-review: cosa ha funzionato?"
+      ],
+      breath: { inhale:4, exhale:6, minutes:4, cueL:"Struttura = sicurezza", cueR:"Calma → azione" }
     },
+
     "medio|alto": {
       label: "Stress medio + energia alta",
       title: "Direzione: energia con disciplina",
-      impulses: [
-        "Prima di partire: 20 secondi di pausa. Poi decidi UNA direzione.",
-        "Dividi in 2 blocchi: 12 minuti focus + 3 minuti recupero (ripeti).",
-        "Chiudi con un’espirazione lunga: evita di portarti l’attivazione nel resto della giornata."
+      summary: "Energia c’è: la rendiamo intelligente con una direzione, blocchi e recupero.",
+      phase1: [
+        "Stop 10 secondi. Espira lentamente. Poi parti.",
+        "Spalle giù, petto morbido: energia senza tensione.",
+        "Un respiro lungo: ‘sintonizza’ il ritmo."
       ],
-      breath: { inhale: 4, exhale: 6, minutes: 3 }
+      phase2: [
+        "Decidi: 1 obiettivo, 1 criterio di successo (semplice).",
+        "Seleziona: cosa NON farai adesso (per proteggere focus).",
+        "Scrivi una frase: “Ora faccio…” e completa."
+      ],
+      phase3: [
+        "Blocchi 12+3: 12 minuti focus, 3 minuti reset (ripeti).",
+        "Chiudi un micro-risultato prima della prossima cosa.",
+        "Respiro lento finale: spegni l’attivazione residua."
+      ],
+      breath: { inhale:4, exhale:6, minutes:3, cueL:"Energia con direzione", cueR:"Recupero breve" }
     },
 
     "basso|basso": {
       label: "Bassa attivazione",
       title: "Riaccensione gentile",
-      impulses: [
-        "Micro-attivazione: luce, acqua, 2 minuti in piedi. Il corpo prima, la motivazione dopo.",
-        "Scegli un compito ridicolo (2 minuti). Iniziare sblocca energia.",
-        "Premia il movimento: una piccola passeggiata, anche dentro casa."
+      summary: "Non serve motivazione: serve una scintilla. Micro-azione + respiro semplice.",
+      phase1: [
+        "Alzati 60 secondi. Luce sul viso. Acqua. Corpo prima, mente dopo.",
+        "Muovi spalle e braccia 20 secondi. Poi respira.",
+        "Sguardo lontano 10 secondi: attiva calma e presenza."
       ],
-      breath: { inhale: 4, exhale: 4, minutes: 2 }
+      phase2: [
+        "Domanda: qual è il compito più piccolo che posso iniziare?",
+        "Scegli una cosa ‘ridicola’ (2 minuti). Iniziare sblocca energia.",
+        "Riduci tutto a 1 step. Uno."
+      ],
+      phase3: [
+        "Azione 2 minuti, poi stop. Lascia un ‘gancio’ per riprendere facile.",
+        "Prepara l’ambiente: elimina un ostacolo (cavo, foglio, disordine).",
+        "Chiudi: “bene così”. Il corpo impara continuità."
+      ],
+      breath: { inhale:4, exhale:4, minutes:2, cueL:"Micro-energia", cueR:"Semplice e gentile" }
     },
+
     "basso|medio": {
-      label: "Calmo + pronto",
+      label: "Calma + pronta",
       title: "Stabile & chiaro",
-      impulses: [
-        "Fai 6 respiri lenti. Poi scegli UNA cosa sola e comincia in piccolo.",
-        "Riduci complessità: una lista di 3 punti, niente di più.",
-        "Mantieni il ritmo: breve focus, breve pausa. Costanza > intensità."
+      summary: "Sei in una zona buona: manteniamo stabilità e trasformiamo in progresso concreto.",
+      phase1: [
+        "6 respiri lenti. Spalle morbide. Ritmo costante.",
+        "Mandibola rilassata: crea spazio mentale.",
+        "Espira lunga 2 volte: chiude il ‘rumore’ interno."
       ],
-      breath: { inhale: 4, exhale: 6, minutes: 3 }
+      phase2: [
+        "Scegli 1 priorità. Scrivi 3 punti massimo.",
+        "Domanda: cosa rende oggi ‘un buon giorno’ in modo realistico?",
+        "Taglia una cosa non essenziale."
+      ],
+      phase3: [
+        "Fai il primo passo subito (2 minuti).",
+        "Blocchi brevi: 15 minuti focus, 3 minuti pausa.",
+        "Chiudi un micro-risultato e celebralo (silenziosamente)."
+      ],
+      breath: { inhale:4, exhale:6, minutes:3, cueL:"Stabilità", cueR:"Progresso semplice" }
     },
+
     "basso|alto": {
-      label: "Calmo + energia alta",
-      title: "Crea slancio senza fretta",
-      impulses: [
-        "Usa l’energia per creare: 15 minuti su qualcosa che ti dà senso.",
-        "Metti un confine: stop prima di stancarti (lascia ‘energia in banca’).",
-        "Concludi con respiro lento: il sistema nervoso impara che l’energia è sicura."
+      label: "Calma + energia alta",
+      title: "Slancio senza fretta",
+      summary: "Energia pulita: la usi per creare, con un limite per non svuotarti.",
+      phase1: [
+        "Fai un respiro lungo e morbido. Senti il corpo stabile.",
+        "Scegli ritmo al 85%: energia sostenibile.",
+        "Micro-rilascio di spalle e mani."
       ],
-      breath: { inhale: 4, exhale: 6, minutes: 2 }
+      phase2: [
+        "Decidi: cosa voglio creare / chiudere oggi in 20 minuti?",
+        "Metti un limite: stop prima di stancarti (energia in banca).",
+        "Scrivi 1 frase di intent: “Oggi scelgo…”"
+      ],
+      phase3: [
+        "Fai 15–20 minuti di focus. Poi pausa vera.",
+        "Chiudi con 3 respiri lenti: integri e resti calma.",
+        "Nota una cosa che funziona: rinforza la tua auto-efficacia."
+      ],
+      breath: { inhale:4, exhale:6, minutes:2, cueL:"Energia pulita", cueR:"Limite intelligente" }
     }
   };
 
-  function getPremiumPlan(stressVal, energyVal){
-    const s = band(stressVal);
-    const e = band(energyVal);
+  function getPlan(stress, energy){
+    const s = band(stress);
+    const e = band(energy);
     return PREMIUM_MAP[`${s}|${e}`] || PREMIUM_MAP["medio|medio"];
   }
 
+  function pick3(arr){
+    // sceglie 1 frase random (senza ripetizioni immediate)
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
   // =========================
-  // RESPIRO GUIDATO (timer)
+  // AUDIO (opzionale, elegante) - piccolo “tick” a cambio fase
+  // =========================
+  let soundOn = false;
+  const soundToggle = document.getElementById("soundToggle");
+  const soundSwitch = document.getElementById("soundSwitch");
+
+  function setSoundUI(){
+    soundSwitch.classList.toggle("on", soundOn);
+  }
+  soundToggle.addEventListener("click", ()=>{
+    soundOn = !soundOn;
+    setSoundUI();
+  });
+  setSoundUI();
+
+  function softBeep(){
+    if(!soundOn) return;
+    try{
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const o = ctx.createOscillator();
+      const g = ctx.createGain();
+      o.type = "sine";
+      o.frequency.value = 523.25; // C5
+      g.gain.value = 0.0001;
+
+      o.connect(g);
+      g.connect(ctx.destination);
+      o.start();
+
+      // quick gentle envelope
+      g.gain.exponentialRampToValueAtTime(0.03, ctx.currentTime + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.18);
+
+      setTimeout(()=>{
+        o.stop();
+        ctx.close();
+      }, 220);
+    } catch(e){}
+  }
+
+  // =========================
+  // RESPIRO GUIDATO - ribbon eleganza (non cerchio)
   // =========================
   let breathInterval = null;
   let breathRunning = false;
 
-  let plan = { inhale:4, exhale:6, minutes:3 };
-  let phase = "pronta"; // "inspira" | "espira" | "fine"
+  let plan = { inhale:4, exhale:6, minutes:3, cueL:"", cueR:"" };
+  let phase = "pronta"; // insp / exp / fine / pronta
   let phaseRemaining = 0;
   let totalRemaining = 0;
+  let totalStart = 0;
 
-  function fmtTime(sec){
+  const breathStateEl = document.getElementById("breathState");
+  const breathTimerEl = document.getElementById("breathTimer");
+  const breathPlanEl  = document.getElementById("breathPlan");
+  const progressBarEl = document.getElementById("progressBar");
+  const ribbonFill = document.getElementById("ribbonFill");
+  const ribbonLine = document.getElementById("ribbonLine");
+  const cueLeft = document.getElementById("cueLeft");
+  const cueRight = document.getElementById("cueRight");
+
+  function fmt(sec){
     sec = Math.max(0, Math.floor(sec));
     const m = String(Math.floor(sec/60)).padStart(2,"0");
     const s = String(sec%60).padStart(2,"0");
     return `${m}:${s}`;
   }
 
+  function setBreathPlan(newPlan){
+    plan = {...newPlan};
+    cueLeft.textContent = plan.cueL || "Espira lunga = sicurezza";
+    cueRight.textContent = plan.cueR || "Ritmo gentile, non forza";
+
+    stopBreathing(true);
+    breathPlanEl.textContent = `Piano: Inspira ${plan.inhale}s · Espira ${plan.exhale}s · Durata ${plan.minutes} min`;
+    breathTimerEl.textContent = fmt(plan.minutes * 60);
+    progressBarEl.style.width = "0%";
+    renderRibbon(0.15, 0); // idle ribbon
+    breathStateEl.textContent = "Pronta";
+  }
+
+  // Ribbon wave generator (amp + phaseShift)
+  function renderRibbon(amp, shift){
+    // amp: 0..1, shift: grows over time
+    const W = 900, H = 120;
+    const mid = 52;
+    const A = 28 * amp; // amplitude px
+    const freq = 2.2;   // wave frequency
+    const steps = 18;
+
+    let dLine = `M 0 ${mid}`;
+    for(let i=1;i<=steps;i++){
+      const x = (W/steps)*i;
+      const t = (i/steps) * Math.PI * 2 * freq + shift;
+      const y = mid + Math.sin(t) * A;
+      dLine += ` L ${x.toFixed(2)} ${y.toFixed(2)}`;
+    }
+
+    // Fill: close to bottom with soft curvature
+    let dFill = dLine + ` L ${W} ${H} L 0 ${H} Z`;
+
+    ribbonLine.setAttribute("d", dLine);
+    ribbonFill.setAttribute("d", dFill);
+  }
+
   function renderBreathUI(){
-    const stateEl = document.getElementById("breathState");
-    const timerEl = document.getElementById("breathTimer");
-    const planEl  = document.getElementById("breathPlan");
-
-    planEl.textContent = `Piano: Inspira ${plan.inhale}s · Espira ${plan.exhale}s · Durata ${plan.minutes} min`;
-
     if(!breathRunning && phase === "pronta"){
-      stateEl.textContent = "Pronta";
-      timerEl.textContent = fmtTime(plan.minutes * 60);
+      breathStateEl.textContent = "Pronta";
+      breathTimerEl.textContent = fmt(plan.minutes*60);
+      progressBarEl.style.width = "0%";
+      renderRibbon(0.15, 0);
       return;
     }
 
-    if(phase === "inspira"){
-      stateEl.textContent = `Inspira (${phaseRemaining}s)`;
-    } else if(phase === "espira"){
-      stateEl.textContent = `Espira (${phaseRemaining}s)`;
-    } else {
-      stateEl.textContent = "Finito ✅";
+    if(phase === "fine"){
+      breathStateEl.textContent = "Finito ✅";
+      breathTimerEl.textContent = "00:00";
+      progressBarEl.style.width = "100%";
+      renderRibbon(0.18, 0.8);
+      return;
     }
 
-    timerEl.textContent = fmtTime(totalRemaining);
-  }
+    // progress
+    const done = totalStart - totalRemaining;
+    const pct = totalStart > 0 ? Math.min(100, Math.max(0, (done/totalStart)*100)) : 0;
+    progressBarEl.style.width = pct.toFixed(1) + "%";
 
-  function setNewPlan(newPlan){
-    plan = {...newPlan};
-    stopBreathing(true);
-    renderBreathUI();
+    breathTimerEl.textContent = fmt(totalRemaining);
+
+    // amplitude effect: inhale grows, exhale softens
+    const base = 0.22;
+    const amp = phase === "inspira"
+      ? base + (1 - (phaseRemaining/plan.inhale)) * 0.55
+      : base + (phaseRemaining/plan.exhale) * 0.45;
+
+    const phaseLabel = phase === "inspira" ? "Inspira" : "Espira";
+    breathStateEl.textContent = `${phaseLabel} (${phaseRemaining}s)`;
+
+    // shift: gentle motion
+    const shift = (done * 0.22);
+    renderRibbon(amp, shift);
   }
 
   function startBreathing(){
     if(breathRunning) return;
 
-    // init se “pronta”
     if(phase === "pronta" || phase === "fine"){
       totalRemaining = plan.minutes * 60;
+      totalStart = totalRemaining;
       phase = "inspira";
       phaseRemaining = plan.inhale;
+      softBeep();
     }
 
     breathRunning = true;
     renderBreathUI();
 
-    breathInterval = setInterval(() => {
-      // finito?
+    breathInterval = setInterval(()=>{
       if(totalRemaining <= 0){
         stopBreathing(false);
         phase = "fine";
@@ -607,11 +1072,9 @@
         return;
       }
 
-      // tick
       totalRemaining -= 1;
       phaseRemaining -= 1;
 
-      // cambio fase
       if(phaseRemaining <= 0){
         if(phase === "inspira"){
           phase = "espira";
@@ -620,6 +1083,7 @@
           phase = "inspira";
           phaseRemaining = plan.inhale;
         }
+        softBeep();
       }
 
       renderBreathUI();
@@ -643,41 +1107,76 @@
       phase = "pronta";
       phaseRemaining = 0;
       totalRemaining = 0;
+      totalStart = 0;
     }
-    renderBreathUI();
   }
 
   document.getElementById("breathStart").addEventListener("click", startBreathing);
   document.getElementById("breathPause").addEventListener("click", pauseBreathing);
-  document.getElementById("breathReset").addEventListener("click", () => stopBreathing(true));
-
-  // =========================
-  // GENERA PREMIUM RESET
-  // =========================
-  document.getElementById("genM").addEventListener("click", () => {
-    const stress = Number(document.getElementById("stressM").value);
-    const energy = Number(document.getElementById("energyM").value);
-
-    const data = getPremiumPlan(stress, energy);
-
-    document.getElementById("statePill").textContent = data.label;
-    document.getElementById("mTitle").textContent = data.title;
-
-    // 3 impulsi sempre (ordine fisso per coerenza “premium”)
-    document.getElementById("mText1").textContent = "1) " + data.impulses[0];
-    document.getElementById("mText2").textContent = "2) " + data.impulses[1];
-    document.getElementById("mText3").textContent = "3) " + data.impulses[2];
-
-    // aggiorna piano respiro + resetta
-    setNewPlan(data.breath);
+  document.getElementById("breathReset").addEventListener("click", ()=>{
+    stopBreathing(true);
+    renderBreathUI();
   });
+
+  // =========================
+  // GENERATORE RESET
+  // =========================
+  const statePill = document.getElementById("statePill");
+  const mTitle = document.getElementById("mTitle");
+  const mSummary = document.getElementById("mSummary");
+  const mText1 = document.getElementById("mText1");
+  const mText2 = document.getElementById("mText2");
+  const mText3 = document.getElementById("mText3");
+
+  function generateReset(){
+    syncSliderLabels();
+
+    const stress = Number(stressM.value);
+    const energy = Number(energyM.value);
+    const data = getPlan(stress, energy);
+
+    statePill.textContent = `Profilo: ${data.label}`;
+    mTitle.textContent = data.title;
+    mSummary.textContent = data.summary;
+
+    // Innovazione: 3 fasi sempre (stabilizza → chiarisci → agisci), con varianti random per evitare monotonia
+    mText1.textContent = pick3(data.phase1);
+    mText2.textContent = pick3(data.phase2);
+    mText3.textContent = pick3(data.phase3);
+
+    // Piano respiro personalizzato
+    setBreathPlan(data.breath);
+
+    // salva ultimo profilo (utile per continuità premium)
+    try{
+      localStorage.setItem("panacea_last_profile_it", JSON.stringify({stress, energy, label:data.label, title:data.title, ts: Date.now()}));
+    } catch(e){}
+  }
+
+  document.getElementById("genM").addEventListener("click", generateReset);
 
   // =========================
   // INIT
   // =========================
-  setUI();
-  // Precarica UI respiro
-  renderBreathUI();
+  setAccessUI();
+  syncSliderLabels();
+
+  // se già membro, genera subito un reset (premium feel)
+  if(isMember()){
+    // prova a ripristinare ultimo profilo, se presente
+    try{
+      const last = JSON.parse(localStorage.getItem("panacea_last_profile_it") || "null");
+      if(last && last.stress && last.energy){
+        stressM.value = String(last.stress);
+        energyM.value = String(last.energy);
+      }
+    } catch(e){}
+    generateReset();
+  } else {
+    // prepara UI respiro in idle (non visibile finché non sblocca, ma ok)
+    setBreathPlan({ inhale:4, exhale:6, minutes:3, cueL:"Espira lunga = sicurezza", cueR:"Ritmo gentile, non forza" });
+    renderBreathUI();
+  }
 </script>
 
 </body>
