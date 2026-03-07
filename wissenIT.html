@@ -21,7 +21,8 @@
       --radius2: 18px;
     }
 
-    *{box-sizing:border-box}
+    *{ box-sizing:border-box; }
+
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
@@ -32,9 +33,13 @@
       justify-content:center;
       padding:16px 12px 40px;
     }
-    .app{width:100%; max-width:480px;}
 
-    /* ===== TOP BAR: like Daily Reset screenshot ===== */
+    .app{
+      width:100%;
+      max-width:480px;
+    }
+
+    /* ===== TOP BAR ===== */
     .topbar{
       display:grid;
       grid-template-columns: 1fr auto 1fr;
@@ -58,8 +63,9 @@
       justify-content:center;
       gap:8px;
       white-space:nowrap;
+      transition: transform .15s ease;
     }
-    .btn:active{transform: translateY(1px)}
+    .btn:hover{ transform: translateY(-1px); }
 
     .langWrap{
       display:flex;
@@ -67,10 +73,12 @@
       justify-content:center;
       align-items:center;
     }
+
     .langBtn{
-      min-width:118px;
+      min-width:84px;
       padding:10px 16px;
     }
+
     .langBtn.active{
       background: linear-gradient(180deg, rgba(232,210,138,.75), rgba(200,162,74,.55));
       border-color: rgba(200,162,74,.55);
@@ -82,10 +90,11 @@
       text-align:right;
       line-height:1.05;
       padding-right:2px;
+      white-space:nowrap;
     }
-    .topTitle .small{font-size:14px; color:var(--muted)}
-    .topTitle .big{font-size:20px; font-weight:1000}
-    .topTitle .gold{color:var(--gold); font-weight:1000}
+    .topTitle .small{ font-size:14px; color:var(--muted); }
+    .topTitle .big{ font-size:20px; font-weight:1000; }
+    .topTitle .gold{ color:var(--gold); font-weight:1000; }
 
     /* Cards */
     .card{
@@ -103,6 +112,7 @@
       align-items:flex-start;
       gap:14px;
     }
+
     .tagPill{
       width:74px;
       flex:0 0 auto;
@@ -113,8 +123,18 @@
       text-align:center;
       box-shadow: 0 10px 22px rgba(0,0,0,.06);
     }
-    .tagPill .small{font-size:12px; color:rgba(43,43,43,.70); font-weight:900; letter-spacing:.06em}
-    .tagPill .big{font-size:18px; font-weight:1000; margin-top:2px}
+    .tagPill .small{
+      font-size:12px;
+      color:rgba(43,43,43,.70);
+      font-weight:900;
+      letter-spacing:.06em;
+    }
+    .tagPill .big{
+      font-size:18px;
+      font-weight:1000;
+      margin-top:2px;
+    }
+
     .hero h1{
       margin:0 0 4px;
       font-size:20px;
@@ -155,17 +175,20 @@
       text-transform:uppercase;
       margin:0 0 6px;
     }
+
     .text{
       margin:0;
-      font-size:15.5px;
-      line-height:1.52;
+      font-size:15.4px;
+      line-height:1.56;
     }
+
     .impuls{
       font-size:16px;
       font-weight:900;
-      line-height:1.5;
+      line-height:1.55;
       margin:0;
     }
+
     .boxSoft{
       background:rgba(255,255,255,.72);
       border:1px solid rgba(200,162,74,.18);
@@ -174,7 +197,11 @@
       box-shadow: 0 10px 22px rgba(0,0,0,.05);
     }
 
-    .divider{height:1px; background:rgba(200,162,74,.18); margin:14px 0;}
+    .divider{
+      height:1px;
+      background:rgba(200,162,74,.18);
+      margin:14px 0;
+    }
 
     .navRow{
       display:flex;
@@ -183,14 +210,42 @@
       flex-wrap:wrap;
       margin-top:6px;
     }
-    .navRow .btn{flex:1 1 120px}
+    .navRow .btn{ flex:1 1 120px; }
+
     .btn.primary{
       background: linear-gradient(180deg, rgba(232,210,138,.75), rgba(200,162,74,.50));
       border-color: rgba(200,162,74,.55);
       font-weight:1000;
     }
 
-    /* Premium card */
+    /* ===== Premium CTA / card ===== */
+    .premiumCard{
+      background:
+        radial-gradient(900px 340px at 20% 0%, rgba(255,246,214,.88), rgba(255,255,255,.70)),
+        linear-gradient(180deg, rgba(255,255,255,.60), rgba(255,255,255,.78));
+      border:1px solid rgba(200,162,74,.35);
+      box-shadow:
+        0 0 26px rgba(200,162,74,.14),
+        0 16px 44px rgba(0,0,0,.08);
+      border-radius:22px;
+      padding:16px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .premiumCard::before{
+      content:"";
+      position:absolute;
+      inset:-40px;
+      background:
+        radial-gradient(circle at 25% 10%, rgba(200,162,74,.18), transparent 55%),
+        radial-gradient(circle at 80% 50%, rgba(232,210,138,.18), transparent 55%);
+      filter: blur(10px);
+      pointer-events:none;
+    }
+
+    .premiumInner{ position:relative; z-index:2; }
+
     .pillMember{
       display:inline-flex;
       align-items:center;
@@ -203,9 +258,12 @@
       font-weight:1000;
       margin-bottom:10px;
     }
-    .muted{color:rgba(43,43,43,.70)}
-    ul{margin:10px 0 0 18px; padding:0}
-    li{margin:6px 0; color:rgba(43,43,43,.78); font-weight:700}
+
+    .muted{ color:rgba(43,43,43,.70); }
+
+    ul{ margin:10px 0 0 18px; padding:0; }
+    li{ margin:6px 0; color:rgba(43,43,43,.78); font-weight:700; }
+
     .unlock{
       margin-top:12px;
       width:100%;
@@ -216,21 +274,107 @@
       font-weight:1000;
       cursor:pointer;
       box-shadow: 0 14px 28px rgba(200,162,74,.18);
+      transition: transform .15s ease;
     }
-    .unlock:active{transform: translateY(1px)}
+    .unlock:hover{ transform: translateY(-1px); }
+
+    .premiumGrid{
+      display:grid;
+      gap:12px;
+      margin-top:12px;
+    }
+
+    .variantPill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(200,162,74,.28);
+      background: rgba(255,255,255,.72);
+      font-weight:900;
+      font-size:13px;
+      color:#3a2c10;
+      margin-bottom:10px;
+    }
+
+    .smartTitle{
+      margin:0 0 8px;
+      font-size:15px;
+      font-weight:1000;
+      color:#3a2c10;
+    }
+
+    .smartChoices{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:10px;
+      margin-top:10px;
+    }
+
+    .choiceBtn{
+      border:1px solid rgba(200,162,74,.24);
+      background: rgba(255,255,255,.8);
+      color:var(--text);
+      border-radius:16px;
+      padding:12px 10px;
+      font-weight:900;
+      font-size:13px;
+      box-shadow: 0 10px 22px rgba(0,0,0,.05);
+      cursor:pointer;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .choiceBtn:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 12px 24px rgba(0,0,0,.07);
+    }
+    .choiceBtn.active{
+      background: linear-gradient(180deg, rgba(232,210,138,.75), rgba(200,162,74,.45));
+      border-color: rgba(200,162,74,.45);
+      color:#3a2c10;
+    }
+
+    .smartOutput{
+      margin-top:12px;
+      padding:13px 14px;
+      border-radius:18px;
+      border:1px solid rgba(200,162,74,.18);
+      background: rgba(255,255,255,.74);
+      box-shadow: 0 10px 22px rgba(0,0,0,.05);
+      font-size:15px;
+      line-height:1.56;
+    }
+
+    .autoHint{
+      margin-top:8px;
+      font-size:12.8px;
+      line-height:1.45;
+      color:rgba(43,43,43,.65);
+      font-weight:700;
+    }
+
+    @media (max-width: 420px){
+      .smartChoices{
+        grid-template-columns: 1fr;
+      }
+      .langBtn{
+        min-width:64px;
+        padding:10px 12px;
+      }
+    }
   </style>
 </head>
 
 <body>
   <main class="app">
 
-    <!-- TOPBAR with language buttons centered -->
+    <!-- TOPBAR -->
     <div class="topbar">
       <a class="btn" href="./indexIT.html">← Home</a>
 
       <div class="langWrap" aria-label="Lingua">
-        <button class="btn langBtn" id="btnDE" type="button">Deutsch</button>
-        <button class="btn langBtn active" id="btnIT" type="button">Italiano</button>
+        <button class="btn langBtn" id="btnDE" type="button">DE</button>
+        <button class="btn langBtn active" id="btnIT" type="button">IT</button>
       </div>
 
       <div class="topTitle">
@@ -245,21 +389,22 @@
         <div class="small">Giorno</div>
         <div class="big" id="tagNumber">1</div>
       </div>
-      <div>
-        <h1>Il tuo impulso di 21 giorni</h1>
-        <p>Un pensiero al giorno — calmo, chiaro, applicabile.</p>
 
-        <div class="imgWrap" style="margin-top:12px;">
+      <div>
+        <h1>Il tuo percorso in 21 giorni</h1>
+        <p>Un impulso quotidiano per ritrovare orientamento, calma interiore e maggiore lucidità nella vita di tutti i giorni.</p>
+
+        <div class="imgWrap">
           <img id="dayImage" src="./icons/1.png" alt="Immagine del giorno" />
         </div>
       </div>
     </section>
 
-    <!-- CONTENT -->
+    <!-- STANDARD CONTENT -->
     <section class="card">
       <div class="h2" id="title">—</div>
 
-      <div class="boxSoft" style="margin-top:10px;">
+      <div class="boxSoft">
         <div class="label">Spiegazione</div>
         <p class="text" id="explanation">—</p>
       </div>
@@ -267,7 +412,7 @@
       <div class="divider"></div>
 
       <div class="boxSoft">
-        <div class="label">Impulso</div>
+        <div class="label">Impulso del giorno</div>
         <p class="impuls" id="impuls">—</p>
       </div>
 
@@ -286,52 +431,102 @@
         </div>
       </div>
 
-      <div id="premiumWrap" style="display:none;">
-        <div class="divider"></div>
-        <div class="boxSoft">
-          <div class="label">Membri – Premium Insight</div>
-          <p class="text" id="premiumInsight">—</p>
-        </div>
-        <div style="height:10px"></div>
-        <div class="boxSoft">
-          <div class="label">Membri – Domanda Premium</div>
-          <p class="text" id="premiumQuestion">—</p>
-        </div>
-      </div>
-
       <div class="navRow">
         <button class="btn" id="prevBtn" type="button">← Indietro</button>
         <button class="btn primary" id="nextBtn" type="button">Avanti →</button>
       </div>
     </section>
 
-    <!-- MEMBERS CTA -->
-    <section class="card">
+    <!-- PREMIUM CTA -->
+    <section class="card" id="memberCta">
       <div class="pillMember">
-        <span>Membri</span>
-        <span class="muted">Più profondità. Più chiarezza. Più effetto.</span>
+        <span>Area Membri</span>
+        <span class="muted">Più profondità. Più accompagnamento. Più integrazione.</span>
       </div>
+
       <ul>
-        <li>Impulso premium & domanda premium ogni giorno</li>
-        <li>Più struttura per focus e applicazione</li>
-        <li>Accesso all’area membri</li>
+        <li>Approfondimento quotidiano sul tema del giorno</li>
+        <li>3 varianti premium che ruotano nelle settimane successive</li>
+        <li>Un esercizio intelligente, interattivo e orientato all’azione</li>
+        <li>Più continuità tra consapevolezza, corpo e vita reale</li>
       </ul>
-      <button class="unlock" id="unlockBtn" type="button">Sblocca Membri →</button>
+
+      <button class="unlock" id="unlockBtn" type="button">Sblocca Area Membri →</button>
+    </section>
+
+    <!-- PREMIUM MEMBERS BLOCK -->
+    <section class="premiumCard" id="premiumWrap" style="display:none;">
+      <div class="premiumInner">
+
+        <div class="pillMember">
+          <span>Area Membri</span>
+          <span class="muted">Approfondimento del giorno</span>
+        </div>
+
+        <div class="variantPill" id="variantPill">Variante Premium A</div>
+
+        <div class="premiumGrid">
+          <div class="boxSoft">
+            <div class="label">Approfondimento</div>
+            <p class="text" id="premiumDeepDive">—</p>
+          </div>
+
+          <div class="boxSoft">
+            <div class="label">Insight Premium</div>
+            <p class="text" id="premiumInsight">—</p>
+          </div>
+
+          <div class="boxSoft">
+            <div class="label">Domanda Premium</div>
+            <p class="text" id="premiumQuestion">—</p>
+          </div>
+
+          <div class="boxSoft">
+            <div class="label">Integrazione finale</div>
+            <p class="text" id="premiumClosing">—</p>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="boxSoft">
+          <div class="label">Esercizio intelligente</div>
+          <h3 class="smartTitle" id="smartTitle">Bussola della chiarezza</h3>
+          <p class="text" id="smartIntro">
+            Scegli spontaneamente ciò di cui hai più bisogno in questo momento. L’esercizio si adatta alla tua scelta.
+          </p>
+
+          <div class="smartChoices">
+            <button class="choiceBtn" data-choice="body" type="button">Corpo</button>
+            <button class="choiceBtn" data-choice="mind" type="button">Mente</button>
+            <button class="choiceBtn" data-choice="action" type="button">Azione</button>
+          </div>
+
+          <div class="smartOutput" id="smartOutput">
+            Scegli un’area. Riceverai un piccolo passo concreto, semplice e intelligente, da portare subito nella tua giornata.
+          </div>
+
+          <div class="autoHint" id="autoHint">
+            Suggerimento automatico: per oggi è già stato selezionato un focus iniziale per accompagnarti con maggiore chiarezza.
+          </div>
+        </div>
+
+      </div>
     </section>
 
   </main>
 
   <script>
-    // ====== CONFIG ======
+    // ===== CONFIG =====
     const JSON_URL = "./data/wissenIT.json";
     const TOTAL_DAYS = 21;
 
-    const LS_DAY = "panacea_wissen_day";        // 1..21 (shared across languages)
-    const LS_PREMIUM = "panacea_premium";       // "true" or "1"
-    const LS_START = "panacea_wissen_start";    // ISO date string
-    const LS_LANG = "lang";                     // "de" / "it"
+    const LS_DAY = "panacea_wissen_day";
+    const LS_PREMIUM = "panacea_premium";
+    const LS_START = "panacea_wissen_start";
+    const LS_LANG = "lang";
 
-    // ====== LANGUAGE BUTTONS ======
+    // ===== LANGUAGE =====
     const btnDE = document.getElementById("btnDE");
     const btnIT = document.getElementById("btnIT");
 
@@ -344,6 +539,7 @@
         btnDE.classList.remove("active");
       }
     }
+
     btnDE.addEventListener("click", () => setLang("de"));
     btnIT.addEventListener("click", () => setLang("it"));
 
@@ -357,11 +553,11 @@
       btnDE.classList.remove("active");
     })();
 
-    // ====== STATE ======
+    // ===== STATE =====
     let dataDays = [];
     let currentDay = 1;
 
-    // ====== ELEMENTS ======
+    // ===== ELEMENTS =====
     const tagNumber = document.getElementById("tagNumber");
     const dayImage = document.getElementById("dayImage");
 
@@ -374,14 +570,26 @@
     const exerciseTitle = document.getElementById("exerciseTitle");
     const exerciseText = document.getElementById("exerciseText");
 
+    const memberCta = document.getElementById("memberCta");
     const premiumWrap = document.getElementById("premiumWrap");
+    const unlockBtn = document.getElementById("unlockBtn");
+
+    const variantPill = document.getElementById("variantPill");
+    const premiumDeepDive = document.getElementById("premiumDeepDive");
     const premiumInsight = document.getElementById("premiumInsight");
     const premiumQuestion = document.getElementById("premiumQuestion");
+    const premiumClosing = document.getElementById("premiumClosing");
+
+    const smartTitle = document.getElementById("smartTitle");
+    const smartIntro = document.getElementById("smartIntro");
+    const smartOutput = document.getElementById("smartOutput");
+    const autoHint = document.getElementById("autoHint");
+    const choiceBtns = Array.from(document.querySelectorAll(".choiceBtn"));
 
     const prevBtn = document.getElementById("prevBtn");
     const nextBtn = document.getElementById("nextBtn");
-    const unlockBtn = document.getElementById("unlockBtn");
 
+    // ===== HELPERS =====
     function isPremium(){
       const v = String(localStorage.getItem(LS_PREMIUM) || "").toLowerCase();
       return (v === "1" || v === "true" || v === "yes" || v === "on");
@@ -413,8 +621,71 @@
       return dataDays.find(d => Number(d.day) === Number(day));
     }
 
+    function getISOWeek(d){
+      const date = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+      const dayNum = date.getUTCDay() || 7;
+      date.setUTCDate(date.getUTCDate() + 4 - dayNum);
+      const yearStart = new Date(Date.UTC(date.getUTCFullYear(),0,1));
+      return Math.ceil((((date - yearStart) / 86400000) + 1) / 7);
+    }
+
+    function getVariantIndex(){
+      const now = new Date();
+      return (getISOWeek(now) + currentDay) % 3;
+    }
+
+    function getVariantLabel(i){
+      return i === 0 ? "Variante Premium A" : i === 1 ? "Variante Premium B" : "Variante Premium C";
+    }
+
+    function getVariantData(d){
+      const idx = getVariantIndex();
+
+      if(Array.isArray(d.premiumVariants) && d.premiumVariants[idx]){
+        return d.premiumVariants[idx];
+      }
+
+      return {
+        label: getVariantLabel(idx),
+        deepDive: d.premiumDeepDive || d.premiumInsight || "Il contenuto premium di approfondimento non è ancora disponibile.",
+        insight: d.premiumInsight || "L’insight premium del giorno non è ancora disponibile.",
+        question: d.premiumQuestion || "La domanda premium del giorno non è ancora disponibile.",
+        closing: d.premiumClosing || "Porta con te solo ciò che oggi ti sostiene davvero.",
+        smartExercise: d.smartExercise || {
+          title: "Bussola della chiarezza",
+          intro: "Scegli ciò di cui hai più bisogno in questo momento.",
+          autoChoice: "mind",
+          body: "Porta attenzione al corpo. Sciogli le spalle, rilassa la mandibola e fai due espirazioni lente e profonde.",
+          mind: "Formula in una sola frase il pensiero più importante per oggi: semplice, essenziale, chiaro.",
+          action: "Scegli il passo più piccolo possibile che puoi fare adesso. Inizia solo da lì."
+        }
+      };
+    }
+
+    function renderSmartExercise(variant, forcedChoice){
+      const exercise = variant.smartExercise || {};
+      const choice = forcedChoice || exercise.autoChoice || "mind";
+
+      choiceBtns.forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.choice === choice);
+      });
+
+      smartTitle.textContent = exercise.title || "Bussola della chiarezza";
+      smartIntro.textContent = exercise.intro || "Scegli ciò di cui hai più bisogno in questo momento.";
+
+      const map = {
+        body: exercise.body || "Ascolta il corpo: rilassa, espira, torna a sentire il tuo centro.",
+        mind: exercise.mind || "Dai un nome chiaro a ciò che conta davvero oggi.",
+        action: exercise.action || "Scegli una piccola azione concreta e inizia con quella."
+      };
+
+      smartOutput.textContent = map[choice];
+      autoHint.textContent = `Suggerimento automatico: oggi il focus iniziale è “${choice === "body" ? "Corpo" : choice === "mind" ? "Mente" : "Azione"}”.`;
+    }
+
     function render(){
       const d = findDayObj(currentDay) || {};
+
       tagNumber.textContent = String(currentDay);
       dayImage.src = `./icons/${currentDay}.png`;
 
@@ -427,21 +698,37 @@
         exerciseWrap.style.display = "block";
         exerciseTitle.textContent = d.exercise.title || "Mini-esercizio";
         exerciseText.textContent = d.exercise.text || "—";
-      }else{
+      } else {
         exerciseWrap.style.display = "none";
       }
 
-      if(isPremium() && (d.premiumInsight || d.premiumQuestion)){
+      if(isPremium()){
+        memberCta.style.display = "none";
         premiumWrap.style.display = "block";
-        premiumInsight.textContent = d.premiumInsight || "—";
-        premiumQuestion.textContent = d.premiumQuestion || "—";
-      }else{
+
+        const variant = getVariantData(d);
+        const vLabel = variant.label || getVariantLabel(getVariantIndex());
+        variantPill.textContent = vLabel;
+
+        premiumDeepDive.textContent = variant.deepDive || "—";
+        premiumInsight.textContent = variant.insight || "—";
+        premiumQuestion.textContent = variant.question || "—";
+        premiumClosing.textContent = variant.closing || "—";
+
+        renderSmartExercise(variant, (variant.smartExercise && variant.smartExercise.autoChoice) || "mind");
+
+        choiceBtns.forEach(btn => {
+          btn.onclick = () => renderSmartExercise(variant, btn.dataset.choice);
+        });
+
+      } else {
+        memberCta.style.display = "block";
         premiumWrap.style.display = "none";
       }
 
       prevBtn.disabled = (currentDay <= 1);
       nextBtn.disabled = (currentDay >= TOTAL_DAYS);
-      nextBtn.textContent = (currentDay >= TOTAL_DAYS) ? "Fatto ✓" : "Avanti →";
+      nextBtn.textContent = (currentDay >= TOTAL_DAYS) ? "Completato ✓" : "Avanti →";
     }
 
     async function loadJSON(){
@@ -452,13 +739,13 @@
 
         if(json && Array.isArray(json.days)){
           dataDays = json.days;
-        }else if(Array.isArray(json)){
+        } else if(Array.isArray(json)){
           dataDays = json;
-        }else{
+        } else {
           dataDays = [];
         }
-      }catch(err){
-        console.warn("Impossibile caricare Wissen JSON:", err);
+      } catch(err){
+        console.warn("Impossibile caricare wissenIT.json:", err);
         dataDays = [];
       }
     }
@@ -472,7 +759,7 @@
       unlockBtn.addEventListener("click", () => {
         localStorage.setItem(LS_PREMIUM, "true");
         render();
-        alert("Stato membri attivato (demo).");
+        alert("Stato Area Membri attivato (demo).");
       });
 
       dayImage.addEventListener("error", () => {
