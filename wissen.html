@@ -386,8 +386,8 @@
       </div>
 
       <div>
-        <h1>Dein 21-Tage Impuls</h1>
-        <p>Ein kurzer Gedanke pro Tag — ruhig, klar und alltagstauglich.</p>
+        <h1>Dein 21-Tage-Impuls</h1>
+        <p>Ein täglicher Impuls für mehr Orientierung, innere Ruhe und praktische Klarheit im Alltag.</p>
 
         <div class="imgWrap">
           <img id="dayImage" src="./icons/1.png" alt="Tagesbild" />
@@ -407,7 +407,7 @@
       <div class="divider"></div>
 
       <div class="boxSoft">
-        <div class="label">Impuls</div>
+        <div class="label">Impuls des Tages</div>
         <p class="impuls" id="impuls">—</p>
       </div>
 
@@ -440,9 +440,9 @@
       </div>
 
       <ul>
-        <li>Tägliche Vertiefung zum Wochenthema</li>
-        <li>3 rotierende Premium-Varianten in den Folgewoche</li>
-        <li>Smart-Übung: professionell, interaktiv, individuell</li>
+        <li>Tägliche Vertiefung zum Thema des Tages</li>
+        <li>3 rotierende Premium-Varianten für die Folgewoche</li>
+        <li>Eine smarte Übung: professionell, interaktiv und individuell</li>
         <li>Stärkerer Transfer in den Alltag</li>
       </ul>
 
@@ -488,7 +488,7 @@
           <div class="label">Smart-Übung</div>
           <h3 class="smartTitle" id="smartTitle">Klarheits-Kompass</h3>
           <p class="text" id="smartIntro">
-            Wähle spontan, was du gerade am meisten brauchst. Die Übung reagiert auf deine Auswahl.
+            Wähle spontan, was du gerade am meisten brauchst. Die Übung reagiert direkt auf deine Auswahl.
           </p>
 
           <div class="smartChoices">
@@ -498,7 +498,7 @@
           </div>
 
           <div class="smartOutput" id="smartOutput">
-            Wähle einen Bereich. Du bekommst dann einen kleinen, intelligenten nächsten Schritt.
+            Wähle einen Bereich. Du bekommst sofort einen kleinen, intelligenten nächsten Schritt.
           </div>
 
           <div class="autoHint" id="autoHint">
@@ -649,9 +649,10 @@
         smartExercise: d.smartExercise || {
           title: "Klarheits-Kompass",
           intro: "Wähle spontan, was du gerade am meisten brauchst.",
+          autoChoice: "mind",
           body: "Lege eine Hand auf den Körperbereich, der heute am meisten Ruhe braucht. Atme zweimal länger aus.",
           mind: "Formuliere den wichtigsten Gedanken des Tages in einem einzigen, klaren Satz.",
-          action: "Wähle den kleinsten machbaren nächsten Schritt und beginne nur damit."
+          action: "Wähle den kleinsten machbaren nächsten Schritt und beginne genau damit."
         }
       };
     }
@@ -668,7 +669,7 @@
       smartIntro.textContent = exercise.intro || "Wähle spontan, was du gerade am meisten brauchst.";
 
       const map = {
-        body: exercise.body || "Nimm den Körper wahr. Schultern lösen. Einmal ruhig ausatmen.",
+        body: exercise.body || "Nimm den Körper wahr. Löse die Schultern und atme einmal ruhig aus.",
         mind: exercise.mind || "Formuliere für heute einen klaren Gedanken, der dich entlastet.",
         action: exercise.action || "Wähle eine kleine Handlung, die heute wirklich machbar ist."
       };
