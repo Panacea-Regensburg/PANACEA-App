@@ -1,4 +1,4 @@
-const CACHE_VERSION = "v16";
+const CACHE_VERSION = "v17";
 const CACHE_NAME = `panacea-cache-${CACHE_VERSION}`;
 
 const ASSETS = [
@@ -26,7 +26,29 @@ const ASSETS = [
 
   "./icons/icon-192.png",
   "./icons/icon-512.png",
-  "./icons/sfondo.png"
+  "./icons/sfondo.png",
+
+  "./icons/1.png",
+  "./icons/2.png",
+  "./icons/3.png",
+  "./icons/4.png",
+  "./icons/5.png",
+  "./icons/6.png",
+  "./icons/7.png",
+  "./icons/8.png",
+  "./icons/9.png",
+  "./icons/10.png",
+  "./icons/11.png",
+  "./icons/12.png",
+  "./icons/13.png",
+  "./icons/14.png",
+  "./icons/15.png",
+  "./icons/16.png",
+  "./icons/17.png",
+  "./icons/18.png",
+  "./icons/19.png",
+  "./icons/20.png",
+  "./icons/21.png"
 ];
 
 self.addEventListener("install", (event) => {
@@ -40,11 +62,12 @@ self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
       Promise.all(
-        keys.map((k) =>
-          k.startsWith("panacea-cache-") && k !== CACHE_NAME
-            ? caches.delete(k)
-            : null
-        )
+        keys.map((key) => {
+          if (key.startsWith("panacea-cache-") && key !== CACHE_NAME) {
+            return caches.delete(key);
+          }
+          return null;
+        })
       )
     )
   );
@@ -53,36 +76,55 @@ self.addEventListener("activate", (event) => {
 
 self.addEventListener("fetch", (event) => {
   const req = event.request;
-  const url = new URL(req.url);
 
   if (req.method !== "GET") return;
 
-  const isHTML = req.headers.get("accept")?.includes("text/html");
+  const url = new URL(req.url);
+  const acceptHeader = req.headers.get("accept") || "";
+
+  const isHTML =
+    req.mode === "navigate" || acceptHeader.includes("text/html");
+
   const isJSON = url.pathname.endsWith(".json");
 
-  // HTML = network first
+  const isStaticAsset =
+    url.pathname.endsWith(".png") ||
+    url.pathname.endsWith(".jpg") ||
+    url.pathname.endsWith(".jpeg") ||
+    url.pathname.endsWith(".webp") ||
+    url.pathname.endsWith(".svg") ||
+    url.pathname.endsWith(".css") ||
+    url.pathname.endsWith(".js") ||
+    url.pathname.endsWith(".webmanifest") ||
+    url.pathname.endsWith(".ico");
+
+  // 1) HTML = network first
   if (isHTML) {
     event.respondWith(
       fetch(req)
         .then((res) => {
-          const copy = res.clone();
-          caches.open(CACHE_NAME).then((c) => c.put(req, copy));
+          if (res && res.status === 200) {
+            const copy = res.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(req, copy));
+          }
           return res;
         })
         .catch(() =>
-          caches.match(req).then((r) => r || caches.match("./index.html"))
+          caches.match(req).then((cached) => cached || caches.match("./index.html"))
         )
     );
     return;
   }
 
-  // JSON = network first con fallback cache
+  // 2) JSON = network first con fallback cache
   if (isJSON) {
     event.respondWith(
       fetch(req)
         .then((res) => {
-          const copy = res.clone();
-          caches.open(CACHE_NAME).then((c) => c.put(req, copy));
+          if (res && res.status === 200) {
+            const copy = res.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(req, copy));
+          }
           return res;
         })
         .catch(() => caches.match(req))
@@ -90,16 +132,38 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // tutto il resto = cache first
+  // 3) Static assets = cache first
+  if (isStaticAsset) {
+    event.respondWith(
+      caches.match(req).then((cached) => {
+        if (cached) return cached;
+
+        return fetch(req)
+          .then((res) => {
+            if (res && res.status === 200) {
+              const copy = res.clone();
+              caches.open(CACHE_NAME).then((cache) => cache.put(req, copy));
+            }
+            return res;
+          })
+          .catch(() => caches.match("./icons/sfondo.png"));
+      })
+    );
+    return;
+  }
+
+  // 4) Fallback generale = cache first, poi network
   event.respondWith(
-    caches.match(req).then(
-      (cached) =>
-        cached ||
-        fetch(req).then((res) => {
+    caches.match(req).then((cached) => {
+      if (cached) return cached;
+
+      return fetch(req).then((res) => {
+        if (res && res.status === 200) {
           const copy = res.clone();
-          caches.open(CACHE_NAME).then((c) => c.put(req, copy));
-          return res;
-        })
-    )
+          caches.open(CACHE_NAME).then((cache) => cache.put(req, copy));
+        }
+        return res;
+      });
+    })
   );
 });
