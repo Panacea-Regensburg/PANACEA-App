@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Panacea – Conoscenza & Chiarezza</title>
+  <title>Panacea – Sapere & Chiarezza</title>
 
   <style>
     :root{
@@ -19,137 +19,182 @@
       --shadow2: 0 10px 26px rgba(0,0,0,.10);
       --radius: 22px;
       --radius2: 18px;
+
+      /* same responsive sizing as Daily Reset */
+      --pad: clamp(14px, 3.6vw, 22px);
+      --gap: clamp(10px, 2.8vw, 14px);
     }
 
     *{ box-sizing:border-box; }
+    html,body{ height:100%; }
 
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color:var(--text);
-      background: radial-gradient(1200px 700px at 20% 0%, var(--bg1), var(--bg2));
+      background: radial-gradient(1200px 800px at 30% 0%, var(--bg1), var(--bg2));
       min-height:100vh;
       display:flex;
       justify-content:center;
-      padding:16px 12px 40px;
+      padding: clamp(16px, 3.5vw, 28px) 14px;
     }
 
-    .app{
+    .phone{
       width:100%;
-      max-width:480px;
+      max-width:min(520px,100%);
     }
 
-    /* ===== TOP BAR ===== */
+    /* ===== Topbar exactly like Daily Reset ===== */
     .topbar{
       display:grid;
       grid-template-columns: 1fr auto 1fr;
       align-items:center;
-      gap:10px;
-      margin:6px 0 14px;
+      gap: var(--gap);
+      margin-bottom:14px;
     }
 
-    .btn{
-      border:1px solid rgba(200,162,74,.35);
-      background:rgba(255,255,255,.75);
-      color:var(--text);
-      padding:10px 14px;
-      border-radius:999px;
-      font-weight:800;
-      box-shadow: 0 8px 18px rgba(0,0,0,.06);
-      cursor:pointer;
+    .back{
+      justify-self:start;
       text-decoration:none;
       display:inline-flex;
       align-items:center;
-      justify-content:center;
       gap:8px;
+      padding:10px 14px;
+      border-radius:999px;
+      background: linear-gradient(180deg, var(--card2), var(--card));
+      box-shadow: var(--shadow2);
+      color:var(--text);
+      border:1px solid rgba(200,162,74,.20);
       white-space:nowrap;
       transition: transform .15s ease;
     }
-    .btn:hover{ transform: translateY(-1px); }
+    .back:hover{ transform: translateY(-1px); }
 
-    .langWrap{
+    .langToggle{
+      justify-self:center;
       display:flex;
       gap:10px;
-      justify-content:center;
       align-items:center;
+      justify-content:center;
     }
 
     .langBtn{
-      min-width:84px;
-      padding:10px 16px;
-    }
-
-    .langBtn.active{
-      background: linear-gradient(180deg, rgba(232,210,138,.75), rgba(200,162,74,.55));
-      border-color: rgba(200,162,74,.55);
-      box-shadow: 0 10px 22px rgba(200,162,74,.18);
-      font-weight:1000;
-    }
-
-    .topTitle{
-      text-align:right;
-      line-height:1.05;
-      padding-right:2px;
+      appearance:none;
+      border:none;
+      cursor:pointer;
+      padding:10px 14px;
+      border-radius:999px;
+      font-weight:950;
+      letter-spacing:.12em;
+      background: rgba(255,255,255,.70);
+      border:1px solid rgba(200,162,74,.18);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+      color: var(--text);
       white-space:nowrap;
+      transition: transform .15s ease;
+      min-width:56px;
+      text-align:center;
     }
-    .topTitle .small{ font-size:14px; color:var(--muted); }
-    .topTitle .big{ font-size:20px; font-weight:1000; }
-    .topTitle .gold{ color:var(--gold); font-weight:1000; }
+    .langBtn:hover{ transform: translateY(-1px); }
+    .langBtn.active{
+      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      border:1px solid rgba(200,162,74,.35);
+      color:#3a2c10;
+      text-shadow: 0 0 10px rgba(200,162,74,.22);
+    }
 
-    /* Cards */
+    .brand{
+      justify-self:end;
+      text-align:right;
+      line-height:1.1;
+      white-space:nowrap;
+      margin-left:0;
+    }
+    .brand .t1{
+      font-size:13px;
+      color:var(--muted);
+    }
+    .brand .t2{
+      font-size:18px;
+      font-weight:800;
+      letter-spacing:.2px;
+    }
+    .brand .glow{
+      color:var(--gold);
+      text-shadow: 0 0 10px rgba(200,162,74,.30);
+      font-weight:900;
+    }
+
+    /* ===== Main card exactly like Daily Reset ===== */
     .card{
-      background:var(--card);
-      border:1px solid rgba(200,162,74,.25);
-      box-shadow:var(--shadow);
-      border-radius:var(--radius);
-      padding:16px;
-      margin:12px 0;
-      backdrop-filter: blur(7px);
+      background: linear-gradient(180deg, var(--card2), var(--card));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border:1px solid rgba(200,162,74,.18);
+      overflow:hidden;
     }
 
     .hero{
+      padding: var(--pad);
       display:flex;
-      align-items:flex-start;
       gap:14px;
+      align-items:center;
     }
 
-    .tagPill{
-      width:74px;
-      flex:0 0 auto;
+    .badge{
+      width:64px;
+      height:64px;
       border-radius:18px;
-      background: linear-gradient(180deg, rgba(232,210,138,.7), rgba(200,162,74,.35));
-      border:1px solid rgba(200,162,74,.25);
-      padding:10px 10px;
-      text-align:center;
-      box-shadow: 0 10px 22px rgba(0,0,0,.06);
-    }
-    .tagPill .small{
-      font-size:12px;
-      color:rgba(43,43,43,.70);
+      display:flex;
+      align-items:center;
+      justify-content:center;
       font-weight:900;
-      letter-spacing:.06em;
-    }
-    .tagPill .big{
-      font-size:18px;
-      font-weight:1000;
-      margin-top:2px;
+      font-size:16px;
+      color:#3a2c10;
+      background: radial-gradient(circle at 30% 20%, #fff6d6, #e8d28a);
+      border:1px solid rgba(200,162,74,.35);
+      box-shadow: 0 0 16px rgba(200,162,74,.25);
+      flex:0 0 auto;
+      text-align:center;
+      line-height:1.05;
+      padding:6px;
     }
 
     .hero h1{
-      margin:0 0 4px;
-      font-size:20px;
-      font-weight:1000;
+      margin:0;
+      font-size:18px;
+      letter-spacing:.2px;
     }
     .hero p{
-      margin:0;
+      margin:6px 0 0 0;
       color:var(--muted);
-      font-size:14.5px;
-      line-height:1.35;
+      font-size:13px;
+      line-height:1.45;
+    }
+
+    .content{
+      padding: 0 var(--pad) var(--pad) var(--pad);
+    }
+
+    .divider{
+      height:1px;
+      background: linear-gradient(90deg, transparent, rgba(200,162,74,.35), transparent);
+      margin:16px 0;
+    }
+
+    /* free boxes like Daily Reset */
+    .softBox{
+      margin-top:0;
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(200,162,74,.16);
+      background: rgba(255,255,255,.72);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
     }
 
     .imgWrap{
       margin-top:12px;
-      border-radius:22px;
+      border-radius:18px;
       overflow:hidden;
       border:1px solid rgba(200,162,74,.18);
       box-shadow: var(--shadow2);
@@ -161,167 +206,416 @@
       display:block;
     }
 
-    .h2{
-      font-size:22px;
-      font-weight:1000;
-      margin:8px 0 10px;
+    .dayTitle{
+      margin:0 0 8px 0;
+      font-size:20px;
+      font-weight:950;
+      color:rgba(43,43,43,.92);
+      letter-spacing:.1px;
     }
 
     .label{
+      margin:0 0 6px 0;
       font-size:12px;
-      font-weight:1000;
+      font-weight:950;
       letter-spacing:.08em;
       color:rgba(43,43,43,.62);
       text-transform:uppercase;
-      margin:0 0 6px;
     }
 
     .text{
       margin:0;
-      font-size:15.4px;
+      font-size:14px;
       line-height:1.56;
+      color:rgba(43,43,43,.78);
+      font-weight:760;
+      white-space:pre-line;
     }
 
     .impuls{
-      font-size:16px;
-      font-weight:900;
-      line-height:1.55;
       margin:0;
+      font-size:15px;
+      line-height:1.55;
+      color:rgba(43,43,43,.86);
+      font-weight:920;
+      white-space:pre-line;
     }
 
-    .boxSoft{
-      background:rgba(255,255,255,.72);
-      border:1px solid rgba(200,162,74,.18);
-      border-radius:18px;
-      padding:12px 14px;
-      box-shadow: 0 10px 22px rgba(0,0,0,.05);
-    }
-
-    .divider{
-      height:1px;
-      background:rgba(200,162,74,.18);
-      margin:14px 0;
+    .text strong,
+    .impuls strong{
+      font-weight:1000;
+      color:#3a2c10;
     }
 
     .navRow{
       display:flex;
       gap:10px;
-      justify-content:space-between;
       flex-wrap:wrap;
-      margin-top:6px;
-    }
-    .navRow .btn{ flex:1 1 120px; }
-
-    .btn.primary{
-      background: linear-gradient(180deg, rgba(232,210,138,.75), rgba(200,162,74,.50));
-      border-color: rgba(200,162,74,.55);
-      font-weight:1000;
+      margin-top:14px;
     }
 
-    /* ===== Premium CTA / card ===== */
-    .premiumCard{
-      background:
-        radial-gradient(900px 340px at 20% 0%, rgba(255,246,214,.88), rgba(255,255,255,.70)),
-        linear-gradient(180deg, rgba(255,255,255,.60), rgba(255,255,255,.78));
+    button{
+      appearance:none;
+      border:none;
+      cursor:pointer;
+      padding:12px 14px;
+      border-radius:14px;
+      font-weight:950;
+      letter-spacing:.2px;
+      box-shadow: var(--shadow2);
+      border:1px solid rgba(200,162,74,.20);
+      background: linear-gradient(180deg, #ffffff, #f7f2e6);
+      color:var(--text);
+      flex:1;
+      min-width:130px;
+      transition: transform .15s ease;
+    }
+    button:hover{ transform: translateY(-1px); }
+
+    button.primary{
+      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
       border:1px solid rgba(200,162,74,.35);
+      color:#3a2c10;
+      text-shadow: 0 0 10px rgba(200,162,74,.25);
+    }
+
+    /* ===== Premium teaser exactly in Daily Reset style ===== */
+    .premiumTeaser{
+      margin-top:14px;
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(200,162,74,.34);
+      background:
+        radial-gradient(800px 260px at 20% 0%, rgba(255,246,214,.92), rgba(255,255,255,.72)),
+        linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.75));
       box-shadow:
-        0 0 26px rgba(200,162,74,.14),
-        0 16px 44px rgba(0,0,0,.08);
-      border-radius:22px;
-      padding:16px;
+        0 0 22px rgba(200,162,74,.18),
+        0 16px 42px rgba(0,0,0,.08);
       position:relative;
       overflow:hidden;
     }
 
-    .premiumCard::before{
+    .premiumTeaser::before{
       content:"";
       position:absolute;
       inset:-40px;
-      background:
-        radial-gradient(circle at 25% 10%, rgba(200,162,74,.18), transparent 55%),
-        radial-gradient(circle at 80% 50%, rgba(232,210,138,.18), transparent 55%);
-      filter: blur(10px);
+      background: radial-gradient(circle at 30% 20%, rgba(200,162,74,.22), transparent 55%);
+      filter: blur(8px);
+      opacity:.9;
       pointer-events:none;
     }
 
-    .premiumInner{ position:relative; z-index:2; }
+    .premiumHead{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      position:relative;
+      z-index:2;
+    }
 
-    .pillMember{
+    .premiumTeaser h3{
+      margin:0 0 6px 0;
+      font-size:14.5px;
+      font-weight:950;
+      color:#3a2c10;
+      letter-spacing:.2px;
+    }
+
+    .premiumTeaser p{
+      margin:0;
+      color: rgba(43,43,43,.78);
+      font-weight:760;
+      font-size:13.6px;
+      line-height:1.45;
+    }
+
+    .premiumBadge{
+      flex:0 0 auto;
       display:inline-flex;
       align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      background: rgba(200,162,74,.18);
+      border:1px solid rgba(200,162,74,.35);
+      color:#3a2c10;
+      font-weight:950;
+      white-space:nowrap;
+      position:relative;
+      z-index:2;
+    }
+
+    .premiumList{
+      margin:12px 0 0;
+      padding-left:18px;
+      line-height:1.55;
+      color: rgba(43,43,43,.78);
+      font-weight:760;
+      font-size:13.6px;
+      position:relative;
+      z-index:2;
+    }
+
+    .premiumActions{
+      display:flex;
       gap:10px;
-      padding:10px 14px;
+      flex-wrap:wrap;
+      margin-top:12px;
+      position:relative;
+      z-index:2;
+    }
+
+    .linkBtn{
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 14px;
+      border-radius:14px;
+      font-weight:950;
+      letter-spacing:.2px;
+      border:1px solid rgba(200,162,74,.35);
+      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      color:#3a2c10;
+      box-shadow: 0 14px 30px rgba(200,162,74,.18);
+      flex:1;
+      min-width:180px;
+      transition: transform .15s ease;
+      white-space:nowrap;
+    }
+    .linkBtn:hover{ transform: translateY(-1px); }
+
+    .subLink{
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 14px;
+      border-radius:14px;
+      font-weight:950;
+      letter-spacing:.2px;
+      border:1px solid rgba(0,0,0,0.10);
+      background: rgba(255,255,255,0.78);
+      color: rgba(43,43,43,.88);
+      flex:1;
+      min-width:180px;
+      transition: transform .15s ease;
+      white-space:nowrap;
+    }
+    .subLink:hover{ transform: translateY(-1px); }
+
+    .smallNote{
+      margin-top:10px;
+      font-size:12.6px;
+      color: rgba(43,43,43,.62);
+      font-weight:760;
+      line-height:1.45;
+      position:relative;
+      z-index:2;
+    }
+
+    /* ===== Premium block exactly in Daily Reset style ===== */
+    .premiumBlock{
+      margin-top:14px;
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(200,162,74,.38);
+      background:
+        radial-gradient(900px 340px at 20% 0%, rgba(255,246,214,.88), rgba(255,255,255,.70)),
+        linear-gradient(180deg, rgba(255,255,255,.60), rgba(255,255,255,.78));
+      box-shadow:
+        0 0 26px rgba(200,162,74,.18),
+        0 16px 44px rgba(0,0,0,.08);
+      position:relative;
+      overflow:hidden;
+      display:none;
+    }
+    .premiumBlock::before{
+      content:"";
+      position:absolute;
+      inset:-50px;
+      background:
+        radial-gradient(circle at 28% 12%, rgba(200,162,74,.24), transparent 55%),
+        radial-gradient(circle at 75% 40%, rgba(232,210,138,.22), transparent 55%);
+      filter: blur(9px);
+      opacity:.95;
+      pointer-events:none;
+    }
+
+    .premiumTop{
+      position:relative;
+      z-index:2;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    .premiumTitle{
+      margin:0 0 6px 0;
+      font-size:15px;
+      font-weight:950;
+      color:#3a2c10;
+      letter-spacing:.2px;
+    }
+
+    .premiumSub{
+      margin:0;
+      font-size:13.6px;
+      line-height:1.45;
+      color: rgba(43,43,43,.78);
+      font-weight:780;
+    }
+
+    .pill{
+      flex:0 0 auto;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      background: rgba(200,162,74,.18);
+      border:1px solid rgba(200,162,74,.35);
+      color:#3a2c10;
+      font-weight:950;
+      white-space:nowrap;
+      position:relative;
+      z-index:2;
+    }
+
+    .paper{
+      position:relative;
+      z-index:2;
+      margin-top:12px;
+      padding:14px 14px 12px;
+      border-radius:18px;
+      border:1px solid rgba(58,44,16,.16);
+      background:
+        linear-gradient(180deg, rgba(255,250,238,.86), rgba(245,235,214,.82));
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.40),
+        0 12px 28px rgba(0,0,0,.08);
+    }
+    .paper::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(200,162,74,.10), transparent 60%),
+        radial-gradient(circle at 100% 40%, rgba(200,162,74,.08), transparent 55%);
+      opacity:.9;
+      pointer-events:none;
+      border-radius:18px;
+    }
+
+    .paper h4{
+      position:relative;
+      margin:0 0 8px 0;
+      font-size:14px;
+      font-weight:950;
+      color:#3a2c10;
+      letter-spacing:.2px;
+    }
+
+    .paperText{
+      position:relative;
+      margin:0;
+      font-size:13.8px;
+      line-height:1.56;
+      color: rgba(43,43,43,.86);
+      font-weight:760;
+      white-space:pre-line;
+    }
+
+    .paperMeta{
+      position:relative;
+      margin-top:10px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      color: rgba(43,43,43,.72);
+      font-size:12.6px;
+      font-weight:780;
+    }
+
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
       border-radius:999px;
       border:1px solid rgba(200,162,74,.25);
-      background: linear-gradient(180deg, rgba(232,210,138,.35), rgba(255,255,255,.75));
+      background: rgba(255,255,255,.62);
       box-shadow: 0 10px 22px rgba(0,0,0,.06);
-      font-weight:1000;
-      margin-bottom:10px;
     }
-
-    .muted{ color:rgba(43,43,43,.70); }
-
-    ul{ margin:10px 0 0 18px; padding:0; }
-    li{ margin:6px 0; color:rgba(43,43,43,.78); font-weight:700; }
-
-    .unlock{
-      margin-top:12px;
-      width:100%;
-      padding:12px 16px;
-      border-radius:16px;
-      border:1px solid rgba(200,162,74,.35);
-      background: linear-gradient(180deg, rgba(232,210,138,.75), rgba(200,162,74,.50));
-      font-weight:1000;
-      cursor:pointer;
-      box-shadow: 0 14px 28px rgba(200,162,74,.18);
-      transition: transform .15s ease;
-    }
-    .unlock:hover{ transform: translateY(-1px); }
 
     .premiumGrid{
+      position:relative;
+      z-index:2;
       display:grid;
       gap:12px;
       margin-top:12px;
     }
 
-    .variantPill{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid rgba(200,162,74,.28);
-      background: rgba(255,255,255,.72);
-      font-weight:900;
-      font-size:13px;
-      color:#3a2c10;
-      margin-bottom:10px;
+    .premiumGrid .softBox{
+      background: rgba(255,255,255,.74);
     }
 
-    .smartTitle{
-      margin:0 0 8px;
-      font-size:15px;
-      font-weight:1000;
+    .gameCard{
+      position:relative;
+      z-index:2;
+      margin-top:12px;
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(200,162,74,.22);
+      background: rgba(255,255,255,.70);
+      box-shadow: 0 12px 26px rgba(0,0,0,.06);
+      overflow:hidden;
+    }
+
+    .gameHead{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+    }
+
+    .gameCard h4{
+      margin:0 0 6px;
+      font-size:14px;
+      font-weight:950;
       color:#3a2c10;
+    }
+
+    .gameCard p{
+      margin:0;
+      font-size:13.6px;
+      line-height:1.45;
+      color: rgba(43,43,43,.78);
+      font-weight:760;
     }
 
     .smartChoices{
+      margin-top:12px;
       display:grid;
       grid-template-columns: repeat(3, 1fr);
       gap:10px;
-      margin-top:10px;
     }
 
     .choiceBtn{
-      border:1px solid rgba(200,162,74,.24);
-      background: rgba(255,255,255,.8);
-      color:var(--text);
-      border-radius:16px;
-      padding:12px 10px;
-      font-weight:900;
-      font-size:13px;
-      box-shadow: 0 10px 22px rgba(0,0,0,.05);
+      appearance:none;
+      border:none;
       cursor:pointer;
+      padding:12px 10px;
+      border-radius:16px;
+      font-weight:950;
+      letter-spacing:.1px;
+      border:1px solid rgba(200,162,74,.22);
+      background: rgba(255,255,255,.78);
+      color:var(--text);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
       transition: transform .15s ease, box-shadow .15s ease;
     }
     .choiceBtn:hover{
@@ -329,9 +623,10 @@
       box-shadow: 0 12px 24px rgba(0,0,0,.07);
     }
     .choiceBtn.active{
-      background: linear-gradient(180deg, rgba(232,210,138,.75), rgba(200,162,74,.45));
-      border-color: rgba(200,162,74,.45);
+      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      border:1px solid rgba(200,162,74,.35);
       color:#3a2c10;
+      text-shadow: 0 0 10px rgba(200,162,74,.18);
     }
 
     .smartOutput{
@@ -341,8 +636,11 @@
       border:1px solid rgba(200,162,74,.18);
       background: rgba(255,255,255,.74);
       box-shadow: 0 10px 22px rgba(0,0,0,.05);
-      font-size:15px;
-      line-height:1.56;
+      font-size:13.8px;
+      line-height:1.52;
+      color:rgba(43,43,43,.82);
+      font-weight:760;
+      white-space:pre-line;
     }
 
     .autoHint{
@@ -353,168 +651,263 @@
       font-weight:700;
     }
 
+    .gameFooter{
+      margin-top:10px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      color: rgba(43,43,43,.74);
+      font-size:12.8px;
+      font-weight:820;
+    }
+
+    .gameBtns{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      width:100%;
+    }
+
+    .miniBtn{
+      padding:10px 12px;
+      border-radius:14px;
+      font-weight:950;
+      letter-spacing:.2px;
+      border:1px solid rgba(200,162,74,.22);
+      background: rgba(255,255,255,.78);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+      flex:1;
+      min-width:140px;
+    }
+    .miniBtn.primary{
+      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      border:1px solid rgba(200,162,74,.35);
+      color:#3a2c10;
+      text-shadow: 0 0 10px rgba(200,162,74,.18);
+    }
+
+    .closing{
+      position:relative;
+      z-index:2;
+      margin-top:12px;
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(200,162,74,.22);
+      background: rgba(255,255,255,.74);
+      box-shadow: 0 12px 26px rgba(0,0,0,.06);
+    }
+
+    .closing h4{
+      margin:0 0 6px;
+      font-size:14px;
+      font-weight:950;
+      color:#3a2c10;
+    }
+
+    .closing p{
+      margin:0;
+      font-size:13.8px;
+      line-height:1.52;
+      color: rgba(43,43,43,.82);
+      font-weight:780;
+      white-space:pre-line;
+    }
+
     @media (max-width: 420px){
-      .smartChoices{
-        grid-template-columns: 1fr;
-      }
-      .langBtn{
-        min-width:64px;
-        padding:10px 12px;
-      }
+      .topbar{ grid-template-columns: 1fr auto 1fr; }
+      .navRow button{ min-width:100%; }
+      .smartChoices{ grid-template-columns:1fr; }
     }
   </style>
 </head>
 
 <body>
-  <main class="app">
+  <div class="phone">
 
     <!-- TOPBAR -->
     <div class="topbar">
-      <a class="btn" href="./indexIT.html">← Home</a>
+      <a class="back" href="./indexIT.html">← Home</a>
 
-      <div class="langWrap" aria-label="Lingua">
-        <button class="btn langBtn" id="btnDE" type="button">DE</button>
-        <button class="btn langBtn active" id="btnIT" type="button">IT</button>
+      <div class="langToggle" aria-label="Selettore lingua">
+        <button class="langBtn" id="btnDE" type="button">DE</button>
+        <button class="langBtn active" id="btnIT" type="button">IT</button>
       </div>
 
-      <div class="topTitle">
-        <div class="small">Panacea</div>
-        <div class="big"><span class="gold">Conoscenza</span> & Chiarezza</div>
+      <div class="brand">
+        <div class="t1">Panacea</div>
+        <div class="t2"><span class="glow">Sapere</span> & Chiarezza</div>
       </div>
     </div>
 
-    <!-- HERO -->
-    <section class="card hero">
-      <div class="tagPill">
-        <div class="small">Giorno</div>
-        <div class="big" id="tagNumber">1</div>
-      </div>
-
-      <div>
-        <h1>Il tuo percorso in 21 giorni</h1>
-        <p>Un impulso quotidiano per ritrovare orientamento, calma interiore e una chiarezza più concreta nella vita di tutti i giorni.</p>
-
-        <div class="imgWrap">
-          <img id="dayImage" src="./icons/1.png" alt="Immagine del giorno" />
-        </div>
-      </div>
-    </section>
-
-    <!-- STANDARD CONTENT -->
-    <section class="card">
-      <div class="h2" id="title">—</div>
-
-      <div class="boxSoft">
-        <div class="label">Spiegazione</div>
-        <p class="text" id="explanation">—</p>
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="boxSoft">
-        <div class="label">Impulso del giorno</div>
-        <p class="impuls" id="impuls">—</p>
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="boxSoft">
-        <div class="label">Riflessione</div>
-        <p class="text" id="reflection">—</p>
-      </div>
-
-      <div id="exerciseWrap" style="display:none;">
-        <div class="divider"></div>
-        <div class="boxSoft">
-          <div class="label" id="exerciseTitle">Mini-esercizio</div>
-          <p class="text" id="exerciseText">—</p>
+    <div class="card">
+      <div class="hero">
+        <div class="badge">SC</div>
+        <div>
+          <h1>Sapere & Chiarezza</h1>
+          <p>Il tuo percorso di 21 giorni per coltivare maggiore orientamento, calma interiore e lucidità nella vita quotidiana.</p>
         </div>
       </div>
 
-      <div class="navRow">
-        <button class="btn" id="prevBtn" type="button">← Indietro</button>
-        <button class="btn primary" id="nextBtn" type="button">Avanti →</button>
-      </div>
-    </section>
+      <div class="content">
 
-    <!-- PREMIUM CTA -->
-    <section class="card" id="memberCta">
-      <div class="pillMember">
-        <span>Area Membri</span>
-        <span class="muted">Più profondità. Più accompagnamento. Più integrazione.</span>
-      </div>
-
-      <ul>
-        <li>Approfondimento quotidiano sul tema del giorno</li>
-        <li>3 varianti premium che ruotano nelle settimane successive</li>
-        <li>Un esercizio intelligente, interattivo e orientato all’azione</li>
-        <li>Più continuità tra consapevolezza, corpo e vita concreta</li>
-      </ul>
-
-      <button class="unlock" id="unlockBtn" type="button">Sblocca Area Membri →</button>
-    </section>
-
-    <!-- PREMIUM MEMBERS BLOCK -->
-    <section class="premiumCard" id="premiumWrap" style="display:none;">
-      <div class="premiumInner">
-
-        <div class="pillMember">
-          <span>Area Membri</span>
-          <span class="muted">Approfondimento del giorno</span>
-        </div>
-
-        <div class="variantPill" id="variantPill">Variante Premium A</div>
-
-        <div class="premiumGrid">
-          <div class="boxSoft">
-            <div class="label">Approfondimento</div>
-            <p class="text" id="premiumDeepDive">—</p>
-          </div>
-
-          <div class="boxSoft">
-            <div class="label">Insight Premium</div>
-            <p class="text" id="premiumInsight">—</p>
-          </div>
-
-          <div class="boxSoft">
-            <div class="label">Domanda Premium</div>
-            <p class="text" id="premiumQuestion">—</p>
-          </div>
-
-          <div class="boxSoft">
-            <div class="label">Integrazione finale</div>
-            <p class="text" id="premiumClosing">—</p>
+        <!-- HERO / DAY IMAGE -->
+        <div class="softBox">
+          <div class="label">Giorno <span id="tagNumber">1</span></div>
+          <div class="imgWrap">
+            <img id="dayImage" src="./icons/1.png" alt="Immagine del giorno" />
           </div>
         </div>
 
         <div class="divider"></div>
 
-        <div class="boxSoft">
-          <div class="label">Esercizio intelligente</div>
-          <h3 class="smartTitle" id="smartTitle">Bussola della chiarezza</h3>
-          <p class="text" id="smartIntro">
-            Scegli spontaneamente ciò di cui senti di avere più bisogno in questo momento. L’esercizio si adatta alla tua scelta.
-          </p>
+        <!-- STANDARD CONTENT -->
+        <div class="softBox">
+          <h2 class="dayTitle" id="title">—</h2>
+          <div class="label">Approfondimento</div>
+          <p class="text" id="explanation">—</p>
+        </div>
 
-          <div class="smartChoices">
-            <button class="choiceBtn" data-choice="body" type="button">Corpo</button>
-            <button class="choiceBtn" data-choice="mind" type="button">Mente</button>
-            <button class="choiceBtn" data-choice="action" type="button">Azione</button>
+        <div class="divider"></div>
+
+        <div class="softBox">
+          <div class="label">Impulso centrale</div>
+          <p class="impuls" id="impuls">—</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="softBox">
+          <div class="label">Autoriflessione</div>
+          <p class="text" id="reflection">—</p>
+        </div>
+
+        <div id="exerciseWrap" style="display:none;">
+          <div class="divider"></div>
+          <div class="softBox">
+            <div class="label" id="exerciseTitle">Mini esercizio</div>
+            <p class="text" id="exerciseText">—</p>
+          </div>
+        </div>
+
+        <div class="navRow">
+          <button id="prevBtn" type="button">← Indietro</button>
+          <button class="primary" id="nextBtn" type="button">Avanti →</button>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- PREMIUM TEASER -->
+        <div class="premiumTeaser" id="premiumTeaser">
+          <div class="premiumHead">
+            <div>
+              <h3>Membri – Sapere Deluxe</h3>
+              <p>
+                Una versione più profonda del tuo impulso quotidiano, con maggiore contestualizzazione,
+                più valore pratico e una guida premium calda, raffinata e di alta qualità.
+              </p>
+            </div>
+            <div class="premiumBadge" id="premiumBadge">Stato: Free</div>
           </div>
 
-          <div class="smartOutput" id="smartOutput">
-            Scegli un’area. Riceverai un piccolo passo concreto, semplice e intelligente, da portare subito nella tua giornata.
+          <ul class="premiumList">
+            <li><b>Approfondimento del tema</b> con una lettura più psicologica, concreta e vicina alla vita reale</li>
+            <li><b>3 varianti premium</b> in rotazione settimanale per offrire maggiore varietà</li>
+            <li><b>Esercizio smart</b> con focus su corpo, pensiero o azione</li>
+            <li><b>Integrazione finale</b> per trasferire il contenuto con chiarezza nella tua quotidianità</li>
+          </ul>
+
+          <div class="premiumActions">
+            <a class="linkBtn" id="memberBtn" href="./mitgliederIT.html">Vai all’Area Membri</a>
+            <a class="subLink" id="unlockBtnLink" href="./mitgliederIT.html">Sblocca Area Membri</a>
           </div>
 
-          <div class="autoHint" id="autoHint">
-            Suggerimento automatico: per oggi è già stato selezionato un focus iniziale per accompagnarti con maggiore chiarezza.
+          <div class="smallNote">
+            Nota: dopo lo sblocco, la tua area premium verrà visualizzata automaticamente direttamente qui.
+          </div>
+        </div>
+
+        <!-- PREMIUM MEMBERS BLOCK -->
+        <div class="premiumBlock" id="premiumBlock" aria-label="Premium Sapere Deluxe">
+          <div class="premiumTop">
+            <div>
+              <h3 class="premiumTitle" id="pTitle">Area Membri – Approfondimento del giorno</h3>
+              <p class="premiumSub" id="pSub">Caricamento…</p>
+            </div>
+            <div class="pill" id="pPill">Variante A</div>
+          </div>
+
+          <div class="paper">
+            <h4 id="paperTitle">Approfondimento del giorno</h4>
+            <p class="paperText" id="paperText">Caricamento…</p>
+            <div class="paperMeta">
+              <span class="chip" id="paperAnchor">🧭 Focus: …</span>
+              <span class="chip" id="paperMicro">✨ Micro-passo: …</span>
+            </div>
+          </div>
+
+          <div class="premiumGrid">
+            <div class="softBox">
+              <div class="label">Premium Insight</div>
+              <p class="text" id="premiumInsight">—</p>
+            </div>
+
+            <div class="softBox">
+              <div class="label">Domanda Premium</div>
+              <p class="text" id="premiumQuestion">—</p>
+            </div>
+
+            <div class="softBox">
+              <div class="label">Integrazione</div>
+              <p class="text" id="premiumClosing">—</p>
+            </div>
+          </div>
+
+          <div class="gameCard">
+            <div class="gameHead">
+              <div>
+                <h4 id="gameTitle">Esercizio Smart</h4>
+                <p id="gamePrompt">Caricamento…</p>
+              </div>
+              <div class="pill">Smart</div>
+            </div>
+
+            <div class="smartChoices">
+              <button class="choiceBtn" data-choice="body" type="button">Corpo</button>
+              <button class="choiceBtn" data-choice="mind" type="button">Pensiero</button>
+              <button class="choiceBtn" data-choice="action" type="button">Azione</button>
+            </div>
+
+            <div class="smartOutput" id="smartOutput">
+              Scegli un’area. Riceverai subito un piccolo passo intelligente e concreto da applicare.
+            </div>
+
+            <div class="autoHint" id="autoHint">
+              Suggerimento automatico: il focus di oggi è già stato preselezionato per te.
+            </div>
+
+            <div class="gameFooter">
+              <div id="gameHint">Suggerimento: scegli in modo intuitivo, non perfetto.</div>
+              <div id="gameResult"></div>
+            </div>
+
+            <div class="gameBtns">
+              <button class="miniBtn primary" id="applySmartBtn" type="button">Applica l’impulso</button>
+              <button class="miniBtn" id="finishBtn" type="button">Mostra conclusione</button>
+            </div>
+          </div>
+
+          <div class="closing" id="closingBox" style="display:none;">
+            <h4>Per concludere</h4>
+            <p id="closingText">…</p>
           </div>
         </div>
 
       </div>
-    </section>
+    </div>
 
-  </main>
+  </div>
 
   <script>
     // ===== CONFIG =====
@@ -525,6 +918,7 @@
     const LS_PREMIUM = "panacea_premium";
     const LS_START = "panacea_wissen_start";
     const LS_LANG = "lang";
+    const MEMBER_KEY = "panacea_member";
 
     // ===== LANGUAGE =====
     const btnDE = document.getElementById("btnDE");
@@ -556,6 +950,7 @@
     // ===== STATE =====
     let dataDays = [];
     let currentDay = 1;
+    let currentVariant = null;
 
     // ===== ELEMENTS =====
     const tagNumber = document.getElementById("tagNumber");
@@ -570,20 +965,32 @@
     const exerciseTitle = document.getElementById("exerciseTitle");
     const exerciseText = document.getElementById("exerciseText");
 
-    const memberCta = document.getElementById("memberCta");
-    const premiumWrap = document.getElementById("premiumWrap");
-    const unlockBtn = document.getElementById("unlockBtn");
+    const premiumBadge = document.getElementById("premiumBadge");
+    const memberBtn = document.getElementById("memberBtn");
+    const unlockBtnLink = document.getElementById("unlockBtnLink");
+    const premiumBlock = document.getElementById("premiumBlock");
 
-    const variantPill = document.getElementById("variantPill");
-    const premiumDeepDive = document.getElementById("premiumDeepDive");
+    const pTitle = document.getElementById("pTitle");
+    const pSub = document.getElementById("pSub");
+    const pPill = document.getElementById("pPill");
+    const paperTitle = document.getElementById("paperTitle");
+    const paperText = document.getElementById("paperText");
+    const paperAnchor = document.getElementById("paperAnchor");
+    const paperMicro = document.getElementById("paperMicro");
     const premiumInsight = document.getElementById("premiumInsight");
     const premiumQuestion = document.getElementById("premiumQuestion");
     const premiumClosing = document.getElementById("premiumClosing");
 
-    const smartTitle = document.getElementById("smartTitle");
-    const smartIntro = document.getElementById("smartIntro");
+    const gameTitle = document.getElementById("gameTitle");
+    const gamePrompt = document.getElementById("gamePrompt");
     const smartOutput = document.getElementById("smartOutput");
     const autoHint = document.getElementById("autoHint");
+    const gameHint = document.getElementById("gameHint");
+    const gameResult = document.getElementById("gameResult");
+    const applySmartBtn = document.getElementById("applySmartBtn");
+    const finishBtn = document.getElementById("finishBtn");
+    const closingBox = document.getElementById("closingBox");
+    const closingText = document.getElementById("closingText");
     const choiceBtns = Array.from(document.querySelectorAll(".choiceBtn"));
 
     const prevBtn = document.getElementById("prevBtn");
@@ -593,6 +1000,10 @@
     function isPremium(){
       const v = String(localStorage.getItem(LS_PREMIUM) || "").toLowerCase();
       return (v === "1" || v === "true" || v === "yes" || v === "on");
+    }
+
+    function isMember(){
+      return localStorage.getItem(MEMBER_KEY) === "true" || isPremium();
     }
 
     function clampDay(n){
@@ -635,31 +1046,57 @@
     }
 
     function getVariantLabel(i){
-      return i === 0 ? "Variante Premium A" : i === 1 ? "Variante Premium B" : "Variante Premium C";
+      return i === 0 ? "Variante A" : i === 1 ? "Variante B" : "Variante C";
     }
 
-    function getVariantData(d){
+    function getDefaultPremiumContent(dayObj){
       const idx = getVariantIndex();
-
-      if(Array.isArray(d.premiumVariants) && d.premiumVariants[idx]){
-        return d.premiumVariants[idx];
-      }
-
       return {
         label: getVariantLabel(idx),
-        deepDive: d.premiumDeepDive || d.premiumInsight || "Il contenuto premium di approfondimento non è ancora disponibile.",
-        insight: d.premiumInsight || "L’insight premium del giorno non è ancora disponibile.",
-        question: d.premiumQuestion || "La domanda premium del giorno non è ancora disponibile.",
-        closing: d.premiumClosing || "Porta con te solo ciò che oggi ti sostiene davvero.",
-        smartExercise: d.smartExercise || {
+        title: dayObj.title || "Approfondimento del giorno",
+        sub: "Una lettura più profonda, più calma e più concreta del tuo impulso di oggi.",
+        deepDive: dayObj.premiumDeepDive || dayObj.premiumInsight || "Nessun testo premium ancora disponibile.",
+        insight: dayObj.premiumInsight || "Nessun Premium Insight ancora disponibile.",
+        question: dayObj.premiumQuestion || "Nessuna domanda premium ancora disponibile.",
+        closing: dayObj.premiumClosing || "Porta con te oggi solo ciò che ti fa davvero bene.",
+        anchor: dayObj.title || "Chiarezza",
+        micro: "Scegli oggi un piccolo passo realistico e sostenibile.",
+        smartExercise: dayObj.smartExercise || {
           title: "Bussola della chiarezza",
-          intro: "Scegli ciò di cui hai più bisogno in questo momento.",
+          intro: "Scegli in modo intuitivo l’area che in questo momento può offrirti maggiore chiarezza o stabilità.",
           autoChoice: "mind",
-          body: "Porta attenzione al corpo. Sciogli le spalle, rilassa la mandibola e fai due espirazioni lente e profonde.",
-          mind: "Formula in una sola frase il pensiero più importante per oggi: semplice, essenziale, chiaro.",
-          action: "Scegli il passo più piccolo possibile che puoi fare adesso. Inizia da lì."
+          body: "Appoggia una mano sulla zona del corpo che oggi chiede più calma. Espira due volte più lentamente.",
+          mind: "Formula il pensiero più importante di oggi in una sola frase chiara ed essenziale.",
+          action: "Scegli il più piccolo passo possibile e inizia esattamente da lì."
         }
       };
+    }
+
+    function getVariantData(dayObj){
+      const idx = getVariantIndex();
+      if(Array.isArray(dayObj.premiumVariants) && dayObj.premiumVariants[idx]){
+        const v = dayObj.premiumVariants[idx];
+        return {
+          label: v.label || getVariantLabel(idx),
+          title: v.title || dayObj.title || "Approfondimento del giorno",
+          sub: v.sub || "Una lettura più profonda, più calma e più concreta del tuo impulso di oggi.",
+          deepDive: v.deepDive || v.premiumDeepDive || dayObj.premiumDeepDive || dayObj.premiumInsight || "Nessun testo premium ancora disponibile.",
+          insight: v.insight || v.premiumInsight || dayObj.premiumInsight || "Nessun Premium Insight ancora disponibile.",
+          question: v.question || v.premiumQuestion || dayObj.premiumQuestion || "Nessuna domanda premium ancora disponibile.",
+          closing: v.closing || v.premiumClosing || dayObj.premiumClosing || "Porta con te oggi solo ciò che ti fa davvero bene.",
+          anchor: v.anchor || dayObj.title || "Chiarezza",
+          micro: v.micro || "Scegli oggi un piccolo passo realistico e sostenibile.",
+          smartExercise: v.smartExercise || dayObj.smartExercise || {
+            title: "Bussola della chiarezza",
+            intro: "Scegli in modo intuitivo l’area che in questo momento può offrirti maggiore chiarezza o stabilità.",
+            autoChoice: "mind",
+            body: "Appoggia una mano sulla zona del corpo che oggi chiede più calma. Espira due volte più lentamente.",
+            mind: "Formula il pensiero più importante di oggi in una sola frase chiara ed essenziale.",
+            action: "Scegli il più piccolo passo possibile e inizia esattamente da lì."
+          }
+        };
+      }
+      return getDefaultPremiumContent(dayObj);
     }
 
     function renderSmartExercise(variant, forcedChoice){
@@ -670,17 +1107,43 @@
         btn.classList.toggle("active", btn.dataset.choice === choice);
       });
 
-      smartTitle.textContent = exercise.title || "Bussola della chiarezza";
-      smartIntro.textContent = exercise.intro || "Scegli ciò di cui hai più bisogno in questo momento.";
+      gameTitle.textContent = exercise.title || "Bussola della chiarezza";
+      gamePrompt.textContent = exercise.intro || "Scegli in modo intuitivo l’area che in questo momento può offrirti maggiore chiarezza o stabilità.";
 
       const map = {
-        body: exercise.body || "Ascolta il corpo: rilassa, espira, torna a sentire il tuo centro.",
-        mind: exercise.mind || "Dai un nome chiaro a ciò che conta davvero oggi.",
-        action: exercise.action || "Scegli una piccola azione concreta e inizia con quella."
+        body: exercise.body || "Ascolta il corpo. Rilascia le spalle ed espira una volta con calma.",
+        mind: exercise.mind || "Formula per oggi un pensiero chiaro che possa alleggerirti.",
+        action: exercise.action || "Scegli una piccola azione che oggi sia davvero possibile."
       };
 
       smartOutput.textContent = map[choice];
-      autoHint.textContent = `Suggerimento automatico: oggi il focus iniziale è “${choice === "body" ? "Corpo" : choice === "mind" ? "Mente" : "Azione"}”.`;
+      autoHint.textContent = `Suggerimento automatico: oggi è stato selezionato come primo focus “${choice === "body" ? "Corpo" : choice === "mind" ? "Pensiero" : "Azione"}”.`;
+      gameResult.textContent = "";
+      return choice;
+    }
+
+    function renderPremium(dayObj){
+      if(!isMember()) return;
+
+      currentVariant = getVariantData(dayObj);
+
+      pTitle.textContent = `Area Membri – ${currentVariant.title || "Approfondimento del giorno"}`;
+      pSub.textContent = currentVariant.sub;
+      pPill.textContent = currentVariant.label;
+
+      paperTitle.textContent = currentVariant.title || "Approfondimento del giorno";
+      paperText.textContent = currentVariant.deepDive;
+      paperAnchor.textContent = `🧭 Focus: ${currentVariant.anchor}`;
+      paperMicro.textContent = `✨ Micro-passo: ${currentVariant.micro}`;
+
+      premiumInsight.textContent = currentVariant.insight;
+      premiumQuestion.textContent = currentVariant.question;
+      premiumClosing.textContent = currentVariant.closing;
+      closingText.textContent = currentVariant.closing;
+
+      closingBox.style.display = "none";
+
+      renderSmartExercise(currentVariant, (currentVariant.smartExercise && currentVariant.smartExercise.autoChoice) || "mind");
     }
 
     function render(){
@@ -690,45 +1153,34 @@
       dayImage.src = `./icons/${currentDay}.png`;
 
       elTitle.textContent = d.title || "—";
-      elExplanation.textContent = d.explanation || "—";
-      elImpuls.textContent = d.impuls || d.impulse || "—";
-      elReflection.textContent = d.reflection || "—";
+      elExplanation.innerHTML = d.explanation || "—";
+      elImpuls.innerHTML = d.impuls || d.impulse || "—";
+      elReflection.innerHTML = d.reflection || "—";
 
       if(d.exercise && (d.exercise.text || d.exercise.title)){
         exerciseWrap.style.display = "block";
-        exerciseTitle.textContent = d.exercise.title || "Mini-esercizio";
-        exerciseText.textContent = d.exercise.text || "—";
+        exerciseTitle.textContent = d.exercise.title || "Mini esercizio";
+        exerciseText.innerHTML = d.exercise.text || "—";
       } else {
         exerciseWrap.style.display = "none";
       }
 
-      if(isPremium()){
-        memberCta.style.display = "none";
-        premiumWrap.style.display = "block";
-
-        const variant = getVariantData(d);
-        const vLabel = variant.label || getVariantLabel(getVariantIndex());
-        variantPill.textContent = vLabel;
-
-        premiumDeepDive.textContent = variant.deepDive || "—";
-        premiumInsight.textContent = variant.insight || "—";
-        premiumQuestion.textContent = variant.question || "—";
-        premiumClosing.textContent = variant.closing || "—";
-
-        renderSmartExercise(variant, (variant.smartExercise && variant.smartExercise.autoChoice) || "mind");
-
-        choiceBtns.forEach(btn => {
-          btn.onclick = () => renderSmartExercise(variant, btn.dataset.choice);
-        });
-
+      if(isMember()){
+        premiumBadge.textContent = "Stato: Membro ✅";
+        unlockBtnLink.style.display = "none";
+        memberBtn.textContent = "Area Membri";
+        premiumBlock.style.display = "block";
+        renderPremium(d);
       } else {
-        memberCta.style.display = "block";
-        premiumWrap.style.display = "none";
+        premiumBadge.textContent = "Stato: Free";
+        unlockBtnLink.style.display = "";
+        memberBtn.textContent = "Vai all’Area Membri";
+        premiumBlock.style.display = "none";
       }
 
       prevBtn.disabled = (currentDay <= 1);
       nextBtn.disabled = (currentDay >= TOTAL_DAYS);
-      nextBtn.textContent = (currentDay >= TOTAL_DAYS) ? "Completato ✓" : "Avanti →";
+      nextBtn.textContent = (currentDay >= TOTAL_DAYS) ? "Finito ✓" : "Avanti →";
     }
 
     async function loadJSON(){
@@ -745,7 +1197,7 @@
           dataDays = [];
         }
       } catch(err){
-        console.warn("Impossibile caricare wissenIT.json:", err);
+        console.warn("Il JSON Sapere non è stato caricato:", err);
         dataDays = [];
       }
     }
@@ -756,10 +1208,20 @@
         if(currentDay < TOTAL_DAYS) setStoredDay(currentDay + 1);
       });
 
-      unlockBtn.addEventListener("click", () => {
-        localStorage.setItem(LS_PREMIUM, "true");
-        render();
-        alert("Stato Area Membri attivato (demo).");
+      choiceBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          if(!currentVariant) return;
+          renderSmartExercise(currentVariant, btn.dataset.choice);
+        });
+      });
+
+      applySmartBtn.addEventListener("click", () => {
+        gameResult.textContent = "Bene. Porta con te oggi esattamente questo piccolo passo: non di più, ma nemmeno di meno.";
+      });
+
+      finishBtn.addEventListener("click", () => {
+        closingBox.style.display = "block";
+        closingBox.scrollIntoView({ behavior:"smooth", block:"start" });
       });
 
       dayImage.addEventListener("error", () => {
