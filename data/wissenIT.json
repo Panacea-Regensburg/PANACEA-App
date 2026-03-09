@@ -3,219 +3,219 @@
     {
       "day": 1,
       "title": "Stabilità",
-      "explanation": "Stabilità interiore non significa che tutto è calmo. Significa trovare un punto fermo dentro di te, anche quando fuori c’è movimento.",
-      "impuls": "La stabilità inizia dentro, non fuori.",
-      "reflection": "Cosa mi dà sostegno, anche quando le cose cambiano?",
-      "premiumInsight": "Routine stabili riducono l’attivazione da stress nel sistema nervoso.",
-      "premiumQuestion": "Quale piccola routine posso fissare ogni giorno?"
+      "explanation": "La stabilità interiore non significa che tutto sia calmo. Significa trovare un punto fermo dentro di te, anche quando all’esterno tutto si muove.",
+      "impuls": "La stabilità nasce dentro di te, non fuori.",
+      "reflection": "Che cosa mi sostiene davvero, anche quando intorno a me tutto cambia?",
+      "premiumInsight": "Routine semplici e stabili possono ridurre l’attivazione da stress e favorire una maggiore sensazione di sicurezza interiore.",
+      "premiumQuestion": "Quale piccolo rituale quotidiano potrebbe diventare il mio nuovo punto fermo?"
     },
     {
       "day": 2,
       "title": "Respiro",
-      "explanation": "Il respiro è il collegamento più diretto con il sistema nervoso. Respirare in modo calmo e consapevole invia un segnale di sicurezza.",
-      "impuls": "Un respiro più lento cambia il tuo stato.",
-      "reflection": "Cosa succede nel mio corpo quando allungo l’espirazione?",
-      "premiumInsight": "Espiri più lunghi favoriscono l’attivazione parasimpatica.",
-      "premiumQuestion": "In quale momento della giornata posso inserire 3 respiri consapevoli?"
+      "explanation": "Il respiro è uno dei collegamenti più diretti con il sistema nervoso. Respirare in modo lento e consapevole invia al corpo un segnale di calma e sicurezza.",
+      "impuls": "Un respiro più lento può cambiare il tuo stato interiore.",
+      "reflection": "Che cosa percepisco nel mio corpo quando rallento intenzionalmente l’espirazione?",
+      "premiumInsight": "Espiri più lunghi possono favorire l’attivazione parasimpatica e sostenere uno stato di maggiore regolazione.",
+      "premiumQuestion": "In quale momento della giornata posso inserire tre respiri davvero consapevoli?"
     },
     {
       "day": 3,
       "title": "Consapevolezza del corpo",
-      "explanation": "Tornare nel corpo riduce il rimuginio e l’ansia per il futuro. La percezione ti riporta nel presente.",
-      "impuls": "Torno nel corpo, torno nel presente.",
-      "reflection": "Dove sento tensione oggi? Posso ammorbidirla un po’?",
+      "explanation": "Tornare al corpo riduce il rimuginio e l’anticipazione costante. La percezione corporea ti riporta nel presente, con più concretezza e stabilità.",
+      "impuls": "Quando torno al corpo, torno al presente.",
+      "reflection": "Dove sento maggiore tensione oggi? Posso lasciare che si ammorbidisca anche solo un poco?",
       "exercise": {
         "title": "Mini-esercizio",
-        "text": "Metti una mano sul petto. Respira calmo per 1 minuto e senti il movimento."
+        "text": "Appoggia una mano sul petto. Respira con calma per un minuto e osserva semplicemente il movimento del respiro."
       },
-      "premiumInsight": "Il focus corporeo può ridurre l’attività dei circuiti di allarme.",
-      "premiumQuestion": "Qual è la prima zona del corpo che reagisce quando mi stressò?"
+      "premiumInsight": "Portare l’attenzione al corpo può ridurre l’attività dei circuiti di allarme e favorire una maggiore presenza.",
+      "premiumQuestion": "Qual è la prima zona del mio corpo che reagisce quando entro in tensione?"
     },
     {
       "day": 4,
-      "title": "Capire lo stress",
-      "explanation": "Lo stress è un’attivazione biologica. Non è un nemico: è un segnale.",
-      "impuls": "Capire riduce la minaccia.",
-      "reflection": "Cosa sta cercando di dirmi lo stress oggi?",
-      "premiumInsight": "Lo stress cronico può alterare i ritmi del cortisolo.",
-      "premiumQuestion": "Dove posso regolarmi prima, invece di arrivare al limite?"
+      "title": "Comprendere lo stress",
+      "explanation": "Lo stress è prima di tutto un’attivazione biologica. Non è un nemico da combattere, ma un segnale da comprendere con maggiore lucidità.",
+      "impuls": "Comprendere riduce la sensazione di minaccia.",
+      "reflection": "Che cosa sta cercando di comunicarmi oggi il mio stress?",
+      "premiumInsight": "Uno stress cronico e non regolato può influenzare i ritmi biologici, inclusa la naturale regolazione del cortisolo.",
+      "premiumQuestion": "Dove posso iniziare a regolarmi prima di arrivare al limite?"
     },
     {
       "day": 5,
       "title": "Controllo",
-      "explanation": "Controllo significa influenza, non perfezione. Piccole decisioni rafforzano la sensazione di poter agire.",
-      "impuls": "Un piccolo passo conta.",
-      "reflection": "Dove posso scegliere oggi, invece di reagire?",
-      "premiumInsight": "La percezione di controllo sostiene motivazione e resilienza.",
-      "premiumQuestion": "Quale area della mia vita sento troppo “decisa dagli altri”?"
+      "explanation": "Controllo non significa perfezione. Significa riconoscere dove puoi esercitare un’influenza reale e scegliere con maggiore consapevolezza.",
+      "impuls": "Anche un piccolo passo ha valore.",
+      "reflection": "In quale situazione oggi posso scegliere, invece di reagire automaticamente?",
+      "premiumInsight": "La percezione di avere una possibilità di scelta sostiene motivazione, resilienza e senso di efficacia personale.",
+      "premiumQuestion": "Quale area della mia vita sento oggi troppo determinata dagli altri?"
     },
     {
       "day": 6,
       "title": "Confini",
-      "explanation": "Confini sani proteggono energia e focus. Non è egoismo: è cura di sé.",
-      "impuls": "Un “no” chiaro è un “sì” a te.",
-      "reflection": "Dove ho bisogno di più chiarezza nei miei confini?",
+      "explanation": "Confini chiari proteggono energia, presenza e direzione. Non sono egoismo, ma una forma matura di cura verso te stessa.",
+      "impuls": "Un “no” chiaro può diventare un profondo “sì” a te.",
+      "reflection": "In quale ambito sento il bisogno di maggiore chiarezza nei miei confini?",
       "exercise": {
         "title": "Mini-esercizio",
-        "text": "Formula dentro di te una frase: “Oggi mi permetto di non …”."
+        "text": "Ripeti dentro di te questa frase: “Oggi mi concedo di non…” e completa la frase con sincerità."
       },
-      "premiumInsight": "Il sovraccarico nasce spesso da confini poco chiari.",
-      "premiumQuestion": "Quale confine mi renderebbe più stabile nel lungo periodo?"
+      "premiumInsight": "Molte forme di sovraccarico nascono da confini poco definiti o mantenuti solo a metà.",
+      "premiumQuestion": "Quale confine, se diventasse più chiaro, mi darebbe più stabilità nel lungo periodo?"
     },
     {
       "day": 7,
       "title": "Focus",
-      "explanation": "Il focus riduce il rumore mentale. La chiarezza nasce dalla scelta.",
-      "impuls": "Meno, ma con intenzione.",
-      "reflection": "Cosa è davvero importante oggi?",
-      "premiumInsight": "Ridurre i “micro-task” aumenta la qualità dell’attenzione.",
-      "premiumQuestion": "Qual è una cosa che posso eliminare o rimandare con serenità?"
+      "explanation": "Il focus riduce il rumore mentale. La chiarezza non nasce dal fare tutto, ma dal scegliere con intenzione ciò che conta davvero.",
+      "impuls": "Meno cose, ma con più intenzione.",
+      "reflection": "Che cosa è davvero essenziale per me oggi?",
+      "premiumInsight": "Ridurre i micro-task e la frammentazione dell’attenzione può migliorare qualità mentale e concentrazione.",
+      "premiumQuestion": "Qual è una cosa che oggi posso eliminare o rimandare con serenità?"
     },
     {
       "day": 8,
       "title": "Valori",
-      "explanation": "I valori danno direzione. Quando azioni e valori coincidono, nasce coerenza interiore.",
-      "impuls": "Agisco in armonia con me.",
-      "reflection": "Quale scelta oggi rispetta i miei valori?",
-      "premiumInsight": "Valori chiari aumentano la stabilità nelle decisioni.",
-      "premiumQuestion": "Quale valore voglio vivere di più questa settimana?"
+      "explanation": "I valori danno direzione alle scelte. Quando ciò che fai è in armonia con ciò che conta per te, cresce la coerenza interiore.",
+      "impuls": "Scelgo in accordo con ciò che sono.",
+      "reflection": "Quale scelta di oggi rispetta davvero i miei valori?",
+      "premiumInsight": "Valori chiari rendono le decisioni più stabili e aiutano a mantenere una direzione anche nei momenti complessi.",
+      "premiumQuestion": "Quale valore desidero incarnare con più consapevolezza in questa settimana?"
     },
     {
       "day": 9,
       "title": "Autoefficacia",
-      "explanation": "Auto-efficacia significa sentire: io posso influenzare qualcosa. Questo rafforza la resilienza.",
-      "impuls": "Io agisco, quindi posso.",
-      "reflection": "Dove ho creato un cambiamento con una mia scelta?",
+      "explanation": "L’autoefficacia nasce dalla sensazione di poter influenzare qualcosa con le proprie azioni. È una base importante per la resilienza.",
+      "impuls": "Se posso agire, posso anche incidere.",
+      "reflection": "In quale situazione ho già creato un cambiamento grazie a una mia scelta?",
       "exercise": {
         "title": "Mini-esercizio",
-        "text": "Scegli una piccola azione che decidi tu oggi, in modo intenzionale."
+        "text": "Scegli oggi una piccola azione che dipende interamente da te e compila con intenzione quel gesto."
       },
-      "premiumInsight": "L’autoefficacia sostiene motivazione e sistemi di ricompensa.",
-      "premiumQuestion": "Come posso rendere visibili i miei piccoli successi?"
+      "premiumInsight": "La percezione di efficacia personale sostiene motivazione, fiducia e sistemi di ricompensa interni.",
+      "premiumQuestion": "Come posso rendere più visibili a me stessa i miei piccoli successi?"
     },
     {
       "day": 10,
       "title": "Pensieri",
-      "explanation": "I pensieri sono interpretazioni, non fatti. Creare distanza porta chiarezza.",
-      "impuls": "Non ogni pensiero è vero.",
-      "reflection": "Quale pensiero mi stressa ora? Qual è un’alternativa possibile?",
-      "premiumInsight": "Riformulare un pensiero riduce reattività emotiva.",
-      "premiumQuestion": "Quale frase mi aiuterebbe a vedere la situazione con più calma?"
+      "explanation": "I pensieri non sono fatti: sono interpretazioni. Creare una piccola distanza interiore permette di vedere con maggiore chiarezza.",
+      "impuls": "Non tutto ciò che penso corrisponde alla realtà.",
+      "reflection": "Quale pensiero mi sta appesantendo in questo momento? Esiste una lettura alternativa più equilibrata?",
+      "premiumInsight": "Riformulare un pensiero può ridurre la reattività emotiva e ampliare la percezione delle possibilità.",
+      "premiumQuestion": "Quale frase mi aiuterebbe oggi a guardare questa situazione con più calma?"
     },
     {
       "day": 11,
       "title": "Emozioni",
-      "explanation": "Le emozioni sono informazioni. Vogliono essere ascoltate, non eliminate.",
-      "impuls": "Le emozioni possono stare qui.",
-      "reflection": "Quale emozione è presente oggi?",
-      "premiumInsight": "Nominare l’emozione può abbassare l’intensità.",
-      "premiumQuestion": "Cosa mi sta comunicando questa emozione?"
+      "explanation": "Le emozioni sono informazioni preziose. Non hanno bisogno di essere eliminate, ma riconosciute e ascoltate con presenza.",
+      "impuls": "Le emozioni possono esserci, senza travolgermi.",
+      "reflection": "Quale emozione è davvero presente in me oggi?",
+      "premiumInsight": "Dare un nome preciso all’emozione può ridurne l’intensità e favorire maggiore regolazione.",
+      "premiumQuestion": "Che cosa sta cercando di comunicarmi questa emozione?"
     },
     {
       "day": 12,
       "title": "Regolazione",
-      "explanation": "Regolazione significa influenzare consapevolmente il tuo stato interno.",
-      "impuls": "Posso influenzare il mio stato.",
-      "reflection": "Quale strategia mi aiuta di più oggi?",
+      "explanation": "Regolazione significa imparare a influenzare in modo consapevole il proprio stato interno, con piccoli gesti ripetuti nel tempo.",
+      "impuls": "Posso influenzare il mio stato, un passo alla volta.",
+      "reflection": "Quale strategia mi aiuta davvero a sentirmi più regolata oggi?",
       "exercise": {
         "title": "Mini-esercizio",
-        "text": "Fai 3 respiri profondi e abbassa le spalle lentamente."
+        "text": "Fai tre respiri profondi e lascia scendere lentamente le spalle, senza forzare."
       },
-      "premiumInsight": "Micro-regolazioni frequenti proteggono dall’esaurimento.",
-      "premiumQuestion": "Qual è il mio segnale più precoce di “troppa attivazione”?"
+      "premiumInsight": "Micro-regolazioni frequenti possono proteggere il sistema dall’accumulo di attivazione e dall’esaurimento.",
+      "premiumQuestion": "Qual è il segnale più precoce che mi indica che sto entrando in eccessiva attivazione?"
     },
     {
       "day": 13,
       "title": "Energia",
-      "explanation": "L’energia è limitata. Distribuirla con consapevolezza previene l’esaurimento.",
-      "impuls": "Scelgo dove va la mia energia.",
-      "reflection": "Cosa mi costa energia senza darmi valore?",
-      "premiumInsight": "Saper dire “stop” protegge energia mentale e fisica.",
-      "premiumQuestion": "Quale attività mi ricarica davvero, anche se breve?"
+      "explanation": "L’energia è una risorsa preziosa e limitata. Scegliere dove investirla con consapevolezza aiuta a prevenire sovraccarico ed esaurimento.",
+      "impuls": "Scelgo con cura dove va la mia energia.",
+      "reflection": "Che cosa mi consuma energia senza restituirmi vero valore?",
+      "premiumInsight": "Saper interrompere, limitare o rinviare protegge sia l’energia mentale sia quella fisica.",
+      "premiumQuestion": "Quale attività, anche breve, ha davvero il potere di ricaricarmi?"
     },
     {
       "day": 14,
       "title": "Recupero",
-      "explanation": "Il recupero non è un lusso: è la base della performance e della salute.",
-      "impuls": "La pausa è parte del progresso.",
-      "reflection": "Quando mi sono concessa l’ultima vera pausa?",
-      "premiumInsight": "Il riposo migliora concentrazione e regolazione emotiva.",
-      "premiumQuestion": "Quale micro-pausa posso inserire oggi (2–5 minuti)?"
+      "explanation": "Il recupero non è un premio né un lusso. È una base essenziale per la salute, la lucidità e una performance sostenibile nel tempo.",
+      "impuls": "La pausa fa parte del progresso.",
+      "reflection": "Quando mi sono concessa l’ultima pausa vera, senza senso di colpa?",
+      "premiumInsight": "Il recupero migliora concentrazione, regolazione emotiva e capacità di adattamento.",
+      "premiumQuestion": "Quale micro-pausa posso inserire oggi, anche solo di due o cinque minuti?"
     },
     {
       "day": 15,
       "title": "Resilienza",
-      "explanation": "Resilienza è la capacità di tornare in equilibrio dopo una difficoltà.",
+      "explanation": "La resilienza è la capacità di ritrovare equilibrio dopo una difficoltà. Non significa non cadere, ma saper tornare al centro.",
       "impuls": "Posso ritrovare il mio centro.",
-      "reflection": "Come ho superato difficoltà in passato?",
+      "reflection": "In che modo, in passato, sono riuscita a superare una fase difficile?",
       "exercise": {
         "title": "Mini-esercizio",
-        "text": "Scrivi 2 situazioni che hai gestito bene e cosa ti ha aiutata."
+        "text": "Scrivi due situazioni che hai gestito bene e osserva quali risorse ti hanno aiutata davvero."
       },
-      "premiumInsight": "Ricordare successi passati rafforza fiducia e stabilità.",
-      "premiumQuestion": "Qual è la mia risorsa più forte quando le cose si complicano?"
+      "premiumInsight": "Ricordare i successi già vissuti rafforza fiducia, continuità interiore e stabilità.",
+      "premiumQuestion": "Qual è la mia risorsa più forte quando la situazione si complica?"
     },
     {
       "day": 16,
       "title": "Senso",
-      "explanation": "Il senso unisce azione e significato. Dà energia nel lungo periodo.",
-      "impuls": "Il “perché” cambia tutto.",
-      "reflection": "Cosa dà significato alla mia giornata?",
-      "premiumInsight": "Il senso riduce la percezione di fatica cronica.",
-      "premiumQuestion": "Quale obiettivo è davvero mio e non “degli altri”?"
+      "explanation": "Il senso unisce azione e significato. Quando sai perché fai qualcosa, la tua energia diventa più stabile e più profonda.",
+      "impuls": "Il mio “perché” dà direzione al mio cammino.",
+      "reflection": "Che cosa dà significato autentico alla mia giornata?",
+      "premiumInsight": "La percezione di senso può ridurre la fatica soggettiva e sostenere la motivazione nel lungo periodo.",
+      "premiumQuestion": "Quale obiettivo sento davvero mio, e non soltanto ereditato dalle aspettative degli altri?"
     },
     {
       "day": 17,
       "title": "Accettazione",
-      "explanation": "Accettare non significa arrendersi. Significa vedere la realtà per agire meglio.",
-      "impuls": "Accetto per scegliere bene.",
-      "reflection": "Cosa in questo momento non posso cambiare?",
-      "premiumInsight": "Accettazione riduce lotta interna e stress inutile.",
-      "premiumQuestion": "Quale parte della situazione posso controllare, anche solo un 5%?"
+      "explanation": "Accettare non significa arrendersi. Significa vedere con lucidità ciò che è presente, per poter scegliere in modo più efficace.",
+      "impuls": "Accolgo la realtà per agire con maggiore chiarezza.",
+      "reflection": "Che cosa, in questo momento, non posso cambiare?",
+      "premiumInsight": "L’accettazione riduce la lotta interna e alleggerisce una parte dello stress inutile.",
+      "premiumQuestion": "Quale parte della situazione posso influenzare, anche solo in minima misura?"
     },
     {
       "day": 18,
       "title": "Responsabilità",
-      "explanation": "Responsabilità non è colpa. È potere di scelta e di direzione.",
-      "impuls": "Mi riprendo la mia direzione.",
-      "reflection": "Dove posso scegliere oggi con chiarezza?",
+      "explanation": "Responsabilità non significa colpa. Significa riconoscere il proprio potere di scelta e tornare alla propria direzione.",
+      "impuls": "Mi riprendo con calma la mia direzione.",
+      "reflection": "In quale ambito posso scegliere oggi con più chiarezza e maturità?",
       "exercise": {
         "title": "Mini-esercizio",
-        "text": "Prendi una decisione oggi senza rimandare: piccola ma chiara."
+        "text": "Prendi oggi una decisione piccola ma chiara, senza rimandarla oltre."
       },
-      "premiumInsight": "Decisioni piccole e ripetute costruiscono fiducia.",
-      "premiumQuestion": "Quale decisione rimando da troppo tempo?"
+      "premiumInsight": "Decisioni semplici, coerenti e ripetute nel tempo costruiscono fiducia interiore.",
+      "premiumQuestion": "Quale decisione continuo a rimandare da troppo tempo?"
     },
     {
       "day": 19,
       "title": "Chiarezza",
-      "explanation": "La chiarezza nasce quando togli il superfluo. Meno rumore, più orientamento.",
+      "explanation": "La chiarezza nasce quando togli il superfluo. Meno rumore interiore ed esteriore crea più orientamento e più spazio mentale.",
       "impuls": "La chiarezza ha bisogno di spazio.",
-      "reflection": "Cosa può diventare “non importante” oggi?",
-      "premiumInsight": "Ridurre input aumenta calma e lucidità.",
-      "premiumQuestion": "Quale confusione posso semplificare in una frase?"
+      "reflection": "Che cosa può smettere di essere importante oggi?",
+      "premiumInsight": "Ridurre l’eccesso di input può aumentare la calma, la lucidità e la qualità delle scelte.",
+      "premiumQuestion": "Quale confusione posso semplificare in una sola frase chiara?"
     },
     {
       "day": 20,
       "title": "Integrazione",
-      "explanation": "Integrare significa portare i tuoi impulsi nella vita reale. La ripetizione crea cambiamento.",
-      "impuls": "La ripetizione trasforma in forza.",
-      "reflection": "Quale impulso voglio portare con me ogni giorno?",
-      "premiumInsight": "Piccoli rituali consolidano nuove abitudini.",
-      "premiumQuestion": "Quale gesto quotidiano può diventare la mia “ancora”?"
+      "explanation": "Integrare significa portare ciò che hai compreso nella vita reale. È la ripetizione quotidiana a trasformare un impulso in cambiamento.",
+      "impuls": "La ripetizione può trasformarsi in forza.",
+      "reflection": "Quale impulso desidero portare con me ogni giorno, in modo concreto?",
+      "premiumInsight": "Piccoli rituali ripetuti con coerenza aiutano a consolidare nuove abitudini.",
+      "premiumQuestion": "Quale gesto quotidiano potrebbe diventare la mia nuova ancora?"
     },
     {
       "day": 21,
       "title": "Nuovo inizio",
-      "explanation": "Ogni ciclo finisce e ricomincia. La crescita è un processo, non un evento.",
+      "explanation": "Ogni ciclo si conclude e, allo stesso tempo, ricomincia. La crescita autentica è un processo continuo, non un singolo evento.",
       "impuls": "Mi riallineo con intenzione.",
-      "reflection": "Cosa voglio rafforzare nei prossimi 21 giorni?",
+      "reflection": "Che cosa desidero rafforzare nei prossimi 21 giorni?",
       "exercise": {
         "title": "Mini-esercizio",
-        "text": "Scrivi un’intenzione chiara per il prossimo ciclo e leggila ogni mattina."
+        "text": "Scrivi un’intenzione chiara per il prossimo ciclo e rileggila ogni mattina con presenza."
       },
-      "premiumInsight": "Una intenzione scritta aumenta coerenza e continuità.",
-      "premiumQuestion": "Qual è il mio segno concreto che sto crescendo davvero?"
+      "premiumInsight": "Un’intenzione scritta con chiarezza può aumentare coerenza, continuità e direzione.",
+      "premiumQuestion": "Quale sarà per me il segno concreto di una crescita reale?"
     }
   ]
 }
