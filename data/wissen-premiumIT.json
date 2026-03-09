@@ -1,1 +1,1264 @@
-
+{
+  "days": [
+    {
+      "day": 1,
+      "title": "Stabilità",
+      "variants": [
+        {
+          "intro": "Una stabilità interiore autentica non nasce dal controllo assoluto, ma da piccole esperienze ripetute di appoggio, continuità e orientamento nella vita quotidiana.",
+          "premiumInsight": "Routine semplici e ripetute possono ridurre l’attivazione da stress del sistema nervoso e rafforzare il senso di sicurezza interiore.",
+          "premiumQuestion": "Quale piccola routine posso radicare ogni giorno in modo consapevole?",
+          "integration": "Oggi porta con te solo ciò che ti dà davvero stabilità.",
+          "focus": "Stabilità",
+          "microStep": "Scegli oggi un passo piccolo e realistico che ti dia struttura.",
+          "smart": {
+            "koerper": "Per 20 secondi senti consapevolmente entrambi i piedi appoggiati a terra.",
+            "gedanke": "Formula in una frase chiara il pensiero più stabilizzante di oggi.",
+            "handlung": "Definisci un mini-ancoraggio fisso per domani, ad esempio bere acqua o fare 3 respiri lenti."
+          },
+          "activity": {
+            "title": "Ancora di stabilità",
+            "type": "Gioco di riflessione",
+            "instruction": "Scrivi tre cose che oggi ti danno appoggio. Scegline una come ancora consapevole della giornata."
+          }
+        },
+        {
+          "intro": "La stabilità interiore spesso non si manifesta in modo evidente, ma nel fatto che, anche nei momenti agitati, non perdi subito il tuo centro.",
+          "premiumInsight": "Una quotidianità regolata da piccoli punti di riferimento aiuta il corpo a uscire più rapidamente dallo stato di allerta.",
+          "premiumQuestion": "Che cosa rafforza concretamente la mia tenuta interiore nella vita di tutti i giorni?",
+          "integration": "Concediti oggi di non dover essere forte in modo perfetto.",
+          "focus": "Orientamento",
+          "microStep": "Stabilisci oggi un momento preciso per una pausa consapevole di calma.",
+          "smart": {
+            "koerper": "Appoggia una mano sul petto o sull’addome e percepisci 3 respiri tranquilli.",
+            "gedanke": "Completa la frase: Sono più stabile di quanto credo quando...",
+            "handlung": "Crea oggi un piccolo spazio o un momento dedicato solo a calma e chiarezza."
+          },
+          "activity": {
+            "title": "Pilastri interiori",
+            "type": "Mini esercizio",
+            "instruction": "Scrivi quattro pilastri personali: valori, abitudini, persone o luoghi che ti rafforzano."
+          }
+        },
+        {
+          "intro": "Stabilità non significa essere sempre resistenti. Cresce quando impari a restare affidabile per te stessa anche nell’incertezza.",
+          "premiumInsight": "Sequenze prevedibili e semplici alleggeriscono il sistema nervoso perché comunicano sicurezza interna ed esterna.",
+          "premiumQuestion": "Quale struttura fa bene in modo percepibile al mio corpo e alla mia mente?",
+          "integration": "Oggi basta una forma tranquilla di affidabilità verso te stessa.",
+          "focus": "Affidabilità",
+          "microStep": "Ripeti oggi con intenzione un’abitudine che ti aiuta a sentirti radicata.",
+          "smart": {
+            "koerper": "Raddrizza dolcemente il busto e fai una lunga espirazione.",
+            "gedanke": "Chiediti: che cosa è davvero solido e sostenibile per me oggi?",
+            "handlung": "Mantieni oggi una piccola promessa fatta a te stessa."
+          },
+          "activity": {
+            "title": "Matrice della stabilità",
+            "type": "Ordinamento didattico",
+            "instruction": "Dividi quattro elementi della tua giornata in due gruppi: mi sostiene / mi indebolisce. Trai da questo una decisione concreta per oggi."
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Respiro",
+      "variants": [
+        {
+          "intro": "Il respiro è un ponte diretto tra corpo, attenzione e sistema nervoso. Può modificare il tuo stato interno più rapidamente di quanto spesso riesca a fare il pensiero.",
+          "premiumInsight": "Un’espirazione più lunga e tranquilla favorisce la regolazione parasimpatica e può ridurre la tensione interna.",
+          "premiumQuestion": "In quale momento della giornata potrei respirare con più calma per due minuti?",
+          "integration": "Lascia che oggi almeno un respiro si completi davvero fino in fondo.",
+          "focus": "Calma respiratoria",
+          "microStep": "Oggi espira consapevolmente tre volte più lentamente di quanto inspiri.",
+          "smart": {
+            "koerper": "Conta lentamente fino a 5 durante l’espirazione e nota che cosa cambia.",
+            "gedanke": "Osserva come varia il tuo stato interno quando rallenti il respiro.",
+            "handlung": "Collega un momento fisso della giornata a 3 respiri consapevoli."
+          },
+          "activity": {
+            "title": "Bussola del respiro",
+            "type": "Gioco respiratorio",
+            "instruction": "Prova tre modalità: respiro libero, respiro più lento, espirazione più lunga. Poi scegli quella che oggi ti dà più calma."
+          }
+        },
+        {
+          "intro": "Respirare in modo consapevole non è una prestazione, ma un invito a ritrovare il contatto con il tuo ritmo interno.",
+          "premiumInsight": "Una pratica respiratoria regolare migliora spesso la capacità di riconoscere precocemente la tensione e di regolarla.",
+          "premiumQuestion": "Quale piccola routine respiratoria sarebbe davvero realistica per me nella vita quotidiana?",
+          "integration": "Oggi è sufficiente un solo momento di respiro vissuto con vera presenza.",
+          "focus": "Ritmo",
+          "microStep": "Prima di continuare, fermati oggi una volta e accompagna con attenzione il prossimo respiro.",
+          "smart": {
+            "koerper": "Osserva quale zona del corpo si muove di più mentre respiri.",
+            "gedanke": "Chiediti: oggi sto respirando in modo teso, superficiale o libero?",
+            "handlung": "Usa un momento di respiro come transizione prima di un’attività."
+          },
+          "activity": {
+            "title": "Osservazione del respiro",
+            "type": "Esercizio di consapevolezza",
+            "instruction": "Per 60 secondi osserva soltanto il tuo respiro senza modificarlo. Poi annota tre parole che descrivono l’esperienza."
+          }
+        },
+        {
+          "intro": "Il respiro non risolve tutto, ma spesso apre il primo accesso a più calma, presenza e ordine interiore.",
+          "premiumInsight": "Schemi respiratori lenti e regolari favoriscono frequentemente una sensazione di sicurezza e centratura.",
+          "premiumQuestion": "In quale situazione quotidiana mi sarebbe più utile un respiro consapevole?",
+          "integration": "Oggi percepisci il respiro non come tecnica, ma come accompagnamento.",
+          "focus": "Centratura",
+          "microStep": "Associa oggi un cambio di ambiente a una lunga espirazione consapevole.",
+          "smart": {
+            "koerper": "Lascia scendere dolcemente entrambe le spalle ed espira lentamente.",
+            "gedanke": "Completa la frase: Quando respiro con più calma, allora...",
+            "handlung": "Inserisci oggi un piccolo ancoraggio respiratorio prima di una conversazione."
+          },
+          "activity": {
+            "title": "Check-in respiratorio",
+            "type": "Mini rituale",
+            "instruction": "Mattina, mezzogiorno e sera: osserva il respiro per 20 secondi. Poi confronta: quando era più tranquillo?"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Auto-percezione",
+      "variants": [
+        {
+          "intro": "L’auto-percezione comincia quando non ti pensi soltanto, ma torni a sentirti davvero: nel corpo, nelle emozioni e nel tuo stato interno.",
+          "premiumInsight": "Percepire precocemente i segnali corporei aiuta a riconoscere prima il sovraccarico e a intervenire in tempo.",
+          "premiumQuestion": "Quale segnale del mio corpo tendo a ignorare più spesso nella quotidianità?",
+          "integration": "Ciò che percepisci non devi cambiarlo subito.",
+          "focus": "Sentire",
+          "microStep": "Fermati oggi per 30 secondi e chiediti: che cosa c’è in me in questo momento?",
+          "smart": {
+            "koerper": "Percepisci uno dopo l’altro mandibola, spalle e addome.",
+            "gedanke": "Nomina interiormente tre aspetti: corpo, emozione, pensiero.",
+            "handlung": "Scegli una piccola azione utile basata su ciò che hai percepito."
+          },
+          "activity": {
+            "title": "Scansione interiore",
+            "type": "Esercizio corporeo",
+            "instruction": "Passa mentalmente dalla testa ai piedi e annota due zone di tensione e una zona di calma."
+          }
+        },
+        {
+          "intro": "Molte persone funzionano così a lungo da smettere quasi di percepirsi. L’auto-percezione ti riporta a un contatto reale con te stessa.",
+          "premiumInsight": "Più conosci i tuoi segnali interiori, più rapidamente puoi prenderti cura di te e regolarti.",
+          "premiumQuestion": "In quali momenti perdo più facilmente il contatto con il mio stato interiore?",
+          "integration": "Oggi la percezione può essere più importante del semplice funzionare.",
+          "focus": "Contatto",
+          "microStep": "Chiediti oggi una volta con sincerità: di che cosa ho davvero bisogno adesso?",
+          "smart": {
+            "koerper": "Osserva per un attimo solo la tensione presente nel viso.",
+            "gedanke": "Nota senza giudizio che cosa è più presente in questo momento.",
+            "handlung": "Adatta oggi un piccolo elemento della giornata al tuo stato reale."
+          },
+          "activity": {
+            "title": "Ricerca dei segnali",
+            "type": "Gioco osservativo didattico",
+            "instruction": "Cerca oggi tre segnali interiori: stanchezza, tensione, sollievo. Annota quando compaiono."
+          }
+        },
+        {
+          "intro": "L’auto-percezione non è rimuginare. È la disponibilità sincera a registrare ciò che c’è in te prima di correggerti o ignorarti.",
+          "premiumInsight": "La percezione interocettiva rafforza il collegamento tra sensazioni corporee e autoregolazione.",
+          "premiumQuestion": "Come posso regalarmi oggi un momento consapevole di pausa e ascolto?",
+          "integration": "La percezione crea chiarezza anche senza una soluzione immediata.",
+          "focus": "Pausa consapevole",
+          "microStep": "Prima di una decisione importante, concediti oggi un minuto di vero ascolto interiore.",
+          "smart": {
+            "koerper": "Osserva se il tuo respiro è libero oppure trattenuto.",
+            "gedanke": "Chiediti: che cosa è realmente presente in me, non che cosa dovrebbe esserci?",
+            "handlung": "Fai oggi una piccola correzione di rotta coerente con ciò che senti."
+          },
+          "activity": {
+            "title": "Mappa del sentire",
+            "type": "Gioco di riflessione",
+            "instruction": "Disegna una sagoma del corpo e segna le aree di tensione, leggerezza e neutralità."
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Sicurezza",
+      "variants": [
+        {
+          "intro": "La sicurezza non è soltanto una condizione esterna. Può nascere anche da segnali di orientamento, calma, calore e chiarezza interiore.",
+          "premiumInsight": "Strutture chiare, stimoli tranquilli e routine affidabili aiutano il sistema nervoso a uscire dalle modalità di protezione.",
+          "premiumQuestion": "Quali segnali mi aiutano oggi a sentirmi più morbida, più stabile e più al sicuro?",
+          "integration": "La sicurezza spesso inizia in esperienze piccole ma autentiche.",
+          "focus": "Protezione interiore",
+          "microStep": "Crea oggi un momento di sicurezza senza eccesso di stimoli.",
+          "smart": {
+            "koerper": "Percepisci i punti di contatto: piedi, seduta o schiena.",
+            "gedanke": "Nomina tre cose nell’ambiente che ti appaiono tranquille e familiari.",
+            "handlung": "Rendi oggi un piccolo spazio più rassicurante e ordinato."
+          },
+          "activity": {
+            "title": "Scansione di sicurezza",
+            "type": "Esercizio di orientamento",
+            "instruction": "Guardati intorno e trova cinque elementi neutri o piacevoli che diano orientamento e calma al tuo sistema."
+          }
+        },
+        {
+          "intro": "La sensazione di sicurezza non deve essere grande. Spesso basta un momento chiaro di appoggio, orientamento e consenso interiore.",
+          "premiumInsight": "Senza una base minima di sicurezza, guarigione, apprendimento e rigenerazione restano spesso limitati.",
+          "premiumQuestion": "Che cosa, nel mio ambiente, sostiene concretamente oggi il mio senso di sicurezza?",
+          "integration": "Oggi conta ciò che ti fa sentire protetta, non ciò che è perfetto.",
+          "focus": "Orientamento",
+          "microStep": "Prima di una situazione impegnativa, inserisci oggi una breve transizione calmante.",
+          "smart": {
+            "koerper": "Lascia che lo sguardo si posi con morbidezza nello spazio e accompagna il respiro.",
+            "gedanke": "Chiediti: che cosa comunica oggi al mio sistema “va bene così”?",
+            "handlung": "Riduci consapevolmente una fonte di stimolo superflua."
+          },
+          "activity": {
+            "title": "Lista della sicurezza",
+            "type": "Esercizio di riflessione",
+            "instruction": "Crea una lista di tre persone, tre luoghi o tre azioni che ti trasmettono sicurezza interiore."
+          }
+        },
+        {
+          "intro": "La sicurezza è la base perché il sistema possa aprirsi, apprendere e rigenerarsi. Non è un lusso, ma una condizione fondamentale.",
+          "premiumInsight": "Una voce calma, routine prevedibili e un ambiente coerente hanno spesso un effetto regolante su corpo e mente.",
+          "premiumQuestion": "Quali tre cose mi danno oggi il maggior senso di orientamento interiore?",
+          "integration": "Nota oggi con consapevolezza dove la sicurezza è già presente.",
+          "focus": "Protezione",
+          "microStep": "Scegli oggi una frase o un’azione che comunichi sicurezza.",
+          "smart": {
+            "koerper": "Appoggia una mano sul torace e senti la stabilità della parte superiore del corpo.",
+            "gedanke": "Completa la frase: Mi sento più al sicuro quando...",
+            "handlung": "Parla o muoviti oggi con un ritmo leggermente più lento come segnale di sicurezza."
+          },
+          "activity": {
+            "title": "Cornice calma",
+            "type": "Mini gioco",
+            "instruction": "Trova tre cose che puoi cambiare subito nel tuo ambiente per renderlo più tranquillo e più rassicurante."
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Presenza",
+      "variants": [
+        {
+          "intro": "Presenza significa tornare al momento attuale, invece di attraversarlo soltanto in automatico.",
+          "premiumInsight": "La presenza sostiene risposte più consapevoli e meno automatiche rispetto ai vecchi schemi di stress.",
+          "premiumQuestion": "Che cosa mi aiuta a uscire dal pilota automatico e a tornare davvero nel momento presente?",
+          "integration": "Un vero momento di presenza vale spesso più di una lunga fatica.",
+          "focus": "Qui e ora",
+          "microStep": "Fermati oggi un istante e dì a te stessa: adesso sono qui.",
+          "smart": {
+            "koerper": "Per 10 secondi percepisci con attenzione le mani o i piedi.",
+            "gedanke": "Chiediti: sono davvero qui o sono già altrove con la mente?",
+            "handlung": "Esegui oggi una piccola azione più lentamente e con piena consapevolezza."
+          },
+          "activity": {
+            "title": "Lampo di presenza",
+            "type": "Gioco di consapevolezza",
+            "instruction": "In 30 secondi trova cinque cose che vedi, quattro che senti e tre che percepisci nel corpo."
+          }
+        },
+        {
+          "intro": "La presenza non è una calma perfetta. È la capacità di ritrovare il contatto con ciò che c’è davvero, adesso.",
+          "premiumInsight": "La consapevolezza del momento presente può ridurre sensibilmente l’intensità soggettiva dello stress.",
+          "premiumQuestion": "Come mi accorgo che non sono più davvero nel momento presente?",
+          "integration": "Oggi basta un piccolo momento sincero di ritorno a te.",
+          "focus": "Arrivare nel momento",
+          "microStep": "Prima del prossimo passaggio della giornata, fai oggi una breve pausa consapevole.",
+          "smart": {
+            "koerper": "Percepisci per un attimo la tua postura così com’è.",
+            "gedanke": "Dai un nome con una parola al tuo stato attuale.",
+            "handlung": "Inizia oggi un’azione solo dopo un respiro consapevole."
+          },
+          "activity": {
+            "title": "Carta del qui e ora",
+            "type": "Impulso riflessivo",
+            "instruction": "Scrivi tre parole brevi che descrivono al meglio il tuo momento presente."
+          }
+        },
+        {
+          "intro": "La presenza modifica il ritmo interiore. Non rende il momento più grande, ma spesso più chiaro e meno travolgente.",
+          "premiumInsight": "Quando cresce la presenza, migliora spesso anche il collegamento tra percezione e autoregolazione.",
+          "premiumQuestion": "In quali momenti mi perdo più facilmente nel pilota automatico?",
+          "integration": "Lasciati entrare oggi davvero per un attimo nel presente.",
+          "focus": "Presenza consapevole",
+          "microStep": "Trasforma oggi un gesto quotidiano in un piccolo momento di presenza piena.",
+          "smart": {
+            "koerper": "Durante un passo, percepisci il contatto del piede con il suolo.",
+            "gedanke": "Osserva che cosa cambia quando non forzi nulla.",
+            "handlung": "Metti via il telefono per 20 secondi e resta solo con te stessa."
+          },
+          "activity": {
+            "title": "Finestra di presenza",
+            "type": "Mini esercizio",
+            "instruction": "Apri una finestra di presenza di 1 minuto: non fare nulla, limita-ti a osservare ciò che c’è."
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Lasciare andare",
+      "variants": [
+        {
+          "intro": "Lasciare andare non significa arrendersi. Significa allentare ciò che ti trattiene inutilmente e ti consuma.",
+          "premiumInsight": "Rilassare in modo consapevole respirazione e muscolatura aiuta a ridurre la tensione accumulata.",
+          "premiumQuestion": "Quale tensione continuo a trattenere anche se non mi serve più?",
+          "integration": "Non tutto ciò che porti con te deve restare anche oggi.",
+          "focus": "Sollievo",
+          "microStep": "Lascia oggi un po’ più morbidi spalle, mandibola o addome.",
+          "smart": {
+            "koerper": "Nota dove il corpo trattiene e concedi lì un 5% in più di morbidezza.",
+            "gedanke": "Chiediti: che cosa può diventare oggi un po’ più leggero?",
+            "handlung": "Lascia andare oggi una piccola incombenza non necessaria."
+          },
+          "activity": {
+            "title": "Lista del lasciar andare",
+            "type": "Gioco di riflessione",
+            "instruction": "Scrivi tre cose che oggi non vuoi più portare con te. Barrane simbolicamente una."
+          }
+        },
+        {
+          "intro": "A volte ci aggrappiamo al controllo anche quando ci costa più energia di quanta protezione ci dia davvero.",
+          "premiumInsight": "La regolazione interiore nasce spesso non dal trattenere, ma dal lasciare andare gradualmente la tensione inutile.",
+          "premiumQuestion": "In quale ambito sto cercando di controllare troppo?",
+          "integration": "Lasciare andare può avvenire in modo silenzioso e graduale.",
+          "focus": "Morbidezza",
+          "microStep": "Scegli oggi un’area in cui metterti meno pressione.",
+          "smart": {
+            "koerper": "Espira e immagina che il corpo possa diventare leggermente più pesante.",
+            "gedanke": "Completa la frase: Se controllo meno, allora...",
+            "handlung": "Semplifica oggi un pensiero, un piano o un compito."
+          },
+          "activity": {
+            "title": "Pressione o leggerezza",
+            "type": "Classificazione didattica",
+            "instruction": "Dividi tre temi attuali in due gruppi: pressione inutile / responsabilità utile."
+          }
+        },
+        {
+          "intro": "Lasciare andare spesso non è un gesto unico, ma un processo silenzioso fatto di permesso interiore e alleggerimento corporeo.",
+          "premiumInsight": "La rigenerazione diventa possibile quando il corpo esce gradualmente da uno stato di tensione costante.",
+          "premiumQuestion": "Quale piccolo gesto potrebbe alleggerire oggi il mio sistema?",
+          "integration": "Concediti oggi un po’ più di morbidezza.",
+          "focus": "Allentamento",
+          "microStep": "Rilassa consapevolmente oggi una zona che porta spesso tensione.",
+          "smart": {
+            "koerper": "Apri e chiudi lentamente le mani e percepisci la differenza.",
+            "gedanke": "Osserva che cosa continui a trattenere anche se ora non ti serve.",
+            "handlung": "Chiudi oggi consapevolmente un piccolo ciclo interiore o pratico."
+          },
+          "activity": {
+            "title": "Consegnare il peso",
+            "type": "Mini rituale",
+            "instruction": "Scrivi su un foglio un pensiero pesante e piegalo come simbolo del fatto che non devi portarlo sempre nella mente."
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Rigenerazione",
+      "variants": [
+        {
+          "intro": "La rigenerazione non è debolezza e non è un lusso. È la base biologica che permette di elaborare il carico e ritrovare equilibrio.",
+          "premiumInsight": "Pause di qualità sostengono rendimento, umore e resilienza più della semplice distrazione.",
+          "premiumQuestion": "Quale forma di recupero mi fa davvero bene?",
+          "integration": "Non ogni pausa rigenera, ma ogni vera rigenerazione inizia con il permesso di fermarti.",
+          "focus": "Recupero",
+          "microStep": "Programma oggi una piccola pausa davvero rigenerante.",
+          "smart": {
+            "koerper": "Senti se il tuo corpo oggi ha più bisogno di attivazione o di quiete.",
+            "gedanke": "Chiediti: che cosa mi nutre davvero e che cosa mi distrae soltanto?",
+            "handlung": "Inserisci oggi una pausa che ti alleggerisca realmente."
+          },
+          "activity": {
+            "title": "Check della rigenerazione",
+            "type": "Esercizio di riflessione",
+            "instruction": "Annota tre cose che ti distraggono e tre che ti rigenerano davvero."
+          }
+        },
+        {
+          "intro": "Molte persone si riposano senza rigenerarsi davvero. La differenza sta spesso nella qualità, nella sicurezza e nel senso di sollievo.",
+          "premiumInsight": "Il sistema nervoso si rigenera meglio quando la pausa è associata a calma, protezione e riduzione degli stimoli.",
+          "premiumQuestion": "Come potrebbe essere oggi per me una pausa davvero rigenerante?",
+          "integration": "Il recupero può essere oggi semplice, autentico e sufficiente.",
+          "focus": "Nutrimento",
+          "microStep": "Concediti oggi 5 minuti senza schermo, senza compiti e senza input.",
+          "smart": {
+            "koerper": "Appoggiati o siediti con morbidezza e senti l’effetto.",
+            "gedanke": "Osserva se nella pausa la tua mente vuole subito tornare a “fare”.",
+            "handlung": "Sostituisci oggi una distrazione veloce con un momento di riposo più vero."
+          },
+          "activity": {
+            "title": "Pausa efficace",
+            "type": "Mini esperimento",
+            "instruction": "Prova due tipi di pausa: distrazione e silenzio. Poi confronta quale ti ha rigenerata di più."
+          }
+        },
+        {
+          "intro": "Rigenerarsi significa tornare in uno stato in cui diventa di nuovo possibile ricostruire: fisicamente, mentalmente ed emotivamente.",
+          "premiumInsight": "Micro-pause durante la giornata possono impedire che il sovraccarico continui ad accumularsi.",
+          "premiumQuestion": "Dove potrei inserire oggi una piccola pausa autentica?",
+          "integration": "A volte il processo di guarigione comincia da una breve interruzione.",
+          "focus": "Interruzione rigenerante",
+          "microStep": "Inserisci oggi una pausa consapevole tra due attività.",
+          "smart": {
+            "koerper": "Chiudi per un attimo gli occhi o abbassa lo sguardo.",
+            "gedanke": "Chiediti: che cosa mi aiuterebbe non solo a interrompere, ma a recuperare davvero?",
+            "handlung": "Pianifica oggi una pausa con durata chiara e qualità precisa."
+          },
+          "activity": {
+            "title": "Finestra di recupero",
+            "type": "Mini gioco didattico",
+            "instruction": "Individua nella giornata una finestra realistica di 5 minuti da dedicare consapevolmente al recupero."
+          }
+        }
+      ]
+    },
+    {
+      "day": 8,
+      "title": "Energia",
+      "variants": [
+        {
+          "intro": "L’energia è più dell’attività. Si manifesta anche come vitalità, chiarezza, motivazione e disponibilità interna.",
+          "premiumInsight": "L’energia spesso non nasce da più pressione, ma da una regolazione migliore e da un uso più intelligente delle risorse.",
+          "premiumQuestion": "Quale abitudine rafforza la mia energia e quale invece la indebolisce?",
+          "integration": "L’energia autentica spesso si percepisce più calma dell’attivazione frenetica.",
+          "focus": "Forza vitale",
+          "microStep": "Osserva oggi con attenzione che cosa ti dà energia e che cosa la consuma.",
+          "smart": {
+            "koerper": "Senti se il corpo ha bisogno di attivazione o di alleggerimento.",
+            "gedanke": "Chiediti: questa è vera energia o semplice funzionamento automatico?",
+            "handlung": "Scegli oggi una piccola azione che sostenga la tua energia."
+          },
+          "activity": {
+            "title": "Tracciatore di energia",
+            "type": "Gioco di osservazione",
+            "instruction": "Durante la giornata annota tre momenti in cui senti più energia e tre in cui senti un calo."
+          }
+        },
+        {
+          "intro": "A volte non manca l’energia in sé, ma l’accesso ad essa. Quando la tensione si riduce, la forza torna disponibile.",
+          "premiumInsight": "La tensione cronica consuma risorse che servirebbero invece a chiarezza, motivazione e lucidità.",
+          "premiumQuestion": "Che cosa blocca più spesso la mia energia nella quotidianità?",
+          "integration": "Più energia a volte comincia con meno resistenza interna.",
+          "focus": "Disponibilità",
+          "microStep": "Riduci oggi una cosa che ti sottrae energia inutilmente.",
+          "smart": {
+            "koerper": "Allungati dolcemente o raddrizzati e nota la differenza.",
+            "gedanke": "Completa la frase: Mi sento più viva quando...",
+            "handlung": "Fai oggi una scelta concreta a favore della tua energia."
+          },
+          "activity": {
+            "title": "Fonti e ladri di energia",
+            "type": "Ordinamento didattico",
+            "instruction": "Dividi cinque elementi della tua giornata in due gruppi: mi dà energia / mi toglie energia."
+          }
+        },
+        {
+          "intro": "L’energia segue spesso la tua direzione interiore. Quando sei più in contatto con te stessa, la utilizzi in modo più lucido.",
+          "premiumInsight": "Ritmi stabili e meno sovraccarico di stimoli sostengono l’equilibrio energetico soggettivo durante la giornata.",
+          "premiumQuestion": "Quali due cose mi aiutano oggi a vivere con più energia e meno dispersione?",
+          "integration": "Oggi non devi riuscire in tutto, ma usare la tua energia con più intelligenza.",
+          "focus": "Vitalità",
+          "microStep": "Scegli oggi un inizio o una chiusura della giornata che protegga la tua energia.",
+          "smart": {
+            "koerper": "Senti se il tuo corpo si percepisce più pesante o più disponibile.",
+            "gedanke": "Chiediti: dove uso energia contro di me invece che a mio favore?",
+            "handlung": "Definisci oggi una piccola azione che protegga la tua forza."
+          },
+          "activity": {
+            "title": "Bussola della forza",
+            "type": "Gioco di riflessione",
+            "instruction": "Rispondi a tre domande: che cosa mi vitalizza, che cosa mi indebolisce, che cosa posso orientare oggi?"
+          }
+        }
+      ]
+    },
+    {
+      "day": 9,
+      "title": "Confini",
+      "variants": [
+        {
+          "intro": "Confini sani non ti proteggono dalla relazione, ma dal sovraccarico e dalla perdita di te stessa.",
+          "premiumInsight": "Confini chiari riducono spesso tensione interna ed esaurimento emotivo.",
+          "premiumQuestion": "Dove dico troppo spesso sì, mentre dentro di me sento un no?",
+          "integration": "Un buon confine porta spesso più calma di molte spiegazioni.",
+          "focus": "Delimitazione",
+          "microStep": "Riconosci oggi un no interiore senza spingerlo via subito.",
+          "smart": {
+            "koerper": "Senti la differenza corporea tra consenso autentico e resistenza.",
+            "gedanke": "Chiediti: dove mi sto perdendo troppo facilmente?",
+            "handlung": "Formula oggi un piccolo confine chiaro."
+          },
+          "activity": {
+            "title": "Sì o no",
+            "type": "Gioco di chiarezza",
+            "instruction": "Prendi tre temi attuali e dividili in: sì chiaro, incerto, no chiaro."
+          }
+        },
+        {
+          "intro": "I confini danno forma e chiarezza. Ti mostrano che cosa ti fa bene, che cosa è troppo e che cosa ha bisogno di essere protetto.",
+          "premiumInsight": "La capacità di delimitarti aiuta il sistema nervoso a ridurre sovrastimolazione e sovraccarico.",
+          "premiumQuestion": "In quale situazione un piccolo no potrebbe creare oggi più pace?",
+          "integration": "Puoi proteggerti senza diventare rigida.",
+          "focus": "Protezione",
+          "microStep": "Scegli oggi una piccola forma di auto-protezione.",
+          "smart": {
+            "koerper": "Nota dove il corpo si chiude e dove invece si apre.",
+            "gedanke": "Completa la frase: Un confine sano per me si sente come...",
+            "handlung": "Esprimi oggi con più chiarezza un tuo bisogno."
+          },
+          "activity": {
+            "title": "Scala dei confini",
+            "type": "Esercizio didattico",
+            "instruction": "Valuta tre situazioni quotidiane su una scala da 1 a 10: quanto sono chiari e sani qui i miei confini?"
+          }
+        },
+        {
+          "intro": "I confini non sono freddi. Possono essere gentili, tranquilli e precisi, e proprio per questo risultare profondamente regolanti.",
+          "premiumInsight": "Una delimitazione improntata alla cura di sé sostiene stabilità e resistenza nel lungo termine.",
+          "premiumQuestion": "Come posso affermarmi oggi con rispetto e chiarezza?",
+          "integration": "Un confine chiaro è spesso un sì profondo verso te stessa.",
+          "focus": "Auto-rispetto",
+          "microStep": "Scegli oggi una piccola azione che esprima rispetto per te.",
+          "smart": {
+            "koerper": "Raddrizzati prima di prendere una posizione interiore.",
+            "gedanke": "Chiediti: che cosa oggi è troppo, troppo vicino o troppo veloce per me?",
+            "handlung": "Modifica oggi un dettaglio che protegga meglio il tuo confine."
+          },
+          "activity": {
+            "title": "Rendere visibili i confini",
+            "type": "Esercizio di riflessione",
+            "instruction": "Scrivi una frase che esprima bene un tuo confine sano. Ad esempio: oggi proteggo la mia energia."
+          }
+        }
+      ]
+    },
+    {
+      "day": 10,
+      "title": "Cura di sé",
+      "variants": [
+        {
+          "intro": "La cura di sé significa prenderti sul serio prima che siano stanchezza e sovraccarico a obbligarti a fermarti.",
+          "premiumInsight": "Piccoli gesti regolari di cura di sé hanno spesso un effetto più duraturo di grandi interventi occasionali.",
+          "premiumQuestion": "Quale piccolo gesto di cura posso davvero mettere in pratica oggi?",
+          "integration": "La cura di sé comincia nella quotidianità, non solo nell’emergenza.",
+          "focus": "Prendersi cura",
+          "microStep": "Scegli oggi una mini-azione che ti faccia davvero bene.",
+          "smart": {
+            "koerper": "Senti di che cosa ha più bisogno oggi il tuo corpo.",
+            "gedanke": "Chiediti: come mi sto parlando interiormente oggi?",
+            "handlung": "Fai oggi qualcosa di concretamente premuroso solo per te."
+          },
+          "activity": {
+            "title": "Menù di cura",
+            "type": "Mini pianificazione",
+            "instruction": "Prepara un piccolo menù con tre gesti di cura di sé da distribuire nella giornata."
+          }
+        },
+        {
+          "intro": "La cura di sé è una relazione vissuta con te stessa. Si manifesta nelle scelte piccole, concrete e ripetute che fai ogni giorno.",
+          "premiumInsight": "La cura di sé sostiene non solo il benessere, ma anche la regolazione dello stress e la stabilità interna.",
+          "premiumQuestion": "Che cosa cambierebbe se iniziassi a prendermi sul serio un po’ prima?",
+          "integration": "Prenderti cura di te non è egoismo, ma regolazione.",
+          "focus": "Relazione con me",
+          "microStep": "Oggi rispondi un po’ prima a un bisogno invece di ignorarlo fino a tardi.",
+          "smart": {
+            "koerper": "Osserva dove senti il bisogno di più morbidezza.",
+            "gedanke": "Completa la frase: Tendo a trascurarmi quando...",
+            "handlung": "Dai oggi un piccolo segnale concreto che sei dalla tua parte."
+          },
+          "activity": {
+            "title": "Prima, non dopo",
+            "type": "Mini gioco didattico",
+            "instruction": "Nota oggi un momento in cui puoi intervenire prima: bere, respirare, fermarti, dire no."
+          }
+        },
+        {
+          "intro": "La cura di sé spesso non comincia con grandi cambiamenti, ma con un’attenzione sincera verso ciò di cui hai realmente bisogno.",
+          "premiumInsight": "Routine quotidiane di auto-cura stabilizzano la percezione corporea, l’ordine interiore e la resilienza emotiva.",
+          "premiumQuestion": "Quale passo di cura sarebbe oggi realistico e davvero utile per me?",
+          "integration": "La cura oggi può essere piccola, sobria e molto efficace.",
+          "focus": "Nutrimento",
+          "microStep": "Scegli oggi un’azione che renda la tua giornata un po’ più morbida.",
+          "smart": {
+            "koerper": "Chiediti brevemente: ho bisogno di attivazione, quiete, nutrimento o alleggerimento?",
+            "gedanke": "Che cosa consiglierei a una persona a cui voglio davvero bene?",
+            "handlung": "Offri oggi a te stessa proprio uno di quei consigli."
+          },
+          "activity": {
+            "title": "Carta di auto-cura",
+            "type": "Esercizio di riflessione",
+            "instruction": "Scrivi una frase per te stessa come la scriveresti a una persona cara che vuoi sostenere."
+          }
+        }
+      ]
+    },
+    {
+      "day": 11,
+      "title": "Ritmo",
+      "variants": [
+        {
+          "intro": "Il corpo ama i ritmi. Le sequenze ripetute danno orientamento e alleggeriscono i sistemi interni di decisione.",
+          "premiumInsight": "Pattern regolari sostengono sonno, energia e bilanciamento dello stress.",
+          "premiumQuestion": "Quale struttura quotidiana potrebbe darmi oggi più calma e più appoggio?",
+          "integration": "Il ritmo non è costrizione, ma una forma di ordine che può sostenerti.",
+          "focus": "Struttura",
+          "microStep": "Definisci oggi un momento preciso per una routine utile.",
+          "smart": {
+            "koerper": "Osserva come il tuo corpo reagisce a una sequenza ordinata.",
+            "gedanke": "Chiediti: dove mi aiuterebbe oggi una struttura più chiara?",
+            "handlung": "Introduci oggi un piccolo ritmo ricorrente."
+          },
+          "activity": {
+            "title": "Ancore della giornata",
+            "type": "Gioco di pianificazione",
+            "instruction": "Scegli tre piccole ancore per oggi: inizio, metà e chiusura della giornata."
+          }
+        },
+        {
+          "intro": "Non tutto deve essere spontaneo. Alcune cose diventano più leggere quando hanno un posto stabile e tranquillo nella giornata.",
+          "premiumInsight": "I sistemi biologici rispondono spesso bene a tempi affidabili e alla ripetizione.",
+          "premiumQuestion": "Quale piccola struttura potrebbe sostenere meglio il mio giorno?",
+          "integration": "Il ritmo può sostenerti senza irrigidirti.",
+          "focus": "Affidabilità",
+          "microStep": "Ripeti oggi consapevolmente una buona routine sempre alla stessa ora.",
+          "smart": {
+            "koerper": "Nota se la regolarità dà più calma al tuo corpo.",
+            "gedanke": "Completa la frase: Quando la mia giornata è più ordinata, allora...",
+            "handlung": "Semplifica oggi una sequenza quotidiana dandole un ordine fisso."
+          },
+          "activity": {
+            "title": "Test del ritmo",
+            "type": "Mini esperimento",
+            "instruction": "Prova oggi a fare una cosa utile sempre alla stessa ora e osserva se questo ti alleggerisce."
+          }
+        },
+        {
+          "intro": "Un buon ritmo non nasce dalla rigidità, ma da un’alternanza sana tra attività, pausa e ritiro.",
+          "premiumInsight": "Un ritmo equilibrato riduce spesso il sovraccarico e favorisce la rigenerazione.",
+          "premiumQuestion": "Quale abitudine mi porta più in equilibrio che in pressione?",
+          "integration": "Oggi non serve perfezione, ma un passo verso un ritmo più sostenibile.",
+          "focus": "Equilibrio",
+          "microStep": "Inserisci oggi una transizione consapevole tra attività e pausa.",
+          "smart": {
+            "koerper": "Osserva quando il corpo desidera attivazione e quando invece calma.",
+            "gedanke": "Chiediti: dove mi manca un’alternanza più sana?",
+            "handlung": "Pianifica oggi una sequenza attività-pausa-attività più equilibrata."
+          },
+          "activity": {
+            "title": "Tempo della giornata",
+            "type": "Esercizio didattico",
+            "instruction": "Organizza tre compiti in modo che non richiedano tutti la massima energia nello stesso momento."
+          }
+        }
+      ]
+    },
+    {
+      "day": 12,
+      "title": "Chiarezza",
+      "variants": [
+        {
+          "intro": "La chiarezza spesso non nasce da più pensieri, ma da meno rumore interno e da una maggiore raccolta mentale.",
+          "premiumInsight": "Il sovraccarico mentale si riduce frequentemente quando si riducono gli stimoli e si chiariscono le priorità.",
+          "premiumQuestion": "Che cosa oggi può diventare consapevolmente meno importante?",
+          "integration": "La chiarezza spesso comincia con la semplificazione.",
+          "focus": "Essenziale",
+          "microStep": "Scegli oggi una sola cosa che abbia davvero priorità.",
+          "smart": {
+            "koerper": "Espira e osserva se il corpo segnala più pressione o più apertura.",
+            "gedanke": "Chiediti: che cosa è davvero essenziale per me oggi?",
+            "handlung": "Riduci oggi consapevolmente un’opzione superflua."
+          },
+          "activity": {
+            "title": "Essenziale o no",
+            "type": "Gioco di ordinamento",
+            "instruction": "Dividi cinque pensieri o compiti attuali in due gruppi: essenziale / non essenziale."
+          }
+        },
+        {
+          "intro": "Avere chiarezza non significa avere tutte le risposte. Spesso basta vedere con lucidità il prossimo passo sensato.",
+          "premiumInsight": "La focalizzazione alleggerisce il sistema nervoso perché può ridurre il carico decisionale.",
+          "premiumQuestion": "Quale decisione diventerebbe più facile se potessi semplificarla?",
+          "integration": "Oggi è sufficiente avere chiarezza sul prossimo passo.",
+          "focus": "Decisione",
+          "microStep": "Formula oggi in una frase il tuo prossimo passo utile.",
+          "smart": {
+            "koerper": "Senti come si manifesta nel corpo la mancanza di chiarezza.",
+            "gedanke": "Completa la frase: Il mio prossimo passo coerente è...",
+            "handlung": "Metti in pratica oggi quel passo in modo piccolo ma concreto."
+          },
+          "activity": {
+            "title": "Una frase di chiarezza",
+            "type": "Mini esercizio",
+            "instruction": "Esprimi il tema principale della tua giornata in una sola frase chiara."
+          }
+        },
+        {
+          "intro": "La chiarezza interiore ha bisogno di spazio. Quando diminuisce l’urgenza, molte cose si ordinano da sole.",
+          "premiumInsight": "Semplificare in modo consapevole può ridurre in modo percepibile il carico emotivo e cognitivo.",
+          "premiumQuestion": "Che cosa potrei rendere oggi più chiaro, più semplice o più lineare?",
+          "integration": "Non di più, ma più chiaro.",
+          "focus": "Semplicità",
+          "microStep": "Elimina oggi una complicazione non necessaria.",
+          "smart": {
+            "koerper": "Osserva se il respiro diventa più libero quando semplifichi.",
+            "gedanke": "Chiediti: dove sto complicando interiormente più del necessario?",
+            "handlung": "Semplifica oggi una decisione, un compito o un messaggio."
+          },
+          "activity": {
+            "title": "Carta della chiarezza",
+            "type": "Gioco di riflessione",
+            "instruction": "Scrivi tre punti confusi e formula per ciascuno una piccola azione semplice."
+          }
+        }
+      ]
+    },
+    {
+      "day": 13,
+      "title": "Autoefficacia",
+      "variants": [
+        {
+          "intro": "L’autoefficacia è l’esperienza interiore di poter influenzare qualcosa. Anche piccoli passi efficaci cambiano il vissuto interno.",
+          "premiumInsight": "Sentirsi efficaci rafforza motivazione, stabilità e capacità di agire.",
+          "premiumQuestion": "Quale piccolo passo potrebbe farmi sentire oggi: posso davvero muovere qualcosa?",
+          "integration": "L’efficacia spesso comincia in piccolo, ma si sente chiaramente.",
+          "focus": "Capacità di agire",
+          "microStep": "Scegli oggi una cosa che puoi influenzare in modo concreto.",
+          "smart": {
+            "koerper": "Raddrizzati e percepisci la differenza tra impotenza e orientamento.",
+            "gedanke": "Chiediti: che cosa posso davvero influenzare oggi?",
+            "handlung": "Compi oggi un piccolo passo visibile."
+          },
+          "activity": {
+            "title": "Lista dell’efficacia",
+            "type": "Esercizio di riflessione",
+            "instruction": "Scrivi tre cose che oggi puoi realmente influenzare."
+          }
+        },
+        {
+          "intro": "Quando aumenta il senso di impotenza, lo spazio di azione si restringe. L’autoefficacia lo amplia di nuovo, passo dopo passo.",
+          "premiumInsight": "L’autoefficacia ha un effetto regolante perché può ridurre i vissuti di impotenza.",
+          "premiumQuestion": "In quale ambito oggi mi sento troppo passiva e quale potrebbe essere un primo gesto attivo?",
+          "integration": "Un piccolo passo attivo è spesso più forte di un lungo girare in tondo mentale.",
+          "focus": "Influenza",
+          "microStep": "Trasforma oggi un problema in una piccola azione concreta.",
+          "smart": {
+            "koerper": "Percepisci la differenza tra stagnazione interiore e movimento intenzionale.",
+            "gedanke": "Completa la frase: Non sono impotente quando...",
+            "handlung": "Passa oggi dal pensiero all’azione in un’area specifica."
+          },
+          "activity": {
+            "title": "Dal rimuginare all’agire",
+            "type": "Mini gioco didattico",
+            "instruction": "Prendi un pensiero ricorrente e trasformalo in una sola azione concreta."
+          }
+        },
+        {
+          "intro": "L’autoefficacia non è la sensazione di controllare tutto. È la fiducia di poter incidere su qualcosa, dentro di te o attorno a te.",
+          "premiumInsight": "Ricordare in modo consapevole ciò che hai già affrontato bene rafforza spesso la fiducia nelle tue capacità.",
+          "premiumQuestion": "Quale capacità già presente in me posso usare oggi in modo più intenzionale?",
+          "integration": "Non devi riuscire in tutto per sentirti efficace.",
+          "focus": "Competenza",
+          "microStep": "Ricorda oggi una situazione che hai già affrontato con successo.",
+          "smart": {
+            "koerper": "Assumi una postura stabile e resta lì per un momento.",
+            "gedanke": "Chiediti: che cosa so già fare, anche se oggi lo dimentico?",
+            "handlung": "Usa oggi in modo consapevole una tua risorsa concreta."
+          },
+          "activity": {
+            "title": "Ciò che ho già superato",
+            "type": "Esercizio sulle risorse",
+            "instruction": "Scrivi tre situazioni del passato che hai superato e che oggi possono ricordarti la tua capacità."
+          }
+        }
+      ]
+    },
+    {
+      "day": 14,
+      "title": "Resilienza",
+      "variants": [
+        {
+          "intro": "La resilienza non è durezza, ma la capacità di ritrovare il contatto con te stessa dopo uno stress o una fatica.",
+          "premiumInsight": "La resilienza si costruisce attraverso esperienze ripetute di regolazione, sostegno e superamento.",
+          "premiumQuestion": "Quale risorsa mi aiuta di più a ritrovare equilibrio dopo una fase difficile?",
+          "integration": "La resilienza è ritorno, non invulnerabilità.",
+          "focus": "Ritornare a sé",
+          "microStep": "Usa oggi in modo consapevole una risorsa che ti aiuta davvero a ritrovare stabilità.",
+          "smart": {
+            "koerper": "Senti che cosa aiuta oggi il tuo corpo a tornare verso la calma.",
+            "gedanke": "Chiediti: che cosa mi riporta più facilmente a me stessa dopo la tensione?",
+            "handlung": "Metti in pratica oggi un passo di regolazione che per te funziona."
+          },
+          "activity": {
+            "title": "Bussola delle risorse",
+            "type": "Gioco di riflessione",
+            "instruction": "Annota tre cose che ti aiutano in modo affidabile a ritrovare equilibrio dopo una difficoltà."
+          }
+        },
+        {
+          "intro": "Anche le persone resilienti vivono stress. La differenza è spesso nel modo in cui si stabilizzano e si riorientano dopo.",
+          "premiumInsight": "La resilienza può essere allenata, soprattutto attraverso routine, percezione corporea e connessioni sicure.",
+          "premiumQuestion": "Quale abitudine rafforza nel tempo la mia capacità di resistere senza irrigidirmi?",
+          "integration": "La forza interiore cresce nelle piccole ripetizioni.",
+          "focus": "Forza di tenuta",
+          "microStep": "Scegli oggi una piccola abitudine che sostenga la tua resilienza.",
+          "smart": {
+            "koerper": "Osserva se il tuo corpo tende a chiudersi o a recuperare dopo lo stress.",
+            "gedanke": "Completa la frase: Divento più resiliente quando...",
+            "handlung": "Radica oggi una piccola routine che rafforzi la tua tenuta."
+          },
+          "activity": {
+            "title": "Mattoni della resilienza",
+            "type": "Esercizio didattico",
+            "instruction": "Scrivi quattro pilastri della tua resilienza: corpo, pensiero, relazioni, abitudini."
+          }
+        },
+        {
+          "intro": "La resilienza è la capacità di restare flessibile senza perderti. Unisce stabilità e adattamento.",
+          "premiumInsight": "Un sistema nervoso meglio regolato aumenta spesso la capacità di rispondere con flessibilità al carico.",
+          "premiumQuestion": "Che cosa vorrei rafforzare in me per affrontare meglio la pressione?",
+          "integration": "La flessibilità interiore è una forma di forza.",
+          "focus": "Elasticità",
+          "microStep": "Allenati oggi a passare con più consapevolezza tra tensione e sollievo.",
+          "smart": {
+            "koerper": "Nota se il tuo corpo tende a irrigidirsi o a restare mobile.",
+            "gedanke": "Chiediti: dove potrei restare più morbida e insieme più chiara?",
+            "handlung": "Prendi oggi una decisione flessibile invece di una reazione rigida."
+          },
+          "activity": {
+            "title": "Restare flessibile",
+            "type": "Mini esperimento",
+            "instruction": "In una piccola situazione quotidiana prova oggi una risposta diversa dal tuo automatismo abituale."
+          }
+        }
+      ]
+    },
+    {
+      "day": 15,
+      "title": "Fiducia",
+      "variants": [
+        {
+          "intro": "La fiducia cresce quando sperimenti che puoi percepirti, prenderti sul serio e restare dalla tua parte.",
+          "premiumInsight": "La fiducia in sé si rafforza quando i segnali interiori non vengono continuamente ignorati.",
+          "premiumQuestion": "Che cosa farei oggi in modo diverso se avessi un po’ più fiducia in me?",
+          "integration": "La fiducia spesso inizia con un sì sincero verso te stessa.",
+          "focus": "Fiducia in sé",
+          "microStep": "Prendi oggi una piccola decisione più a partire dalla fiducia che dal controllo.",
+          "smart": {
+            "koerper": "Percepisci come reagisce il tuo corpo alla fiducia rispetto al controllo.",
+            "gedanke": "Chiediti: dove so già interiormente che cosa è giusto per me?",
+            "handlung": "Metti oggi in pratica una piccola scelta coerente con il tuo sentire."
+          },
+          "activity": {
+            "title": "Momento di fiducia",
+            "type": "Esercizio di riflessione",
+            "instruction": "Ricorda un momento in cui ti sei fidata di te stessa e questo ti ha fatto bene."
+          }
+        },
+        {
+          "intro": "La fiducia non è ottimismo ingenuo. È una postura interiore calma che dice: posso incontrarmi anche nelle difficoltà.",
+          "premiumInsight": "Una fiducia stabile nella propria percezione sostiene decisioni più chiare e più quiete interiore.",
+          "premiumQuestion": "Come posso dare oggi più valore al mio sentire autentico?",
+          "integration": "La fiducia cresce dall’affidabilità che vivi verso te stessa.",
+          "focus": "Affidabilità interiore",
+          "microStep": "Prendi oggi sul serio il tuo primo sentire sincero almeno una volta.",
+          "smart": {
+            "koerper": "Osserva la differenza corporea tra una scelta coerente e una scelta forzata.",
+            "gedanke": "Completa la frase: Posso fidarmi di me quando...",
+            "handlung": "Agisci oggi almeno una volta seguendo ciò che percepisci come davvero giusto."
+          },
+          "activity": {
+            "title": "Coerente o no",
+            "type": "Gioco percettivo didattico",
+            "instruction": "Valuta tre piccole decisioni chiedendoti: questa scelta mi appare davvero coerente?"
+          }
+        },
+        {
+          "intro": "La fiducia raramente nasce solo dal pensiero. Cresce attraverso piccole esperienze ripetute di coerenza interiore.",
+          "premiumInsight": "La fiducia in sé non si costruisce pensando di più, ma vivendo più spesso esperienze di affidabilità interna.",
+          "premiumQuestion": "Quale piccola decisione potrebbe rafforzare oggi la mia fiducia in me stessa?",
+          "integration": "Oggi non conta la grandezza del gesto, ma la sua autenticità.",
+          "focus": "Coerenza",
+          "microStep": "Metti oggi in pratica una scelta piccola ma sinceramente giusta per te.",
+          "smart": {
+            "koerper": "Senti come si manifesta nel corpo un vero sì.",
+            "gedanke": "Chiediti: in quale momento oggi resto dalla mia parte?",
+            "handlung": "Resta fedele oggi a una scelta che senti interiormente allineata."
+          },
+          "activity": {
+            "title": "Un sì sincero",
+            "type": "Mini esercizio",
+            "instruction": "Trova oggi una cosa a cui puoi dire un sì autentico e falle spazio con consapevolezza."
+          }
+        }
+      ]
+    },
+    {
+      "day": 16,
+      "title": "Connessione",
+      "variants": [
+        {
+          "intro": "La connessione è un bisogno umano fondamentale. Regola il sistema quando è autentica, sicura e non sovraccaricante.",
+          "premiumInsight": "Esperienze relazionali percepite come sicure possono avere un effetto calmante e stabilizzante sul sistema nervoso.",
+          "premiumQuestion": "Quale forma di connessione mi nutre davvero?",
+          "integration": "Una connessione vera non ha bisogno di essere grande, ma di essere autentica.",
+          "focus": "Legame",
+          "microStep": "Riconosci oggi una forma di connessione che ti fa bene.",
+          "smart": {
+            "koerper": "Osserva come il tuo corpo reagisce a un contatto autentico o a una presenza rassicurante.",
+            "gedanke": "Chiediti: dove mi sento vista senza dovermi perdere?",
+            "handlung": "Cerca oggi un piccolo contatto che ti nutra davvero."
+          },
+          "activity": {
+            "title": "Check della connessione",
+            "type": "Esercizio di riflessione",
+            "instruction": "Scrivi tre forme di connessione che per te sono davvero nutrienti."
+          }
+        },
+        {
+          "intro": "La connessione può nascere con gli altri, ma anche nella relazione con te stessa. Entrambe sono profondamente regolanti.",
+          "premiumInsight": "La qualità di una relazione ha spesso un effetto più regolante della semplice quantità di contatti.",
+          "premiumQuestion": "Quale relazione o quale forma di connessione desidero coltivare con più consapevolezza?",
+          "integration": "Meno contatti ma più veri possono sostenere molto di più.",
+          "focus": "Vicinanza",
+          "microStep": "Nutri oggi in modo intenzionale una piccola connessione autentica.",
+          "smart": {
+            "koerper": "Nota quando il corpo si rilassa in una relazione e quando invece si contrae.",
+            "gedanke": "Completa la frase: Mi sento davvero in connessione quando...",
+            "handlung": "Esprimi oggi un gesto, una frase o una presenza che favorisca un contatto genuino."
+          },
+          "activity": {
+            "title": "Cerchio della connessione",
+            "type": "Esercizio didattico",
+            "instruction": "Scrivi persone, luoghi o attività con cui ti senti in vera connessione."
+          }
+        },
+        {
+          "intro": "La connessione autentica non è fusione. Significa restare in relazione senza perdere il tuo centro.",
+          "premiumInsight": "Esperienze di legame sicuro possono attenuare in modo significativo stati di tensione e vigilanza.",
+          "premiumQuestion": "Che cosa mi aiuta a restare in connessione senza allontanarmi da me stessa?",
+          "integration": "La connessione può nutrire senza dissolvere i tuoi confini.",
+          "focus": "Contatto con centro",
+          "microStep": "Durante un contatto oggi resta consapevolmente anche in ascolto di te.",
+          "smart": {
+            "koerper": "Nel contatto, percepisci allo stesso tempo la tua base e il tuo centro.",
+            "gedanke": "Chiediti: dove mi adatto troppo pur di sentirmi connessa?",
+            "handlung": "Scegli oggi una forma di relazione in cui resti presente anche a te stessa."
+          },
+          "activity": {
+            "title": "Connessa ma presente",
+            "type": "Mini esperimento",
+            "instruction": "In una conversazione di oggi prova a restare attenta sia all’altro sia alle tue sensazioni corporee."
+          }
+        }
+      ]
+    },
+    {
+      "day": 17,
+      "title": "Quiete",
+      "variants": [
+        {
+          "intro": "La quiete è più del silenzio esterno. È uno stato interiore in cui non devi reagire, performare o proteggerti continuamente.",
+          "premiumInsight": "Momenti di quiete sostengono elaborazione, rigenerazione e stabilizzazione emotiva.",
+          "premiumQuestion": "Che cosa mi aiuta a passare da una pausa esterna a una quiete interiore reale?",
+          "integration": "La quiete interiore può essere costruita gradualmente, anche se non arriva subito.",
+          "focus": "Calmarsi",
+          "microStep": "Crea oggi un piccolo momento senza stimoli e senza compiti.",
+          "smart": {
+            "koerper": "Osserva se il tuo corpo riesce già ad avvicinarsi alla quiete.",
+            "gedanke": "Chiediti: che cosa interrompe più spesso la mia calma?",
+            "handlung": "Riduci oggi consapevolmente una fonte di stimolo."
+          },
+          "activity": {
+            "title": "Isola di quiete",
+            "type": "Esercizio di consapevolezza",
+            "instruction": "Inserisci oggi 2 minuti di quiete senza telefono, parole o compiti."
+          }
+        },
+        {
+          "intro": "Molte persone conoscono la calma esterna ma non quella interiore. La quiete nasce quando la tensione non domina più tutto.",
+          "premiumInsight": "Stimoli sensoriali tranquilli, ritmo rallentato e riduzione consapevole degli input favoriscono il sollievo interno.",
+          "premiumQuestion": "Come potrei creare oggi uno spazio interiore un po’ più silenzioso?",
+          "integration": "La quiete non è vuoto, ma uno stato regolante e nutritivo.",
+          "focus": "Rallentamento",
+          "microStep": "Rallenta oggi volutamente una singola azione.",
+          "smart": {
+            "koerper": "Espira e lascia riposare lo sguardo per qualche secondo.",
+            "gedanke": "Completa la frase: Il mio sistema si calma quando...",
+            "handlung": "Inserisci oggi una transizione un po’ più lenta e meno frenetica."
+          },
+          "activity": {
+            "title": "Momento lento",
+            "type": "Mini gioco",
+            "instruction": "Svolgi oggi un’azione quotidiana in modo un po’ più lento e molto più consapevole."
+          }
+        },
+        {
+          "intro": "La quiete può essere molto potente. Raccoglie, ordina e restituisce spazio all’interno.",
+          "premiumInsight": "Piccole isole di quiete ripetute nella giornata migliorano spesso la capacità di autoregolazione.",
+          "premiumQuestion": "Dove potrei scegliere oggi una transizione silenziosa invece della fretta?",
+          "integration": "Nella quiete si raccoglie nuova forza.",
+          "focus": "Raccoglimento",
+          "microStep": "Crea oggi una breve transizione silenziosa tra due attività.",
+          "smart": {
+            "koerper": "Osserva come il corpo reagisce a una pausa invece che a un’accelerazione continua.",
+            "gedanke": "Chiediti: che cosa in me si quieta quando non spingo più?",
+            "handlung": "Inizia o concludi oggi qualcosa in silenzio."
+          },
+          "activity": {
+            "title": "Transizione silenziosa",
+            "type": "Esercizio rituale",
+            "instruction": "Metti 30 secondi di silenzio tra due blocchi della giornata come piccolo rito di passaggio."
+          }
+        }
+      ]
+    },
+    {
+      "day": 18,
+      "title": "Integrazione",
+      "variants": [
+        {
+          "intro": "Integrare significa non solo vivere un’esperienza, ma darle internamente un posto, un contesto e un significato.",
+          "premiumInsight": "L’elaborazione ha bisogno di tempo, sicurezza e sufficiente capacità interna.",
+          "premiumQuestion": "Che cosa nel mio vissuto oggi non voglio più comprimere, ma comprendere e collocare?",
+          "integration": "Ciò che trova un posto dentro di te spesso pesa meno.",
+          "focus": "Elaborazione",
+          "microStep": "Concediti oggi un breve momento per dare senso a qualcosa invece di allontanarlo.",
+          "smart": {
+            "koerper": "Osserva come il tuo corpo reagisce quando guardi con gentilezza un tema importante.",
+            "gedanke": "Chiediti: che cosa oggi desidera essere compreso invece che evitato?",
+            "handlung": "Scrivi oggi una frase su qualcosa che vuoi collocare interiormente."
+          },
+          "activity": {
+            "title": "Dare un posto",
+            "type": "Esercizio di riflessione",
+            "instruction": "Scegli un tema e formula: è successo questo, mi ha fatto questo effetto, da qui porto con me questo."
+          }
+        },
+        {
+          "intro": "Non ogni esperienza è subito elaborata. Integrare significa darle forma, significato e uno spazio sicuro dentro di te.",
+          "premiumInsight": "Riflessione e regolazione corporea sostengono spesso l’integrazione di impressioni emotivamente impegnative.",
+          "premiumQuestion": "Come posso offrirmi oggi un contesto sicuro per elaborare interiormente?",
+          "integration": "Comprendere alleggerisce spesso più che reprimere.",
+          "focus": "Collocazione",
+          "microStep": "Concediti oggi 2 minuti per nominare con calma ciò che stai vivendo.",
+          "smart": {
+            "koerper": "Appoggia una mano sul petto o sull’addome e resta un attimo con il tema scelto.",
+            "gedanke": "Completa la frase: Quello che oggi desidero capire meglio è...",
+            "handlung": "Crea oggi un piccolo spazio sicuro per una riflessione autentica."
+          },
+          "activity": {
+            "title": "Ordinare i pensieri",
+            "type": "Esercizio strutturato didattico",
+            "instruction": "Dividi un’esperienza in tre parti: che cosa è accaduto, che cosa ho sentito, che cosa porto con me."
+          }
+        },
+        {
+          "intro": "Integrare collega esperienza e consapevolezza. Così ciò che prima era caotico può diventare più comprensibile e meno pesante.",
+          "premiumInsight": "Esperienze che vengono consapevolmente collocate e comprese lasciano spesso meno confusione interna.",
+          "premiumQuestion": "Quale intuizione interiore può maturare oggi dentro la mia vita?",
+          "integration": "Non tutto va risolto subito: alcune cose vogliono prima essere comprese.",
+          "focus": "Senso",
+          "microStep": "Chiediti oggi: che cosa vuole insegnarmi questa esperienza?",
+          "smart": {
+            "koerper": "Osserva se con maggiore chiarezza compare anche un po’ più di spazio nel corpo.",
+            "gedanke": "Chiediti: che cosa cambia se provo a capire invece di giudicare?",
+            "handlung": "Formula oggi in una frase la tua intuizione principale."
+          },
+          "activity": {
+            "title": "Frase di consapevolezza",
+            "type": "Mini riflessione",
+            "instruction": "Scrivi una sola frase che esprima la comprensione più importante di oggi."
+          }
+        }
+      ]
+    },
+    {
+      "day": 19,
+      "title": "Direzione",
+      "variants": [
+        {
+          "intro": "La direzione dà una traiettoria alla tua energia. Ti aiuta a non perderti in reazioni continue e dispersione.",
+          "premiumInsight": "Avere chiarezza su valori e priorità riduce spesso sovraccarico e frammentazione interiore.",
+          "premiumQuestion": "Che cosa è davvero importante per me oggi, al di là del dovere e della pressione?",
+          "integration": "La direzione raccoglie la tua forza e la orienta.",
+          "focus": "Priorità",
+          "microStep": "Scegli oggi un punto centrale verso cui orientare la giornata.",
+          "smart": {
+            "koerper": "Senti come si manifesta nel corpo un orientamento interno chiaro.",
+            "gedanke": "Chiediti: per che cosa voglio esserci davvero oggi?",
+            "handlung": "Prendi oggi una decisione coerente con la tua priorità."
+          },
+          "activity": {
+            "title": "Bussola della giornata",
+            "type": "Gioco di chiarezza",
+            "instruction": "Scegli consapevolmente tra tre possibilità il tuo vero focus di oggi."
+          }
+        },
+        {
+          "intro": "Quando troppe cose sembrano ugualmente urgenti, la forza interiore si disperde. La direzione crea raccolta e selezione.",
+          "premiumInsight": "Una direzione chiara alleggerisce perché rende visibili le priorità e riduce la pressione decisionale.",
+          "premiumQuestion": "Quale area della mia vita ha bisogno in questo momento di una linea interiore più chiara?",
+          "integration": "Non tutto merita la stessa quota della tua energia.",
+          "focus": "Linea interiore",
+          "microStep": "Decidi oggi che cosa può ricevere meno attenzione.",
+          "smart": {
+            "koerper": "Rivolgi intenzionalmente lo sguardo in avanti e nota l’effetto.",
+            "gedanke": "Completa la frase: Oggi mi orienta interiormente il fatto che...",
+            "handlung": "Seleziona oggi invece di cercare di portare tutto insieme."
+          },
+          "activity": {
+            "title": "Meno ma più chiaro",
+            "type": "Esercizio di ordinamento",
+            "instruction": "Ordina cinque temi attuali in: importante ora / può aspettare / oggi non necessario."
+          }
+        },
+        {
+          "intro": "Avere direzione significa orientarti verso ciò che ti nutre, ti rafforza e ha senso per te.",
+          "premiumInsight": "Decisioni guidate dai valori risultano spesso più stabili e più coerenti di quelle dettate solo dalla pressione del momento.",
+          "premiumQuestion": "Come posso prendere oggi una decisione più vicina al mio orientamento profondo?",
+          "integration": "Ciò che ti orienta interiormente spesso ordina anche la tua giornata.",
+          "focus": "Bussola interiore",
+          "microStep": "Prendi oggi una piccola decisione guidata da un valore e non da una reazione automatica.",
+          "smart": {
+            "koerper": "Osserva se il corpo si calma quando una scelta è davvero coerente.",
+            "gedanke": "Chiediti: che cosa mi corrisponde davvero oggi?",
+            "handlung": "Agisci oggi almeno una volta secondo il tuo orientamento interiore."
+          },
+          "activity": {
+            "title": "Focus sui valori",
+            "type": "Gioco di riflessione",
+            "instruction": "Scegli un valore per oggi, ad esempio calma, chiarezza o sincerità, e orienta ad esso una tua azione."
+          }
+        }
+      ]
+    },
+    {
+      "day": 20,
+      "title": "Crescita",
+      "variants": [
+        {
+          "intro": "La crescita spesso è silenziosa. Si vede non solo nei grandi cambiamenti, ma anche in reazioni più mature e in scelte più fini.",
+          "premiumInsight": "Il cambiamento duraturo nasce spesso dalla ripetizione, non dall’intensità occasionale.",
+          "premiumQuestion": "Quale piccolo sviluppo in me desidero riconoscere con più consapevolezza oggi?",
+          "integration": "La crescita può essere discreta, lenta e profondamente reale.",
+          "focus": "Sviluppo",
+          "microStep": "Riconosci oggi un piccolo progresso che hai già compiuto.",
+          "smart": {
+            "koerper": "Osserva se il riconoscimento produce anche nel corpo un po’ più di morbidezza.",
+            "gedanke": "Chiediti: da che cosa mi accorgo di non essere più esattamente come prima?",
+            "handlung": "Nomina oggi una qualità che vuoi continuare a sviluppare."
+          },
+          "activity": {
+            "title": "Già cresciuta",
+            "type": "Esercizio di riflessione",
+            "instruction": "Scrivi tre piccoli cambiamenti o maturazioni che in te sono già avvenuti."
+          }
+        },
+        {
+          "intro": "La crescita ha bisogno di tempo, pazienza e continuità. Non nasce contro di te, ma attraverso un contatto più consapevole con te stessa.",
+          "premiumInsight": "I piccoli progressi vengono spesso sottovalutati, anche se nel lungo periodo hanno un grande effetto.",
+          "premiumQuestion": "In quale ambito posso oggi riconoscere il mio processo invece di criticarmi?",
+          "integration": "Il riconoscimento rafforza lo sviluppo.",
+          "focus": "Riconoscimento",
+          "microStep": "Oggi valorizza un piccolo passo invece di fissarti solo su ciò che manca.",
+          "smart": {
+            "koerper": "Osserva come il tuo corpo reagisce alla critica rispetto al riconoscimento.",
+            "gedanke": "Completa la frase: Mi sono già evoluta in...",
+            "handlung": "Concediti oggi una forma concreta di riconoscimento interiore."
+          },
+          "activity": {
+            "title": "Lente sul progresso",
+            "type": "Mini gioco didattico",
+            "instruction": "Guarda oggi con attenzione i micro-progressi: che cosa è diventato un po’ più calmo, più chiaro o più stabile?"
+          }
+        },
+        {
+          "intro": "Crescere non significa diventare qualcun altro. Significa far emergere in modo più maturo, stabile e consapevole ciò che già è tuo.",
+          "premiumInsight": "La crescita diventa più solida quando si radica in abitudini semplici e quotidiane.",
+          "premiumQuestion": "Quale abitudine sostiene meglio il mio sviluppo interiore?",
+          "integration": "La crescita si consolida quando trova radici nella quotidianità.",
+          "focus": "Radicamento",
+          "microStep": "Scegli oggi una piccola abitudine che sostenga la tua evoluzione.",
+          "smart": {
+            "koerper": "Percepisci quale postura o movimento potrebbe rappresentare oggi la tua crescita.",
+            "gedanke": "Chiediti: che cosa desidera continuare a svilupparsi in me?",
+            "handlung": "Radica oggi una piccola azione al servizio del tuo percorso."
+          },
+          "activity": {
+            "title": "Seme di crescita",
+            "type": "Esercizio rituale",
+            "instruction": "Definisci un piccolo seme per la prossima settimana: un’abitudine minima che vuoi far crescere."
+          }
+        }
+      ]
+    },
+    {
+      "day": 21,
+      "title": "Nuovo inizio",
+      "variants": [
+        {
+          "intro": "Un nuovo inizio non deve essere grande. Spesso comincia da un atteggiamento interiore nuovo che scegli di vivere con più consapevolezza.",
+          "premiumInsight": "Cicli ripetuti rafforzano autoregolazione, auto-percezione e stabilità interiore.",
+          "premiumQuestion": "Quale intuizione o comprensione di questi giorni può diventare il mio prossimo passo?",
+          "integration": "Non riparti da zero, ma dall’esperienza che hai già integrato.",
+          "focus": "Passaggio",
+          "microStep": "Scegli oggi una comprensione da portare con te nel prossimo ciclo.",
+          "smart": {
+            "koerper": "Osserva come si manifesta nel corpo la sensazione di ripartenza: più aperta, più chiara o più prudente.",
+            "gedanke": "Chiediti: che cosa voglio portare avanti consapevolmente?",
+            "handlung": "Formula oggi un passo successivo chiaro."
+          },
+          "activity": {
+            "title": "Portare con sé e lasciare andare",
+            "type": "Esercizio conclusivo",
+            "instruction": "Scrivi: questo lo porto con me. Questo lo lascio andare."
+          }
+        },
+        {
+          "intro": "Nuovo inizio non significa cambiare tutto. Significa andare avanti con più chiarezza, presenza e connessione interiore.",
+          "premiumInsight": "Integrare bene la fine di un ciclo aumenta spesso l’effetto duraturo di ciò che è stato vissuto.",
+          "premiumQuestion": "Che cosa desidero custodire con consapevolezza prima di entrare in una nuova fase?",
+          "integration": "Un buon nuovo inizio onora anche ciò che è già cresciuto.",
+          "focus": "Proseguire",
+          "microStep": "Segna oggi, interiormente o concretamente, un piccolo passaggio verso la fase successiva.",
+          "smart": {
+            "koerper": "Assumi una postura eretta che esprima apertura al nuovo inizio.",
+            "gedanke": "Completa la frase: Continuo il mio cammino con...",
+            "handlung": "Compi oggi una piccola azione simbolica che rappresenti il passaggio."
+          },
+          "activity": {
+            "title": "Nuova fase",
+            "type": "Mini rituale",
+            "instruction": "Scegli un piccolo simbolo per il tuo nuovo inizio: una frase, un luogo, un oggetto o un gesto."
+          }
+        },
+        {
+          "intro": "Ogni conclusione contiene già il seme di un nuovo inizio. Ciò che hai compreso ora può diventare parte concreta della tua vita.",
+          "premiumInsight": "Piccoli rituali di chiusura e di ripartenza sostengono continuità, orientamento e senso di percorso.",
+          "premiumQuestion": "Come posso iniziare il prossimo ciclo in modo più consapevole, coerente e stabile?",
+          "integration": "Un nuovo inizio diventa più forte quando nasce dalla chiarezza e non dalla pressione.",
+          "focus": "Nuovo ciclo",
+          "microStep": "Definisci oggi con quale qualità desideri iniziare il prossimo tratto del percorso.",
+          "smart": {
+            "koerper": "Senti se fine e inizio si percepiscono nel corpo come leggerezza, serietà o apertura.",
+            "gedanke": "Chiediti: quale qualità voglio vivere nel prossimo tratto?",
+            "handlung": "Definisci oggi una piccola ancora concreta per il tuo nuovo inizio."
+          },
+          "activity": {
+            "title": "Ancora di partenza",
+            "type": "Esercizio di pianificazione",
+            "instruction": "Definisci un primo passo chiaro, piccolo e realistico con cui iniziare il prossimo ciclo."
+          }
+        }
+      ]
+    }
+  ]
+}
