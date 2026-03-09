@@ -243,6 +243,17 @@
       color:#3a2c10;
     }
 
+    .dayDone.locked{
+      background: rgba(255,255,255,.78);
+      border:1px solid rgba(0,0,0,.08);
+      color:rgba(43,43,43,.55);
+    }
+
+    .softBox.lockedBox{
+      opacity:0.62;
+      filter:grayscale(0.16);
+    }
+
     .divider{
       height:1px;
       background: linear-gradient(90deg, transparent, rgba(200,162,74,.35), transparent);
@@ -840,7 +851,7 @@
 
       <div class="content">
 
-        <div class="softBox">
+        <div class="softBox" id="dayCard">
           <div class="label">Tag <span id="tagNumber">1</span><span id="dayDone" class="dayDone">○</span></div>
           <div class="imgWrap">
             <img id="dayImage" src="./icons/1.png" alt="Bild für Tag 1" />
@@ -1016,6 +1027,7 @@
     const progressCount = document.getElementById("progressCount");
     const progressFill = document.getElementById("progressFill");
     const dayImage = document.getElementById("dayImage");
+    const dayCard = document.getElementById("dayCard");
 
     const elTitle = document.getElementById("title");
     const elExplanation = document.getElementById("explanation");
@@ -1113,28 +1125,6 @@
       }
     }
 
-    function updateProgressUI(){
-      const completed = getCompletedDays();
-      const done = completed.length;
-
-      progressCount.textContent = String(done);
-      progressFill.style.width = `${(done / TOTAL_DAYS) * 100}%`;
-
-      if(completed.includes(currentDay)){
-        dayDone.textContent = "✓";
-        dayDone.classList.add("done");
-      } else {
-        dayDone.textContent = "○";
-        dayDone.classList.remove("done");
-      }
-    }
-
-    function setStoredDay(day){
-      currentDay = clampDay(day);
-      localStorage.setItem(LS_DAY, String(currentDay));
-      render();
-    }
-
     function getStartDate(){
       ensureStartDate();
       const raw = localStorage.getItem(LS_START);
@@ -1153,6 +1143,58 @@
       const start = getStartDate();
       const today = new Date();
       return diffDays(start, today) + 1;
+    }
+
+    function getUnlockedDay(){
+      return Math.min(TOTAL_DAYS, Math.max(1, getAbsoluteDay()));
+    }
+
+    function isCurrentDayLocked(){
+      return currentDay > getUnlockedDay();
+    }
+
+    function syncCurrentDayWithUnlocked(){
+      const unlocked = getUnlockedDay();
+      if(currentDay > unlocked){
+        currentDay = unlocked;
+        localStorage.setItem(LS_DAY, String(currentDay));
+      }
+    }
+
+    function updateProgressUI(){
+      const completed = getCompletedDays();
+      const done = completed.length;
+      const locked = isCurrentDayLocked();
+
+      progressCount.textContent = String(done);
+      progressFill.style.width = `${(done / TOTAL_DAYS) * 100}%`;
+
+      dayDone.classList.remove("done", "locked");
+
+      if(locked){
+        dayDone.textContent = "🔒";
+        dayDone.classList.add("locked");
+        dayCard.classList.add("lockedBox");
+      } else if(completed.includes(currentDay)){
+        dayDone.textContent = "✓";
+        dayDone.classList.add("done");
+        dayCard.classList.remove("lockedBox");
+      } else {
+        dayDone.textContent = "○";
+        dayCard.classList.remove("lockedBox");
+      }
+    }
+
+    function setStoredDay(day){
+      const unlocked = getUnlockedDay();
+      currentDay = clampDay(day);
+
+      if(currentDay > unlocked){
+        currentDay = unlocked;
+      }
+
+      localStorage.setItem(LS_DAY, String(currentDay));
+      render();
     }
 
     function getCurrentCycle(){
@@ -1357,8 +1399,44 @@
       dayImage.alt = `Bild für Tag ${day}`;
     }
 
+    function renderLockedContent(){
+      tagNumber.textContent = String(currentDay);
+      updateImage(currentDay);
+
+      elTitle.textContent = `Tag ${currentDay} ist noch gesperrt`;
+      elExplanation.textContent = `Dieser Tag wird automatisch freigeschaltet, sobald du ihn im natürlichen Verlauf deines 21-Tage-Programms erreichst.`;
+      elImpuls.textContent = `Nicht alles auf einmal. Heute zählt nur der Tag, der jetzt für dich offen ist.`;
+      elReflection.textContent = `Was hilft mir heute, im aktuellen Schritt zu bleiben – ohne vorauszueilen?`;
+
+      exerciseWrap.style.display = "none";
+      exerciseTitle.textContent = "Mini-Übung";
+      exerciseText.textContent = "—";
+
+      premiumTeaser.style.display = "block";
+      premiumBlock.style.display = "none";
+      closingBox.style.display = "none";
+      currentVariant = null;
+
+      premiumBadge.textContent = "Status: Free";
+      unlockBtnLink.style.display = "";
+      memberBtn.textContent = "Zum Mitgliederbereich";
+
+      prevBtn.disabled = currentDay <= 1;
+      nextBtn.disabled = true;
+      nextBtn.textContent = "Noch gesperrt 🔒";
+    }
+
     function render(){
+      syncCurrentDayWithUnlocked();
+
+      const locked = isCurrentDayLocked();
       const dayData = findDayObj(currentDay) || {};
+
+      if(locked){
+        updateProgressUI();
+        renderLockedContent();
+        return;
+      }
 
       tagNumber.textContent = String(currentDay);
       updateImage(currentDay);
@@ -1387,6 +1465,9 @@
       if(currentDay >= TOTAL_DAYS){
         nextBtn.disabled = true;
         nextBtn.textContent = "Letzter Tag ✓";
+      } else if(currentDay + 1 > getUnlockedDay()){
+        nextBtn.disabled = true;
+        nextBtn.textContent = "Noch gesperrt 🔒";
       } else {
         nextBtn.disabled = false;
         nextBtn.textContent = "Weiter →";
@@ -1453,7 +1534,7 @@
       });
 
       nextBtn.addEventListener("click", () => {
-        if(currentDay < TOTAL_DAYS){
+        if(currentDay < TOTAL_DAYS && currentDay < getUnlockedDay()){
           markDayCompleted(currentDay);
           setStoredDay(currentDay + 1);
         }
@@ -1503,6 +1584,7 @@
       ensureStartDate();
       initLang();
       currentDay = getStoredDay();
+      syncCurrentDayWithUnlocked();
       bindEvents();
       await loadJSON();
       updateProgressUI();
