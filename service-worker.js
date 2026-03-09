@@ -1,4 +1,4 @@
-const CACHE_VERSION = "v15";
+const CACHE_VERSION = "v16";
 const CACHE_NAME = `panacea-cache-${CACHE_VERSION}`;
 
 const ASSETS = [
@@ -53,11 +53,14 @@ self.addEventListener("activate", (event) => {
 
 self.addEventListener("fetch", (event) => {
   const req = event.request;
+  const url = new URL(req.url);
 
   if (req.method !== "GET") return;
 
   const isHTML = req.headers.get("accept")?.includes("text/html");
+  const isJSON = url.pathname.endsWith(".json");
 
+  // HTML = network first
   if (isHTML) {
     event.respondWith(
       fetch(req)
@@ -73,6 +76,21 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
+  // JSON = network first con fallback cache
+  if (isJSON) {
+    event.respondWith(
+      fetch(req)
+        .then((res) => {
+          const copy = res.clone();
+          caches.open(CACHE_NAME).then((c) => c.put(req, copy));
+          return res;
+        })
+        .catch(() => caches.match(req))
+    );
+    return;
+  }
+
+  // tutto il resto = cache first
   event.respondWith(
     caches.match(req).then(
       (cached) =>
