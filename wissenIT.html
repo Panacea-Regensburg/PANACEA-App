@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Panacea – Sapere & Chiarezza</title>
+  <link rel="icon" href="./icons/icon-192.png" />
 
   <style>
     :root{
@@ -432,6 +433,7 @@
       overflow:hidden;
       display:none;
     }
+
     .premiumBlock::before{
       content:"";
       position:absolute;
@@ -492,12 +494,12 @@
       padding:14px 14px 12px;
       border-radius:18px;
       border:1px solid rgba(58,44,16,.16);
-      background:
-        linear-gradient(180deg, rgba(255,250,238,.86), rgba(245,235,214,.82));
+      background: linear-gradient(180deg, rgba(255,250,238,.86), rgba(245,235,214,.82));
       box-shadow:
         inset 0 0 0 1px rgba(255,255,255,.40),
         0 12px 28px rgba(0,0,0,.08);
     }
+
     .paper::before{
       content:"";
       position:absolute;
@@ -619,10 +621,12 @@
       box-shadow: 0 10px 22px rgba(0,0,0,.06);
       transition: transform .15s ease, box-shadow .15s ease;
     }
+
     .choiceBtn:hover{
       transform: translateY(-1px);
       box-shadow: 0 12px 24px rgba(0,0,0,.07);
     }
+
     .choiceBtn.active{
       background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
       border:1px solid rgba(200,162,74,.35);
@@ -669,6 +673,7 @@
       gap:10px;
       flex-wrap:wrap;
       width:100%;
+      margin-top:10px;
     }
 
     .miniBtn{
@@ -682,6 +687,7 @@
       flex:1;
       min-width:140px;
     }
+
     .miniBtn.primary{
       background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
       border:1px solid rgba(200,162,74,.35);
@@ -698,6 +704,7 @@
       border:1px solid rgba(200,162,74,.22);
       background: rgba(255,255,255,.74);
       box-shadow: 0 12px 26px rgba(0,0,0,.06);
+      display:none;
     }
 
     .closing h4{
@@ -720,6 +727,12 @@
       .topbar{ grid-template-columns: 1fr auto 1fr; }
       .navRow button{ min-width:100%; }
       .smartChoices{ grid-template-columns:1fr; }
+      .premiumHead,
+      .premiumTop,
+      .gameHead{
+        flex-direction:column;
+        align-items:flex-start;
+      }
     }
   </style>
 </head>
@@ -894,7 +907,7 @@
             </div>
           </div>
 
-          <div class="closing" id="closingBox" style="display:none;">
+          <div class="closing" id="closingBox">
             <h4>Per concludere</h4>
             <p id="closingText">…</p>
           </div>
@@ -915,44 +928,13 @@
     const LS_START = "panacea_wissen_start";
     const LS_LANG = "lang";
     const LS_MEMBER = "panacea_member";
-
     const LS_PREMIUM_CYCLE_ID = "panacea_wissen_premium_cycle_id";
     const LS_PREMIUM_VARIANT_MAP = "panacea_wissen_premium_variant_map";
 
-    // ===== LANGUAGE =====
+    // ===== ELEMENTS =====
     const btnDE = document.getElementById("btnDE");
     const btnIT = document.getElementById("btnIT");
 
-    function setLang(lang){
-      localStorage.setItem(LS_LANG, lang);
-      if(lang === "de"){
-        window.location.href = "./wissen.html";
-      }else{
-        btnIT.classList.add("active");
-        btnDE.classList.remove("active");
-      }
-    }
-
-    btnDE.addEventListener("click", () => setLang("de"));
-    btnIT.addEventListener("click", () => setLang("it"));
-
-    (function initLang(){
-      const lang = (localStorage.getItem(LS_LANG) || "it").toLowerCase();
-      if(lang === "de"){
-        window.location.href = "./wissen.html";
-        return;
-      }
-      btnIT.classList.add("active");
-      btnDE.classList.remove("active");
-    })();
-
-    // ===== STATE =====
-    let dataDays = [];
-    let premiumDays = [];
-    let currentDay = 1;
-    let currentVariant = null;
-
-    // ===== ELEMENTS =====
     const tagNumber = document.getElementById("tagNumber");
     const dayImage = document.getElementById("dayImage");
 
@@ -996,26 +978,22 @@
     const prevBtn = document.getElementById("prevBtn");
     const nextBtn = document.getElementById("nextBtn");
 
+    // ===== STATE =====
+    let dataDays = [];
+    let premiumDays = [];
+    let currentDay = 1;
+    let currentVariant = null;
+
     // ===== HELPERS =====
+    function clampDay(value){
+      const n = parseInt(value, 10);
+      if (!Number.isFinite(n)) return 1;
+      return Math.min(TOTAL_DAYS, Math.max(1, n));
+    }
+
     function isMember(){
-      const v = String(localStorage.getItem(LS_MEMBER) || "").toLowerCase();
-      return v === "1" || v === "true" || v === "yes" || v === "on";
-    }
-
-    function clampDay(n){
-      n = Number(n);
-      if(!Number.isFinite(n)) return 1;
-      return Math.min(TOTAL_DAYS, Math.max(1, Math.round(n)));
-    }
-
-    function getStoredDay(){
-      return clampDay(localStorage.getItem(LS_DAY) || 1);
-    }
-
-    function setStoredDay(n){
-      currentDay = clampDay(n);
-      localStorage.setItem(LS_DAY, String(currentDay));
-      render();
+      const raw = String(localStorage.getItem(LS_MEMBER) || "").toLowerCase();
+      return raw === "1" || raw === "true" || raw === "yes" || raw === "on";
     }
 
     function ensureStartDate(){
@@ -1024,11 +1002,21 @@
       }
     }
 
+    function getStoredDay(){
+      return clampDay(localStorage.getItem(LS_DAY));
+    }
+
+    function setStoredDay(day){
+      currentDay = clampDay(day);
+      localStorage.setItem(LS_DAY, String(currentDay));
+      render();
+    }
+
     function getStartDate(){
       ensureStartDate();
       const raw = localStorage.getItem(LS_START);
-      const d = new Date(raw + "T00:00:00");
-      return Number.isNaN(d.getTime()) ? new Date() : d;
+      const parsed = new Date(raw + "T00:00:00");
+      return Number.isNaN(parsed.getTime()) ? new Date() : parsed;
     }
 
     function diffDays(a, b){
@@ -1049,24 +1037,24 @@
       return Math.floor((absoluteDay - 1) / TOTAL_DAYS);
     }
 
-    function findDayObj(day){
-      return dataDays.find(d => Number(d.day) === Number(day));
-    }
-
-    function findPremiumDayObj(day){
-      return premiumDays.find(d => Number(d.day) === Number(day));
-    }
-
-    function getVariantLabel(i){
-      return i === 0 ? "Variante A" : i === 1 ? "Variante B" : "Variante C";
-    }
-
-    function parseJSONSafe(value, fallback){
+    function safeJsonParse(value, fallback){
       try{
         return JSON.parse(value);
       }catch{
         return fallback;
       }
+    }
+
+    function findDayObj(day){
+      return dataDays.find(item => Number(item.day) === Number(day));
+    }
+
+    function findPremiumDayObj(day){
+      return premiumDays.find(item => Number(item.day) === Number(day));
+    }
+
+    function getVariantLabel(index){
+      return index === 0 ? "Variante A" : index === 1 ? "Variante B" : "Variante C";
     }
 
     function generateVariantMap(days, previousMap = []){
@@ -1093,7 +1081,7 @@
     function getPremiumVariantMap(){
       const currentCycle = getCurrentCycle();
       const savedCycle = parseInt(localStorage.getItem(LS_PREMIUM_CYCLE_ID) || "-1", 10);
-      const savedMap = parseJSONSafe(localStorage.getItem(LS_PREMIUM_VARIANT_MAP) || "[]", []);
+      const savedMap = safeJsonParse(localStorage.getItem(LS_PREMIUM_VARIANT_MAP) || "[]", []);
 
       if(
         savedCycle === currentCycle &&
@@ -1122,19 +1110,13 @@
       const variantIndex = variantMap[dayNumber - 1] ?? 0;
       const variant = premiumDay.variants[variantIndex] || premiumDay.variants[0];
 
-      return {
-        variantIndex,
-        variant,
-        premiumDay
-      };
+      return { premiumDay, variantIndex, variant };
     }
 
     function getChoiceLabel(choice){
-      return choice === "body"
-        ? "Corpo"
-        : choice === "mind"
-        ? "Pensiero"
-        : "Azione";
+      if(choice === "body") return "Corpo";
+      if(choice === "action") return "Azione";
+      return "Pensiero";
     }
 
     function buildSmartExerciseFromVariant(variant){
@@ -1150,25 +1132,46 @@
 
     function renderSmartExercise(variantObj, forcedChoice){
       const exercise = variantObj.smartExercise || {};
-      const choice = forcedChoice || exercise.autoChoice || "mind";
+      const selected = forcedChoice || exercise.autoChoice || "mind";
 
       choiceBtns.forEach(btn => {
-        btn.classList.toggle("active", btn.dataset.choice === choice);
+        btn.classList.toggle("active", btn.dataset.choice === selected);
       });
 
       gameTitle.textContent = exercise.title || "Esercizio Smart";
       gamePrompt.textContent = exercise.intro || "Scegli in modo intuitivo l’area che in questo momento può offrirti maggiore chiarezza o stabilità.";
 
-      const map = {
+      const outputMap = {
         body: exercise.body || "Ascolta il corpo. Rilascia le spalle ed espira una volta con calma.",
         mind: exercise.mind || "Formula per oggi un pensiero chiaro che possa alleggerirti.",
         action: exercise.action || "Scegli una piccola azione che oggi sia davvero possibile."
       };
 
-      smartOutput.textContent = map[choice];
-      autoHint.textContent = `Suggerimento automatico: oggi è stato selezionato come primo focus “${getChoiceLabel(choice)}”.`;
+      smartOutput.textContent = outputMap[selected];
+      autoHint.textContent = `Suggerimento automatico: oggi è stato selezionato come primo focus “${getChoiceLabel(selected)}”.`;
       gameResult.textContent = "";
-      return choice;
+    }
+
+    function renderFreeContent(dayData){
+      const title = dayData.title || "Contenuto in preparazione";
+      const explanation = dayData.explanation || "Questo impulso del giorno sarà disponibile a breve.";
+      const impuls = dayData.impuls || dayData.impulse || "La chiarezza nasce passo dopo passo.";
+      const reflection = dayData.reflection || "Di che cosa ho davvero bisogno oggi?";
+
+      elTitle.textContent = title;
+      elExplanation.textContent = explanation;
+      elImpuls.textContent = impuls;
+      elReflection.textContent = reflection;
+
+      if(dayData.exercise && (dayData.exercise.text || dayData.exercise.title)){
+        exerciseWrap.style.display = "block";
+        exerciseTitle.textContent = dayData.exercise.title || "Mini esercizio";
+        exerciseText.textContent = dayData.exercise.text || "—";
+      } else {
+        exerciseWrap.style.display = "none";
+        exerciseTitle.textContent = "Mini esercizio";
+        exerciseText.textContent = "—";
+      }
     }
 
     function renderPremium(dayNumber){
@@ -1189,10 +1192,11 @@
         premiumClosing.textContent = "—";
         closingText.textContent = "—";
         closingBox.style.display = "none";
+        currentVariant = null;
         return;
       }
 
-      const { variantIndex, variant, premiumDay } = premiumData;
+      const { premiumDay, variantIndex, variant } = premiumData;
 
       currentVariant = {
         label: getVariantLabel(variantIndex),
@@ -1222,38 +1226,20 @@
       closingText.textContent = currentVariant.closing;
 
       closingBox.style.display = "none";
-
       renderSmartExercise(currentVariant, currentVariant.smartExercise.autoChoice || "mind");
     }
 
-    function renderFreeContent(d){
-      const title = d.title || "Contenuto in preparazione";
-      const explanation = d.explanation || "Questo impulso del giorno sarà disponibile a breve.";
-      const impuls = d.impuls || d.impulse || "La chiarezza nasce passo dopo passo.";
-      const reflection = d.reflection || "Di che cosa ho davvero bisogno oggi?";
-
-      elTitle.textContent = title;
-      elExplanation.textContent = explanation;
-      elImpuls.textContent = impuls;
-      elReflection.textContent = reflection;
-
-      if(d.exercise && (d.exercise.text || d.exercise.title)){
-        exerciseWrap.style.display = "block";
-        exerciseTitle.textContent = d.exercise.title || "Mini esercizio";
-        exerciseText.textContent = d.exercise.text || "—";
-      } else {
-        exerciseWrap.style.display = "none";
-      }
+    function updateImage(day){
+      dayImage.src = `./icons/${day}.png`;
+      dayImage.alt = `Immagine del giorno ${day}`;
     }
 
     function render(){
-      const d = findDayObj(currentDay) || {};
+      const dayData = findDayObj(currentDay) || {};
 
       tagNumber.textContent = String(currentDay);
-      dayImage.src = `./icons/${currentDay}.png`;
-      dayImage.alt = `Immagine del giorno ${currentDay}`;
-
-      renderFreeContent(d);
+      updateImage(currentDay);
+      renderFreeContent(dayData);
 
       if(isMember()){
         premiumBadge.textContent = "Stato: Membro ✅";
@@ -1268,51 +1254,79 @@
         memberBtn.textContent = "Vai all’Area Membri";
         premiumTeaser.style.display = "block";
         premiumBlock.style.display = "none";
+        closingBox.style.display = "none";
+        currentVariant = null;
       }
 
-      prevBtn.disabled = (currentDay <= 1);
-      nextBtn.disabled = false;
+      prevBtn.disabled = currentDay <= 1;
 
       if(currentDay >= TOTAL_DAYS){
+        nextBtn.disabled = true;
         nextBtn.textContent = "Ultimo giorno ✓";
       } else {
+        nextBtn.disabled = false;
         nextBtn.textContent = "Avanti →";
       }
     }
 
+    // ===== JSON LOADERS =====
     async function loadFreeJSON(){
       try{
-        const freeRes = await fetch(JSON_URL, { cache: "no-store" });
-        if(!freeRes.ok) throw new Error("Free JSON fetch failed: " + freeRes.status);
-
-        const freeJson = await freeRes.json();
-        dataDays = Array.isArray(freeJson?.days) ? freeJson.days : (Array.isArray(freeJson) ? freeJson : []);
-      } catch(err){
-        console.warn("Il JSON FREE di Sapere non è stato caricato:", err);
+        const res = await fetch(JSON_URL, { cache: "no-store" });
+        if(!res.ok) throw new Error(`Free JSON fetch failed: ${res.status}`);
+        const json = await res.json();
+        dataDays = Array.isArray(json?.days) ? json.days : (Array.isArray(json) ? json : []);
+      } catch(error){
+        console.warn("Il JSON FREE di Sapere non è stato caricato:", error);
         dataDays = [];
       }
     }
 
     async function loadPremiumJSON(){
       try{
-        const premiumRes = await fetch(PREMIUM_JSON_URL, { cache: "no-store" });
-        if(!premiumRes.ok) throw new Error("Premium JSON fetch failed: " + premiumRes.status);
-
-        const premiumJson = await premiumRes.json();
-        premiumDays = Array.isArray(premiumJson?.days) ? premiumJson.days : (Array.isArray(premiumJson) ? premiumJson : []);
-      } catch(err){
-        console.warn("Il JSON PREMIUM di Sapere non è stato caricato:", err);
+        const res = await fetch(PREMIUM_JSON_URL, { cache: "no-store" });
+        if(!res.ok) throw new Error(`Premium JSON fetch failed: ${res.status}`);
+        const json = await res.json();
+        premiumDays = Array.isArray(json?.days) ? json.days : (Array.isArray(json) ? json : []);
+      } catch(error){
+        console.warn("Il JSON PREMIUM di Sapere non è stato caricato:", error);
         premiumDays = [];
       }
     }
 
     async function loadJSON(){
-      await loadFreeJSON();
-      await loadPremiumJSON();
+      await Promise.all([loadFreeJSON(), loadPremiumJSON()]);
     }
 
+    // ===== LANGUAGE =====
+    function setLang(lang){
+      localStorage.setItem(LS_LANG, lang);
+      if(lang === "de"){
+        window.location.href = "./wissen.html";
+      } else {
+        btnIT.classList.add("active");
+        btnDE.classList.remove("active");
+      }
+    }
+
+    function initLang(){
+      const lang = (localStorage.getItem(LS_LANG) || "it").toLowerCase();
+      if(lang === "de"){
+        window.location.href = "./wissen.html";
+        return;
+      }
+      btnIT.classList.add("active");
+      btnDE.classList.remove("active");
+    }
+
+    // ===== EVENTS =====
     function bindEvents(){
-      prevBtn.addEventListener("click", () => setStoredDay(currentDay - 1));
+      btnDE.addEventListener("click", () => setLang("de"));
+      btnIT.addEventListener("click", () => setLang("it"));
+
+      prevBtn.addEventListener("click", () => {
+        setStoredDay(currentDay - 1);
+      });
 
       nextBtn.addEventListener("click", () => {
         if(currentDay < TOTAL_DAYS){
@@ -1332,39 +1346,44 @@
       });
 
       finishBtn.addEventListener("click", () => {
+        if(!currentVariant) return;
         closingBox.style.display = "block";
         if(typeof closingBox.scrollIntoView === "function"){
-          closingBox.scrollIntoView({ behavior:"smooth", block:"start" });
+          closingBox.scrollIntoView({ behavior: "smooth", block: "start" });
         }
       });
 
       dayImage.addEventListener("error", () => {
-        dayImage.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(
-          `<svg xmlns='http://www.w3.org/2000/svg' width='800' height='500'>
+        dayImage.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(`
+          <svg xmlns="http://www.w3.org/2000/svg" width="800" height="500">
             <defs>
-              <linearGradient id='g' x1='0' y1='0' x2='0' y2='1'>
-                <stop offset='0' stop-color='#f6f1e6'/>
-                <stop offset='1' stop-color='#efe7d7'/>
+              <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#f6f1e6"/>
+                <stop offset="1" stop-color="#efe7d7"/>
               </linearGradient>
             </defs>
-            <rect width='100%' height='100%' fill='url(#g)'/>
-            <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'
-              font-family='Arial' font-size='28' fill='#6b6b6b'>
+            <rect width="100%" height="100%" fill="url(#g)"/>
+            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+              font-family="Arial" font-size="28" fill="#6b6b6b">
               Immagine in arrivo (Giorno ${currentDay})
             </text>
-          </svg>`
-        );
+          </svg>
+        `);
         dayImage.alt = `Immagine segnaposto per il giorno ${currentDay}`;
       });
     }
 
-    (async function init(){
+    // ===== INIT =====
+    async function init(){
       ensureStartDate();
+      initLang();
       currentDay = getStoredDay();
       bindEvents();
       await loadJSON();
       render();
-    })();
+    }
+
+    init();
   </script>
 </body>
 </html>
