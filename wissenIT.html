@@ -20,7 +20,6 @@
       --radius: 22px;
       --radius2: 18px;
 
-      /* same responsive sizing as Daily Reset */
       --pad: clamp(14px, 3.6vw, 22px);
       --gap: clamp(10px, 2.8vw, 14px);
     }
@@ -44,7 +43,6 @@
       max-width:min(520px,100%);
     }
 
-    /* ===== Topbar exactly like Daily Reset ===== */
     .topbar{
       display:grid;
       grid-template-columns: 1fr auto 1fr;
@@ -125,7 +123,6 @@
       font-weight:900;
     }
 
-    /* ===== Main card exactly like Daily Reset ===== */
     .card{
       background: linear-gradient(180deg, var(--card2), var(--card));
       border-radius: var(--radius);
@@ -182,7 +179,6 @@
       margin:16px 0;
     }
 
-    /* free boxes like Daily Reset */
     .softBox{
       margin-top:0;
       padding:14px;
@@ -279,7 +275,6 @@
       text-shadow: 0 0 10px rgba(200,162,74,.25);
     }
 
-    /* ===== Premium teaser exactly in Daily Reset style ===== */
     .premiumTeaser{
       margin-top:14px;
       padding:14px;
@@ -415,7 +410,6 @@
       z-index:2;
     }
 
-    /* ===== Premium block exactly in Daily Reset style ===== */
     .premiumBlock{
       margin-top:14px;
       padding:14px;
@@ -726,7 +720,6 @@
 <body>
   <div class="phone">
 
-    <!-- TOPBAR -->
     <div class="topbar">
       <a class="back" href="./indexIT.html">← Home</a>
 
@@ -752,7 +745,6 @@
 
       <div class="content">
 
-        <!-- HERO / DAY IMAGE -->
         <div class="softBox">
           <div class="label">Giorno <span id="tagNumber">1</span></div>
           <div class="imgWrap">
@@ -762,7 +754,6 @@
 
         <div class="divider"></div>
 
-        <!-- STANDARD CONTENT -->
         <div class="softBox">
           <h2 class="dayTitle" id="title">—</h2>
           <div class="label">Approfondimento</div>
@@ -798,7 +789,6 @@
 
         <div class="divider"></div>
 
-        <!-- PREMIUM TEASER -->
         <div class="premiumTeaser" id="premiumTeaser">
           <div class="premiumHead">
             <div>
@@ -813,7 +803,7 @@
 
           <ul class="premiumList">
             <li><b>Approfondimento del tema</b> con una lettura più psicologica, concreta e vicina alla vita reale</li>
-            <li><b>3 varianti premium</b> in rotazione settimanale per offrire maggiore varietà</li>
+            <li><b>3 varianti premium</b> in rotazione dinamica di 21 giorni per offrire maggiore varietà</li>
             <li><b>Esercizio smart</b> con focus su corpo, pensiero o azione</li>
             <li><b>Integrazione finale</b> per trasferire il contenuto con chiarezza nella tua quotidianità</li>
           </ul>
@@ -828,7 +818,6 @@
           </div>
         </div>
 
-        <!-- PREMIUM MEMBERS BLOCK -->
         <div class="premiumBlock" id="premiumBlock" aria-label="Premium Sapere Deluxe">
           <div class="premiumTop">
             <div>
@@ -912,6 +901,7 @@
   <script>
     // ===== CONFIG =====
     const JSON_URL = "./data/wissenIT.json";
+    const PREMIUM_JSON_URL = "./data/wissen-premiumIT.json";
     const TOTAL_DAYS = 21;
 
     const LS_DAY = "panacea_wissen_day";
@@ -919,6 +909,9 @@
     const LS_START = "panacea_wissen_start";
     const LS_LANG = "lang";
     const MEMBER_KEY = "panacea_member";
+
+    const LS_PREMIUM_CYCLE_ID = "panacea_wissen_premium_cycle_id";
+    const LS_PREMIUM_VARIANT_MAP = "panacea_wissen_premium_variant_map";
 
     // ===== LANGUAGE =====
     const btnDE = document.getElementById("btnDE");
@@ -949,6 +942,7 @@
 
     // ===== STATE =====
     let dataDays = [];
+    let premiumDays = [];
     let currentDay = 1;
     let currentVariant = null;
 
@@ -965,6 +959,7 @@
     const exerciseTitle = document.getElementById("exerciseTitle");
     const exerciseText = document.getElementById("exerciseText");
 
+    const premiumTeaser = document.getElementById("premiumTeaser");
     const premiumBadge = document.getElementById("premiumBadge");
     const memberBtn = document.getElementById("memberBtn");
     const unlockBtnLink = document.getElementById("unlockBtnLink");
@@ -985,7 +980,6 @@
     const gamePrompt = document.getElementById("gamePrompt");
     const smartOutput = document.getElementById("smartOutput");
     const autoHint = document.getElementById("autoHint");
-    const gameHint = document.getElementById("gameHint");
     const gameResult = document.getElementById("gameResult");
     const applySmartBtn = document.getElementById("applySmartBtn");
     const finishBtn = document.getElementById("finishBtn");
@@ -1028,86 +1022,139 @@
       }
     }
 
+    function getStartDate(){
+      ensureStartDate();
+      const raw = localStorage.getItem(LS_START);
+      const d = new Date(raw + "T00:00:00");
+      return Number.isNaN(d.getTime()) ? new Date() : d;
+    }
+
+    function diffDays(a, b){
+      const ms = 24 * 60 * 60 * 1000;
+      const utcA = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+      const utcB = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+      return Math.floor((utcB - utcA) / ms);
+    }
+
+    function getAbsoluteDay(){
+      const start = getStartDate();
+      const today = new Date();
+      return diffDays(start, today) + 1;
+    }
+
+    function getCurrentCycle(){
+      const absoluteDay = Math.max(1, getAbsoluteDay());
+      return Math.floor((absoluteDay - 1) / TOTAL_DAYS);
+    }
+
     function findDayObj(day){
       return dataDays.find(d => Number(d.day) === Number(day));
     }
 
-    function getISOWeek(d){
-      const date = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
-      const dayNum = date.getUTCDay() || 7;
-      date.setUTCDate(date.getUTCDate() + 4 - dayNum);
-      const yearStart = new Date(Date.UTC(date.getUTCFullYear(),0,1));
-      return Math.ceil((((date - yearStart) / 86400000) + 1) / 7);
-    }
-
-    function getVariantIndex(){
-      const now = new Date();
-      return (getISOWeek(now) + currentDay) % 3;
+    function findPremiumDayObj(day){
+      return premiumDays.find(d => Number(d.day) === Number(day));
     }
 
     function getVariantLabel(i){
       return i === 0 ? "Variante A" : i === 1 ? "Variante B" : "Variante C";
     }
 
-    function getDefaultPremiumContent(dayObj){
-      const idx = getVariantIndex();
+    function parseJSONSafe(value, fallback){
+      try{
+        return JSON.parse(value);
+      }catch{
+        return fallback;
+      }
+    }
+
+    function generateVariantMap(days, previousMap = []){
+      return days.map((day, index) => {
+        const count = Array.isArray(day.variants) ? day.variants.length : 0;
+        if(count <= 1) return 0;
+
+        let choice = 0;
+        let attempts = 0;
+
+        do{
+          choice = Math.floor(Math.random() * count);
+          attempts++;
+        } while (
+          count > 1 &&
+          previousMap[index] === choice &&
+          attempts < 10
+        );
+
+        return choice;
+      });
+    }
+
+    function getPremiumVariantMap(){
+      const currentCycle = getCurrentCycle();
+      const savedCycle = parseInt(localStorage.getItem(LS_PREMIUM_CYCLE_ID) || "-1", 10);
+      const savedMap = parseJSONSafe(localStorage.getItem(LS_PREMIUM_VARIANT_MAP) || "[]", []);
+
+      if(
+        savedCycle === currentCycle &&
+        Array.isArray(savedMap) &&
+        savedMap.length === premiumDays.length
+      ){
+        return savedMap;
+      }
+
+      const previousMap = Array.isArray(savedMap) ? savedMap : [];
+      const newMap = generateVariantMap(premiumDays, previousMap);
+
+      localStorage.setItem(LS_PREMIUM_CYCLE_ID, String(currentCycle));
+      localStorage.setItem(LS_PREMIUM_VARIANT_MAP, JSON.stringify(newMap));
+
+      return newMap;
+    }
+
+    function getPremiumVariantForDay(dayNumber){
+      const premiumDay = findPremiumDayObj(dayNumber);
+      if(!premiumDay || !Array.isArray(premiumDay.variants) || premiumDay.variants.length === 0){
+        return null;
+      }
+
+      const variantMap = getPremiumVariantMap();
+      const variantIndex = variantMap[dayNumber - 1] ?? 0;
+      const variant = premiumDay.variants[variantIndex] || premiumDay.variants[0];
+
       return {
-        label: getVariantLabel(idx),
-        title: dayObj.title || "Approfondimento del giorno",
-        sub: "Una lettura più profonda, più calma e più concreta del tuo impulso di oggi.",
-        deepDive: dayObj.premiumDeepDive || dayObj.premiumInsight || "Nessun testo premium ancora disponibile.",
-        insight: dayObj.premiumInsight || "Nessun Premium Insight ancora disponibile.",
-        question: dayObj.premiumQuestion || "Nessuna domanda premium ancora disponibile.",
-        closing: dayObj.premiumClosing || "Porta con te oggi solo ciò che ti fa davvero bene.",
-        anchor: dayObj.title || "Chiarezza",
-        micro: "Scegli oggi un piccolo passo realistico e sostenibile.",
-        smartExercise: dayObj.smartExercise || {
-          title: "Bussola della chiarezza",
-          intro: "Scegli in modo intuitivo l’area che in questo momento può offrirti maggiore chiarezza o stabilità.",
-          autoChoice: "mind",
-          body: "Appoggia una mano sulla zona del corpo che oggi chiede più calma. Espira due volte più lentamente.",
-          mind: "Formula il pensiero più importante di oggi in una sola frase chiara ed essenziale.",
-          action: "Scegli il più piccolo passo possibile e inizia esattamente da lì."
-        }
+        variantIndex,
+        variant,
+        premiumDay
       };
     }
 
-    function getVariantData(dayObj){
-      const idx = getVariantIndex();
-      if(Array.isArray(dayObj.premiumVariants) && dayObj.premiumVariants[idx]){
-        const v = dayObj.premiumVariants[idx];
-        return {
-          label: v.label || getVariantLabel(idx),
-          title: v.title || dayObj.title || "Approfondimento del giorno",
-          sub: v.sub || "Una lettura più profonda, più calma e più concreta del tuo impulso di oggi.",
-          deepDive: v.deepDive || v.premiumDeepDive || dayObj.premiumDeepDive || dayObj.premiumInsight || "Nessun testo premium ancora disponibile.",
-          insight: v.insight || v.premiumInsight || dayObj.premiumInsight || "Nessun Premium Insight ancora disponibile.",
-          question: v.question || v.premiumQuestion || dayObj.premiumQuestion || "Nessuna domanda premium ancora disponibile.",
-          closing: v.closing || v.premiumClosing || dayObj.premiumClosing || "Porta con te oggi solo ciò che ti fa davvero bene.",
-          anchor: v.anchor || dayObj.title || "Chiarezza",
-          micro: v.micro || "Scegli oggi un piccolo passo realistico e sostenibile.",
-          smartExercise: v.smartExercise || dayObj.smartExercise || {
-            title: "Bussola della chiarezza",
-            intro: "Scegli in modo intuitivo l’area che in questo momento può offrirti maggiore chiarezza o stabilità.",
-            autoChoice: "mind",
-            body: "Appoggia una mano sulla zona del corpo che oggi chiede più calma. Espira due volte più lentamente.",
-            mind: "Formula il pensiero più importante di oggi in una sola frase chiara ed essenziale.",
-            action: "Scegli il più piccolo passo possibile e inizia esattamente da lì."
-          }
-        };
-      }
-      return getDefaultPremiumContent(dayObj);
+    function getChoiceLabel(choice){
+      return choice === "body"
+        ? "Corpo"
+        : choice === "mind"
+        ? "Pensiero"
+        : "Azione";
     }
 
-    function renderSmartExercise(variant, forcedChoice){
-      const exercise = variant.smartExercise || {};
+    function buildSmartExerciseFromVariant(variant){
+      return {
+        title: variant.activity?.title || "Esercizio Smart",
+        intro: variant.activity?.instruction || "Scegli in modo intuitivo l’area che in questo momento può offrirti maggiore chiarezza o stabilità.",
+        autoChoice: "mind",
+        body: variant.smart?.koerper || "Ascolta il corpo e accompagna il respiro con calma.",
+        mind: variant.smart?.gedanke || "Formula per oggi un pensiero chiaro che possa sostenerti.",
+        action: variant.smart?.handlung || "Scegli il più piccolo passo concreto possibile."
+      };
+    }
+
+    function renderSmartExercise(variantObj, forcedChoice){
+      const exercise = variantObj.smartExercise || {};
       const choice = forcedChoice || exercise.autoChoice || "mind";
 
       choiceBtns.forEach(btn => {
         btn.classList.toggle("active", btn.dataset.choice === choice);
       });
 
-      gameTitle.textContent = exercise.title || "Bussola della chiarezza";
+      gameTitle.textContent = exercise.title || "Esercizio Smart";
       gamePrompt.textContent = exercise.intro || "Scegli in modo intuitivo l’area che in questo momento può offrirti maggiore chiarezza o stabilità.";
 
       const map = {
@@ -1117,21 +1164,52 @@
       };
 
       smartOutput.textContent = map[choice];
-      autoHint.textContent = `Suggerimento automatico: oggi è stato selezionato come primo focus “${choice === "body" ? "Corpo" : choice === "mind" ? "Pensiero" : "Azione"}”.`;
+      autoHint.textContent = `Suggerimento automatico: oggi è stato selezionato come primo focus “${getChoiceLabel(choice)}”.`;
       gameResult.textContent = "";
       return choice;
     }
 
-    function renderPremium(dayObj){
+    function renderPremium(dayNumber){
       if(!isMember()) return;
 
-      currentVariant = getVariantData(dayObj);
+      const premiumData = getPremiumVariantForDay(dayNumber);
 
-      pTitle.textContent = `Area Membri – ${currentVariant.title || "Approfondimento del giorno"}`;
+      if(!premiumData){
+        pTitle.textContent = "Area Membri – Approfondimento del giorno";
+        pSub.textContent = "Nessun contenuto premium disponibile.";
+        pPill.textContent = "Variante A";
+        paperTitle.textContent = "Approfondimento del giorno";
+        paperText.textContent = "Nessun testo premium disponibile.";
+        paperAnchor.textContent = "🧭 Focus: —";
+        paperMicro.textContent = "✨ Micro-passo: —";
+        premiumInsight.textContent = "—";
+        premiumQuestion.textContent = "—";
+        premiumClosing.textContent = "—";
+        closingText.textContent = "—";
+        closingBox.style.display = "none";
+        return;
+      }
+
+      const { variantIndex, variant, premiumDay } = premiumData;
+
+      currentVariant = {
+        label: getVariantLabel(variantIndex),
+        title: premiumDay.title || "Approfondimento del giorno",
+        sub: "Una lettura più profonda, più calma e più concreta del tuo impulso di oggi.",
+        deepDive: variant.intro || "Nessun testo premium disponibile.",
+        insight: variant.premiumInsight || "—",
+        question: variant.premiumQuestion || "—",
+        closing: variant.integration || "—",
+        anchor: variant.focus || premiumDay.title || "Chiarezza",
+        micro: variant.microStep || "—",
+        smartExercise: buildSmartExerciseFromVariant(variant)
+      };
+
+      pTitle.textContent = `Area Membri – ${currentVariant.title}`;
       pSub.textContent = currentVariant.sub;
       pPill.textContent = currentVariant.label;
 
-      paperTitle.textContent = currentVariant.title || "Approfondimento del giorno";
+      paperTitle.textContent = currentVariant.title;
       paperText.textContent = currentVariant.deepDive;
       paperAnchor.textContent = `🧭 Focus: ${currentVariant.anchor}`;
       paperMicro.textContent = `✨ Micro-passo: ${currentVariant.micro}`;
@@ -1143,7 +1221,7 @@
 
       closingBox.style.display = "none";
 
-      renderSmartExercise(currentVariant, (currentVariant.smartExercise && currentVariant.smartExercise.autoChoice) || "mind");
+      renderSmartExercise(currentVariant, currentVariant.smartExercise.autoChoice || "mind");
     }
 
     function render(){
@@ -1169,12 +1247,14 @@
         premiumBadge.textContent = "Stato: Membro ✅";
         unlockBtnLink.style.display = "none";
         memberBtn.textContent = "Area Membri";
+        premiumTeaser.style.display = "none";
         premiumBlock.style.display = "block";
-        renderPremium(d);
+        renderPremium(currentDay);
       } else {
         premiumBadge.textContent = "Stato: Free";
         unlockBtnLink.style.display = "";
         memberBtn.textContent = "Vai all’Area Membri";
+        premiumTeaser.style.display = "block";
         premiumBlock.style.display = "none";
       }
 
@@ -1185,20 +1265,23 @@
 
     async function loadJSON(){
       try{
-        const res = await fetch(JSON_URL, { cache: "no-store" });
-        if(!res.ok) throw new Error("JSON fetch failed: " + res.status);
-        const json = await res.json();
+        const [freeRes, premiumRes] = await Promise.all([
+          fetch(JSON_URL, { cache: "no-store" }),
+          fetch(PREMIUM_JSON_URL, { cache: "no-store" })
+        ]);
 
-        if(json && Array.isArray(json.days)){
-          dataDays = json.days;
-        } else if(Array.isArray(json)){
-          dataDays = json;
-        } else {
-          dataDays = [];
-        }
+        if(!freeRes.ok) throw new Error("Free JSON fetch failed: " + freeRes.status);
+        if(!premiumRes.ok) throw new Error("Premium JSON fetch failed: " + premiumRes.status);
+
+        const freeJson = await freeRes.json();
+        const premiumJson = await premiumRes.json();
+
+        dataDays = Array.isArray(freeJson?.days) ? freeJson.days : (Array.isArray(freeJson) ? freeJson : []);
+        premiumDays = Array.isArray(premiumJson?.days) ? premiumJson.days : (Array.isArray(premiumJson) ? premiumJson : []);
       } catch(err){
         console.warn("Il JSON Sapere non è stato caricato:", err);
         dataDays = [];
+        premiumDays = [];
       }
     }
 
