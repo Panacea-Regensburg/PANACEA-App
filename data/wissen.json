@@ -3,191 +3,219 @@
     {
       "day": 1,
       "title": "Stabilität",
-      "explanation": "Innere Stabilität bedeutet nicht, dass alles ruhig ist. Es bedeutet, dass du in dir einen festen Punkt findest – auch wenn außen Bewegung ist.",
+      "explanation": "Innere Stabilität bedeutet nicht, dass alles ruhig ist. Sie bedeutet, dass du in dir einen festen Punkt findest – auch wenn im Außen Bewegung herrscht.",
       "impuls": "Stabilität beginnt im Inneren, nicht im Außen.",
-      "reflection": "Was gibt mir unabhängig von äußeren Umständen Halt?",
-      "premiumInsight": "Stabile Routinen reduzieren Stressaktivierung im Nervensystem.",
-      "premiumQuestion": "Welche kleine Routine kann ich täglich fest verankern?"
+      "reflection": "Was gibt mir Halt – unabhängig von äußeren Umständen?",
+      "premiumInsight": "Stabile Routinen können die Stressaktivierung im Nervensystem verringern und das Gefühl von Sicherheit stärken.",
+      "premiumQuestion": "Welche kleine Routine kann ich täglich bewusst verankern?"
     },
     {
       "day": 2,
       "title": "Atmung",
-      "explanation": "Die Atmung ist die direkteste Verbindung zum Nervensystem. Bewusstes, ruhiges Atmen signalisiert Sicherheit.",
-      "impuls": "Ein ruhiger Atem verändert deinen Zustand.",
-      "reflection": "Wie verändert sich mein Körper, wenn ich langsamer ausatme?",
-      "premiumInsight": "Längeres Ausatmen aktiviert den Parasympathikus.",
-      "premiumQuestion": "Wann am Tag kann ich 3 bewusste Atemzüge integrieren?"
+      "explanation": "Die Atmung ist eine der direktesten Verbindungen zum Nervensystem. Bewusstes, ruhiges Atmen vermittelt dem Körper Sicherheit.",
+      "impuls": "Ein ruhiger Atem verändert deinen inneren Zustand.",
+      "reflection": "Wie verändert sich mein Körper, wenn ich langsamer und bewusster ausatme?",
+      "premiumInsight": "Ein verlängertes Ausatmen kann den Parasympathikus aktivieren und die Regulation fördern.",
+      "premiumQuestion": "Wann am Tag kann ich drei bewusste Atemzüge in meinen Alltag integrieren?"
     },
     {
       "day": 3,
       "title": "Körperwahrnehmung",
-      "explanation": "Im Körper präsent zu sein reduziert Grübeln und Zukunftsangst. Wahrnehmung bringt dich ins Jetzt.",
+      "explanation": "Im Körper präsent zu sein, reduziert Grübeln und Zukunftsangst. Wahrnehmung bringt dich zurück ins Jetzt.",
       "impuls": "Zurück in den Körper – zurück ins Jetzt.",
-      "reflection": "Wo spüre ich heute Spannung – und kann ich sie weich werden lassen?",
+      "reflection": "Wo spüre ich heute Spannung – und kann ich dort etwas mehr Weichheit zulassen?",
       "exercise": {
         "title": "Mini-Übung",
-        "text": "Lege eine Hand auf deinen Brustkorb. Atme 1 Minute ruhig und spüre bewusst die Bewegung."
+        "text": "Lege eine Hand auf deinen Brustkorb. Atme eine Minute lang ruhig und spüre bewusst die Bewegung deines Atems."
       },
-      "premiumInsight": "Körperfokus reduziert Aktivität im Angstnetzwerk.",
-      "premiumQuestion": "Welche Körperregion reagiert zuerst auf Stress?"
+      "premiumInsight": "Ein bewusster Körperfokus kann die Aktivität im inneren Alarmsystem reduzieren.",
+      "premiumQuestion": "Welche Körperregion reagiert bei mir als Erstes auf Stress?"
     },
     {
       "day": 4,
       "title": "Stress verstehen",
-      "explanation": "Stress ist eine biologische Aktivierung. Er ist nicht dein Feind – sondern ein Signal.",
+      "explanation": "Stress ist eine biologische Aktivierung. Er ist nicht dein Feind, sondern ein Signal, das verstanden werden will.",
       "impuls": "Verstehen reduziert Bedrohung.",
-      "reflection": "Was will mein Stress mir heute zeigen?",
-      "premiumInsight": "Chronischer Stress verändert Cortisolrhythmen.",
-      "premiumQuestion": "Wo kann ich Stress frühzeitig regulieren?"
+      "reflection": "Was will mir mein Stress heute zeigen?",
+      "premiumInsight": "Chronischer Stress kann natürliche Cortisolrhythmen verändern und das Belastungserleben verstärken.",
+      "premiumQuestion": "Wo kann ich heute früher regulieren, bevor ich an meine Grenze komme?"
     },
     {
       "day": 5,
       "title": "Kontrolle",
-      "explanation": "Kontrolle bedeutet Einfluss – nicht Perfektion. Kleine Entscheidungen stärken dein Erleben von Wirksamkeit.",
+      "explanation": "Kontrolle bedeutet Einfluss – nicht Perfektion. Kleine bewusste Entscheidungen stärken dein Erleben von Wirksamkeit.",
       "impuls": "Ein kleiner Schritt zählt.",
-      "reflection": "Wo kann ich heute bewusst gestalten statt reagieren?",
-      "premiumInsight": "Erlebte Kontrolle stabilisiert Motivation.",
-      "premiumQuestion": "Welchen Bereich erlebe ich als fremdbestimmt?"
+      "reflection": "Wo kann ich heute bewusst gestalten, statt nur zu reagieren?",
+      "premiumInsight": "Das Erleben von Einfluss unterstützt Motivation, Stabilität und innere Selbstführung.",
+      "premiumQuestion": "Welchen Bereich meines Lebens erlebe ich momentan als zu stark fremdbestimmt?"
     },
     {
       "day": 6,
       "title": "Grenzen",
-      "explanation": "Gesunde Grenzen schützen Energie und Fokus. Sie sind kein Egoismus, sondern Selbstfürsorge.",
+      "explanation": "Gesunde Grenzen schützen deine Energie und deinen Fokus. Sie sind kein Egoismus, sondern eine Form von Selbstfürsorge.",
       "impuls": "Ein klares Nein ist ein Ja zu dir.",
       "reflection": "Wo brauche ich mehr Klarheit in meinen Grenzen?",
       "exercise": {
         "title": "Mini-Übung",
-        "text": "Formuliere innerlich einen Satz: „Heute erlaube ich mir … nicht.“"
+        "text": "Formuliere innerlich einen Satz: „Heute erlaube ich mir, ... nicht zu tun.“"
       },
-      "premiumInsight": "Überlastung entsteht oft durch fehlende Abgrenzung.",
-      "premiumQuestion": "Welche Grenze stärkt langfristig meine Stabilität?"
+      "premiumInsight": "Überlastung entsteht oft dort, wo Grenzen zu unklar oder zu durchlässig sind.",
+      "premiumQuestion": "Welche Grenze würde meine innere Stabilität langfristig stärken?"
     },
     {
       "day": 7,
       "title": "Fokus",
-      "explanation": "Fokus reduziert mentale Unruhe. Klarheit entsteht durch Auswahl.",
+      "explanation": "Fokus reduziert mentale Unruhe. Klarheit entsteht nicht durch mehr, sondern durch bewusste Auswahl.",
       "impuls": "Weniger – aber bewusst.",
-      "reflection": "Was ist heute wirklich wichtig?"
+      "reflection": "Was ist heute wirklich wichtig?",
+      "premiumInsight": "Weniger gleichzeitige Reize und Aufgaben können die Qualität deiner Aufmerksamkeit deutlich verbessern.",
+      "premiumQuestion": "Was darf ich heute bewusst weglassen oder verschieben?"
     },
     {
       "day": 8,
       "title": "Werte",
-      "explanation": "Werte geben Richtung. Wenn Handeln und Werte übereinstimmen, entsteht innere Kohärenz.",
+      "explanation": "Werte geben deinem Handeln Richtung. Wenn Entscheidungen und Werte übereinstimmen, entsteht innere Kohärenz.",
       "impuls": "Handle im Einklang mit dir.",
-      "reflection": "Welche Entscheidung entspricht meinen Werten?"
+      "reflection": "Welche Entscheidung entspricht heute wirklich meinen Werten?",
+      "premiumInsight": "Klare Werte schaffen Orientierung und stärken Stabilität in komplexen Situationen.",
+      "premiumQuestion": "Welchen Wert möchte ich in dieser Woche bewusster leben?"
     },
     {
       "day": 9,
       "title": "Selbstwirksamkeit",
-      "explanation": "Selbstwirksamkeit bedeutet zu erleben: Ich kann etwas bewirken. Dieses Gefühl stärkt Resilienz.",
+      "explanation": "Selbstwirksamkeit bedeutet zu erleben: Ich kann etwas bewirken. Dieses Gefühl stärkt Resilienz und Zuversicht.",
       "impuls": "Ich handle – also wirke ich.",
-      "reflection": "Wo habe ich diese Woche bewusst Einfluss genommen?",
+      "reflection": "Wo habe ich in dieser Woche bewusst Einfluss genommen?",
       "exercise": {
         "title": "Mini-Übung",
-        "text": "Wähle eine kleine Handlung, die du heute aktiv entscheidest."
+        "text": "Wähle eine kleine Handlung, die du heute ganz bewusst selbst entscheidest."
       },
-      "premiumInsight": "Selbstwirksamkeit aktiviert das Belohnungssystem.",
-      "premiumQuestion": "Wie kann ich kleine Erfolge bewusst wahrnehmen?"
+      "premiumInsight": "Selbstwirksamkeit stärkt Motivation, Vertrauen und das innere Belohnungssystem.",
+      "premiumQuestion": "Wie kann ich meine kleinen Erfolge bewusster wahrnehmen?"
     },
     {
       "day": 10,
       "title": "Gedanken",
-      "explanation": "Gedanken sind Interpretationen – keine Fakten. Distanz schafft Klarheit.",
+      "explanation": "Gedanken sind Interpretationen – keine Fakten. Innere Distanz schafft mehr Klarheit.",
       "impuls": "Nicht jeder Gedanke ist wahr.",
-      "reflection": "Welcher Gedanke stresst mich gerade – und gibt es eine Alternative?"
+      "reflection": "Welcher Gedanke stresst mich gerade – und welche hilfreiche Alternative wäre möglich?",
+      "premiumInsight": "Eine neue innere Formulierung kann emotionale Reaktivität senken und mehr Spielraum schaffen.",
+      "premiumQuestion": "Welcher Satz würde mir helfen, diese Situation ruhiger zu betrachten?"
     },
     {
       "day": 11,
       "title": "Emotionen",
-      "explanation": "Emotionen sind Informationen. Sie wollen wahrgenommen, nicht unterdrückt werden.",
+      "explanation": "Emotionen sind Informationen. Sie wollen wahrgenommen werden – nicht verdrängt.",
       "impuls": "Gefühle dürfen da sein.",
-      "reflection": "Welche Emotion begleitet mich heute?"
+      "reflection": "Welche Emotion begleitet mich heute?",
+      "premiumInsight": "Das bewusste Benennen einer Emotion kann ihre Intensität reduzieren und Regulation erleichtern.",
+      "premiumQuestion": "Was möchte mir diese Emotion heute mitteilen?"
     },
     {
       "day": 12,
       "title": "Regulation",
-      "explanation": "Selbstregulation bedeutet, bewusst Einfluss auf deinen Zustand zu nehmen.",
+      "explanation": "Selbstregulation bedeutet, bewusst Einfluss auf deinen inneren Zustand zu nehmen.",
       "impuls": "Ich kann meinen Zustand beeinflussen.",
       "reflection": "Welche Strategie hilft mir heute am meisten?",
       "exercise": {
         "title": "Mini-Übung",
-        "text": "3 tiefe Atemzüge + Schultern bewusst senken."
-      }
+        "text": "Nimm drei tiefe Atemzüge und lasse deine Schultern bewusst sinken."
+      },
+      "premiumInsight": "Regelmäßige kleine Regulationsimpulse können vor Überforderung und Erschöpfung schützen.",
+      "premiumQuestion": "Welches frühe Zeichen zeigt mir, dass mein System gerade zu stark aktiviert ist?"
     },
     {
       "day": 13,
       "title": "Energie",
-      "explanation": "Energie ist begrenzt. Bewusste Verteilung verhindert Erschöpfung.",
-      "impuls": "Ich wähle, wo meine Energie hingeht.",
-      "reflection": "Was kostet mich heute unnötig Energie?"
+      "explanation": "Energie ist begrenzt. Eine bewusste Verteilung schützt vor Erschöpfung und stärkt deine innere Balance.",
+      "impuls": "Ich wähle, wohin meine Energie fließt.",
+      "reflection": "Was kostet mich heute unnötig Energie?",
+      "premiumInsight": "Wer bewusst priorisiert, schützt sowohl mentale als auch körperliche Ressourcen.",
+      "premiumQuestion": "Welche Tätigkeit gibt mir spürbar Energie zurück – auch wenn sie nur kurz ist?"
     },
     {
       "day": 14,
       "title": "Erholung",
-      "explanation": "Regeneration ist kein Luxus – sie ist Voraussetzung für Leistung.",
-      "impuls": "Pause ist produktiv.",
-      "reflection": "Wann habe ich mir zuletzt bewusst Erholung erlaubt?"
+      "explanation": "Erholung ist kein Luxus – sie ist eine Voraussetzung für gesunde Leistung und innere Stabilität.",
+      "impuls": "Pause ist ein Teil von Fortschritt.",
+      "reflection": "Wann habe ich mir zuletzt ganz bewusst Erholung erlaubt?",
+      "premiumInsight": "Regeneration verbessert Konzentration, emotionale Ausgeglichenheit und Belastbarkeit.",
+      "premiumQuestion": "Welche kleine Pause kann ich heute bewusst in meinen Tag einbauen?"
     },
     {
       "day": 15,
       "title": "Resilienz",
-      "explanation": "Resilienz ist die Fähigkeit, nach Belastung wieder ins Gleichgewicht zu kommen.",
-      "impuls": "Ich darf zurückfinden.",
+      "explanation": "Resilienz ist die Fähigkeit, nach Belastung wieder ins Gleichgewicht zu finden.",
+      "impuls": "Ich darf zurück in meine Mitte finden.",
       "reflection": "Wie habe ich frühere Herausforderungen gemeistert?",
       "exercise": {
         "title": "Mini-Übung",
-        "text": "Notiere 2 Situationen, die du erfolgreich bewältigt hast."
-      }
+        "text": "Notiere zwei Situationen, die du erfolgreich bewältigt hast."
+      },
+      "premiumInsight": "Die Erinnerung an bewältigte Herausforderungen stärkt Vertrauen und innere Stabilität.",
+      "premiumQuestion": "Welche innere Ressource hilft mir am meisten, wenn es schwierig wird?"
     },
     {
       "day": 16,
       "title": "Sinn",
-      "explanation": "Sinn verbindet Handeln mit Bedeutung. Er stärkt Motivation langfristig.",
-      "impuls": "Warum ich es tue, macht den Unterschied.",
-      "reflection": "Was gibt meinem Alltag Bedeutung?"
+      "explanation": "Sinn verbindet Handeln mit Bedeutung. Er stärkt Motivation und Orientierung auf lange Sicht.",
+      "impuls": "Warum ich etwas tue, macht den Unterschied.",
+      "reflection": "Was gibt meinem Alltag Bedeutung?",
+      "premiumInsight": "Ein erlebter Sinn kann Belastung leichter tragbar machen und langfristige Motivation unterstützen.",
+      "premiumQuestion": "Welches Ziel fühlt sich wirklich nach meinem eigenen Weg an?"
     },
     {
       "day": 17,
       "title": "Akzeptanz",
-      "explanation": "Akzeptanz bedeutet nicht Aufgeben – sondern Realität anerkennen, um klug zu handeln.",
+      "explanation": "Akzeptanz bedeutet nicht Aufgeben. Sie bedeutet, die Realität anzuerkennen, um klüger handeln zu können.",
       "impuls": "Annehmen schafft Handlungsspielraum.",
-      "reflection": "Was kann ich gerade nicht verändern?"
+      "reflection": "Was kann ich gerade nicht verändern?",
+      "premiumInsight": "Akzeptanz reduziert inneren Widerstand und unnötigen zusätzlichen Stress.",
+      "premiumQuestion": "Welchen Teil dieser Situation kann ich dennoch beeinflussen – auch wenn es nur wenig ist?"
     },
     {
       "day": 18,
       "title": "Verantwortung",
-      "explanation": "Verantwortung beginnt bei dir selbst – nicht bei Schuld, sondern bei Gestaltung.",
+      "explanation": "Verantwortung beginnt bei dir selbst – nicht bei Schuld, sondern bei bewusster Gestaltung.",
       "impuls": "Ich übernehme Einfluss.",
       "reflection": "Wo kann ich heute bewusst entscheiden?",
       "exercise": {
         "title": "Mini-Übung",
-        "text": "Treffe heute eine Entscheidung klar und ohne Aufschieben."
-      }
+        "text": "Triff heute eine Entscheidung klar und ohne Aufschieben."
+      },
+      "premiumInsight": "Kleine klare Entscheidungen stärken Vertrauen, Richtung und innere Selbstführung.",
+      "premiumQuestion": "Welche Entscheidung schiebe ich schon zu lange vor mir her?"
     },
     {
       "day": 19,
       "title": "Klarheit",
-      "explanation": "Klarheit entsteht durch Reduktion. Weniger innere Unruhe – mehr Orientierung.",
+      "explanation": "Klarheit entsteht durch Reduktion. Weniger innere Unruhe schafft mehr Orientierung.",
       "impuls": "Klarheit braucht Raum.",
-      "reflection": "Was darf heute unwichtig sein?"
+      "reflection": "Was darf heute unwichtig sein?",
+      "premiumInsight": "Weniger Reize und weniger innere Überladung fördern Ruhe, Übersicht und gute Entscheidungen.",
+      "premiumQuestion": "Was kann ich heute innerlich oder äußerlich vereinfachen?"
     },
     {
       "day": 20,
       "title": "Integration",
-      "explanation": "Integration bedeutet, Gelernte Impulse in den Alltag zu übernehmen.",
-      "impuls": "Wissen wird Wirkung durch Wiederholung.",
-      "reflection": "Welchen Impuls nehme ich dauerhaft mit?"
+      "explanation": "Integration bedeutet, neue Impulse bewusst in den Alltag zu übernehmen.",
+      "impuls": "Wissen wird durch Wiederholung zu Wirkung.",
+      "reflection": "Welchen Impuls möchte ich dauerhaft mitnehmen?",
+      "premiumInsight": "Kleine wiederholte Rituale helfen, neue Muster im Alltag zu verankern.",
+      "premiumQuestion": "Welcher tägliche Schritt könnte zu meinem neuen Anker werden?"
     },
     {
       "day": 21,
       "title": "Neuausrichtung",
-      "explanation": "Jeder Zyklus endet – und beginnt neu. Entwicklung ist ein Prozess.",
+      "explanation": "Jeder Zyklus endet – und beginnt neu. Entwicklung ist kein einzelner Moment, sondern ein Prozess.",
       "impuls": "Ich richte mich bewusst neu aus.",
       "reflection": "Was möchte ich in den nächsten 21 Tagen stärken?",
       "exercise": {
         "title": "Mini-Übung",
         "text": "Formuliere eine klare Intention für deinen nächsten Zyklus."
-      }
+      },
+      "premiumInsight": "Eine bewusst formulierte Intention stärkt Kontinuität, Ausrichtung und innere Verbindlichkeit.",
+      "premiumQuestion": "Woran werde ich erkennen, dass ich mich wirklich weiterentwickle?"
     }
   ]
 }
