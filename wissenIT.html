@@ -174,6 +174,75 @@
       padding: 0 var(--pad) var(--pad) var(--pad);
     }
 
+    .progressBox{
+      margin: 0 var(--pad) 14px var(--pad);
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(200,162,74,.18);
+      background: rgba(255,255,255,.72);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+    }
+
+    .progressTop{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:10px;
+    }
+
+    .progressText{
+      font-size:13px;
+      font-weight:900;
+      color:rgba(43,43,43,.82);
+    }
+
+    .progressCount{
+      font-size:13px;
+      font-weight:950;
+      color:#3a2c10;
+    }
+
+    .progressBar{
+      width:100%;
+      height:10px;
+      border-radius:999px;
+      background: rgba(200,162,74,.14);
+      overflow:hidden;
+      border:1px solid rgba(200,162,74,.10);
+    }
+
+    .progressFill{
+      height:100%;
+      width:0%;
+      border-radius:999px;
+      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      transition: width .25s ease;
+    }
+
+    .dayDone{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      margin-left:8px;
+      min-width:26px;
+      height:26px;
+      padding:0 8px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:950;
+      background: rgba(255,255,255,.78);
+      border:1px solid rgba(200,162,74,.18);
+      color:rgba(43,43,43,.70);
+      box-shadow: 0 8px 18px rgba(0,0,0,.05);
+    }
+
+    .dayDone.done{
+      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      border:1px solid rgba(200,162,74,.35);
+      color:#3a2c10;
+    }
+
     .divider{
       height:1px;
       background: linear-gradient(90deg, transparent, rgba(200,162,74,.35), transparent);
@@ -729,7 +798,8 @@
       .smartChoices{ grid-template-columns:1fr; }
       .premiumHead,
       .premiumTop,
-      .gameHead{
+      .gameHead,
+      .progressTop{
         flex-direction:column;
         align-items:flex-start;
       }
@@ -763,10 +833,20 @@
         </div>
       </div>
 
+      <div class="progressBox">
+        <div class="progressTop">
+          <div class="progressText">I tuoi progressi</div>
+          <div class="progressCount"><span id="progressCount">0</span> / 21 giorni</div>
+        </div>
+        <div class="progressBar">
+          <div class="progressFill" id="progressFill"></div>
+        </div>
+      </div>
+
       <div class="content">
 
         <div class="softBox">
-          <div class="label">Giorno <span id="tagNumber">1</span></div>
+          <div class="label">Giorno <span id="tagNumber">1</span><span id="dayDone" class="dayDone">○</span></div>
           <div class="imgWrap">
             <img id="dayImage" src="./icons/1.png" alt="Immagine del giorno 1" />
           </div>
@@ -930,12 +1010,16 @@
     const LS_MEMBER = "panacea_member";
     const LS_PREMIUM_CYCLE_ID = "panacea_wissen_premium_cycle_id";
     const LS_PREMIUM_VARIANT_MAP = "panacea_wissen_premium_variant_map";
+    const LS_PROGRESS = "panacea_wissen_progress_it";
 
     // ===== ELEMENTS =====
     const btnDE = document.getElementById("btnDE");
     const btnIT = document.getElementById("btnIT");
 
     const tagNumber = document.getElementById("tagNumber");
+    const dayDone = document.getElementById("dayDone");
+    const progressCount = document.getElementById("progressCount");
+    const progressFill = document.getElementById("progressFill");
     const dayImage = document.getElementById("dayImage");
 
     const elTitle = document.getElementById("title");
@@ -1004,6 +1088,50 @@
 
     function getStoredDay(){
       return clampDay(localStorage.getItem(LS_DAY));
+    }
+
+    function getCompletedDays(){
+      const saved = localStorage.getItem(LS_PROGRESS);
+      try{
+        const parsed = JSON.parse(saved || "[]");
+        if(Array.isArray(parsed)){
+          return parsed
+            .map(n => clampDay(n))
+            .filter((n, i, arr) => arr.indexOf(n) === i)
+            .sort((a, b) => a - b);
+        }
+      }catch{}
+      return [];
+    }
+
+    function saveCompletedDays(days){
+      localStorage.setItem(LS_PROGRESS, JSON.stringify(days));
+    }
+
+    function markDayCompleted(day){
+      const completed = getCompletedDays();
+      const safeDay = clampDay(day);
+      if(!completed.includes(safeDay)){
+        completed.push(safeDay);
+        completed.sort((a, b) => a - b);
+        saveCompletedDays(completed);
+      }
+    }
+
+    function updateProgressUI(){
+      const completed = getCompletedDays();
+      const done = completed.length;
+
+      progressCount.textContent = String(done);
+      progressFill.style.width = `${(done / TOTAL_DAYS) * 100}%`;
+
+      if(completed.includes(currentDay)){
+        dayDone.textContent = "✓";
+        dayDone.classList.add("done");
+      } else {
+        dayDone.textContent = "○";
+        dayDone.classList.remove("done");
+      }
     }
 
     function setStoredDay(day){
@@ -1240,6 +1368,7 @@
       tagNumber.textContent = String(currentDay);
       updateImage(currentDay);
       renderFreeContent(dayData);
+      updateProgressUI();
 
       if(isMember()){
         premiumBadge.textContent = "Stato: Membro ✅";
@@ -1330,6 +1459,7 @@
 
       nextBtn.addEventListener("click", () => {
         if(currentDay < TOTAL_DAYS){
+          markDayCompleted(currentDay);
           setStoredDay(currentDay + 1);
         }
       });
@@ -1380,19 +1510,21 @@
       currentDay = getStoredDay();
       bindEvents();
       await loadJSON();
+      updateProgressUI();
       render();
     }
 
     init();
   </script>
+
   <script>
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./service-worker.js")
-      .then(reg => console.log("Service Worker registered", reg))
-      .catch(err => console.log("Service Worker failed", err));
-  });
-}
-</script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./service-worker.js")
+          .then(reg => console.log("Service Worker registered", reg))
+          .catch(err => console.log("Service Worker failed", err));
+      });
+    }
+  </script>
 </body>
 </html>
