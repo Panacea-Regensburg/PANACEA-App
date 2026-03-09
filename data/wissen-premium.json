@@ -1,1 +1,1264 @@
-
+{
+  "days": [
+    {
+      "day": 1,
+      "title": "Stabilität",
+      "variants": [
+        {
+          "intro": "Eine ruhige innere Stabilität entsteht nicht durch Kontrolle, sondern durch kleine, verlässliche Erfahrungen von Halt im Alltag.",
+          "premiumInsight": "Wiederkehrende Routinen können die Stressaktivierung im Nervensystem verringern und das Gefühl von Sicherheit stärken.",
+          "premiumQuestion": "Welche kleine Routine kann ich täglich bewusst verankern?",
+          "integration": "Nimm heute nur das mit, was dir wirklich Halt gibt.",
+          "focus": "Stabilität",
+          "microStep": "Wähle heute einen kleinen, realistischen Schritt, der dir Struktur gibt.",
+          "smart": {
+            "koerper": "Spüre für 20 Sekunden beide Füße bewusst auf dem Boden.",
+            "gedanke": "Formuliere den wichtigsten stabilisierenden Gedanken des Tages in einem klaren Satz.",
+            "handlung": "Lege einen festen Mini-Anker für morgen fest, zum Beispiel Wasser trinken oder 3 ruhige Atemzüge."
+          },
+          "activity": {
+            "title": "Stabilitäts-Anker",
+            "type": "Reflexionsspiel",
+            "instruction": "Notiere drei Dinge, die dir heute Halt geben. Wähle eines davon als deinen bewussten Tagesanker."
+          }
+        },
+        {
+          "intro": "Innere Stabilität zeigt sich oft nicht laut, sondern darin, dass du auch in bewegten Phasen innerlich nicht sofort den Boden verlierst.",
+          "premiumInsight": "Ein regulierter Alltag mit kleinen Orientierungspunkten hilft dem Körper, Alarmbereitschaft schneller zu verlassen.",
+          "premiumQuestion": "Was stärkt meine innere Tragfähigkeit im Alltag konkret?",
+          "integration": "Erlaube dir heute, nicht perfekt stark sein zu müssen.",
+          "focus": "Orientierung",
+          "microStep": "Setze heute einen festen Zeitpunkt für einen bewussten Ruhe-Moment.",
+          "smart": {
+            "koerper": "Lege eine Hand auf Brust oder Bauch und nimm 3 ruhige Atemzüge wahr.",
+            "gedanke": "Beende den Satz: Ich bin stabiler, als ich denke, wenn...",
+            "handlung": "Richte heute einen kleinen Platz oder Moment nur für Ruhe und Klarheit ein."
+          },
+          "activity": {
+            "title": "Innere Säulen",
+            "type": "Mini-Übung",
+            "instruction": "Schreibe vier persönliche innere Säulen auf: Werte, Gewohnheiten, Menschen oder Orte, die dich stärken."
+          }
+        },
+        {
+          "intro": "Stabilität heißt nicht, immer belastbar zu sein. Sie wächst, wenn du lernst, dir selbst auch in Unsicherheit verlässlich zu begegnen.",
+          "premiumInsight": "Vorhersehbare Abläufe entlasten das Nervensystem, weil sie innere und äußere Sicherheit signalisieren.",
+          "premiumQuestion": "Welche Struktur tut meinem Körper und Geist spürbar gut?",
+          "integration": "Heute reicht eine ruhige Form von Verlässlichkeit.",
+          "focus": "Verlässlichkeit",
+          "microStep": "Wiederhole heute bewusst eine Gewohnheit, die dich erdet.",
+          "smart": {
+            "koerper": "Richte deinen Oberkörper auf und atme einmal lang aus.",
+            "gedanke": "Frage dich: Was ist heute wirklich tragfähig für mich?",
+            "handlung": "Halte eine kleine Verabredung mit dir selbst bewusst ein."
+          },
+          "activity": {
+            "title": "Stabilitäts-Matrix",
+            "type": "Didaktische Sortierung",
+            "instruction": "Ordne vier Alltagselemente in zwei Gruppen: Gibt mir Halt / Nimmt mir Halt. Ziehe daraus eine konkrete Entscheidung für heute."
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Atmung",
+      "variants": [
+        {
+          "intro": "Der Atem ist eine direkte Brücke zwischen Körper, Aufmerksamkeit und Nervensystem. Er kann deinen Zustand schneller verändern, als dein Denken es oft kann.",
+          "premiumInsight": "Eine längere, ruhig geführte Ausatmung unterstützt parasympathische Regulation und kann innere Anspannung reduzieren.",
+          "premiumQuestion": "Wann am Tag könnte ich bewusst zwei Minuten ruhiger atmen?",
+          "integration": "Lass heute mindestens einen Atemzug wirklich zu Ende fließen.",
+          "focus": "Atemruhe",
+          "microStep": "Atme heute dreimal bewusst länger aus als ein.",
+          "smart": {
+            "koerper": "Zähle beim Ausatmen langsam bis 5 und spüre, was sich verändert.",
+            "gedanke": "Beobachte, wie dein innerer Zustand sich mit langsamerem Atem verändert.",
+            "handlung": "Verbinde einen festen Alltagsmoment mit 3 bewussten Atemzügen."
+          },
+          "activity": {
+            "title": "Atem-Kompass",
+            "type": "Atemspiel",
+            "instruction": "Teste drei Varianten: frei atmen, langsamer atmen, länger ausatmen. Entscheide danach, welche dir heute am meisten Ruhe gegeben hat."
+          }
+        },
+        {
+          "intro": "Bewusste Atmung ist kein Leistungsprogramm, sondern eine Einladung, wieder Kontakt zu deinem inneren Tempo aufzunehmen.",
+          "premiumInsight": "Regelmäßige Atemübungen verbessern oft die Fähigkeit, Anspannung früher zu bemerken und gezielter gegenzusteuern.",
+          "premiumQuestion": "Welche Atemroutine wäre für mich im Alltag wirklich realistisch?",
+          "integration": "Heute genügt ein einziger bewusster Atem-Moment mit echter Aufmerksamkeit.",
+          "focus": "Tempo",
+          "microStep": "Halte heute einmal kurz inne, bevor du weitermachst, und begleite den nächsten Atemzug bewusst.",
+          "smart": {
+            "koerper": "Spüre, welche Körperregion sich beim Atmen am meisten bewegt.",
+            "gedanke": "Frage dich: Atme ich heute eher eng, flach oder frei?",
+            "handlung": "Nutze vor einer Aufgabe einen Atem-Moment als Übergang."
+          },
+          "activity": {
+            "title": "Atem-Wahrnehmung",
+            "type": "Beobachtungsübung",
+            "instruction": "Beobachte 60 Sekunden nur deinen Atem, ohne etwas zu verändern. Notiere danach drei Wörter für dein Erleben."
+          }
+        },
+        {
+          "intro": "Der Atem reguliert nicht alles, aber er eröffnet oft den ersten Zugang zu mehr Ruhe, Präsenz und innerer Ordnung.",
+          "premiumInsight": "Langsame und gleichmäßige Atemmuster fördern häufig ein Gefühl von Sicherheit und Zentrierung.",
+          "premiumQuestion": "In welcher Alltagssituation würde mir ein bewusster Atem am meisten helfen?",
+          "integration": "Nimm heute den Atem nicht als Technik, sondern als Begleitung wahr.",
+          "focus": "Zentrierung",
+          "microStep": "Verbinde heute einen Ortswechsel mit einem bewussten Ausatmen.",
+          "smart": {
+            "koerper": "Lege beide Schultern weich nach unten und atme langsam aus.",
+            "gedanke": "Vervollständige: Wenn ich ruhiger atme, dann...",
+            "handlung": "Setze heute vor einem Gespräch einen stillen Atem-Anker."
+          },
+          "activity": {
+            "title": "Atem-Check-in",
+            "type": "Mini-Ritual",
+            "instruction": "Morgens, mittags und abends je 20 Sekunden den Atem wahrnehmen. Vergleiche danach: Wann war er am ruhigsten?"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Selbstwahrnehmung",
+      "variants": [
+        {
+          "intro": "Selbstwahrnehmung beginnt dort, wo du dich nicht nur denkst, sondern wieder spürst: körperlich, emotional und innerlich.",
+          "premiumInsight": "Frühe Körperwahrnehmung hilft, Überlastung eher zu erkennen und rechtzeitig gegenzusteuern.",
+          "premiumQuestion": "Welches Körpersignal übersehe ich im Alltag besonders oft?",
+          "integration": "Was du wahrnimmst, musst du nicht sofort verändern.",
+          "focus": "Spüren",
+          "microStep": "Halte heute 30 Sekunden inne und frage: Was ist gerade in mir da?",
+          "smart": {
+            "koerper": "Spüre nacheinander Kiefer, Schultern und Bauch.",
+            "gedanke": "Benenne innerlich drei Dinge: Körper, Gefühl, Gedanke.",
+            "handlung": "Wähle auf Basis deiner Wahrnehmung eine kleine hilfreiche Handlung."
+          },
+          "activity": {
+            "title": "Innerer Scan",
+            "type": "Körperübung",
+            "instruction": "Gehe mental von Kopf bis Fuß durch deinen Körper und notiere zwei Bereiche mit Spannung und einen mit Ruhe."
+          }
+        },
+        {
+          "intro": "Viele Menschen funktionieren so lange, bis sie ihre eigenen Signale kaum noch bemerken. Selbstwahrnehmung bringt dich zurück in echten Kontakt.",
+          "premiumInsight": "Je besser du deine inneren Signale kennst, desto früher kannst du regulierend eingreifen.",
+          "premiumQuestion": "Wann verliere ich am ehesten den Kontakt zu meinem inneren Zustand?",
+          "integration": "Heute darf Wahrnehmung wichtiger sein als reines Funktionieren.",
+          "focus": "Kontakt",
+          "microStep": "Frage dich heute einmal bewusst: Was brauche ich gerade wirklich?",
+          "smart": {
+            "koerper": "Achte einen Moment lang nur auf die Spannung in deinem Gesicht.",
+            "gedanke": "Beobachte ohne Bewertung, was gerade am stärksten in dir präsent ist.",
+            "handlung": "Passe eine kleine Sache im Tagesablauf an deine aktuelle Wahrnehmung an."
+          },
+          "activity": {
+            "title": "Signal-Suche",
+            "type": "Didaktisches Beobachtungsspiel",
+            "instruction": "Suche heute drei innere Signale: Müdigkeit, Anspannung, Entlastung. Notiere jeweils, wann sie auftauchen."
+          }
+        },
+        {
+          "intro": "Selbstwahrnehmung ist kein Grübeln. Sie ist die ehrliche Bereitschaft, dich selbst wahrzunehmen, bevor du dich korrigierst oder übergehst.",
+          "premiumInsight": "Interozeptive Wahrnehmung stärkt die Verbindung zwischen Körperempfinden und Selbstregulation.",
+          "premiumQuestion": "Wie kann ich mir heute bewusst einen Moment des Innehaltens schenken?",
+          "integration": "Wahrnehmung schafft Klarheit, auch ohne sofortige Lösung.",
+          "focus": "Innehalten",
+          "microStep": "Lege heute ein 1-Minuten-Innehalten vor eine wichtige Entscheidung.",
+          "smart": {
+            "koerper": "Spüre, ob dein Atem frei oder zurückgehalten wirkt.",
+            "gedanke": "Frage dich: Was ist gerade wirklich da – nicht was da sein sollte?",
+            "handlung": "Nimm eine kleine Kurskorrektur vor, die deiner Wahrnehmung entspricht."
+          },
+          "activity": {
+            "title": "Spür-Landkarte",
+            "type": "Reflexionsspiel",
+            "instruction": "Zeichne grob eine Körpersilhouette und markiere dort Spannung, Leichtigkeit und Neutralität."
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Sicherheit",
+      "variants": [
+        {
+          "intro": "Sicherheit ist nicht nur ein äußerer Zustand. Sie entsteht auch durch Signale von Orientierung, Ruhe, Wärme und innerer Klarheit.",
+          "premiumInsight": "Klare Strukturen, ruhige Reize und verlässliche Abläufe unterstützen das Nervensystem dabei, Schutzmodi zu verlassen.",
+          "premiumQuestion": "Welche Signale lassen mich heute weicher und sicherer werden?",
+          "integration": "Sicherheit beginnt oft in kleinen, echten Erfahrungen.",
+          "focus": "Geborgenheit",
+          "microStep": "Schaffe heute bewusst einen sicheren Moment ohne Reizüberflutung.",
+          "smart": {
+            "koerper": "Spüre Kontaktflächen: Füße, Sitzfläche oder Rücken.",
+            "gedanke": "Benenne drei Dinge im Raum, die ruhig und vertraut wirken.",
+            "handlung": "Gestalte einen kleinen Bereich heute bewusst beruhigend."
+          },
+          "activity": {
+            "title": "Sicherheits-Scan",
+            "type": "Orientierungsübung",
+            "instruction": "Sieh dich im Raum um und finde fünf neutrale oder angenehme Dinge, die deinem System Orientierung geben."
+          }
+        },
+        {
+          "intro": "Ein Gefühl von Sicherheit muss nicht groß sein. Oft reicht ein klarer Moment von Halt, Orientierung und innerem Ja.",
+          "premiumInsight": "Ohne ein Mindestmaß an Sicherheit bleiben Heilung, Lernen und Regeneration oft begrenzt.",
+          "premiumQuestion": "Was in meiner Umgebung unterstützt mein Sicherheitsgefühl konkret?",
+          "integration": "Heute zählt, was dir Schutz vermittelt, nicht was perfekt ist.",
+          "focus": "Orientierung",
+          "microStep": "Baue heute vor einer belastenden Situation einen ruhigen Übergang ein.",
+          "smart": {
+            "koerper": "Richte deinen Blick weich im Raum aus und lass den Atem folgen.",
+            "gedanke": "Frage dich: Was sagt meinem System gerade 'Es ist okay'?",
+            "handlung": "Vereinfache heute bewusst eine äußere Reizquelle."
+          },
+          "activity": {
+            "title": "Sicherheitsliste",
+            "type": "Reflexionsübung",
+            "instruction": "Erstelle eine Liste mit drei Menschen, drei Orten oder drei Handlungen, die dir innere Sicherheit vermitteln."
+          }
+        },
+        {
+          "intro": "Sicherheit ist die Basis dafür, dass dein System sich öffnen, lernen und regenerieren kann. Sie ist kein Luxus, sondern Grundlage.",
+          "premiumInsight": "Ruhige Stimme, vorhersehbare Abläufe und ein stimmiges Umfeld wirken häufig regulierend auf Körper und Geist.",
+          "premiumQuestion": "Welche drei Dinge geben mir heute am meisten innere Orientierung?",
+          "integration": "Nimm heute bewusst wahr, wo Sicherheit bereits da ist.",
+          "focus": "Schutz",
+          "microStep": "Wähle heute bewusst einen Satz oder eine Handlung, die Sicherheit vermittelt.",
+          "smart": {
+            "koerper": "Lege die Hand auf den Brustkorb und nimm Stabilität im Oberkörper wahr.",
+            "gedanke": "Vervollständige: Ich fühle mich sicherer, wenn...",
+            "handlung": "Sprich langsamer oder bewege dich bewusster als Sicherheits-Signal."
+          },
+          "activity": {
+            "title": "Ruhiger Rahmen",
+            "type": "Mini-Spiel",
+            "instruction": "Finde in deinem Umfeld drei Dinge, die du sofort verändern kannst, damit dein Raum ruhiger und sicherer wirkt."
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Präsenz",
+      "variants": [
+        {
+          "intro": "Präsenz bedeutet, dem jetzigen Moment wieder näher zu kommen, statt dich nur durch ihn hindurch zu bewegen.",
+          "premiumInsight": "Präsenz unterstützt bewusste Reaktionen statt automatischer Stressmuster.",
+          "premiumQuestion": "Was hilft mir, aus dem Autopilot zurück in den Moment zu kommen?",
+          "integration": "Ein wahrer Moment von Gegenwart ist oft mehr wert als lange Anstrengung.",
+          "focus": "Jetzt",
+          "microStep": "Halte heute kurz inne und benenne: Ich bin jetzt hier.",
+          "smart": {
+            "koerper": "Spüre für 10 Sekunden deine Hände oder Füße.",
+            "gedanke": "Frage dich: Bin ich gerade wirklich hier oder schon beim Nächsten?",
+            "handlung": "Tue eine kleine Handlung heute bewusst langsamer."
+          },
+          "activity": {
+            "title": "Präsenz-Blitz",
+            "type": "Achtsamkeitsspiel",
+            "instruction": "Suche in 30 Sekunden fünf Dinge, die du sehen, vier, die du hören, und drei, die du spüren kannst."
+          }
+        },
+        {
+          "intro": "Präsenz ist keine perfekte Ruhe. Sie ist die Fähigkeit, wieder Kontakt mit dem zu bekommen, was jetzt gerade wirklich da ist.",
+          "premiumInsight": "Achtsame Gegenwärtigkeit kann die subjektive Stressintensität deutlich verringern.",
+          "premiumQuestion": "Woran merke ich, dass ich gerade nicht mehr im Moment bin?",
+          "integration": "Heute genügt ein kleiner ehrlicher Moment von Ankommen.",
+          "focus": "Ankommen",
+          "microStep": "Mache heute einen bewussten Stopp vor dem nächsten Übergang.",
+          "smart": {
+            "koerper": "Nimm für einen Augenblick deine Körperhaltung bewusst wahr.",
+            "gedanke": "Notiere gedanklich ein Wort für deinen jetzigen Zustand.",
+            "handlung": "Starte eine Handlung erst nach einem kurzen bewussten Atemzug."
+          },
+          "activity": {
+            "title": "Hier-und-Jetzt-Karte",
+            "type": "Reflexionsimpuls",
+            "instruction": "Schreibe drei kurze Worte auf, die deinen jetzigen Moment am besten beschreiben."
+          }
+        },
+        {
+          "intro": "Präsenz verändert das innere Tempo. Sie macht den Moment nicht größer, aber oft klarer und weniger überwältigend.",
+          "premiumInsight": "Wenn innere Präsenz steigt, verbessert sich häufig auch die Verbindung zwischen Wahrnehmung und Selbstregulation.",
+          "premiumQuestion": "Wann verliere ich mich am häufigsten im Autopilot?",
+          "integration": "Lass dich heute einmal ganz in den Moment hinein sinken.",
+          "focus": "Gegenwärtigkeit",
+          "microStep": "Nutze heute einen Alltagsschritt als bewussten Präsenz-Moment.",
+          "smart": {
+            "koerper": "Spüre beim Gehen einen Schritt lang bewusst den Bodenkontakt.",
+            "gedanke": "Beobachte, was sich verändert, wenn du nichts erzwingst.",
+            "handlung": "Lege das Handy kurz weg und bleibe 20 Sekunden nur bei dir."
+          },
+          "activity": {
+            "title": "Präsenz-Fenster",
+            "type": "Mini-Übung",
+            "instruction": "Öffne für 1 Minute ein bewusstes Präsenz-Fenster: nichts tun, nur wahrnehmen, was gerade da ist."
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Loslassen",
+      "variants": [
+        {
+          "intro": "Loslassen bedeutet nicht, aufzugeben. Es heißt, das zu lockern, was dich unnötig festhält und erschöpft.",
+          "premiumInsight": "Bewusstes Entspannen von Atmung und Muskulatur hilft, gespeicherte Spannung zu reduzieren.",
+          "premiumQuestion": "Welche Spannung halte ich fest, obwohl sie mir nicht mehr dient?",
+          "integration": "Nicht alles, was du trägst, musst du heute behalten.",
+          "focus": "Entlastung",
+          "microStep": "Lass heute einmal bewusst Schultern, Kiefer oder Bauch weicher werden.",
+          "smart": {
+            "koerper": "Spüre, wo dein Körper festhält, und gib dort 5 Prozent mehr Weichheit.",
+            "gedanke": "Frage dich: Was darf heute leichter werden?",
+            "handlung": "Lass heute bewusst eine kleine unnötige Aufgabe weg."
+          },
+          "activity": {
+            "title": "Loslass-Liste",
+            "type": "Reflexionsspiel",
+            "instruction": "Schreibe drei Dinge auf, die du heute nicht weiter mittragen willst. Streiche eines davon symbolisch durch."
+          }
+        },
+        {
+          "intro": "Manchmal klammern wir uns an Kontrolle, obwohl sie uns längst mehr Kraft kostet als schützt.",
+          "premiumInsight": "Innere Regulation entsteht oft nicht durch Festhalten, sondern durch das dosierte Lösen unnötiger Spannung.",
+          "premiumQuestion": "Wo versuche ich gerade zu viel festzuhalten?",
+          "integration": "Loslassen darf leise und Schritt für Schritt geschehen.",
+          "focus": "Weichheit",
+          "microStep": "Wähle heute einen Bereich, in dem du bewusst weniger Druck machst.",
+          "smart": {
+            "koerper": "Atme aus und stelle dir vor, der Körper darf minimal schwerer werden.",
+            "gedanke": "Vervollständige: Wenn ich weniger kontrolliere, dann...",
+            "handlung": "Vereinfache heute einen Gedanken, einen Plan oder eine Aufgabe."
+          },
+          "activity": {
+            "title": "Druck oder Leichtigkeit",
+            "type": "Didaktische Einordnung",
+            "instruction": "Ordne drei aktuelle Themen in zwei Gruppen: unnötiger Druck / hilfreiche Verantwortung."
+          }
+        },
+        {
+          "intro": "Loslassen ist oft kein einmaliger Akt, sondern ein stiller Prozess von innerer Erlaubnis und körperlicher Entlastung.",
+          "premiumInsight": "Regeneration wird möglich, wenn der Körper allmählich aus dauerhafter Anspannung herausfindet.",
+          "premiumQuestion": "Welche kleine Geste könnte mein System heute entlasten?",
+          "integration": "Erlaube dir heute ein wenig mehr Weichheit.",
+          "focus": "Lockerung",
+          "microStep": "Lockere heute bewusst eine Stelle, die häufig Spannung trägt.",
+          "smart": {
+            "koerper": "Öffne und schließe langsam die Hände und spüre den Unterschied.",
+            "gedanke": "Beobachte, was du festhältst, obwohl du es gerade nicht brauchst.",
+            "handlung": "Beende heute einen kleinen inneren oder äußeren Kreislauf bewusst."
+          },
+          "activity": {
+            "title": "Abgeben",
+            "type": "Mini-Ritual",
+            "instruction": "Schreibe einen belastenden Gedanken auf Papier und falte es als Zeichen: Das muss ich nicht ständig im Kopf tragen."
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Regeneration",
+      "variants": [
+        {
+          "intro": "Regeneration ist keine Schwäche und kein Luxus. Sie ist die biologische Grundlage dafür, dass du Belastung verarbeiten kannst.",
+          "premiumInsight": "Qualitative Pausen fördern Leistungsfähigkeit, Stimmung und Widerstandskraft nachhaltiger als bloße Ablenkung.",
+          "premiumQuestion": "Welche Form von Erholung tut mir wirklich gut?",
+          "integration": "Nicht jede Pause regeneriert – aber jede echte Regeneration beginnt mit Erlaubnis.",
+          "focus": "Erholung",
+          "microStep": "Plane heute bewusst eine kleine regenerative Pause ein.",
+          "smart": {
+            "koerper": "Spüre kurz, ob dein Körper eher Aktivierung oder Ruhe braucht.",
+            "gedanke": "Frage dich: Was nährt mich wirklich – und was lenkt mich nur ab?",
+            "handlung": "Baue heute eine Pause ein, die wirklich entlastet."
+          },
+          "activity": {
+            "title": "Regenerations-Check",
+            "type": "Reflexionsübung",
+            "instruction": "Notiere drei Dinge, die dich kurzfristig ablenken, und drei Dinge, die dich wirklich erholen."
+          }
+        },
+        {
+          "intro": "Viele Menschen ruhen sich aus, ohne sich zu regenerieren. Der Unterschied liegt oft in Qualität, Sicherheit und innerer Entlastung.",
+          "premiumInsight": "Das Nervensystem regeneriert besser, wenn Ruhe mit Sicherheit und Reizreduktion verbunden ist.",
+          "premiumQuestion": "Wie könnte eine regenerative Pause für mich konkret aussehen?",
+          "integration": "Erholung darf heute einfach und echt sein.",
+          "focus": "Nährung",
+          "microStep": "Nimm dir heute 5 Minuten ohne Input, Bildschirm oder Pflicht.",
+          "smart": {
+            "koerper": "Lehne dich bewusst an oder setze dich weich auf.",
+            "gedanke": "Beobachte, ob dein Inneres in der Pause sofort wieder 'tun' will.",
+            "handlung": "Ersetze heute eine schnelle Ablenkung durch einen stilleren Erholungsmoment."
+          },
+          "activity": {
+            "title": "Pause mit Wirkung",
+            "type": "Mini-Experiment",
+            "instruction": "Teste zwei Arten von Pause: Ablenkung und Stille. Vergleiche danach, was dir mehr Erholung gegeben hat."
+          }
+        },
+        {
+          "intro": "Regeneration bedeutet, wieder in einen Zustand zu kommen, in dem Aufbau möglich wird – körperlich, mental und emotional.",
+          "premiumInsight": "Mikropausen im Alltag können helfen, Überlastung gar nicht erst weiter zu verstärken.",
+          "premiumQuestion": "Wo könnte ich heute eine kleine echte Pause einbauen?",
+          "integration": "Manchmal beginnt Heilung mit einem kleinen Unterbrechen.",
+          "focus": "Unterbrechung",
+          "microStep": "Setze heute eine bewusste Mini-Pause zwischen zwei Aufgaben.",
+          "smart": {
+            "koerper": "Schließe für einen Moment die Augen oder senke den Blick.",
+            "gedanke": "Frage dich: Was brauche ich, um mich nicht nur zu unterbrechen, sondern zu erholen?",
+            "handlung": "Plane heute eine Pause mit klarer Dauer und klarer Qualität."
+          },
+          "activity": {
+            "title": "Erholungsfenster",
+            "type": "Didaktisches Mini-Spiel",
+            "instruction": "Markiere im Tag ein realistisches 5-Minuten-Fenster, das heute deiner Regeneration dienen soll."
+          }
+        }
+      ]
+    },
+    {
+      "day": 8,
+      "title": "Energie",
+      "variants": [
+        {
+          "intro": "Energie ist mehr als Aktivität. Sie zeigt sich auch als Lebendigkeit, Klarheit, Motivation und innere Zugänglichkeit.",
+          "premiumInsight": "Energie entsteht oft nicht durch mehr Druck, sondern durch bessere Regulation und klügere Ressourcennutzung.",
+          "premiumQuestion": "Welche Gewohnheit stärkt meine Energie – und welche schwächt sie?",
+          "integration": "Echte Energie fühlt sich oft ruhiger an als hektischer Antrieb.",
+          "focus": "Kraft",
+          "microStep": "Achte heute einmal bewusst darauf, was dir Energie gibt und was sie zieht.",
+          "smart": {
+            "koerper": "Spüre, ob dein Körper eher Aktivierung oder Entlastung braucht.",
+            "gedanke": "Frage dich: Ist das gerade echte Kraft oder reines Funktionieren?",
+            "handlung": "Wähle heute eine energiefördernde Mini-Handlung."
+          },
+          "activity": {
+            "title": "Energie-Tracker",
+            "type": "Beobachtungsspiel",
+            "instruction": "Notiere über den Tag drei Momente mit mehr Energie und drei mit Energieabfall."
+          }
+        },
+        {
+          "intro": "Manchmal fehlt nicht Energie an sich, sondern der Zugang zu ihr. Wenn Anspannung sinkt, wird Kraft oft wieder verfügbar.",
+          "premiumInsight": "Chronische Spannung bindet Ressourcen, die dann für Antrieb, Fokus und innere Klarheit fehlen können.",
+          "premiumQuestion": "Was blockiert meine Energie im Alltag am häufigsten?",
+          "integration": "Mehr Energie beginnt manchmal mit weniger innerem Widerstand.",
+          "focus": "Verfügbarkeit",
+          "microStep": "Reduziere heute eine Sache, die dir unnötig Energie zieht.",
+          "smart": {
+            "koerper": "Strecke dich sanft oder richte dich auf und spüre den Unterschied.",
+            "gedanke": "Vervollständige: Ich fühle mich lebendiger, wenn...",
+            "handlung": "Plane heute bewusst eine energiefreundliche Wahl."
+          },
+          "activity": {
+            "title": "Energie-Räuber / Energie-Quellen",
+            "type": "Didaktische Sortierung",
+            "instruction": "Teile fünf Alltagseinflüsse in zwei Gruppen: gibt Energie / nimmt Energie."
+          }
+        },
+        {
+          "intro": "Energie folgt oft deiner Ausrichtung. Wenn du klarer mit dir verbunden bist, setzt du Kraft gezielter und ruhiger ein.",
+          "premiumInsight": "Stabile Rhythmen und weniger Reizüberlastung unterstützen die subjektive Energiebalance im Tagesverlauf.",
+          "premiumQuestion": "Welche zwei Dinge helfen mir, heute mit mehr Kraft durch den Tag zu gehen?",
+          "integration": "Du musst heute nicht alles können – nur mit deiner Energie bewusster umgehen.",
+          "focus": "Lebendigkeit",
+          "microStep": "Wähle heute einen energiefreundlichen Start oder Abschluss für den Tag.",
+          "smart": {
+            "koerper": "Spüre, ob dein Körper eher schwer oder verfügbar wirkt.",
+            "gedanke": "Frage dich: Wo setze ich Energie gegen mich statt für mich ein?",
+            "handlung": "Lege eine kleine Handlung fest, die deine Energie schützt."
+          },
+          "activity": {
+            "title": "Kraft-Kompass",
+            "type": "Reflexionsspiel",
+            "instruction": "Beantworte drei Fragen: Was belebt mich? Was schwächt mich? Was kann ich heute konkret steuern?"
+          }
+        }
+      ]
+    },
+    {
+      "day": 9,
+      "title": "Grenzen",
+      "variants": [
+        {
+          "intro": "Gesunde Grenzen schützen nicht vor Beziehung, sondern vor Überforderung und innerem Verlust.",
+          "premiumInsight": "Klare Grenzen reduzieren häufig innere Spannung und emotionale Erschöpfung.",
+          "premiumQuestion": "Wo sage ich zu oft Ja, obwohl mein Inneres Nein meint?",
+          "integration": "Eine gute Grenze schafft oft mehr Ruhe als Rechtfertigung.",
+          "focus": "Abgrenzung",
+          "microStep": "Nimm heute ein inneres Nein bewusst wahr, ohne es sofort wegzuschieben.",
+          "smart": {
+            "koerper": "Spüre, wie sich Zustimmung und Widerstand in deinem Körper unterscheiden.",
+            "gedanke": "Frage dich: Wo verliere ich mich gerade zu schnell?",
+            "handlung": "Formuliere heute eine kleine klare Grenze."
+          },
+          "activity": {
+            "title": "Ja oder Nein",
+            "type": "Klarheitsspiel",
+            "instruction": "Nimm drei aktuelle Themen und ordne sie spontan ein: klares Ja, unsicher, klares Nein."
+          }
+        },
+        {
+          "intro": "Grenzen geben Form und Klarheit. Sie zeigen, was dir gut tut, was zu viel ist und was geschützt werden möchte.",
+          "premiumInsight": "Abgrenzung hilft dem Nervensystem, Reizüberflutung und Überforderung zu reduzieren.",
+          "premiumQuestion": "Wo würde ein kleines Nein heute mehr Ruhe schaffen?",
+          "integration": "Du darfst dich schützen, ohne hart zu werden.",
+          "focus": "Schutz",
+          "microStep": "Wähle heute eine kleine Form von Selbstschutz.",
+          "smart": {
+            "koerper": "Achte darauf, wo dein Körper sich zusammenzieht oder weitet.",
+            "gedanke": "Vervollständige: Eine gesunde Grenze fühlt sich für mich an wie...",
+            "handlung": "Sage heute an einer Stelle klarer, was du brauchst."
+          },
+          "activity": {
+            "title": "Grenz-Skala",
+            "type": "Didaktische Übung",
+            "instruction": "Bewerte drei Alltagssituationen auf einer Skala von 1 bis 10: Wie stimmig ist meine Grenze dort?"
+          }
+        },
+        {
+          "intro": "Grenzen sind nicht kalt. Sie können freundlich, ruhig und eindeutig sein – und genau dadurch entlastend wirken.",
+          "premiumInsight": "Selbstfürsorgliche Abgrenzung unterstützt Stabilität und langfristige Belastbarkeit.",
+          "premiumQuestion": "Wie kann ich heute respektvoll und klar für mich einstehen?",
+          "integration": "Eine klare Grenze ist oft ein Ja zu dir selbst.",
+          "focus": "Selbstrespekt",
+          "microStep": "Wähle heute eine kleine klare Form von Selbstrespekt.",
+          "smart": {
+            "koerper": "Richte dich auf, bevor du innerlich Stellung beziehst.",
+            "gedanke": "Frage dich: Was ist heute zu viel, zu nah oder zu schnell?",
+            "handlung": "Ändere heute eine Kleinigkeit, die deine Grenze besser schützt."
+          },
+          "activity": {
+            "title": "Grenzen sichtbar machen",
+            "type": "Reflexionsübung",
+            "instruction": "Schreibe einen Satz auf, der eine gute Grenze für dich ausdrückt. Zum Beispiel: Heute schütze ich meine Energie."
+          }
+        }
+      ]
+    },
+    {
+      "day": 10,
+      "title": "Selbstfürsorge",
+      "variants": [
+        {
+          "intro": "Selbstfürsorge bedeutet, dich ernst zu nehmen, bevor Erschöpfung oder Überforderung dich dazu zwingen.",
+          "premiumInsight": "Kleine regelmäßige Formen von Selbstfürsorge wirken oft nachhaltiger als seltene große Maßnahmen.",
+          "premiumQuestion": "Welche kleine Fürsorgehandlung kann ich heute wirklich umsetzen?",
+          "integration": "Selbstfürsorge beginnt im Alltag, nicht erst im Ausnahmezustand.",
+          "focus": "Fürsorge",
+          "microStep": "Wähle heute eine Mini-Handlung, die dir wirklich gut tut.",
+          "smart": {
+            "koerper": "Spüre kurz, was dein Körper heute am ehesten braucht.",
+            "gedanke": "Frage dich: Wie spreche ich heute innerlich mit mir?",
+            "handlung": "Tue heute bewusst etwas Fürsorgliches nur für dich."
+          },
+          "activity": {
+            "title": "Fürsorge-Menü",
+            "type": "Mini-Planung",
+            "instruction": "Stelle dir ein Menü aus drei kleinen Fürsorge-Handlungen für heute zusammen."
+          }
+        },
+        {
+          "intro": "Selbstfürsorge ist gelebte Beziehung zu dir selbst. Sie zeigt sich in deinen kleinen Entscheidungen im Alltag.",
+          "premiumInsight": "Selbstfürsorge unterstützt nicht nur Wohlbefinden, sondern auch Belastungsregulation und innere Stabilität.",
+          "premiumQuestion": "Was würde sich verändern, wenn ich mich früher ernst nehme?",
+          "integration": "Fürsorge ist nicht egoistisch, sondern regulierend.",
+          "focus": "Beziehung zu mir",
+          "microStep": "Reagiere heute einmal früher auf ein Bedürfnis statt später.",
+          "smart": {
+            "koerper": "Nimm wahr, wo du gerade etwas mehr Weichheit brauchst.",
+            "gedanke": "Vervollständige: Ich übergehe mich oft, wenn...",
+            "handlung": "Setze heute ein kleines Zeichen dafür, dass du auf deiner Seite bist."
+          },
+          "activity": {
+            "title": "Früher statt später",
+            "type": "Didaktisches Mini-Spiel",
+            "instruction": "Achte heute auf einen Moment, in dem du früher reagieren kannst: trinken, pausieren, atmen, Nein sagen."
+          }
+        },
+        {
+          "intro": "Selbstfürsorge beginnt oft nicht mit großen Veränderungen, sondern mit ehrlicher Aufmerksamkeit für das, was du brauchst.",
+          "premiumInsight": "Alltagsnahe Fürsorgeroutinen stabilisieren Körperempfinden, innere Ordnung und emotionale Belastbarkeit.",
+          "premiumQuestion": "Welcher fürsorgliche Schritt wäre heute realistisch und hilfreich?",
+          "integration": "Fürsorge darf heute klein, schlicht und wirksam sein.",
+          "focus": "Nährung",
+          "microStep": "Wähle heute eine Handlung, die deinen Tag weicher macht.",
+          "smart": {
+            "koerper": "Spüre kurz: Brauche ich Aktivierung, Ruhe, Nahrung oder Entlastung?",
+            "gedanke": "Frage dich: Was würde ich jemandem empfehlen, den ich wirklich gut versorgen will?",
+            "handlung": "Gib dir heute selbst genau eine dieser Empfehlungen."
+          },
+          "activity": {
+            "title": "Selbstfürsorge-Karte",
+            "type": "Reflexionsübung",
+            "instruction": "Schreibe einen Satz an dich selbst wie an einen guten Menschen, dem du helfen willst."
+          }
+        }
+      ]
+    },
+    {
+      "day": 11,
+      "title": "Rhythmus",
+      "variants": [
+        {
+          "intro": "Der Körper liebt Rhythmen. Wiederkehrende Abläufe geben Orientierung und entlasten innere Entscheidungssysteme.",
+          "premiumInsight": "Regelmäßige Zeitmuster unterstützen Schlaf, Energie und Belastungsbalance.",
+          "premiumQuestion": "Welche Tagesstruktur würde mir heute mehr Ruhe geben?",
+          "integration": "Rhythmus ist kein Zwang, sondern eine tragende Form von Ordnung.",
+          "focus": "Struktur",
+          "microStep": "Lege heute einen klaren Zeitpunkt für eine hilfreiche Routine fest.",
+          "smart": {
+            "koerper": "Achte darauf, wie dein Körper auf geordnete Abläufe reagiert.",
+            "gedanke": "Frage dich: Wo würde mir heute mehr Struktur helfen?",
+            "handlung": "Plane heute einen wiederkehrenden Mini-Rhythmus."
+          },
+          "activity": {
+            "title": "Tagesanker",
+            "type": "Planungsspiel",
+            "instruction": "Setze drei kleine Anker im Tag: Start, Mitte, Abschluss."
+          }
+        },
+        {
+          "intro": "Nicht alles muss spontan sein. Manches wird leichter, wenn es einen festen, ruhigen Platz im Tag bekommt.",
+          "premiumInsight": "Biologische Systeme reagieren häufig positiv auf verlässliche Abläufe und Wiederholung.",
+          "premiumQuestion": "Welche kleine Struktur könnte meinen Tag besser tragen?",
+          "integration": "Rhythmus darf dich tragen, nicht einengen.",
+          "focus": "Verlässlichkeit",
+          "microStep": "Wiederhole heute bewusst eine gute Routine zur gleichen Zeit.",
+          "smart": {
+            "koerper": "Beobachte, ob Regelmäßigkeit deinem Körper eher Ruhe gibt.",
+            "gedanke": "Vervollständige: Wenn mein Tag geordneter ist, dann...",
+            "handlung": "Vereinfache heute einen Ablauf durch feste Reihenfolge."
+          },
+          "activity": {
+            "title": "Rhythmus-Test",
+            "type": "Mini-Experiment",
+            "instruction": "Teste heute eine Sache zur festen Uhrzeit und beobachte, ob das entlastend wirkt."
+          }
+        },
+        {
+          "intro": "Ein guter Rhythmus entsteht nicht durch Härte, sondern durch einen stimmigen Wechsel aus Aktivität, Pause und Rückzug.",
+          "premiumInsight": "Ein ausgewogener Rhythmus reduziert oft Überforderung und fördert Regeneration.",
+          "premiumQuestion": "Welche Gewohnheit bringt mich eher in Balance als in Druck?",
+          "integration": "Heute geht es nicht um Perfektion, sondern um einen tragfähigen Takt.",
+          "focus": "Balance",
+          "microStep": "Baue heute bewusst einen Übergang zwischen Aktivität und Pause ein.",
+          "smart": {
+            "koerper": "Spüre, wann dein Körper eher Aktivität und wann Ruhe will.",
+            "gedanke": "Frage dich: Wo fehlt mir ein gesunder Wechsel?",
+            "handlung": "Plane heute eine Aktivität-Pause-Aktivität-Folge."
+          },
+          "activity": {
+            "title": "Tages-Takt",
+            "type": "Didaktische Übung",
+            "instruction": "Ordne drei Aufgaben so, dass sie nicht alle maximale Energie gleichzeitig verlangen."
+          }
+        }
+      ]
+    },
+    {
+      "day": 12,
+      "title": "Klarheit",
+      "variants": [
+        {
+          "intro": "Klarheit entsteht oft nicht durch mehr Denken, sondern durch weniger inneres Rauschen und mehr Sammlung.",
+          "premiumInsight": "Mentale Überlastung nimmt häufig ab, wenn Reize reduziert und Prioritäten geklärt werden.",
+          "premiumQuestion": "Was darf heute bewusst unwichtiger werden?",
+          "integration": "Klarheit beginnt oft mit Vereinfachung.",
+          "focus": "Wesentliches",
+          "microStep": "Wähle heute nur eine Sache, die wirklich Priorität hat.",
+          "smart": {
+            "koerper": "Atme aus und spüre, ob dein Körper gerade eher Druck oder Weite signalisiert.",
+            "gedanke": "Frage dich: Was ist heute wirklich wesentlich?",
+            "handlung": "Reduziere heute bewusst eine unnötige Option."
+          },
+          "activity": {
+            "title": "Wesentlich / Unwesentlich",
+            "type": "Sortierspiel",
+            "instruction": "Ordne fünf aktuelle Gedanken oder Aufgaben in zwei Gruppen: wesentlich / nicht wesentlich."
+          }
+        },
+        {
+          "intro": "Klarheit heißt nicht, auf alles eine Antwort zu haben. Oft reicht Klarheit für den nächsten stimmigen Schritt.",
+          "premiumInsight": "Fokussierung entlastet das Nervensystem, weil sie Entscheidungslast reduzieren kann.",
+          "premiumQuestion": "Welche Entscheidung würde leichter, wenn ich sie vereinfachen dürfte?",
+          "integration": "Heute genügt Klarheit für den nächsten Schritt.",
+          "focus": "Entscheidung",
+          "microStep": "Formuliere heute deinen nächsten sinnvollen Schritt in einem Satz.",
+          "smart": {
+            "koerper": "Spüre kurz, wie sich Unklarheit körperlich anfühlt.",
+            "gedanke": "Vervollständige: Mein nächster stimmiger Schritt ist...",
+            "handlung": "Setze diesen Schritt heute klein und konkret um."
+          },
+          "activity": {
+            "title": "Ein Satz Klarheit",
+            "type": "Mini-Übung",
+            "instruction": "Formuliere dein Hauptthema des Tages in genau einem klaren Satz."
+          }
+        },
+        {
+          "intro": "Innere Klarheit braucht Raum. Wenn du das innere Drängen reduzierst, ordnet sich manches von selbst.",
+          "premiumInsight": "Bewusste Vereinfachung kann emotionale und kognitive Belastung spürbar reduzieren.",
+          "premiumQuestion": "Was könnte ich heute klarer, einfacher oder eindeutiger gestalten?",
+          "integration": "Nicht mehr, sondern klarer.",
+          "focus": "Einfachheit",
+          "microStep": "Streiche heute eine unnötige Komplexität aus dem Tag.",
+          "smart": {
+            "koerper": "Beobachte, ob dein Atem ruhiger wird, wenn du vereinfacht denkst.",
+            "gedanke": "Frage dich: Wo mache ich es innerlich komplizierter als nötig?",
+            "handlung": "Vereinfache heute eine Entscheidung, Aufgabe oder Botschaft."
+          },
+          "activity": {
+            "title": "Klarheits-Karte",
+            "type": "Reflexionsspiel",
+            "instruction": "Schreibe drei unklare Punkte auf und formuliere zu jedem eine einfache nächste Handlung."
+          }
+        }
+      ]
+    },
+    {
+      "day": 13,
+      "title": "Selbstwirksamkeit",
+      "variants": [
+        {
+          "intro": "Selbstwirksamkeit bedeutet: Ich kann etwas beeinflussen. Schon kleine wirksame Schritte verändern oft das innere Erleben.",
+          "premiumInsight": "Das Erleben von Wirksamkeit stärkt Motivation, Stabilität und Handlungsfähigkeit.",
+          "premiumQuestion": "Welcher kleine Schritt würde mir heute das Gefühl geben: Ich kann etwas bewegen?",
+          "integration": "Wirksamkeit beginnt oft klein, aber spürbar.",
+          "focus": "Handlungsfähigkeit",
+          "microStep": "Wähle heute eine Sache, die du aktiv gestalten kannst.",
+          "smart": {
+            "koerper": "Richte dich auf und spüre den Unterschied zwischen Ohnmacht und Ausrichtung.",
+            "gedanke": "Frage dich: Was kann ich heute konkret beeinflussen?",
+            "handlung": "Setze einen kleinen sichtbaren Schritt um."
+          },
+          "activity": {
+            "title": "Wirksamkeits-Liste",
+            "type": "Reflexionsübung",
+            "instruction": "Schreibe drei Dinge auf, die du heute tatsächlich beeinflussen kannst."
+          }
+        },
+        {
+          "intro": "Wenn Ohnmacht steigt, schrumpft der innere Handlungsspielraum. Selbstwirksamkeit erweitert ihn wieder – Schritt für Schritt.",
+          "premiumInsight": "Selbstwirksamkeit wirkt regulierend, weil sie Ohnmachtsgefühle abschwächen kann.",
+          "premiumQuestion": "Wo erlebe ich mich heute eher passiv – und was wäre ein erster aktiver Schritt?",
+          "integration": "Ein kleiner aktiver Schritt ist oft stärker als langes inneres Kreisen.",
+          "focus": "Einfluss",
+          "microStep": "Verwandle heute ein Problem in eine kleine Handlung.",
+          "smart": {
+            "koerper": "Spüre, wie sich Aktivität im Körper von innerem Stillstand unterscheidet.",
+            "gedanke": "Vervollständige: Ich bin nicht machtlos, wenn...",
+            "handlung": "Wähle heute bewusst eine Sache, bei der du vom Denken ins Tun wechselst."
+          },
+          "activity": {
+            "title": "Vom Grübeln ins Tun",
+            "type": "Didaktisches Mini-Spiel",
+            "instruction": "Nimm einen kreisenden Gedanken und formuliere dazu genau eine konkrete Handlung."
+          }
+        },
+        {
+          "intro": "Selbstwirksamkeit ist kein ständiges Kontrollgefühl. Sie ist das Vertrauen, in dir und durch dich etwas bewegen zu können.",
+          "premiumInsight": "Die bewusste Erinnerung an bewältigte Situationen stärkt häufig das Vertrauen in die eigene Kompetenz.",
+          "premiumQuestion": "Welche Fähigkeit in mir möchte ich heute wieder bewusster nutzen?",
+          "integration": "Du musst nicht alles schaffen, um wirksam zu sein.",
+          "focus": "Kompetenz",
+          "microStep": "Erinnere dich heute an eine Situation, die du bereits gut gemeistert hast.",
+          "smart": {
+            "koerper": "Nimm eine stabile Haltung ein und bleibe einen Moment darin.",
+            "gedanke": "Frage dich: Was kann ich schon, das ich gerade vergesse?",
+            "handlung": "Nutze heute bewusst eine vorhandene Stärke."
+          },
+          "activity": {
+            "title": "Bereits geschafft",
+            "type": "Ressourcenübung",
+            "instruction": "Schreibe drei Dinge auf, die du in der Vergangenheit bewältigt hast und die dir heute Orientierung geben können."
+          }
+        }
+      ]
+    },
+    {
+      "day": 14,
+      "title": "Resilienz",
+      "variants": [
+        {
+          "intro": "Resilienz bedeutet nicht Härte, sondern die Fähigkeit, nach Belastung wieder in Verbindung mit dir selbst zurückzufinden.",
+          "premiumInsight": "Resilienz entsteht durch wiederholte Erfahrungen von Regulation, Unterstützung und Bewältigung.",
+          "premiumQuestion": "Welche Ressource hilft mir am besten, wieder in Balance zu kommen?",
+          "integration": "Resilienz ist Rückkehr, nicht Unverletzbarkeit.",
+          "focus": "Rückkehr",
+          "microStep": "Nutze heute bewusst eine Ressource, die dir echte Stabilisierung gibt.",
+          "smart": {
+            "koerper": "Spüre, was deinem Körper heute am meisten hilft, zurück in Ruhe zu kommen.",
+            "gedanke": "Frage dich: Wodurch finde ich nach Belastung am besten zurück zu mir?",
+            "handlung": "Setze heute gezielt einen bewährten Regulierungs-Schritt ein."
+          },
+          "activity": {
+            "title": "Ressourcen-Kompass",
+            "type": "Reflexionsspiel",
+            "instruction": "Notiere drei Dinge, die dir nach schwierigen Momenten zuverlässig helfen."
+          }
+        },
+        {
+          "intro": "Resiliente Menschen erleben ebenfalls Stress. Der Unterschied liegt oft darin, wie sie sich danach stabilisieren und neu ausrichten.",
+          "premiumInsight": "Resilienz ist trainierbar – besonders durch Routinen, Körperwahrnehmung und sichere Verbundenheit.",
+          "premiumQuestion": "Welche Gewohnheit stärkt meine Widerstandskraft nachhaltig?",
+          "integration": "Widerstandskraft wächst in kleinen Wiederholungen.",
+          "focus": "Widerstandskraft",
+          "microStep": "Wähle heute eine kleine Gewohnheit, die deine Stabilität stärkt.",
+          "smart": {
+            "koerper": "Spüre, ob dein Körper sich nach Belastung eher zurückzieht oder mobilisiert.",
+            "gedanke": "Vervollständige: Ich werde belastbarer, wenn...",
+            "handlung": "Verankere heute eine kleine resilienzfördernde Routine."
+          },
+          "activity": {
+            "title": "Resilienz-Bausteine",
+            "type": "Didaktische Übung",
+            "instruction": "Schreibe vier persönliche Resilienz-Bausteine auf: Körper, Denken, Beziehungen, Gewohnheiten."
+          }
+        },
+        {
+          "intro": "Resilienz ist die Fähigkeit, beweglich zu bleiben, ohne dich selbst zu verlieren. Sie verbindet Stabilität mit Anpassungsfähigkeit.",
+          "premiumInsight": "Ein reguliertes Nervensystem erhöht die Fähigkeit, flexibel auf Belastung zu reagieren.",
+          "premiumQuestion": "Was möchte ich in mir stärken, damit ich Belastung besser auffangen kann?",
+          "integration": "Innere Beweglichkeit ist eine Form von Stärke.",
+          "focus": "Flexibilität",
+          "microStep": "Übe heute, zwischen Anspannung und Entlastung bewusster zu wechseln.",
+          "smart": {
+            "koerper": "Nimm wahr, ob dein Körper eher verhärtet oder mitgeht.",
+            "gedanke": "Frage dich: Wo könnte ich heute weicher und zugleich klar bleiben?",
+            "handlung": "Treffe heute eine flexible statt starre Entscheidung."
+          },
+          "activity": {
+            "title": "Flexibel bleiben",
+            "type": "Mini-Experiment",
+            "instruction": "Wähle heute bei einer Kleinigkeit bewusst eine alternative Reaktion statt der automatischen."
+          }
+        }
+      ]
+    },
+    {
+      "day": 15,
+      "title": "Vertrauen",
+      "variants": [
+        {
+          "intro": "Vertrauen wächst dort, wo du erfährst, dass du dich wahrnehmen, ernst nehmen und halten kannst.",
+          "premiumInsight": "Selbstvertrauen wird gestärkt, wenn innere Signale nicht dauerhaft übergangen werden.",
+          "premiumQuestion": "Was würde ich heute anders tun, wenn ich mir etwas mehr vertrauen würde?",
+          "integration": "Vertrauen beginnt oft mit einem ehrlichen inneren Ja zu dir.",
+          "focus": "Selbstvertrauen",
+          "microStep": "Triff heute eine kleine Entscheidung etwas mehr aus Vertrauen als aus Kontrolle.",
+          "smart": {
+            "koerper": "Spüre, wie dein Körper auf Vertrauen im Vergleich zu Kontrolle reagiert.",
+            "gedanke": "Frage dich: Wo weiß ich innerlich eigentlich schon, was stimmig ist?",
+            "handlung": "Setze heute eine kleine Entscheidung nach deinem inneren Kompass um."
+          },
+          "activity": {
+            "title": "Vertrauens-Moment",
+            "type": "Reflexionsübung",
+            "instruction": "Erinnere dich an einen Moment, in dem du dir vertraut hast und es gut war."
+          }
+        },
+        {
+          "intro": "Vertrauen ist kein blinder Optimismus. Es ist eine ruhige innere Haltung, die sagt: Ich kann mir auch in Schwierigkeit begegnen.",
+          "premiumInsight": "Ein stabiles Vertrauen in die eigene Wahrnehmung unterstützt klare Entscheidungen und innere Ruhe.",
+          "premiumQuestion": "Wie kann ich heute meinem eigenen Empfinden mehr Gewicht geben?",
+          "integration": "Vertrauen wächst aus gelebter innerer Verlässlichkeit.",
+          "focus": "Innere Verlässlichkeit",
+          "microStep": "Nimm dein erstes ehrliches Empfinden heute einmal bewusst ernst.",
+          "smart": {
+            "koerper": "Achte auf das Körpergefühl bei einer stimmigen und einer unstimmigen Entscheidung.",
+            "gedanke": "Vervollständige: Ich kann mir vertrauen, wenn...",
+            "handlung": "Handle heute einmal bewusst nach deinem stimmigen Gefühl."
+          },
+          "activity": {
+            "title": "Stimmig oder nicht",
+            "type": "Didaktisches Wahrnehmungsspiel",
+            "instruction": "Prüfe drei kleine Entscheidungen mit der Frage: Fühlt sich das stimmig an?"
+          }
+        },
+        {
+          "intro": "Vertrauen entsteht selten durch Nachdenken allein. Es wächst durch wiederholte kleine Erfahrungen von innerer Verlässlichkeit.",
+          "premiumInsight": "Selbstvertrauen wird nicht gedacht, sondern durch erlebte Konsistenz aufgebaut.",
+          "premiumQuestion": "Welche kleine Entscheidung könnte heute mein Vertrauen in mich stärken?",
+          "integration": "Heute zählt nicht Größe, sondern Echtheit.",
+          "focus": "Stimmigkeit",
+          "microStep": "Setze heute eine kleine Entscheidung um, die sich ehrlich richtig anfühlt.",
+          "smart": {
+            "koerper": "Spüre, wie sich ein inneres Ja körperlich zeigt.",
+            "gedanke": "Frage dich: Wo verlasse ich mich heute auf mich?",
+            "handlung": "Bleibe heute bewusst bei einer kleinen innerlich stimmigen Wahl."
+          },
+          "activity": {
+            "title": "Ein ehrliches Ja",
+            "type": "Mini-Übung",
+            "instruction": "Finde heute eine Sache, zu der du innerlich klar Ja sagen kannst – und tue genau diese bewusst."
+          }
+        }
+      ]
+    },
+    {
+      "day": 16,
+      "title": "Verbundenheit",
+      "variants": [
+        {
+          "intro": "Verbundenheit ist ein grundlegendes menschliches Bedürfnis. Sie wirkt regulierend, wenn sie echt, sicher und nicht überfordernd ist.",
+          "premiumInsight": "Sichere soziale Erfahrungen können beruhigend und stabilisierend auf das Nervensystem wirken.",
+          "premiumQuestion": "Welche Form von Verbindung nährt mich wirklich?",
+          "integration": "Echte Verbindung muss nicht laut sein – nur stimmig.",
+          "focus": "Verbindung",
+          "microStep": "Nimm heute eine Form von echter Verbindung bewusst wahr.",
+          "smart": {
+            "koerper": "Spüre, wie dein Körper auf echte Nähe oder stimmigen Kontakt reagiert.",
+            "gedanke": "Frage dich: Wo fühle ich mich gesehen, ohne mich zu verlieren?",
+            "handlung": "Nimm heute bewusst einen kleinen nährenden Kontakt auf."
+          },
+          "activity": {
+            "title": "Verbindungs-Check",
+            "type": "Reflexionsübung",
+            "instruction": "Schreibe drei Formen von Verbindung auf, die dir wirklich gut tun."
+          }
+        },
+        {
+          "intro": "Verbundenheit kann mit anderen entstehen – aber auch in der Beziehung zu dir selbst. Beides ist regulierend.",
+          "premiumInsight": "Die Qualität einer Beziehung wirkt oft stärker regulierend als die bloße Menge an Kontakt.",
+          "premiumQuestion": "Welche Verbindung oder Beziehung möchte ich bewusster pflegen?",
+          "integration": "Weniger, aber echter Kontakt kann tiefer tragen.",
+          "focus": "Nähe",
+          "microStep": "Pflege heute bewusst eine kleine ehrliche Verbindung.",
+          "smart": {
+            "koerper": "Achte darauf, wann dein Körper in Kontakt eher weich oder angespannt wird.",
+            "gedanke": "Vervollständige: Ich fühle mich wirklich verbunden, wenn...",
+            "handlung": "Schreibe, sage oder zeige heute einen ehrlichen verbindenden Impuls."
+          },
+          "activity": {
+            "title": "Verbindungs-Kreis",
+            "type": "Didaktische Übung",
+            "instruction": "Notiere Menschen, Orte oder Tätigkeiten, mit denen du dich verbunden fühlst."
+          }
+        },
+        {
+          "intro": "Wahre Verbundenheit heißt nicht Verschmelzung. Sie bedeutet, in Kontakt zu sein und zugleich bei dir zu bleiben.",
+          "premiumInsight": "Sichere Bindungserfahrungen können Spannungszustände deutlich abmildern und innere Stabilität fördern.",
+          "premiumQuestion": "Was unterstützt mich dabei, verbunden und zugleich bei mir zu bleiben?",
+          "integration": "Verbundenheit darf nähren, ohne dich aufzulösen.",
+          "focus": "Kontakt mit Grenzen",
+          "microStep": "Bleibe heute in einem Kontakt bewusst auch bei dir selbst.",
+          "smart": {
+            "koerper": "Spüre in Kontakt gleichzeitig deine eigene Mitte.",
+            "gedanke": "Frage dich: Wo passe ich mich zu stark an, um verbunden zu bleiben?",
+            "handlung": "Wähle heute eine Verbindung mit Klarheit und Selbstkontakt."
+          },
+          "activity": {
+            "title": "Bei mir und im Kontakt",
+            "type": "Mini-Experiment",
+            "instruction": "Achte heute in einem Gespräch bewusst darauf, sowohl zuzuhören als auch dich selbst zu spüren."
+          }
+        }
+      ]
+    },
+    {
+      "day": 17,
+      "title": "Ruhe",
+      "variants": [
+        {
+          "intro": "Ruhe ist mehr als äußere Stille. Sie ist ein innerer Zustand, in dem du nicht dauernd reagieren oder absichern musst.",
+          "premiumInsight": "Ruhephasen unterstützen Verarbeitung, Regeneration und emotionale Stabilisierung.",
+          "premiumQuestion": "Was hilft mir, von äußerer Pause in echte innere Ruhe zu kommen?",
+          "integration": "Innere Ruhe darf aufgebaut werden, auch wenn sie nicht sofort da ist.",
+          "focus": "Stillwerden",
+          "microStep": "Schaffe heute einen kurzen Moment ohne Input und ohne Aufgabe.",
+          "smart": {
+            "koerper": "Spüre, ob dein Körper überhaupt schon in Ruhe ankommen kann.",
+            "gedanke": "Frage dich: Was unterbricht meine Ruhe am stärksten?",
+            "handlung": "Reduziere heute eine Reizquelle bewusst."
+          },
+          "activity": {
+            "title": "Ruhe-Insel",
+            "type": "Achtsamkeitsübung",
+            "instruction": "Baue heute eine 2-Minuten-Ruheinsel ohne Handy, Sprache oder Aufgabe ein."
+          }
+        },
+        {
+          "intro": "Viele kennen äußere Ruhe, aber keine innere. Innere Ruhe entsteht, wenn Anspannung nicht mehr alles dominiert.",
+          "premiumInsight": "Ruhige Sinnesreize, verlangsamtes Tempo und bewusste Reizreduktion fördern Entlastung.",
+          "premiumQuestion": "Wie könnte ich heute einen stilleren inneren Raum schaffen?",
+          "integration": "Ruhe ist kein Leerraum, sondern ein regulierender Zustand.",
+          "focus": "Entschleunigung",
+          "microStep": "Verlangsame heute eine Handlung bewusst.",
+          "smart": {
+            "koerper": "Atme aus und lass den Blick für einen Moment ruhen.",
+            "gedanke": "Vervollständige: Mein System beruhigt sich, wenn...",
+            "handlung": "Lege heute einen bewusst langsameren Übergang ein."
+          },
+          "activity": {
+            "title": "Langsamer-Moment",
+            "type": "Mini-Spiel",
+            "instruction": "Führe eine alltägliche Handlung doppelt so bewusst und etwas langsamer aus."
+          }
+        },
+        {
+          "intro": "Ruhe kann kraftvoll sein. Sie sammelt, ordnet und gibt dem Inneren wieder mehr Weite.",
+          "premiumInsight": "Wiederkehrende Ruheinseln verbessern oft die Fähigkeit zur Selbstregulation.",
+          "premiumQuestion": "Wo könnte ich heute bewusst einen stillen Übergang statt Hektik wählen?",
+          "integration": "In Ruhe sammelt sich neue Kraft.",
+          "focus": "Sammlung",
+          "microStep": "Setze heute einen stillen Übergang zwischen zwei Aufgaben.",
+          "smart": {
+            "koerper": "Spüre, wie dein Körper auf Unterbrechung statt Hast reagiert.",
+            "gedanke": "Frage dich: Was in mir wird still, wenn ich nichts antreibe?",
+            "handlung": "Beginne oder beende heute etwas in Stille."
+          },
+          "activity": {
+            "title": "Stiller Übergang",
+            "type": "Ritualübung",
+            "instruction": "Setze zwischen zwei Alltagsblöcken 30 Sekunden Stille als bewussten Übergang."
+          }
+        }
+      ]
+    },
+    {
+      "day": 18,
+      "title": "Integration",
+      "variants": [
+        {
+          "intro": "Integration bedeutet, Erfahrungen nicht nur zu durchleben, sondern ihnen innerlich einen Platz zu geben.",
+          "premiumInsight": "Verarbeitung braucht Zeit, Sicherheit und ausreichend innere Kapazität.",
+          "premiumQuestion": "Was in meinem Erleben möchte ich heute nicht mehr wegdrücken, sondern einordnen?",
+          "integration": "Was einen Platz bekommt, muss dich oft weniger belasten.",
+          "focus": "Verarbeitung",
+          "microStep": "Nimm dir heute einen kurzen Moment, um etwas innerlich einzuordnen statt zu verdrängen.",
+          "smart": {
+            "koerper": "Spüre, wie dein Körper auf ein bewusst angesehenes Thema reagiert.",
+            "gedanke": "Frage dich: Was möchte in mir verstanden statt weggeschoben werden?",
+            "handlung": "Schreibe heute einen Satz über etwas, das du innerlich einordnen willst."
+          },
+          "activity": {
+            "title": "Einen Platz geben",
+            "type": "Reflexionsübung",
+            "instruction": "Wähle ein Thema und formuliere: Das ist passiert, das hat es mit mir gemacht, das nehme ich daraus mit."
+          }
+        },
+        {
+          "intro": "Nicht jede Erfahrung ist sofort verarbeitet. Integration heißt, dem Erlebten Form, Bedeutung und einen inneren Rahmen zu geben.",
+          "premiumInsight": "Reflexion und körperliche Regulation unterstützen häufig die Integration belastender Eindrücke.",
+          "premiumQuestion": "Wie kann ich mir heute einen sicheren Rahmen für Verarbeitung geben?",
+          "integration": "Verstehen ist oft entlastender als Wegdrücken.",
+          "focus": "Einordnung",
+          "microStep": "Nimm dir heute 2 Minuten, um etwas in Ruhe zu benennen.",
+          "smart": {
+            "koerper": "Lege die Hand auf Brust oder Bauch und bleibe kurz beim Thema.",
+            "gedanke": "Vervollständige: Was ich heute besser verstehen möchte, ist...",
+            "handlung": "Schaffe heute einen kleinen sicheren Rahmen für Reflexion."
+          },
+          "activity": {
+            "title": "Gedanken ordnen",
+            "type": "Didaktische Strukturübung",
+            "instruction": "Teile ein Erlebnis in drei Teile: Was war? Was habe ich gefühlt? Was nehme ich daraus mit?"
+          }
+        },
+        {
+          "intro": "Integration verbindet Erleben mit Bewusstsein. So verliert manches an innerem Chaos und gewinnt an Zusammenhang.",
+          "premiumInsight": "Erfahrungen, die bewusst eingeordnet werden, wirken oft weniger diffus und belastend nach.",
+          "premiumQuestion": "Welche innere Erkenntnis darf heute in mein Leben hineinreifen?",
+          "integration": "Nicht alles muss gelöst werden – manches will zuerst verstanden werden.",
+          "focus": "Sinn",
+          "microStep": "Frage dich heute: Was will dieses Erleben mich lehren?",
+          "smart": {
+            "koerper": "Spüre, ob mit mehr Klarheit auch etwas mehr Weite entsteht.",
+            "gedanke": "Frage dich: Was verändert sich, wenn ich nicht bewerte, sondern verstehe?",
+            "handlung": "Formuliere heute eine persönliche Erkenntnis in einem Satz."
+          },
+          "activity": {
+            "title": "Erkenntnis-Satz",
+            "type": "Mini-Reflexion",
+            "instruction": "Schreibe einen einzigen Satz, der deine wichtigste heutige Erkenntnis ausdrückt."
+          }
+        }
+      ]
+    },
+    {
+      "day": 19,
+      "title": "Ausrichtung",
+      "variants": [
+        {
+          "intro": "Ausrichtung gibt deiner Energie eine Richtung. Sie verhindert, dass du dich in Reaktion und Streuverlust verlierst.",
+          "premiumInsight": "Klarheit über Werte und Prioritäten reduziert oft Überforderung und innere Zersplitterung.",
+          "premiumQuestion": "Was ist mir heute wirklich wichtig – jenseits von Pflicht und Druck?",
+          "integration": "Ausrichtung bringt Kraft in eine klare Richtung.",
+          "focus": "Priorität",
+          "microStep": "Wähle heute bewusst einen inneren Schwerpunkt für den Tag.",
+          "smart": {
+            "koerper": "Spüre, wie sich innere Richtung körperlich anfühlt.",
+            "gedanke": "Frage dich: Wofür möchte ich heute wirklich stehen?",
+            "handlung": "Richte heute eine Entscheidung an deinem Schwerpunkt aus."
+          },
+          "activity": {
+            "title": "Tages-Kompass",
+            "type": "Klarheitsspiel",
+            "instruction": "Wähle aus drei Möglichkeiten bewusst deinen heutigen Schwerpunkt."
+          }
+        },
+        {
+          "intro": "Wenn zu vieles gleichzeitig wichtig erscheint, verliert sich innere Kraft. Ausrichtung schafft Sammlung.",
+          "premiumInsight": "Ausrichtung entlastet, weil sie Prioritäten sichtbar macht und Entscheidungsdruck senken kann.",
+          "premiumQuestion": "Welcher Bereich meines Lebens braucht gerade eine klarere innere Linie?",
+          "integration": "Nicht alles verdient gleich viel Energie.",
+          "focus": "Linie",
+          "microStep": "Entscheide heute bewusst, was weniger Aufmerksamkeit bekommen darf.",
+          "smart": {
+            "koerper": "Richte deinen Blick bewusst nach vorne aus.",
+            "gedanke": "Vervollständige: Heute richtet mich innerlich aus, dass...",
+            "handlung": "Treffe heute eine Auswahl statt alles gleichzeitig zu tragen."
+          },
+          "activity": {
+            "title": "Weniger ist klarer",
+            "type": "Sortierübung",
+            "instruction": "Sortiere fünf aktuelle Themen nach: jetzt wichtig / später / heute nicht nötig."
+          }
+        },
+        {
+          "intro": "Ausrichtung bedeutet, dich an dem zu orientieren, was dich stärkt, nährt und dir Sinn gibt.",
+          "premiumInsight": "Wertebasierte Entscheidungen fühlen sich oft tragfähiger und stimmiger an als reine Reaktionsentscheidungen.",
+          "premiumQuestion": "Wie kann ich heute eine Entscheidung mehr an meinem inneren Kompass ausrichten?",
+          "integration": "Was dich innerlich ausrichtet, ordnet oft auch deinen Tag.",
+          "focus": "Innerer Kompass",
+          "microStep": "Treffe heute eine kleine Entscheidung mit Blick auf deinen Wert statt auf äußeren Druck.",
+          "smart": {
+            "koerper": "Spüre, ob dein Körper auf eine stimmige Ausrichtung ruhiger reagiert.",
+            "gedanke": "Frage dich: Was entspricht mir heute wirklich?",
+            "handlung": "Handle heute einmal ausdrücklich entlang deines inneren Kompasses."
+          },
+          "activity": {
+            "title": "Werte-Fokus",
+            "type": "Reflexionsspiel",
+            "instruction": "Wähle einen Wert für heute, zum Beispiel Klarheit, Ruhe oder Ehrlichkeit, und richte eine Handlung daran aus."
+          }
+        }
+      ]
+    },
+    {
+      "day": 20,
+      "title": "Wachstum",
+      "variants": [
+        {
+          "intro": "Wachstum ist oft still. Es zeigt sich nicht nur in großen Schritten, sondern in veränderten Reaktionen und feineren Entscheidungen.",
+          "premiumInsight": "Nachhaltige Veränderung entsteht häufig durch Wiederholung, nicht durch Intensität allein.",
+          "premiumQuestion": "Welche kleine Entwicklung in mir möchte ich heute bewusster würdigen?",
+          "integration": "Wachstum darf leise und echt sein.",
+          "focus": "Entwicklung",
+          "microStep": "Erkenne heute bewusst einen kleinen Fortschritt in dir an.",
+          "smart": {
+            "koerper": "Spüre, ob Anerkennung auch körperlich etwas weicher macht.",
+            "gedanke": "Frage dich: Woran merke ich, dass ich nicht mehr ganz dieselbe bin wie früher?",
+            "handlung": "Benenne heute eine Entwicklung, die du weiter stärken willst."
+          },
+          "activity": {
+            "title": "Schon gewachsen",
+            "type": "Reflexionsübung",
+            "instruction": "Notiere drei kleine Entwicklungen, die bereits in dir stattgefunden haben."
+          }
+        },
+        {
+          "intro": "Wachstum braucht Zeit, Geduld und Wiederholung. Es entsteht nicht gegen dich, sondern durch bewussteren Kontakt mit dir.",
+          "premiumInsight": "Kleine Fortschritte werden oft unterschätzt, obwohl sie langfristig sehr wirksam sind.",
+          "premiumQuestion": "Wo darf ich meinen Prozess mehr anerkennen statt kritisieren?",
+          "integration": "Anerkennung stabilisiert Entwicklung.",
+          "focus": "Anerkennung",
+          "microStep": "Lobe heute bewusst einen kleinen Schritt, statt nur Mängel zu sehen.",
+          "smart": {
+            "koerper": "Spüre, wie dein Körper auf Selbstkritik und Anerkennung unterschiedlich reagiert.",
+            "gedanke": "Vervollständige: Ich habe mich bereits entwickelt in...",
+            "handlung": "Gib dir heute bewusst innere Anerkennung für etwas Kleines."
+          },
+          "activity": {
+            "title": "Fortschritts-Lupe",
+            "type": "Didaktisches Mini-Spiel",
+            "instruction": "Schau mit der Lupe auf kleine Fortschritte: Was ist minimal besser, ruhiger oder klarer geworden?"
+          }
+        },
+        {
+          "intro": "Wachstum bedeutet nicht, jemand anderes zu werden. Es bedeutet, mehr von dir selbst bewusst und tragfähig zu entfalten.",
+          "premiumInsight": "Entwicklung wird stabiler, wenn sie in alltagsnahe Gewohnheiten eingebettet ist.",
+          "premiumQuestion": "Welche Gewohnheit unterstützt mein inneres Wachstum am besten?",
+          "integration": "Entwicklung wird tragfähig, wenn sie im Alltag Wurzeln schlägt.",
+          "focus": "Verankerung",
+          "microStep": "Wähle heute eine kleine Gewohnheit, die dein Wachstum unterstützt.",
+          "smart": {
+            "koerper": "Spüre, welche Haltung oder Bewegung heute Entwicklung symbolisieren könnte.",
+            "gedanke": "Frage dich: Was möchte in mir weiter wachsen?",
+            "handlung": "Verankere heute eine kleine Handlung für deine Entwicklung."
+          },
+          "activity": {
+            "title": "Wachstums-Samen",
+            "type": "Ritualübung",
+            "instruction": "Definiere einen kleinen Samen für die nächste Woche: eine Gewohnheit, die weiter wachsen darf."
+          }
+        }
+      ]
+    },
+    {
+      "day": 21,
+      "title": "Neubeginn",
+      "variants": [
+        {
+          "intro": "Ein Neubeginn muss nicht groß sein. Oft beginnt er mit einer neuen inneren Haltung, die du ab heute bewusster lebst.",
+          "premiumInsight": "Wiederholte Zyklen vertiefen Selbstwahrnehmung, Regulation und innere Stabilität.",
+          "premiumQuestion": "Welche Erkenntnis aus diesen Tagen soll mein nächster Schritt werden?",
+          "integration": "Du beginnst nicht bei null, sondern mit Erfahrung.",
+          "focus": "Übergang",
+          "microStep": "Wähle heute eine Erkenntnis, die du in den nächsten Abschnitt mitnehmen willst.",
+          "smart": {
+            "koerper": "Spüre, wie sich Aufbruch im Körper zeigt – eher offen, klar oder vorsichtig.",
+            "gedanke": "Frage dich: Was möchte ich bewusst weitertragen?",
+            "handlung": "Formuliere heute einen klaren nächsten Schritt."
+          },
+          "activity": {
+            "title": "Mitnehmen und loslassen",
+            "type": "Abschlussübung",
+            "instruction": "Schreibe auf: Das nehme ich mit. Das lasse ich zurück."
+          }
+        },
+        {
+          "intro": "Neubeginn bedeutet nicht, alles anders zu machen. Er bedeutet, bewusster, klarer und verbundener weiterzugehen.",
+          "premiumInsight": "Integration am Ende eines Zyklus verstärkt oft die nachhaltige Wirkung des Erlebten.",
+          "premiumQuestion": "Was möchte ich bewusst bewahren, bevor ein neuer Abschnitt beginnt?",
+          "integration": "Ein guter Neubeginn ehrt auch das, was gewachsen ist.",
+          "focus": "Weitergehen",
+          "microStep": "Markiere heute innerlich oder äußerlich einen bewussten Übergang.",
+          "smart": {
+            "koerper": "Nimm eine aufgerichtete Haltung ein, die Neubeginn verkörpert.",
+            "gedanke": "Vervollständige: Ich gehe weiter mit...",
+            "handlung": "Setze heute eine kleine neue Handlung als Zeichen des Übergangs."
+          },
+          "activity": {
+            "title": "Neuer Abschnitt",
+            "type": "Mini-Ritual",
+            "instruction": "Wähle ein kleines Symbol für deinen Neubeginn: ein Satz, ein Ort, eine Handlung oder ein Gegenstand."
+          }
+        },
+        {
+          "intro": "Jeder Abschluss trägt bereits den Keim eines neuen Anfangs in sich. Was du erkannt hast, darf jetzt Alltag werden.",
+          "premiumInsight": "Rituale zum Abschluss und Neubeginn fördern Kontinuität und innere Orientierung.",
+          "premiumQuestion": "Wie kann ich den nächsten Zyklus so beginnen, dass er sich bewusst und stimmig anfühlt?",
+          "integration": "Neubeginn wird stärker, wenn er aus innerer Klarheit statt aus Druck entsteht.",
+          "focus": "Neuer Zyklus",
+          "microStep": "Lege heute bewusst fest, womit der nächste Zyklus beginnen soll.",
+          "smart": {
+            "koerper": "Spüre, ob sich Abschluss und Neubeginn eher leicht oder ernst anfühlen.",
+            "gedanke": "Frage dich: Welche Qualität möchte ich im nächsten Abschnitt leben?",
+            "handlung": "Definiere heute einen neuen Start-Anker."
+          },
+          "activity": {
+            "title": "Start-Anker",
+            "type": "Planungsübung",
+            "instruction": "Lege einen konkreten ersten Schritt für den nächsten Zyklus fest – klein, klar und realistisch."
+          }
+        }
+      ]
+    }
+  ]
+}
