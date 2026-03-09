@@ -363,6 +363,35 @@
       box-shadow:none;
     }
 
+    .cycleDoneBox{
+      margin-top:14px;
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(200,162,74,.34);
+      background:
+        radial-gradient(800px 260px at 20% 0%, rgba(255,246,214,.92), rgba(255,255,255,.72)),
+        linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.75));
+      box-shadow:
+        0 0 22px rgba(200,162,74,.18),
+        0 16px 42px rgba(0,0,0,.08);
+      display:none;
+    }
+
+    .cycleDoneBox h4{
+      margin:0 0 6px 0;
+      font-size:15px;
+      font-weight:950;
+      color:#3a2c10;
+    }
+
+    .cycleDoneBox p{
+      margin:0;
+      color: rgba(43,43,43,.80);
+      font-weight:760;
+      font-size:13.8px;
+      line-height:1.5;
+    }
+
     .premiumTeaser{
       margin-top:14px;
       padding:14px;
@@ -898,6 +927,19 @@
           <button class="primary" id="nextBtn" type="button">Avanti →</button>
         </div>
 
+        <div class="navRow" style="margin-top:10px;">
+          <button id="completeBtn" type="button">Segna il giorno come completato ✓</button>
+          <button id="restartCycleBtn" type="button" style="display:none;">Inizia un nuovo ciclo di 21 giorni ↺</button>
+        </div>
+
+        <div class="cycleDoneBox" id="cycleDoneBox">
+          <h4>21 giorni completati ✨</h4>
+          <p>
+            Hai completato questo ciclo. Ora puoi iniziare un nuovo percorso di 21 giorni
+            e vivere i contenuti con un nuovo ritmo.
+          </p>
+        </div>
+
         <div class="divider"></div>
 
         <div class="premiumTeaser" id="premiumTeaser">
@@ -1073,6 +1115,9 @@
 
     const prevBtn = document.getElementById("prevBtn");
     const nextBtn = document.getElementById("nextBtn");
+    const completeBtn = document.getElementById("completeBtn");
+    const restartCycleBtn = document.getElementById("restartCycleBtn");
+    const cycleDoneBox = document.getElementById("cycleDoneBox");
 
     // ===== STATE =====
     let dataDays = [];
@@ -1130,6 +1175,10 @@
       }
     }
 
+    function isDayCompleted(day){
+      return getCompletedDays().includes(clampDay(day));
+    }
+
     function getStartDate(){
       ensureStartDate();
       const raw = localStorage.getItem(LS_START);
@@ -1166,10 +1215,37 @@
       }
     }
 
+    function isEntireCycleCompleted(){
+      return getCompletedDays().length >= TOTAL_DAYS;
+    }
+
+    function restartCycle(){
+      const oldStart = getStartDate();
+      const newStartDate = new Date(oldStart);
+      newStartDate.setDate(newStartDate.getDate() + TOTAL_DAYS);
+
+      const yyyy = newStartDate.getFullYear();
+      const mm = String(newStartDate.getMonth() + 1).padStart(2, "0");
+      const dd = String(newStartDate.getDate()).padStart(2, "0");
+      const iso = `${yyyy}-${mm}-${dd}`;
+
+      localStorage.setItem(LS_START, iso);
+      localStorage.setItem(LS_DAY, "1");
+      localStorage.setItem(LS_PROGRESS, JSON.stringify([]));
+
+      currentDay = 1;
+
+      localStorage.removeItem(LS_PREMIUM_VARIANT_MAP);
+      localStorage.removeItem(LS_PREMIUM_CYCLE_ID);
+
+      render();
+    }
+
     function updateProgressUI(){
       const completed = getCompletedDays();
       const done = completed.length;
       const locked = isCurrentDayLocked();
+      const currentCompleted = completed.includes(currentDay);
 
       progressCount.textContent = String(done);
       progressFill.style.width = `${(done / TOTAL_DAYS) * 100}%`;
@@ -1180,7 +1256,7 @@
         dayDone.textContent = "🔒";
         dayDone.classList.add("locked");
         dayCard.classList.add("lockedBox");
-      } else if(completed.includes(currentDay)){
+      } else if(currentCompleted){
         dayDone.textContent = "✓";
         dayDone.classList.add("done");
         dayCard.classList.remove("lockedBox");
@@ -1429,6 +1505,12 @@
       prevBtn.disabled = currentDay <= 1;
       nextBtn.disabled = true;
       nextBtn.textContent = "Ancora bloccato 🔒";
+
+      completeBtn.disabled = true;
+      completeBtn.textContent = "Non ancora disponibile 🔒";
+
+      restartCycleBtn.style.display = "none";
+      cycleDoneBox.style.display = "none";
     }
 
     function render(){
@@ -1436,6 +1518,8 @@
 
       const locked = isCurrentDayLocked();
       const dayData = findDayObj(currentDay) || {};
+      const completed = isDayCompleted(currentDay);
+      const cycleCompleted = isEntireCycleCompleted();
 
       if(locked){
         updateProgressUI();
@@ -1469,13 +1553,29 @@
 
       if(currentDay >= TOTAL_DAYS){
         nextBtn.disabled = true;
-        nextBtn.textContent = "Ultimo giorno ✓";
+        nextBtn.textContent = completed ? "Ultimo giorno ✓" : "Ultimo giorno";
       } else if(currentDay + 1 > getUnlockedDay()){
         nextBtn.disabled = true;
         nextBtn.textContent = "Ancora bloccato 🔒";
       } else {
         nextBtn.disabled = false;
         nextBtn.textContent = "Avanti →";
+      }
+
+      if(completed){
+        completeBtn.disabled = true;
+        completeBtn.textContent = "Già completato ✓";
+      } else {
+        completeBtn.disabled = false;
+        completeBtn.textContent = "Segna il giorno come completato ✓";
+      }
+
+      if(cycleCompleted){
+        cycleDoneBox.style.display = "block";
+        restartCycleBtn.style.display = "inline-flex";
+      } else {
+        cycleDoneBox.style.display = "none";
+        restartCycleBtn.style.display = "none";
       }
     }
 
@@ -1543,6 +1643,16 @@
           markDayCompleted(currentDay);
           setStoredDay(currentDay + 1);
         }
+      });
+
+      completeBtn.addEventListener("click", () => {
+        if(isCurrentDayLocked()) return;
+        markDayCompleted(currentDay);
+        render();
+      });
+
+      restartCycleBtn.addEventListener("click", () => {
+        restartCycle();
       });
 
       choiceBtns.forEach(btn => {
