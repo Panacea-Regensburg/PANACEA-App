@@ -264,7 +264,7 @@
       color:var(--text);
       flex:1;
       min-width:130px;
-      transition: transform .15s ease;
+      transition: transform .15s ease, opacity .15s ease;
     }
     button:hover{ transform: translateY(-1px); }
 
@@ -273,6 +273,13 @@
       border:1px solid rgba(200,162,74,.35);
       color:#3a2c10;
       text-shadow: 0 0 10px rgba(200,162,74,.25);
+    }
+
+    button:disabled{
+      opacity:.45;
+      cursor:not-allowed;
+      transform:none !important;
+      box-shadow:none;
     }
 
     .premiumTeaser{
@@ -748,7 +755,7 @@
         <div class="softBox">
           <div class="label">Giorno <span id="tagNumber">1</span></div>
           <div class="imgWrap">
-            <img id="dayImage" src="./icons/1.png" alt="Immagine del giorno" />
+            <img id="dayImage" src="./icons/1.png" alt="Immagine del giorno 1" />
           </div>
         </div>
 
@@ -905,10 +912,9 @@
     const TOTAL_DAYS = 21;
 
     const LS_DAY = "panacea_wissen_day";
-    const LS_PREMIUM = "panacea_premium";
     const LS_START = "panacea_wissen_start";
     const LS_LANG = "lang";
-    const MEMBER_KEY = "panacea_member";
+    const LS_MEMBER = "panacea_member";
 
     const LS_PREMIUM_CYCLE_ID = "panacea_wissen_premium_cycle_id";
     const LS_PREMIUM_VARIANT_MAP = "panacea_wissen_premium_variant_map";
@@ -991,13 +997,9 @@
     const nextBtn = document.getElementById("nextBtn");
 
     // ===== HELPERS =====
-    function isPremium(){
-      const v = String(localStorage.getItem(LS_PREMIUM) || "").toLowerCase();
-      return (v === "1" || v === "true" || v === "yes" || v === "on");
-    }
-
     function isMember(){
-      return localStorage.getItem(MEMBER_KEY) === "true" || isPremium();
+      const v = String(localStorage.getItem(LS_MEMBER) || "").toLowerCase();
+      return v === "1" || v === "true" || v === "yes" || v === "on";
     }
 
     function clampDay(n){
@@ -1224,24 +1226,34 @@
       renderSmartExercise(currentVariant, currentVariant.smartExercise.autoChoice || "mind");
     }
 
+    function renderFreeContent(d){
+      const title = d.title || "Contenuto in preparazione";
+      const explanation = d.explanation || "Questo impulso del giorno sarà disponibile a breve.";
+      const impuls = d.impuls || d.impulse || "La chiarezza nasce passo dopo passo.";
+      const reflection = d.reflection || "Di che cosa ho davvero bisogno oggi?";
+
+      elTitle.textContent = title;
+      elExplanation.textContent = explanation;
+      elImpuls.textContent = impuls;
+      elReflection.textContent = reflection;
+
+      if(d.exercise && (d.exercise.text || d.exercise.title)){
+        exerciseWrap.style.display = "block";
+        exerciseTitle.textContent = d.exercise.title || "Mini esercizio";
+        exerciseText.textContent = d.exercise.text || "—";
+      } else {
+        exerciseWrap.style.display = "none";
+      }
+    }
+
     function render(){
       const d = findDayObj(currentDay) || {};
 
       tagNumber.textContent = String(currentDay);
       dayImage.src = `./icons/${currentDay}.png`;
+      dayImage.alt = `Immagine del giorno ${currentDay}`;
 
-      elTitle.textContent = d.title || "—";
-      elExplanation.innerHTML = d.explanation || "—";
-      elImpuls.innerHTML = d.impuls || d.impulse || "—";
-      elReflection.innerHTML = d.reflection || "—";
-
-      if(d.exercise && (d.exercise.text || d.exercise.title)){
-        exerciseWrap.style.display = "block";
-        exerciseTitle.textContent = d.exercise.title || "Mini esercizio";
-        exerciseText.innerHTML = d.exercise.text || "—";
-      } else {
-        exerciseWrap.style.display = "none";
-      }
+      renderFreeContent(d);
 
       if(isMember()){
         premiumBadge.textContent = "Stato: Membro ✅";
@@ -1259,36 +1271,53 @@
       }
 
       prevBtn.disabled = (currentDay <= 1);
-      nextBtn.disabled = (currentDay >= TOTAL_DAYS);
-      nextBtn.textContent = (currentDay >= TOTAL_DAYS) ? "Finito ✓" : "Avanti →";
+      nextBtn.disabled = false;
+
+      if(currentDay >= TOTAL_DAYS){
+        nextBtn.textContent = "Ultimo giorno ✓";
+      } else {
+        nextBtn.textContent = "Avanti →";
+      }
     }
 
-    async function loadJSON(){
+    async function loadFreeJSON(){
       try{
-        const [freeRes, premiumRes] = await Promise.all([
-          fetch(JSON_URL, { cache: "no-store" }),
-          fetch(PREMIUM_JSON_URL, { cache: "no-store" })
-        ]);
-
+        const freeRes = await fetch(JSON_URL, { cache: "no-store" });
         if(!freeRes.ok) throw new Error("Free JSON fetch failed: " + freeRes.status);
-        if(!premiumRes.ok) throw new Error("Premium JSON fetch failed: " + premiumRes.status);
 
         const freeJson = await freeRes.json();
-        const premiumJson = await premiumRes.json();
-
         dataDays = Array.isArray(freeJson?.days) ? freeJson.days : (Array.isArray(freeJson) ? freeJson : []);
+      } catch(err){
+        console.warn("Il JSON FREE di Sapere non è stato caricato:", err);
+        dataDays = [];
+      }
+    }
+
+    async function loadPremiumJSON(){
+      try{
+        const premiumRes = await fetch(PREMIUM_JSON_URL, { cache: "no-store" });
+        if(!premiumRes.ok) throw new Error("Premium JSON fetch failed: " + premiumRes.status);
+
+        const premiumJson = await premiumRes.json();
         premiumDays = Array.isArray(premiumJson?.days) ? premiumJson.days : (Array.isArray(premiumJson) ? premiumJson : []);
       } catch(err){
-        console.warn("Il JSON Sapere non è stato caricato:", err);
-        dataDays = [];
+        console.warn("Il JSON PREMIUM di Sapere non è stato caricato:", err);
         premiumDays = [];
       }
     }
 
+    async function loadJSON(){
+      await loadFreeJSON();
+      await loadPremiumJSON();
+    }
+
     function bindEvents(){
       prevBtn.addEventListener("click", () => setStoredDay(currentDay - 1));
+
       nextBtn.addEventListener("click", () => {
-        if(currentDay < TOTAL_DAYS) setStoredDay(currentDay + 1);
+        if(currentDay < TOTAL_DAYS){
+          setStoredDay(currentDay + 1);
+        }
       });
 
       choiceBtns.forEach(btn => {
@@ -1304,7 +1333,9 @@
 
       finishBtn.addEventListener("click", () => {
         closingBox.style.display = "block";
-        closingBox.scrollIntoView({ behavior:"smooth", block:"start" });
+        if(typeof closingBox.scrollIntoView === "function"){
+          closingBox.scrollIntoView({ behavior:"smooth", block:"start" });
+        }
       });
 
       dayImage.addEventListener("error", () => {
@@ -1323,6 +1354,7 @@
             </text>
           </svg>`
         );
+        dayImage.alt = `Immagine segnaposto per il giorno ${currentDay}`;
       });
     }
 
