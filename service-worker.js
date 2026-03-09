@@ -1,4 +1,4 @@
-const CACHE_VERSION = "v17";
+const CACHE_VERSION = "v18";
 const CACHE_NAME = `panacea-cache-${CACHE_VERSION}`;
 
 const ASSETS = [
@@ -19,6 +19,9 @@ const ASSETS = [
   "./service-worker.js",
 
   "./data/wissen.json",
+  "./data/wissenIT.json",
+  "./data/wissen-premium.json",
+  "./data/wissen-premiumIT.json",
   "./data/resetPremium.json",
   "./data/resetPremium_member.json",
 
@@ -53,7 +56,15 @@ const ASSETS = [
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
+    caches.open(CACHE_NAME).then(async (cache) => {
+      for (const asset of ASSETS) {
+        try {
+          await cache.add(asset);
+        } catch (error) {
+          console.warn("Cache add failed:", asset, error);
+        }
+      }
+    })
   );
   self.skipWaiting();
 });
@@ -109,9 +120,15 @@ self.addEventListener("fetch", (event) => {
           }
           return res;
         })
-        .catch(() =>
-          caches.match(req).then((cached) => cached || caches.match("./index.html"))
-        )
+        .catch(async () => {
+          const cached = await caches.match(req);
+          if (cached) return cached;
+
+          if (url.pathname.includes("IT")) {
+            return caches.match("./indexIT.html");
+          }
+          return caches.match("./index.html");
+        })
     );
     return;
   }
@@ -157,13 +174,15 @@ self.addEventListener("fetch", (event) => {
     caches.match(req).then((cached) => {
       if (cached) return cached;
 
-      return fetch(req).then((res) => {
-        if (res && res.status === 200) {
-          const copy = res.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(req, copy));
-        }
-        return res;
-      });
+      return fetch(req)
+        .then((res) => {
+          if (res && res.status === 200) {
+            const copy = res.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(req, copy));
+          }
+          return res;
+        })
+        .catch(() => null);
     })
   );
 });
