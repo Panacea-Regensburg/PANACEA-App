@@ -1,0 +1,613 @@
+{
+  "days": [
+    {
+      "day": 1,
+      "variants": [
+        {
+          "title": "Ressourcenblick",
+          "explanation": "Salutogenese bedeutet, den Blick bewusst auf das zu richten, was dich stärkt, statt auf das, was dich schwächt. Gesundheit entwickelt sich dort, wo du deine Ressourcen wahrnimmst und aktiv nutzt.",
+          "impuls": "Richte deinen Blick auf das, was dich stärkt.",
+          "reflection": "Welche Ressource trägt mich heute bereits – auch wenn sie klein erscheint?",
+          "premiumInsight": "Eine bewusste Ressourcenorientierung kann das Gefühl von Ohnmacht verringern und den inneren Handlungsspielraum erweitern.",
+          "premiumQuestion": "Worauf möchte ich meinen Fokus heute bewusst lenken: auf Mangel oder auf Stärke?"
+        },
+        {
+          "title": "Ressourcen erweitern",
+          "explanation": "Indem du deine Aufmerksamkeit auf Ressourcen lenkst, vergrößerst du deinen inneren Handlungsspielraum. Was du bewusst wahrnimmst, kannst du wirksamer nutzen.",
+          "impuls": "Aufmerksamkeit formt deinen inneren Spielraum.",
+          "reflection": "Welche innere oder äußere Ressource habe ich bisher unterschätzt?",
+          "premiumInsight": "Das bewusste Wahrnehmen von Ressourcen unterstützt Stabilität, Selbstführung und eine lösungsorientierte Ausrichtung.",
+          "premiumQuestion": "Welche Stärke möchte ich in dieser Woche aktiver einsetzen?"
+        },
+        {
+          "title": "Gesundheit aktiv stärken",
+          "explanation": "Gesundheit entsteht, wenn du lernst, deine Ressourcen bewusst wahrzunehmen. Jeder kleine Schritt in Richtung Ressourcenorientierung stärkt deine innere Stabilität.",
+          "impuls": "Gesundheit wächst dort, wo du Ressourcen erkennst.",
+          "reflection": "Was gibt mir heute Kraft, Klarheit oder Sicherheit?",
+          "premiumInsight": "Wer Ressourcen erkennt, aktiviert häufig eher Motivation, Zuversicht und ein Gefühl von innerer Ordnung.",
+          "premiumQuestion": "Welche Ressource möchte ich heute nicht nur sehen, sondern konkret nutzen?"
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "variants": [
+        {
+          "title": "Verstehen",
+          "explanation": "Dein Kohärenzgefühl wächst, wenn du verstehst, was in deinem Leben geschieht. Verstehen reduziert Unsicherheit und schafft Orientierung.",
+          "impuls": "Verstehen schafft innere Ruhe.",
+          "reflection": "Was in meinem Leben möchte heute klarer verstanden werden?",
+          "premiumInsight": "Wenn Situationen verständlicher werden, reagiert das Nervensystem oft mit weniger Alarm und mehr Stabilität.",
+          "premiumQuestion": "Wo wünsche ich mir gerade mehr Einordnung statt bloßes Reagieren?"
+        },
+        {
+          "title": "Orientierung",
+          "explanation": "Dieses Verstehen schenkt dir Orientierung und reduziert das Gefühl von Ohnmacht. Zusammenhänge zu erkennen stärkt deine innere Sicherheit.",
+          "impuls": "Orientierung mindert Ohnmacht.",
+          "reflection": "Welche Situation würde sich leichter anfühlen, wenn ich sie besser einordnen könnte?",
+          "premiumInsight": "Kognitive Orientierung kann helfen, diffuse Anspannung zu reduzieren und ein Gefühl von Überblick zu stärken.",
+          "premiumQuestion": "Welche Information oder Perspektive würde mir heute mehr Klarheit geben?"
+        },
+        {
+          "title": "Ruhe durch Verständnis",
+          "explanation": "Je besser du verstehst, was in deinem Leben geschieht, desto ruhiger reagiert dein Nervensystem. Verständnis schafft Ordnung im Inneren.",
+          "impuls": "Klarheit beruhigt.",
+          "reflection": "Wo könnte mehr Verständnis meine innere Anspannung verringern?",
+          "premiumInsight": "Ein Gefühl von Verstehbarkeit kann die emotionale Reaktivität senken und das Erleben von Kontrolle stärken.",
+          "premiumQuestion": "Welchen Lebensbereich möchte ich bewusster verstehen, statt ihn nur auszuhalten?"
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "variants": [
+        {
+          "title": "Ordnung",
+          "explanation": "Jede Herausforderung kann verständlicher werden, wenn du dir Zeit nimmst, sie zu ordnen. Struktur schafft Klarheit und Klarheit gibt Sicherheit.",
+          "impuls": "Ordnung reduziert innere Überforderung.",
+          "reflection": "Welche Herausforderung kann ich heute in kleinere, verständlichere Schritte zerlegen?",
+          "premiumInsight": "Das aktive Strukturieren komplexer Situationen kann mentale Überlastung reduzieren und mehr Handlungsspielraum schaffen.",
+          "premiumQuestion": "Was wäre heute mein erster kleiner Ordnungsschritt?"
+        },
+        {
+          "title": "Struktur",
+          "explanation": "Struktur schafft Klarheit und Klarheit gibt dir Sicherheit. Was geordnet ist, wirkt oft weniger bedrohlich.",
+          "impuls": "Ein geordneter Blick verändert dein Erleben.",
+          "reflection": "Wo hilft mir heute mehr Struktur statt mehr Druck?",
+          "premiumInsight": "Innere und äußere Struktur unterstützen Orientierung, Fokus und emotionale Entlastung.",
+          "premiumQuestion": "Was kann ich heute sortieren, benennen oder vereinfachen?"
+        },
+        {
+          "title": "Schritt für Schritt",
+          "explanation": "Orientierung entsteht, wenn du dir erlaubst, Situationen Schritt für Schritt zu betrachten. Aus Komplexität wird Übersicht, wenn du nicht alles auf einmal lösen musst.",
+          "impuls": "Ein Schritt nach dem anderen schafft Übersicht.",
+          "reflection": "Was wäre heute ein überschaubarer nächster Schritt?",
+          "premiumInsight": "Kleine strukturierte Schritte helfen dem Nervensystem, Komplexität als bewältigbar statt bedrohlich zu erleben.",
+          "premiumQuestion": "Welche Situation möchte ich heute bewusst entkomplizieren?"
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "variants": [
+        {
+          "title": "Ressourcen nutzen",
+          "explanation": "Du besitzt innere und äußere Ressourcen, die dir helfen, Belastungen zu bewältigen. Je bewusster du sie wahrnimmst, desto wirksamer kannst du sie einsetzen.",
+          "impuls": "Du hast mehr Ressourcen, als du oft denkst.",
+          "reflection": "Welche innere Stärke oder äußere Unterstützung hilft mir heute konkret?",
+          "premiumInsight": "Das bewusste Aktivieren vorhandener Ressourcen stärkt das Erleben von Handhabbarkeit und Selbstwirksamkeit.",
+          "premiumQuestion": "Welche Ressource möchte ich heute nicht nur erkennen, sondern wirklich einsetzen?"
+        },
+        {
+          "title": "Handhabbarkeit",
+          "explanation": "Belastungen werden leichter, wenn du erkennst, dass dir Werkzeuge, Menschen und Erfahrungen zur Verfügung stehen. Handhabbarkeit wächst mit bewusst genutzten Ressourcen.",
+          "impuls": "Nutze, was dich trägt.",
+          "reflection": "Was steht mir heute zur Verfügung, das ich bisher zu wenig genutzt habe?",
+          "premiumInsight": "Wer vorhandene Unterstützung erkennt, erlebt Herausforderungen oft als weniger überwältigend.",
+          "premiumQuestion": "Auf welche Unterstützung darf ich heute bewusster zurückgreifen?"
+        },
+        {
+          "title": "Fähigkeiten & Erfahrungen",
+          "explanation": "Du verfügst über Fähigkeiten und Erfahrungen, die dich auch durch schwierige Phasen tragen können. Vergangene Bewältigung ist eine wertvolle Ressource für die Gegenwart.",
+          "impuls": "In dir liegt bereits Erfahrung.",
+          "reflection": "Welche Fähigkeit aus der Vergangenheit hilft mir auch heute?",
+          "premiumInsight": "Die Erinnerung an bereits bewältigte Belastungen kann Vertrauen, Stabilität und innere Sicherheit stärken.",
+          "premiumQuestion": "Welche Erfahrung beweist mir, dass ich mehr kann, als ich manchmal glaube?"
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "variants": [
+        {
+          "title": "Sinn",
+          "explanation": "Sinn zu erkennen gibt dir Kraft, auch schwierige Zeiten durchzustehen. Wer ein Warum spürt, findet oft leichter ein Wie.",
+          "impuls": "Sinn gibt Kraft.",
+          "reflection": "Was gibt meinem heutigen Handeln Bedeutung?",
+          "premiumInsight": "Ein erlebter Sinn kann Belastung tragbarer machen und Motivation auch in schwierigen Phasen stabilisieren.",
+          "premiumQuestion": "Wo wünsche ich mir heute mehr Verbindung zu meinem persönlichen Warum?"
+        },
+        {
+          "title": "Warum & Wie",
+          "explanation": "Wer ein Warum hat, findet leichter ein Wie. Sinn orientiert, stärkt und verbindet dich mit deiner inneren Motivation.",
+          "impuls": "Bedeutung schenkt Richtung.",
+          "reflection": "Welcher tiefere Sinn steht hinter dem, was ich gerade tue?",
+          "premiumInsight": "Sinnorientierung kann Zuversicht, Ausdauer und psychische Widerstandskraft unterstützen.",
+          "premiumQuestion": "Welche Aufgabe fühlt sich leichter an, wenn ich ihren Sinn bewusster sehe?"
+        },
+        {
+          "title": "Richtung durch Sinn",
+          "explanation": "Sinn gibt deinem Handeln Richtung und stärkt deine innere Motivation. Wenn du Bedeutung erlebst, fühlst du dich oft verbundener und klarer ausgerichtet.",
+          "impuls": "Sinn richtet dich innerlich aus.",
+          "reflection": "Was ist mir heute wirklich wichtig?",
+          "premiumInsight": "Ein klares inneres Warum unterstützt langfristige Motivation und psychische Stabilität.",
+          "premiumQuestion": "Welcher Lebensbereich braucht heute mehr Sinn statt bloßer Funktion?"
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "variants": [
+        {
+          "title": "Stärken einsetzen",
+          "explanation": "Gesundheit entsteht dort, wo du deine Stärken aktiv einsetzt. Jeder Schritt in Richtung Selbstwirksamkeit stärkt dein Wohlbefinden.",
+          "impuls": "Setze deine Stärke bewusst ein.",
+          "reflection": "Welche Stärke möchte ich heute aktiv leben?",
+          "premiumInsight": "Das bewusste Einsetzen eigener Kompetenzen fördert Selbstvertrauen, Motivation und innere Stabilität.",
+          "premiumQuestion": "In welchem Bereich darf ich mir heute mehr zutrauen?"
+        },
+        {
+          "title": "Selbstwirksamkeit im Alltag",
+          "explanation": "Jeder Schritt in Richtung Selbstwirksamkeit stärkt dein Wohlbefinden. Aktiv zu gestalten verändert dein inneres Erleben.",
+          "impuls": "Ich gestalte mit.",
+          "reflection": "Wo kann ich heute aktiv statt passiv sein?",
+          "premiumInsight": "Selbstwirksamkeit unterstützt Resilienz, Zuversicht und ein gesundes Gefühl von Einfluss.",
+          "premiumQuestion": "Welche kleine Handlung stärkt heute mein Gefühl: Ich kann etwas bewirken?"
+        },
+        {
+          "title": "Stabilität durch Stärken",
+          "explanation": "Wenn du deine Stärken nutzt, entsteht ein Gefühl von Stabilität und Vertrauen. Was du bewusst einbringst, stärkt deine innere Basis.",
+          "impuls": "Deine Stärken sind tragfähig.",
+          "reflection": "Welche Stärke ist heute besonders gefragt?",
+          "premiumInsight": "Wer die eigenen Stärken kennt und nutzt, erlebt Belastungen oft als besser handhabbar.",
+          "premiumQuestion": "Welche Stärke möchte ich in dieser Woche gezielter trainieren?"
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "variants": [
+        {
+          "title": "Zusammenhänge erkennen",
+          "explanation": "Wenn du Zusammenhänge erkennst, fühlt sich dein Leben strukturierter und sicherer an. Verstehbarkeit unterstützt innere Stabilität.",
+          "impuls": "Zusammenhänge schaffen Sicherheit.",
+          "reflection": "Welche Verbindung erkenne ich heute klarer als früher?",
+          "premiumInsight": "Ein geordnetes inneres Bild kann Unsicherheit reduzieren und die Regulation des Nervensystems unterstützen.",
+          "premiumQuestion": "Wo hilft mir heute mehr Überblick statt mehr Grübeln?"
+        },
+        {
+          "title": "Verstehbarkeit",
+          "explanation": "Dieses Gefühl von Verstehbarkeit unterstützt deine innere Stabilität. Was Sinn und Zusammenhang bekommt, wird oft weniger bedrohlich erlebt.",
+          "impuls": "Was verständlich wird, wird leichter tragbar.",
+          "reflection": "Wo wünsche ich mir heute mehr innere Ordnung?",
+          "premiumInsight": "Verstehbarkeit stärkt oft Orientierung, emotionale Ruhe und das Vertrauen in den eigenen Umgang mit Herausforderungen.",
+          "premiumQuestion": "Welche Situation möchte ich heute klarer benennen oder einordnen?"
+        },
+        {
+          "title": "Ordnung im Alltag",
+          "explanation": "Zusammenhänge zu erkennen hilft deinem Geist, Ordnung im Alltag zu schaffen. Struktur im Denken unterstützt Ruhe im Inneren.",
+          "impuls": "Ordnung im Denken schafft Ruhe im Inneren.",
+          "reflection": "Was ergibt heute mehr Sinn, wenn ich es im Zusammenhang betrachte?",
+          "premiumInsight": "Mentale Ordnung kann das Gefühl von Sicherheit stärken und Überforderung vermindern.",
+          "premiumQuestion": "Wo kann ich heute bewusst einen roten Faden erkennen?"
+        }
+      ]
+    },
+    {
+      "day": 8,
+      "variants": [
+        {
+          "title": "Kleine Schritte",
+          "explanation": "Selbst kleine Schritte können dein Gefühl von Handhabbarkeit deutlich erhöhen. Entwicklung beginnt oft im Kleinen.",
+          "impuls": "Ein kleiner Schritt zählt.",
+          "reflection": "Welcher kleine Schritt ist heute realistisch und hilfreich?",
+          "premiumInsight": "Kleine umsetzbare Handlungen stärken das Gefühl von Kontrolle und fördern nachhaltige Entwicklung.",
+          "premiumQuestion": "Welchen Mini-Schritt kann ich heute wirklich konsequent gehen?"
+        },
+        {
+          "title": "Kontinuität",
+          "explanation": "Kontinuität verwandelt kleine Fortschritte in nachhaltige Entwicklung. Kleine Wiederholungen tragen oft mehr als große Vorsätze.",
+          "impuls": "Beständigkeit verändert mehr als Perfektion.",
+          "reflection": "Welche kleine Handlung möchte ich heute bewusst wiederholen?",
+          "premiumInsight": "Regelmäßige kleine Schritte können Routinen stabilisieren und das Gefühl von Wirksamkeit vertiefen.",
+          "premiumQuestion": "Was darf heute klein sein – und trotzdem bedeutsam?"
+        },
+        {
+          "title": "Bewusste Entscheidungen",
+          "explanation": "Kleine, bewusste Entscheidungen können dein Gefühl von Handhabbarkeit stärken. Was du aktiv wählst, fühlt sich weniger ausgeliefert an.",
+          "impuls": "Bewusste Entscheidungen stärken dich.",
+          "reflection": "Welche kleine Entscheidung liegt heute in meiner Hand?",
+          "premiumInsight": "Auch kleine Entscheidungen fördern ein Gefühl von Kontrolle und unterstützen die innere Stabilität.",
+          "premiumQuestion": "Wo kann ich heute bewusst gestalten statt nur mitlaufen?"
+        }
+      ]
+    },
+    {
+      "day": 9,
+      "variants": [
+        {
+          "title": "Vertrauen",
+          "explanation": "Vertrauen in deine Fähigkeiten ist ein zentraler Baustein deiner Widerstandskraft. Mit jedem Erfolg wächst dein Glaube an dich selbst.",
+          "impuls": "Vertrauen wächst durch Erfahrung.",
+          "reflection": "Woran erkenne ich, dass ich bereits mehr kann, als ich denke?",
+          "premiumInsight": "Selbstvertrauen unterstützt Resilienz, Handlungsfähigkeit und eine ruhigere innere Ausrichtung.",
+          "premiumQuestion": "Welchen Erfolg sollte ich heute bewusst anerkennen?"
+        },
+        {
+          "title": "Widerstandskraft",
+          "explanation": "Mit jedem Erfolg wächst dein Glaube an dich selbst. Kleine bewältigte Situationen bauen innere Stärke auf.",
+          "impuls": "Jeder Erfolg stärkt dein Fundament.",
+          "reflection": "Welche bewältigte Situation erinnert mich heute an meine Stärke?",
+          "premiumInsight": "Das bewusste Erinnern eigener Kompetenzen kann die innere Sicherheit und Zuversicht erhöhen.",
+          "premiumQuestion": "Wie kann ich meine kleinen Erfolge sichtbarer machen?"
+        },
+        {
+          "title": "Selbstvertrauen wächst",
+          "explanation": "Selbstvertrauen wächst mit jeder Situation, die du aktiv bewältigst. Jeder Schritt stärkt dein inneres Vertrauen.",
+          "impuls": "Bewältigung stärkt Vertrauen.",
+          "reflection": "Wo habe ich in letzter Zeit aktiv etwas gemeistert?",
+          "premiumInsight": "Aktiv bewältigte Situationen fördern das Erleben von Kompetenz und innerer Stabilität.",
+          "premiumQuestion": "Welche aktuelle Herausforderung kann mein Vertrauen in mich selbst stärken?"
+        }
+      ]
+    },
+    {
+      "day": 10,
+      "variants": [
+        {
+          "title": "Soziale Unterstützung",
+          "explanation": "Soziale Unterstützung ist eine wertvolle Ressource auf deinem Weg zu mehr Wohlbefinden. Gemeinschaft kann Sicherheit und Zugehörigkeit vermitteln.",
+          "impuls": "Du musst nicht alles allein tragen.",
+          "reflection": "Wer oder was gibt mir heute ein Gefühl von Unterstützung?",
+          "premiumInsight": "Verbundenheit kann das Sicherheitsgefühl stärken und emotionale Belastung spürbar entlasten.",
+          "premiumQuestion": "Wo darf ich heute Unterstützung annehmen statt alles allein lösen zu wollen?"
+        },
+        {
+          "title": "Zugehörigkeit",
+          "explanation": "Gemeinschaft vermittelt Zugehörigkeit und stärkt dein Sicherheitsgefühl. Getragensein ist selbst eine Ressource.",
+          "impuls": "Verbundenheit stärkt.",
+          "reflection": "Wo erlebe ich heute echte Verbindung?",
+          "premiumInsight": "Soziale Verbundenheit unterstützt häufig emotionale Regulation, Zuversicht und Stressresistenz.",
+          "premiumQuestion": "Welche Beziehung tut meinem System heute besonders gut?"
+        },
+        {
+          "title": "Kraft durch Menschen",
+          "explanation": "Menschen, die dich unterstützen, können eine wichtige Quelle von Kraft sein. Beziehung kann Stabilität und Halt geben.",
+          "impuls": "Verbindung trägt.",
+          "reflection": "Welche Person gibt mir heute Ruhe, Orientierung oder Mut?",
+          "premiumInsight": "Wahrgenommene Unterstützung kann das Gefühl von Isolation reduzieren und Resilienz stärken.",
+          "premiumQuestion": "Bei wem darf ich heute ehrlich zeigen, wie es mir geht?"
+        }
+      ]
+    },
+    {
+      "day": 11,
+      "variants": [
+        {
+          "title": "Wachstum",
+          "explanation": "Du darfst lernen, Belastungen als Teil deines Wachstums zu begreifen. In jeder Schwierigkeit liegt auch die Chance zur Weiterentwicklung.",
+          "impuls": "Auch Schwieriges kann Entwicklung tragen.",
+          "reflection": "Was könnte ich aus einer aktuellen Belastung lernen?",
+          "premiumInsight": "Eine wachstumsorientierte Perspektive kann Resilienz stärken und das Gefühl von Sinn in schwierigen Zeiten erhöhen.",
+          "premiumQuestion": "Welche Fähigkeit wächst gerade in mir – vielleicht unbemerkt?"
+        },
+        {
+          "title": "Weiterentwicklung",
+          "explanation": "In jeder Schwierigkeit liegt auch die Chance zur Weiterentwicklung. Nicht jede Belastung ist nur Verlust – manches wird auch zur Reifung.",
+          "impuls": "Wachstum geschieht oft mitten im Schwierigen.",
+          "reflection": "Wo fordert mich das Leben gerade – und was lerne ich dabei?",
+          "premiumInsight": "Herausforderungen können neue Kompetenzen, Anpassungsfähigkeit und innere Stärke fördern.",
+          "premiumQuestion": "Was wäre eine reifere Antwort auf meine aktuelle Herausforderung?"
+        },
+        {
+          "title": "Neue Fähigkeiten",
+          "explanation": "Herausforderungen können auch Möglichkeiten sein, neue Fähigkeiten zu entwickeln. Wachstum entsteht oft dort, wo du dich neuen Erfahrungen öffnest.",
+          "impuls": "Im Neuen liegt Entwicklung.",
+          "reflection": "Welche neue Fähigkeit entsteht gerade durch meine Erfahrung?",
+          "premiumInsight": "Wer Belastungen als Lernfelder begreift, stärkt häufig Anpassungsfähigkeit und psychische Flexibilität.",
+          "premiumQuestion": "Was entwickelt sich gerade in mir, obwohl es sich noch ungewohnt anfühlt?"
+        }
+      ]
+    },
+    {
+      "day": 12,
+      "variants": [
+        {
+          "title": "Klarheit",
+          "explanation": "Klarheit schafft Orientierung und Orientierung schafft Stabilität. Ein klarer Blick entlastet das Innere.",
+          "impuls": "Klarheit stabilisiert.",
+          "reflection": "Was darf heute klarer werden?",
+          "premiumInsight": "Mentale Klarheit kann Unsicherheit reduzieren, Prioritäten sichtbar machen und innere Ruhe fördern.",
+          "premiumQuestion": "Was möchte ich heute ehrlich und deutlich benennen?"
+        },
+        {
+          "title": "Orientierung & Stabilität",
+          "explanation": "Stabilität wiederum gibt dir die Kraft, mutig voranzugehen. Wer Orientierung hat, muss nicht alles gleichzeitig lösen.",
+          "impuls": "Orientierung macht mutig.",
+          "reflection": "Welche Klarheit würde mir heute mehr Stabilität geben?",
+          "premiumInsight": "Ein klarer Fokus entlastet das Nervensystem und stärkt das Gefühl von innerer Führung.",
+          "premiumQuestion": "Wo brauche ich heute weniger Nebel und mehr Richtung?"
+        },
+        {
+          "title": "Reflexion",
+          "explanation": "Klarheit entsteht oft dann, wenn du einen Schritt zurücktrittst und reflektierst. Reflexion schafft Raum für neue Sichtweisen.",
+          "impuls": "Ein Schritt zurück kann Klarheit bringen.",
+          "reflection": "Was sehe ich klarer, wenn ich heute etwas Abstand nehme?",
+          "premiumInsight": "Bewusste Reflexion kann emotionale Reaktivität verringern und neue Ordnung ermöglichen.",
+          "premiumQuestion": "Welche Frage sollte ich mir heute in Ruhe stellen?"
+        }
+      ]
+    },
+    {
+      "day": 13,
+      "variants": [
+        {
+          "title": "Verantwortung",
+          "explanation": "Indem du Verantwortung übernimmst, stärkst du dein Gefühl von Kontrolle. Verantwortung bedeutet Gestaltung, nicht Schuld.",
+          "impuls": "Verantwortung schafft Einfluss.",
+          "reflection": "Wo kann ich heute bewusst Verantwortung für mein Handeln übernehmen?",
+          "premiumInsight": "Eigenverantwortung fördert Selbstführung, Klarheit und das Erleben von Gestaltungskraft.",
+          "premiumQuestion": "Welchen Bereich meines Lebens möchte ich heute aktiver führen?"
+        },
+        {
+          "title": "Gestaltungskraft",
+          "explanation": "Eigenverantwortung macht dich vom Getriebenen zum Gestalter. Schon kleine bewusste Entscheidungen verändern dein Erleben.",
+          "impuls": "Vom Reagieren ins Gestalten.",
+          "reflection": "Wo möchte ich heute gestalten statt bloß funktionieren?",
+          "premiumInsight": "Das Gefühl, aktiv Einfluss zu nehmen, unterstützt Motivation, Stabilität und Selbstwirksamkeit.",
+          "premiumQuestion": "Welche Entscheidung würde mich heute innerlich aufrichten?"
+        },
+        {
+          "title": "Selbstbestimmung",
+          "explanation": "Verantwortung für dein eigenes Handeln stärkt dein Gefühl von Selbstbestimmung. Wer gestaltet, erlebt sich seltener ausgeliefert.",
+          "impuls": "Selbstbestimmung stärkt.",
+          "reflection": "Wo handle ich heute bewusst im Einklang mit mir?",
+          "premiumInsight": "Selbstbestimmung kann das Gefühl von Kontrolle vertiefen und innere Sicherheit stärken.",
+          "premiumQuestion": "In welchem Lebensbereich wünsche ich mir mehr eigene Führung?"
+        }
+      ]
+    },
+    {
+      "day": 14,
+      "variants": [
+        {
+          "title": "Bewältigung",
+          "explanation": "Jede bewältigte Krise erweitert dein Repertoire an Bewältigungsstrategien. Erfahrung macht dich flexibler im Umgang mit Belastung.",
+          "impuls": "Bewältigung hinterlässt Stärke.",
+          "reflection": "Welche Krise habe ich schon überstanden – und was habe ich dabei gelernt?",
+          "premiumInsight": "Das Erinnern bewältigter Herausforderungen stärkt Vertrauen und kann aktuelle Belastungen besser einordnen helfen.",
+          "premiumQuestion": "Welche innere Stärke ist aus einer schwierigen Zeit entstanden?"
+        },
+        {
+          "title": "Erfahrung als Ressource",
+          "explanation": "Mit jeder Erfahrung wirst du flexibler im Umgang mit neuen Situationen. Was du bereits gemeistert hast, lebt als Kompetenz weiter.",
+          "impuls": "Erfahrung ist gespeicherte Stärke.",
+          "reflection": "Welche vergangene Erfahrung hilft mir heute mehr, als mir bewusst ist?",
+          "premiumInsight": "Frühere Bewältigungserfahrungen fördern Anpassungsfähigkeit, Resilienz und ein Gefühl von innerer Vorbereitung.",
+          "premiumQuestion": "Was aus meiner Vergangenheit darf mir heute wieder Mut machen?"
+        },
+        {
+          "title": "Anpassungsfähigkeit",
+          "explanation": "Jede Erfahrung erweitert dein Verständnis darüber, wie du mit Belastungen umgehen kannst. Mit jeder Herausforderung wächst deine Fähigkeit zur Anpassung.",
+          "impuls": "Ich lerne mit jeder Erfahrung.",
+          "reflection": "Was weiß ich heute über mich, das ich früher noch nicht wusste?",
+          "premiumInsight": "Anpassungsfähigkeit ist ein zentraler Bestandteil psychischer Widerstandskraft und langfristiger Stabilität.",
+          "premiumQuestion": "Welche neue Bewältigungsstrategie habe ich in letzter Zeit entwickelt?"
+        }
+      ]
+    },
+    {
+      "day": 15,
+      "variants": [
+        {
+          "title": "Achtsamkeit",
+          "explanation": "Achtsamkeit hilft dir, deine Ressourcen bewusster wahrzunehmen. Wer präsent ist, erkennt früher, was ihm guttut.",
+          "impuls": "Präsenz öffnet den Blick für Ressourcen.",
+          "reflection": "Was tut mir heute spürbar gut, wenn ich wirklich präsent bin?",
+          "premiumInsight": "Achtsamkeit kann helfen, frühe Stresszeichen wahrzunehmen und rechtzeitig regulierend zu handeln.",
+          "premiumQuestion": "Welches Signal meines Körpers oder meiner Stimmung nehme ich heute bewusster wahr?"
+        },
+        {
+          "title": "Präsenz",
+          "explanation": "Wer präsent ist, erkennt früher, was ihm guttut. Achtsamkeit schafft Kontakt zu dir selbst.",
+          "impuls": "Präsenz ist Selbstkontakt.",
+          "reflection": "Wo war ich heute schon ganz im Moment?",
+          "premiumInsight": "Bewusste Präsenz unterstützt Selbstwahrnehmung, Regulation und gesündere Entscheidungen im Alltag.",
+          "premiumQuestion": "Was brauche ich heute wirklich – jenseits von Gewohnheit und Automatismus?"
+        },
+        {
+          "title": "Innehalten",
+          "explanation": "Wenn du inne hältst, kannst du besser erkennen, was dir wirklich guttut. Aufmerksamkeit für dein Wohlbefinden ist selbst eine Ressource.",
+          "impuls": "Innehalten bringt dich zu dir zurück.",
+          "reflection": "Was zeigt mir heute mein inneres Erleben, wenn ich kurz still werde?",
+          "premiumInsight": "Kurze Momente des Innehaltens können helfen, Belastung früher zu erkennen und gesünder zu reagieren.",
+          "premiumQuestion": "Wann gönne ich mir heute bewusst einen Moment echter Wahrnehmung?"
+        }
+      ]
+    },
+    {
+      "day": 16,
+      "variants": [
+        {
+          "title": "Werte leben",
+          "explanation": "Dein Leben gewinnt an Sinn, wenn du deine Werte aktiv lebst. Authentizität fördert innere Zufriedenheit und psychische Gesundheit.",
+          "impuls": "Lebe, was dir wichtig ist.",
+          "reflection": "Welcher Wert möchte heute durch mein Handeln sichtbar werden?",
+          "premiumInsight": "Werteorientiertes Handeln unterstützt Kohärenz, Stabilität und eine tiefere Form von Selbstverbundenheit.",
+          "premiumQuestion": "Welchen Wert möchte ich in den nächsten Tagen bewusster verkörpern?"
+        },
+        {
+          "title": "Authentizität",
+          "explanation": "Authentizität fördert innere Zufriedenheit und psychische Gesundheit. Wenn du im Einklang mit deinen Werten lebst, entsteht mehr Kohärenz.",
+          "impuls": "Echtheit stärkt dein Inneres.",
+          "reflection": "Wo handle ich bereits stimmig mit meinen Werten – und wo noch nicht?",
+          "premiumInsight": "Ein Leben im Einklang mit eigenen Werten kann Sinn, Klarheit und emotionale Stabilität fördern.",
+          "premiumQuestion": "Welche Entscheidung würde sich heute echter und stimmiger anfühlen?"
+        },
+        {
+          "title": "Sinn & Zufriedenheit",
+          "explanation": "Ein Leben im Einklang mit deinen Werten stärkt dein Gefühl von Sinn und Zufriedenheit. Werte geben Richtung und innere Ordnung.",
+          "impuls": "Werte geben deinem Leben Richtung.",
+          "reflection": "Welche meiner Entscheidungen fühlt sich wirklich nach mir an?",
+          "premiumInsight": "Wertebasierte Entscheidungen fördern langfristige Stabilität und ein tieferes Gefühl von Sinnhaftigkeit.",
+          "premiumQuestion": "Wo möchte ich heute mutiger meinen eigenen Werten folgen?"
+        }
+      ]
+    },
+    {
+      "day": 17,
+      "variants": [
+        {
+          "title": "Einfluss",
+          "explanation": "Resilienz entsteht, wenn du erkennst, dass du Einfluss nehmen kannst. Selbst kleine Einflussmöglichkeiten stärken dein Vertrauen in die Zukunft.",
+          "impuls": "Einfluss verändert Erleben.",
+          "reflection": "Wo habe ich heute mehr Einfluss, als ich zunächst denke?",
+          "premiumInsight": "Das Erleben von Einfluss stärkt Resilienz, Motivation und das Gefühl von innerer Handlungskraft.",
+          "premiumQuestion": "Welche kleine Einflussmöglichkeit möchte ich heute bewusst nutzen?"
+        },
+        {
+          "title": "Vertrauen in Veränderung",
+          "explanation": "Selbst kleine Einflussmöglichkeiten stärken dein Vertrauen in die Zukunft. Veränderung beginnt oft dort, wo du Handlungsspielräume erkennst.",
+          "impuls": "Schon wenig Einfluss kann viel verändern.",
+          "reflection": "Welche kleine Veränderung liegt heute bereits in meiner Hand?",
+          "premiumInsight": "Wahrgenommene Einflussmöglichkeiten reduzieren Hilflosigkeit und fördern Hoffnung und Stabilität.",
+          "premiumQuestion": "Wo kann ich heute einen ersten konkreten Veränderungsschritt setzen?"
+        },
+        {
+          "title": "Veränderung ist möglich",
+          "explanation": "Resilienz wächst, wenn du erkennst, dass Veränderung möglich ist. Der erste bewusste Schritt macht Handlungsspielräume sichtbar.",
+          "impuls": "Veränderung beginnt mit Wahrnehmung von Möglichkeiten.",
+          "reflection": "Welche Situation ist vielleicht veränderbarer, als sie sich anfühlt?",
+          "premiumInsight": "Das Erleben von Veränderbarkeit stärkt Zuversicht und kann festgefahrene Stressmuster auflockern.",
+          "premiumQuestion": "Wo wünsche ich mir heute ein kleines Zeichen von Veränderung?"
+        }
+      ]
+    },
+    {
+      "day": 18,
+      "variants": [
+        {
+          "title": "Hoffnung",
+          "explanation": "Hoffnung ist eine Kraftquelle, die deine Gesundheit nachhaltig unterstützt. Sie eröffnet Perspektiven, selbst wenn der Weg noch unklar ist.",
+          "impuls": "Hoffnung öffnet Räume.",
+          "reflection": "Was macht mir heute Hoffnung – auch in kleinen Dingen?",
+          "premiumInsight": "Zuversicht kann psychische Stabilität fördern und das Nervensystem dabei unterstützen, nicht dauerhaft im Alarmmodus zu bleiben.",
+          "premiumQuestion": "Welche kleine Perspektive gibt mir heute neue Zuversicht?"
+        },
+        {
+          "title": "Perspektive",
+          "explanation": "Sie eröffnet Perspektiven, selbst wenn der Weg noch unklar ist. Hoffnung bedeutet nicht Naivität, sondern innere Beweglichkeit.",
+          "impuls": "Eine Perspektive kann alles verändern.",
+          "reflection": "Welche Möglichkeit sehe ich heute, die ich gestern noch nicht gesehen habe?",
+          "premiumInsight": "Hoffnung fördert mentale Flexibilität und unterstützt die Bereitschaft, wieder nach vorne zu denken.",
+          "premiumQuestion": "Woran möchte ich mich heute innerlich festhalten, das mir Mut gibt?"
+        },
+        {
+          "title": "Zuversicht",
+          "explanation": "Zuversicht unterstützt dein Nervensystem dabei, in Balance zu bleiben. Auch in Unsicherheit kann ein inneres Ja zum Weitergehen entstehen.",
+          "impuls": "Zuversicht stabilisiert.",
+          "reflection": "Was hilft mir heute, innerlich nicht zu verengen, sondern offen zu bleiben?",
+          "premiumInsight": "Zuversicht kann Belastung besser regulierbar machen und den Blick auf Lösungen erweitern.",
+          "premiumQuestion": "Welche Haltung würde mir heute mehr Hoffnung schenken?"
+        }
+      ]
+    },
+    {
+      "day": 19,
+      "variants": [
+        {
+          "title": "Mitgestaltung",
+          "explanation": "Du bist nicht deinen Umständen ausgeliefert, sondern kannst sie mitgestalten. Handlungsspielräume zu entdecken ist der erste Schritt zur Veränderung.",
+          "impuls": "Du kannst mitgestalten.",
+          "reflection": "Wo kann ich heute trotz äußerer Umstände aktiv Einfluss nehmen?",
+          "premiumInsight": "Das Wahrnehmen von Mitgestaltung reduziert Hilflosigkeit und stärkt die innere Handlungskraft.",
+          "premiumQuestion": "Welche Situation möchte ich heute bewusster mitgestalten statt nur ertragen?"
+        },
+        {
+          "title": "Spielräume entdecken",
+          "explanation": "Handlungsspielräume zu entdecken ist der erste Schritt zur Veränderung. Oft beginnt Gestaltung im Kleinen.",
+          "impuls": "Spielräume machen frei.",
+          "reflection": "Wo sehe ich heute einen kleinen Spielraum, den ich nutzen könnte?",
+          "premiumInsight": "Bereits kleine Handlungsspielräume können das Erleben von Kontrolle und Selbstführung deutlich stärken.",
+          "premiumQuestion": "Welche kleine Gestaltungsmöglichkeit übersehe ich vielleicht noch?"
+        },
+        {
+          "title": "Gestaltungskraft im Kleinen",
+          "explanation": "Auch kleine Handlungsschritte können dein Gefühl von Einfluss und Gestaltungskraft stärken. Was du aktiv bewegst, stärkt dich innerlich.",
+          "impuls": "Kleine Schritte sind echte Gestaltung.",
+          "reflection": "Welcher kleine Schritt gibt mir heute das Gefühl, nicht passiv zu sein?",
+          "premiumInsight": "Mikro-Handlungen fördern Selbstwirksamkeit und helfen, aus dem Gefühl von Erstarrung herauszukommen.",
+          "premiumQuestion": "Wo möchte ich heute einen kleinen aktiven Impuls setzen?"
+        }
+      ]
+    },
+    {
+      "day": 20,
+      "variants": [
+        {
+          "title": "Lösungsfokus",
+          "explanation": "Indem du dich auf Lösungen konzentrierst, stärkst du dein inneres Gleichgewicht. Dein Fokus lenkt deine Energie.",
+          "impuls": "Lösungen beruhigen.",
+          "reflection": "Welche mögliche Lösung verdient heute mehr Aufmerksamkeit als das Problem?",
+          "premiumInsight": "Lösungsorientierung kann Grübelschleifen reduzieren und Energie in konstruktive Bahnen lenken.",
+          "premiumQuestion": "Was wäre heute eine realistische, hilfreiche Lösung im Kleinen?"
+        },
+        {
+          "title": "Konstruktive Energie",
+          "explanation": "Lösungsorientierung lenkt deine Energie in konstruktive Bahnen. Wo dein Fokus hingeht, folgt oft auch deine Kraft.",
+          "impuls": "Fokus auf Lösungen stärkt dich.",
+          "reflection": "Wo verliere ich heute Energie im Problem – statt sie in Möglichkeiten zu lenken?",
+          "premiumInsight": "Ein lösungsorientierter Blick unterstützt innere Balance, Klarheit und aktives Handeln.",
+          "premiumQuestion": "Welche Möglichkeit möchte ich heute stärker nähren als meine Sorge?"
+        },
+        {
+          "title": "Raum für Lösungen",
+          "explanation": "Wenn du dich auf Möglichkeiten konzentrierst, öffnet sich Raum für neue Lösungen. Möglichkeiten erweitern dein inneres Erleben.",
+          "impuls": "Möglichkeiten öffnen Räume.",
+          "reflection": "Welche neue Möglichkeit zeigt sich heute, wenn ich offener denke?",
+          "premiumInsight": "Das bewusste Wahrnehmen von Möglichkeiten fördert Flexibilität, Hoffnung und psychische Stabilität.",
+          "premiumQuestion": "Welcher neue Gedanke könnte heute meinen Blick weiten?"
+        }
+      ]
+    },
+    {
+      "day": 21,
+      "variants": [
+        {
+          "title": "Dynamische Gesundheit",
+          "explanation": "Salutogenese erinnert dich daran, dass Gesundheit ein dynamischer Prozess ist, den du aktiv fördern kannst. Entwicklung geschieht durch wiederholte bewusste Schritte.",
+          "impuls": "Gesundheit ist ein lebendiger Prozess.",
+          "reflection": "Was möchte ich in meinem Alltag weiter stärken, damit Gesundheit wachsen kann?",
+          "premiumInsight": "Gesundheit entsteht oft nicht durch einen einzelnen großen Schritt, sondern durch viele kleine bewusste Impulse über Zeit.",
+          "premiumQuestion": "Welche Gewohnheit möchte ich in den nächsten 21 Tagen bewusst nähren?"
+        },
+        {
+          "title": "Langfristiges Wohlbefinden",
+          "explanation": "Jeder bewusste Schritt in Richtung Ressourcenorientierung trägt zu deinem langfristigen Wohlbefinden bei. Kleine Impulse können große Wirkung entfalten.",
+          "impuls": "Kleine Schritte nähren langfristige Stärke.",
+          "reflection": "Welcher kleine Schritt von heute könnte langfristig etwas verändern?",
+          "premiumInsight": "Wiederholung, Ressourcenfokus und kleine stabile Routinen unterstützen nachhaltige Entwicklung und innere Kohärenz.",
+          "premiumQuestion": "Welchen kleinen Schritt möchte ich ab heute bewusst wiederholen?"
+        },
+        {
+          "title": "Aktive Gestaltung",
+          "explanation": "Salutogenese bedeutet, Gesundheit aktiv zu gestalten und jeden Tag bewusst zu stärken. Gesundheit ist kein fixer Zustand, sondern etwas, das du mitprägst.",
+          "impuls": "Du darfst Gesundheit mitgestalten.",
+          "reflection": "Wie möchte ich ab morgen bewusster für mein inneres Gleichgewicht sorgen?",
+          "premiumInsight": "Ein aktiver gesundheitsfördernder Alltag unterstützt Resilienz, Kohärenz und das Gefühl von innerer Führung.",
+          "premiumQuestion": "Was soll mein nächster bewusster Schritt für mehr Gesundheit und Stabilität sein?"
+        }
+      ]
+    }
+  ]
+}
