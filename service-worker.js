@@ -1,4 +1,4 @@
-const CACHE_VERSION = "v28";
+const CACHE_VERSION = "v29";
 const CACHE_NAME = `panacea-cache-${CACHE_VERSION}`;
 
 const ASSETS = [
