@@ -237,16 +237,12 @@
       background: linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.74));
       box-shadow: 0 8px 18px rgba(0,0,0,.06);
       display:none;
-      cursor:pointer;
       transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
       outline:none;
     }
 
-    .premiumBox:hover,
-    .premiumBox:focus-visible{
-      transform: translateY(-1px);
-      box-shadow: 0 10px 22px rgba(0,0,0,.08);
-      border-color: rgba(200,162,74,.24);
+    .premiumBox.visible{
+      display:block;
     }
 
     .premiumBox h3{
@@ -258,7 +254,30 @@
       line-height:1.3;
     }
 
-    .premiumBox .p{
+    .premiumLead{
+      margin:0 0 8px 0;
+      font-size:13px;
+      line-height:1.5;
+      color:var(--text);
+      white-space:pre-line;
+    }
+
+    .premiumSection{
+      margin-top:10px;
+      padding-top:10px;
+      border-top:1px solid rgba(200,162,74,.18);
+    }
+
+    .premiumLabel{
+      display:inline-block;
+      margin-bottom:5px;
+      font-size:11px;
+      font-weight:900;
+      color:#3a2c10;
+      letter-spacing:.1px;
+    }
+
+    .premiumText{
       margin:0;
       font-size:13px;
       line-height:1.5;
@@ -266,8 +285,8 @@
       white-space:pre-line;
     }
 
-    .premiumBox .q{
-      margin-top:8px;
+    .premiumQuestion{
+      margin:0;
       font-size:13px;
       line-height:1.45;
       color:#3a2c10;
@@ -275,27 +294,30 @@
       white-space:pre-line;
     }
 
-    .premiumBox .links{
-      margin:8px 0 0 0;
-      padding-left:16px;
+    .exerciseCard{
+      margin-top:10px;
+      padding:10px 11px;
+      border-radius:14px;
+      background: rgba(255,255,255,.62);
+      border:1px solid rgba(200,162,74,.16);
+    }
+
+    .exerciseTitle{
+      margin:0 0 4px 0;
+      font-size:12px;
+      font-weight:900;
+      color:#3a2c10;
+    }
+
+    .exerciseText{
+      margin:0;
       font-size:13px;
-      line-height:1.45;
-      color:var(--text);
-    }
-
-    .premiumBox a{
-      color:var(--text);
-      font-weight:700;
-      text-decoration:none;
-      border-bottom:1px dotted rgba(43,43,43,.30);
-    }
-
-    .premiumBox a:hover{
-      border-bottom-style:solid;
+      line-height:1.5;
+      white-space:pre-line;
     }
 
     .premiumHint{
-      margin-top:8px;
+      margin-top:10px;
       font-size:11px;
       color:var(--muted);
     }
@@ -423,11 +445,45 @@
         <h2 class="title" id="dayTitle">Lade Inhalt…</h2>
         <p class="impulse" id="dayImpulse">Bitte einen Moment.</p>
 
-        <div class="premiumBox" id="premiumBox" tabindex="0" role="button" aria-label="Premium öffnen">
-          <h3>Premium Impuls</h3>
-          <p class="p" id="premiumExtra"></p>
-          <p class="q" id="premiumTips"></p>
-          <ul class="links" id="premiumLinks"></ul>
+        <div class="premiumBox" id="premiumBox" aria-live="polite">
+          <h3 id="premiumTitle">Premium Impuls</h3>
+          <p class="premiumLead" id="premiumIntro"></p>
+
+          <div class="premiumSection">
+            <div class="premiumLabel">Vertiefung</div>
+            <p class="premiumText" id="premiumDeepening"></p>
+          </div>
+
+          <div class="premiumSection">
+            <div class="premiumLabel">Nervensystem</div>
+            <p class="premiumText" id="premiumNervousSystem"></p>
+          </div>
+
+          <div class="exerciseCard" id="exerciseCard">
+            <p class="exerciseTitle" id="premiumExerciseTitle"></p>
+            <p class="exerciseText" id="premiumExerciseText"></p>
+          </div>
+
+          <div class="premiumSection">
+            <div class="premiumLabel">Journaling</div>
+            <p class="premiumQuestion" id="premiumJournal"></p>
+          </div>
+
+          <div class="premiumSection">
+            <div class="premiumLabel">Abendreflexion</div>
+            <p class="premiumQuestion" id="premiumEvening"></p>
+          </div>
+
+          <div class="premiumSection">
+            <div class="premiumLabel">Insight</div>
+            <p class="premiumText" id="premiumInsight"></p>
+          </div>
+
+          <div class="premiumSection">
+            <div class="premiumLabel">Integration</div>
+            <p class="premiumQuestion" id="premiumIntegration"></p>
+          </div>
+
           <div class="premiumHint" id="premiumHint"></div>
         </div>
 
@@ -440,13 +496,13 @@
           </div>
 
           <ul class="memberList">
-            <li><b>Mehr Impulse pro Tag</b> + konkrete Wochen-Strategie</li>
-            <li><b>Zusätzliche Tipps</b> zu Ernährung, Schlaf, Bewegung und Stress</li>
-            <li><b>Links & Tools</b> im Mitgliederbereich</li>
+            <li><b>Tägliche Vertiefung</b> mit wechselnden Premium-Varianten</li>
+            <li><b>Nervensystem-Link, Übung, Journaling</b> und Abendreflexion</li>
+            <li><b>Zusätzlicher Reset</b> im Mitgliederbereich</li>
           </ul>
 
           <a class="memberBtn" id="memberBtn" href="mitglieder.html">Mitglieder freischalten →</a>
-          <div class="memberNote">Premium wird nach Freischaltung automatisch sichtbar.</div>
+          <div class="memberNote">Nach der Freischaltung wird der Premium-Teil hier direkt sichtbar.</div>
         </div>
 
         <div class="divider"></div>
@@ -557,10 +613,18 @@
     const premiumPill = document.getElementById("premiumPill");
 
     const premiumBox = document.getElementById("premiumBox");
-    const premiumExtraEl = document.getElementById("premiumExtra");
-    const premiumTipsEl = document.getElementById("premiumTips");
-    const premiumLinksEl = document.getElementById("premiumLinks");
+    const premiumTitleEl = document.getElementById("premiumTitle");
+    const premiumIntroEl = document.getElementById("premiumIntro");
+    const premiumDeepeningEl = document.getElementById("premiumDeepening");
+    const premiumNervousSystemEl = document.getElementById("premiumNervousSystem");
+    const premiumExerciseTitleEl = document.getElementById("premiumExerciseTitle");
+    const premiumExerciseTextEl = document.getElementById("premiumExerciseText");
+    const premiumJournalEl = document.getElementById("premiumJournal");
+    const premiumEveningEl = document.getElementById("premiumEvening");
+    const premiumInsightEl = document.getElementById("premiumInsight");
+    const premiumIntegrationEl = document.getElementById("premiumIntegration");
     const premiumHintEl = document.getElementById("premiumHint");
+    const exerciseCardEl = document.getElementById("exerciseCard");
 
     const errorBox = document.getElementById("errorBox");
     const memberTeaser = document.getElementById("memberTeaser");
@@ -635,10 +699,6 @@
     function hideError(){
       errorBox.style.display = "none";
       errorBox.textContent = "";
-    }
-
-    function openMembersPage(){
-      location.href = getMembersUrl();
     }
 
     const FREE_DAYS = [
@@ -747,64 +807,77 @@ Feiere den Abschluss: Stabilität entsteht durch Wiederholung, nicht durch Perfe
     }
 
     function clearPremiumContent(){
-      premiumExtraEl.textContent = "";
-      premiumTipsEl.textContent = "";
-      premiumLinksEl.innerHTML = "";
+      premiumTitleEl.textContent = "Premium Impuls";
+      premiumIntroEl.textContent = "";
+      premiumDeepeningEl.textContent = "";
+      premiumNervousSystemEl.textContent = "";
+      premiumExerciseTitleEl.textContent = "";
+      premiumExerciseTextEl.textContent = "";
+      premiumJournalEl.textContent = "";
+      premiumEveningEl.textContent = "";
+      premiumInsightEl.textContent = "";
+      premiumIntegrationEl.textContent = "";
       premiumHintEl.textContent = "";
+      exerciseCardEl.style.display = "none";
     }
 
-    function hasVisiblePremiumContent(p){
-      if (!p) return false;
-      const extra = t(p.premiumExtra).trim();
-      const tips = t(p.premiumTips).trim();
-      const links = Array.isArray(p.premiumLinks) ? p.premiumLinks.filter(l => l && l.url) : [];
-      return Boolean(extra || tips || links.length);
+    function pickVariant(dayEntry, day){
+      if(!dayEntry || !Array.isArray(dayEntry.variants) || !dayEntry.variants.length) return null;
+
+      const key = `panacea_lifestyle_variant_day_${day}`;
+      let storedIndex = parseInt(localStorage.getItem(key) || "-1", 10);
+
+      if(isNaN(storedIndex) || storedIndex < 0 || storedIndex >= dayEntry.variants.length){
+        storedIndex = Math.floor(Math.random() * dayEntry.variants.length);
+        localStorage.setItem(key, String(storedIndex));
+      }
+
+      return dayEntry.variants[storedIndex];
     }
 
     function renderPremiumSection(day){
       clearPremiumContent();
 
       if(!isPremium()){
-        premiumBox.style.display = "none";
+        premiumBox.classList.remove("visible");
         memberTeaser.style.display = "block";
         return;
       }
 
       memberTeaser.style.display = "none";
-      premiumBox.style.display = "block";
+      premiumBox.classList.add("visible");
 
-      const p = premiumData && premiumData[day - 1] ? premiumData[day - 1] : null;
+      const dayEntry = premiumData && premiumData[day - 1] ? premiumData[day - 1] : null;
+      const variant = pickVariant(dayEntry, day);
 
-      if (!p) {
-        premiumExtraEl.textContent = "Premium ist aktiv, aber es wurden noch keine Lifestyle-Premium-Inhalte geladen.";
-        premiumHintEl.textContent = "Mehr im Mitgliederbereich";
+      if (!variant) {
+        premiumTitleEl.textContent = "Premium Impuls";
+        premiumIntroEl.textContent = "Premium ist aktiv, aber für diesen Tag wurden noch keine Lifestyle-Inhalte geladen.";
+        premiumHintEl.textContent = "Prüfe data/lifestyle.json für Tag " + day + ".";
         return;
       }
 
-      premiumExtraEl.textContent = t(p.premiumExtra);
-      premiumTipsEl.textContent = t(p.premiumTips);
+      premiumTitleEl.textContent = t(variant.title) || `Premium Impuls · Tag ${day}`;
+      premiumIntroEl.textContent = t(variant.intro);
+      premiumDeepeningEl.textContent = t(variant.deepening);
+      premiumNervousSystemEl.textContent = t(variant.nervousSystemLink);
 
-      const links = Array.isArray(p.premiumLinks) ? p.premiumLinks : [];
-      premiumLinksEl.innerHTML = "";
+      const exTitle = variant.exercise ? t(variant.exercise.title) : "";
+      const exText = variant.exercise ? t(variant.exercise.text) : "";
 
-      links.forEach(l => {
-        if(!l || !l.url) return;
-
-        const li = document.createElement("li");
-        const a = document.createElement("a");
-        a.href = l.url;
-        a.target = "_blank";
-        a.rel = "noopener";
-        a.textContent = t(l.label) || l.url;
-        li.appendChild(a);
-        premiumLinksEl.appendChild(li);
-      });
-
-      if (!hasVisiblePremiumContent(p)) {
-        premiumExtraEl.textContent = "Für diesen Tag sind noch keine Premium-Details hinterlegt.";
+      if(exTitle || exText){
+        exerciseCardEl.style.display = "block";
+        premiumExerciseTitleEl.textContent = exTitle || "Übung";
+        premiumExerciseTextEl.textContent = exText || "";
+      } else {
+        exerciseCardEl.style.display = "none";
       }
 
-      premiumHintEl.textContent = "Mehr im Mitgliederbereich";
+      premiumJournalEl.textContent = t(variant.journalPrompt);
+      premiumEveningEl.textContent = t(variant.eveningReflection);
+      premiumInsightEl.textContent = t(variant.premiumInsight);
+      premiumIntegrationEl.textContent = t(variant.integrationQuestion);
+      premiumHintEl.textContent = "Diese Premium-Variante ist Teil deines Lifestyle-Tages.";
     }
 
     function renderDay(day){
@@ -834,15 +907,6 @@ Feiere den Abschluss: Stabilität entsteht durch Wiederholung, nicht durch Perfe
     dayImage.addEventListener("error", () => {
       dayImage.src = "icons/sfondo.png";
       showError("Bild nicht gefunden.\nPrüfe: icons/1a.png bis icons/21a.png");
-    });
-
-    premiumBox.addEventListener("click", openMembersPage);
-
-    premiumBox.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        openMembersPage();
-      }
     });
 
     prevBtn.addEventListener("click", () => {
