@@ -36,7 +36,6 @@
 
     .phone{ width:100%; max-width:480px; }
 
-    /* TOPBAR: 3 Spalten => Sprache exakt mittig */
     .topbar{
       display:grid;
       grid-template-columns: 1fr auto 1fr;
@@ -63,13 +62,13 @@
     }
     .back:hover{ transform: translateY(-1px); }
 
-    /* Language toggle - exakt zentriert */
     .langToggle{
       display:flex;
       gap:10px;
       align-items:center;
       justify-content:center;
     }
+
     .langBtn{
       appearance:none;
       border:none;
@@ -84,6 +83,7 @@
       color: var(--text);
       line-height:1;
     }
+
     .langBtn.active{
       background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
       border:1px solid rgba(200,162,74,.35);
@@ -183,6 +183,7 @@
       flex:1;
       min-width:130px;
     }
+
     .btn:hover{ transform: translateY(-1px); }
 
     .btn.primary{
@@ -218,38 +219,56 @@
       background: linear-gradient(180deg, rgba(255,246,214,.75), rgba(255,255,255,.75));
       box-shadow: 0 0 18px rgba(200,162,74,.15);
       display:none;
+      cursor:pointer;
+      transition: transform .15s ease;
     }
+
+    .premiumBox:hover{
+      transform: translateY(-1px);
+    }
+
     .premiumBox h3{
       margin:0 0 8px 0;
       font-size:14px;
       font-weight:900;
       color:#3a2c10;
     }
+
     .premiumBox .p{
       margin:0;
       font-size:14px;
       line-height:1.5;
       white-space: pre-line;
     }
+
     .premiumBox .q{
       margin-top:10px;
       color:#3a2c10;
       font-weight:900;
       white-space: pre-line;
     }
+
     .premiumBox .links{
       margin-top:10px;
       padding-left:18px;
       font-size:14px;
       line-height:1.5;
     }
+
     .premiumBox a{
       color:#2b2b2b;
       font-weight:900;
       text-decoration:none;
       border-bottom:1px dotted rgba(43,43,43,.45);
     }
+
     .premiumBox a:hover{ border-bottom-style: solid; }
+
+    .premiumHint{
+      margin-top:10px;
+      font-size:12px;
+      color:#6b6b6b;
+    }
 
     .error{
       margin-top:10px;
@@ -259,6 +278,7 @@
       background: rgba(255,240,240,.8);
       color:#7a1d1d;
       display:none;
+      white-space:pre-line;
     }
 
     .memberTeaser{
@@ -270,12 +290,14 @@
       box-shadow: 0 0 18px rgba(200,162,74,.15);
       display:none;
     }
+
     .memberHeader{
       display:flex;
       align-items:center;
       gap:10px;
       margin-bottom:10px;
     }
+
     .memberBadge{
       padding:6px 10px;
       border-radius:999px;
@@ -286,11 +308,13 @@
       border:1px solid rgba(200,162,74,.35);
       box-shadow: 0 0 14px rgba(200,162,74,.18);
     }
+
     .memberTitle{
       font-weight:900;
       color:#3a2c10;
       font-size:14px;
     }
+
     .memberList{
       margin:10px 0 12px;
       padding-left:18px;
@@ -298,6 +322,7 @@
       font-size:14px;
       line-height:1.5;
     }
+
     .memberBtn{
       display:block;
       text-align:center;
@@ -311,6 +336,7 @@
       border:1px solid rgba(200,162,74,.35);
       box-shadow: 0 0 16px rgba(200,162,74,.20);
     }
+
     .memberNote{
       margin-top:10px;
       font-size:12px;
@@ -360,11 +386,12 @@
         <h2 class="title" id="dayTitle">Lade Inhalt…</h2>
         <p class="impulse" id="dayImpulse">Bitte einen Moment.</p>
 
-        <div class="premiumBox" id="premiumBox">
+        <div class="premiumBox" id="premiumBox" tabindex="0" role="button" aria-label="Premium öffnen">
           <h3>Premium</h3>
           <p class="p" id="premiumExtra"></p>
           <p class="q" id="premiumTips"></p>
           <ul class="links" id="premiumLinks"></ul>
+          <div class="premiumHint" id="premiumHint"></div>
         </div>
 
         <div class="error" id="errorBox"></div>
@@ -382,7 +409,6 @@
           </ul>
 
           <a class="memberBtn" href="mitglieder.html">Mitglieder freischalten →</a>
-
           <div class="memberNote">Premium wird nach Freischaltung automatisch sichtbar.</div>
         </div>
 
@@ -400,13 +426,12 @@
         </div>
       </div>
     </div>
-
   </div>
 
   <script>
-    // --- PANACEA Language Switch (DE/IT) ---
     (function(){
-      const KEY = "lang"; // "de" | "it"
+      const KEY = "lang";
+
       function setLang(l){ localStorage.setItem(KEY, l); }
       function getLang(){
         const v = (localStorage.getItem(KEY) || "").toLowerCase();
@@ -418,16 +443,12 @@
         const map = {
           "index.html": "indexIT.html",
           "indexIT.html": "index.html",
-
           "daily-reset.html": "daily-resetIT.html",
           "daily-resetIT.html": "daily-reset.html",
-
           "wissen.html": "wissenIT.html",
           "wissenIT.html": "wissen.html",
-
           "lifestyle.html": "lifestyleIT.html",
           "lifestyleIT.html": "lifestyle.html",
-
           "mitglieder.html": "mitgliederIT.html",
           "mitgliederIT.html": "mitglieder.html",
         };
@@ -461,15 +482,16 @@
         location.href = getTwinUrl("it");
       });
 
-      // Auto-correct if mismatch
       const current = location.pathname.split("/").pop() || "";
       const stored = getLang();
       const isITpage = current.includes("IT.html");
+
       if(stored === "it" && !isITpage){
         const twin = getTwinUrl("it");
         if(twin !== current) location.replace(twin);
         return;
       }
+
       if(stored === "de" && isITpage){
         const twin = getTwinUrl("de");
         if(twin !== current) location.replace(twin);
@@ -482,13 +504,11 @@
   </script>
 
   <script>
-    // ---------- Settings / Storage ----------
     const STORAGE_DAY = "panacea_lifestyle_day";
-    const STORAGE_DONE = "panacea_lifestyle_done"; // JSON array of numbers [1..21]
-    const PREMIUM_FLAG = "panacea_premium";        // "true" | "false"
+    const STORAGE_DONE = "panacea_lifestyle_done";
+    const PREMIUM_FLAG = "panacea_premium";
     const TOTAL_DAYS = 21;
 
-    // ---------- Elements ----------
     const dayBadge = document.getElementById("dayBadge");
     const dayTitle = document.getElementById("dayTitle");
     const dayImpulse = document.getElementById("dayImpulse");
@@ -500,6 +520,7 @@
     const premiumExtraEl = document.getElementById("premiumExtra");
     const premiumTipsEl  = document.getElementById("premiumTips");
     const premiumLinksEl = document.getElementById("premiumLinks");
+    const premiumHintEl  = document.getElementById("premiumHint");
 
     const errorBox = document.getElementById("errorBox");
     const memberTeaser = document.getElementById("memberTeaser");
@@ -508,8 +529,22 @@
     const nextBtn = document.getElementById("nextBtn");
     const doneBtn = document.getElementById("doneBtn");
 
-    // ---------- Helpers ----------
-    function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
+    function clamp(n, min, max){
+      return Math.max(min, Math.min(max, n));
+    }
+
+    function getLang(){
+      const v = (localStorage.getItem("lang") || "").toLowerCase();
+      return (v === "it" || v === "de") ? v : "de";
+    }
+
+    function t(val){
+      const lang = getLang();
+      if (val == null) return "";
+      if (typeof val === "string") return val;
+      if (typeof val === "object") return val[lang] || val.de || val.it || "";
+      return "";
+    }
 
     function getCurrentDay(){
       const raw = localStorage.getItem(STORAGE_DAY);
@@ -537,13 +572,13 @@
     }
 
     function isPremium(){
-      return (localStorage.getItem(PREMIUM_FLAG) === "true");
+      return localStorage.getItem(PREMIUM_FLAG) === "true";
     }
 
     function updatePills(){
       const done = getDone();
-      progressPill.textContent = `Fortschritt: ${done.length}/${TOTAL_DAYS}`;
       premiumPill.textContent = `Premium: ${isPremium() ? "an" : "aus"}`;
+      progressPill.textContent = `Fortschritt: ${done.length}/${TOTAL_DAYS}`;
     }
 
     function showError(msg){
@@ -556,130 +591,177 @@
       errorBox.textContent = "";
     }
 
-    // ---------- FREE content (21 Tage) ----------
+    function openMembersPage(){
+      const lang = getLang();
+      location.href = lang === "it" ? "mitgliederIT.html" : "mitglieder.html";
+    }
+
     const FREE_DAYS = [
-      { title:"Tag 1 – Start: kleine Schritte", impulse:
-`Heute geht es um Machbarkeit: Wähle EINEN kleinen Schritt, den du wirklich tun kannst.
+      { title:"Tag 1 – Start: kleine Schritte", impulse:`Heute geht es um Machbarkeit: Wähle EINEN kleinen Schritt, den du wirklich tun kannst.
 Iss eine normale, stabile Mahlzeit (Protein + Ballaststoffe) statt „Perfektion“.
 Trinke ein Glas Wasser extra und spüre kurz: Was braucht dein Körper gerade?
 Abends: 10 Minuten früher runterfahren (Licht dimmen, Bildschirm-Pause).` },
-      { title:"Tag 2 – Blutzucker stabil", impulse:
-`Starte mit Struktur: eine Mahlzeit mit Protein (z.B. Joghurt/Quark, Eier, Hülsenfrüchte) + Ballaststoffen.
+      { title:"Tag 2 – Blutzucker stabil", impulse:`Starte mit Struktur: eine Mahlzeit mit Protein (z.B. Joghurt/Quark, Eier, Hülsenfrüchte) + Ballaststoffen.
 Vermeide „nur Kaffee“ als Frühstück – das verstärkt bei vielen Menschen Stressreaktionen.
 Nach dem Essen: 10 Minuten gehen (senkt Blutzuckerspitzen, beruhigt).
 Kurz-Check: Hunger oder Stress? Atme 3× langsam aus, bevor du snackst.` },
-      { title:"Tag 3 – Schlaf als Regulator", impulse:
-`Schlaf ist ein Stress-Regulationssystem: Heute zählt Rhythmus, nicht Länge.
+      { title:"Tag 3 – Schlaf als Regulator", impulse:`Schlaf ist ein Stress-Regulationssystem: Heute zählt Rhythmus, nicht Länge.
 Wähle eine feste Zeit zum Runterfahren (z.B. 21:30) – möglichst jeden Tag ähnlich.
 Abends: sehr spätes, schweres Essen vermeiden → weniger Unruhe in der Nacht.
 Mini-Ritual: warm duschen oder Fußbad + langsames Ausatmen (4 ein / 6 aus).` },
-      { title:"Tag 4 – Bewegung ohne Druck", impulse:
-`Bewegung wirkt wie ein Reset fürs Nervensystem – sanft reicht.
+      { title:"Tag 4 – Bewegung ohne Druck", impulse:`Bewegung wirkt wie ein Reset fürs Nervensystem – sanft reicht.
 10–15 Minuten lockeres Gehen oder Dehnen: Ziel ist Durchblutung, nicht Leistung.
 Wenn du angespannt bist: Verlängere das Ausatmen während der Bewegung.
 Notiere 1 Satz: „Wie fühlt sich mein Körper nach 10 Minuten an?“` },
-      { title:"Tag 5 – Mikro-Pausen", impulse:
-`Kurze Pausen signalisieren Sicherheit: 60–90 Sekunden reichen.
+      { title:"Tag 5 – Mikro-Pausen", impulse:`Kurze Pausen signalisieren Sicherheit: 60–90 Sekunden reichen.
 Stell dir 2× heute einen Mini-Timer (Vormittag/Nachmittag) für Atem + Schultern locker.
 Trinke langsam 5 Schlucke Wasser und spüre den Boden.
 Das ist Salutogenese: Ressourcen stärken, bevor es kippt.` },
-      { title:"Tag 6 – Soziale Ressource", impulse:
-`Soziale Verbindung puffert Stress messbar (psychisch & körperlich).
+      { title:"Tag 6 – Soziale Ressource", impulse:`Soziale Verbindung puffert Stress messbar (psychisch & körperlich).
 Schicke heute eine kurze, echte Nachricht an eine Person: „Wie geht’s dir?“
 Wenn das zu viel ist: Lächle bewusst oder sage „Danke“ – kleine Signale zählen.
 Abends: 1 Minute Erinnerung: „Wer oder was hat mich heute getragen?“` },
-      { title:"Tag 7 – Wochen-Reset", impulse:
-`Reflexion schafft Kohärenz (Verstehbarkeit/Handhabbarkeit/Sinn).
+      { title:"Tag 7 – Wochen-Reset", impulse:`Reflexion schafft Kohärenz (Verstehbarkeit/Handhabbarkeit/Sinn).
 Wähle 1 Gewohnheit, die nächste Woche bleiben darf (z.B. 10 Min Spaziergang).
 Plane 1 „leichte“ Mahlzeit für morgen (Gemüse + Protein + gutes Fett).
 Feier Fortschritt: Notiere 3 Dinge, die heute gut genug waren.` },
-      { title:"Tag 8 – Entzündungsarme Basics", impulse:
-`Mehr Pflanzen, mehr Vielfalt: Ziel sind 20–30 verschiedene Pflanzen pro Woche (inkl. Kräuter).
+      { title:"Tag 8 – Entzündungsarme Basics", impulse:`Mehr Pflanzen, mehr Vielfalt: Ziel sind 20–30 verschiedene Pflanzen pro Woche (inkl. Kräuter).
 Heute: Füge 1 Portion Gemüse oder Obst extra hinzu – egal welche.
 Nutze gutes Fett (Olivenöl, Nüsse, Samen) für Sättigung und stabile Energie.
 Wenn möglich: Zuckerreiche Snacks ersetzen durch Joghurt, Nüsse oder Obst.` },
-      { title:"Tag 9 – Koffein & Stress", impulse:
-`Koffein kann Stresssymptome verstärken – Timing hilft.
+      { title:"Tag 9 – Koffein & Stress", impulse:`Koffein kann Stresssymptome verstärken – Timing hilft.
 Wenn du Kaffee trinkst: nach dem Frühstück, nicht nüchtern.
 Achte auf Körpersignale: Herzklopfen/Unruhe? Dann heute 1 Tasse weniger oder später.
 Alternative: Kräutertee + 3 ruhige Ausatmungen.` },
-      { title:"Tag 10 – Nervensystem & Atem", impulse:
-`Längeres Ausatmen aktiviert den Beruhigungsmodus (Parasympathikus).
+      { title:"Tag 10 – Nervensystem & Atem", impulse:`Längeres Ausatmen aktiviert den Beruhigungsmodus (Parasympathikus).
 2 Minuten: 4 Sekunden ein, 6–8 Sekunden aus – ohne Druck.
 Dann: Schultergürtel sinken lassen, Kiefer locker.
 Merke: nicht „mehr machen“, sondern „weniger Alarm“ im Körper.` },
-      { title:"Tag 11 – Sinn & Werte", impulse:
-`Salutogenese braucht Sinn: Kleine Handlungen wirken stärker, wenn sie Bedeutung haben.
+      { title:"Tag 11 – Sinn & Werte", impulse:`Salutogenese braucht Sinn: Kleine Handlungen wirken stärker, wenn sie Bedeutung haben.
 Frage: „Wofür mache ich das – Gesundheit, Energie, Freiheit, Familie?“
 Wähle 1 Mini-Aktion, die dazu passt (z.B. frische Mahlzeit, Spaziergang, früher Schlaf).
 Schreibe 1 Satz: „Heute war wichtig, weil …“` },
-      { title:"Tag 12 – Ordnung & Entlastung", impulse:
-`Umgebung wirkt auf das Nervensystem: weniger Reize = weniger Stress.
+      { title:"Tag 12 – Ordnung & Entlastung", impulse:`Umgebung wirkt auf das Nervensystem: weniger Reize = weniger Stress.
 Heute: 5 Minuten eine Fläche ordnen (Tisch, Tasche, Küche).
 Danach: bewusst atmen und wahrnehmen, ob es „leichter“ wird.
 Kleine Ordnung ist eine körperliche Entlastung.` },
-      { title:"Tag 13 – Eiweiß & Stabilität", impulse:
-`Protein unterstützt Sättigung, Muskelstoffwechsel und stabile Energie.
+      { title:"Tag 13 – Eiweiß & Stabilität", impulse:`Protein unterstützt Sättigung, Muskelstoffwechsel und stabile Energie.
 Heute: Baue bei 2 Mahlzeiten eine Proteinquelle ein (Fisch, Eier, Tofu, Hülsenfrüchte, Quark).
 Kombiniere mit Ballaststoffen (Gemüse/Hafer/Vollkorn).
 Trinke Wasser dazu – Durst wird oft mit Hunger verwechselt.` },
-      { title:"Tag 14 – Genuss ohne Schuld", impulse:
-`Stress + strenge Regeln führen oft zu „Alles-oder-nichts“.
+      { title:"Tag 14 – Genuss ohne Schuld", impulse:`Stress + strenge Regeln führen oft zu „Alles-oder-nichts“.
 Erlaube heute bewusst Genuss in kleiner Portion – langsam, ohne Ablenkung.
 Frage: „Schmecke ich das wirklich?“ → Achtsamkeit reduziert Überessen.
 Das Ziel ist Stabilität, nicht Verbot.` },
-      { title:"Tag 15 – Natur & Licht", impulse:
-`Tageslicht stabilisiert den zirkadianen Rhythmus und verbessert Schlafqualität.
+      { title:"Tag 15 – Natur & Licht", impulse:`Tageslicht stabilisiert den zirkadianen Rhythmus und verbessert Schlafqualität.
 Heute: 10 Minuten draußen am Vormittag – auch bei Wolken.
 Wenn du kannst: kurze Bewegung dazu (gehen, Treppe, locker).
 Abends: Licht reduzieren → leichter runterfahren.` },
-      { title:"Tag 16 – Grenzen & Nein", impulse:
-`Psychische Gesundheit ist auch Grenzen setzen.
+      { title:"Tag 16 – Grenzen & Nein", impulse:`Psychische Gesundheit ist auch Grenzen setzen.
 Heute: Sage zu einer Sache freundlich Nein oder verschiebe sie.
 Nutze einen Satz: „Ich kann das heute nicht, ich melde mich morgen.“
 Du schützt Energie – das ist Prävention.` },
-      { title:"Tag 17 – Mikro-Training", impulse:
-`Kraft schützt langfristig: Stoffwechsel, Haltung, Selbstwirksamkeit.
+      { title:"Tag 17 – Mikro-Training", impulse:`Kraft schützt langfristig: Stoffwechsel, Haltung, Selbstwirksamkeit.
 Heute: 6 Minuten Mini-Kraft (z.B. 2×: 10 Kniebeugen + 10 Wandliegestütze).
 Langsam und sauber – kein Schmerz.
 Danach: Wasser trinken und kurz stolz sein.` },
-      { title:"Tag 18 – Soziale Kultur-Routine", impulse:
-`Kultur & Rituale geben Sicherheit: Musik, Kochen, Sprache, Gebet, Tradition.
+      { title:"Tag 18 – Soziale Kultur-Routine", impulse:`Kultur & Rituale geben Sicherheit: Musik, Kochen, Sprache, Gebet, Tradition.
 Heute: 10 Minuten ein Ritual, das dich „zu Hause“ fühlen lässt.
 Teile es, wenn möglich, mit jemandem (Nachricht/Foto/kurzer Call).
 Ressourcen sind auch kulturell.` },
-      { title:"Tag 19 – Verdauung & Ruhe", impulse:
-`Stress beeinflusst Verdauung: Heute sanfte Entspannung nach dem Essen.
+      { title:"Tag 19 – Verdauung & Ruhe", impulse:`Stress beeinflusst Verdauung: Heute sanfte Entspannung nach dem Essen.
 Nach einer Mahlzeit: 5–10 Minuten langsam gehen oder ruhig sitzen.
 Bewusst kauen: Langsamer essen = weniger Stresssignale.
 Wenn der Bauch unruhig ist: warmes Getränk + längeres Ausatmen.` },
-      { title:"Tag 20 – Plan statt Druck", impulse:
-`Struktur reduziert kognitive Last (weniger Chaos = weniger Stress).
+      { title:"Tag 20 – Plan statt Druck", impulse:`Struktur reduziert kognitive Last (weniger Chaos = weniger Stress).
 Heute: Plane 1 gesunde Mahlzeit für morgen + 1 Snack-Alternative.
 Lege etwas sichtbar bereit (Obst, Nüsse, Joghurt).
 Dein zukünftiges Ich wird dir danken.` },
-      { title:"Tag 21 – Integration", impulse:
-`Du hast Ressourcen aufgebaut: Das ist Salutogenese in Aktion.
+      { title:"Tag 21 – Integration", impulse:`Du hast Ressourcen aufgebaut: Das ist Salutogenese in Aktion.
 Wähle 3 Dinge, die bleiben: 1 Ernährung, 1 Bewegung, 1 Ruhe-Ritual.
 Schreibe einen einfachen Plan: „Wann genau mache ich das?“
 Feiere den Abschluss: Stabilität entsteht durch Wiederholung, nicht durch Perfektion.` }
     ];
 
-    // ---------- Premium data loading (optional) ----------
     let premiumData = null;
 
     async function loadPremiumJson(){
       try{
         const res = await fetch("./data/lifestyle.json", { cache: "no-store" });
         if(!res.ok) throw new Error("premium json not reachable");
+
         const data = await res.json();
         if(!data || !Array.isArray(data.days) || data.days.length < TOTAL_DAYS){
           throw new Error("premium json invalid");
         }
+
         premiumData = data.days;
       }catch(e){
         premiumData = null;
       }
+    }
+
+    function clearPremiumContent(){
+      premiumExtraEl.textContent = "";
+      premiumTipsEl.textContent = "";
+      premiumLinksEl.innerHTML = "";
+      premiumHintEl.textContent = "";
+    }
+
+    function hasVisiblePremiumContent(p){
+      if (!p) return false;
+
+      const extra = t(p.premiumExtra).trim();
+      const tips = t(p.premiumTips).trim();
+      const links = Array.isArray(p.premiumLinks) ? p.premiumLinks.filter(l => l && l.url) : [];
+
+      return Boolean(extra || tips || links.length);
+    }
+
+    function renderPremiumSection(day){
+      clearPremiumContent();
+
+      if(!isPremium()){
+        premiumBox.style.display = "none";
+        memberTeaser.style.display = "block";
+        return;
+      }
+
+      memberTeaser.style.display = "none";
+      premiumBox.style.display = "block";
+
+      const p = premiumData && premiumData[day - 1] ? premiumData[day - 1] : null;
+
+      if (!p) {
+        premiumExtraEl.textContent = "Premium ist aktiv, aber es wurden noch keine Lifestyle-Premium-Inhalte geladen.";
+        premiumHintEl.textContent = "Klicke hier, um den Mitgliederbereich zu öffnen.";
+        return;
+      }
+
+      premiumExtraEl.textContent = t(p.premiumExtra);
+      premiumTipsEl.textContent = t(p.premiumTips);
+
+      const links = Array.isArray(p.premiumLinks) ? p.premiumLinks : [];
+      premiumLinksEl.innerHTML = "";
+
+      links.forEach(l => {
+        if(!l || !l.url) return;
+
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.href = l.url;
+        a.target = "_blank";
+        a.rel = "noopener";
+        a.textContent = t(l.label) || l.url;
+        li.appendChild(a);
+        premiumLinksEl.appendChild(li);
+      });
+
+      if (!hasVisiblePremiumContent(p)) {
+        premiumExtraEl.textContent = "Für diesen Tag sind noch keine Premium-Details hinterlegt.";
+      }
+
+      premiumHintEl.textContent = "Klicke hier, um den Mitgliederbereich zu öffnen.";
     }
 
     function renderDay(day){
@@ -693,38 +775,10 @@ Feiere den Abschluss: Stabilität entsteht durch Wiederholung, nicht durch Perfe
       dayTitle.textContent = entry.title || `Tag ${day}`;
       dayImpulse.textContent = entry.impulse || "";
 
-      if(isPremium()){
-        premiumBox.style.display = "block";
-        const p = premiumData && premiumData[day-1] ? premiumData[day-1] : null;
+      renderPremiumSection(day);
 
-        premiumExtraEl.textContent = (p && p.premiumExtra) ? p.premiumExtra : "";
-        premiumTipsEl.textContent  = (p && p.premiumTips)  ? p.premiumTips  : "";
-        premiumLinksEl.innerHTML = "";
-
-        if(p && Array.isArray(p.premiumLinks) && p.premiumLinks.length){
-          p.premiumLinks.forEach(l => {
-            if(!l || !l.url) return;
-            const li = document.createElement("li");
-            const a = document.createElement("a");
-            a.href = l.url;
-            a.target = "_blank";
-            a.rel = "noopener";
-            a.textContent = l.label || l.url;
-            li.appendChild(a);
-            premiumLinksEl.appendChild(li);
-          });
-        }
-      }else{
-        premiumBox.style.display = "none";
-        premiumExtraEl.textContent = "";
-        premiumTipsEl.textContent = "";
-        premiumLinksEl.innerHTML = "";
-      }
-
-      memberTeaser.style.display = isPremium() ? "none" : "block";
-
-      prevBtn.disabled = (day <= 1);
-      nextBtn.disabled = (day >= TOTAL_DAYS);
+      prevBtn.disabled = day <= 1;
+      nextBtn.disabled = day >= TOTAL_DAYS;
 
       const done = getDone();
       const isDoneToday = done.includes(day);
@@ -734,13 +788,22 @@ Feiere den Abschluss: Stabilität entsteht durch Wiederholung, nicht durch Perfe
       updatePills();
     }
 
-    // Image fallback
     dayImage.addEventListener("error", () => {
       dayImage.src = "icons/sfondo.png";
-      showError("Bild nicht gefunden. Prüfe: icons/1a.png bis icons/21a.png (genau so benannt).");
+      showError("Bild nicht gefunden.\nPrüfe: icons/1a.png bis icons/21a.png");
     });
 
-    // Events
+    premiumBox.addEventListener("click", () => {
+      openMembersPage();
+    });
+
+    premiumBox.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openMembersPage();
+      }
+    });
+
     prevBtn.addEventListener("click", () => {
       const d = getCurrentDay();
       setCurrentDay(d - 1);
@@ -758,6 +821,7 @@ Feiere den Abschluss: Stabilität entsteht durch Wiederholung, nicht durch Perfe
     doneBtn.addEventListener("click", () => {
       const day = getCurrentDay();
       const done = getDone();
+
       if(!done.includes(day)) done.push(day);
       setDone(done);
 
@@ -766,7 +830,6 @@ Feiere den Abschluss: Stabilität entsteht durch Wiederholung, nicht durch Perfe
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
-    // Init
     (async function init(){
       updatePills();
       await loadPremiumJson();
