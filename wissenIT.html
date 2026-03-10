@@ -188,7 +188,7 @@
       align-items:center;
       justify-content:space-between;
       gap:10px;
-      margin-bottom:10px;
+      margin-bottom:12px;
     }
 
     .progressText{
@@ -203,21 +203,45 @@
       color:#3a2c10;
     }
 
-    .progressBar{
-      width:100%;
-      height:10px;
-      border-radius:999px;
-      background: rgba(200,162,74,.14);
-      overflow:hidden;
-      border:1px solid rgba(200,162,74,.10);
+    .progressDots{
+      display:grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap:8px;
     }
 
-    .progressFill{
-      height:100%;
-      width:0%;
+    .progressDot{
+      height:28px;
       border-radius:999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:11px;
+      font-weight:950;
+      border:1px solid rgba(200,162,74,.18);
+      background: rgba(255,255,255,.78);
+      color: rgba(43,43,43,.65);
+      box-shadow: 0 8px 18px rgba(0,0,0,.05);
+      user-select:none;
+    }
+
+    .progressDot.done{
       background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
-      transition: width .25s ease;
+      border:1px solid rgba(200,162,74,.35);
+      color:#3a2c10;
+      box-shadow:
+        0 0 14px rgba(200,162,74,.16),
+        0 8px 18px rgba(0,0,0,.05);
+    }
+
+    .progressDot.current{
+      outline:2px solid rgba(200,162,74,.28);
+      outline-offset:1px;
+    }
+
+    .progressDot.locked{
+      background: rgba(255,255,255,.62);
+      border:1px solid rgba(0,0,0,.08);
+      color: rgba(43,43,43,.42);
     }
 
     .dayDone{
@@ -843,6 +867,9 @@
         flex-direction:column;
         align-items:flex-start;
       }
+      .progressDots{
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+      }
     }
   </style>
 </head>
@@ -878,9 +905,7 @@
           <div class="progressText">I tuoi progressi</div>
           <div class="progressCount"><span id="progressCount">0</span> / 21 giorni</div>
         </div>
-        <div class="progressBar">
-          <div class="progressFill" id="progressFill"></div>
-        </div>
+        <div class="progressDots" id="progressDots"></div>
       </div>
 
       <div class="content">
@@ -1072,7 +1097,7 @@
     const tagNumber = document.getElementById("tagNumber");
     const dayDone = document.getElementById("dayDone");
     const progressCount = document.getElementById("progressCount");
-    const progressFill = document.getElementById("progressFill");
+    const progressDots = document.getElementById("progressDots");
     const dayImage = document.getElementById("dayImage");
     const dayCard = document.getElementById("dayCard");
 
@@ -1143,10 +1168,6 @@
       }
     }
 
-    function getStoredDay(){
-      return clampDay(localStorage.getItem(LS_DAY));
-    }
-
     function getCompletedDays(){
       const saved = localStorage.getItem(LS_PROGRESS);
       try{
@@ -1159,24 +1180,6 @@
         }
       }catch{}
       return [];
-    }
-
-    function saveCompletedDays(days){
-      localStorage.setItem(LS_PROGRESS, JSON.stringify(days));
-    }
-
-    function markDayCompleted(day){
-      const completed = getCompletedDays();
-      const safeDay = clampDay(day);
-      if(!completed.includes(safeDay)){
-        completed.push(safeDay);
-        completed.sort((a, b) => a - b);
-        saveCompletedDays(completed);
-      }
-    }
-
-    function isDayCompleted(day){
-      return getCompletedDays().includes(clampDay(day));
     }
 
     function getStartDate(){
@@ -1201,6 +1204,49 @@
 
     function getUnlockedDay(){
       return Math.min(TOTAL_DAYS, Math.max(1, getAbsoluteDay()));
+    }
+
+    function getStoredDay(){
+      const savedDay = clampDay(localStorage.getItem(LS_DAY));
+      const unlockedDay = getUnlockedDay();
+      const completed = getCompletedDays();
+
+      let firstOpenDay = 1;
+      for(let i = 1; i <= unlockedDay; i++){
+        if(!completed.includes(i)){
+          firstOpenDay = i;
+          break;
+        }
+        firstOpenDay = i;
+      }
+
+      if(savedDay <= unlockedDay && !completed.includes(savedDay)){
+        return savedDay;
+      }
+
+      if(completed.length >= unlockedDay){
+        return unlockedDay;
+      }
+
+      return firstOpenDay;
+    }
+
+    function saveCompletedDays(days){
+      localStorage.setItem(LS_PROGRESS, JSON.stringify(days));
+    }
+
+    function markDayCompleted(day){
+      const completed = getCompletedDays();
+      const safeDay = clampDay(day);
+      if(!completed.includes(safeDay)){
+        completed.push(safeDay);
+        completed.sort((a, b) => a - b);
+        saveCompletedDays(completed);
+      }
+    }
+
+    function isDayCompleted(day){
+      return getCompletedDays().includes(clampDay(day));
     }
 
     function isCurrentDayLocked(){
@@ -1241,6 +1287,32 @@
       render();
     }
 
+    function renderProgressDots(){
+      const completed = getCompletedDays();
+      const unlocked = getUnlockedDay();
+
+      progressDots.innerHTML = "";
+
+      for(let i = 1; i <= TOTAL_DAYS; i++){
+        const dot = document.createElement("div");
+        dot.className = "progressDot";
+        dot.textContent = String(i);
+
+        if(completed.includes(i)){
+          dot.classList.add("done");
+        } else if(i > unlocked){
+          dot.classList.add("locked");
+          dot.textContent = "🔒";
+        }
+
+        if(i === currentDay){
+          dot.classList.add("current");
+        }
+
+        progressDots.appendChild(dot);
+      }
+    }
+
     function updateProgressUI(){
       const completed = getCompletedDays();
       const done = completed.length;
@@ -1248,7 +1320,7 @@
       const currentCompleted = completed.includes(currentDay);
 
       progressCount.textContent = String(done);
-      progressFill.style.width = `${(done / TOTAL_DAYS) * 100}%`;
+      renderProgressDots();
 
       dayDone.classList.remove("done", "locked");
 
@@ -1640,7 +1712,6 @@
 
       nextBtn.addEventListener("click", () => {
         if(currentDay < TOTAL_DAYS && currentDay < getUnlockedDay()){
-          markDayCompleted(currentDay);
           setStoredDay(currentDay + 1);
         }
       });
@@ -1698,10 +1769,12 @@
     async function init(){
       ensureStartDate();
       initLang();
-      currentDay = getStoredDay();
-      syncCurrentDayWithUnlocked();
       bindEvents();
       await loadJSON();
+
+      currentDay = getStoredDay();
+      localStorage.setItem(LS_DAY, String(currentDay));
+
       updateProgressUI();
       render();
     }
