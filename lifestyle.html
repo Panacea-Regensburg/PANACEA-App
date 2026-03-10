@@ -600,347 +600,353 @@
   </script>
 
   <script>
-    const STORAGE_DAY = "panacea_lifestyle_day";
-    const STORAGE_DONE = "panacea_lifestyle_done";
-    const PREMIUM_FLAG = "panacea_premium";
-    const TOTAL_DAYS = 21;
+  const STORAGE_DAY = "panacea_lifestyle_day";
+  const STORAGE_DONE = "panacea_lifestyle_done";
+  const PREMIUM_FLAG = "panacea_premium";
+  const TOTAL_DAYS = 21;
 
-    const dayBadge = document.getElementById("dayBadge");
-    const dayTitle = document.getElementById("dayTitle");
-    const dayImpulse = document.getElementById("dayImpulse");
-    const dayImage = document.getElementById("dayImage");
-    const progressPill = document.getElementById("progressPill");
-    const premiumPill = document.getElementById("premiumPill");
+  const dayBadge = document.getElementById("dayBadge");
+  const dayTitle = document.getElementById("dayTitle");
+  const dayImpulse = document.getElementById("dayImpulse");
+  const dayImage = document.getElementById("dayImage");
+  const progressPill = document.getElementById("progressPill");
+  const premiumPill = document.getElementById("premiumPill");
 
-    const premiumBox = document.getElementById("premiumBox");
-    const premiumTitleEl = document.getElementById("premiumTitle");
-    const premiumIntroEl = document.getElementById("premiumIntro");
-    const premiumDeepeningEl = document.getElementById("premiumDeepening");
-    const premiumNervousSystemEl = document.getElementById("premiumNervousSystem");
-    const premiumExerciseTitleEl = document.getElementById("premiumExerciseTitle");
-    const premiumExerciseTextEl = document.getElementById("premiumExerciseText");
-    const premiumJournalEl = document.getElementById("premiumJournal");
-    const premiumEveningEl = document.getElementById("premiumEvening");
-    const premiumInsightEl = document.getElementById("premiumInsight");
-    const premiumIntegrationEl = document.getElementById("premiumIntegration");
-    const premiumHintEl = document.getElementById("premiumHint");
-    const exerciseCardEl = document.getElementById("exerciseCard");
+  const premiumBox = document.getElementById("premiumBox");
+  const premiumTitleEl = document.getElementById("premiumTitle");
+  const premiumIntroEl = document.getElementById("premiumIntro");
+  const premiumDeepeningEl = document.getElementById("premiumDeepening");
+  const premiumNervousSystemEl = document.getElementById("premiumNervousSystem");
+  const premiumExerciseTitleEl = document.getElementById("premiumExerciseTitle");
+  const premiumExerciseTextEl = document.getElementById("premiumExerciseText");
+  const premiumJournalEl = document.getElementById("premiumJournal");
+  const premiumEveningEl = document.getElementById("premiumEvening");
+  const premiumInsightEl = document.getElementById("premiumInsight");
+  const premiumIntegrationEl = document.getElementById("premiumIntegration");
+  const premiumHintEl = document.getElementById("premiumHint");
+  const exerciseCardEl = document.getElementById("exerciseCard");
 
-    const errorBox = document.getElementById("errorBox");
-    const memberTeaser = document.getElementById("memberTeaser");
-    const memberBtn = document.getElementById("memberBtn");
+  const errorBox = document.getElementById("errorBox");
+  const memberTeaser = document.getElementById("memberTeaser");
+  const memberBtn = document.getElementById("memberBtn");
 
-    const prevBtn = document.getElementById("prevBtn");
-    const nextBtn = document.getElementById("nextBtn");
-    const doneBtn = document.getElementById("doneBtn");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const doneBtn = document.getElementById("doneBtn");
 
-    function clamp(n, min, max){
-      return Math.max(min, Math.min(max, n));
+  function clamp(n, min, max){
+    return Math.max(min, Math.min(max, n));
+  }
+
+  function getLang(){
+    const v = (localStorage.getItem("lang") || "").toLowerCase();
+    return (v === "it" || v === "de") ? v : "de";
+  }
+
+  function t(val){
+    const lang = getLang();
+    if (val == null) return "";
+    if (typeof val === "string") return val;
+    if (typeof val === "object") return val[lang] || val.de || val.it || "";
+    return "";
+  }
+
+  function getMembersUrl(){
+    return getLang() === "it" ? "mitgliederIT.html" : "mitglieder.html";
+  }
+
+  function getCurrentDay(){
+    const raw = localStorage.getItem(STORAGE_DAY);
+    const n = parseInt(raw || "1", 10);
+    return clamp(isNaN(n) ? 1 : n, 1, TOTAL_DAYS);
+  }
+
+  function setCurrentDay(day){
+    localStorage.setItem(STORAGE_DAY, String(clamp(day, 1, TOTAL_DAYS)));
+  }
+
+  function getDone(){
+    try{
+      const raw = localStorage.getItem(STORAGE_DONE);
+      const arr = raw ? JSON.parse(raw) : [];
+      if(!Array.isArray(arr)) return [];
+      return [...new Set(arr.map(x => parseInt(x, 10)).filter(x => x >= 1 && x <= TOTAL_DAYS))];
+    }catch(e){
+      return [];
     }
+  }
 
-    function getLang(){
-      const v = (localStorage.getItem("lang") || "").toLowerCase();
-      return (v === "it" || v === "de") ? v : "de";
-    }
+  function setDone(arr){
+    localStorage.setItem(STORAGE_DONE, JSON.stringify(arr));
+  }
 
-    function t(val){
-      const lang = getLang();
-      if (val == null) return "";
-      if (typeof val === "string") return val;
-      if (typeof val === "object") return val[lang] || val.de || val.it || "";
-      return "";
-    }
+  function isPremium(){
+    return localStorage.getItem(PREMIUM_FLAG) === "true";
+  }
 
-    function getMembersUrl(){
-      return getLang() === "it" ? "mitgliederIT.html" : "mitglieder.html";
-    }
+  function updatePills(){
+    const done = getDone();
+    progressPill.textContent = `Fortschritt: ${done.length}/${TOTAL_DAYS}`;
+    premiumPill.textContent = `Premium: ${isPremium() ? "an" : "aus"}`;
+    if(memberBtn) memberBtn.href = getMembersUrl();
+  }
 
-    function getCurrentDay(){
-      const raw = localStorage.getItem(STORAGE_DAY);
-      const n = parseInt(raw || "1", 10);
-      return clamp(isNaN(n) ? 1 : n, 1, TOTAL_DAYS);
-    }
+  function showError(msg){
+    errorBox.style.display = "block";
+    errorBox.textContent = msg;
+  }
 
-    function setCurrentDay(day){
-      localStorage.setItem(STORAGE_DAY, String(clamp(day, 1, TOTAL_DAYS)));
-    }
+  function hideError(){
+    errorBox.style.display = "none";
+    errorBox.textContent = "";
+  }
 
-    function getDone(){
-      try{
-        const raw = localStorage.getItem(STORAGE_DONE);
-        const arr = raw ? JSON.parse(raw) : [];
-        if(!Array.isArray(arr)) return [];
-        return [...new Set(arr.map(x => parseInt(x, 10)).filter(x => x >= 1 && x <= TOTAL_DAYS))];
-      }catch(e){
-        return [];
-      }
-    }
-
-    function setDone(arr){
-      localStorage.setItem(STORAGE_DONE, JSON.stringify(arr));
-    }
-
-    function isPremium(){
-      return localStorage.getItem(PREMIUM_FLAG) === "true";
-    }
-
-    function updatePills(){
-      const done = getDone();
-      progressPill.textContent = `Fortschritt: ${done.length}/${TOTAL_DAYS}`;
-      premiumPill.textContent = `Premium: ${isPremium() ? "an" : "aus"}`;
-      if(memberBtn) memberBtn.href = getMembersUrl();
-    }
-
-    function showError(msg){
-      errorBox.style.display = "block";
-      errorBox.textContent = msg;
-    }
-
-    function hideError(){
-      errorBox.style.display = "none";
-      errorBox.textContent = "";
-    }
-
-    const FREE_DAYS = [
-      { title:"Tag 1 – Start: kleine Schritte", impulse:`Heute geht es um Machbarkeit: Wähle EINEN kleinen Schritt, den du wirklich tun kannst.
+  const FREE_DAYS = [
+    { title:"Tag 1 – Start: kleine Schritte", impulse:`Heute geht es um Machbarkeit: Wähle EINEN kleinen Schritt, den du wirklich tun kannst.
 Iss eine normale, stabile Mahlzeit (Protein + Ballaststoffe) statt „Perfektion“.
 Trinke ein Glas Wasser extra und spüre kurz: Was braucht dein Körper gerade?
 Abends: 10 Minuten früher runterfahren (Licht dimmen, Bildschirm-Pause).` },
-      { title:"Tag 2 – Blutzucker stabil", impulse:`Starte mit Struktur: eine Mahlzeit mit Protein (z.B. Joghurt/Quark, Eier, Hülsenfrüchte) + Ballaststoffen.
+    { title:"Tag 2 – Blutzucker stabil", impulse:`Starte mit Struktur: eine Mahlzeit mit Protein (z.B. Joghurt/Quark, Eier, Hülsenfrüchte) + Ballaststoffen.
 Vermeide „nur Kaffee“ als Frühstück – das verstärkt bei vielen Menschen Stressreaktionen.
 Nach dem Essen: 10 Minuten gehen (senkt Blutzuckerspitzen, beruhigt).
 Kurz-Check: Hunger oder Stress? Atme 3× langsam aus, bevor du snackst.` },
-      { title:"Tag 3 – Schlaf als Regulator", impulse:`Schlaf ist ein Stress-Regulationssystem: Heute zählt Rhythmus, nicht Länge.
+    { title:"Tag 3 – Schlaf als Regulator", impulse:`Schlaf ist ein Stress-Regulationssystem: Heute zählt Rhythmus, nicht Länge.
 Wähle eine feste Zeit zum Runterfahren (z.B. 21:30) – möglichst jeden Tag ähnlich.
 Abends: sehr spätes, schweres Essen vermeiden → weniger Unruhe in der Nacht.
 Mini-Ritual: warm duschen oder Fußbad + langsames Ausatmen (4 ein / 6 aus).` },
-      { title:"Tag 4 – Bewegung ohne Druck", impulse:`Bewegung wirkt wie ein Reset fürs Nervensystem – sanft reicht.
+    { title:"Tag 4 – Bewegung ohne Druck", impulse:`Bewegung wirkt wie ein Reset fürs Nervensystem – sanft reicht.
 10–15 Minuten lockeres Gehen oder Dehnen: Ziel ist Durchblutung, nicht Leistung.
 Wenn du angespannt bist: Verlängere das Ausatmen während der Bewegung.
 Notiere 1 Satz: „Wie fühlt sich mein Körper nach 10 Minuten an?“` },
-      { title:"Tag 5 – Mikro-Pausen", impulse:`Kurze Pausen signalisieren Sicherheit: 60–90 Sekunden reichen.
+    { title:"Tag 5 – Mikro-Pausen", impulse:`Kurze Pausen signalisieren Sicherheit: 60–90 Sekunden reichen.
 Stell dir 2× heute einen Mini-Timer (Vormittag/Nachmittag) für Atem + Schultern locker.
 Trinke langsam 5 Schlucke Wasser und spüre den Boden.
 Das ist Salutogenese: Ressourcen stärken, bevor es kippt.` },
-      { title:"Tag 6 – Soziale Ressource", impulse:`Soziale Verbindung puffert Stress messbar (psychisch & körperlich).
+    { title:"Tag 6 – Soziale Ressource", impulse:`Soziale Verbindung puffert Stress messbar (psychisch & körperlich).
 Schicke heute eine kurze, echte Nachricht an eine Person: „Wie geht’s dir?“
 Wenn das zu viel ist: Lächle bewusst oder sage „Danke“ – kleine Signale zählen.
 Abends: 1 Minute Erinnerung: „Wer oder was hat mich heute getragen?“` },
-      { title:"Tag 7 – Wochen-Reset", impulse:`Reflexion schafft Kohärenz (Verstehbarkeit/Handhabbarkeit/Sinn).
+    { title:"Tag 7 – Wochen-Reset", impulse:`Reflexion schafft Kohärenz (Verstehbarkeit/Handhabbarkeit/Sinn).
 Wähle 1 Gewohnheit, die nächste Woche bleiben darf (z.B. 10 Min Spaziergang).
 Plane 1 „leichte“ Mahlzeit für morgen (Gemüse + Protein + gutes Fett).
 Feier Fortschritt: Notiere 3 Dinge, die heute gut genug waren.` },
-      { title:"Tag 8 – Entzündungsarme Basics", impulse:`Mehr Pflanzen, mehr Vielfalt: Ziel sind 20–30 verschiedene Pflanzen pro Woche (inkl. Kräuter).
+    { title:"Tag 8 – Entzündungsarme Basics", impulse:`Mehr Pflanzen, mehr Vielfalt: Ziel sind 20–30 verschiedene Pflanzen pro Woche (inkl. Kräuter).
 Heute: Füge 1 Portion Gemüse oder Obst extra hinzu – egal welche.
 Nutze gutes Fett (Olivenöl, Nüsse, Samen) für Sättigung und stabile Energie.
 Wenn möglich: Zuckerreiche Snacks ersetzen durch Joghurt, Nüsse oder Obst.` },
-      { title:"Tag 9 – Koffein & Stress", impulse:`Koffein kann Stresssymptome verstärken – Timing hilft.
+    { title:"Tag 9 – Koffein & Stress", impulse:`Koffein kann Stresssymptome verstärken – Timing hilft.
 Wenn du Kaffee trinkst: nach dem Frühstück, nicht nüchtern.
 Achte auf Körpersignale: Herzklopfen/Unruhe? Dann heute 1 Tasse weniger oder später.
 Alternative: Kräutertee + 3 ruhige Ausatmungen.` },
-      { title:"Tag 10 – Nervensystem & Atem", impulse:`Längeres Ausatmen aktiviert den Beruhigungsmodus (Parasympathikus).
+    { title:"Tag 10 – Nervensystem & Atem", impulse:`Längeres Ausatmen aktiviert den Beruhigungsmodus (Parasympathikus).
 2 Minuten: 4 Sekunden ein, 6–8 Sekunden aus – ohne Druck.
 Dann: Schultergürtel sinken lassen, Kiefer locker.
 Merke: nicht „mehr machen“, sondern „weniger Alarm“ im Körper.` },
-      { title:"Tag 11 – Sinn & Werte", impulse:`Salutogenese braucht Sinn: Kleine Handlungen wirken stärker, wenn sie Bedeutung haben.
+    { title:"Tag 11 – Sinn & Werte", impulse:`Salutogenese braucht Sinn: Kleine Handlungen wirken stärker, wenn sie Bedeutung haben.
 Frage: „Wofür mache ich das – Gesundheit, Energie, Freiheit, Familie?“
 Wähle 1 Mini-Aktion, die dazu passt (z.B. frische Mahlzeit, Spaziergang, früher Schlaf).
 Schreibe 1 Satz: „Heute war wichtig, weil …“` },
-      { title:"Tag 12 – Ordnung & Entlastung", impulse:`Umgebung wirkt auf das Nervensystem: weniger Reize = weniger Stress.
+    { title:"Tag 12 – Ordnung & Entlastung", impulse:`Umgebung wirkt auf das Nervensystem: weniger Reize = weniger Stress.
 Heute: 5 Minuten eine Fläche ordnen (Tisch, Tasche, Küche).
 Danach: bewusst atmen und wahrnehmen, ob es „leichter“ wird.
 Kleine Ordnung ist eine körperliche Entlastung.` },
-      { title:"Tag 13 – Eiweiß & Stabilität", impulse:`Protein unterstützt Sättigung, Muskelstoffwechsel und stabile Energie.
+    { title:"Tag 13 – Eiweiß & Stabilität", impulse:`Protein unterstützt Sättigung, Muskelstoffwechsel und stabile Energie.
 Heute: Baue bei 2 Mahlzeiten eine Proteinquelle ein (Fisch, Eier, Tofu, Hülsenfrüchte, Quark).
 Kombiniere mit Ballaststoffen (Gemüse/Hafer/Vollkorn).
 Trinke Wasser dazu – Durst wird oft mit Hunger verwechselt.` },
-      { title:"Tag 14 – Genuss ohne Schuld", impulse:`Stress + strenge Regeln führen oft zu „Alles-oder-nichts“.
+    { title:"Tag 14 – Genuss ohne Schuld", impulse:`Stress + strenge Regeln führen oft zu „Alles-oder-nichts“.
 Erlaube heute bewusst Genuss in kleiner Portion – langsam, ohne Ablenkung.
 Frage: „Schmecke ich das wirklich?“ → Achtsamkeit reduziert Überessen.
 Das Ziel ist Stabilität, nicht Verbot.` },
-      { title:"Tag 15 – Natur & Licht", impulse:`Tageslicht stabilisiert den zirkadianen Rhythmus und verbessert Schlafqualität.
+    { title:"Tag 15 – Natur & Licht", impulse:`Tageslicht stabilisiert den zirkadianen Rhythmus und verbessert Schlafqualität.
 Heute: 10 Minuten draußen am Vormittag – auch bei Wolken.
 Wenn du kannst: kurze Bewegung dazu (gehen, Treppe, locker).
 Abends: Licht reduzieren → leichter runterfahren.` },
-      { title:"Tag 16 – Grenzen & Nein", impulse:`Psychische Gesundheit ist auch Grenzen setzen.
+    { title:"Tag 16 – Grenzen & Nein", impulse:`Psychische Gesundheit ist auch Grenzen setzen.
 Heute: Sage zu einer Sache freundlich Nein oder verschiebe sie.
 Nutze einen Satz: „Ich kann das heute nicht, ich melde mich morgen.“
 Du schützt Energie – das ist Prävention.` },
-      { title:"Tag 17 – Mikro-Training", impulse:`Kraft schützt langfristig: Stoffwechsel, Haltung, Selbstwirksamkeit.
+    { title:"Tag 17 – Mikro-Training", impulse:`Kraft schützt langfristig: Stoffwechsel, Haltung, Selbstwirksamkeit.
 Heute: 6 Minuten Mini-Kraft (z.B. 2×: 10 Kniebeugen + 10 Wandliegestütze).
 Langsam und sauber – kein Schmerz.
 Danach: Wasser trinken und kurz stolz sein.` },
-      { title:"Tag 18 – Soziale Kultur-Routine", impulse:`Kultur & Rituale geben Sicherheit: Musik, Kochen, Sprache, Gebet, Tradition.
+    { title:"Tag 18 – Soziale Kultur-Routine", impulse:`Kultur & Rituale geben Sicherheit: Musik, Kochen, Sprache, Gebet, Tradition.
 Heute: 10 Minuten ein Ritual, das dich „zu Hause“ fühlen lässt.
 Teile es, wenn möglich, mit jemandem (Nachricht/Foto/kurzer Call).
 Ressourcen sind auch kulturell.` },
-      { title:"Tag 19 – Verdauung & Ruhe", impulse:`Stress beeinflusst Verdauung: Heute sanfte Entspannung nach dem Essen.
+    { title:"Tag 19 – Verdauung & Ruhe", impulse:`Stress beeinflusst Verdauung: Heute sanfte Entspannung nach dem Essen.
 Nach einer Mahlzeit: 5–10 Minuten langsam gehen oder ruhig sitzen.
 Bewusst kauen: Langsamer essen = weniger Stresssignale.
 Wenn der Bauch unruhig ist: warmes Getränk + längeres Ausatmen.` },
-      { title:"Tag 20 – Plan statt Druck", impulse:`Struktur reduziert kognitive Last (weniger Chaos = weniger Stress).
+    { title:"Tag 20 – Plan statt Druck", impulse:`Struktur reduziert kognitive Last (weniger Chaos = weniger Stress).
 Heute: Plane 1 gesunde Mahlzeit für morgen + 1 Snack-Alternative.
 Lege etwas sichtbar bereit (Obst, Nüsse, Joghurt).
 Dein zukünftiges Ich wird dir danken.` },
-      { title:"Tag 21 – Integration", impulse:`Du hast Ressourcen aufgebaut: Das ist Salutogenese in Aktion.
+    { title:"Tag 21 – Integration", impulse:`Du hast Ressourcen aufgebaut: Das ist Salutogenese in Aktion.
 Wähle 3 Dinge, die bleiben: 1 Ernährung, 1 Bewegung, 1 Ruhe-Ritual.
 Schreibe einen einfachen Plan: „Wann genau mache ich das?“
 Feiere den Abschluss: Stabilität entsteht durch Wiederholung, nicht durch Perfektion.` }
-    ];
+  ];
 
-    let premiumData = null;
+  let premiumDays = [];
 
-    async function loadPremiumJson(){
-      try{
-        const res = await fetch("./data/lifestyle.json", { cache: "no-store" });
-        if(!res.ok) throw new Error("premium json not reachable");
+  async function loadPremiumJson(){
+    try{
+      const res = await fetch("./data/lifestyle.json", { cache: "no-store" });
+      if(!res.ok) throw new Error("premium json not reachable");
 
-        const data = await res.json();
-        if(!data || !Array.isArray(data.days) || data.days.length < TOTAL_DAYS){
-          throw new Error("premium json invalid");
-        }
+      const data = await res.json();
 
-        premiumData = data.days;
-      }catch(e){
-        premiumData = null;
+      if(!data || !Array.isArray(data.days)){
+        throw new Error("premium json invalid");
       }
+
+      premiumDays = data.days;
+    }catch(e){
+      premiumDays = [];
+      console.error("Lifestyle premium load error:", e);
+    }
+  }
+
+  function clearPremiumContent(){
+    premiumTitleEl.textContent = "Premium Impuls";
+    premiumIntroEl.textContent = "";
+    premiumDeepeningEl.textContent = "";
+    premiumNervousSystemEl.textContent = "";
+    premiumExerciseTitleEl.textContent = "";
+    premiumExerciseTextEl.textContent = "";
+    premiumJournalEl.textContent = "";
+    premiumEveningEl.textContent = "";
+    premiumInsightEl.textContent = "";
+    premiumIntegrationEl.textContent = "";
+    premiumHintEl.textContent = "";
+    exerciseCardEl.style.display = "none";
+  }
+
+  function getDayEntry(day){
+    return premiumDays.find(entry => Number(entry.day) === Number(day)) || null;
+  }
+
+  function pickVariant(dayEntry, day){
+    if(!dayEntry || !Array.isArray(dayEntry.variants) || !dayEntry.variants.length) return null;
+
+    const key = `panacea_lifestyle_variant_day_${day}`;
+    let storedIndex = parseInt(localStorage.getItem(key) || "-1", 10);
+
+    if(isNaN(storedIndex) || storedIndex < 0 || storedIndex >= dayEntry.variants.length){
+      storedIndex = Math.floor(Math.random() * dayEntry.variants.length);
+      localStorage.setItem(key, String(storedIndex));
     }
 
-    function clearPremiumContent(){
+    return dayEntry.variants[storedIndex];
+  }
+
+  function renderPremiumSection(day){
+    clearPremiumContent();
+
+    if(!isPremium()){
+      premiumBox.classList.remove("visible");
+      memberTeaser.style.display = "block";
+      return;
+    }
+
+    memberTeaser.style.display = "none";
+    premiumBox.classList.add("visible");
+
+    const dayEntry = getDayEntry(day);
+    const variant = pickVariant(dayEntry, day);
+
+    if (!variant) {
       premiumTitleEl.textContent = "Premium Impuls";
-      premiumIntroEl.textContent = "";
-      premiumDeepeningEl.textContent = "";
-      premiumNervousSystemEl.textContent = "";
-      premiumExerciseTitleEl.textContent = "";
-      premiumExerciseTextEl.textContent = "";
-      premiumJournalEl.textContent = "";
-      premiumEveningEl.textContent = "";
-      premiumInsightEl.textContent = "";
-      premiumIntegrationEl.textContent = "";
-      premiumHintEl.textContent = "";
+      premiumIntroEl.textContent = "Für diesen Tag wurde noch keine Premium-Variante gefunden.";
+      premiumHintEl.textContent = `Prüfe data/lifestyle.json für Tag ${day}.`;
+      return;
+    }
+
+    premiumTitleEl.textContent = t(variant.title) || `Premium Impuls · Tag ${day}`;
+    premiumIntroEl.textContent = t(variant.intro);
+    premiumDeepeningEl.textContent = t(variant.deepening);
+    premiumNervousSystemEl.textContent = t(variant.nervousSystemLink);
+
+    const exTitle = variant.exercise ? t(variant.exercise.title) : "";
+    const exText = variant.exercise ? t(variant.exercise.text) : "";
+
+    if(exTitle || exText){
+      exerciseCardEl.style.display = "block";
+      premiumExerciseTitleEl.textContent = exTitle || "Übung";
+      premiumExerciseTextEl.textContent = exText || "";
+    } else {
       exerciseCardEl.style.display = "none";
     }
 
-    function pickVariant(dayEntry, day){
-      if(!dayEntry || !Array.isArray(dayEntry.variants) || !dayEntry.variants.length) return null;
+    premiumJournalEl.textContent = t(variant.journalPrompt);
+    premiumEveningEl.textContent = t(variant.eveningReflection);
+    premiumInsightEl.textContent = t(variant.premiumInsight);
+    premiumIntegrationEl.textContent = t(variant.integrationQuestion);
+    premiumHintEl.textContent = "Diese Premium-Variante gehört direkt zu deinem heutigen Lifestyle-Tag.";
+  }
 
-      const key = `panacea_lifestyle_variant_day_${day}`;
-      let storedIndex = parseInt(localStorage.getItem(key) || "-1", 10);
+  function renderDay(day){
+    hideError();
 
-      if(isNaN(storedIndex) || storedIndex < 0 || storedIndex >= dayEntry.variants.length){
-        storedIndex = Math.floor(Math.random() * dayEntry.variants.length);
-        localStorage.setItem(key, String(storedIndex));
-      }
+    dayBadge.textContent = `Tag ${day}`;
+    dayImage.src = `icons/${day}a.png`;
+    dayImage.alt = `Lifestyle – Tag ${day}`;
 
-      return dayEntry.variants[storedIndex];
-    }
+    const entry = FREE_DAYS[day - 1] || { title:`Tag ${day}`, impulse:"" };
+    dayTitle.textContent = entry.title || `Tag ${day}`;
+    dayImpulse.textContent = entry.impulse || "";
 
-    function renderPremiumSection(day){
-      clearPremiumContent();
+    renderPremiumSection(day);
 
-      if(!isPremium()){
-        premiumBox.classList.remove("visible");
-        memberTeaser.style.display = "block";
-        return;
-      }
+    prevBtn.disabled = day <= 1;
+    nextBtn.disabled = day >= TOTAL_DAYS;
 
-      memberTeaser.style.display = "none";
-      premiumBox.classList.add("visible");
+    const done = getDone();
+    const isDoneToday = done.includes(day);
+    doneBtn.textContent = isDoneToday ? "✔ Abgeschlossen" : "✔ Heute abgeschlossen";
+    doneBtn.classList.toggle("primary", !isDoneToday);
 
-      const dayEntry = premiumData && premiumData[day - 1] ? premiumData[day - 1] : null;
-      const variant = pickVariant(dayEntry, day);
+    updatePills();
+  }
 
-      if (!variant) {
-        premiumTitleEl.textContent = "Premium Impuls";
-        premiumIntroEl.textContent = "Premium ist aktiv, aber für diesen Tag wurden noch keine Lifestyle-Inhalte geladen.";
-        premiumHintEl.textContent = "Prüfe data/lifestyle.json für Tag " + day + ".";
-        return;
-      }
+  dayImage.addEventListener("error", () => {
+    dayImage.src = "icons/sfondo.png";
+    showError("Bild nicht gefunden.\nPrüfe: icons/1a.png bis icons/21a.png");
+  });
 
-      premiumTitleEl.textContent = t(variant.title) || `Premium Impuls · Tag ${day}`;
-      premiumIntroEl.textContent = t(variant.intro);
-      premiumDeepeningEl.textContent = t(variant.deepening);
-      premiumNervousSystemEl.textContent = t(variant.nervousSystemLink);
+  prevBtn.addEventListener("click", () => {
+    const d = getCurrentDay();
+    setCurrentDay(d - 1);
+    renderDay(getCurrentDay());
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 
-      const exTitle = variant.exercise ? t(variant.exercise.title) : "";
-      const exText = variant.exercise ? t(variant.exercise.text) : "";
+  nextBtn.addEventListener("click", () => {
+    const d = getCurrentDay();
+    setCurrentDay(d + 1);
+    renderDay(getCurrentDay());
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 
-      if(exTitle || exText){
-        exerciseCardEl.style.display = "block";
-        premiumExerciseTitleEl.textContent = exTitle || "Übung";
-        premiumExerciseTextEl.textContent = exText || "";
-      } else {
-        exerciseCardEl.style.display = "none";
-      }
+  doneBtn.addEventListener("click", () => {
+    const day = getCurrentDay();
+    const done = getDone();
 
-      premiumJournalEl.textContent = t(variant.journalPrompt);
-      premiumEveningEl.textContent = t(variant.eveningReflection);
-      premiumInsightEl.textContent = t(variant.premiumInsight);
-      premiumIntegrationEl.textContent = t(variant.integrationQuestion);
-      premiumHintEl.textContent = "Diese Premium-Variante ist Teil deines Lifestyle-Tages.";
-    }
+    if(!done.includes(day)) done.push(day);
+    setDone(done);
 
-    function renderDay(day){
-      hideError();
+    if(day < TOTAL_DAYS) setCurrentDay(day + 1);
+    renderDay(getCurrentDay());
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 
-      dayBadge.textContent = `Tag ${day}`;
-      dayImage.src = `icons/${day}a.png`;
-      dayImage.alt = `Lifestyle – Tag ${day}`;
-
-      const entry = FREE_DAYS[day - 1] || { title:`Tag ${day}`, impulse:"" };
-      dayTitle.textContent = entry.title || `Tag ${day}`;
-      dayImpulse.textContent = entry.impulse || "";
-
-      renderPremiumSection(day);
-
-      prevBtn.disabled = day <= 1;
-      nextBtn.disabled = day >= TOTAL_DAYS;
-
-      const done = getDone();
-      const isDoneToday = done.includes(day);
-      doneBtn.textContent = isDoneToday ? "✔ Abgeschlossen" : "✔ Heute abgeschlossen";
-      doneBtn.classList.toggle("primary", !isDoneToday);
-
-      updatePills();
-    }
-
-    dayImage.addEventListener("error", () => {
-      dayImage.src = "icons/sfondo.png";
-      showError("Bild nicht gefunden.\nPrüfe: icons/1a.png bis icons/21a.png");
-    });
-
-    prevBtn.addEventListener("click", () => {
-      const d = getCurrentDay();
-      setCurrentDay(d - 1);
-      renderDay(getCurrentDay());
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-
-    nextBtn.addEventListener("click", () => {
-      const d = getCurrentDay();
-      setCurrentDay(d + 1);
-      renderDay(getCurrentDay());
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-
-    doneBtn.addEventListener("click", () => {
-      const day = getCurrentDay();
-      const done = getDone();
-
-      if(!done.includes(day)) done.push(day);
-      setDone(done);
-
-      if(day < TOTAL_DAYS) setCurrentDay(day + 1);
-      renderDay(getCurrentDay());
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-
-    (async function init(){
-      updatePills();
-      await loadPremiumJson();
-      renderDay(getCurrentDay());
-      updatePills();
-    })();
-  </script>
+  (async function init(){
+    updatePills();
+    await loadPremiumJson();
+    renderDay(getCurrentDay());
+    updatePills();
+  })();
+</script>
 </body>
 </html>
