@@ -59,6 +59,7 @@
       box-shadow: var(--shadow2);
       color:var(--text);
       border:1px solid rgba(200,162,74,.20);
+      transition: transform .15s ease;
     }
     .back:hover{ transform: translateY(-1px); }
 
@@ -82,6 +83,11 @@
       box-shadow: 0 10px 22px rgba(0,0,0,.06);
       color: var(--text);
       line-height:1;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+
+    .langBtn:hover{
+      transform: translateY(-1px);
     }
 
     .langBtn.active{
@@ -166,7 +172,11 @@
       margin:16px 0;
     }
 
-    .row{ display:flex; gap:10px; flex-wrap:wrap; }
+    .row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
 
     .btn{
       appearance:none;
@@ -182,6 +192,7 @@
       color:var(--text);
       flex:1;
       min-width:130px;
+      transition: transform .15s ease, box-shadow .15s ease;
     }
 
     .btn:hover{ transform: translateY(-1px); }
@@ -191,6 +202,12 @@
       border:1px solid rgba(200,162,74,.35);
       color:#3a2c10;
       text-shadow: 0 0 10px rgba(200,162,74,.25);
+    }
+
+    .btn:disabled{
+      opacity:.55;
+      cursor:not-allowed;
+      transform:none;
     }
 
     .small{
@@ -212,62 +229,88 @@
     }
 
     .premiumBox{
-      margin-top:14px;
-      padding:14px;
-      border-radius:18px;
-      border:1px solid rgba(200,162,74,.28);
-      background: linear-gradient(180deg, rgba(255,246,214,.75), rgba(255,255,255,.75));
-      box-shadow: 0 0 18px rgba(200,162,74,.15);
+      margin-top:16px;
+      padding:18px;
+      border-radius:22px;
+      border:1px solid rgba(200,162,74,.18);
+      background: linear-gradient(180deg, var(--card2), var(--card));
+      box-shadow: var(--shadow2);
       display:none;
       cursor:pointer;
-      transition: transform .15s ease;
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+      outline:none;
     }
 
-    .premiumBox:hover{
+    .premiumBox:hover,
+    .premiumBox:focus-visible{
       transform: translateY(-1px);
+      box-shadow: 0 12px 28px rgba(0,0,0,.10);
+      border-color: rgba(200,162,74,.28);
+    }
+
+    .premiumBadge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      margin-bottom:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      font-weight:900;
+      font-size:12px;
+      color:#3a2c10;
+      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      border:1px solid rgba(200,162,74,.35);
+      box-shadow: 0 0 14px rgba(200,162,74,.18);
     }
 
     .premiumBox h3{
-      margin:0 0 8px 0;
-      font-size:14px;
+      margin:0 0 10px 0;
+      font-size:15px;
       font-weight:900;
+      letter-spacing:.2px;
       color:#3a2c10;
     }
 
     .premiumBox .p{
       margin:0;
       font-size:14px;
-      line-height:1.5;
-      white-space: pre-line;
+      line-height:1.6;
+      color:var(--text);
+      white-space:pre-line;
     }
 
     .premiumBox .q{
-      margin-top:10px;
+      margin-top:12px;
+      font-size:14px;
+      line-height:1.6;
       color:#3a2c10;
-      font-weight:900;
-      white-space: pre-line;
+      font-weight:800;
+      white-space:pre-line;
     }
 
     .premiumBox .links{
-      margin-top:10px;
+      margin:12px 0 0 0;
       padding-left:18px;
       font-size:14px;
-      line-height:1.5;
+      line-height:1.6;
+      color:var(--text);
     }
 
     .premiumBox a{
-      color:#2b2b2b;
-      font-weight:900;
+      color:var(--text);
+      font-weight:800;
       text-decoration:none;
-      border-bottom:1px dotted rgba(43,43,43,.45);
+      border-bottom:1px dotted rgba(43,43,43,.35);
     }
 
-    .premiumBox a:hover{ border-bottom-style: solid; }
+    .premiumBox a:hover{
+      border-bottom-style:solid;
+    }
 
     .premiumHint{
-      margin-top:10px;
+      margin-top:12px;
       font-size:12px;
-      color:#6b6b6b;
+      color:var(--muted);
     }
 
     .error{
@@ -282,12 +325,12 @@
     }
 
     .memberTeaser{
-      margin-top:14px;
-      padding:14px;
-      border-radius:18px;
-      border:1px solid rgba(200,162,74,.28);
-      background: linear-gradient(180deg, rgba(255,246,214,.75), rgba(255,255,255,.75));
-      box-shadow: 0 0 18px rgba(200,162,74,.15);
+      margin-top:16px;
+      padding:18px;
+      border-radius:22px;
+      border:1px solid rgba(200,162,74,.18);
+      background: linear-gradient(180deg, var(--card2), var(--card));
+      box-shadow: var(--shadow2);
       display:none;
     }
 
@@ -320,7 +363,7 @@
       padding-left:18px;
       color:#2b2b2b;
       font-size:14px;
-      line-height:1.5;
+      line-height:1.6;
     }
 
     .memberBtn{
@@ -335,6 +378,11 @@
       background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
       border:1px solid rgba(200,162,74,.35);
       box-shadow: 0 0 16px rgba(200,162,74,.20);
+      transition: transform .15s ease;
+    }
+
+    .memberBtn:hover{
+      transform: translateY(-1px);
     }
 
     .memberNote{
@@ -387,7 +435,8 @@
         <p class="impulse" id="dayImpulse">Bitte einen Moment.</p>
 
         <div class="premiumBox" id="premiumBox" tabindex="0" role="button" aria-label="Premium öffnen">
-          <h3>Premium</h3>
+          <div class="premiumBadge">Premium</div>
+          <h3>Premium · Vertiefung</h3>
           <p class="p" id="premiumExtra"></p>
           <p class="q" id="premiumTips"></p>
           <ul class="links" id="premiumLinks"></ul>
@@ -408,7 +457,7 @@
             <li><b>Links & Tools</b> im Mitgliederbereich</li>
           </ul>
 
-          <a class="memberBtn" href="mitglieder.html">Mitglieder freischalten →</a>
+          <a class="memberBtn" id="memberBtn" href="mitglieder.html">Mitglieder freischalten →</a>
           <div class="memberNote">Premium wird nach Freischaltung automatisch sichtbar.</div>
         </div>
 
@@ -450,7 +499,7 @@
           "lifestyle.html": "lifestyleIT.html",
           "lifestyleIT.html": "lifestyle.html",
           "mitglieder.html": "mitgliederIT.html",
-          "mitgliederIT.html": "mitglieder.html",
+          "mitgliederIT.html": "mitglieder.html"
         };
 
         if(targetLang === "it"){
@@ -524,6 +573,7 @@
 
     const errorBox = document.getElementById("errorBox");
     const memberTeaser = document.getElementById("memberTeaser");
+    const memberBtn = document.getElementById("memberBtn");
 
     const prevBtn = document.getElementById("prevBtn");
     const nextBtn = document.getElementById("nextBtn");
@@ -546,6 +596,10 @@
       return "";
     }
 
+    function getMembersUrl(){
+      return getLang() === "it" ? "mitgliederIT.html" : "mitglieder.html";
+    }
+
     function getCurrentDay(){
       const raw = localStorage.getItem(STORAGE_DAY);
       const n = parseInt(raw || "1", 10);
@@ -561,7 +615,7 @@
         const raw = localStorage.getItem(STORAGE_DONE);
         const arr = raw ? JSON.parse(raw) : [];
         if(!Array.isArray(arr)) return [];
-        return [...new Set(arr.map(x => parseInt(x,10)).filter(x => x>=1 && x<=TOTAL_DAYS))];
+        return [...new Set(arr.map(x => parseInt(x,10)).filter(x => x >= 1 && x <= TOTAL_DAYS))];
       }catch(e){
         return [];
       }
@@ -577,8 +631,9 @@
 
     function updatePills(){
       const done = getDone();
-      premiumPill.textContent = `Premium: ${isPremium() ? "an" : "aus"}`;
       progressPill.textContent = `Fortschritt: ${done.length}/${TOTAL_DAYS}`;
+      premiumPill.textContent = `Premium: ${isPremium() ? "an" : "aus"}`;
+      if(memberBtn) memberBtn.href = getMembersUrl();
     }
 
     function showError(msg){
@@ -592,8 +647,7 @@
     }
 
     function openMembersPage(){
-      const lang = getLang();
-      location.href = lang === "it" ? "mitgliederIT.html" : "mitglieder.html";
+      location.href = getMembersUrl();
     }
 
     const FREE_DAYS = [
@@ -734,7 +788,7 @@ Feiere den Abschluss: Stabilität entsteht durch Wiederholung, nicht durch Perfe
 
       if (!p) {
         premiumExtraEl.textContent = "Premium ist aktiv, aber es wurden noch keine Lifestyle-Premium-Inhalte geladen.";
-        premiumHintEl.textContent = "Klicke hier, um den Mitgliederbereich zu öffnen.";
+        premiumHintEl.textContent = "Zum Mitgliederbereich öffnen.";
         return;
       }
 
@@ -761,7 +815,7 @@ Feiere den Abschluss: Stabilität entsteht durch Wiederholung, nicht durch Perfe
         premiumExtraEl.textContent = "Für diesen Tag sind noch keine Premium-Details hinterlegt.";
       }
 
-      premiumHintEl.textContent = "Klicke hier, um den Mitgliederbereich zu öffnen.";
+      premiumHintEl.textContent = "Zum Mitgliederbereich öffnen.";
     }
 
     function renderDay(day){
@@ -793,9 +847,7 @@ Feiere den Abschluss: Stabilität entsteht durch Wiederholung, nicht durch Perfe
       showError("Bild nicht gefunden.\nPrüfe: icons/1a.png bis icons/21a.png");
     });
 
-    premiumBox.addEventListener("click", () => {
-      openMembersPage();
-    });
+    premiumBox.addEventListener("click", openMembersPage);
 
     premiumBox.addEventListener("keydown", (e) => {
       if (e.key === "Enter" || e.key === " ") {
