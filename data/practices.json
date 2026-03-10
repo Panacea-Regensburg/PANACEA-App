@@ -1,0 +1,219 @@
+{
+  "practices": [
+    {
+      "id": 1,
+      "title": { "de": "3 ruhige Atemzüge", "it": "3 respiri lenti" },
+      "category": { "de": "Atmung", "it": "Respirazione" },
+      "type": "static",
+      "intensity": "low",
+      "duration": { "de": "30 Sekunden", "it": "30 secondi" },
+      "instruction": {
+        "de": "Atme langsam durch die Nase ein und verlängere bewusst das Ausatmen.",
+        "it": "Inspira lentamente dal naso e allunga consapevolmente l'espirazione."
+      },
+      "effect": {
+        "de": "Kann helfen, das Nervensystem zu beruhigen.",
+        "it": "Può aiutare a calmare il sistema nervoso."
+      },
+      "nervousSystem": "calming"
+    },
+
+    {
+      "id": 2,
+      "title": { "de": "Orientierung im Raum", "it": "Orientamento nello spazio" },
+      "category": { "de": "Grounding", "it": "Grounding" },
+      "type": "static",
+      "intensity": "low",
+      "duration": { "de": "30 Sekunden", "it": "30 secondi" },
+      "instruction": {
+        "de": "Schau dich langsam im Raum um und benenne drei Dinge, die du sehen kannst.",
+        "it": "Guardati lentamente intorno e nomina tre cose che puoi vedere."
+      },
+      "effect": {
+        "de": "Kann helfen, ins Hier und Jetzt zurückzukehren.",
+        "it": "Può aiutare a tornare al momento presente."
+      },
+      "nervousSystem": "grounding"
+    },
+
+    {
+      "id": 3,
+      "title": { "de": "Füße spüren", "it": "Sentire i piedi" },
+      "category": { "de": "Körper", "it": "Corpo" },
+      "type": "static",
+      "intensity": "low",
+      "duration": { "de": "30 Sekunden", "it": "30 secondi" },
+      "instruction": {
+        "de": "Lenke deine Aufmerksamkeit auf deine Füße und spüre den Kontakt zum Boden.",
+        "it": "Porta l’attenzione ai piedi e senti il contatto con il terreno."
+      },
+      "effect": {
+        "de": "Kann Stabilität und Erdung fördern.",
+        "it": "Può favorire stabilità e radicamento."
+      },
+      "nervousSystem": "grounding"
+    },
+
+    {
+      "id": 4,
+      "title": { "de": "Schultern lösen", "it": "Rilassare le spalle" },
+      "category": { "de": "Bewegung", "it": "Movimento" },
+      "type": "movement",
+      "intensity": "low",
+      "duration": { "de": "30 Sekunden", "it": "30 secondi" },
+      "instruction": {
+        "de": "Ziehe deine Schultern nach oben und lasse sie langsam wieder sinken.",
+        "it": "Alza le spalle e lasciale scendere lentamente."
+      },
+      "effect": {
+        "de": "Kann muskuläre Spannung reduzieren.",
+        "it": "Può ridurre la tensione muscolare."
+      },
+      "nervousSystem": "release"
+    },
+
+    {
+      "id": 5,
+      "title": { "de": "Länger ausatmen", "it": "Espirazione lunga" },
+      "category": { "de": "Atmung", "it": "Respirazione" },
+      "type": "static",
+      "intensity": "low",
+      "duration": { "de": "45 Sekunden", "it": "45 secondi" },
+      "instruction": {
+        "de": "Atme 4 Sekunden ein und 6 Sekunden aus.",
+        "it": "Inspira 4 secondi ed espira 6 secondi."
+      },
+      "effect": {
+        "de": "Kann den Parasympathikus aktivieren.",
+        "it": "Può attivare il sistema parasimpatico."
+      },
+      "nervousSystem": "calming"
+    },
+
+    {
+      "id": 6,
+      "title": { "de": "Mini Pause", "it": "Mini pausa" },
+      "category": { "de": "Erholung", "it": "Recupero" },
+      "type": "static",
+      "intensity": "low",
+      "duration": { "de": "30 Sekunden", "it": "30 secondi" },
+      "instruction": {
+        "de": "Schließe kurz die Augen und lasse deinen Atem kommen und gehen.",
+        "it": "Chiudi gli occhi e lascia scorrere il respiro."
+      },
+      "effect": {
+        "de": "Kann mentale Überlastung reduzieren.",
+        "it": "Può ridurre il sovraccarico mentale."
+      },
+      "nervousSystem": "recovery"
+    },
+
+    {
+      "id": 7,
+      "title": { "de": "Hand auf Herz", "it": "Mano sul cuore" },
+      "category": { "de": "Selbstregulation", "it": "Autoregolazione" },
+      "type": "static",
+      "intensity": "low",
+      "duration": { "de": "30 Sekunden", "it": "30 secondi" },
+      "instruction": {
+        "de": "Lege eine Hand auf deinen Brustkorb und spüre deinen Atem.",
+        "it": "Appoggia una mano sul petto e senti il respiro."
+      },
+      "effect": {
+        "de": "Kann Sicherheit und Selbstkontakt fördern.",
+        "it": "Può favorire sicurezza e contatto con sé."
+      },
+      "nervousSystem": "calming"
+    },
+
+    {
+      "id": 8,
+      "title": { "de": "Dankbarkeitsmoment", "it": "Momento di gratitudine" },
+      "category": { "de": "Mental", "it": "Mentale" },
+      "type": "static",
+      "intensity": "low",
+      "duration": { "de": "30 Sekunden", "it": "30 secondi" },
+      "instruction": {
+        "de": "Denke an eine Sache, für die du heute dankbar bist.",
+        "it": "Pensa a una cosa per cui oggi sei grato."
+      },
+      "effect": {
+        "de": "Kann positive Emotionen aktivieren.",
+        "it": "Può attivare emozioni positive."
+      },
+      "nervousSystem": "positive"
+    },
+
+    {
+      "id": 9,
+      "title": { "de": "Körper scannen", "it": "Scansione del corpo" },
+      "category": { "de": "Körperwahrnehmung", "it": "Consapevolezza corporea" },
+      "type": "static",
+      "intensity": "low",
+      "duration": { "de": "45 Sekunden", "it": "45 secondi" },
+      "instruction": {
+        "de": "Wandere mit deiner Aufmerksamkeit kurz durch deinen Körper.",
+        "it": "Porta l'attenzione lentamente attraverso il corpo."
+      },
+      "effect": {
+        "de": "Kann Selbstwahrnehmung stärken.",
+        "it": "Può aumentare la consapevolezza corporea."
+      },
+      "nervousSystem": "awareness"
+    },
+
+    {
+      "id": 10,
+      "title": { "de": "Langsam gehen", "it": "Camminare lentamente" },
+      "category": { "de": "Bewegung", "it": "Movimento" },
+      "type": "movement",
+      "intensity": "medium",
+      "duration": { "de": "45 Sekunden", "it": "45 secondi" },
+      "instruction": {
+        "de": "Gehe einige Schritte langsam und spüre deine Bewegung.",
+        "it": "Fai alcuni passi lentamente e percepisci il movimento."
+      },
+      "effect": {
+        "de": "Kann Erdung und Präsenz fördern.",
+        "it": "Può favorire presenza e radicamento."
+      },
+      "nervousSystem": "grounding"
+    },
+
+    {
+      "id": 11,
+      "title": { "de": "Aufrichten", "it": "Raddrizzare la postura" },
+      "category": { "de": "Haltung", "it": "Postura" },
+      "type": "movement",
+      "intensity": "medium",
+      "duration": { "de": "30 Sekunden", "it": "30 secondi" },
+      "instruction": {
+        "de": "Richte deine Wirbelsäule auf und öffne den Brustraum.",
+        "it": "Allunga la colonna vertebrale e apri il petto."
+      },
+      "effect": {
+        "de": "Kann Atmung und Wachheit verbessern.",
+        "it": "Può migliorare respiro e vigilanza."
+      },
+      "nervousSystem": "activation"
+    },
+
+    {
+      "id": 12,
+      "title": { "de": "Gedanken beobachten", "it": "Osservare i pensieri" },
+      "category": { "de": "Achtsamkeit", "it": "Mindfulness" },
+      "type": "static",
+      "intensity": "low",
+      "duration": { "de": "45 Sekunden", "it": "45 secondi" },
+      "instruction": {
+        "de": "Beobachte einen Gedanken ohne ihn zu bewerten.",
+        "it": "Osserva un pensiero senza giudicarlo."
+      },
+      "effect": {
+        "de": "Kann Abstand zu belastenden Gedanken schaffen.",
+        "it": "Può creare distanza dai pensieri stressanti."
+      },
+      "nervousSystem": "awareness"
+    }
+  ]
+}
