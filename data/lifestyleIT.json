@@ -535,6 +535,1341 @@
           }
         }
       ]
+    },
+        {
+      "day": 7,
+      "variants": [
+        {
+          "free": {
+            "title": "Piccoli passi",
+            "explanation": "La salute non cresce solo attraverso grandi cambiamenti, ma anche grazie a piccoli passi coerenti. Ciò che ripeti con costanza può diventare una base stabile per il tuo benessere.",
+            "impuls": "Anche un piccolo passo conta.",
+            "reflection": "Quale piccolo passo posso compiere oggi con continuità e gentilezza?",
+            "insight": "Le azioni sostenibili e ripetute nel tempo favoriscono stabilità, fiducia e senso di progresso reale.",
+            "question": "Quale gesto semplice merita oggi la mia costanza?"
+          },
+          "premium": {
+            "intro": "Il benessere non nasce sempre da svolte radicali. Molto spesso prende forma attraverso piccoli passi ripetuti con presenza e continuità.",
+            "deepening": "Quando immagini il cambiamento solo come qualcosa di grande, rischi di sentirti subito inadeguata o in ritardo. Un approccio salutogenico riconosce invece il valore dei movimenti piccoli, realistici e gentili. È spesso proprio lì che cresce la trasformazione più stabile.",
+            "nervousSystemLink": "Piccoli passi prevedibili possono essere percepiti dal sistema nervoso come più sicuri, accessibili e regolanti rispetto a cambiamenti bruschi o eccessivi.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Scegli oggi un gesto molto semplice che fa bene al tuo equilibrio — per esempio bere un bicchiere d’acqua, respirare con calma per un minuto o uscire all’aria aperta — e compilo con piena presenza."
+            },
+            "microstep": "Scegli oggi un gesto molto semplice che fa bene al tuo equilibrio — per esempio bere un bicchiere d’acqua, respirare con calma per un minuto o uscire all’aria aperta — e compilo con piena presenza.",
+            "journalPrompt": "Quale piccolo passo posso rendere oggi così semplice da riuscire davvero a compierlo?",
+            "question": "Quale piccolo passo posso rendere oggi così semplice da riuscire davvero a compierlo?",
+            "eveningReflection": "Quale piccolo gesto mi ha dato oggi un senso di stabilità o di cura?",
+            "reflection": "Quale piccolo gesto mi ha dato oggi un senso di stabilità o di cura?",
+            "premiumInsight": "La costanza in azioni piccole e sostenibili rafforza spesso fiducia, autoregolazione e continuità interiore.",
+            "insight": "La costanza in azioni piccole e sostenibili rafforza spesso fiducia, autoregolazione e continuità interiore.",
+            "integrationQuestion": "Quale piccolo passo desidero trasformare in un’abitudine gentile nei prossimi giorni?",
+            "integration": "Quale piccolo passo desidero trasformare in un’abitudine gentile nei prossimi giorni?"
+          }
+        },
+        {
+          "free": {
+            "title": "Continuità gentile",
+            "explanation": "Non serve fare tutto insieme. Una continuità dolce e realistica rafforza il benessere molto più della pressione.",
+            "impuls": "La continuità vale più della perfezione.",
+            "reflection": "Dove posso scegliere oggi continuità invece di eccesso?",
+            "insight": "Un ritmo sostenibile rende le abitudini più stabili e riduce il rischio di sovraccarico o rinuncia.",
+            "question": "Che cosa posso fare oggi in modo semplice, ma fedele a me stessa?"
+          },
+          "premium": {
+            "intro": "La continuità non ha bisogno di perfezione. Ha bisogno di un ritmo umano, possibile e rispettoso.",
+            "deepening": "Molte persone alternano slanci intensi a momenti di blocco. Un approccio più salutogenico sceglie invece la fedeltà a piccoli gesti ripetibili. Non si tratta di fare di più, ma di fare ciò che puoi davvero sostenere.",
+            "nervousSystemLink": "Un ritmo regolare e non eccessivo può ridurre la sensazione di pressione interna e favorire una maggiore stabilità fisiologica ed emotiva.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Scegli oggi una sola azione benefica da ripetere anche domani. Mantienila semplice e realistica."
+            },
+            "microstep": "Scegli oggi una sola azione benefica da ripetere anche domani. Mantienila semplice e realistica.",
+            "journalPrompt": "Quale gesto posso sostenere davvero anche nei giorni meno facili?",
+            "question": "Quale gesto posso sostenere davvero anche nei giorni meno facili?",
+            "eveningReflection": "Dove oggi ho scelto un ritmo più rispettoso invece di pretendere troppo da me?",
+            "reflection": "Dove oggi ho scelto un ritmo più rispettoso invece di pretendere troppo da me?",
+            "premiumInsight": "La continuità gentile favorisce un senso di sicurezza interna e rende il cambiamento più integrabile nel tempo.",
+            "insight": "La continuità gentile favorisce un senso di sicurezza interna e rende il cambiamento più integrabile nel tempo.",
+            "integrationQuestion": "Come posso costruire un ritmo quotidiano più stabile e meno rigido?",
+            "integration": "Come posso costruire un ritmo quotidiano più stabile e meno rigido?"
+          }
+        },
+        {
+          "free": {
+            "title": "Un gesto che resta",
+            "explanation": "Un piccolo gesto ripetuto con senso può avere un effetto più profondo di uno sforzo intenso ma breve. La trasformazione spesso inizia da ciò che resta.",
+            "impuls": "Ciò che resta conta più di ciò che impressiona.",
+            "reflection": "Quale gesto piccolo ma fedele può accompagnarmi oggi?",
+            "insight": "La ripetizione di azioni semplici crea familiarità, fiducia e basi più stabili per il cambiamento.",
+            "question": "Quale gesto voglio rendere parte della mia base quotidiana?"
+          },
+          "premium": {
+            "intro": "Ciò che si ripete con presenza diventa terreno. E dal terreno nasce stabilità.",
+            "deepening": "Non è necessario che ogni giorno sia speciale per avere valore. Anche un gesto semplice, se ripetuto con intenzione, può diventare una forma di cura profonda. La salute si rafforza spesso attraverso ciò che resta, non solo attraverso ciò che colpisce.",
+            "nervousSystemLink": "Le ripetizioni prevedibili e rassicuranti aiutano il sistema nervoso a creare familiarità e senso di sicurezza.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Scegli oggi un gesto semplice da associare a un momento preciso della giornata, per esempio al risveglio o prima di dormire."
+            },
+            "microstep": "Scegli oggi un gesto semplice da associare a un momento preciso della giornata, per esempio al risveglio o prima di dormire.",
+            "journalPrompt": "Quale gesto desidero rendere parte del mio terreno interiore?",
+            "question": "Quale gesto desidero rendere parte del mio terreno interiore?",
+            "eveningReflection": "Quale piccolo rito oggi mi ha fatto sentire più presente o più raccolta?",
+            "reflection": "Quale piccolo rito oggi mi ha fatto sentire più presente o più raccolta?",
+            "premiumInsight": "I rituali semplici e sostenibili possono sostenere continuità, sicurezza interiore e senso di radicamento.",
+            "insight": "I rituali semplici e sostenibili possono sostenere continuità, sicurezza interiore e senso di radicamento.",
+            "integrationQuestion": "Quale piccolo rito desidero portare con me anche nei prossimi giorni?",
+            "integration": "Quale piccolo rito desidero portare con me anche nei prossimi giorni?"
+          }
+        }
+      ]
+    },
+    {
+      "day": 8,
+      "variants": [
+        {
+          "free": {
+            "title": "Respirare spazio",
+            "explanation": "Quando rallenti e torni al respiro, crei spazio dentro di te. Non tutto cambia subito, ma il tuo sistema può percepire più calma e più presenza.",
+            "impuls": "Rallentare può già essere cura.",
+            "reflection": "In quale momento oggi ho bisogno di più spazio interiore?",
+            "insight": "Pause brevi e consapevoli possono ridurre tensione, impulsività e senso di saturazione.",
+            "question": "Dove posso concedermi oggi un piccolo spazio di respiro?"
+          },
+          "premium": {
+            "intro": "A volte non hai bisogno di fare di più. Hai bisogno di creare più spazio dentro ciò che stai già vivendo.",
+            "deepening": "Quando tutto si stringe, anche interiormente, il respiro tende a diventare corto e il corpo entra più facilmente in modalità di difesa. Creare spazio non significa scappare dalla realtà, ma permettere al tuo sistema di non sentirsi intrappolato. Anche pochi secondi di respiro consapevole possono cambiare il tono della tua giornata.",
+            "nervousSystemLink": "Il rallentamento del respiro e delle transizioni può segnalare al sistema nervoso che non c’è un’urgenza continua da sostenere.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Fermati oggi per un minuto. Inspira con dolcezza e allunga leggermente l’espirazione, come se stessi creando più spazio nel corpo e nella mente."
+            },
+            "microstep": "Fermati oggi per un minuto. Inspira con dolcezza e allunga leggermente l’espirazione, come se stessi creando più spazio nel corpo e nella mente.",
+            "journalPrompt": "Che cosa cambia in me quando smetto per un attimo di correre interiormente?",
+            "question": "Che cosa cambia in me quando smetto per un attimo di correre interiormente?",
+            "eveningReflection": "In quale momento oggi ho percepito più spazio, calma o respiro dentro di me?",
+            "reflection": "In quale momento oggi ho percepito più spazio, calma o respiro dentro di me?",
+            "premiumInsight": "Piccole pause di regolazione possono interrompere l’automatismo della tensione e favorire maggiore presenza.",
+            "insight": "Piccole pause di regolazione possono interrompere l’automatismo della tensione e favorire maggiore presenza.",
+            "integrationQuestion": "Come posso creare ogni giorno un piccolo spazio in cui il mio sistema si senta meno compresso?",
+            "integration": "Come posso creare ogni giorno un piccolo spazio in cui il mio sistema si senta meno compresso?"
+          }
+        },
+        {
+          "free": {
+            "title": "Un minuto per te",
+            "explanation": "Anche un solo minuto di presenza può cambiare il tono interiore di una giornata intensa. La regolazione non richiede sempre molto tempo, ma intenzione.",
+            "impuls": "Un minuto può bastare per ricominciare.",
+            "reflection": "Posso regalarmi oggi un minuto davvero mio?",
+            "insight": "Brevi momenti di presenza consapevole possono sostenere lucidità, centratura e recupero.",
+            "question": "Quando posso prendermi oggi un minuto senza fretta?"
+          },
+          "premium": {
+            "intro": "Spesso aspettiamo il momento perfetto per fermarci. Ma la cura reale inizia quando scegli anche un minuto possibile, qui e ora.",
+            "deepening": "Molte persone rinunciano alla regolazione perché pensano di non avere abbastanza tempo. Ma il sistema nervoso non ha bisogno solo di grandi pause: beneficia anche di interruzioni brevi, frequenti e credibili. Un minuto scelto con intenzione può diventare un punto di ritorno a te.",
+            "nervousSystemLink": "Micro-pause regolari possono aiutare il sistema nervoso a ridurre accumulo di attivazione e sovraccarico.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Scegli oggi un momento preciso — prima di rispondere a un messaggio, prima di mangiare o prima di iniziare un compito — e fermati per un minuto in silenzio."
+            },
+            "microstep": "Scegli oggi un momento preciso — prima di rispondere a un messaggio, prima di mangiare o prima di iniziare un compito — e fermati per un minuto in silenzio.",
+            "journalPrompt": "Che cosa diventa diverso quando mi concedo una pausa piccola ma vera?",
+            "question": "Che cosa diventa diverso quando mi concedo una pausa piccola ma vera?",
+            "eveningReflection": "Quale minuto di oggi mi ha riportata più vicino a me stessa?",
+            "reflection": "Quale minuto di oggi mi ha riportata più vicino a me stessa?",
+            "premiumInsight": "La presenza non dipende solo dalla durata, ma dalla qualità dell’attenzione che riesci a portare a te stessa.",
+            "insight": "La presenza non dipende solo dalla durata, ma dalla qualità dell’attenzione che riesci a portare a te stessa.",
+            "integrationQuestion": "In quale momento quotidiano posso inserire con naturalezza un minuto di regolazione?",
+            "integration": "In quale momento quotidiano posso inserire con naturalezza un minuto di regolazione?"
+          }
+        },
+        {
+          "free": {
+            "title": "Ritrovare presenza",
+            "explanation": "Tornare al momento presente aiuta a ridurre dispersione e affaticamento. La tua presenza è una forma concreta di cura.",
+            "impuls": "Torna qui, adesso.",
+            "reflection": "Dove mi sento oggi dispersa o troppo fuori da me?",
+            "insight": "La presenza consapevole può rafforzare orientamento, calma e senso di realtà.",
+            "question": "Che cosa mi aiuta oggi a tornare davvero qui?"
+          },
+          "premium": {
+            "intro": "La presenza non richiede perfezione. Richiede un ritorno gentile, ogni volta che ti accorgi di esserti allontanata da te.",
+            "deepening": "Nelle giornate intense è facile vivere in avanti, in difesa o in automatismo. Ritrovare presenza significa riportare una parte di te nel qui e ora, anche se per poco. È un gesto semplice, ma può ridarti contatto, orientamento e sollievo.",
+            "nervousSystemLink": "Il ritorno al presente riduce spesso la sensazione di minaccia diffusa, perché il sistema ritrova riferimenti concreti e immediati.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Guardati intorno lentamente e nota tre cose che vedi, due che senti e una sensazione presente nel corpo."
+            },
+            "microstep": "Guardati intorno lentamente e nota tre cose che vedi, due che senti e una sensazione presente nel corpo.",
+            "journalPrompt": "Che cosa mi aiuta a sentirmi di nuovo qui, concreta e presente?",
+            "question": "Che cosa mi aiuta a sentirmi di nuovo qui, concreta e presente?",
+            "eveningReflection": "In quale momento oggi ho sentito di essere davvero presente, anche solo per poco?",
+            "reflection": "In quale momento oggi ho sentito di essere davvero presente, anche solo per poco?",
+            "premiumInsight": "Il radicamento nel presente può ridurre dispersione, iperattivazione e senso di perdita di controllo.",
+            "insight": "Il radicamento nel presente può ridurre dispersione, iperattivazione e senso di perdita di controllo.",
+            "integrationQuestion": "Quale gesto semplice posso usare nei prossimi giorni per tornare più facilmente al presente?",
+            "integration": "Quale gesto semplice posso usare nei prossimi giorni per tornare più facilmente al presente?"
+          }
+        }
+      ]
+    },
+    {
+      "day": 9,
+      "variants": [
+        {
+          "free": {
+            "title": "Energia con misura",
+            "explanation": "Il benessere non dipende solo da quanto fai, ma anche da come distribuisci le tue energie. Dosare non è rinunciare: è proteggere ciò che ti sostiene.",
+            "impuls": "La tua energia merita rispetto.",
+            "reflection": "Dove oggi sto spendendo più energia di quella che ho davvero?",
+            "insight": "Una gestione più consapevole dell’energia riduce sovraccarico, frustrazione e senso di esaurimento.",
+            "question": "Che cosa posso alleggerire oggi per proteggermi meglio?"
+          },
+          "premium": {
+            "intro": "Non tutto ciò che potresti fare merita oggi la tua energia. La salute cresce anche quando impari a dosare con saggezza.",
+            "deepening": "Molte persone vivono come se l’energia fosse infinita, finché il corpo o la mente iniziano a protestare. Un approccio salutogenico invita invece a riconoscere i tuoi limiti come informazione, non come fallimento. Dosare bene le forze può essere un gesto di grande intelligenza interiore.",
+            "nervousSystemLink": "Quando il carico supera a lungo le risorse disponibili, il sistema nervoso può restare in uno stato di attivazione o esaurimento. La misura aiuta a riequilibrare.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Osserva oggi tre attività della tua giornata e chiediti per ciascuna: mi nutre, mi svuota o è neutra?"
+            },
+            "microstep": "Osserva oggi tre attività della tua giornata e chiediti per ciascuna: mi nutre, mi svuota o è neutra?",
+            "journalPrompt": "Quale parte della mia giornata ha bisogno di più misura e meno dispersione?",
+            "question": "Quale parte della mia giornata ha bisogno di più misura e meno dispersione?",
+            "eveningReflection": "Quando oggi ho rispettato la mia energia invece di forzarla?",
+            "reflection": "Quando oggi ho rispettato la mia energia invece di forzarla?",
+            "premiumInsight": "Imparare a dosare l’energia rafforza lucidità, continuità e sostenibilità nel tempo.",
+            "insight": "Imparare a dosare l’energia rafforza lucidità, continuità e sostenibilità nel tempo.",
+            "integrationQuestion": "Che cosa desidero fare in modo più misurato nei prossimi giorni?",
+            "integration": "Che cosa desidero fare in modo più misurato nei prossimi giorni?"
+          }
+        },
+        {
+          "free": {
+            "title": "Meno dispersione",
+            "explanation": "Quando disperdi la tua energia in troppe direzioni, è più facile sentirti stanca, frammentata o irritabile. Scegliere con più attenzione protegge la tua stabilità.",
+            "impuls": "Non tutto merita la tua energia.",
+            "reflection": "In che cosa oggi mi sto disperdendo troppo?",
+            "insight": "Ridurre la dispersione aiuta a sentirsi più centrata, presente ed efficace.",
+            "question": "Che cosa merita davvero le mie forze oggi?"
+          },
+          "premium": {
+            "intro": "La dispersione non nasce solo da ciò che fai, ma anche da tutto ciò che tieni aperto dentro di te.",
+            "deepening": "Pensieri, compiti incompleti, richieste continue e aspettative eccessive consumano energia anche quando non te ne accorgi. Ritrovare misura significa anche chiudere, ridurre, selezionare. Ciò che lasci andare con consapevolezza può restituirti presenza.",
+            "nervousSystemLink": "Ridurre stimoli e richieste non necessarie può alleggerire il sistema nervoso e diminuire la sensazione di saturazione continua.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Scegli oggi una cosa da non fare, rimandare o semplificare, come gesto concreto di protezione della tua energia."
+            },
+            "microstep": "Scegli oggi una cosa da non fare, rimandare o semplificare, come gesto concreto di protezione della tua energia.",
+            "journalPrompt": "Che cosa posso lasciare andare oggi senza sentirmi in colpa?",
+            "question": "Che cosa posso lasciare andare oggi senza sentirmi in colpa?",
+            "eveningReflection": "Dove oggi ho creato più spazio alleggerendo il superfluo?",
+            "reflection": "Dove oggi ho creato più spazio alleggerendo il superfluo?",
+            "premiumInsight": "Ridurre dispersione e sovraccarico può restituire al sistema più ordine, energia e senso di controllo.",
+            "insight": "Ridurre dispersione e sovraccarico può restituire al sistema più ordine, energia e senso di controllo.",
+            "integrationQuestion": "Quale ambito della mia vita desidero rendere più essenziale?",
+            "integration": "Quale ambito della mia vita desidero rendere più essenziale?"
+          }
+        },
+        {
+          "free": {
+            "title": "Proteggere le forze",
+            "explanation": "Proteggere la tua energia non è egoismo, ma responsabilità verso il tuo equilibrio. Solo ciò che viene custodito può restare disponibile nel tempo.",
+            "impuls": "Proteggere te stessa è salute.",
+            "reflection": "Che cosa mi aiuta oggi a non arrivare oltre il mio limite?",
+            "insight": "Il rispetto dei propri limiti favorisce stabilità, prevenzione del carico e maggiore continuità nel benessere.",
+            "question": "Come posso prendermi cura oggi delle mie forze prima di esaurirle?"
+          },
+          "premium": {
+            "intro": "Le tue forze non vanno usate fino all’ultimo. Vanno custodite con intelligenza, prima che il sistema chieda il conto.",
+            "deepening": "Spesso si impara a fermarsi solo quando si è già troppo stanche. Ma la salute si protegge meglio prima, quando inizi a riconoscere i segnali sottili: irritazione, fatica, confusione, fretta interiore. Custodire le tue energie è una forma matura di prevenzione.",
+            "nervousSystemLink": "Riconoscere per tempo i segnali di sovraccarico aiuta il sistema nervoso a non restare bloccato tra iperattivazione e crollo.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Chiediti oggi per tre volte: come sta la mia energia adesso, da 1 a 10? E regola di conseguenza il ritmo del momento."
+            },
+            "microstep": "Chiediti oggi per tre volte: come sta la mia energia adesso, da 1 a 10? E regola di conseguenza il ritmo del momento.",
+            "journalPrompt": "Quali segnali mi mostrano che sto entrando in sovraccarico prima ancora di accorgermene pienamente?",
+            "question": "Quali segnali mi mostrano che sto entrando in sovraccarico prima ancora di accorgermene pienamente?",
+            "eveningReflection": "In quale momento oggi ho saputo proteggere le mie forze con più rispetto?",
+            "reflection": "In quale momento oggi ho saputo proteggere le mie forze con più rispetto?",
+            "premiumInsight": "Proteggere l’energia prima dell’esaurimento rafforza continuità, lucidità e autoregolazione.",
+            "insight": "Proteggere l’energia prima dell’esaurimento rafforza continuità, lucidità e autoregolazione.",
+            "integrationQuestion": "Quale segnale del mio corpo o della mia mente voglio iniziare a prendere più sul serio?",
+            "integration": "Quale segnale del mio corpo o della mia mente voglio iniziare a prendere più sul serio?"
+          }
+        }
+      ]
+    },
+    {
+      "day": 10,
+      "variants": [
+        {
+          "free": {
+            "title": "Confini chiari",
+            "explanation": "I confini non servono a chiuderti, ma a proteggere ciò che in te ha bisogno di spazio, rispetto e continuità. Dire sì a te stessa richiede a volte un no chiaro verso altro.",
+            "impuls": "Un confine sano è una forma di cura.",
+            "reflection": "Dove oggi sento il bisogno di più spazio, rispetto o protezione?",
+            "insight": "Confini chiari favoriscono stabilità, sicurezza interiore e minore dispersione di energie.",
+            "question": "Quale piccolo confine posso onorare oggi con più chiarezza?"
+          },
+          "premium": {
+            "intro": "Mettere un confine non significa essere rigida. Significa riconoscere dove finisci tu e dove inizia qualcosa che oggi non puoi o non vuoi accogliere.",
+            "deepening": "Molte persone vivono senza veri confini per paura di deludere, creare tensione o sembrare egoiste. Ma un approccio salutogenico sa che la protezione sana non è chiusura: è struttura. I confini ben messi non ti allontanano dalla vita, ti aiutano a starci con più integrità.",
+            "nervousSystemLink": "Quando i tuoi limiti vengono ignorati troppo a lungo, il sistema nervoso può vivere una continua sensazione di invasione, pressione o allerta. I confini aiutano a ristabilire sicurezza.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Individua oggi una situazione in cui puoi esprimere un limite semplice e rispettoso — per esempio prenderti più tempo, rimandare una richiesta o dire con chiarezza che ora non puoi."
+            },
+            "microstep": "Individua oggi una situazione in cui puoi esprimere un limite semplice e rispettoso — per esempio prenderti più tempo, rimandare una richiesta o dire con chiarezza che ora non puoi.",
+            "journalPrompt": "In quale ambito della mia vita ho più bisogno di un confine chiaro e gentile?",
+            "question": "In quale ambito della mia vita ho più bisogno di un confine chiaro e gentile?",
+            "eveningReflection": "Dove oggi ho protetto meglio il mio spazio interiore o il mio tempo?",
+            "reflection": "Dove oggi ho protetto meglio il mio spazio interiore o il mio tempo?",
+            "premiumInsight": "I confini chiari e rispettosi riducono sovraccarico, ambivalenza e tensione interna, rafforzando il senso di integrità personale.",
+            "insight": "I confini chiari e rispettosi riducono sovraccarico, ambivalenza e tensione interna, rafforzando il senso di integrità personale.",
+            "integrationQuestion": "Quale confine desidero rendere più stabile nei prossimi giorni?",
+            "integration": "Quale confine desidero rendere più stabile nei prossimi giorni?"
+          }
+        },
+        {
+          "free": {
+            "title": "Dire no con rispetto",
+            "explanation": "Dire no non significa rifiutare l’altro, ma riconoscere ciò che oggi non è sostenibile per te. Un no chiaro può essere un sì profondo alla tua stabilità.",
+            "impuls": "Un no sano può proteggere molto.",
+            "reflection": "Dove oggi sto dicendo sì a qualcosa che mi pesa troppo?",
+            "insight": "Imparare a dire no con rispetto aiuta a ridurre pressione, risentimento e stanchezza emotiva.",
+            "question": "Quale sì automatico potrei oggi trasformare in un no più onesto?"
+          },
+          "premium": {
+            "intro": "Dire no con rispetto è una competenza emotiva, non una colpa. Richiede presenza, chiarezza e un buon contatto con i propri limiti.",
+            "deepening": "Spesso il no spaventa perché temiamo conseguenze relazionali. Eppure i sì detti contro di te hanno un costo altrettanto alto: stanchezza, irritazione, dispersione, svuotamento. Un no detto con lucidità può proteggere il legame con l’altro e, prima ancora, il legame con te stessa.",
+            "nervousSystemLink": "Esprimere un limite chiaro può ridurre tensione interna e prevenire l’accumulo di stress legato all’adattamento forzato.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Completa oggi questa frase in un modo che senti autentico: “In questo momento non riesco a fare anche questo, ma posso…”"
+            },
+            "microstep": "Completa oggi questa frase in un modo che senti autentico: “In questo momento non riesco a fare anche questo, ma posso…”",
+            "journalPrompt": "Che cosa temo quando immagino di dire un no chiaro, e che cosa invece proteggerei?",
+            "question": "Che cosa temo quando immagino di dire un no chiaro, e che cosa invece proteggerei?",
+            "eveningReflection": "In quale momento oggi avrei avuto bisogno di maggiore onestà verso i miei limiti?",
+            "reflection": "In quale momento oggi avrei avuto bisogno di maggiore onestà verso i miei limiti?",
+            "premiumInsight": "Dire no in modo chiaro e rispettoso rafforza coerenza interiore, autoregolazione e qualità delle relazioni.",
+            "insight": "Dire no in modo chiaro e rispettoso rafforza coerenza interiore, autoregolazione e qualità delle relazioni.",
+            "integrationQuestion": "Quale frase semplice potrei usare nei prossimi giorni per esprimere un limite con più serenità?",
+            "integration": "Quale frase semplice potrei usare nei prossimi giorni per esprimere un limite con più serenità?"
+          }
+        },
+        {
+          "free": {
+            "title": "Proteggere il proprio spazio",
+            "explanation": "Il tuo spazio interiore ha bisogno di essere custodito. Quando ti proteggi con maggiore chiarezza, diventa più facile restare presente, calma e centrata.",
+            "impuls": "Proteggere il tuo spazio è un gesto di rispetto verso di te.",
+            "reflection": "Che cosa oggi invade troppo il mio spazio mentale, emotivo o pratico?",
+            "insight": "Custodire il proprio spazio aiuta a mantenere energia, ordine interiore e senso di presenza.",
+            "question": "Quale protezione concreta posso offrire oggi al mio spazio?"
+          },
+          "premium": {
+            "intro": "Avere uno spazio tuo, interiore ed esteriore, non è un lusso. È una base importante per la tua stabilità.",
+            "deepening": "Ogni volta che il tuo spazio viene riempito da richieste, rumore, urgenze o aspettative, diventa più difficile ascoltarti e regolarti. Proteggerlo non significa isolarti, ma creare condizioni più sane perché tu possa restare in contatto con te stessa e con ciò che conta davvero.",
+            "nervousSystemLink": "Uno spazio percepito come più protetto e meno invaso può ridurre iperattivazione, irritabilità e senso di saturazione.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Scegli oggi una protezione concreta per il tuo spazio: silenziare notifiche per un tempo definito, chiudere una richiesta non urgente o prenderti dieci minuti senza input esterni."
+            },
+            "microstep": "Scegli oggi una protezione concreta per il tuo spazio: silenziare notifiche per un tempo definito, chiudere una richiesta non urgente o prenderti dieci minuti senza input esterni.",
+            "journalPrompt": "Che cosa rende il mio spazio interiore più chiaro, più respirabile e più mio?",
+            "question": "Che cosa rende il mio spazio interiore più chiaro, più respirabile e più mio?",
+            "eveningReflection": "Quale protezione concreta oggi mi ha aiutata a sentirmi più centrata o più al sicuro?",
+            "reflection": "Quale protezione concreta oggi mi ha aiutata a sentirmi più centrata o più al sicuro?",
+            "premiumInsight": "Proteggere il proprio spazio sostiene regolazione, presenza e capacità di rimanere in contatto con i propri bisogni reali.",
+            "insight": "Proteggere il proprio spazio sostiene regolazione, presenza e capacità di rimanere in contatto con i propri bisogni reali.",
+            "integrationQuestion": "Quale forma di protezione del mio spazio desidero rendere più costante nella mia quotidianità?",
+            "integration": "Quale forma di protezione del mio spazio desidero rendere più costante nella mia quotidianità?"
+          }
+        }
+      ]
+    },
+        {
+      "day": 11,
+      "variants": [
+        {
+          "free": {
+            "title": "Relazioni che nutrono",
+            "explanation": "La salute non cresce solo dentro di te, ma anche nelle relazioni che ti fanno sentire vista, rispettata e sostenuta. I legami sani possono diventare una risorsa concreta per il tuo equilibrio.",
+            "impuls": "Non tutto va portato da sola.",
+            "reflection": "Quale relazione oggi mi fa sentire più sostenuta, calma o autentica?",
+            "insight": "Le relazioni percepite come sicure possono rafforzare stabilità emotiva, fiducia e senso di appartenenza.",
+            "question": "A chi o a che tipo di presenza desidero avvicinarmi oggi con più consapevolezza?"
+          },
+          "premium": {
+            "intro": "Le relazioni non sono solo contatto. Possono diventare nutrimento, regolazione e sostegno profondo quando ti permettono di restare te stessa.",
+            "deepening": "Non ogni legame fa bene nello stesso modo. Alcune presenze ti alleggeriscono, ti centrano, ti fanno respirare meglio. Altre invece consumano energia, ti confondono o ti portano lontano da te. Un approccio salutogenico ti invita a riconoscere con onestà quali relazioni nutrono davvero il tuo sistema e quali richiedono più misura o più confini.",
+            "nervousSystemLink": "Le relazioni vissute come sicure possono aiutare il sistema nervoso a ridurre allerta, tensione e senso di isolamento, favorendo co-regolazione e stabilità.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Pensa oggi a una persona con cui ti senti più calma, più vera o più sostenuta. Scrivile, chiamala oppure porta alla mente ciò che in quella relazione ti fa bene."
+            },
+            "microstep": "Pensa oggi a una persona con cui ti senti più calma, più vera o più sostenuta. Scrivile, chiamala oppure porta alla mente ciò che in quella relazione ti fa bene.",
+            "journalPrompt": "Quali caratteristiche rendono per me una relazione davvero nutriente?",
+            "question": "Quali caratteristiche rendono per me una relazione davvero nutriente?",
+            "eveningReflection": "In quale momento oggi mi sono sentita più sostenuta, compresa o meno sola?",
+            "reflection": "In quale momento oggi mi sono sentita più sostenuta, compresa o meno sola?",
+            "premiumInsight": "I legami percepiti come affidabili e rispettosi possono sostenere regolazione emotiva, resilienza e senso di sicurezza interna.",
+            "insight": "I legami percepiti come affidabili e rispettosi possono sostenere regolazione emotiva, resilienza e senso di sicurezza interna.",
+            "integrationQuestion": "Quale relazione desidero coltivare con più presenza, verità e reciprocità nei prossimi giorni?",
+            "integration": "Quale relazione desidero coltivare con più presenza, verità e reciprocità nei prossimi giorni?"
+          }
+        },
+        {
+          "free": {
+            "title": "Lasciarsi sostenere",
+            "explanation": "Ricevere sostegno non è debolezza. È una forma sana di connessione con ciò che ti aiuta a reggere meglio la vita.",
+            "impuls": "Lasciarti sostenere è un atto di forza.",
+            "reflection": "Dove oggi potrei lasciarmi aiutare un po’ di più?",
+            "insight": "Accogliere sostegno può ridurre il senso di sovraccarico e rafforzare la percezione di non dover gestire tutto da sola.",
+            "question": "In quale ambito posso smettere oggi di stringere tutto da sola?"
+          },
+          "premium": {
+            "intro": "Molte persone sanno dare, ma fanno più fatica a ricevere. Eppure anche il lasciarsi sostenere è una competenza di salute.",
+            "deepening": "A volte hai imparato a essere forte soprattutto nel fare da sola, nell’anticipare, nel reggere. Ma la salute non si rafforza solo attraverso lo sforzo individuale. Si rafforza anche quando ti permetti di appoggiarti, chiedere, condividere o semplicemente non fingere di stare bene quando non è così. Lasciarti sostenere non ti rende meno autonoma: ti rende più intera.",
+            "nervousSystemLink": "La percezione di poter contare su qualcuno o qualcosa può ridurre l’attivazione da sovraccarico e favorire maggiore sicurezza fisiologica ed emotiva.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Chiediti oggi con sincerità: di che cosa avrei bisogno per sentirmi un po’ più sostenuta? Poi fai un passo semplice in quella direzione."
+            },
+            "microstep": "Chiediti oggi con sincerità: di che cosa avrei bisogno per sentirmi un po’ più sostenuta? Poi fai un passo semplice in quella direzione.",
+            "journalPrompt": "Che cosa mi rende difficile ricevere aiuto, presenza o sostegno?",
+            "question": "Che cosa mi rende difficile ricevere aiuto, presenza o sostegno?",
+            "eveningReflection": "In quale momento oggi mi sono permessa di non fare tutto da sola?",
+            "reflection": "In quale momento oggi mi sono permessa di non fare tutto da sola?",
+            "premiumInsight": "Accogliere sostegno in modo consapevole può rafforzare sicurezza relazionale, alleggerimento interno e capacità di regolazione.",
+            "insight": "Accogliere sostegno in modo consapevole può rafforzare sicurezza relazionale, alleggerimento interno e capacità di regolazione.",
+            "integrationQuestion": "Quale forma di sostegno desidero imparare ad accogliere con meno resistenza?",
+            "integration": "Quale forma di sostegno desidero imparare ad accogliere con meno resistenza?"
+          }
+        },
+        {
+          "free": {
+            "title": "Presenze che fanno bene",
+            "explanation": "Non tutte le presenze hanno lo stesso effetto su di te. Riconoscere ciò che ti fa bene è parte della tua cura.",
+            "impuls": "Scegli ciò che ti nutre.",
+            "reflection": "Quale presenza mi lascia più calma, più chiara o più centrata?",
+            "insight": "Riconoscere l’effetto delle relazioni aiuta a orientarsi con più lucidità e rispetto verso i propri bisogni.",
+            "question": "Chi o che cosa mi fa bene in modo semplice ma reale?"
+          },
+          "premium": {
+            "intro": "Ci sono presenze che ti agitano e presenze che ti raccolgono. Imparare a distinguerle è un atto di maturità interiore.",
+            "deepening": "A volte resti esposta troppo a lungo a relazioni, dinamiche o ambienti che consumano la tua energia, solo perché ti sembrano normali o inevitabili. Ma la salute si protegge anche scegliendo con maggiore consapevolezza chi, come e quanto lasci entrare nel tuo spazio. Ciò che ti fa bene in modo sobrio e costante merita più posto nella tua vita.",
+            "nervousSystemLink": "La vicinanza a persone o contesti percepiti come più sicuri può ridurre iperattivazione, vigilanza e senso di instabilità.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Osserva oggi come ti senti dopo un incontro, una conversazione o un contatto. Chiediti: mi sento più espansa, più pesante o più contratta?"
+            },
+            "microstep": "Osserva oggi come ti senti dopo un incontro, una conversazione o un contatto. Chiediti: mi sento più espansa, più pesante o più contratta?",
+            "journalPrompt": "Quali presenze, luoghi o scambi mi aiutano davvero a tornare a me stessa?",
+            "question": "Quali presenze, luoghi o scambi mi aiutano davvero a tornare a me stessa?",
+            "eveningReflection": "Quale presenza oggi ha avuto su di me un effetto buono, quieto o stabilizzante?",
+            "reflection": "Quale presenza oggi ha avuto su di me un effetto buono, quieto o stabilizzante?",
+            "premiumInsight": "Riconoscere gli effetti relazionali sul proprio sistema aiuta a scegliere con più chiarezza ciò che nutre e ciò che prosciuga.",
+            "insight": "Riconoscere gli effetti relazionali sul proprio sistema aiuta a scegliere con più chiarezza ciò che nutre e ciò che prosciuga.",
+            "integrationQuestion": "Come posso dare più spazio, nei prossimi giorni, a ciò che mi fa bene davvero?",
+            "integration": "Come posso dare più spazio, nei prossimi giorni, a ciò che mi fa bene davvero?"
+          }
+        }
+      ]
+    },
+    {
+      "day": 12,
+      "variants": [
+        {
+          "free": {
+            "title": "Movimento che regola",
+            "explanation": "Il movimento non serve solo a fare, ma anche a scaricare, riequilibrare e ritrovare presenza. Anche un gesto semplice del corpo può aiutarti a sentirti più viva e centrata.",
+            "impuls": "Muovere il corpo può liberare spazio dentro di te.",
+            "reflection": "Di che tipo di movimento ha bisogno oggi il mio corpo?",
+            "insight": "Un movimento dolce e regolare può sostenere energia, regolazione e alleggerimento della tensione.",
+            "question": "Quale piccolo movimento potrebbe farmi bene oggi?"
+          },
+          "premium": {
+            "intro": "Il corpo non chiede sempre prestazione. A volte chiede solo di essere rimesso in circolo con rispetto.",
+            "deepening": "Quando resti troppo ferma, trattenuta o compressa, non si blocca solo il corpo: spesso si irrigidiscono anche mente ed emozioni. Il movimento salutogenico non nasce dall’obbligo o dalla pressione, ma dall’ascolto. A volte basta camminare, allungarsi, respirare in piedi, sciogliere le spalle o cambiare posizione per dare al sistema un messaggio di vita e di possibilità.",
+            "nervousSystemLink": "Il movimento dolce può aiutare il sistema nervoso a scaricare attivazione, ridurre immobilità da stress e favorire maggiore vitalità regolata.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Dedica oggi due o tre minuti a un movimento semplice e gentile: cammina, allunga il corpo, ruota le spalle o fai qualche passo con piena presenza."
+            },
+            "microstep": "Dedica oggi due o tre minuti a un movimento semplice e gentile: cammina, allunga il corpo, ruota le spalle o fai qualche passo con piena presenza.",
+            "journalPrompt": "Come cambia il mio stato interiore quando il corpo può muoversi un po’ di più?",
+            "question": "Come cambia il mio stato interiore quando il corpo può muoversi un po’ di più?",
+            "eveningReflection": "Quale movimento oggi mi ha fatto sentire più libera, più presente o più sciolta?",
+            "reflection": "Quale movimento oggi mi ha fatto sentire più libera, più presente o più sciolta?",
+            "premiumInsight": "Il movimento percepito come sicuro e sostenibile può favorire regolazione, energia disponibile e maggiore contatto con il corpo.",
+            "insight": "Il movimento percepito come sicuro e sostenibile può favorire regolazione, energia disponibile e maggiore contatto con il corpo.",
+            "integrationQuestion": "Quale forma di movimento desidero rendere più naturale e costante nella mia quotidianità?",
+            "integration": "Quale forma di movimento desidero rendere più naturale e costante nella mia quotidianità?"
+          }
+        },
+        {
+          "free": {
+            "title": "Sciogliere la tensione",
+            "explanation": "Il corpo accumula ciò che spesso non riesci a dire o a lasciare andare. Muoverlo con dolcezza può aiutarti a sciogliere parte di quella tensione.",
+            "impuls": "Anche il corpo ha bisogno di lasciare andare.",
+            "reflection": "Dove oggi sento il bisogno di sciogliermi un po’?",
+            "insight": "Movimenti piccoli e gentili possono ridurre rigidità, accumulo di tensione e senso di chiusura.",
+            "question": "Quale zona del mio corpo chiede oggi più libertà?"
+          },
+          "premium": {
+            "intro": "La tensione non vive solo nei pensieri. Spesso si deposita nel collo, nelle spalle, nella mandibola, nel petto, nelle gambe.",
+            "deepening": "Molte volte cerchi sollievo solo con la mente, mentre il corpo continua a trattenere. Un approccio salutogenico ricorda che sciogliere non significa forzare, ma permettere. Anche pochi movimenti lenti e rispettosi possono comunicare al tuo sistema che non deve restare sempre in assetto di difesa.",
+            "nervousSystemLink": "Quando il corpo può scaricare un po’ della tensione accumulata, il sistema nervoso può trovare maggiore flessibilità e minore rigidità di allerta.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Scegli oggi una parte del corpo che senti più contratta e dedicagli un minuto di movimento lento, respirato e senza forzatura."
+            },
+            "microstep": "Scegli oggi una parte del corpo che senti più contratta e dedicagli un minuto di movimento lento, respirato e senza forzatura.",
+            "journalPrompt": "Che cosa il mio corpo sta trattenendo più del necessario in questo periodo?",
+            "question": "Che cosa il mio corpo sta trattenendo più del necessario in questo periodo?",
+            "eveningReflection": "In quale momento oggi ho sentito il mio corpo un po’ più morbido, libero o disponibile?",
+            "reflection": "In quale momento oggi ho sentito il mio corpo un po’ più morbido, libero o disponibile?",
+            "premiumInsight": "Lo scioglimento corporeo consapevole può sostenere regolazione emotiva, presenza e senso di sollievo interno.",
+            "insight": "Lo scioglimento corporeo consapevole può sostenere regolazione emotiva, presenza e senso di sollievo interno.",
+            "integrationQuestion": "Quale piccolo gesto corporeo di rilascio desidero usare più spesso quando mi sento contratta?",
+            "integration": "Quale piccolo gesto corporeo di rilascio desidero usare più spesso quando mi sento contratta?"
+          }
+        },
+        {
+          "free": {
+            "title": "Il corpo come alleato",
+            "explanation": "Il corpo non è un ostacolo da trascinare, ma un alleato da ascoltare. Muoversi con rispetto può rafforzare il tuo equilibrio.",
+            "impuls": "Il corpo può aiutarti a tornare a te.",
+            "reflection": "Che cosa mi chiede oggi il mio corpo con sincerità?",
+            "insight": "Quando il corpo viene ascoltato con più rispetto, cresce spesso anche il senso di presenza e autoregolazione.",
+            "question": "Come posso oggi collaborare con il mio corpo invece di ignorarlo?"
+          },
+          "premium": {
+            "intro": "Quando inizi a trattare il corpo come un alleato, cambia anche il modo in cui abiti la tua giornata.",
+            "deepening": "Non sempre il corpo ti chiede di fare di più. A volte ti chiede di fare diversamente: più lentamente, più spesso, più gentilmente. Un approccio salutogenico ti invita a uscire dalla logica del controllo o della prestazione e a entrare in una relazione più collaborativa con il tuo corpo. Da lì nasce un equilibrio più reale.",
+            "nervousSystemLink": "La collaborazione con i segnali corporei favorisce un senso di sicurezza interna e riduce il conflitto tra spinta, stanchezza e difesa.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Prima di iniziare un’attività, chiediti: il mio corpo ha bisogno di attivazione, rallentamento, allungamento o riposo? Poi rispondi con un gesto semplice."
+            },
+            "microstep": "Prima di iniziare un’attività, chiediti: il mio corpo ha bisogno di attivazione, rallentamento, allungamento o riposo? Poi rispondi con un gesto semplice.",
+            "journalPrompt": "Che cosa cambierebbe se trattassi il mio corpo più come una guida che come qualcosa da spingere?",
+            "question": "Che cosa cambierebbe se trattassi il mio corpo più come una guida che come qualcosa da spingere?",
+            "eveningReflection": "Quando oggi ho ascoltato il mio corpo con più rispetto e collaborazione?",
+            "reflection": "Quando oggi ho ascoltato il mio corpo con più rispetto e collaborazione?",
+            "premiumInsight": "Riconoscere e seguire i bisogni corporei in modo più fine può rafforzare continuità, equilibrio e fiducia interna.",
+            "insight": "Riconoscere e seguire i bisogni corporei in modo più fine può rafforzare continuità, equilibrio e fiducia interna.",
+            "integrationQuestion": "Quale nuova forma di ascolto corporeo desidero portare nei prossimi giorni?",
+            "integration": "Quale nuova forma di ascolto corporeo desidero portare nei prossimi giorni?"
+          }
+        }
+      ]
+    },
+    {
+      "day": 13,
+      "variants": [
+        {
+          "free": {
+            "title": "Nutrimento semplice",
+            "explanation": "Il benessere cresce anche nelle scelte semplici che nutrono il corpo con più presenza e meno automatismo. Nutrirti bene è una forma concreta di rispetto verso di te.",
+            "impuls": "Nutrire è anche prendersi cura.",
+            "reflection": "Di che tipo di nutrimento ho davvero bisogno oggi?",
+            "insight": "Una relazione più consapevole con il nutrimento può sostenere energia, stabilità e ascolto dei bisogni reali.",
+            "question": "Che cosa può nutrirmi oggi in modo semplice ma autentico?"
+          },
+          "premium": {
+            "intro": "Nutrimento non significa solo cibo. Significa anche il modo in cui ti dai energia, presenza e sostegno nella quotidianità.",
+            "deepening": "Spesso mangi o scegli in automatico, tra fretta, stanchezza o disconnessione. Ma un approccio salutogenico ti invita a tornare a una domanda più essenziale: che cosa mi nutre davvero? A volte è un pasto più semplice, a volte è tempo, lentezza, acqua, calore, regolarità. Ciò che nutre bene non deve essere perfetto: deve essere più adatto a te, oggi.",
+            "nervousSystemLink": "Un nutrimento più regolare, presente e meno impulsivo può favorire maggiore stabilità energetica e minore oscillazione da stress o svuotamento.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Prima di mangiare o bere qualcosa, fermati un momento e chiediti: questo mi nutre davvero adesso? Poi scegli con più presenza."
+            },
+            "microstep": "Prima di mangiare o bere qualcosa, fermati un momento e chiediti: questo mi nutre davvero adesso? Poi scegli con più presenza.",
+            "journalPrompt": "Che cosa confondo a volte con nutrimento, ma in realtà non mi sostiene davvero?",
+            "question": "Che cosa confondo a volte con nutrimento, ma in realtà non mi sostiene davvero?",
+            "eveningReflection": "In quale momento oggi mi sono nutrita in modo più consapevole, semplice o rispettoso?",
+            "reflection": "In quale momento oggi mi sono nutrita in modo più consapevole, semplice o rispettoso?",
+            "premiumInsight": "Scegliere con maggiore presenza ciò che nutre davvero può sostenere continuità energetica, ascolto di sé e regolazione più stabile.",
+            "insight": "Scegliere con maggiore presenza ciò che nutre davvero può sostenere continuità energetica, ascolto di sé e regolazione più stabile.",
+            "integrationQuestion": "Quale gesto di nutrimento desidero rendere più costante e concreto nei prossimi giorni?",
+            "integration": "Quale gesto di nutrimento desidero rendere più costante e concreto nei prossimi giorni?"
+          }
+        },
+        {
+          "free": {
+            "title": "Scegliere ciò che sostiene",
+            "explanation": "Non tutto ciò che consumi ti sostiene davvero. Scegliere con più cura può aiutarti a sentirti più stabile e meno dispersa.",
+            "impuls": "Scegli ciò che ti sostiene, non solo ciò che riempie.",
+            "reflection": "Che cosa oggi mi sostiene davvero, invece di riempirmi soltanto?",
+            "insight": "Le scelte di nutrimento più consapevoli possono ridurre eccessi, compensazioni e disconnessione dai bisogni reali.",
+            "question": "In che cosa posso scegliere oggi più qualità e meno automatismo?"
+          },
+          "premium": {
+            "intro": "Il nutrimento reale non sempre coincide con ciò che è immediato, veloce o consolatorio. A volte è ciò che ti lascia più stabile dopo, non solo ciò che ti attira prima.",
+            "deepening": "Mangiare, bere o consumare qualcosa può diventare facilmente una risposta automatica alla stanchezza, alla noia, al vuoto o alla fretta. Ma la salute si rafforza quando impari a distinguere tra riempire e nutrire. Questa differenza non è giudizio: è consapevolezza. E da lì nasce una scelta più libera.",
+            "nervousSystemLink": "Un rapporto meno impulsivo e più consapevole con il nutrimento può ridurre oscillazioni di tensione, ricerca compensatoria e senso di instabilità.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Scegli oggi un momento in cui rallentare prima di assumere qualcosa e chiediti: sto cercando energia, calma, conforto o presenza?"
+            },
+            "microstep": "Scegli oggi un momento in cui rallentare prima di assumere qualcosa e chiediti: sto cercando energia, calma, conforto o presenza?",
+            "journalPrompt": "Che cosa cerco davvero quando sento un impulso automatico a riempirmi?",
+            "question": "Che cosa cerco davvero quando sento un impulso automatico a riempirmi?",
+            "eveningReflection": "In quale momento oggi ho scelto qualcosa che mi ha sostenuta davvero, invece di compensare soltanto?",
+            "reflection": "In quale momento oggi ho scelto qualcosa che mi ha sostenuta davvero, invece di compensare soltanto?",
+            "premiumInsight": "Distinguere tra riempimento e nutrimento rafforza libertà di scelta, ascolto dei bisogni e maggiore stabilità interna.",
+            "insight": "Distinguere tra riempimento e nutrimento rafforza libertà di scelta, ascolto dei bisogni e maggiore stabilità interna.",
+            "integrationQuestion": "Quale scelta concreta posso fare nei prossimi giorni per nutrirmi in modo più vero?",
+            "integration": "Quale scelta concreta posso fare nei prossimi giorni per nutrirmi in modo più vero?"
+          }
+        },
+        {
+          "free": {
+            "title": "Ascoltare il bisogno",
+            "explanation": "Dietro ogni scelta c’è spesso un bisogno. Quando lo ascolti con più sincerità, puoi nutrirti in modo più adatto e più gentile.",
+            "impuls": "Dietro l’impulso c’è un bisogno da ascoltare.",
+            "reflection": "Di che cosa ho bisogno davvero in questo momento?",
+            "insight": "Riconoscere il bisogno reale aiuta a scegliere con più precisione e meno automatismo.",
+            "question": "Che cosa sto cercando davvero oggi: energia, conforto, presenza o pausa?"
+          },
+          "premium": {
+            "intro": "A volte non hai davvero bisogno di più cibo, più stimoli o più distrazioni. Hai bisogno di riconoscere ciò che dentro di te sta chiedendo attenzione.",
+            "deepening": "Molte scelte diventano più chiare quando smetti di giudicarti e inizi ad ascoltarti meglio. Forse il bisogno non è fame, ma stanchezza. Non è voglia, ma conforto. Non è urgenza, ma pausa. Un approccio salutogenico non reprime il bisogno: lo traduce con più rispetto.",
+            "nervousSystemLink": "La capacità di riconoscere il bisogno reale riduce risposte automatiche di compensazione e favorisce una regolazione più fine e stabile.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Prima di una scelta automatica, fermati e completa interiormente questa frase: “In questo momento il mio bisogno più vero è…”"
+            },
+            "microstep": "Prima di una scelta automatica, fermati e completa interiormente questa frase: “In questo momento il mio bisogno più vero è…”",
+            "journalPrompt": "Quale bisogno tendo a confondere più spesso con altro?",
+            "question": "Quale bisogno tendo a confondere più spesso con altro?",
+            "eveningReflection": "In quale momento oggi sono riuscita a riconoscere con più sincerità ciò di cui avevo davvero bisogno?",
+            "reflection": "In quale momento oggi sono riuscita a riconoscere con più sincerità ciò di cui avevo davvero bisogno?",
+            "premiumInsight": "Ascoltare il bisogno reale con più precisione favorisce scelte più adatte, meno impulsive e più regolanti.",
+            "insight": "Ascoltare il bisogno reale con più precisione favorisce scelte più adatte, meno impulsive e più regolanti.",
+            "integrationQuestion": "Come posso allenarmi a riconoscere prima il bisogno, invece di reagire subito all’impulso?",
+            "integration": "Come posso allenarmi a riconoscere prima il bisogno, invece di reagire subito all’impulso?"
+          }
+        }
+      ]
+    },
+    {
+      "day": 14,
+      "variants": [
+        {
+          "free": {
+            "title": "Riposo che rigenera",
+            "explanation": "Il riposo non è solo assenza di attività. È uno spazio in cui il corpo e la mente possono rallentare, recuperare e tornare più interi.",
+            "impuls": "Riposare è parte della salute.",
+            "reflection": "Di quale forma di riposo ho più bisogno oggi?",
+            "insight": "Il riposo adeguato sostiene recupero, lucidità e maggiore stabilità fisica ed emotiva.",
+            "question": "Che cosa mi aiuterebbe oggi a riposare in modo più vero?"
+          },
+          "premium": {
+            "intro": "Riposare non è un premio da meritare solo quando hai finito tutto. È un bisogno di base del tuo equilibrio.",
+            "deepening": "Molte persone si concedono riposo solo quando sono già esauste. Ma la salute si sostiene molto prima, quando riconosci la stanchezza non come un difetto da superare, ma come un’informazione preziosa. Il riposo può avere molte forme: sonno, silenzio, pausa, rallentamento, meno richieste, meno stimoli. Ciò che conta è che il tuo sistema possa davvero smettere di spingere.",
+            "nervousSystemLink": "Il riposo percepito come reale e sufficientemente protetto aiuta il sistema nervoso a uscire da stati di attivazione cronica e a recuperare risorse.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Concediti oggi una pausa reale di qualche minuto senza compiti, senza schermo e senza richieste. Lascia semplicemente che il sistema rallenti un poco."
+            },
+            "microstep": "Concediti oggi una pausa reale di qualche minuto senza compiti, senza schermo e senza richieste. Lascia semplicemente che il sistema rallenti un poco.",
+            "journalPrompt": "Che cosa mi impedisce più spesso di riposare prima di arrivare al limite?",
+            "question": "Che cosa mi impedisce più spesso di riposare prima di arrivare al limite?",
+            "eveningReflection": "In quale momento oggi ho sentito un vero senso di pausa, alleggerimento o recupero?",
+            "reflection": "In quale momento oggi ho sentito un vero senso di pausa, alleggerimento o recupero?",
+            "premiumInsight": "Il riposo scelto con più consapevolezza e meno colpa può rafforzare rigenerazione, presenza e continuità energetica.",
+            "insight": "Il riposo scelto con più consapevolezza e meno colpa può rafforzare rigenerazione, presenza e continuità energetica.",
+            "integrationQuestion": "Quale forma di riposo desidero iniziare a proteggere di più nella mia quotidianità?",
+            "integration": "Quale forma di riposo desidero iniziare a proteggere di più nella mia quotidianità?"
+          }
+        },
+        {
+          "free": {
+            "title": "Fermarsi prima del limite",
+            "explanation": "Non serve aspettare di essere svuotata per fermarti. Ascoltare i segnali prima del limite è già prevenzione e cura.",
+            "impuls": "Fermarti in tempo è saggezza.",
+            "reflection": "Quale segnale mi mostra oggi che ho bisogno di rallentare?",
+            "insight": "Riconoscere prima i segnali di stanchezza aiuta a ridurre carico e recuperare con più continuità.",
+            "question": "Come posso rallentare oggi prima di esaurirmi?"
+          },
+          "premium": {
+            "intro": "Spesso continui troppo a lungo, non perché stai bene, ma perché sei abituata a superare i segnali.",
+            "deepening": "La cultura della prestazione ti insegna facilmente a resistere, stringere, andare avanti. Ma un approccio salutogenico ti invita a un’altra forma di intelligenza: fermarti prima. Prima che il corpo si chiuda. Prima che la mente si confonda. Prima che il sistema entri in irritazione, fretta o crollo. Questa capacità protegge più di quanto immagini.",
+            "nervousSystemLink": "Riconoscere i segnali precoci di sovraccarico aiuta il sistema nervoso a non oscillare continuamente tra iperattivazione ed esaurimento.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Osserva oggi un segnale sottile di stanchezza — per esempio tensione, irritazione, confusione o fretta — e rispondi con un piccolo rallentamento invece di andare oltre."
+            },
+            "microstep": "Osserva oggi un segnale sottile di stanchezza — per esempio tensione, irritazione, confusione o fretta — e rispondi con un piccolo rallentamento invece di andare oltre.",
+            "journalPrompt": "Quali sono i primi segnali con cui il mio sistema mi chiede di fermarmi un po’ prima?",
+            "question": "Quali sono i primi segnali con cui il mio sistema mi chiede di fermarmi un po’ prima?",
+            "eveningReflection": "In quale momento oggi ho ascoltato un segnale prima di superarlo?",
+            "reflection": "In quale momento oggi ho ascoltato un segnale prima di superarlo?",
+            "premiumInsight": "La capacità di fermarsi prima del limite sostiene prevenzione, autoregolazione e maggiore continuità del benessere.",
+            "insight": "La capacità di fermarsi prima del limite sostiene prevenzione, autoregolazione e maggiore continuità del benessere.",
+            "integrationQuestion": "Quale segnale precoce desidero iniziare a onorare con più serietà nei prossimi giorni?",
+            "integration": "Quale segnale precoce desidero iniziare a onorare con più serietà nei prossimi giorni?"
+          }
+        },
+        {
+          "free": {
+            "title": "Recuperare con gentilezza",
+            "explanation": "Il recupero non ha bisogno di rigidità, ma di ascolto e di tempo. Una gentilezza concreta verso te stessa può aiutarti a tornare più intera.",
+            "impuls": "Recuperare non è debolezza.",
+            "reflection": "Che cosa oggi mi aiuterebbe a recuperare con più dolcezza?",
+            "insight": "Un recupero gentile e realistico sostiene stabilità, energia e meno conflitto interiore.",
+            "question": "Come posso essere oggi più gentile con il mio bisogno di recupero?"
+          },
+          "premium": {
+            "intro": "Recuperare non significa solo smettere. Significa permettere al tuo sistema di ritrovare un ritmo più umano.",
+            "deepening": "Quando sei stanca, spesso continui a trattarti con durezza, come se il recupero dovesse essere meritato o ottimizzato. Ma la salute si rigenera più facilmente quando c’è meno lotta interna. Gentilezza non significa trascuratezza: significa scegliere un modo più sano di tornare a te.",
+            "nervousSystemLink": "Un atteggiamento meno duro e più regolante verso la stanchezza può ridurre stress secondario, pressione interna e senso di colpa.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Scegli oggi un gesto semplice di recupero gentile: sdraiarti qualche minuto, abbassare gli stimoli, bere qualcosa di caldo o fare una pausa in silenzio."
+            },
+            "microstep": "Scegli oggi un gesto semplice di recupero gentile: sdraiarti qualche minuto, abbassare gli stimoli, bere qualcosa di caldo o fare una pausa in silenzio.",
+            "journalPrompt": "Che cosa mi impedisce di trattare la mia stanchezza con più rispetto e meno durezza?",
+            "question": "Che cosa mi impedisce di trattare la mia stanchezza con più rispetto e meno durezza?",
+            "eveningReflection": "In quale momento oggi ho scelto una forma di recupero più umana e più gentile?",
+            "reflection": "In quale momento oggi ho scelto una forma di recupero più umana e più gentile?",
+            "premiumInsight": "La gentilezza verso il proprio bisogno di recupero può sostenere rigenerazione, regolazione e minore conflitto interiore.",
+            "insight": "La gentilezza verso il proprio bisogno di recupero può sostenere rigenerazione, regolazione e minore conflitto interiore.",
+            "integrationQuestion": "Quale gesto di recupero desidero rendere più legittimo e più presente nella mia routine?",
+            "integration": "Quale gesto di recupero desidero rendere più legittimo e più presente nella mia routine?"
+          }
+        }
+      ]
+    },
+    {
+      "day": 15,
+      "variants": [
+        {
+          "free": {
+            "title": "Pensieri che orientano",
+            "explanation": "I pensieri influenzano il modo in cui vivi ciò che accade. Osservarli con più chiarezza può restituirti spazio interiore e direzione.",
+            "impuls": "Non tutto ciò che pensi è la realtà intera.",
+            "reflection": "Quale pensiero oggi sta influenzando il mio stato più del necessario?",
+            "insight": "Riconoscere i propri pensieri con più lucidità può ridurre confusione, intensità emotiva e reazioni automatiche.",
+            "question": "Quale pensiero oggi ha bisogno di essere guardato con più chiarezza?"
+          },
+          "premium": {
+            "intro": "I pensieri non sono irrilevanti: creano tono, direzione e interpretazione. Ma non tutto ciò che pensi ha lo stesso valore di verità.",
+            "deepening": "Quando sei stanca, sotto pressione o in allerta, la mente tende spesso a semplificare, anticipare il peggio o irrigidirsi. Un approccio salutogenico non ti chiede di pensare positivo a ogni costo, ma di osservare meglio. C’è una grande differenza tra un fatto, una paura, un’ipotesi e una storia che la mente sta costruendo. Riconoscerla può alleggerirti molto.",
+            "nervousSystemLink": "Pensieri percepiti come minaccia costante possono mantenere il sistema nervoso in uno stato di allerta. Maggiore chiarezza cognitiva favorisce regolazione.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Scrivi oggi un pensiero che ti pesa e chiediti: è un fatto, una previsione, una paura o un’interpretazione?"
+            },
+            "microstep": "Scrivi oggi un pensiero che ti pesa e chiediti: è un fatto, una previsione, una paura o un’interpretazione?",
+            "journalPrompt": "Quale storia interiore sto forse prendendo per certa senza verificarla davvero?",
+            "question": "Quale storia interiore sto forse prendendo per certa senza verificarla davvero?",
+            "eveningReflection": "In quale momento oggi ho osservato i miei pensieri con più distanza, lucidità o gentilezza?",
+            "reflection": "In quale momento oggi ho osservato i miei pensieri con più distanza, lucidità o gentilezza?",
+            "premiumInsight": "Distinguere tra fatti, paure e interpretazioni può ridurre carico mentale, reattività e senso di intrappolamento.",
+            "insight": "Distinguere tra fatti, paure e interpretazioni può ridurre carico mentale, reattività e senso di intrappolamento.",
+            "integrationQuestion": "Quale domanda voglio usare più spesso per non credere automaticamente a ogni pensiero che mi attraversa?",
+            "integration": "Quale domanda voglio usare più spesso per non credere automaticamente a ogni pensiero che mi attraversa?"
+          }
+        },
+        {
+          "free": {
+            "title": "Fare spazio nella mente",
+            "explanation": "Quando la mente si riempie troppo, tutto può sembrare più pesante. Fare un po’ di spazio interiore aiuta a vedere con maggiore chiarezza.",
+            "impuls": "La chiarezza nasce anche dallo spazio.",
+            "reflection": "Che cosa sta occupando oggi troppo la mia mente?",
+            "insight": "Ridurre il sovraffollamento mentale può favorire calma, discernimento e una migliore capacità di scelta.",
+            "question": "Che cosa posso oggi semplificare anche solo nella mia mente?"
+          },
+          "premium": {
+            "intro": "A volte non hai bisogno di pensare di più. Hai bisogno di alleggerire il rumore interno.",
+            "deepening": "La mente può diventare affollata di scenari, preoccupazioni, compiti aperti, autocritiche e ripetizioni. Quando tutto resta aperto insieme, aumenta facilmente il senso di confusione e saturazione. Un approccio salutogenico ti invita a creare più ordine e più spazio, non per controllare tutto, ma per respirare meglio anche mentalmente.",
+            "nervousSystemLink": "Un minore carico cognitivo riduce la sensazione di pressione continua e può favorire una maggiore stabilità del sistema nervoso.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Scrivi oggi tre pensieri che girano nella tua mente e chiediti quali richiedono davvero azione, quali chiarezza e quali invece possono essere lasciati andare per ora."
+            },
+            "microstep": "Scrivi oggi tre pensieri che girano nella tua mente e chiediti quali richiedono davvero azione, quali chiarezza e quali invece possono essere lasciati andare per ora.",
+            "journalPrompt": "Che cosa nella mia mente oggi ha bisogno di essere chiarito, e che cosa invece solo alleggerito?",
+            "question": "Che cosa nella mia mente oggi ha bisogno di essere chiarito, e che cosa invece solo alleggerito?",
+            "eveningReflection": "In quale momento oggi ho sentito più spazio mentale o minore pressione interna?",
+            "reflection": "In quale momento oggi ho sentito più spazio mentale o minore pressione interna?",
+            "premiumInsight": "Creare ordine nel flusso mentale può restituire lucidità, energia disponibile e maggiore sensazione di gestibilità.",
+            "insight": "Creare ordine nel flusso mentale può restituire lucidità, energia disponibile e maggiore sensazione di gestibilità.",
+            "integrationQuestion": "Quale piccolo gesto mi aiuta a fare ordine nella mente quando sento troppo rumore interno?",
+            "integration": "Quale piccolo gesto mi aiuta a fare ordine nella mente quando sento troppo rumore interno?"
+          }
+        },
+        {
+          "free": {
+            "title": "Guardare con più verità",
+            "explanation": "Un pensiero visto con più verità perde spesso una parte del suo potere. La chiarezza non cancella tutto, ma può renderti più libera.",
+            "impuls": "Guardare meglio cambia il sentire.",
+            "reflection": "Quale pensiero oggi merita uno sguardo più onesto e meno automatico?",
+            "insight": "Riconoscere distorsioni, anticipazioni o giudizi assoluti aiuta a sentirsi meno travolte da ciò che si pensa.",
+            "question": "Dove posso oggi passare da un’automatica certezza a una visione più ampia?"
+          },
+          "premium": {
+            "intro": "La mente non mente sempre, ma spesso semplifica troppo. E ciò che semplifica può diventare più pesante del necessario.",
+            "deepening": "Quando un pensiero arriva con forza, è facile viverlo come una verità totale. Ma molte volte ciò che ti attraversa è solo una parte della realtà, filtrata da stanchezza, paura o vecchie abitudini interiori. Guardare con più verità significa allargare lo sguardo, non negare ciò che senti. È un gesto di libertà interiore.",
+            "nervousSystemLink": "Un pensiero meno assolutizzato riduce la sensazione di pericolo costante e favorisce una risposta interna più regolata.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Prendi oggi un pensiero forte e aggiungi questa frase: “Questa è una parte di ciò che vedo, ma non è tutta la realtà.”"
+            },
+            "microstep": "Prendi oggi un pensiero forte e aggiungi questa frase: “Questa è una parte di ciò che vedo, ma non è tutta la realtà.”",
+            "journalPrompt": "Dove oggi la mia mente sta stringendo troppo una visione che potrebbe essere più ampia?",
+            "question": "Dove oggi la mia mente sta stringendo troppo una visione che potrebbe essere più ampia?",
+            "eveningReflection": "In quale momento oggi ho trovato una visione più ampia, più vera o meno rigida?",
+            "reflection": "In quale momento oggi ho trovato una visione più ampia, più vera o meno rigida?",
+            "premiumInsight": "Ampliare lo sguardo cognitivo può ridurre rigidità, catastrofizzazione e senso di prigionia interiore.",
+            "insight": "Ampliare lo sguardo cognitivo può ridurre rigidità, catastrofizzazione e senso di prigionia interiore.",
+            "integrationQuestion": "Quale frase o prospettiva mi aiuta a ricordare che un pensiero non è mai tutta la realtà?",
+            "integration": "Quale frase o prospettiva mi aiuta a ricordare che un pensiero non è mai tutta la realtà?"
+          }
+        }
+      ]
+    },
+        {
+      "day": 16,
+      "variants": [
+        {
+          "free": {
+            "title": "Accogliere le emozioni",
+            "explanation": "Le emozioni non sono un errore da correggere, ma un segnale da ascoltare. Quando le accogli con più presenza, possono diventare più comprensibili e meno travolgenti.",
+            "impuls": "Ciò che senti merita ascolto, non rifiuto.",
+            "reflection": "Quale emozione oggi chiede di essere riconosciuta con più sincerità?",
+            "insight": "Dare un nome a ciò che senti può ridurre intensità, confusione e senso di sopraffazione.",
+            "question": "Che cosa sto provando davvero in questo momento?"
+          },
+          "premium": {
+            "intro": "Accogliere un’emozione non significa lasciarsene dominare. Significa creare abbastanza spazio perché possa essere vista, capita e regolata.",
+            "deepening": "Molte emozioni diventano più pesanti quando cerchi subito di evitarle, spiegarle via o controllarle. Un approccio salutogenico ti invita a restare un momento in ascolto: che cosa sto sentendo davvero? È tristezza, rabbia, paura, vergogna, stanchezza, delusione? Quando un’emozione trova un nome e un posto, spesso perde una parte della sua forza disordinata.",
+            "nervousSystemLink": "Il riconoscimento emotivo riduce spesso la tensione generata dalla lotta interna e favorisce maggiore regolazione e integrazione.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Fermati oggi un momento e completa questa frase: “In questo momento sento…” senza correggerti, giudicarti o minimizzare."
+            },
+            "microstep": "Fermati oggi un momento e completa questa frase: “In questo momento sento…” senza correggerti, giudicarti o minimizzare.",
+            "journalPrompt": "Quale emozione tendo a riconoscere meno facilmente, e che cosa succede quando provo invece a darle un nome?",
+            "question": "Quale emozione tendo a riconoscere meno facilmente, e che cosa succede quando provo invece a darle un nome?",
+            "eveningReflection": "In quale momento oggi mi sono sentita più onesta, presente o gentile verso ciò che provavo?",
+            "reflection": "In quale momento oggi mi sono sentita più onesta, presente o gentile verso ciò che provavo?",
+            "premiumInsight": "Dare un nome alle emozioni e riconoscerle con più chiarezza può ridurre lotta interna, reattività e disorientamento.",
+            "insight": "Dare un nome alle emozioni e riconoscerle con più chiarezza può ridurre lotta interna, reattività e disorientamento.",
+            "integrationQuestion": "Come posso diventare più capace, nei prossimi giorni, di fermarmi e ascoltare davvero ciò che sento?",
+            "integration": "Come posso diventare più capace, nei prossimi giorni, di fermarmi e ascoltare davvero ciò che sento?"
+          }
+        },
+        {
+          "free": {
+            "title": "Dare un nome a ciò che senti",
+            "explanation": "Quando un’emozione resta vaga, può pesare di più. Nominarla con sincerità aiuta a renderla più chiara e più gestibile.",
+            "impuls": "Nomina ciò che senti.",
+            "reflection": "Che nome posso dare oggi a ciò che provo?",
+            "insight": "Il linguaggio emotivo più preciso favorisce presenza, comprensione di sé e minore confusione interna.",
+            "question": "Che cosa sto sentendo davvero, sotto la superficie?"
+          },
+          "premium": {
+            "intro": "Tra “sto male” e la verità emotiva spesso c’è molta differenza. Più precisione porti, più possibilità di cura si aprono.",
+            "deepening": "A volte dici che stai male, sei nervosa o sei giù. Ma forse sotto c’è altro: delusione, solitudine, paura, umiliazione, saturazione, tristezza, rabbia trattenuta. Un approccio salutogenico ti invita a raffinare il linguaggio emotivo non per complicarti, ma per avvicinarti di più a te stessa. Ciò che sai nominare, spesso sai anche accompagnare meglio.",
+            "nervousSystemLink": "Una maggiore precisione nel riconoscimento emotivo può ridurre attivazione diffusa e sostenere una regolazione più fine del sistema.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Quando senti agitazione o chiusura, prova a scegliere tra tre parole emotive diverse e chiediti quale si avvicina di più a ciò che provi davvero."
+            },
+            "microstep": "Quando senti agitazione o chiusura, prova a scegliere tra tre parole emotive diverse e chiediti quale si avvicina di più a ciò che provi davvero.",
+            "journalPrompt": "Quale emozione descrive meglio il mio stato attuale, se vado oltre le definizioni generiche?",
+            "question": "Quale emozione descrive meglio il mio stato attuale, se vado oltre le definizioni generiche?",
+            "eveningReflection": "In quale momento oggi sono riuscita a riconoscere con più precisione quello che sentivo?",
+            "reflection": "In quale momento oggi sono riuscita a riconoscere con più precisione quello che sentivo?",
+            "premiumInsight": "Un linguaggio emotivo più preciso sostiene chiarezza, autoregolazione e minore senso di caos interno.",
+            "insight": "Un linguaggio emotivo più preciso sostiene chiarezza, autoregolazione e minore senso di caos interno.",
+            "integrationQuestion": "Quale parola emotiva voglio iniziare a usare con più verità quando parlo con me stessa?",
+            "integration": "Quale parola emotiva voglio iniziare a usare con più verità quando parlo con me stessa?"
+          }
+        },
+        {
+          "free": {
+            "title": "Stare con ciò che c’è",
+            "explanation": "Non sempre puoi cambiare subito ciò che senti, ma puoi imparare a stare con più presenza accanto a ciò che c’è. Questo rende l’esperienza più sostenibile.",
+            "impuls": "Resta un momento con ciò che senti.",
+            "reflection": "Che cosa succede in me quando provo a non scappare subito da ciò che sento?",
+            "insight": "La presenza emotiva può ridurre evitamento, irrigidimento e reazioni automatiche.",
+            "question": "Posso restare oggi un po’ più vicina a ciò che provo?"
+          },
+          "premium": {
+            "intro": "A volte la regolazione non inizia cambiando subito l’emozione, ma cambiando il modo in cui le stai accanto.",
+            "deepening": "Molto dolore secondario nasce dal rifiuto immediato di ciò che senti. Ti irrigidisci, ti spaventi, ti giudichi o cerchi subito di funzionare come se nulla fosse. Un approccio salutogenico ti invita invece a coltivare una presenza più stabile: posso sentire questo, e restare comunque qui. Non per arrendermi, ma per smettere di farmi guerra.",
+            "nervousSystemLink": "Ridurre la lotta interna contro l’emozione può alleggerire iperattivazione, difesa e senso di minaccia interna.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Quando senti un’emozione intensa, prova a dirti: “Posso stare qui con questo per un momento, senza dover risolvere tutto subito.”"
+            },
+            "microstep": "Quando senti un’emozione intensa, prova a dirti: “Posso stare qui con questo per un momento, senza dover risolvere tutto subito.”",
+            "journalPrompt": "Che cosa cambia quando smetto di combattere subito ciò che provo?",
+            "question": "Che cosa cambia quando smetto di combattere subito ciò che provo?",
+            "eveningReflection": "In quale momento oggi sono riuscita a restare più presente accanto a un’emozione, invece di scacciarla immediatamente?",
+            "reflection": "In quale momento oggi sono riuscita a restare più presente accanto a un’emozione, invece di scacciarla immediatamente?",
+            "premiumInsight": "Stare con l’emozione in modo più stabile e meno difensivo può favorire integrazione, regolazione e minore frammentazione interna.",
+            "insight": "Stare con l’emozione in modo più stabile e meno difensivo può favorire integrazione, regolazione e minore frammentazione interna.",
+            "integrationQuestion": "Quale frase o gesto può aiutarmi nei prossimi giorni a restare più vicina a me stessa quando sento qualcosa di intenso?",
+            "integration": "Quale frase o gesto può aiutarmi nei prossimi giorni a restare più vicina a me stessa quando sento qualcosa di intenso?"
+          }
+        }
+      ]
+    },
+    {
+      "day": 17,
+      "variants": [
+        {
+          "free": {
+            "title": "Gratitudine concreta",
+            "explanation": "La gratitudine non cancella ciò che è difficile, ma può aiutarti a riconoscere anche ciò che ti sostiene. Questo cambia lentamente il tuo sguardo interiore.",
+            "impuls": "Riconosci ciò che c’è di buono.",
+            "reflection": "Che cosa posso riconoscere oggi con gratitudine sincera?",
+            "insight": "La gratitudine consapevole può rafforzare stabilità, presenza e una percezione più ampia della realtà.",
+            "question": "Quale piccola cosa merita oggi il mio grazie?"
+          },
+          "premium": {
+            "intro": "La gratitudine non è ingenuità. È la capacità di non perdere del tutto il contatto con ciò che nutre, anche quando la vita è impegnativa.",
+            "deepening": "Essere grate non significa negare dolore, fatica o mancanza. Significa allenare lo sguardo a riconoscere anche ciò che c’è, ciò che tiene, ciò che ancora arriva come sostegno. Una luce, una persona, un gesto, una capacità, un momento di tregua. La gratitudine concreta non è obbligo morale: è una pratica che può ampliare il tuo campo interiore.",
+            "nervousSystemLink": "Portare attenzione anche agli elementi di sicurezza, appoggio e bene presenti nella giornata può ridurre il predominio di un focus esclusivamente orientato alla minaccia.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Scrivi oggi tre cose per cui provi gratitudine reale: una esterna, una interiore e una molto piccola, ma vera."
+            },
+            "microstep": "Scrivi oggi tre cose per cui provi gratitudine reale: una esterna, una interiore e una molto piccola, ma vera.",
+            "journalPrompt": "Che cosa nella mia vita rischio di dare per scontato, pur avendo un valore profondo per me?",
+            "question": "Che cosa nella mia vita rischio di dare per scontato, pur avendo un valore profondo per me?",
+            "eveningReflection": "Quale momento di oggi mi ha ricordato che non tutto è peso, mancanza o fatica?",
+            "reflection": "Quale momento di oggi mi ha ricordato che non tutto è peso, mancanza o fatica?",
+            "premiumInsight": "La gratitudine concreta e non forzata può rafforzare regolazione emotiva, apertura e senso di appoggio interno.",
+            "insight": "La gratitudine concreta e non forzata può rafforzare regolazione emotiva, apertura e senso di appoggio interno.",
+            "integrationQuestion": "Come posso allenare nei prossimi giorni uno sguardo più capace di riconoscere ciò che mi sostiene davvero?",
+            "integration": "Come posso allenare nei prossimi giorni uno sguardo più capace di riconoscere ciò che mi sostiene davvero?"
+          }
+        },
+        {
+          "free": {
+            "title": "Riconoscere ciò che c’è",
+            "explanation": "Quando vedi solo ciò che manca, ti senti più facilmente svuotata. Riconoscere ciò che c’è può ridarti un senso di appoggio e di realtà più completa.",
+            "impuls": "C’è anche qualcosa che tiene.",
+            "reflection": "Che cosa oggi è presente nella mia vita e merita di essere riconosciuto?",
+            "insight": "Notare il bene già presente aiuta a riequilibrare uno sguardo troppo centrato su carenza, fatica o minaccia.",
+            "question": "Che cosa oggi voglio smettere di dare per scontato?"
+          },
+          "premium": {
+            "intro": "A volte non serve aggiungere molto. Serve accorgerti meglio di ciò che è già qui.",
+            "deepening": "Nelle fasi di stress o stanchezza, la mente tende a concentrarsi su ciò che manca, preoccupa o pesa. Questo è comprensibile, ma non è l’unica verità. Un approccio salutogenico ti invita anche a riconoscere ciò che c’è: relazioni, capacità, possibilità, piccoli punti fermi, momenti di tregua. Riconoscerli non risolve tutto, ma cambia il terreno da cui riparti.",
+            "nervousSystemLink": "Ampliare l’attenzione a ciò che è stabile o sufficientemente sicuro può ridurre la dominanza di uno stato interno orientato solo alla vigilanza.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Guardati intorno oggi e nomina tre cose che in questo momento sono sufficientemente buone, stabili o presenti nella tua vita."
+            },
+            "microstep": "Guardati intorno oggi e nomina tre cose che in questo momento sono sufficientemente buone, stabili o presenti nella tua vita.",
+            "journalPrompt": "Quali aspetti della mia vita sono più presenti e affidabili di quanto io riconosca di solito?",
+            "question": "Quali aspetti della mia vita sono più presenti e affidabili di quanto io riconosca di solito?",
+            "eveningReflection": "Che cosa oggi mi ha fatto sentire un po’ più sostenuta dalla realtà presente, invece che solo dalla mancanza?",
+            "reflection": "Che cosa oggi mi ha fatto sentire un po’ più sostenuta dalla realtà presente, invece che solo dalla mancanza?",
+            "premiumInsight": "Riconoscere ciò che è già disponibile e sufficientemente buono può aumentare stabilità, fiducia e capacità di orientamento.",
+            "insight": "Riconoscere ciò che è già disponibile e sufficientemente buono può aumentare stabilità, fiducia e capacità di orientamento.",
+            "integrationQuestion": "Quale pratica semplice posso usare per ricordarmi più spesso di ciò che già c’è?",
+            "integration": "Quale pratica semplice posso usare per ricordarmi più spesso di ciò che già c’è?"
+          }
+        },
+        {
+          "free": {
+            "title": "Un grazie che radica",
+            "explanation": "La gratitudine più trasformativa non è quella perfetta, ma quella sincera. Un grazie autentico può radicarti di più nel presente.",
+            "impuls": "Un grazie vero può cambiare il tono della giornata.",
+            "reflection": "Per che cosa sento oggi un grazie semplice ma autentico?",
+            "insight": "La gratitudine sincera può favorire maggiore presenza, stabilità e contatto con ciò che conta.",
+            "question": "Quale piccolo bene voglio oggi onorare con più attenzione?"
+          },
+          "premium": {
+            "intro": "C’è una forma di gratitudine che non abbellisce la realtà, ma la rende più intera. È quella che riconosce il bene senza negare il difficile.",
+            "deepening": "Non serve forzarti a sentire gratitudine per tutto. Basta allenarti a percepire che, anche dentro giornate complesse, esistono ancora punti di appoggio. A volte è qualcosa di molto piccolo: il corpo che ha retto, una parola ricevuta, una decisione presa, un momento di quiete. Questo tipo di gratitudine radica: ti riporta a ciò che è concreto e vivo.",
+            "nervousSystemLink": "Il contatto con elementi percepiti come buoni, presenti e sicuri può aiutare il sistema a ridurre rigidità difensiva e senso di carenza costante.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Prima di dormire, scegli un solo motivo di gratitudine reale e restaci per qualche respiro, senza fretta."
+            },
+            "microstep": "Prima di dormire, scegli un solo motivo di gratitudine reale e restaci per qualche respiro, senza fretta.",
+            "journalPrompt": "Quale bene piccolo ma reale ha attraversato oggi la mia giornata?",
+            "question": "Quale bene piccolo ma reale ha attraversato oggi la mia giornata?",
+            "eveningReflection": "Quale grazie di oggi mi ha fatta sentire più stabile, più presente o più raccolta?",
+            "reflection": "Quale grazie di oggi mi ha fatta sentire più stabile, più presente o più raccolta?",
+            "premiumInsight": "La gratitudine radicata nel concreto può rafforzare presenza, integrazione e un senso più pieno di appoggio interiore.",
+            "insight": "La gratitudine radicata nel concreto può rafforzare presenza, integrazione e un senso più pieno di appoggio interiore.",
+            "integrationQuestion": "Come posso portare nei prossimi giorni una gratitudine più vera, semplice e incarnata nella mia routine?",
+            "integration": "Come posso portare nei prossimi giorni una gratitudine più vera, semplice e incarnata nella mia routine?"
+          }
+        }
+      ]
+    },
+    {
+      "day": 18,
+      "variants": [
+        {
+          "free": {
+            "title": "Fiducia nelle proprie risorse",
+            "explanation": "La fiducia non nasce solo dal pensiero positivo, ma dalla memoria concreta di ciò che hai già saputo affrontare. Ricordarlo può rafforzarti.",
+            "impuls": "Hai già attraversato molto.",
+            "reflection": "Che cosa nella mia storia mi ricorda che possiedo risorse reali?",
+            "insight": "Ricordare le proprie capacità e le difficoltà già attraversate può aumentare stabilità e autoefficacia.",
+            "question": "Quale esperienza mi ricorda oggi che posso fidarmi un po’ di più di me?"
+          },
+          "premium": {
+            "intro": "La fiducia più solida non è quella che si impone, ma quella che nasce dal riconoscere con onestà ciò che hai già saputo reggere, imparare e attraversare.",
+            "deepening": "Nei momenti di fatica è facile dimenticare tutto ciò che hai già fatto, superato o sostenuto. La mente si concentra sul dubbio, sul rischio, sulla paura di non farcela. Un approccio salutogenico ti invita invece a recuperare memoria di competenza: non per negare la difficoltà presente, ma per non affrontarla come se fossi vuota di risorse.",
+            "nervousSystemLink": "La memoria di esperienze già affrontate può ridurre helplessness, aumentare senso di orientamento e sostenere maggiore stabilità interna.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Ripensa oggi a una situazione difficile che hai attraversato e scrivi quale qualità, capacità o scelta ti ha aiutata allora."
+            },
+            "microstep": "Ripensa oggi a una situazione difficile che hai attraversato e scrivi quale qualità, capacità o scelta ti ha aiutata allora.",
+            "journalPrompt": "Quale parte della mia storia personale testimonia che sono più capace di quanto a volte ricordo?",
+            "question": "Quale parte della mia storia personale testimonia che sono più capace di quanto a volte ricordo?",
+            "eveningReflection": "Che cosa oggi mi ha ricordato in modo concreto una mia forza già esistente?",
+            "reflection": "Che cosa oggi mi ha ricordato in modo concreto una mia forza già esistente?",
+            "premiumInsight": "La fiducia fondata sull’esperienza reale può rafforzare autoefficacia, resilienza e minore dipendenza dal dubbio automatico.",
+            "insight": "La fiducia fondata sull’esperienza reale può rafforzare autoefficacia, resilienza e minore dipendenza dal dubbio automatico.",
+            "integrationQuestion": "Come posso ricordarmi più spesso, nei prossimi giorni, delle mie risorse quando il dubbio prende spazio?",
+            "integration": "Come posso ricordarmi più spesso, nei prossimi giorni, delle mie risorse quando il dubbio prende spazio?"
+          }
+        },
+        {
+          "free": {
+            "title": "Ricordare la propria forza",
+            "explanation": "La tua forza non è sempre visibile allo stesso modo, ma non per questo scompare. A volte ha solo bisogno di essere ricordata.",
+            "impuls": "Ricorda ciò che in te ha già retto.",
+            "reflection": "Quale mia forza tendo a dimenticare proprio quando ne avrei più bisogno?",
+            "insight": "Richiamare alla mente le proprie risorse aiuta a ridurre paura, confusione e senso di impotenza.",
+            "question": "Che cosa in me è più stabile di quanto penso?"
+          },
+          "premium": {
+            "intro": "Non ogni forza si mostra come energia, sicurezza o slancio. A volte la tua forza è resistenza quieta, fedeltà a te stessa, capacità di restare, lucidità nel caos.",
+            "deepening": "Spesso immagini la forza in modo troppo rigido o spettacolare, e così smetti di riconoscerla nelle forme più silenziose. Ma anche il fatto che tu sia ancora qui, che abbia continuato, che abbia scelto, che abbia imparato, è già testimonianza di una forza reale. Un approccio salutogenico ti invita a rivedere la tua idea di forza con più verità e meno durezza.",
+            "nervousSystemLink": "Riconoscere la propria capacità di tenuta e adattamento può aumentare sicurezza interna e ridurre reazioni di sfiducia automatica.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Scrivi oggi tre forme della tua forza che non sempre riconosci subito, ma che sono reali nella tua vita."
+            },
+            "microstep": "Scrivi oggi tre forme della tua forza che non sempre riconosci subito, ma che sono reali nella tua vita.",
+            "journalPrompt": "Quale definizione più vera di forza voglio iniziare a usare quando penso a me stessa?",
+            "question": "Quale definizione più vera di forza voglio iniziare a usare quando penso a me stessa?",
+            "eveningReflection": "In quale momento oggi ho percepito in me una forza più sobria, ma autentica?",
+            "reflection": "In quale momento oggi ho percepito in me una forza più sobria, ma autentica?",
+            "premiumInsight": "Ampliare l’idea di forza personale aiuta a riconoscere risorse già presenti e a fidarsi di sé in modo più realistico.",
+            "insight": "Ampliare l’idea di forza personale aiuta a riconoscere risorse già presenti e a fidarsi di sé in modo più realistico.",
+            "integrationQuestion": "Come posso allenarmi a riconoscere la mia forza anche quando non appare nella forma che mi aspettavo?",
+            "integration": "Come posso allenarmi a riconoscere la mia forza anche quando non appare nella forma che mi aspettavo?"
+          }
+        },
+        {
+          "free": {
+            "title": "Appoggiarsi a sé",
+            "explanation": "Fidarti di te non significa sapere tutto o non avere paura. Significa iniziare a sentirti un po’ più alleata di te stessa.",
+            "impuls": "Puoi diventare un appoggio per te.",
+            "reflection": "In che modo oggi posso starmi accanto con più fiducia?",
+            "insight": "La fiducia in sé cresce quando smetti di trattarti come un problema e inizi a vederti anche come risorsa.",
+            "question": "Che cosa mi aiuterebbe oggi a sentirmi più alleata di me stessa?"
+          },
+          "premium": {
+            "intro": "La fiducia in sé non nasce dalla certezza assoluta. Nasce dal sentirsi gradualmente più affidabili ai propri occhi.",
+            "deepening": "Puoi non sapere tutto, avere ancora paura, sentirti stanca o dubbiosa — e al tempo stesso iniziare a diventare un appoggio per te stessa. Ogni volta che ti ascolti, ti proteggi, ti dici la verità o fai un passo rispettoso, costruisci fiducia. Non come prestazione, ma come legame interno.",
+            "nervousSystemLink": "La percezione di essere un riferimento interno più stabile può ridurre allarme, dispersione e bisogno di controllo esterno costante.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Chiediti oggi: se fossi davvero dalla mia parte, quale piccolo gesto farei adesso? Poi compilo."
+            },
+            "microstep": "Chiediti oggi: se fossi davvero dalla mia parte, quale piccolo gesto farei adesso? Poi compilo.",
+            "journalPrompt": "Che cosa significa per me, in modo concreto, essere più dalla mia parte?",
+            "question": "Che cosa significa per me, in modo concreto, essere più dalla mia parte?",
+            "eveningReflection": "In quale momento oggi mi sono trattata con più fiducia, rispetto o alleanza?",
+            "reflection": "In quale momento oggi mi sono trattata con più fiducia, rispetto o alleanza?",
+            "premiumInsight": "Sentirsi gradualmente più alleate di sé può rafforzare sicurezza interna, coerenza e continuità nel proprio cammino.",
+            "insight": "Sentirsi gradualmente più alleate di sé può rafforzare sicurezza interna, coerenza e continuità nel proprio cammino.",
+            "integrationQuestion": "Quale gesto voglio ripetere nei prossimi giorni per diventare per me stessa un appoggio più stabile?",
+            "integration": "Quale gesto voglio ripetere nei prossimi giorni per diventare per me stessa un appoggio più stabile?"
+          }
+        }
+      ]
+    },
+    {
+      "day": 19,
+      "variants": [
+        {
+          "free": {
+            "title": "Equilibrio possibile",
+            "explanation": "L’equilibrio non è perfezione immobile, ma un continuo aggiustamento tra bisogni, energie e realtà. Può essere semplice, concreto e umano.",
+            "impuls": "L’equilibrio si costruisce, non si impone.",
+            "reflection": "Dove oggi ho bisogno di più equilibrio e meno estremi?",
+            "insight": "Un equilibrio più realistico riduce pressione, oscillazioni e senso di fallimento.",
+            "question": "Che cosa posso riequilibrare oggi in modo piccolo ma utile?"
+          },
+          "premium": {
+            "intro": "L’equilibrio non significa che tutto è sempre al posto giusto. Significa saper tornare, correggere, ascoltare e ritrovare misura.",
+            "deepening": "Molte volte immagini l’equilibrio come uno stato perfetto da raggiungere una volta per tutte. Ma la vita reale è fatta di variazioni, fasi, bisogni diversi, imprevisti, giornate buone e giornate più faticose. Un approccio salutogenico non cerca rigidità: cerca capacità di aggiustamento. Questo rende l’equilibrio più vero e più sostenibile.",
+            "nervousSystemLink": "La possibilità di adattarsi con flessibilità ai cambiamenti riduce rigidità interna, allarme e senso di perdita di controllo.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Osserva oggi un’area della tua giornata che senti sbilanciata e chiediti quale piccolo aggiustamento potrebbe renderla più sostenibile."
+            },
+            "microstep": "Osserva oggi un’area della tua giornata che senti sbilanciata e chiediti quale piccolo aggiustamento potrebbe renderla più sostenibile.",
+            "journalPrompt": "In quale ambito sto cercando perfezione invece di equilibrio reale?",
+            "question": "In quale ambito sto cercando perfezione invece di equilibrio reale?",
+            "eveningReflection": "In quale momento oggi sono riuscita ad aggiustare il mio ritmo o la mia risposta in modo più rispettoso?",
+            "reflection": "In quale momento oggi sono riuscita ad aggiustare il mio ritmo o la mia risposta in modo più rispettoso?",
+            "premiumInsight": "L’equilibrio come flessibilità e aggiustamento favorisce sostenibilità, minore rigidità e maggiore continuità del benessere.",
+            "insight": "L’equilibrio come flessibilità e aggiustamento favorisce sostenibilità, minore rigidità e maggiore continuità del benessere.",
+            "integrationQuestion": "Quale piccolo riequilibrio desidero portare con me nei prossimi giorni in modo stabile e realistico?",
+            "integration": "Quale piccolo riequilibrio desidero portare con me nei prossimi giorni in modo stabile e realistico?"
+          }
+        },
+        {
+          "free": {
+            "title": "Trovare misura",
+            "explanation": "La misura non ti limita: ti protegge. Ti aiuta a vivere con più continuità, meno eccesso e maggiore ascolto.",
+            "impuls": "La misura è una forma di intelligenza.",
+            "reflection": "Dove oggi sento il bisogno di più misura?",
+            "insight": "Scegliere la misura riduce dispersione, stanchezza e oscillazioni troppo forti.",
+            "question": "Che cosa posso oggi rendere più sobrio, più chiaro o più adatto a me?"
+          },
+          "premium": {
+            "intro": "La misura non è mancanza di intensità. È la capacità di scegliere una forma che il tuo sistema possa davvero sostenere.",
+            "deepening": "A volte vivi per eccessi: troppo fare, troppo trattenere, troppo pensare, troppo poco ascoltarti. Un approccio salutogenico ti invita a ritrovare una misura viva, non rigida. Ciò che è troppo ti consuma, ciò che è troppo poco ti impoverisce. La misura sana nasce nel punto in cui puoi restare in contatto con te stessa mentre vivi.",
+            "nervousSystemLink": "Un ritmo più misurato e sostenibile riduce oscillazioni di attivazione, sovraccarico e cadute di energia.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Scegli oggi una cosa che tendi a fare in eccesso e prova a riportarla a una forma più semplice, più breve o più respirabile."
+            },
+            "microstep": "Scegli oggi una cosa che tendi a fare in eccesso e prova a riportarla a una forma più semplice, più breve o più respirabile.",
+            "journalPrompt": "In quale ambito della mia vita la misura potrebbe diventare oggi una forma concreta di salute?",
+            "question": "In quale ambito della mia vita la misura potrebbe diventare oggi una forma concreta di salute?",
+            "eveningReflection": "In quale momento oggi ho sentito che una scelta più misurata mi ha fatto bene davvero?",
+            "reflection": "In quale momento oggi ho sentito che una scelta più misurata mi ha fatto bene davvero?",
+            "premiumInsight": "La misura favorisce sostenibilità, presenza e un rapporto meno conflittuale con i propri limiti e le proprie energie.",
+            "insight": "La misura favorisce sostenibilità, presenza e un rapporto meno conflittuale con i propri limiti e le proprie energie.",
+            "integrationQuestion": "Quale eccesso desidero trasformare nei prossimi giorni in una forma più equilibrata e vivibile?",
+            "integration": "Quale eccesso desidero trasformare nei prossimi giorni in una forma più equilibrata e vivibile?"
+          }
+        },
+        {
+          "free": {
+            "title": "Più centro, meno estremi",
+            "explanation": "Trovare il proprio centro aiuta a vivere con meno dispersione e meno reazioni estreme. Da lì nasce una forma più calma di forza.",
+            "impuls": "Cerca il tuo centro.",
+            "reflection": "Che cosa mi aiuta oggi a tornare al mio centro?",
+            "insight": "Il contatto con il proprio centro interiore aumenta presenza, lucidità e stabilità.",
+            "question": "Quale gesto mi riporta oggi a una sensazione di centro?"
+          },
+          "premium": {
+            "intro": "Il centro non è un punto perfetto: è un’esperienza di maggiore coerenza, ascolto e orientamento dentro di te.",
+            "deepening": "Quando perdi il centro, ti disperdi più facilmente tra richieste esterne, automatismi interni, urgenze e reazioni. Tornare al centro non significa chiuderti, ma ritrovare una posizione da cui puoi scegliere meglio. Un approccio salutogenico coltiva proprio questa capacità: non vivere solo per impulso o pressione, ma da un punto di maggiore allineamento.",
+            "nervousSystemLink": "Il ritorno a una maggiore centratura interna può ridurre reattività, disorganizzazione e attivazione eccessiva del sistema nervoso.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Scegli oggi un gesto che per te rappresenta ritorno al centro: una mano sul petto, un respiro lento, due minuti di silenzio o una camminata breve e presente."
+            },
+            "microstep": "Scegli oggi un gesto che per te rappresenta ritorno al centro: una mano sul petto, un respiro lento, due minuti di silenzio o una camminata breve e presente.",
+            "journalPrompt": "Come riconosco, nel mio corpo e nella mia mente, quando sono più vicina al mio centro?",
+            "question": "Come riconosco, nel mio corpo e nella mia mente, quando sono più vicina al mio centro?",
+            "eveningReflection": "In quale momento oggi ho sentito più centratura, chiarezza o coerenza dentro di me?",
+            "reflection": "In quale momento oggi ho sentito più centratura, chiarezza o coerenza dentro di me?",
+            "premiumInsight": "La centratura interiore può rafforzare autoregolazione, lucidità e capacità di risposta più intenzionale.",
+            "insight": "La centratura interiore può rafforzare autoregolazione, lucidità e capacità di risposta più intenzionale.",
+            "integrationQuestion": "Quale gesto desidero usare più spesso nei prossimi giorni come ritorno concreto al mio centro?",
+            "integration": "Quale gesto desidero usare più spesso nei prossimi giorni come ritorno concreto al mio centro?"
+          }
+        }
+      ]
+    },
+    {
+      "day": 20,
+      "variants": [
+        {
+          "free": {
+            "title": "Integrare ciò che hai imparato",
+            "explanation": "Il cambiamento non cresce solo quando impari qualcosa di nuovo, ma quando inizi a portarlo nella tua vita in modo reale. Integrare significa rendere vivo ciò che hai riconosciuto.",
+            "impuls": "Ciò che integri diventa tuo.",
+            "reflection": "Che cosa desidero davvero portare con me di questo percorso?",
+            "insight": "L’integrazione trasforma intuizioni isolate in esperienza stabile e più concreta.",
+            "question": "Quale apprendimento voglio iniziare a vivere davvero?"
+          },
+          "premium": {
+            "intro": "Capire qualcosa è importante. Ma è quando inizi a viverlo che quel sapere diventa trasformazione.",
+            "deepening": "Molte intuizioni restano belle, ma lontane dalla vita quotidiana. Un approccio salutogenico ti invita invece a chiederti: come porto questo dentro i miei giorni reali? Non servono grandi rivoluzioni. Serve scegliere ciò che vuoi trattenere, ripetere, incarnare. L’integrazione non è perfezione: è fedeltà concreta a ciò che hai riconosciuto come vero.",
+            "nervousSystemLink": "La ripetizione di scelte coerenti e integrate può sostenere maggiore stabilità, prevedibilità e senso di continuità interna.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Scrivi oggi una cosa che hai compreso su di te e accanto un gesto concreto con cui desideri iniziare a viverla nei prossimi giorni."
+            },
+            "microstep": "Scrivi oggi una cosa che hai compreso su di te e accanto un gesto concreto con cui desideri iniziare a viverla nei prossimi giorni.",
+            "journalPrompt": "Quale verità riconosciuta su di me desidera ora diventare pratica, scelta o abitudine?",
+            "question": "Quale verità riconosciuta su di me desidera ora diventare pratica, scelta o abitudine?",
+            "eveningReflection": "Che cosa oggi ho sentito non solo come idea, ma come qualcosa che potrebbe davvero accompagnarmi nel tempo?",
+            "reflection": "Che cosa oggi ho sentito non solo come idea, ma come qualcosa che potrebbe davvero accompagnarmi nel tempo?",
+            "premiumInsight": "Integrare gradualmente ciò che si è compreso rafforza continuità, coerenza e un senso più profondo di trasformazione reale.",
+            "insight": "Integrare gradualmente ciò che si è compreso rafforza continuità, coerenza e un senso più profondo di trasformazione reale.",
+            "integrationQuestion": "Quale piccolo gesto voglio usare nei prossimi giorni per rendere più concreta questa integrazione?",
+            "integration": "Quale piccolo gesto voglio usare nei prossimi giorni per rendere più concreta questa integrazione?"
+          }
+        },
+        {
+          "free": {
+            "title": "Portare nel quotidiano",
+            "explanation": "Ciò che cambia davvero è ciò che riesci a portare nella vita di tutti i giorni. Il quotidiano è il luogo in cui il benessere prende forma.",
+            "impuls": "Rendi semplice ciò che vuoi mantenere.",
+            "reflection": "Che cosa posso portare già domani nella mia quotidianità?",
+            "insight": "Le pratiche semplici e ripetibili hanno più possibilità di diventare parte stabile della vita.",
+            "question": "Quale gesto concreto posso rendere quotidiano?"
+          },
+          "premium": {
+            "intro": "La vita quotidiana è il vero laboratorio del cambiamento. È lì che ciò che senti importante trova forma o si perde.",
+            "deepening": "Spesso immagini la trasformazione come qualcosa di straordinario, ma quasi sempre si costruisce nelle ripetizioni ordinarie. Un approccio salutogenico non cerca solo momenti alti, ma coerenza semplice nel quotidiano: un gesto, una pausa, un confine, un ascolto, una scelta più vera. Quando qualcosa entra davvero nella tua giornata, smette di essere un’intenzione vaga.",
+            "nervousSystemLink": "La quotidianità prevedibile e coerente può offrire al sistema nervoso un senso maggiore di stabilità, sicurezza e continuità.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Scegli oggi un gesto semplice che vuoi portare nei prossimi tre giorni alla stessa ora o nello stesso momento della giornata."
+            },
+            "microstep": "Scegli oggi un gesto semplice che vuoi portare nei prossimi tre giorni alla stessa ora o nello stesso momento della giornata.",
+            "journalPrompt": "Che cosa voglio rendere più quotidiano perché mi fa davvero bene?",
+            "question": "Che cosa voglio rendere più quotidiano perché mi fa davvero bene?",
+            "eveningReflection": "Quale gesto, tra quelli incontrati fin qui, sento più vicino alla mia vita reale?",
+            "reflection": "Quale gesto, tra quelli incontrati fin qui, sento più vicino alla mia vita reale?",
+            "premiumInsight": "Le pratiche piccole, ripetute e contestualizzate nel quotidiano hanno più possibilità di consolidarsi nel tempo.",
+            "insight": "Le pratiche piccole, ripetute e contestualizzate nel quotidiano hanno più possibilità di consolidarsi nel tempo.",
+            "integrationQuestion": "Come posso rendere il mio benessere meno occasionale e più presente nei miei giorni reali?",
+            "integration": "Come posso rendere il mio benessere meno occasionale e più presente nei miei giorni reali?"
+          }
+        },
+        {
+          "free": {
+            "title": "Scegliere ciò che resta",
+            "explanation": "Non serve portare tutto con te. Basta scegliere ciò che ti ha fatto davvero bene e che vuoi lasciare diventare parte di te.",
+            "impuls": "Trattieni l’essenziale.",
+            "reflection": "Che cosa sento davvero mio, tra ciò che ho incontrato in questo percorso?",
+            "insight": "Scegliere l’essenziale rende il cambiamento più chiaro, più stabile e più sostenibile.",
+            "question": "Che cosa voglio custodire davvero da qui in avanti?"
+          },
+          "premium": {
+            "intro": "Ogni percorso lascia molte tracce. Ma non tutte devono diventare ugualmente importanti. La vera integrazione passa anche dalla scelta.",
+            "deepening": "Può esserci il desiderio di portare tutto con te, di fare tutto bene, di non perdere nulla. Ma spesso il cambiamento più reale nasce quando scegli poche cose essenziali e le onori con continuità. Un approccio salutogenico sa che ciò che resta non è ciò che impressiona di più, ma ciò che riesce davvero a nutrirti nel tempo.",
+            "nervousSystemLink": "Ridurre dispersione e scegliere pochi riferimenti chiari può aumentare stabilità, orientamento e sostenibilità del sistema.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Scegli oggi tre parole, tre gesti o tre intuizioni che senti essenziali per te e scrivili come base del tuo prossimo passo."
+            },
+            "microstep": "Scegli oggi tre parole, tre gesti o tre intuizioni che senti essenziali per te e scrivili come base del tuo prossimo passo.",
+            "journalPrompt": "Che cosa merita davvero di restare con me, anche quando la vita torna piena e veloce?",
+            "question": "Che cosa merita davvero di restare con me, anche quando la vita torna piena e veloce?",
+            "eveningReflection": "Quale essenziale oggi ho riconosciuto con più chiarezza dentro questo percorso?",
+            "reflection": "Quale essenziale oggi ho riconosciuto con più chiarezza dentro questo percorso?",
+            "premiumInsight": "Scegliere ciò che è davvero essenziale rafforza continuità, chiarezza e un cambiamento più concreto e incarnato.",
+            "insight": "Scegliere ciò che è davvero essenziale rafforza continuità, chiarezza e un cambiamento più concreto e incarnato.",
+            "integrationQuestion": "Quali tre elementi voglio rendere la mia base concreta per il tempo che viene?",
+            "integration": "Quali tre elementi voglio rendere la mia base concreta per il tempo che viene?"
+          }
+        }
+      ]
+    },
+    {
+      "day": 21,
+      "variants": [
+        {
+          "free": {
+            "title": "Continuare con gentilezza",
+            "explanation": "La fine di un percorso non è un punto fermo, ma un passaggio. Continuare con gentilezza significa portare avanti ciò che ti fa bene senza trasformarlo in pressione.",
+            "impuls": "Continua in modo umano, non perfetto.",
+            "reflection": "Con quale atteggiamento desidero proseguire da qui?",
+            "insight": "La continuità gentile favorisce stabilità e rende il benessere più sostenibile nel tempo.",
+            "question": "Come voglio continuare a prendermi cura di me da domani?"
+          },
+          "premium": {
+            "intro": "Questo non è un traguardo da archiviare, ma un punto da cui continuare in modo più tuo, più semplice e più vero.",
+            "deepening": "Spesso concludi un percorso e senti il rischio di perdere tutto appena torna la vita piena. Ma ciò che è stato davvero integrato non scompare facilmente. Un approccio salutogenico non ti chiede di fare tutto sempre bene: ti invita a continuare con umanità, fedeltà e piccoli ritorni. Anche ricominciare fa parte del cammino.",
+            "nervousSystemLink": "Un approccio meno rigido e più continuo al benessere favorisce maggiore stabilità, minore pressione interna e più capacità di riprendere senza crollare.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Scrivi oggi una frase semplice con cui vuoi accompagnarti da domani in poi, come promemoria gentile del tuo modo di continuare."
+            },
+            "microstep": "Scrivi oggi una frase semplice con cui vuoi accompagnarti da domani in poi, come promemoria gentile del tuo modo di continuare.",
+            "journalPrompt": "Che cosa voglio ricordare a me stessa quando nei prossimi giorni sentirò di allontanarmi da questo equilibrio?",
+            "question": "Che cosa voglio ricordare a me stessa quando nei prossimi giorni sentirò di allontanarmi da questo equilibrio?",
+            "eveningReflection": "Quale parte di questo percorso sento oggi più viva, più mia e più pronta a continuare con me?",
+            "reflection": "Quale parte di questo percorso sento oggi più viva, più mia e più pronta a continuare con me?",
+            "premiumInsight": "La continuità gentile, anche imperfetta, favorisce integrazione reale, minore autocritica e maggiore stabilità nel tempo.",
+            "insight": "La continuità gentile, anche imperfetta, favorisce integrazione reale, minore autocritica e maggiore stabilità nel tempo.",
+            "integrationQuestion": "Quale promessa semplice, possibile e rispettosa voglio fare a me stessa per il tempo che viene?",
+            "integration": "Quale promessa semplice, possibile e rispettosa voglio fare a me stessa per il tempo che viene?"
+          }
+        },
+        {
+          "free": {
+            "title": "Portarti con te",
+            "explanation": "Continuare non significa fare di più, ma restare più in contatto con te stessa. Portarti con te è già una forma di benessere.",
+            "impuls": "Non perderti mentre vai avanti.",
+            "reflection": "Che cosa mi aiuta davvero a restare in contatto con me?",
+            "insight": "La continuità più profonda nasce dal legame con sé, non dalla pressione a performare.",
+            "question": "Come posso restarmi più vicina nella mia vita di tutti i giorni?"
+          },
+          "premium": {
+            "intro": "Molte volte vai avanti, ma ti lasci indietro. Questo percorso può diventare un invito a non perderti più così facilmente.",
+            "deepening": "Rimanere in contatto con te stessa non significa vivere ripiegata su di te. Significa portare presenza, ascolto e verità dentro la tua vita concreta. Un approccio salutogenico non punta solo a farti funzionare meglio, ma a farti restare più intera mentre vivi. Questo è forse il passo più importante da continuare.",
+            "nervousSystemLink": "Il contatto più costante con sé riduce dispersione, adattamento forzato e senso di disconnessione interna.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Scegli oggi un gesto-segnale che nei prossimi giorni ti ricordi di tornare a te: un respiro, una parola, una mano sul petto, una breve pausa."
+            },
+            "microstep": "Scegli oggi un gesto-segnale che nei prossimi giorni ti ricordi di tornare a te: un respiro, una parola, una mano sul petto, una breve pausa.",
+            "journalPrompt": "Che cosa significa per me, in modo concreto, non perdermi mentre continuo a vivere e a fare?",
+            "question": "Che cosa significa per me, in modo concreto, non perdermi mentre continuo a vivere e a fare?",
+            "eveningReflection": "Quale gesto o intuizione sento oggi come un vero filo di continuità con me stessa?",
+            "reflection": "Quale gesto o intuizione sento oggi come un vero filo di continuità con me stessa?",
+            "premiumInsight": "Portarsi con sé in modo più costante rafforza regolazione, integrità personale e qualità della propria presenza nella vita.",
+            "insight": "Portarsi con sé in modo più costante rafforza regolazione, integrità personale e qualità della propria presenza nella vita.",
+            "integrationQuestion": "Quale segnale semplice voglio usare da domani per ricordarmi di tornare a me?",
+            "integration": "Quale segnale semplice voglio usare da domani per ricordarmi di tornare a me?"
+          }
+        },
+        {
+          "free": {
+            "title": "Un nuovo inizio più vero",
+            "explanation": "Ogni fine può diventare un nuovo inizio, se scegli di portare avanti ciò che ti somiglia davvero. Non serve ripartire da zero: puoi ripartire da te.",
+            "impuls": "Non riparti da zero: riparti da te.",
+            "reflection": "Da quale punto più vero di me desidero ripartire adesso?",
+            "insight": "Riconoscere ciò che hai già costruito rafforza continuità, fiducia e un senso più stabile di direzione.",
+            "question": "Che cosa porto con me come base del mio prossimo passo?"
+          },
+          "premium": {
+            "intro": "Forse la parte più preziosa di un percorso non è la sua conclusione, ma il modo in cui cambia il punto da cui continui a camminare.",
+            "deepening": "Non riparti da zero, anche se a volte potrà sembrarlo. Riparti con più consapevolezza, più linguaggio interiore, più strumenti, più verità su di te. Un approccio salutogenico ti invita a riconoscere che ogni piccolo passo realmente integrato modifica il terreno. Da qui puoi andare avanti non come chi ricomincia sempre tutto da capo, ma come chi porta con sé una base più viva.",
+            "nervousSystemLink": "Percepire continuità e base interna riduce frammentazione, senso di perdita e bisogno di ricostruire tutto ogni volta.",
+            "exercise": {
+              "title": "Pratica del giorno",
+              "text": "Scrivi oggi tre cose che non vuoi dimenticare di te stessa dopo questo percorso e rileggile come base del tuo nuovo inizio."
+            },
+            "microstep": "Scrivi oggi tre cose che non vuoi dimenticare di te stessa dopo questo percorso e rileggile come base del tuo nuovo inizio.",
+            "journalPrompt": "Chi sto diventando quando scelgo di continuare con più presenza, più verità e più rispetto verso di me?",
+            "question": "Chi sto diventando quando scelgo di continuare con più presenza, più verità e più rispetto verso di me?",
+            "eveningReflection": "Quale nuova base sento oggi sotto i miei passi, anche se ancora piccola o silenziosa?",
+            "reflection": "Quale nuova base sento oggi sotto i miei passi, anche se ancora piccola o silenziosa?",
+            "premiumInsight": "Riconoscere il proprio percorso come base e non come episodio rafforza continuità, identità e fiducia nel proprio cammino.",
+            "insight": "Riconoscere il proprio percorso come base e non come episodio rafforza continuità, identità e fiducia nel proprio cammino.",
+            "integrationQuestion": "Quale verità su di me desidero portare come fondamento del tempo che viene?",
+            "integration": "Quale verità su di me desidero portare come fondamento del tempo che viene?"
+          }
+        }
+      ]
     }
   ]
 }
