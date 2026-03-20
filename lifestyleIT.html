@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Panacea – Lifestyle</title>
+  <title>Panacea – Lifestyle Reset</title>
+  <link rel="icon" href="./icons/icon-192.png" />
 
   <style>
     :root{
@@ -260,7 +261,6 @@
       background: linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.74));
       box-shadow: 0 8px 18px rgba(0,0,0,.06);
       display:none;
-      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
       outline:none;
     }
 
@@ -322,6 +322,7 @@
       border-radius:13px;
       background: rgba(255,255,255,.62);
       border:1px solid rgba(200,162,74,.16);
+      display:none;
     }
 
     .exerciseTitle{
@@ -474,7 +475,7 @@
         <div class="daybadge" id="dayBadge">Giorno 1</div>
         <div>
           <h1 id="dayHeadline">21 giorni Lifestyle (Salutogenesi)</h1>
-          <p>Piccoli passi per alimentazione, calma, movimento e stabilità sociale – concreti e quotidiani.</p>
+          <p>Piccoli passi per alimentazione, calma, movimento e stabilità sociale — concreti e quotidiani.</p>
         </div>
       </div>
 
@@ -490,12 +491,12 @@
           <h3 id="premiumTitle">Impulso Premium</h3>
           <p class="premiumLead" id="premiumIntro"></p>
 
-          <div class="premiumSection">
+          <div class="premiumSection" id="premiumDeepeningWrap">
             <div class="premiumLabel">Approfondimento</div>
             <p class="premiumText" id="premiumDeepening"></p>
           </div>
 
-          <div class="premiumSection">
+          <div class="premiumSection" id="premiumNervousWrap">
             <div class="premiumLabel">Sistema nervoso</div>
             <p class="premiumText" id="premiumNervousSystem"></p>
           </div>
@@ -505,22 +506,22 @@
             <p class="exerciseText" id="premiumExerciseText"></p>
           </div>
 
-          <div class="premiumSection">
+          <div class="premiumSection" id="premiumJournalWrap">
             <div class="premiumLabel">Journaling</div>
             <p class="premiumQuestion" id="premiumJournal"></p>
           </div>
 
-          <div class="premiumSection">
+          <div class="premiumSection" id="premiumEveningWrap">
             <div class="premiumLabel">Riflessione serale</div>
             <p class="premiumQuestion" id="premiumEvening"></p>
           </div>
 
-          <div class="premiumSection">
+          <div class="premiumSection" id="premiumInsightWrap">
             <div class="premiumLabel">Insight</div>
             <p class="premiumText" id="premiumInsight"></p>
           </div>
 
-          <div class="premiumSection">
+          <div class="premiumSection" id="premiumIntegrationWrap">
             <div class="premiumLabel">Integrazione</div>
             <p class="premiumQuestion" id="premiumIntegration"></p>
           </div>
@@ -537,13 +538,13 @@
           </div>
 
           <ul class="memberList">
-            <li><b>Approfondimento quotidiano</b> con varianti Premium diverse</li>
-            <li><b>Legame con il sistema nervoso, esercizio, journaling</b> e riflessione serale</li>
-            <li><b>Reset aggiuntivo</b> nell’area membri</li>
+            <li><b>Approfondimento quotidiano</b> con varianti Premium</li>
+            <li><b>Sistema nervoso, esercizio, journaling</b> e riflessione serale</li>
+            <li><b>Reset aggiuntivi</b> nell’area membri</li>
           </ul>
 
           <a class="memberBtn" id="memberBtn" href="mitgliederIT.html">Sblocca area membri →</a>
-          <div class="memberNote">Dopo lo sblocco, la parte Premium sarà visibile direttamente qui.</div>
+          <div class="memberNote">Dopo lo sblocco, la parte Premium apparirà direttamente qui.</div>
         </div>
 
         <div class="divider"></div>
@@ -588,7 +589,9 @@
           "lifestyle.html": "lifestyleIT.html",
           "lifestyleIT.html": "lifestyle.html",
           "mitglieder.html": "mitgliederIT.html",
-          "mitgliederIT.html": "mitglieder.html"
+          "mitgliederIT.html": "mitglieder.html",
+          "uebungen.html": "uebungenIT.html",
+          "uebungenIT.html": "uebungen.html"
         };
 
         if(targetLang === "it"){
@@ -675,6 +678,13 @@
     const nextBtn = document.getElementById("nextBtn");
     const doneBtn = document.getElementById("doneBtn");
 
+    const premiumDeepeningWrap = document.getElementById("premiumDeepeningWrap");
+    const premiumNervousWrap = document.getElementById("premiumNervousWrap");
+    const premiumJournalWrap = document.getElementById("premiumJournalWrap");
+    const premiumEveningWrap = document.getElementById("premiumEveningWrap");
+    const premiumInsightWrap = document.getElementById("premiumInsightWrap");
+    const premiumIntegrationWrap = document.getElementById("premiumIntegrationWrap");
+
     function clamp(n, min, max){
       return Math.max(min, Math.min(max, n));
     }
@@ -711,7 +721,7 @@
         const raw = localStorage.getItem(STORAGE_DONE);
         const arr = raw ? JSON.parse(raw) : [];
         if(!Array.isArray(arr)) return [];
-        return [...new Set(arr.map(x => parseInt(x, 10)).filter(x => x >= 1 && x <= TOTAL_DAYS))];
+        return [...new Set(arr.map(x => parseInt(x, 10)).filter(x => x >= 1 && x <= TOTAL_DAYS))].sort((a,b) => a-b);
       }catch(e){
         return [];
       }
@@ -742,50 +752,55 @@
       errorBox.textContent = "";
     }
 
+    function toggleWrap(el, hasContent){
+      if(!el) return;
+      el.style.display = hasContent ? "block" : "none";
+    }
+
     const FREE_DAYS = [
       {
         title:"Giorno 1 – Inizio: piccoli passi",
-        impulse:"Oggi conta la fattibilità: scegli UN piccolo passo che puoi davvero fare. Fai un pasto normale e stabile (proteine + fibre) invece di cercare la “perfezione”. Bevi un bicchiere d’acqua in più e chiediti brevemente: di cosa ha bisogno il mio corpo adesso? La sera: inizia a rallentare 10 minuti prima del solito."
+        impulse:"Oggi conta la fattibilità: scegli un piccolo passo che puoi davvero fare. Fai un pasto semplice e stabile con proteine e fibre invece di cercare la perfezione. Bevi un bicchiere d’acqua in più e chiediti: di cosa ha bisogno il mio corpo adesso? La sera, rallenta 10 minuti prima del solito."
       },
       {
         title:"Giorno 2 – Glicemia stabile",
-        impulse:"Inizia con struttura: un pasto con proteine (per esempio yogurt, uova, legumi) + fibre. Evita il “solo caffè” a colazione: in molte persone aumenta lo stress fisico. Dopo il pasto: 10 minuti di camminata. Domanda rapida: è fame o stress? Prima di fare uno snack, espira lentamente 3 volte."
+        impulse:"Inizia con più struttura: un pasto con proteine e fibre. Evita il solo caffè a colazione, perché in molte persone può aumentare lo stress fisico. Dopo il pasto, fai 10 minuti di camminata. Domandati: è fame o stress? Prima di uno snack, fai 3 espirazioni lente."
       },
       {
         title:"Giorno 3 – Il sonno come regolatore",
-        impulse:"Il sonno è un sistema di regolazione dello stress: oggi conta il ritmo, non la durata. Scegli un orario fisso per rallentare la sera. Evita pasti molto pesanti e tardivi. Mini rituale: doccia calda o pediluvio + espirazione lenta."
+        impulse:"Il sonno è un sistema di regolazione dello stress. Oggi conta soprattutto il ritmo. Scegli un orario fisso per rallentare la sera. Evita pasti molto pesanti e tardivi. Mini rituale: doccia calda o pediluvio con espirazione lenta."
       },
       {
         title:"Giorno 4 – Movimento senza pressione",
-        impulse:"Il movimento può essere un reset per il sistema nervoso – anche in modo molto dolce. 10–15 minuti di camminata leggera o stretching: l’obiettivo è la circolazione, non la performance. Se ti senti tesa, allunga l’espirazione durante il movimento."
+        impulse:"Il movimento può essere un reset per il sistema nervoso, anche in modo molto dolce. Oggi bastano 10–15 minuti di camminata leggera o stretching. L’obiettivo è la circolazione, non la performance. Se ti senti tesa, allunga l’espirazione mentre ti muovi."
       },
       {
         title:"Giorno 5 – Micro-pause",
-        impulse:"Piccole pause comunicano sicurezza al corpo: bastano 60–90 secondi. Metti oggi due mini-timer per respirare e rilassare le spalle. Bevi lentamente 5 sorsi d’acqua e senti il contatto dei piedi con il pavimento."
+        impulse:"Piccole pause comunicano sicurezza al corpo. Bastano 60–90 secondi. Metti oggi due mini-timer per respirare e rilassare le spalle. Bevi lentamente 5 sorsi d’acqua e senti il contatto dei piedi con il pavimento."
       },
       {
         title:"Giorno 6 – Risorsa sociale",
-        impulse:"La connessione sociale attenua lo stress in modo reale. Invia oggi un messaggio breve ma autentico a qualcuno: “Come stai?”. Se è troppo, basta un sorriso consapevole o un “grazie”. La sera: chi o che cosa mi ha sostenuto oggi?"
+        impulse:"La connessione sociale attenua lo stress in modo reale. Invia oggi un messaggio breve ma autentico a qualcuno. Se è troppo, basta un sorriso consapevole o un grazie sincero. La sera chiediti: chi o che cosa mi ha sostenuto oggi?"
       },
       {
         title:"Giorno 7 – Reset settimanale",
-        impulse:"La riflessione crea coerenza. Scegli 1 abitudine che vuoi portare con te nella prossima settimana. Pianifica 1 pasto semplice e leggero per domani. Festeggia i progressi: scrivi 3 cose che oggi sono andate abbastanza bene."
+        impulse:"La riflessione crea coerenza. Scegli una sola abitudine che vuoi portare con te nella prossima settimana. Pianifica un pasto semplice e leggero per domani. Festeggia i progressi: scrivi tre cose che oggi sono andate abbastanza bene."
       },
       {
         title:"Giorno 8 – Basi anti-infiammatorie",
-        impulse:"Più varietà vegetale = più supporto per il corpo. Oggi aggiungi una porzione in più di verdura o frutta. Usa grassi buoni come olio d’oliva, semi o frutta secca. Se possibile, sostituisci uno snack molto zuccherato con una scelta più stabile."
+        impulse:"Più varietà vegetale significa spesso più supporto per il corpo. Oggi aggiungi una porzione in più di verdura o frutta. Usa grassi buoni come olio d’oliva, semi o frutta secca. Se puoi, sostituisci uno snack molto zuccherato con una scelta più stabile."
       },
       {
         title:"Giorno 9 – Caffeina e stress",
-        impulse:"La caffeina può amplificare i segnali di stress. Se bevi caffè, meglio dopo colazione e non a stomaco vuoto. Osserva il corpo: agitazione, tachicardia, tensione? Oggi prova una tazza in meno o più tardi."
+        impulse:"La caffeina può amplificare i segnali di stress. Se bevi caffè, meglio dopo colazione e non a stomaco vuoto. Osserva il corpo: agitazione, tachicardia, tensione? Oggi prova una tazza in meno oppure più tardi."
       },
       {
         title:"Giorno 10 – Sistema nervoso e respiro",
-        impulse:"L’espirazione più lunga attiva la modalità di calma. Per 2 minuti: inspira 4 secondi, espira 6–8 secondi, senza forzare. Poi rilassa spalle e mandibola. Il punto non è “fare di più”, ma ridurre l’allarme interno."
+        impulse:"Un’espirazione più lunga favorisce la modalità di calma. Per 2 minuti: inspira per 4 secondi ed espira per 6–8 secondi, senza forzare. Poi rilassa spalle e mandibola. Il punto non è fare di più, ma ridurre l’allarme interno."
       },
       {
         title:"Giorno 11 – Senso e valori",
-        impulse:"La salutogenesi ha bisogno di significato. Chiediti: “Perché lo faccio? Per salute, energia, libertà, famiglia?” Scegli una mini-azione coerente con questo valore. Scrivi una frase: “Oggi è stato importante perché…”"
+        impulse:"La salutogenesi ha bisogno di significato. Chiediti: perché lo faccio? Per salute, energia, libertà, famiglia? Scegli una mini-azione coerente con questo valore. Scrivi una frase: oggi è stato importante perché…"
       },
       {
         title:"Giorno 12 – Ordine e alleggerimento",
@@ -793,7 +808,7 @@
       },
       {
         title:"Giorno 13 – Proteine e stabilità",
-        impulse:"Le proteine aiutano sazietà, energia stabile e tono fisico. Oggi inserisci una fonte proteica in 2 pasti. Abbinale a fibre come verdure, avena o cereali integrali. Bevi anche acqua: a volte la sete sembra fame."
+        impulse:"Le proteine aiutano sazietà, energia stabile e tono fisico. Oggi inserisci una fonte proteica in due pasti. Abbinala a fibre come verdure, avena o cereali integrali. Bevi anche acqua: a volte la sete sembra fame."
       },
       {
         title:"Giorno 14 – Piacere senza colpa",
@@ -805,7 +820,7 @@
       },
       {
         title:"Giorno 16 – Confini e no",
-        impulse:"La salute mentale passa anche dai confini. Oggi dì gentilmente di no a una cosa, oppure rimandala. Una frase utile: “Oggi non riesco, ti rispondo domani.” Proteggere la tua energia è prevenzione."
+        impulse:"La salute mentale passa anche dai confini. Oggi dì gentilmente di no a una cosa, oppure rimandala. Una frase utile: oggi non riesco, ti rispondo domani. Proteggere la tua energia è prevenzione."
       },
       {
         title:"Giorno 17 – Micro-allenamento",
@@ -817,34 +832,47 @@
       },
       {
         title:"Giorno 19 – Digestione e calma",
-        impulse:"Lo stress influisce anche sulla digestione. Dopo un pasto, cammina lentamente 5–10 minuti oppure siediti in calma. Mangia più lentamente e mastica bene. Se l’addome è teso: bevanda calda + espirazione lunga."
+        impulse:"Lo stress influisce anche sulla digestione. Dopo un pasto, cammina lentamente 5–10 minuti oppure siediti in calma. Mangia più lentamente e mastica bene. Se l’addome è teso: bevanda calda ed espirazione lunga."
       },
       {
         title:"Giorno 20 – Piano invece di pressione",
-        impulse:"La struttura riduce il caos mentale. Oggi pianifica 1 pasto sano per domani e 1 alternativa di snack. Metti qualcosa di utile in vista. Il tuo io di domani ti ringrazierà."
+        impulse:"La struttura riduce il caos mentale. Oggi pianifica un pasto sano per domani e un’alternativa di snack. Metti qualcosa di utile in vista. Il tuo io di domani ti ringrazierà."
       },
       {
         title:"Giorno 21 – Integrazione",
-        impulse:"Hai costruito risorse: questa è salutogenesi in azione. Scegli 3 cose da mantenere: 1 per l’alimentazione, 1 per il movimento, 1 per la calma. Scrivi un piano semplice: quando lo faccio, concretamente? La stabilità nasce dalla ripetizione, non dalla perfezione."
+        impulse:"Hai costruito risorse: questa è salutogenesi in azione. Scegli tre cose da mantenere: una per l’alimentazione, una per il movimento, una per la calma. Scrivi un piano semplice: quando lo faccio, concretamente? La stabilità nasce dalla ripetizione, non dalla perfezione."
       }
     ];
 
     let premiumDays = [];
 
-    async function loadPremiumJson(){
-      try{
-        const res = await fetch("./data/lifestyle.json", { cache: "no-store" });
-        if(!res.ok) throw new Error("premium json not reachable");
-
-        const data = await res.json();
-        if(!data || !Array.isArray(data.days)){
-          throw new Error("premium json invalid");
+    async function fetchJsonWithFallback(urls){
+      for(const url of urls){
+        try{
+          const res = await fetch(url, { cache: "no-store" });
+          if(!res.ok) continue;
+          const data = await res.json();
+          if(data && Array.isArray(data.days)){
+            return data;
+          }
+        }catch(e){
+          console.warn("JSON load failed:", url, e);
         }
+      }
+      return null;
+    }
 
+    async function loadPremiumJson(){
+      const data = await fetchJsonWithFallback([
+        "./data/lifestyleIT.json",
+        "./data/lifestyle.json"
+      ]);
+
+      if(data && Array.isArray(data.days)){
         premiumDays = data.days;
-      }catch(e){
+      } else {
         premiumDays = [];
-        console.error("Lifestyle premium load error:", e);
+        console.warn("Nessun JSON Lifestyle Premium valido trovato.");
       }
     }
 
@@ -860,7 +888,14 @@
       premiumInsightEl.textContent = "";
       premiumIntegrationEl.textContent = "";
       premiumHintEl.textContent = "";
+
       exerciseCardEl.style.display = "none";
+      toggleWrap(premiumDeepeningWrap, false);
+      toggleWrap(premiumNervousWrap, false);
+      toggleWrap(premiumJournalWrap, false);
+      toggleWrap(premiumEveningWrap, false);
+      toggleWrap(premiumInsightWrap, false);
+      toggleWrap(premiumIntegrationWrap, false);
     }
 
     function getDayEntry(day){
@@ -881,6 +916,29 @@
       return dayEntry.variants[storedIndex];
     }
 
+    function getPremiumPayload(variant){
+      if(!variant) return null;
+
+      if(variant.premium && typeof variant.premium === "object"){
+        return variant.premium;
+      }
+
+      if(
+        variant.intro ||
+        variant.deepening ||
+        variant.nervousSystemLink ||
+        variant.journalPrompt ||
+        variant.eveningReflection ||
+        variant.premiumInsight ||
+        variant.integrationQuestion ||
+        variant.exercise
+      ){
+        return variant;
+      }
+
+      return null;
+    }
+
     function renderPremiumSection(day){
       clearPremiumContent();
 
@@ -895,21 +953,42 @@
 
       const dayEntry = getDayEntry(day);
       const variant = pickVariant(dayEntry, day);
+      const premium = getPremiumPayload(variant);
 
-      if (!variant) {
+      if (!premium) {
         premiumTitleEl.textContent = "Impulso Premium";
-        premiumIntroEl.textContent = "Per questo giorno non è stata trovata ancora una variante Premium.";
-        premiumHintEl.textContent = `Controlla data/lifestyle.json per il giorno ${day}.`;
+        premiumIntroEl.textContent = "Per questo giorno non è stata ancora trovata una variante Premium.";
+        premiumHintEl.textContent = `Controlla il file data/lifestyleIT.json o data/lifestyle.json per il giorno ${day}.`;
         return;
       }
 
-      premiumTitleEl.textContent = t(variant.title) || `Impulso Premium · Giorno ${day}`;
-      premiumIntroEl.textContent = t(variant.intro);
-      premiumDeepeningEl.textContent = t(variant.deepening);
-      premiumNervousSystemEl.textContent = t(variant.nervousSystemLink);
+      const pTitle = t(variant?.title) || t(premium?.title) || `Impulso Premium · Giorno ${day}`;
+      const pIntro = t(premium.intro);
+      const pDeepening = t(premium.deepening);
+      const pNervous = t(premium.nervousSystemLink);
+      const pJournal = t(premium.journalPrompt);
+      const pEvening = t(premium.eveningReflection);
+      const pInsight = t(premium.premiumInsight);
+      const pIntegration = t(premium.integrationQuestion);
+      const exTitle = premium.exercise ? t(premium.exercise.title) : "";
+      const exText = premium.exercise ? t(premium.exercise.text) : "";
 
-      const exTitle = variant.exercise ? t(variant.exercise.title) : "";
-      const exText = variant.exercise ? t(variant.exercise.text) : "";
+      premiumTitleEl.textContent = pTitle;
+      premiumIntroEl.textContent = pIntro || "";
+
+      premiumDeepeningEl.textContent = pDeepening || "";
+      premiumNervousSystemEl.textContent = pNervous || "";
+      premiumJournalEl.textContent = pJournal || "";
+      premiumEveningEl.textContent = pEvening || "";
+      premiumInsightEl.textContent = pInsight || "";
+      premiumIntegrationEl.textContent = pIntegration || "";
+
+      toggleWrap(premiumDeepeningWrap, !!pDeepening);
+      toggleWrap(premiumNervousWrap, !!pNervous);
+      toggleWrap(premiumJournalWrap, !!pJournal);
+      toggleWrap(premiumEveningWrap, !!pEvening);
+      toggleWrap(premiumInsightWrap, !!pInsight);
+      toggleWrap(premiumIntegrationWrap, !!pIntegration);
 
       if(exTitle || exText){
         exerciseCardEl.style.display = "block";
@@ -919,10 +998,6 @@
         exerciseCardEl.style.display = "none";
       }
 
-      premiumJournalEl.textContent = t(variant.journalPrompt);
-      premiumEveningEl.textContent = t(variant.eveningReflection);
-      premiumInsightEl.textContent = t(variant.premiumInsight);
-      premiumIntegrationEl.textContent = t(variant.integrationQuestion);
       premiumHintEl.textContent = "Questa variante Premium appartiene direttamente al tuo giorno Lifestyle di oggi.";
     }
 
@@ -953,7 +1028,7 @@
 
     dayImage.addEventListener("error", () => {
       dayImage.src = "icons/sfondo.png";
-      showError("Immagine non trovata.\nControlla: icons/1a.png fino a icons/21a.png");
+      showError("Immagine non trovata.\nControlla i file: icons/1a.png fino a icons/21a.png");
     });
 
     prevBtn.addEventListener("click", () => {
@@ -977,7 +1052,9 @@
       if(!done.includes(day)) done.push(day);
       setDone(done);
 
-      if(day < TOTAL_DAYS) setCurrentDay(day + 1);
+      if(day < TOTAL_DAYS) {
+        setCurrentDay(day + 1);
+      }
 
       renderDay(getCurrentDay());
       window.scrollTo({ top: 0, behavior: "smooth" });
