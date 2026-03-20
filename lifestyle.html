@@ -1072,584 +1072,812 @@
   </div>
 
   <script>
-    const JSON_URL = "./data/lifestyle.json";
-    const PREMIUM_JSON_URL = "./data/lifestyle-premium.json";
-    const PRACTICES_JSON_URL = "./data/practices.json";
-    const TOTAL_DAYS = 21;
+  const JSON_URL = "./data/lifestyle.json";
+  const PREMIUM_JSON_URL = "./data/lifestyle-premium.json";
+  const PRACTICES_JSON_URL = "./data/practices.json";
+  const TOTAL_DAYS = 21;
 
-    const LS_DAY = "panacea_lifestyle_day";
-    const LS_START = "panacea_lifestyle_start";
-    const LS_LANG = "lang";
-    const LS_MEMBER = "panacea_member";
-    const LS_PREMIUM_CYCLE_ID = "panacea_lifestyle_premium_cycle_id";
-    const LS_PREMIUM_VARIANT_MAP = "panacea_lifestyle_premium_variant_map";
-    const LS_FREE_CYCLE_ID = "panacea_lifestyle_free_cycle_id";
-    const LS_FREE_VARIANT_MAP = "panacea_lifestyle_free_variant_map";
-    const LS_PROGRESS = "panacea_lifestyle_progress";
+  const LS_DAY = "panacea_lifestyle_day";
+  const LS_START = "panacea_lifestyle_start";
+  const LS_LANG = "lang";
+  const LS_MEMBER = "panacea_member";
+  const LS_PREMIUM_CYCLE_ID = "panacea_lifestyle_premium_cycle_id";
+  const LS_PREMIUM_VARIANT_MAP = "panacea_lifestyle_premium_variant_map";
+  const LS_FREE_CYCLE_ID = "panacea_lifestyle_free_cycle_id";
+  const LS_FREE_VARIANT_MAP = "panacea_lifestyle_free_variant_map";
+  const LS_PROGRESS = "panacea_lifestyle_progress";
 
-    const btnDE = document.getElementById("btnDE");
-    const btnIT = document.getElementById("btnIT");
+  const btnDE = document.getElementById("btnDE");
+  const btnIT = document.getElementById("btnIT");
 
-    const tagNumber = document.getElementById("tagNumber");
-    const dayDone = document.getElementById("dayDone");
-    const progressCount = document.getElementById("progressCount");
-    const progressDots = document.getElementById("progressDots");
-    const dayImage = document.getElementById("dayImage");
-    const dayCard = document.getElementById("dayCard");
+  const tagNumber = document.getElementById("tagNumber");
+  const dayDone = document.getElementById("dayDone");
+  const progressCount = document.getElementById("progressCount");
+  const progressDots = document.getElementById("progressDots");
+  const dayImage = document.getElementById("dayImage");
+  const dayCard = document.getElementById("dayCard");
 
-    const elTitle = document.getElementById("title");
-    const elExplanation = document.getElementById("explanation");
-    const elImpuls = document.getElementById("impuls");
-    const elReflection = document.getElementById("reflection");
+  const elTitle = document.getElementById("title");
+  const elExplanation = document.getElementById("explanation");
+  const elImpuls = document.getElementById("impuls");
+  const elReflection = document.getElementById("reflection");
 
-    const exerciseWrap = document.getElementById("exerciseWrap");
-    const exerciseTitle = document.getElementById("exerciseTitle");
-    const exerciseText = document.getElementById("exerciseText");
+  const exerciseWrap = document.getElementById("exerciseWrap");
+  const exerciseTitle = document.getElementById("exerciseTitle");
+  const exerciseText = document.getElementById("exerciseText");
 
-    const premiumTeaser = document.getElementById("premiumTeaser");
-    const premiumBadge = document.getElementById("premiumBadge");
-    const memberBtn = document.getElementById("memberBtn");
-    const unlockBtnLink = document.getElementById("unlockBtnLink");
-    const premiumBlock = document.getElementById("premiumBlock");
+  const premiumTeaser = document.getElementById("premiumTeaser");
+  const premiumBadge = document.getElementById("premiumBadge");
+  const memberBtn = document.getElementById("memberBtn");
+  const unlockBtnLink = document.getElementById("unlockBtnLink");
+  const premiumBlock = document.getElementById("premiumBlock");
 
-    const pTitle = document.getElementById("pTitle");
-    const pSub = document.getElementById("pSub");
-    const pPill = document.getElementById("pPill");
-    const paperTitle = document.getElementById("paperTitle");
-    const paperText = document.getElementById("paperText");
-    const paperAnchor = document.getElementById("paperAnchor");
-    const paperMicro = document.getElementById("paperMicro");
-    const premiumInsight = document.getElementById("premiumInsight");
-    const premiumQuestion = document.getElementById("premiumQuestion");
-    const premiumClosing = document.getElementById("premiumClosing");
+  const pTitle = document.getElementById("pTitle");
+  const pSub = document.getElementById("pSub");
+  const pPill = document.getElementById("pPill");
+  const paperTitle = document.getElementById("paperTitle");
+  const paperText = document.getElementById("paperText");
+  const paperAnchor = document.getElementById("paperAnchor");
+  const paperMicro = document.getElementById("paperMicro");
+  const premiumInsight = document.getElementById("premiumInsight");
+  const premiumQuestion = document.getElementById("premiumQuestion");
+  const premiumClosing = document.getElementById("premiumClosing");
 
-    const gameTitle = document.getElementById("gameTitle");
-    const gamePrompt = document.getElementById("gamePrompt");
-    const smartOutput = document.getElementById("smartOutput");
-    const autoHint = document.getElementById("autoHint");
-    const gameResult = document.getElementById("gameResult");
-    const applySmartBtn = document.getElementById("applySmartBtn");
-    const finishBtn = document.getElementById("finishBtn");
-    const closingBox = document.getElementById("closingBox");
-    const closingText = document.getElementById("closingText");
-    const choiceBtns = Array.from(document.querySelectorAll(".choiceBtn"));
+  const gameTitle = document.getElementById("gameTitle");
+  const gamePrompt = document.getElementById("gamePrompt");
+  const smartOutput = document.getElementById("smartOutput");
+  const autoHint = document.getElementById("autoHint");
+  const gameResult = document.getElementById("gameResult");
+  const applySmartBtn = document.getElementById("applySmartBtn");
+  const finishBtn = document.getElementById("finishBtn");
+  const closingBox = document.getElementById("closingBox");
+  const closingText = document.getElementById("closingText");
+  const choiceBtns = Array.from(document.querySelectorAll(".choiceBtn"));
 
-    const prevBtn = document.getElementById("prevBtn");
-    const nextBtn = document.getElementById("nextBtn");
-    const completeBtn = document.getElementById("completeBtn");
-    const restartCycleBtn = document.getElementById("restartCycleBtn");
-    const cycleDoneBox = document.getElementById("cycleDoneBox");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const completeBtn = document.getElementById("completeBtn");
+  const restartCycleBtn = document.getElementById("restartCycleBtn");
+  const cycleDoneBox = document.getElementById("cycleDoneBox");
 
-    let dataDays = [];
-    let premiumDays = [];
-    let practices = [];
-    let currentDay = 1;
-    let currentVariant = null;
+  let dataDays = [];
+  let premiumDays = [];
+  let practices = [];
+  let currentDay = 1;
+  let currentVariant = null;
 
-    function clampDay(value){
-      const n = parseInt(value, 10);
-      if (!Number.isFinite(n)) return 1;
-      return Math.min(TOTAL_DAYS, Math.max(1, n));
+  function clampDay(value){
+    const n = parseInt(value, 10);
+    if (!Number.isFinite(n)) return 1;
+    return Math.min(TOTAL_DAYS, Math.max(1, n));
+  }
+
+  function isMember(){
+    const raw = String(localStorage.getItem(LS_MEMBER) || "").toLowerCase();
+    return raw === "1" || raw === "true" || raw === "yes" || raw === "on";
+  }
+
+  function ensureStartDate(){
+    if(!localStorage.getItem(LS_START)){
+      localStorage.setItem(LS_START, new Date().toISOString().slice(0,10));
     }
+  }
 
-    function isMember(){
-      const raw = String(localStorage.getItem(LS_MEMBER) || "").toLowerCase();
-      return raw === "1" || raw === "true" || raw === "yes" || raw === "on";
-    }
-
-    function ensureStartDate(){
-      if(!localStorage.getItem(LS_START)){
-        localStorage.setItem(LS_START, new Date().toISOString().slice(0,10));
+  function getCompletedDays(){
+    const saved = localStorage.getItem(LS_PROGRESS);
+    try{
+      const parsed = JSON.parse(saved || "[]");
+      if(Array.isArray(parsed)){
+        return parsed
+          .map(n => clampDay(n))
+          .filter((n, i, arr) => arr.indexOf(n) === i)
+          .sort((a, b) => a - b);
       }
-    }
+    }catch{}
+    return [];
+  }
 
-    function getCompletedDays(){
-      const saved = localStorage.getItem(LS_PROGRESS);
-      try{
-        const parsed = JSON.parse(saved || "[]");
-        if(Array.isArray(parsed)){
-          return parsed
-            .map(n => clampDay(n))
-            .filter((n, i, arr) => arr.indexOf(n) === i)
-            .sort((a, b) => a - b);
-        }
-      }catch{}
-      return [];
-    }
+  function getStartDate(){
+    ensureStartDate();
+    const raw = localStorage.getItem(LS_START);
+    const parsed = new Date(raw + "T00:00:00");
+    return Number.isNaN(parsed.getTime()) ? new Date() : parsed;
+  }
 
-    function getStartDate(){
-      ensureStartDate();
-      const raw = localStorage.getItem(LS_START);
-      const parsed = new Date(raw + "T00:00:00");
-      return Number.isNaN(parsed.getTime()) ? new Date() : parsed;
-    }
+  function diffDays(a, b){
+    const ms = 24 * 60 * 60 * 1000;
+    const utcA = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+    const utcB = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+    return Math.floor((utcB - utcA) / ms);
+  }
 
-    function diffDays(a, b){
-      const ms = 24 * 60 * 60 * 1000;
-      const utcA = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
-      const utcB = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
-      return Math.floor((utcB - utcA) / ms);
-    }
+  function getAbsoluteDay(){
+    const start = getStartDate();
+    const today = new Date();
+    return diffDays(start, today) + 1;
+  }
 
-    function getAbsoluteDay(){
-      const start = getStartDate();
-      const today = new Date();
-      return diffDays(start, today) + 1;
-    }
+  function getUnlockedDay(){
+    return Math.min(TOTAL_DAYS, Math.max(1, getAbsoluteDay()));
+  }
 
-    function getUnlockedDay(){
-      return Math.min(TOTAL_DAYS, Math.max(1, getAbsoluteDay()));
-    }
+  function getStoredDay(){
+    const savedDay = clampDay(localStorage.getItem(LS_DAY));
+    const unlockedDay = getUnlockedDay();
+    const completed = getCompletedDays();
 
-    function getStoredDay(){
-      const savedDay = clampDay(localStorage.getItem(LS_DAY));
-      const unlockedDay = getUnlockedDay();
-      const completed = getCompletedDays();
-
-      let firstOpenDay = 1;
-      for(let i = 1; i <= unlockedDay; i++){
-        if(!completed.includes(i)){
-          firstOpenDay = i;
-          break;
-        }
+    let firstOpenDay = 1;
+    for(let i = 1; i <= unlockedDay; i++){
+      if(!completed.includes(i)){
         firstOpenDay = i;
+        break;
       }
-
-      if(savedDay <= unlockedDay && !completed.includes(savedDay)){
-        return savedDay;
-      }
-
-      if(completed.length >= unlockedDay){
-        return unlockedDay;
-      }
-
-      return firstOpenDay;
+      firstOpenDay = i;
     }
 
-    function saveCompletedDays(days){
-      localStorage.setItem(LS_PROGRESS, JSON.stringify(days));
+    if(savedDay <= unlockedDay && !completed.includes(savedDay)){
+      return savedDay;
     }
 
-    function markDayCompleted(day){
-      const completed = getCompletedDays();
-      const safeDay = clampDay(day);
-      if(!completed.includes(safeDay)){
-        completed.push(safeDay);
-        completed.sort((a, b) => a - b);
-        saveCompletedDays(completed);
-      }
+    if(completed.length >= unlockedDay){
+      return unlockedDay;
     }
 
-    function isDayCompleted(day){
-      return getCompletedDays().includes(clampDay(day));
+    return firstOpenDay;
+  }
+
+  function saveCompletedDays(days){
+    localStorage.setItem(LS_PROGRESS, JSON.stringify(days));
+  }
+
+  function markDayCompleted(day){
+    const completed = getCompletedDays();
+    const safeDay = clampDay(day);
+    if(!completed.includes(safeDay)){
+      completed.push(safeDay);
+      completed.sort((a, b) => a - b);
+      saveCompletedDays(completed);
     }
+  }
 
-    function isCurrentDayLocked(){
-      return currentDay > getUnlockedDay();
-    }
+  function isDayCompleted(day){
+    return getCompletedDays().includes(clampDay(day));
+  }
 
-    function syncCurrentDayWithUnlocked(){
-      const unlocked = getUnlockedDay();
-      if(currentDay > unlocked){
-        currentDay = unlocked;
-        localStorage.setItem(LS_DAY, String(currentDay));
-      }
-    }
+  function isCurrentDayLocked(){
+    return currentDay > getUnlockedDay();
+  }
 
-    function isEntireCycleCompleted(){
-      return getCompletedDays().length >= TOTAL_DAYS;
-    }
-
-    function restartCycle(){
-      const oldStart = getStartDate();
-      const newStartDate = new Date(oldStart);
-      newStartDate.setDate(newStartDate.getDate() + TOTAL_DAYS);
-
-      const yyyy = newStartDate.getFullYear();
-      const mm = String(newStartDate.getMonth() + 1).padStart(2, "0");
-      const dd = String(newStartDate.getDate()).padStart(2, "0");
-      const iso = `${yyyy}-${mm}-${dd}`;
-
-      localStorage.setItem(LS_START, iso);
-      localStorage.setItem(LS_DAY, "1");
-      localStorage.setItem(LS_PROGRESS, JSON.stringify([]));
-
-      currentDay = 1;
-
-      localStorage.removeItem(LS_PREMIUM_VARIANT_MAP);
-      localStorage.removeItem(LS_PREMIUM_CYCLE_ID);
-      localStorage.removeItem(LS_FREE_VARIANT_MAP);
-      localStorage.removeItem(LS_FREE_CYCLE_ID);
-
-      render();
-    }
-
-    function renderProgressDots(){
-      const completed = getCompletedDays();
-      const unlocked = getUnlockedDay();
-
-      progressDots.innerHTML = "";
-
-      for(let i = 1; i <= TOTAL_DAYS; i++){
-        const dot = document.createElement("div");
-        dot.className = "progressDot";
-        dot.textContent = String(i);
-
-        if(completed.includes(i)){
-          dot.classList.add("done");
-        } else if(i > unlocked){
-          dot.classList.add("locked");
-          dot.textContent = "🔒";
-        }
-
-        if(i === currentDay){
-          dot.classList.add("current");
-        }
-
-        progressDots.appendChild(dot);
-      }
-    }
-
-    function updateProgressUI(){
-      const completed = getCompletedDays();
-      const done = completed.length;
-      const locked = isCurrentDayLocked();
-      const currentCompleted = completed.includes(currentDay);
-
-      progressCount.textContent = String(done);
-      renderProgressDots();
-
-      dayDone.classList.remove("done", "locked");
-
-      if(locked){
-        dayDone.textContent = "🔒";
-        dayDone.classList.add("locked");
-        dayCard.classList.add("lockedBox");
-      } else if(currentCompleted){
-        dayDone.textContent = "✓";
-        dayDone.classList.add("done");
-        dayCard.classList.remove("lockedBox");
-      } else {
-        dayDone.textContent = "○";
-        dayCard.classList.remove("lockedBox");
-      }
-    }
-
-    function setStoredDay(day){
-      const unlocked = getUnlockedDay();
-      currentDay = clampDay(day);
-
-      if(currentDay > unlocked){
-        currentDay = unlocked;
-      }
-
+  function syncCurrentDayWithUnlocked(){
+    const unlocked = getUnlockedDay();
+    if(currentDay > unlocked){
+      currentDay = unlocked;
       localStorage.setItem(LS_DAY, String(currentDay));
+    }
+  }
+
+  function isEntireCycleCompleted(){
+    return getCompletedDays().length >= TOTAL_DAYS;
+  }
+
+  function restartCycle(){
+    const oldStart = getStartDate();
+    const newStartDate = new Date(oldStart);
+    newStartDate.setDate(newStartDate.getDate() + TOTAL_DAYS);
+
+    const yyyy = newStartDate.getFullYear();
+    const mm = String(newStartDate.getMonth() + 1).padStart(2, "0");
+    const dd = String(newStartDate.getDate()).padStart(2, "0");
+    const iso = `${yyyy}-${mm}-${dd}`;
+
+    localStorage.setItem(LS_START, iso);
+    localStorage.setItem(LS_DAY, "1");
+    localStorage.setItem(LS_PROGRESS, JSON.stringify([]));
+
+    currentDay = 1;
+
+    localStorage.removeItem(LS_PREMIUM_VARIANT_MAP);
+    localStorage.removeItem(LS_PREMIUM_CYCLE_ID);
+    localStorage.removeItem(LS_FREE_VARIANT_MAP);
+    localStorage.removeItem(LS_FREE_CYCLE_ID);
+
+    render();
+  }
+
+  function renderProgressDots(){
+    const completed = getCompletedDays();
+    const unlocked = getUnlockedDay();
+
+    progressDots.innerHTML = "";
+
+    for(let i = 1; i <= TOTAL_DAYS; i++){
+      const dot = document.createElement("div");
+      dot.className = "progressDot";
+      dot.textContent = String(i);
+
+      if(completed.includes(i)){
+        dot.classList.add("done");
+      } else if(i > unlocked){
+        dot.classList.add("locked");
+        dot.textContent = "🔒";
+      }
+
+      if(i === currentDay){
+        dot.classList.add("current");
+      }
+
+      progressDots.appendChild(dot);
+    }
+  }
+
+  function updateProgressUI(){
+    const completed = getCompletedDays();
+    const done = completed.length;
+    const locked = isCurrentDayLocked();
+    const currentCompleted = completed.includes(currentDay);
+
+    progressCount.textContent = String(done);
+    renderProgressDots();
+
+    dayDone.classList.remove("done", "locked");
+
+    if(locked){
+      dayDone.textContent = "🔒";
+      dayDone.classList.add("locked");
+      dayCard.classList.add("lockedBox");
+    } else if(currentCompleted){
+      dayDone.textContent = "✓";
+      dayDone.classList.add("done");
+      dayCard.classList.remove("lockedBox");
+    } else {
+      dayDone.textContent = "○";
+      dayCard.classList.remove("lockedBox");
+    }
+  }
+
+  function setStoredDay(day){
+    const unlocked = getUnlockedDay();
+    currentDay = clampDay(day);
+
+    if(currentDay > unlocked){
+      currentDay = unlocked;
+    }
+
+    localStorage.setItem(LS_DAY, String(currentDay));
+    render();
+  }
+
+  function getCurrentCycle(){
+    const absoluteDay = Math.max(1, getAbsoluteDay());
+    return Math.floor((absoluteDay - 1) / TOTAL_DAYS);
+  }
+
+  function safeJsonParse(value, fallback){
+    try{
+      return JSON.parse(value);
+    }catch{
+      return fallback;
+    }
+  }
+
+  function normalizeDays(json){
+    if(Array.isArray(json?.days)) return json.days;
+    if(Array.isArray(json)) return json;
+    return [];
+  }
+
+  function findDayObj(day){
+    return dataDays.find(item => Number(item.day) === Number(day));
+  }
+
+  function findPremiumDayObj(day){
+    return premiumDays.find(item => Number(item.day) === Number(day));
+  }
+
+  function getVariantLabel(index){
+    return index === 0 ? "Variante A" : index === 1 ? "Variante B" : "Variante C";
+  }
+
+  function generateVariantMap(days, previousMap = []){
+    return days.map((day, index) => {
+      const count = Array.isArray(day.variants) ? day.variants.length : 0;
+      if(count <= 1) return 0;
+
+      let choice = 0;
+      let attempts = 0;
+
+      do{
+        choice = Math.floor(Math.random() * count);
+        attempts++;
+      } while (
+        count > 1 &&
+        previousMap[index] === choice &&
+        attempts < 10
+      );
+
+      return choice;
+    });
+  }
+
+  function getFreeVariantMap(){
+    const currentCycle = getCurrentCycle();
+    const savedCycle = parseInt(localStorage.getItem(LS_FREE_CYCLE_ID) || "-1", 10);
+    const savedMap = safeJsonParse(localStorage.getItem(LS_FREE_VARIANT_MAP) || "[]", []);
+
+    if(
+      savedCycle === currentCycle &&
+      Array.isArray(savedMap) &&
+      savedMap.length === dataDays.length
+    ){
+      return savedMap;
+    }
+
+    const previousMap = Array.isArray(savedMap) ? savedMap : [];
+    const newMap = generateVariantMap(dataDays, previousMap);
+
+    localStorage.setItem(LS_FREE_CYCLE_ID, String(currentCycle));
+    localStorage.setItem(LS_FREE_VARIANT_MAP, JSON.stringify(newMap));
+
+    return newMap;
+  }
+
+  function getPremiumVariantMap(){
+    const sourceDays = premiumDays.length ? premiumDays : dataDays;
+    const currentCycle = getCurrentCycle();
+    const savedCycle = parseInt(localStorage.getItem(LS_PREMIUM_CYCLE_ID) || "-1", 10);
+    const savedMap = safeJsonParse(localStorage.getItem(LS_PREMIUM_VARIANT_MAP) || "[]", []);
+
+    if(
+      savedCycle === currentCycle &&
+      Array.isArray(savedMap) &&
+      savedMap.length === sourceDays.length
+    ){
+      return savedMap;
+    }
+
+    const previousMap = Array.isArray(savedMap) ? savedMap : [];
+    const newMap = generateVariantMap(sourceDays, previousMap);
+
+    localStorage.setItem(LS_PREMIUM_CYCLE_ID, String(currentCycle));
+    localStorage.setItem(LS_PREMIUM_VARIANT_MAP, JSON.stringify(newMap));
+
+    return newMap;
+  }
+
+  function getFreeVariantForDay(dayNumber){
+    const freeDay = findDayObj(dayNumber);
+    if(!freeDay || !Array.isArray(freeDay.variants) || freeDay.variants.length === 0){
+      return null;
+    }
+
+    const variantMap = getFreeVariantMap();
+    const variantIndex = variantMap[dayNumber - 1] ?? 0;
+    const variant = freeDay.variants[variantIndex] || freeDay.variants[0];
+
+    return { freeDay, variantIndex, variant };
+  }
+
+  function getPremiumVariantForDay(dayNumber){
+    const sourceDay = findPremiumDayObj(dayNumber) || findDayObj(dayNumber);
+    if(!sourceDay || !Array.isArray(sourceDay.variants) || sourceDay.variants.length === 0){
+      return null;
+    }
+
+    const variantMap = getPremiumVariantMap();
+    const variantIndex = variantMap[dayNumber - 1] ?? 0;
+    const variant = sourceDay.variants[variantIndex] || sourceDay.variants[0];
+
+    return { premiumDay: sourceDay, variantIndex, variant };
+  }
+
+  function getChoiceLabel(choice){
+    if(choice === "body") return "Körper";
+    if(choice === "action") return "Handlung";
+    return "Gedanke";
+  }
+
+  function findPracticeById(id){
+    return practices.find(p => Number(p.id) === Number(id)) || null;
+  }
+
+  function pickSmartText(choice, premiumObj, practice){
+    const exerciseText = premiumObj?.exercise?.text || premiumObj?.microstep || "";
+    const nervous = premiumObj?.nervousSystemLink || "";
+    const journal = premiumObj?.journalPrompt || premiumObj?.question || "";
+    const integration = premiumObj?.integrationQuestion || premiumObj?.integration || "";
+    const basePractice = practice?.instruction || "";
+
+    if(choice === "body"){
+      return exerciseText || basePractice || nervous || "Spüre deinen Körper und wähle heute einen kleinen regulierenden Schritt.";
+    }
+    if(choice === "mind"){
+      return journal || nervous || "Wähle heute einen entlastenden, klaren Gedanken, der dir Orientierung gibt.";
+    }
+    return integration || exerciseText || "Setze heute eine kleine konkrete Handlung um, die wirklich machbar ist.";
+  }
+
+  function buildSmartExerciseFromVariant(variant){
+    const premiumObj = variant?.premium || {};
+    const ids = variant?.practiceIds || premiumObj?.practiceIds || [];
+    const firstPracticeId = Array.isArray(ids) && ids.length ? ids[0] : variant?.practiceId;
+    const practice = findPracticeById(firstPracticeId);
+
+    return {
+      title: premiumObj?.exercise?.title || practice?.title || "Smart-Übung",
+      intro: premiumObj?.deepening || premiumObj?.intro || practice?.instruction || "Wähle intuitiv den Bereich, der dir jetzt am meisten Stabilität geben kann.",
+      autoChoice: variant?.autoChoice || "body",
+      body: pickSmartText("body", premiumObj, practice),
+      mind: pickSmartText("mind", premiumObj, practice),
+      action: pickSmartText("action", premiumObj, practice)
+    };
+  }
+
+  function renderSmartExercise(variantObj, forcedChoice){
+    const exercise = variantObj.smartExercise || {};
+    const selected = forcedChoice || exercise.autoChoice || "body";
+
+    choiceBtns.forEach(btn => {
+      btn.classList.toggle("active", btn.dataset.choice === selected);
+    });
+
+    gameTitle.textContent = exercise.title || "Smart-Übung";
+    gamePrompt.textContent = exercise.intro || "Wähle intuitiv den Bereich, der dir jetzt am meisten Stabilität geben kann.";
+
+    const outputMap = {
+      body: exercise.body || "Nimm deinen Körper wahr und wähle einen kleinen regulierenden Schritt.",
+      mind: exercise.mind || "Wähle heute einen klaren, entlastenden Gedanken.",
+      action: exercise.action || "Wähle heute eine kleine konkrete Handlung, die wirklich machbar ist."
+    };
+
+    smartOutput.textContent = outputMap[selected];
+    autoHint.textContent = `Auto-Tipp: Heute wurde „${getChoiceLabel(selected)}“ als erster Fokus gewählt.`;
+    gameResult.textContent = "";
+  }
+
+  function renderFreeContent(variantObj){
+    const free = variantObj?.free || variantObj || {};
+    const title = free.title || "Inhalt in Vorbereitung";
+    const explanation = free.explanation || "Dieser Tagesimpuls wird bald verfügbar sein.";
+    const impuls = free.impuls || free.impulse || "Stabilität entsteht Schritt für Schritt.";
+    const reflection = free.reflection || "Was unterstützt mich heute wirklich?";
+    const exercise = free.exercise || null;
+
+    elTitle.textContent = title;
+    elExplanation.textContent = explanation;
+    elImpuls.textContent = impuls;
+    elReflection.textContent = reflection;
+
+    if(exercise && (exercise.text || exercise.title)){
+      exerciseWrap.style.display = "block";
+      exerciseTitle.textContent = exercise.title || "Mini-Übung";
+      exerciseText.textContent = exercise.text || "—";
+    } else {
+      exerciseWrap.style.display = "none";
+      exerciseTitle.textContent = "Mini-Übung";
+      exerciseText.textContent = "—";
+    }
+  }
+
+  function renderPremium(dayNumber){
+    if(!isMember()) return;
+
+    const premiumData = getPremiumVariantForDay(dayNumber);
+
+    if(!premiumData){
+      pTitle.textContent = "Mitgliederbereich – Vertiefung des Tages";
+      pSub.textContent = "Noch kein Premium-Inhalt vorhanden.";
+      pPill.textContent = "Variante A";
+      paperTitle.textContent = "Tagesvertiefung";
+      paperText.textContent = "Noch kein Premium-Text vorhanden.";
+      paperAnchor.textContent = "🧭 Fokus: —";
+      paperMicro.textContent = "✨ Mikro-Schritt: —";
+      premiumInsight.textContent = "—";
+      premiumQuestion.textContent = "—";
+      premiumClosing.textContent = "—";
+      closingText.textContent = "—";
+      closingBox.style.display = "none";
+      currentVariant = null;
+      return;
+    }
+
+    const { premiumDay, variantIndex, variant } = premiumData;
+    const premium = variant?.premium || variant || {};
+    const free = variant?.free || {};
+
+    const intro = premium.intro || "Noch kein Premium-Text vorhanden.";
+    const deepening = premium.deepening || "";
+    const nervousSystemLink = premium.nervousSystemLink || "";
+    const combinedPaper = [intro, deepening, nervousSystemLink].filter(Boolean).join("\n\n");
+
+    const insightText = premium.insight || premium.premiumInsight || "—";
+    const questionText = premium.question || premium.journalPrompt || "—";
+    const integrationText = premium.integration || premium.integrationQuestion || "—";
+    const microText = premium.microstep || premium.microStep || premium.exercise?.text || "—";
+    const anchorText = free.title || premiumDay?.program || premiumDay?.title || "Lifestyle";
+
+    currentVariant = {
+      label: getVariantLabel(variantIndex),
+      title: premiumDay?.title || free.title || "Vertiefung des Tages",
+      sub: "Eine vertiefte, ruhigere und alltagsnahe Einordnung deines heutigen Lifestyle-Impulses.",
+      deepDive: combinedPaper || "Noch kein Premium-Text vorhanden.",
+      insight: insightText,
+      question: questionText,
+      closing: integrationText,
+      anchor: anchorText,
+      micro: microText,
+      smartExercise: buildSmartExerciseFromVariant(variant)
+    };
+
+    pTitle.textContent = `Mitgliederbereich – ${currentVariant.title}`;
+    pSub.textContent = currentVariant.sub;
+    pPill.textContent = currentVariant.label;
+
+    paperTitle.textContent = premium.exercise?.title || "Tagesvertiefung";
+    paperText.textContent = currentVariant.deepDive;
+    paperAnchor.textContent = `🧭 Fokus: ${currentVariant.anchor}`;
+    paperMicro.textContent = `✨ Mikro-Schritt: ${currentVariant.micro}`;
+
+    premiumInsight.textContent = currentVariant.insight;
+    premiumQuestion.textContent = currentVariant.question;
+    premiumClosing.textContent = currentVariant.closing;
+    closingText.textContent = currentVariant.closing;
+
+    closingBox.style.display = "none";
+    renderSmartExercise(currentVariant, currentVariant.smartExercise.autoChoice || "body");
+  }
+
+  function updateImage(day){
+    dayImage.src = `./icons/${day}a.png`;
+    dayImage.alt = `Bild für Tag ${day}`;
+  }
+
+  function renderLockedContent(){
+    tagNumber.textContent = String(currentDay);
+    updateImage(currentDay);
+
+    elTitle.textContent = `Tag ${currentDay} ist noch gesperrt`;
+    elExplanation.textContent = "Dieser Tag wird automatisch freigeschaltet, sobald du ihn im natürlichen Verlauf deines 21-Tage-Programms erreichst.";
+    elImpuls.textContent = "Nicht alles auf einmal. Heute zählt nur der Tag, der jetzt für dich offen ist.";
+    elReflection.textContent = "Was hilft mir heute, im aktuellen Schritt zu bleiben – ohne vorauszueilen?";
+
+    exerciseWrap.style.display = "none";
+    exerciseTitle.textContent = "Mini-Übung";
+    exerciseText.textContent = "—";
+
+    premiumTeaser.style.display = "block";
+    premiumBlock.style.display = "none";
+    closingBox.style.display = "none";
+    currentVariant = null;
+
+    premiumBadge.textContent = "Status: Free";
+    unlockBtnLink.style.display = "";
+    memberBtn.textContent = "Zum Mitgliederbereich";
+
+    prevBtn.disabled = currentDay <= 1;
+    nextBtn.disabled = true;
+    nextBtn.textContent = "Noch gesperrt 🔒";
+
+    completeBtn.disabled = true;
+    completeBtn.textContent = "Noch nicht verfügbar 🔒";
+
+    restartCycleBtn.style.display = "none";
+    cycleDoneBox.style.display = "none";
+  }
+
+  function render(){
+    syncCurrentDayWithUnlocked();
+
+    const locked = isCurrentDayLocked();
+    const freeData = getFreeVariantForDay(currentDay);
+    const dayData = freeData?.variant || {};
+    const completed = isDayCompleted(currentDay);
+    const cycleCompleted = isEntireCycleCompleted();
+
+    if(locked){
+      updateProgressUI();
+      renderLockedContent();
+      return;
+    }
+
+    tagNumber.textContent = String(currentDay);
+    updateImage(currentDay);
+    renderFreeContent(dayData);
+    updateProgressUI();
+
+    if(isMember()){
+      premiumBadge.textContent = "Status: Mitglied ✅";
+      unlockBtnLink.style.display = "none";
+      memberBtn.textContent = "Mitgliederbereich";
+      premiumTeaser.style.display = "none";
+      premiumBlock.style.display = "block";
+      renderPremium(currentDay);
+    } else {
+      premiumBadge.textContent = "Status: Free";
+      unlockBtnLink.style.display = "";
+      memberBtn.textContent = "Zum Mitgliederbereich";
+      premiumTeaser.style.display = "block";
+      premiumBlock.style.display = "none";
+      closingBox.style.display = "none";
+      currentVariant = null;
+    }
+
+    prevBtn.disabled = currentDay <= 1;
+
+    if(currentDay >= TOTAL_DAYS){
+      nextBtn.disabled = true;
+      nextBtn.textContent = completed ? "Letzter Tag ✓" : "Letzter Tag";
+    } else if(currentDay + 1 > getUnlockedDay()){
+      nextBtn.disabled = true;
+      nextBtn.textContent = "Noch gesperrt 🔒";
+    } else {
+      nextBtn.disabled = false;
+      nextBtn.textContent = "Weiter →";
+    }
+
+    if(completed){
+      completeBtn.disabled = true;
+      completeBtn.textContent = "Bereits abgeschlossen ✓";
+    } else {
+      completeBtn.disabled = false;
+      completeBtn.textContent = "Tag als abgeschlossen markieren ✓";
+    }
+
+    if(cycleCompleted){
+      cycleDoneBox.style.display = "block";
+      restartCycleBtn.style.display = "inline-flex";
+    } else {
+      cycleDoneBox.style.display = "none";
+      restartCycleBtn.style.display = "none";
+    }
+  }
+
+  async function loadFreeJSON(){
+    try{
+      const res = await fetch(JSON_URL, { cache: "no-store" });
+      if(!res.ok) throw new Error(`Free JSON fetch failed: ${res.status}`);
+      const json = await res.json();
+      dataDays = normalizeDays(json);
+    } catch(error){
+      console.warn("Lifestyle FREE JSON konnte nicht geladen werden:", error);
+      dataDays = [];
+    }
+  }
+
+  async function loadPremiumJSON(){
+    try{
+      const res = await fetch(PREMIUM_JSON_URL, { cache: "no-store" });
+      if(!res.ok) throw new Error(`Premium JSON fetch failed: ${res.status}`);
+      const json = await res.json();
+      premiumDays = normalizeDays(json);
+    } catch(error){
+      console.warn("Lifestyle PREMIUM JSON konnte nicht geladen werden:", error);
+      premiumDays = [];
+    }
+  }
+
+  async function loadPracticesJSON(){
+    try{
+      const res = await fetch(PRACTICES_JSON_URL, { cache: "no-store" });
+      if(!res.ok) throw new Error(`Practices JSON fetch failed: ${res.status}`);
+      const json = await res.json();
+      practices = Array.isArray(json?.practices) ? json.practices : [];
+    } catch(error){
+      console.warn("Practices JSON konnte nicht geladen werden:", error);
+      practices = [];
+    }
+  }
+
+  async function loadJSON(){
+    await Promise.all([loadFreeJSON(), loadPremiumJSON(), loadPracticesJSON()]);
+  }
+
+  function setLang(lang){
+    localStorage.setItem(LS_LANG, lang);
+    if(lang === "it"){
+      window.location.href = "./lifestyleIT.html";
+    } else {
+      btnDE.classList.add("active");
+      btnIT.classList.remove("active");
+    }
+  }
+
+  function initLang(){
+    const lang = (localStorage.getItem(LS_LANG) || "de").toLowerCase();
+    if(lang === "it"){
+      window.location.href = "./lifestyleIT.html";
+      return;
+    }
+    btnDE.classList.add("active");
+    btnIT.classList.remove("active");
+  }
+
+  function bindEvents(){
+    btnDE.addEventListener("click", () => setLang("de"));
+    btnIT.addEventListener("click", () => setLang("it"));
+
+    prevBtn.addEventListener("click", () => {
+      setStoredDay(currentDay - 1);
+    });
+
+    nextBtn.addEventListener("click", () => {
+      if(currentDay < TOTAL_DAYS && currentDay < getUnlockedDay()){
+        setStoredDay(currentDay + 1);
+      }
+    });
+
+    completeBtn.addEventListener("click", () => {
+      if(isCurrentDayLocked()) return;
+      markDayCompleted(currentDay);
       render();
-    }
+    });
 
-    function getCurrentCycle(){
-      const absoluteDay = Math.max(1, getAbsoluteDay());
-      return Math.floor((absoluteDay - 1) / TOTAL_DAYS);
-    }
+    restartCycleBtn.addEventListener("click", () => {
+      restartCycle();
+    });
 
-    function safeJsonParse(value, fallback){
-      try{
-        return JSON.parse(value);
-      }catch{
-        return fallback;
-      }
-    }
-
-    function findDayObj(day){
-      return dataDays.find(item => Number(item.day) === Number(day));
-    }
-
-    function findPremiumDayObj(day){
-      return premiumDays.find(item => Number(item.day) === Number(day));
-    }
-
-    function getVariantLabel(index){
-      return index === 0 ? "Variante A" : index === 1 ? "Variante B" : "Variante C";
-    }
-
-    function generateVariantMap(days, previousMap = []){
-      return days.map((day, index) => {
-        const count = Array.isArray(day.variants) ? day.variants.length : 0;
-        if(count <= 1) return 0;
-
-        let choice = 0;
-        let attempts = 0;
-
-        do{
-          choice = Math.floor(Math.random() * count);
-          attempts++;
-        } while (
-          count > 1 &&
-          previousMap[index] === choice &&
-          attempts < 10
-        );
-
-        return choice;
+    choiceBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        if(!currentVariant) return;
+        renderSmartExercise(currentVariant, btn.dataset.choice);
       });
-    }
+    });
 
-    function getFreeVariantMap(){
-      const currentCycle = getCurrentCycle();
-      const savedCycle = parseInt(localStorage.getItem(LS_FREE_CYCLE_ID) || "-1", 10);
-      const savedMap = safeJsonParse(localStorage.getItem(LS_FREE_VARIANT_MAP) || "[]", []);
+    applySmartBtn.addEventListener("click", () => {
+      gameResult.textContent = "Gut. Nimm genau diesen kleinen Schritt heute mit – nicht mehr, aber auch nicht weniger.";
+    });
 
-      if(
-        savedCycle === currentCycle &&
-        Array.isArray(savedMap) &&
-        savedMap.length === dataDays.length
-      ){
-        return savedMap;
+    finishBtn.addEventListener("click", () => {
+      if(!currentVariant) return;
+      closingBox.style.display = "block";
+      if(typeof closingBox.scrollIntoView === "function"){
+        closingBox.scrollIntoView({ behavior: "smooth", block: "start" });
       }
+    });
 
-      const previousMap = Array.isArray(savedMap) ? savedMap : [];
-      const newMap = generateVariantMap(dataDays, previousMap);
+    dayImage.addEventListener("error", () => {
+      dayImage.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(`
+        <svg xmlns="http://www.w3.org/2000/svg" width="800" height="500">
+          <defs>
+            <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#f6f1e6"/>
+              <stop offset="1" stop-color="#efe7d7"/>
+            </linearGradient>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#g)"/>
+          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+            font-family="Arial" font-size="28" fill="#6b6b6b">
+            Bild folgt (Tag ${currentDay})
+          </text>
+        </svg>
+      `);
+      dayImage.alt = `Platzhalterbild für Tag ${currentDay}`;
+    });
+  }
 
-      localStorage.setItem(LS_FREE_CYCLE_ID, String(currentCycle));
-      localStorage.setItem(LS_FREE_VARIANT_MAP, JSON.stringify(newMap));
+    async function init(){
+    ensureStartDate();
+    initLang();
+    bindEvents();
+    await loadJSON();
 
-      return newMap;
-    }
+    currentDay = getStoredDay();
+    localStorage.setItem(LS_DAY, String(currentDay));
 
-    function getPremiumVariantMap(){
-      const sourceDays = premiumDays.length ? premiumDays : dataDays;
-      const currentCycle = getCurrentCycle();
-      const savedCycle = parseInt(localStorage.getItem(LS_PREMIUM_CYCLE_ID) || "-1", 10);
-      const savedMap = safeJsonParse(localStorage.getItem(LS_PREMIUM_VARIANT_MAP) || "[]", []);
+    updateProgressUI();
+    render();
+  }
 
-      if(
-        savedCycle === currentCycle &&
-        Array.isArray(savedMap) &&
-        savedMap.length === sourceDays.length
-      ){
-        return savedMap;
-      }
+  init();
+</script>
 
-      const previousMap = Array.isArray(savedMap) ? savedMap : [];
-      const newMap = generateVariantMap(sourceDays, previousMap);
-
-      localStorage.setItem(LS_PREMIUM_CYCLE_ID, String(currentCycle));
-      localStorage.setItem(LS_PREMIUM_VARIANT_MAP, JSON.stringify(newMap));
-
-      return newMap;
-    }
-
-    function normalizeFreeVariant(rawVariant){
-      if(!rawVariant) return {};
-
-      const free = rawVariant.free || rawVariant;
-
-      return {
-        title: free.title || "Inhalt in Vorbereitung",
-        explanation: free.explanation || "Dieser Tagesimpuls wird bald verfügbar sein.",
-        impuls: free.impuls || free.impulse || "Stabilität entsteht Schritt für Schritt.",
-        reflection: free.reflection || "Was unterstützt mich heute wirklich?",
-        insight: free.insight || free.Insight || "—",
-        question: free.question || free.Question || "—",
-        exercise: free.exercise || null
-      };
-    }
-
-    function normalizePremiumVariant(rawVariant, fallbackTitle = "Lifestyle"){
-      if(!rawVariant) return {};
-
-      const premium = rawVariant.premium || rawVariant;
-
-      const intro = premium.intro || premium.deepening || premium.text || "Noch kein Premium-Text vorhanden.";
-      const deepening = premium.deepening || premium.intro || premium.text || "Noch kein Premium-Text vorhanden.";
-      const nervousSystemLink = premium.nervousSystemLink || premium.regulation || "";
-
-      const insight =
-        premium.insight ||
-        premium.premiumInsight ||
-        premium.Insight ||
-        "—";
-
-      const question =
-        premium.question ||
-        premium.journalPrompt ||
-        premium.Question ||
-        "—";
-
-      const reflection =
-        premium.reflection ||
-        premium.eveningReflection ||
-        "—";
-
-      const integration =
-        premium.integration ||
-        premium.integrationQuestion ||
-        "—";
-
-      const exerciseTitle =
-        premium.exercise?.title ||
-        premium.exerciseTitle ||
-        "Tagespraxis";
-
-      const exerciseText =
-        premium.exercise?.text ||
-        premium.microstep ||
-        premium.microStep ||
-        "—";
-
-      return {
-        title: premium.title || fallbackTitle || "Vertiefung des Tages",
-        intro,
-        deepening,
-        nervousSystemLink,
-        insight,
-        question,
-        reflection,
-        integration,
-        exerciseTitle,
-        exerciseText,
-        focus:
-          premium.focus ||
-          premium.anchor ||
-          fallbackTitle ||
-          "Lifestyle",
-        microstep:
-          premium.microstep ||
-          premium.microStep ||
-          premium.exercise?.text ||
-          "—",
-        autoChoice: premium.autoChoice || "body",
-        smart: premium.smart || null,
-        practiceId: premium.practiceId || premium.practiceID || null
-      };
-    }
-
-    function getFreeVariantForDay(dayNumber){
-      const freeDay = findDayObj(dayNumber);
-      if(!freeDay || !Array.isArray(freeDay.variants) || freeDay.variants.length === 0){
-        return null;
-      }
-
-      const variantMap = getFreeVariantMap();
-      const variantIndex = variantMap[dayNumber - 1] ?? 0;
-      const rawVariant = freeDay.variants[variantIndex] || freeDay.variants[0];
-      const variant = normalizeFreeVariant(rawVariant);
-
-      return { freeDay, variantIndex, variant, rawVariant };
-    }
-
-    function getPremiumVariantForDay(dayNumber){
-      const sourceDay = findPremiumDayObj(dayNumber) || findDayObj(dayNumber);
-      if(!sourceDay || !Array.isArray(sourceDay.variants) || sourceDay.variants.length === 0){
-        return null;
-      }
-
-      const variantMap = getPremiumVariantMap();
-      const variantIndex = variantMap[dayNumber - 1] ?? 0;
-      const rawVariant = sourceDay.variants[variantIndex] || sourceDay.variants[0];
-      const variant = normalizePremiumVariant(rawVariant, sourceDay.title || "Lifestyle");
-
-      return { premiumDay: sourceDay, variantIndex, variant, rawVariant };
-    }
-
-    function getChoiceLabel(choice){
-      if(choice === "body") return "Körper";
-      if(choice === "action") return "Handlung";
-      return "Gedanke";
-    }
-
-    function findPracticeById(id){
-      return practices.find(p => Number(p.id) === Number(id)) || null;
-    }
-
-    function buildSmartExerciseFromVariant(variant){
-      const practice = findPracticeById(variant.practiceId);
-
-      return {
-        title: practice?.title || variant.exerciseTitle || "Smart-Übung",
-        intro: practice?.instruction || "Wähle intuitiv den Bereich, der dir jetzt am meisten Stabilität geben kann.",
-        autoChoice: variant.autoChoice || "body",
-        body: variant.smart?.body || practice?.instruction || variant.exerciseText || "Nimm deinen Körper wahr und wähle einen kleinen regulierenden Schritt.",
-        mind: variant.smart?.mind || variant.question || "Wähle heute einen klaren, entlastenden Gedanken.",
-        action: variant.smart?.action || variant.integration || "Wähle heute eine kleine konkrete Handlung, die wirklich machbar ist."
-      };
-    }
-
-    function renderSmartExercise(variantObj, forcedChoice){
-      const exercise = variantObj.smartExercise || {};
-      const selected = forcedChoice || exercise.autoChoice || "body";
-
-      choiceBtns.forEach(btn => {
-        btn.classList.toggle("active", btn.dataset.choice === selected);
-      });
-
-      gameTitle.textContent = exercise.title || "Smart-Übung";
-      gamePrompt.textContent = exercise.intro || "Wähle intuitiv den Bereich, der dir jetzt am meisten Stabilität geben kann.";
-
-      const outputMap = {
-        body: exercise.body || "Nimm deinen Körper wahr und wähle einen kleinen regulierenden Schritt.",
-        mind: exercise.mind || "Wähle heute einen klaren, entlastenden Gedanken.",
-        action: exercise.action || "Wähle heute eine kleine konkrete Handlung, die wirklich machbar ist."
-      };
-
-      smartOutput.textContent = outputMap[selected];
-      autoHint.textContent = `Auto-Tipp: Heute wurde „${getChoiceLabel(selected)}“ als erster Fokus gewählt.`;
-      gameResult.textContent = "";
-    }
-
-    function renderFreeContent(dayData){
-      const title = dayData.title || "Inhalt in Vorbereitung";
-      const explanation = dayData.explanation || "Dieser Tagesimpuls wird bald verfügbar sein.";
-      const impuls = dayData.impuls || "Stabilität entsteht Schritt für Schritt.";
-      const reflection = dayData.reflection || "Was unterstützt mich heute wirklich?";
-      const exercise = dayData.exercise || null;
-
-      elTitle.textContent = title;
-      elExplanation.textContent = explanation;
-      elImpuls.textContent = impuls;
-      elReflection.textContent = reflection;
-
-      if(exercise && (exercise.text || exercise.title)){
-        exerciseWrap.style.display = "block";
-        exerciseTitle.textContent = exercise.title || "Mini-Übung";
-        exerciseText.textContent = exercise.text || "—";
-      } else {
-        exerciseWrap.style.display = "none";
-        exerciseTitle.textContent = "Mini-Übung";
-        exerciseText.textContent = "—";
-      }
-    }
-
-    function renderPremium(dayNumber){
-      if(!isMember()) return;
-
-      const premiumData = getPremiumVariantForDay(dayNumber);
-
-      if(!premiumData){
-        pTitle.textContent = "Mitgliederbereich – Vertiefung des Tages";
-        pSub.textContent = "Noch kein Premium-Inhalt vorhanden.";
-        pPill.textContent = "Variante A";
-        paperTitle.textContent = "Tagesvertiefung";
-        paperText.textContent = "Noch kein Premium-Text vorhanden.";
-        paperAnchor.textContent = "🧭 Fokus: —";
-        paperMicro.textContent = "✨ Mikro-Schritt: —";
-        premiumInsight.textContent = "—";
-        premiumQuestion.textContent = "—";
-        premiumClosing.textContent = "—";
-        closingText.textContent = "—";
-        closingBox.style.display = "none";
-        currentVariant = null;
-        return;
-      }
-
-      const { premiumDay, variantIndex, variant } = premiumData;
-
-      const deepTextParts = [
-        variant.intro,
-        variant.deepening && variant.deepening !== variant.intro ? variant.deepening : "",
-        variant.nervousSystemLink ? `Nervensystem-Link: ${variant.nervousSystemLink}` : ""
-      ].filter(Boolean);
-
-      currentVariant = {
-        label: getVariantLabel(variantIndex),
-        title: premiumDay.title || variant.title || "Vertiefung des Tages",
-        sub: "Eine vertiefte, ruhigere und alltagsnahe Einordnung deines heutigen Lifestyle-
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("./service-worker.js")
+        .then(reg => console.log("Service Worker registered", reg))
+        .catch(err => console.log("Service Worker failed", err));
+    });
+  }
+</script>
+</body>
+</html>
