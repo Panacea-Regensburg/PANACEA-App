@@ -1,1 +1,991 @@
-
+{
+  "days": [
+    {
+      "day": 1,
+      "variants": [
+        {
+          "title": "Sguardo alle risorse",
+          "intro": "La salutogenesi comincia quando scegli di riconoscere in modo consapevole ciò che ti sostiene. Non tutto deve essere risolto subito: spesso il primo passo è semplicemente cambiare sguardo.",
+          "deepening": "Nella vita quotidiana l’attenzione tende a fissarsi su pressione, mancanza e problemi aperti. Uno sguardo salutogenico non significa negare ciò che è difficile. Significa aggiungere anche ciò che ti sostiene, ti stabilizza e ti nutre interiormente.",
+          "nervousSystemLink": "Quando il tuo focus percepisce non solo carico ma anche sicurezza, il sistema nervoso può uscire più facilmente da uno stato di allerta continua.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Scrivi oggi tre cose che ti danno forza: una persona, una tua capacità e un momento in cui ti senti più al sicuro."
+          },
+          "journalPrompt": "Quale risorsa è già presente nella mia vita ma riceve ancora troppo poca attenzione?",
+          "eveningReflection": "C’è stato oggi un momento in cui mi sono sentita un po’ più stabile o sostenuta?",
+          "premiumInsight": "L’orientamento alle risorse rafforza spesso il senso di coerenza, perché sostiene il senso di gestibilità e ordine interiore.",
+          "integrationQuestion": "Come posso domani lavorare di più con ciò che mi rafforza, invece di lottare solo contro ciò che mi pesa?"
+        },
+        {
+          "title": "Riconoscere le risorse interiori",
+          "intro": "La salute si rafforza spesso quando porti volontariamente l’attenzione verso le risorse già presenti. Già questo cambiamento di prospettiva può calmare qualcosa dentro di te.",
+          "deepening": "Molte risorse agiscono in modo silenzioso. Non appaiono sempre in modo evidente, ma come piccole forme di stabilità, capacità, connessione o esperienza interiore. Quando torni a vederle, il tuo spazio d’azione interiore si amplia.",
+          "nervousSystemLink": "Riconoscere consapevolmente le risorse può comunicare al sistema nervoso che non esiste solo minaccia, ma anche sostegno.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Scegli oggi una risorsa concreta della tua giornata – ad esempio quiete, movimento, musica o una persona – e percepiscila con presenza per due minuti."
+          },
+          "journalPrompt": "Quale risorsa, pur essendo piccola, è affidabile e presente nella mia vita quotidiana?",
+          "eveningReflection": "Che cosa mi ha sostenuta oggi interiormente, anche se la giornata non è stata perfetta?",
+          "premiumInsight": "Più una risorsa viene percepita con consapevolezza, più facilmente può diventare regolante nella vita quotidiana.",
+          "integrationQuestion": "Quale risorsa desidero attivare in modo più intenzionale nei prossimi giorni?"
+        },
+        {
+          "title": "Focus sulla forza",
+          "intro": "Un percorso salutogenico non chiede solo: che cosa mi affatica? Chiede anche: che cosa mi rafforza, qui e ora?",
+          "deepening": "Non ogni difficoltà può essere cambiata subito. Ma il tuo focus interiore è spesso più mobile di quanto sembri. Quando ti orienti verso la forza, possono emergere più direzione, dignità e stabilità.",
+          "nervousSystemLink": "Un focus orientato alle risorse può alleggerire il sistema di allarme interno e rendere più percepibile la sicurezza.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Appoggia oggi una mano sul petto e ripetiti interiormente: «Anche oggi c’è qualcosa dentro di me che mi sostiene»."
+          },
+          "journalPrompt": "Su che cosa voglio dirigere oggi il mio sguardo per creare più stabilità?",
+          "eveningReflection": "Quando oggi ho percepito più forza che mancanza?",
+          "premiumInsight": "Il focus consapevole sulle risorse può rafforzare auto-guida, fiducia e stabilità emotiva.",
+          "integrationQuestion": "Come posso trasformare la percezione delle risorse in una piccola abitudine quotidiana?"
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "variants": [
+        {
+          "title": "Capire crea calma",
+          "intro": "Il tuo senso di coerenza cresce quando comprendi ciò che accade nella tua vita. Capire può essere già un primo passo verso l’alleggerimento.",
+          "deepening": "Non ogni situazione diventa subito facile solo perché la comprendì. Ma capire toglie spesso qualcosa di minaccioso a ciò che è confuso. Quando i collegamenti diventano visibili, nasce più orientamento interiore.",
+          "nervousSystemLink": "Un senso di comprensibilità può aiutare il sistema nervoso a ridurre una vigilanza diffusa e costante.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Scegli oggi una situazione che ti pesa e formulala in tre frasi semplici: Che cosa sta succedendo? Che cosa sento? Di che cosa ho bisogno?"
+          },
+          "journalPrompt": "Quale situazione diventerebbe più leggera se la comprendessi con maggiore chiarezza?",
+          "eveningReflection": "Dove oggi sono riuscita a dare un senso più chiaro a ciò che vivevo?",
+          "premiumInsight": "La chiarezza cognitiva sostiene spesso la regolazione emotiva, perché riduce incertezza e confusione interiore.",
+          "integrationQuestion": "Quale domanda potrei pormi domani per ottenere più orientamento interiore?"
+        },
+        {
+          "title": "Orientamento invece di impotenza",
+          "intro": "Capire dona orientamento. E l’orientamento riduce spesso la sensazione di sentirsi interiormente in balia degli eventi.",
+          "deepening": "Molte fatiche pesano non solo per il loro contenuto, ma perché appaiono confuse, diffuse o caotiche. Quando riesci a nominarle e collocarle, si crea spazio tra te e la pressione interiore.",
+          "nervousSystemLink": "L’orientamento può aiutare il sistema a distinguere meglio tra pericolo reale e insicurezza interna.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Scrivi oggi un pensiero che ti pesa e aggiungi sotto: «Che cosa qui è un fatto – e che cosa è la mia interpretazione?»"
+          },
+          "journalPrompt": "Dove desidero oggi più chiarezza e meno agitazione interiore?",
+          "eveningReflection": "Che cosa oggi è diventato un po’ meno pesante grazie alla chiarezza?",
+          "premiumInsight": "Separare fatti e interpretazioni può ridurre l’intensità emotiva e restituire spazio d’azione.",
+          "integrationQuestion": "Come posso trovare più rapidamente orientamento nei momenti di carico?"
+        },
+        {
+          "title": "Dare un ordine interiore",
+          "intro": "Più riesci a dare un significato a ciò che accade dentro di te e intorno a te, più facilmente nasce una calma interiore.",
+          "deepening": "Dare ordine non significa dover risolvere tutto. Significa offrire all’esperienza un nome, un contesto e un posto. Così ciò che era diffuso diventa spesso più gestibile.",
+          "nervousSystemLink": "Le esperienze che possono essere nominate vengono spesso vissute come meno minacciose rispetto agli stati interiori confusi e senza forma.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Se oggi senti agitazione, ripetiti interiormente: «Riconosco che in questo momento c’è tensione. Non devo eliminarla subito, ma posso provare a comprenderla»."
+          },
+          "journalPrompt": "Quale esperienza della mia vita oggi ha più bisogno di comprensione che di lotta?",
+          "eveningReflection": "Quando oggi uno sguardo interiore più chiaro mi ha alleggerita?",
+          "premiumInsight": "Comprendere non porta sempre subito pace, ma spesso più dignità, presenza e regolazione.",
+          "integrationQuestion": "Che tipo di chiarezza fa più bene al mio sistema: fatti, parole, struttura o quiete?"
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "variants": [
+        {
+          "title": "La struttura crea sicurezza",
+          "intro": "Le sfide diventano spesso meno opprimenti quando riesci a dare loro una forma. La struttura non è rigidità: può essere un atto di cura interiore.",
+          "deepening": "Quando tutto arriva insieme, nasce facilmente il sovraccarico. Un passo salutogenico consiste nel suddividere la complessità in parti più semplici. Così dal caos può riemergere una sensazione di visione d’insieme.",
+          "nervousSystemLink": "La struttura può aiutare il sistema nervoso a ridurre il sovraccarico di stimoli e a vivere le situazioni come più gestibili.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Prendi oggi un compito che ti pesa e dividilo in tre piccoli passaggi. Concentrati solo sul primo."
+          },
+          "journalPrompt": "In quale area oggi mi farebbe bene più struttura, interna o esterna?",
+          "eveningReflection": "Che cosa oggi è diventato più leggero perché l’ho organizzato meglio?",
+          "premiumInsight": "Passi chiari e limitati favoriscono il senso di gestibilità e riducono il sovraccarico paralizzante.",
+          "integrationQuestion": "Come posso usare la struttura senza mettermi ancora più pressione?"
+        },
+        {
+          "title": "Ordine dentro di me",
+          "intro": "La chiarezza nasce spesso non da più attività, ma da un ordine consapevole. Ciò che viene organizzato diventa interiormente più tranquillo.",
+          "deepening": "Non tutto richiede subito una soluzione. A volte serve prima una cornice. Quando organizzi pensieri, compiti o emozioni, già questo può produrre un effetto regolante.",
+          "nervousSystemLink": "Un ordine interiore può ridurre la sensazione di confusione e aiutare il sistema a uscire da uno stato di iperattivazione.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Scrivi oggi tre cose che ti occupano la mente. Dividile in: importante adesso, importante dopo, non importante oggi."
+          },
+          "journalPrompt": "Quale forma di ordine mi porterebbe sollievo in questo momento?",
+          "eveningReflection": "Dove oggi ho semplificato invece di voler portare tutto insieme?",
+          "premiumInsight": "Ridurre il disordine mentale può sostenere concentrazione, chiarezza e alleggerimento emotivo.",
+          "integrationQuestion": "Quale area della mia quotidianità desidero semplificare questa settimana?"
+        },
+        {
+          "title": "Passo dopo passo",
+          "intro": "Una quotidianità salutogenica nasce raramente da grandi svolte. Più spesso cresce attraverso una sequenza intelligente di piccoli passi.",
+          "deepening": "Quando provi a cambiare tutto in una volta, il sistema tende spesso a resistere. Se invece ti permetti di vedere solo il prossimo passo, lo sviluppo diventa più realistico e più calmo.",
+          "nervousSystemLink": "Passi piccoli e prevedibili vengono spesso vissuti dal sistema nervoso come più sicuri rispetto a grandi obiettivi diffusi.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "In una situazione difficile, chiediti solo: «Qual è il prossimo passo buono – non l’intero percorso?»"
+          },
+          "journalPrompt": "Qual è oggi il mio prossimo piccolo passo verso più chiarezza?",
+          "eveningReflection": "Quando oggi mi sono affidata al passo successivo invece di aspettare la soluzione perfetta?",
+          "premiumInsight": "I micro-passi favoriscono uno sviluppo sostenibile, perché rendono concreta la gestibilità.",
+          "integrationQuestion": "Come posso allenarmi più spesso a pensare in unità più piccole?"
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "variants": [
+        {
+          "title": "Usare le risorse che già possiedo",
+          "intro": "Hai già risorse interiori ed esteriori che possono sostenerti. Diventano ancora più efficaci quando scegli di usarle in modo consapevole.",
+          "deepening": "Le risorse non sono solo capacità personali. Possono essere persone, esperienze, routine, luoghi, parole o sensazioni corporee di sicurezza. Più chiaramente le riconosci, più facilmente possono aiutarti nella vita quotidiana.",
+          "nervousSystemLink": "Le risorse usate consapevolmente possono favorire sicurezza, prevedibilità e stabilizzazione interiore.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Scrivi oggi due risorse interiori e due risorse esterne a cui puoi appoggiarti nei momenti di fatica."
+          },
+          "journalPrompt": "Quale risorsa possiedo già, ma utilizzo ancora troppo poco nella mia quotidianità?",
+          "eveningReflection": "Quale risorsa oggi mi ha concretamente sostenuta?",
+          "premiumInsight": "Il senso di gestibilità cresce quando le risorse non sono solo idee, ma strumenti realmente accessibili.",
+          "integrationQuestion": "Come posso rendere una risorsa importante più facilmente disponibile?"
+        },
+        {
+          "title": "Lasciarsi sostenere",
+          "intro": "Non devi affrontare tutto solo con le tue forze. Il sostegno non è un segno di debolezza, ma parte di una regolazione sana.",
+          "deepening": "Molte persone non utilizzano il sostegno disponibile, anche quando esiste. La salutogenesi ricorda che la salute nasce anche nella relazione, nello scambio e nell’aiuto ben accolto.",
+          "nervousSystemLink": "Percepire sostegno può comunicare al sistema nervoso che il carico non deve essere portato in totale isolamento.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Chiediti oggi con sincerità: da chi o da che cosa posso lasciarmi sostenere di più in questo momento?"
+          },
+          "journalPrompt": "Dove cerco inutilmente di fare tutto da sola?",
+          "eveningReflection": "Quando oggi mi sono permessa di essere sostenuta o accompagnata?",
+          "premiumInsight": "Accogliere il sostegno può ridurre il sovraccarico e rafforzare il senso di legame.",
+          "integrationQuestion": "Quale forma di sostegno desidero accettare con più consapevolezza nei prossimi giorni?"
+        },
+        {
+          "title": "Ricordare le proprie capacità",
+          "intro": "Alcune delle tue risorse più forti sono esperienze già presenti dentro di te. Ciò che hai affrontato una volta spesso resta come competenza interiore.",
+          "deepening": "Nei periodi difficili si dimentica facilmente quanta strada si è già fatta. Ma ciò che hai superato non appartiene solo al passato: può diventare una risorsa concreta anche oggi.",
+          "nervousSystemLink": "Ricordare situazioni già superate può favorire fiducia e auto-rassicurazione.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Ripensa oggi a una fase difficile che hai attraversato e scrivi: che cosa mi ha aiutata allora?"
+          },
+          "journalPrompt": "Quale capacità maturata nel passato è ancora oggi una risorsa per me?",
+          "eveningReflection": "Che cosa oggi ho ricordato sulla mia capacità di reggere e attraversare le cose?",
+          "premiumInsight": "La memoria della propria capacità di affrontare le difficoltà rafforza autoefficacia e resilienza.",
+          "integrationQuestion": "Come posso ricordarmi più rapidamente dei miei punti di forza quando mi sento sotto pressione?"
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "variants": [
+        {
+          "title": "Il senso come fonte di forza",
+          "intro": "Riconoscere un senso ti dà forza per attraversare anche i momenti difficili. Il senso collega il peso alla direzione.",
+          "deepening": "Non ogni situazione appare subito significativa. Ma anche nei periodi difficili può esistere un valore, un perché o una direzione che ti sostiene interiormente. Il senso è spesso più profondità che spettacolo.",
+          "nervousSystemLink": "Il senso percepito può favorire orientamento interiore e far apparire il carico meno caotico e vuoto.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Chiediti oggi davanti a un compito importante: «Perché per me questo conta davvero?» e scrivi una risposta onesta."
+          },
+          "journalPrompt": "Che cosa nella mia vita mi dà oggi un senso autentico, al di là del dovere e della funzione?",
+          "eveningReflection": "Quando oggi ho sentito che un gesto aveva davvero significato?",
+          "premiumInsight": "Un perché interiore rende spesso il carico più sopportabile e stabilizza la motivazione nel lungo termine.",
+          "integrationQuestion": "Come posso restare domani più in contatto con ciò che dà significato alla mia vita?"
+        },
+        {
+          "title": "Il mio perché interiore",
+          "intro": "Chi sente un perché vive spesso il proprio cammino con più chiarezza. Il senso non deve essere grande: può essere semplice, silenzioso e personale.",
+          "deepening": "A volte il senso non si manifesta in grandi obiettivi, ma in piccole forme di cura, coerenza, crescita o relazione. Quando riesci a nominarlo, il tuo fondamento interiore si rafforza.",
+          "nervousSystemLink": "Un perché interiore chiaro può dare direzione al sistema e ordinare una stanchezza diffusa.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Completa oggi per iscritto la frase: «Ciò che oggi dà senso al mio agire è...»"
+          },
+          "journalPrompt": "Quale compito diventa più leggero quando riconosco il suo senso più profondo?",
+          "eveningReflection": "C’è stato oggi un momento in cui mi sono sentita collegata a qualcosa di significativo?",
+          "premiumInsight": "L’orientamento al senso può favorire fiducia, continuità e un senso di coerenza interiore.",
+          "integrationQuestion": "Quale gesto quotidiano potrei collegare più consapevolmente al mio perché personale?"
+        },
+        {
+          "title": "Percepire ciò che conta davvero",
+          "intro": "Il senso nasce spesso quando ti accorgi che la tua vita non è fatta solo di reazione, ma anche di significato.",
+          "deepening": "Quando vivi solo per funzionare, perdi facilmente il contatto con ciò che davvero ti sostiene. Per questo uno sguardo salutogenico non chiede solo che cosa pesa, ma anche che cosa orienta, dà valore e direzione.",
+          "nervousSystemLink": "La percezione di significato può ridurre il senso di vuoto e rafforzare un orientamento interiore.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Prenditi oggi due minuti per nominare una cosa per cui desideri stare in questa fase della tua vita."
+          },
+          "journalPrompt": "Per che cosa desidero muovermi interiormente, anche se la strada non è ancora del tutto chiara?",
+          "eveningReflection": "Che cosa oggi mi ha ricordato il mio perché interiore?",
+          "premiumInsight": "Chi percepisce senso tende a sentirsi meno frammentato e più motivato nel tempo.",
+          "integrationQuestion": "Che cosa voglio caricare di più di senso nei prossimi giorni?"
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "variants": [
+        {
+          "title": "Vivere consapevolmente i propri punti di forza",
+          "intro": "La salute si sviluppa anche quando non solo conosci i tuoi punti di forza, ma li usi davvero. La forza diventa viva quando entra nella quotidianità.",
+          "deepening": "Molte persone sanno teoricamente in che cosa sono brave, ma sotto stress perdono il contatto con queste qualità. Una vita salutogenica significa invitare di nuovo attivamente le proprie capacità nel proprio presente.",
+          "nervousSystemLink": "L’uso attivo delle proprie forze può favorire sicurezza, fiducia e senso di efficacia.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Chiediti oggi: quale mia forza è particolarmente preziosa per questa giornata – chiarezza, pazienza, coraggio, calma, struttura o compassione?"
+          },
+          "journalPrompt": "Quale qualità voglio rendere visibile oggi attraverso il mio modo di agire?",
+          "eveningReflection": "Quando oggi ho agito consapevolmente a partire da una mia forza?",
+          "premiumInsight": "Sentirsi competenti sostiene l’autoefficacia e ha spesso un effetto regolante sul sovraccarico.",
+          "integrationQuestion": "Come posso attivare in modo più mirato il mio punto di forza più importante?"
+        },
+        {
+          "title": "Agire con autoefficacia",
+          "intro": "Ogni passo verso l’autoefficacia rafforza il tuo benessere. Il punto decisivo non è la perfezione, ma il senso di poter incidere.",
+          "deepening": "Autoefficacia non significa controllare tutto. Significa sentire: posso contribuire, scegliere, orientare o muovere qualcosa. Questa esperienza rafforza la stabilità interiore.",
+          "nervousSystemLink": "La percezione di avere influenza può ridurre il senso di impotenza e aiutare il sistema a uscire da passività o sovraccarico.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Scegli oggi una piccola azione da fare in modo del tutto consapevole e per tua decisione."
+          },
+          "journalPrompt": "Dove oggi voglio non solo reagire, ma anche dare forma a ciò che vivo?",
+          "eveningReflection": "Quando oggi mi sono percepita efficace?",
+          "premiumInsight": "L’autoefficacia rafforza motivazione, fiducia e la disponibilità a regolare attivamente il carico.",
+          "integrationQuestion": "Quale piccolo gesto quotidiano potrebbe stabilizzare il mio senso di efficacia?"
+        },
+        {
+          "title": "Fiducia nella propria forza",
+          "intro": "Quando usi le tue capacità, non cresce solo il risultato: cresce anche la fiducia in te stessa.",
+          "deepening": "La fiducia si sviluppa raramente solo pensando. Cresce quando ti sperimenti nell’azione. Ogni utilizzo consapevole di una tua forza ti conferma: non sono solo coinvolta, sono anche parte attiva.",
+          "nervousSystemLink": "L’esperienza di competenza può calmare il sistema, perché rende più tangibili orientamento e influenza.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Annota questa sera un momento in cui hai portato bene qualcosa, hai risolto una situazione o hai deciso con chiarezza."
+          },
+          "journalPrompt": "Dove forse sottovaluto ancora la mia capacità di stare dentro la vita?",
+          "eveningReflection": "Che cosa oggi mi ha ricordato la mia forza interiore?",
+          "premiumInsight": "Riconoscere in modo consapevole ciò che è riuscito rafforza fiducia e sicurezza interiore.",
+          "integrationQuestion": "Come posso riconoscere più rapidamente le mie forze quando mi sento sotto pressione?"
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "variants": [
+        {
+          "title": "Vedere i collegamenti",
+          "intro": "Quando riconosci i collegamenti, la vita appare spesso più ordinata e meno minacciosa. Dare un senso alle connessioni crea stabilità.",
+          "deepening": "Spesso non soffriamo solo per il peso in sé, ma per la mancanza di connessione. Quando pensieri, emozioni, reazioni ed eventi tornano a essere leggibili insieme, nasce una logica interiore.",
+          "nervousSystemLink": "Comprendere i collegamenti può ridurre l’incertezza e aiutare il sistema a uscire da un allarme diffuso.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Davanti a una fatica di oggi, chiediti: che cosa qui è collegato a che cosa? Che cosa attiva che cosa?"
+          },
+          "journalPrompt": "Quale connessione oggi vedo con più chiarezza rispetto a qualche tempo fa?",
+          "eveningReflection": "Dove oggi un collegamento più chiaro mi ha dato sicurezza?",
+          "premiumInsight": "Comprensibilità e collegamento sostengono il senso di coerenza e rafforzano la stabilizzazione interiore.",
+          "integrationQuestion": "Come posso cercare più rapidamente i collegamenti, e non solo i sintomi, quando vivo un momento difficile?"
+        },
+        {
+          "title": "Un filo rosso interiore",
+          "intro": "Alcune cose diventano più leggere quando riesci a riconoscere il filo conduttore che le attraversa. Il collegamento può sostenere dove prima c’era solo agitazione.",
+          "deepening": "Quando esperienze, schemi e reazioni appaiono scollegati, nasce stress. Se invece capisci che molti elementi seguono una loro logica interiore, cresce un senso di struttura e comprensibilità.",
+          "nervousSystemLink": "Un ordine interiore percepibile viene spesso vissuto come più sicuro rispetto a una frammentazione diffusa.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Scrivi oggi una frase su uno schema ricorrente: «Quando succede..., spesso reagisco con...»"
+          },
+          "journalPrompt": "Quale schema della mia quotidianità acquista oggi più senso se lo guardo con calma?",
+          "eveningReflection": "Che cosa oggi mi è sembrato meno caotico perché ho visto un collegamento?",
+          "premiumInsight": "Riconoscere gli schemi facilita una regolazione più consapevole, perché rende più comprensibili le reazioni.",
+          "integrationQuestion": "Quale schema vorrei riconoscere prima in futuro?"
+        },
+        {
+          "title": "Trovare ordine dentro di sé",
+          "intro": "Avere ordine nel pensiero non significa controllare tutto. Significa dare all’esperienza un posto, delle parole e una direzione.",
+          "deepening": "Più riesci a organizzare il disordine interiore, meno il carico diventa opprimente. La comprensibilità è un fattore silenzioso ma molto potente della stabilità salutogenica.",
+          "nervousSystemLink": "L’ordine interiore favorisce prevedibilità, e la prevedibilità ha spesso un effetto calmante sul sistema nervoso.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Se oggi emerge agitazione, chiediti: «Che cosa sta succedendo esattamente – e quali elementi qui appartengono davvero insieme?»"
+          },
+          "journalPrompt": "In quale area della mia vita desidero più ordine interiore?",
+          "eveningReflection": "Quando oggi uno sguardo interiore più chiaro mi ha dato calma?",
+          "premiumInsight": "La comprensibilità non elimina sempre il peso, ma spesso ne riduce la durezza.",
+          "integrationQuestion": "Come posso coltivare nella vita quotidiana piccoli momenti di ordine e lettura interiore?"
+        }
+      ]
+    },
+    {
+      "day": 8,
+      "variants": [
+        {
+          "title": "Piccoli passi, effetto reale",
+          "intro": "Anche i passi più piccoli possono rafforzare in modo significativo il tuo senso di gestibilità. Il sistema nervoso reagisce spesso alla fattibilità, non alla grandezza.",
+          "deepening": "Molte persone si bloccano a causa di aspettative troppo alte. In realtà, lo sviluppo salutogenico nasce spesso dal contrario: passi piccoli, realistici e ripetibili. Il piccolo non è meno importante, spesso è più efficace.",
+          "nervousSystemLink": "Azioni semplici e concrete vengono percepite dal sistema come più sicure e accessibili rispetto a obiettivi grandi e indefiniti.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Chiediti oggi: qual è l’azione più piccola e sensata che posso fare adesso?"
+          },
+          "journalPrompt": "Quale piccolo passo sarebbe oggi già sufficiente?",
+          "eveningReflection": "Dove oggi un piccolo gesto ha avuto più effetto di quanto pensassi?",
+          "premiumInsight": "I passi piccoli aumentano il senso di controllo e proteggono dal sovraccarico.",
+          "integrationQuestion": "Come posso tradurre più spesso i miei obiettivi in passi più piccoli?"
+        },
+        {
+          "title": "Continuità invece di perfezione",
+          "intro": "Ciò che ripeti nel tempo cambia più di ciò che riesce perfettamente una sola volta. Lo sviluppo ama la continuità.",
+          "deepening": "Nel pensiero salutogenico conta non solo l’intenzione, ma la possibilità di ripetere. Un passo piccolo che fai davvero ha spesso più valore di un piano ideale che non riesci a sostenere.",
+          "nervousSystemLink": "Ripetizione e prevedibilità possono trasmettere al sistema un senso di sicurezza e stabilità.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Scegli oggi una piccola azione sana che vuoi ripetere nei prossimi tre giorni."
+          },
+          "journalPrompt": "Quale gesto è così adatto a me da poter essere davvero ripetuto?",
+          "eveningReflection": "Che cosa oggi è stato più coerente che perfetto?",
+          "premiumInsight": "Piccole azioni ripetute costruiscono routine stabili e rafforzano la coerenza.",
+          "integrationQuestion": "Quale mini-routine voglio iniziare a costruire?"
+        },
+        {
+          "title": "Sentire ciò che è possibile",
+          "intro": "La gestibilità cresce quando senti: questo è possibile per me. Non un giorno, ma oggi.",
+          "deepening": "Molte situazioni diventano più pesanti quando appaiono troppo grandi interiormente. Ridurre un compito a una dimensione realistica crea spesso subito più calma e chiarezza.",
+          "nervousSystemLink": "La percezione di fattibilità riduce il senso di sopraffazione e aumenta la disponibilità ad agire.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Prendi un compito e chiediti: come posso renderlo più leggero, più semplice o più gentile?"
+          },
+          "journalPrompt": "Dove ho bisogno oggi di meno pressione e più fattibilità?",
+          "eveningReflection": "Quando oggi qualcosa si è sentito possibile invece che pesante?",
+          "premiumInsight": "La gestibilità rafforza il senso di coerenza perché rende le richieste più influenzabili.",
+          "integrationQuestion": "Come posso iniziare la giornata di domani con un passo realmente fattibile?"
+        }
+      ]
+    },
+    {
+      "day": 9,
+      "variants": [
+        {
+          "title": "Fiducia in te stessa",
+          "intro": "La fiducia nelle tue capacità è una base centrale della resilienza. Nasce spesso nell’azione, non nell’attesa.",
+          "deepening": "La fiducia non è qualcosa di rumoroso. È un sapere silenzioso: posso restare in relazione con me stessa e con la vita, anche nelle difficoltà. Questo cresce con ogni esperienza vissuta.",
+          "nervousSystemLink": "La fiducia nella propria capacità d’azione può calmare il sistema e ridurre il senso di impotenza.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Scrivi tre situazioni della tua vita in cui hai gestito più di quanto pensassi possibile."
+          },
+          "journalPrompt": "Che cosa dimostra che sono più forte di quanto a volte credo?",
+          "eveningReflection": "Quando oggi ho agito più dalla fiducia che dalla paura?",
+          "premiumInsight": "Ricordare le proprie capacità rafforza sicurezza e resilienza.",
+          "integrationQuestion": "Come posso nutrire la fiducia in me stessa nel quotidiano?"
+        },
+        {
+          "title": "Costruire resilienza",
+          "intro": "Ogni passo affrontato rafforza la tua capacità di resistere. La resilienza cresce con l’esperienza.",
+          "deepening": "Essere resilienti non significa non sentire il peso, ma ritrovare orientamento dopo di esso. Questo diventa più facile quando riconosci ciò che hai già attraversato.",
+          "nervousSystemLink": "Ricordare esperienze superate può rafforzare fiducia e stabilità interna.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Completa la frase: «Allora sono riuscita a… e oggi posso…»"
+          },
+          "journalPrompt": "Quale esperienza passata mi ricorda la mia forza?",
+          "eveningReflection": "Che cosa oggi mi ha fatto sentire capace di reggere?",
+          "premiumInsight": "La resilienza cresce quando le esperienze vengono riconosciute come superate.",
+          "integrationQuestion": "Come posso ricordare più facilmente le mie risorse nei momenti difficili?"
+        },
+        {
+          "title": "Stabilità attraverso l’esperienza",
+          "intro": "La fiducia cresce quando ti vivi nell’azione. Non prima.",
+          "deepening": "Molte persone aspettano di sentirsi pronte prima di agire. Ma spesso è l’azione stessa che crea stabilità e fiducia.",
+          "nervousSystemLink": "L’azione attiva rafforza il senso di controllo e riduce la passività.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Affronta oggi consapevolmente una piccola situazione che tendi a evitare."
+          },
+          "journalPrompt": "Dove un piccolo atto di coraggio potrebbe rafforzarmi oggi?",
+          "eveningReflection": "Quando oggi mi sono sentita capace nonostante l’incertezza?",
+          "premiumInsight": "La fiducia cresce più attraverso l’esperienza che attraverso il pensiero positivo.",
+          "integrationQuestion": "Quale piccola sfida voglio affrontare nei prossimi giorni?"
+        }
+      ]
+    },
+    {
+      "day": 10,
+      "variants": [
+        {
+          "title": "Sostegno sociale",
+          "intro": "Il sostegno sociale è una risorsa fondamentale. Sentirsi sostenuti è parte della salute.",
+          "deepening": "La regolazione non avviene solo da soli. Connessione, appartenenza e contatto sincero possono offrire stabilità proprio nei momenti difficili.",
+          "nervousSystemLink": "La connessione può aumentare il senso di sicurezza e ridurre il carico percepito.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Chiediti: con chi mi sento più al sicuro? Prendi contatto con questa persona."
+          },
+          "journalPrompt": "Quale relazione sostiene davvero il mio benessere?",
+          "eveningReflection": "Quando oggi mi sono sentita connessa o sostenuta?",
+          "premiumInsight": "Il sostegno sociale può ridurre il carico emotivo e aumentare la resilienza.",
+          "integrationQuestion": "Come posso coltivare le relazioni invece di aspettare che accadano?"
+        },
+        {
+          "title": "Sentire appartenenza",
+          "intro": "L’appartenenza può essere profondamente regolante. Non devi essere sempre forte da sola.",
+          "deepening": "Nei momenti difficili si tende a isolarsi, ma proprio allora la connessione può avere un effetto calmante.",
+          "nervousSystemLink": "L’appartenenza riduce la tensione interna e favorisce la co-regolazione.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Ricorda una persona con cui ti sei sentita davvero accolta."
+          },
+          "journalPrompt": "Dove sento davvero appartenenza?",
+          "eveningReflection": "Quando oggi mi sono sentita meno sola?",
+          "premiumInsight": "Percepire connessione aumenta la sicurezza interiore.",
+          "integrationQuestion": "Che tipo di vicinanza voglio permettere di più?"
+        },
+        {
+          "title": "Lasciarsi aiutare",
+          "intro": "Accettare aiuto è maturità, non debolezza.",
+          "deepening": "Molti sanno dare, ma faticano a ricevere. Ma la salute nasce anche nella capacità di lasciarsi sostenere.",
+          "nervousSystemLink": "Accogliere aiuto riduce pressione e previene esaurimento.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Permettiti oggi di accettare o chiedere aiuto in qualcosa di piccolo."
+          },
+          "journalPrompt": "Dove posso smettere di fare tutto da sola?",
+          "eveningReflection": "Quando oggi il supporto è stato utile?",
+          "premiumInsight": "Ricevere supporto rafforza equilibrio emotivo.",
+          "integrationQuestion": "Come posso vedere l’aiuto come risorsa?"
+        }
+      ]
+    },
+    {
+      "day": 11,
+      "variants": [
+        {
+          "title": "Crescere nel difficile",
+          "intro": "Anche nelle difficoltà può esistere uno spazio di crescita.",
+          "deepening": "Non si tratta di rendere bello il dolore, ma di riconoscere che alcune esperienze possono sviluppare nuove capacità.",
+          "nervousSystemLink": "Una prospettiva di crescita può ridurre la rigidità interna.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Chiediti: cosa potrebbe rafforzarsi in me attraverso questa esperienza?"
+          },
+          "journalPrompt": "Quale capacità potrebbe svilupparsi ora?",
+          "eveningReflection": "Che cosa oggi è cresciuto nonostante la difficoltà?",
+          "premiumInsight": "La crescita riduce la sensazione di perdita totale.",
+          "integrationQuestion": "Come posso vedere sviluppo senza negare la fatica?"
+        },
+        {
+          "title": "Riconoscere sviluppo",
+          "intro": "Ogni difficoltà può contenere una possibilità di evoluzione.",
+          "deepening": "Non tutto rende più forti, ma alcune esperienze portano chiarezza e maturità.",
+          "nervousSystemLink": "Vedere sviluppo aumenta apertura e riduce blocco.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Scrivi cosa stai imparando su te stessa."
+          },
+          "journalPrompt": "Cosa cambia in me in questo periodo?",
+          "eveningReflection": "Dove oggi sono stata più consapevole?",
+          "premiumInsight": "Lo sviluppo aumenta flessibilità mentale.",
+          "integrationQuestion": "Quale crescita voglio riconoscere?"
+        },
+        {
+          "title": "Nuove capacità",
+          "intro": "Le sfide possono generare nuove capacità.",
+          "deepening": "Non tutto cresce nel comfort. Alcune qualità emergono proprio nella difficoltà.",
+          "nervousSystemLink": "Vedere apprendimento rende il sistema più flessibile.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Quale capacità sto sviluppando ora?"
+          },
+          "journalPrompt": "Quale nuova forza sta emergendo?",
+          "eveningReflection": "Cosa ho scoperto oggi su di me?",
+          "premiumInsight": "L’apprendimento aumenta resilienza.",
+          "integrationQuestion": "Come restare aperta alla crescita?"
+        }
+      ]
+    },
+    {
+      "day": 12,
+      "variants": [
+        {
+          "title": "Chiarezza e orientamento",
+          "intro": "La chiarezza crea stabilità.",
+          "deepening": "Distinguere ciò che conta riduce il caos interno.",
+          "nervousSystemLink": "La chiarezza riduce sovraccarico.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Che cosa è davvero importante oggi?"
+          },
+          "journalPrompt": "Dove mi serve chiarezza?",
+          "eveningReflection": "Che cosa è diventato più semplice?",
+          "premiumInsight": "La chiarezza supporta regolazione.",
+          "integrationQuestion": "Quale domanda mi aiuta a chiarire?"
+        },
+        {
+          "title": "Fare un passo indietro",
+          "intro": "La chiarezza nasce nello spazio.",
+          "deepening": "Un momento di distanza riduce reattività.",
+          "nervousSystemLink": "Una pausa riduce attivazione e pressione interna.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Prima di reagire, fai oggi tre respiri lenti e consapevoli."
+          },
+          "journalPrompt": "Dove oggi ho bisogno di più distanza interiore?",
+          "eveningReflection": "Quando oggi mi ha aiutato fermarmi un attimo?",
+          "premiumInsight": "Tra stimolo e risposta nasce spesso la possibilità di scelta.",
+          "integrationQuestion": "Come posso creare più spazio dentro la mia giornata?"
+        },
+        {
+          "title": "Direzione interiore",
+          "intro": "La direzione dà stabilità. Sapere verso che cosa ti orienti può calmare il sistema.",
+          "deepening": "Molte persone cercano prima pace, ma spesso serve anzitutto direzione. Quando sai che cosa conta davvero oggi, il tuo mondo interiore diventa meno disperso.",
+          "nervousSystemLink": "Una direzione chiara riduce confusione e offre al sistema più prevedibilità.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Completa oggi la frase: «Oggi mi oriento interiormente verso…»"
+          },
+          "journalPrompt": "Quale direzione mi stabilizza oggi più di tutto?",
+          "eveningReflection": "Che cosa oggi mi ha dato un senso di ordine interiore?",
+          "premiumInsight": "La direzione riduce frammentazione e rafforza coerenza.",
+          "integrationQuestion": "Quale focus desidero mantenere più consapevolmente nei prossimi giorni?"
+        }
+      ]
+    },
+    {
+      "day": 13,
+      "variants": [
+        {
+          "title": "Responsabilità come scelta",
+          "intro": "La responsabilità non è colpa. È la capacità di riconoscere dove puoi influire.",
+          "deepening": "Responsabilità non significa caricarti di tutto. Significa vedere con chiarezza dove hai un margine di azione. Proprio lì può nascere forza interiore.",
+          "nervousSystemLink": "Un senso di responsabilità consapevole riduce impotenza e rafforza orientamento.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Chiediti oggi: che cosa posso influenzare concretamente in questa situazione?"
+          },
+          "journalPrompt": "Dove oggi posso agire invece di restare passiva?",
+          "eveningReflection": "Quando oggi ho scelto in modo attivo invece di subire?",
+          "premiumInsight": "La responsabilità aumenta autonomia e auto-guida.",
+          "integrationQuestion": "Come posso restare gentile con me mentre mi assumo la mia parte?"
+        },
+        {
+          "title": "Dal reagire al creare",
+          "intro": "Puoi creare, non solo reagire. Anche nei piccoli spazi esiste già possibilità di scelta.",
+          "deepening": "Molto spesso la vita sembra chiedere solo reazioni. Ma appena riconosci un piccolo spazio di decisione, torni a essere soggetto attivo della tua esperienza.",
+          "nervousSystemLink": "Sentirsi capaci di dare forma aumenta controllo e riduce stress.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Prendi oggi una decisione chiara che stai rimandando da tempo."
+          },
+          "journalPrompt": "In quale ambito voglio oggi creare invece di reagire soltanto?",
+          "eveningReflection": "Quale decisione mi ha rafforzata interiormente?",
+          "premiumInsight": "Le decisioni consapevoli rafforzano autoefficacia e fiducia.",
+          "integrationQuestion": "Che cosa sto ancora rimandando e che oggi potrebbe essere chiarito?"
+        },
+        {
+          "title": "Autodeterminazione",
+          "intro": "Agire in accordo con te stessa crea libertà interiore.",
+          "deepening": "Non tutto nella vita è libero, ma qualcosa sì. E proprio quel piccolo spazio di autenticità può fare una grande differenza nella percezione di sé.",
+          "nervousSystemLink": "L’autodeterminazione aumenta orientamento e riduce adattamento forzato.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Chiediti oggi: qual è qui la scelta più autentica per me?"
+          },
+          "journalPrompt": "Dove nella mia vita non sto ancora agendo in modo pienamente autentico?",
+          "eveningReflection": "Quando oggi mi sono sentita libera e in sintonia con me stessa?",
+          "premiumInsight": "L’autenticità rafforza coerenza, chiarezza e stabilità emotiva.",
+          "integrationQuestion": "Come posso scegliere in modo più autentico già domani?"
+        }
+      ]
+    },
+    {
+      "day": 14,
+      "variants": [
+        {
+          "title": "Esperienza come risorsa",
+          "intro": "Ogni esperienza, anche difficile, può ampliare il tuo repertorio interiore di risorse.",
+          "deepening": "Le esperienze non lasciano solo fatica. Se vengono comprese e integrate, possono diventare apprendimento, orientamento e forza.",
+          "nervousSystemLink": "Il ricordo di ciò che hai già attraversato può ridurre stress attuale e rafforzare sicurezza interna.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Scrivi oggi due esperienze da cui hai imparato qualcosa di importante su di te."
+          },
+          "journalPrompt": "Che cosa ho imparato dalle difficoltà che ho già attraversato?",
+          "eveningReflection": "Che cosa oggi ho riconosciuto di prezioso nella mia esperienza?",
+          "premiumInsight": "L’esperienza integrata diventa spesso fonte di fiducia.",
+          "integrationQuestion": "Come posso ricordarmi di più di ciò che ho già imparato nei momenti difficili?"
+        },
+        {
+          "title": "Flessibilità attraverso l’esperienza",
+          "intro": "Ogni esperienza può renderti più adattabile e interiormente mobile.",
+          "deepening": "Non è l’esperienza in sé a trasformare, ma il modo in cui la attraversi e la comprendi. Da lì nasce una flessibilità più matura.",
+          "nervousSystemLink": "La flessibilità riduce rigidità e permette risposte più regolate.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Chiediti oggi: quale nuova risposta posso scegliere al posto di un vecchio automatismo?"
+          },
+          "journalPrompt": "Dove oggi mi accorgo di essere più flessibile rispetto al passato?",
+          "eveningReflection": "In quale momento oggi ho reagito in modo diverso da prima?",
+          "premiumInsight": "La flessibilità rafforza resilienza e adattabilità.",
+          "integrationQuestion": "Quale nuova modalità voglio usare con più consapevolezza in futuro?"
+        },
+        {
+          "title": "Forza dall’esperienza",
+          "intro": "Le esperienze diventano forza quando vengono ascoltate, comprese e integrate.",
+          "deepening": "Ciò che hai vissuto non deve restare solo memoria di fatica. Può diventare una forma di saggezza pratica, una forza silenziosa che ti accompagna.",
+          "nervousSystemLink": "L’esperienza integrata crea più sicurezza interna e orientamento.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Completa oggi la frase: «Quando le cose diventano difficili, mi aiuta…»"
+          },
+          "journalPrompt": "Qual è oggi la mia forza silenziosa, costruita attraverso le esperienze passate?",
+          "eveningReflection": "Che cosa mi ha aiutato oggi grazie a ciò che ho già vissuto?",
+          "premiumInsight": "Un’esperienza integrata può diventare una risorsa stabile e concreta.",
+          "integrationQuestion": "Come posso usare ogni giorno in modo più attivo ciò che ho già imparato?"
+        }
+      ]
+    },
+    {
+      "day": 15,
+      "variants": [
+        {
+          "title": "Percepire le risorse con presenza",
+          "intro": "La presenza ti aiuta a riconoscere con più chiarezza ciò che ti sostiene. Essere presente rende visibile ciò che ti fa bene.",
+          "deepening": "Quando vivi solo in modalità automatica, perdi facilmente il contatto con i segnali sottili di sovraccarico, sicurezza e bisogno. Per questo la presenza non è solo una tecnica di calma, ma un ritorno alla percezione interiore.",
+          "nervousSystemLink": "La presenza consapevole può rendere più riconoscibili i primi segnali di stress e facilitare una regolazione più tempestiva.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Prenditi oggi un minuto e chiedi in silenzio al tuo corpo: «Come sto davvero in questo momento?»"
+          },
+          "journalPrompt": "Che cosa mi mostra oggi il mio mondo interiore, se ascolto con sincerità?",
+          "eveningReflection": "Quando oggi sono stata davvero presente con me stessa, con il mio corpo o con il momento?",
+          "premiumInsight": "La presenza può sostenere il sistema nervoso perché rallenta gli stimoli e rafforza il contatto con sé.",
+          "integrationQuestion": "Come posso inserire più facilmente momenti di presenza nei prossimi giorni?"
+        },
+        {
+          "title": "Presenza invece di automatismo",
+          "intro": "Quando sei presente, riconosci prima ciò che ti fa bene – e anche ciò che è troppo.",
+          "deepening": "Molti schemi quotidiani scorrono in automatico. La presenza crea piccole interruzioni dentro questo automatismo. Proprio lì può nascere libertà di scelta: tra stimolo e reazione, tra abitudine e gesto consapevole.",
+          "nervousSystemLink": "La presenza può ridurre la reattività emotiva e sostenere una regolazione più cosciente.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Scegli oggi un gesto quotidiano – bere, camminare o respirare – e compilo per un minuto con lentezza e piena attenzione."
+          },
+          "journalPrompt": "In quale area della mia vita sto vivendo più in automatico che in vera percezione?",
+          "eveningReflection": "Che cosa oggi è stato diverso perché ero più presente?",
+          "premiumInsight": "Anche brevi momenti di presenza consapevole possono modificare il ritmo interno e interrompere lo stress.",
+          "integrationQuestion": "Quale piccola routine potrebbe diventare per me un’ancora quotidiana di presenza?"
+        },
+        {
+          "title": "Fermarsi per ritrovarsi",
+          "intro": "Quando ti fermi, riconosci più chiaramente ciò che ti fa davvero bene. Fermarsi non interrompe la vita: ti riporta a te.",
+          "deepening": "Nel ritmo della giornata spesso viene oltrepassato ciò di cui l’interno avrebbe davvero bisogno. Un breve momento di pausa può aiutarti a ritrovare contatto con bisogni, limiti e risorse.",
+          "nervousSystemLink": "Fermarsi può ridurre la sovrastimolazione e offrire al sistema uno spazio intermedio regolante.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Prima di iniziare un nuovo compito, fermati oggi consapevolmente per tre respiri."
+          },
+          "journalPrompt": "Di che cosa ho realmente bisogno oggi – non solo che cosa c’è nella mia lista?",
+          "eveningReflection": "Quando oggi una breve pausa mi ha fatto bene?",
+          "premiumInsight": "Fermarsi rafforza il contatto con sé e può aiutare a riconoscere prima decisioni più sane.",
+          "integrationQuestion": "Come voglio collegare la pausa consapevole alla mia vita quotidiana?"
+        }
+      ]
+    },
+    {
+      "day": 16,
+      "variants": [
+        {
+          "title": "Vivere attivamente i propri valori",
+          "intro": "La tua vita acquista più senso quando vivi attivamente i tuoi valori. I valori danno direzione, dignità e coerenza interiore.",
+          "deepening": "I valori non sono solo belle parole. Si manifestano nelle scelte, nelle priorità, nei confini e nel modo in cui tratti te stessa. Più li vivi consapevolmente, più cresce coerenza dentro di te.",
+          "nervousSystemLink": "Una vita orientata ai valori può ridurre conflitti interiori e dare al sistema più direzione e quiete.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Scegli oggi un valore – per esempio chiarezza, gentilezza, onestà o calma – e chiediti: come posso viverlo concretamente oggi?"
+          },
+          "journalPrompt": "Quale valore desidera rendersi visibile oggi attraverso il mio comportamento?",
+          "eveningReflection": "Quando oggi ho agito in sintonia con me stessa?",
+          "premiumInsight": "Agire in modo orientato ai valori rafforza coerenza, stabilità e spesso anche soddisfazione interiore.",
+          "integrationQuestion": "Quale valore voglio incarnare più consapevolmente nei prossimi giorni?"
+        },
+        {
+          "title": "Vivere in autenticità",
+          "intro": "L’autenticità favorisce una soddisfazione più profonda. Quando vivi in accordo con i tuoi valori, la vita diventa spesso più quieta e più chiara.",
+          "deepening": "L’agitazione interiore nasce spesso là dove vivi troppo a lungo contro te stessa – per adattamento, per rinuncia o per compromessi continui. La salutogenesi ti invita a tornare più in sintonia con ciò che senti vero.",
+          "nervousSystemLink": "La coerenza interiore può ridurre tensioni che nascono da un conflitto interno prolungato.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Davanti a una scelta concreta, chiediti oggi: qual è qui la risposta più onesta e più autentica per me?"
+          },
+          "journalPrompt": "Dove sto ancora vivendo troppo contro il mio sapere interiore?",
+          "eveningReflection": "Quando oggi mi sono sentita vera, chiara o interiormente dritta?",
+          "premiumInsight": "L’autenticità sostiene la salute psichica perché rafforza identità, chiarezza e contatto con sé.",
+          "integrationQuestion": "Come posso prendere domani una decisione che mi sembri interiormente più vera?"
+        },
+        {
+          "title": "Senso attraverso la coerenza",
+          "intro": "Una vita in sintonia con i tuoi valori rafforza il tuo senso di significato e soddisfazione. I valori danno direzione dall’interno.",
+          "deepening": "Non devi cambiare subito ogni area della tua vita. Ma anche un avvicinamento consapevole a ciò che per te conta davvero può rendere più viva e più coesa la tua esperienza.",
+          "nervousSystemLink": "Le decisioni basate sui valori possono alleggerire il sistema perché riducono ambivalenza e dispersione interna.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Scrivi oggi una frase: «Nella mia vita voglio stare più chiaramente per…»"
+          },
+          "journalPrompt": "Quale scelta della mia giornata mi fa sentire davvero me stessa?",
+          "eveningReflection": "Che cosa oggi mi ha ricordato i miei valori?",
+          "premiumInsight": "I valori sono un punto di riferimento stabile, soprattutto nei periodi complessi o interiormente agitati.",
+          "integrationQuestion": "Quale piccolo cambiamento renderebbe la mia vita più coerente?"
+        }
+      ]
+    },
+    {
+      "day": 17,
+      "variants": [
+        {
+          "title": "Riconoscere il proprio margine di influenza",
+          "intro": "La resilienza cresce quando riconosci che puoi avere un’influenza. Anche piccoli spazi di influenza possono raddrizzarti interiormente.",
+          "deepening": "Non tutto è nelle tue mani. Ma la forza salutogenica cresce proprio là dove riconosci la parte che puoi orientare. Anche forme molto piccole di influenza possono riattivare speranza e movimento.",
+          "nervousSystemLink": "La percezione di avere influenza può ridurre impotenza e rafforzare la stabilità interna.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "In una situazione che ti pesa, chiediti oggi: «Quale parte è comunque ancora nel mio spazio di influenza?»"
+          },
+          "journalPrompt": "Dove oggi ho più influenza di quanto percepisco a prima vista?",
+          "eveningReflection": "Quando oggi mi sono sentita parte attiva invece che solo esposta agli eventi?",
+          "premiumInsight": "Riconoscere il proprio margine di influenza rafforza motivazione, resilienza e fiducia nel futuro.",
+          "integrationQuestion": "Come posso riconoscere più rapidamente il mio spazio di influenza nei momenti difficili?"
+        },
+        {
+          "title": "Il cambiamento è possibile",
+          "intro": "Anche piccole possibilità di influenza rafforzano la fiducia nel futuro. Il cambiamento comincia spesso nel riconoscere che esiste uno spazio aperto.",
+          "deepening": "A volte una situazione sembra bloccata, anche se nel piccolo esistono già possibilità reali. Quando inizi a vederle, cambia non solo la situazione, ma anche il tuo vissuto interiore.",
+          "nervousSystemLink": "La percezione di qualcosa che può cambiare può sciogliere la sensazione di blocco e rendere la speranza più accessibile al sistema.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Scrivi oggi una cosa piccola che nelle prossime 24 ore puoi concretamente cambiare o influenzare."
+          },
+          "journalPrompt": "Quale cambiamento è già oggi alla mia portata, anche se piccolo?",
+          "eveningReflection": "Dove oggi qualcosa si è mosso perché ho utilizzato una piccola possibilità di influenza?",
+          "premiumInsight": "Piccoli cambiamenti realistici possono sciogliere la rigidità interiore e costruire fiducia.",
+          "integrationQuestion": "Quale abitudine potrebbe rafforzare nel tempo la mia fiducia nel cambiamento?"
+        },
+        {
+          "title": "Aprire spazi di azione",
+          "intro": "La resilienza cresce quando riconosci che il cambiamento non deve iniziare in grande. A volte basta un piccolo spazio d’azione.",
+          "deepening": "Tra il controllo totale e l’impotenza totale esiste spesso un ampio campo di possibilità minori. Riconoscere questo campo è un passo essenziale della salutogenesi.",
+          "nervousSystemLink": "Quando gli spazi di azione diventano visibili, il sistema può uscire da immobilità e confusione verso più regolazione e orientamento.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Chiediti oggi: «Che cosa qui non posso controllare – e che cosa posso comunque influenzare?»"
+          },
+          "journalPrompt": "Dove desidero oggi più spazio interiore di azione?",
+          "eveningReflection": "Quando oggi ho visto possibilità invece che solo limiti?",
+          "premiumInsight": "Percepire spazi di azione sostiene flessibilità psichica e riduce impotenza.",
+          "integrationQuestion": "Come posso abituarmi a cercare prima gli spazi d’azione nelle situazioni difficili?"
+        }
+      ]
+    },
+    {
+      "day": 18,
+      "variants": [
+        {
+          "title": "La speranza come fonte di forza",
+          "intro": "La speranza è una fonte di forza che può sostenere la tua salute nel lungo periodo. Tiene aperti gli spazi interiori.",
+          "deepening": "La speranza non significa negare i problemi. Significa mantenere, anche nell’incertezza, un rapporto con la possibilità. Proprio lì sta la sua forza: non chiude il futuro, lo lascia aperto.",
+          "nervousSystemLink": "La speranza può alleggerire il sistema perché ammorbidisce chiusura, disperazione e rigidità.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Scrivi oggi una frase che ti dia speranza – onesta, realistica e gentile."
+          },
+          "journalPrompt": "Che cosa oggi mi dà speranza, anche in forma molto piccola?",
+          "eveningReflection": "C’è stato oggi un momento in cui il futuro mi è sembrato di nuovo un po’ più aperto?",
+          "premiumInsight": "La fiducia nel possibile può sostenere l’equilibrio interiore e la volontà di continuare.",
+          "integrationQuestion": "Come posso nutrire speranza senza mettermi pressione positiva?"
+        },
+        {
+          "title": "Aprire la prospettiva",
+          "intro": "La speranza apre prospettive, anche quando la strada non è ancora chiara.",
+          "deepening": "Spesso l’interno non ha bisogno subito di una soluzione, ma prima di un orizzonte. La speranza crea questo orizzonte. Non dice: tutto sarà facile. Dice: non tutto è già deciso.",
+          "nervousSystemLink": "Una percezione di prospettiva può ridurre la chiusura emotiva e rendere il sistema più mobile.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Chiediti oggi: quale possibilità potrebbe essere ancora aperta, anche se in questo momento faccio fatica a sentirla?"
+          },
+          "journalPrompt": "Quale prospettiva non voglio abbandonare troppo presto dentro di me?",
+          "eveningReflection": "Che cosa oggi ha reso il mio campo interiore un po’ più ampio?",
+          "premiumInsight": "La prospettiva favorisce flessibilità mentale e protegge dal senso di definitiva chiusura.",
+          "integrationQuestion": "Che cosa mi aiuta a restare interiormente aperta nei periodi difficili?"
+        },
+        {
+          "title": "Coltivare fiducia",
+          "intro": "La fiducia aiuta il tuo sistema nervoso a restare più in equilibrio. Non è una garanzia, ma una postura interiore.",
+          "deepening": "La fiducia non nasce sempre da sicurezza esterna, ma spesso da una scelta interiore: non guardare la vita solo attraverso la paura. Può essere silenziosa, ma resta portante.",
+          "nervousSystemLink": "La fiducia può ridurre l’allerta interna e favorire un pensiero più orientato alle soluzioni.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Appoggia oggi una mano sul cuore e ripetiti interiormente: «Non devo conoscere già tutto il cammino per poter continuare»."
+          },
+          "journalPrompt": "Quale atteggiamento mi donerebbe oggi più fiducia?",
+          "eveningReflection": "Quando oggi sono stata più aperta che interiormente chiusa?",
+          "premiumInsight": "La fiducia sostiene spesso la capacità di restare regolabili anche in mezzo all’incertezza.",
+          "integrationQuestion": "Come voglio coltivare più consapevolmente fiducia nei prossimi giorni?"
+        }
+      ]
+    },
+    {
+      "day": 19,
+      "variants": [
+        {
+          "title": "Partecipare invece di sentirsi in balia",
+          "intro": "Non sei completamente in balia delle circostanze. La partecipazione comincia spesso nel piccolo.",
+          "deepening": "La vita porta situazioni che non hai scelto. Ma in molte di esse rimane uno spazio in cui puoi prendere posizione, rispondere, decidere o porre un confine. Proprio questo rafforza stabilità salutogenica.",
+          "nervousSystemLink": "Sentirsi parte attiva può aiutare il sistema a uscire da impotenza e immobilità interiore.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Davanti a una situazione sgradevole, chiediti oggi: «Come voglio collocarmi interiormente o esteriormente rispetto a questo?»"
+          },
+          "journalPrompt": "Dove oggi posso partecipare attivamente invece di limitarmi a sopportare?",
+          "eveningReflection": "Quando oggi mi sono sentita non solo colpita dagli eventi, ma anche coinvolta attivamente?",
+          "premiumInsight": "La partecipazione attiva rafforza autoefficacia, dignità e senso di influenza interiore.",
+          "integrationQuestion": "In quale area della mia vita voglio partecipare in modo più consapevole?"
+        },
+        {
+          "title": "Scoprire margini di manovra",
+          "intro": "Scoprire margini di manovra è spesso il primo passo verso il cambiamento. Lo spazio può iniziare già nel pensiero.",
+          "deepening": "Anche quando le circostanze esterne sono strette, spesso esistono spazi interiori e pratici. Riconoscerli non cambia subito tutto, ma cambia spesso il tuo modo di stare nella situazione.",
+          "nervousSystemLink": "La percezione di spazi possibili può ridurre impotenza e aumentare flessibilità psichica.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Davanti a una situazione difficile, scrivi oggi tre cose: che cosa è fisso? Che cosa è aperto? Che cosa posso influenzare?"
+          },
+          "journalPrompt": "Quali piccoli spazi esistono già oggi, anche se tendo a non vederli?",
+          "eveningReflection": "Che cosa oggi non era così definitivamente chiuso come sembrava all’inizio?",
+          "premiumInsight": "Anche piccoli margini di manovra possono rafforzare molto il senso di controllo.",
+          "integrationQuestion": "Come posso mantenere nei momenti difficili lo sguardo sui margini di manovra?"
+        },
+        {
+          "title": "Forza di dare forma al quotidiano",
+          "intro": "Anche piccoli gesti possono rafforzare il tuo senso di influenza e capacità di dare forma. Il piccolo conta.",
+          "deepening": "Dare forma non riguarda solo le grandi decisioni. Si manifesta anche in come parli, scegli, ti proteggi, fai pause o ordini le priorità. Proprio lì la salutogenesi diventa concreta.",
+          "nervousSystemLink": "Piccoli passi attivi possono ridurre la passività e dare al sistema più sicurezza.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Scegli oggi una piccola situazione quotidiana e agisci lì in modo consapevole invece che automatico."
+          },
+          "journalPrompt": "Quale piccolo gesto oggi mi dà il senso di poter dare forma alla mia giornata?",
+          "eveningReflection": "Quando oggi ho preso attivamente influenza su qualcosa?",
+          "premiumInsight": "Le micro-azioni possono rafforzare autoefficacia e interrompere immobilità quotidiana.",
+          "integrationQuestion": "Quale piccola abitudine attiva voglio coltivare più consapevolmente?"
+        }
+      ]
+    },
+    {
+      "day": 20,
+      "variants": [
+        {
+          "title": "Orientamento alla soluzione",
+          "intro": "Quando orienti il tuo sguardo verso le soluzioni, rafforzi il tuo equilibrio interiore. Il tuo focus influenza la tua energia.",
+          "deepening": "Orientarsi alla soluzione non significa ignorare i problemi. Significa non restare fissata solo su di essi. Quando guardi anche alle possibilità, spesso dentro di te si apre più spazio.",
+          "nervousSystemLink": "Un focus orientato alla soluzione può ridurre i circoli mentali ripetitivi e alleggerire il sistema dal sovraccarico cognitivo.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Quando oggi qualcosa ti pesa, chiediti consapevolmente: «Quale potrebbe essere qui una piccola soluzione o un alleggerimento utile?»"
+          },
+          "journalPrompt": "Dove oggi sta andando la mia energia – nella preoccupazione o nella possibilità di agire?",
+          "eveningReflection": "Quando oggi il mio vissuto interiore è cambiato perché ho visto una possibilità?",
+          "premiumInsight": "L’orientamento alla soluzione sostiene chiarezza, flessibilità e auto-guida costruttiva.",
+          "integrationQuestion": "Come posso orientarmi più rapidamente verso possibilità utili nelle situazioni pesanti?"
+        },
+        {
+          "title": "Dirigere l’energia in modo costruttivo",
+          "intro": "Il modo in cui ti orienti interiormente influenza spesso il tono della tua giornata. Le soluzioni possono dare forma all’energia.",
+          "deepening": "Quando i problemi occupano troppo spazio, l’energia si raccoglie facilmente in rimuginazione, paura o girare a vuoto. Un passo salutogenico consiste nel dirigere questa energia, con gentilezza, verso azione, alleggerimento o possibilità.",
+          "nervousSystemLink": "Un focus costruttivo può ridurre il sovraccarico emotivo e favorire regolazione.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Scegli oggi un problema che ti occupa e completa la frase: «Un prossimo passo utile potrebbe essere…»"
+          },
+          "journalPrompt": "Dove oggi sto perdendo energia nel problema invece che nella prossima direzione utile?",
+          "eveningReflection": "Che cosa oggi ha rimesso ordine nel mio focus?",
+          "premiumInsight": "Orientarsi verso il prossimo passo utile può rafforzare in modo percepibile equilibrio interiore ed efficacia.",
+          "integrationQuestion": "Quale domanda può aiutarmi a passare più rapidamente dal problema alla possibilità?"
+        },
+        {
+          "title": "Creare spazio per le possibilità",
+          "intro": "Quando ti concentri sulle possibilità, si apre spazio per nuove soluzioni. Le possibilità spesso sono più silenziose dei problemi – ma portano più lontano.",
+          "deepening": "Il problema tende a mettersi in primo piano in modo rumoroso. Le possibilità, invece, richiedono spesso uno sguardo intenzionale. Proprio questo sguardo può ampliare il campo interiore e rendere di nuovo visibile l’azione.",
+          "nervousSystemLink": "Percepire possibilità favorisce speranza, flessibilità e riduce la sensazione di chiusura interna.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Prenditi oggi due minuti e scrivi, accanto a una difficoltà, almeno due possibili risposte utili."
+          },
+          "journalPrompt": "Quale possibilità vedo solo quando la cerco in modo consapevole?",
+          "eveningReflection": "Quando oggi qualcosa è diventato più ampio perché non ho guardato solo il problema?",
+          "premiumInsight": "Percepire possibilità può sciogliere il pensiero rigido e favorire mobilità psichica.",
+          "integrationQuestion": "Come posso allenarmi a vedere più rapidamente le possibilità nella vita quotidiana?"
+        }
+      ]
+    },
+    {
+      "day": 21,
+      "variants": [
+        {
+          "title": "La salute come processo dinamico",
+          "intro": "La salutogenesi ti ricorda che la salute non è uno stato fisso, ma un processo vivo che puoi sostenere attivamente.",
+          "deepening": "La salute nasce raramente da un solo momento perfetto. Più spesso prende forma attraverso molte piccole scelte, orientamenti e ripetizioni. Ogni passo consapevole contribuisce a definire la tua direzione interiore.",
+          "nervousSystemLink": "Piccoli impulsi salutogenici ripetuti possono sostenere sicurezza, prevedibilità e regolazione a lungo termine.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Guarda ai giorni passati e scrivi tre impulsi che desideri portare con te nella tua vita quotidiana."
+          },
+          "journalPrompt": "Che cosa, in questo ciclo, ha sostenuto di più il mio equilibrio interiore?",
+          "eveningReflection": "Quale sviluppo dentro di me voglio oggi riconoscere consapevolmente?",
+          "premiumInsight": "La stabilità duratura nasce spesso dalla ripetizione, non dall’intensità.",
+          "integrationQuestion": "Quale piccola abitudine salutogenica voglio portare con me nel prossimo ciclo?"
+        },
+        {
+          "title": "Costruire benessere nel lungo periodo",
+          "intro": "Ogni passo consapevole verso risorse, regolazione e senso contribuisce al tuo benessere duraturo.",
+          "deepening": "Non tutto mostra subito un effetto. Ma ciò che ripeti in direzione di chiarezza, risorsa, regolazione e significato può iscriversi profondamente nella tua vita nel tempo. La salutogenesi è un cammino, non un evento singolo.",
+          "nervousSystemLink": "La ripetizione aiuta il sistema nervoso non solo a vivere brevemente nuove esperienze, ma anche a integrarle gradualmente.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Scegli oggi un impulso di questo ciclo che desideri ripetere ogni giorno per i prossimi sette giorni."
+          },
+          "journalPrompt": "Quale piccolo gesto potrebbe rafforzare davvero il mio benessere nel lungo periodo?",
+          "eveningReflection": "Che cosa non voglio solo aver capito, ma continuare a vivere?",
+          "premiumInsight": "Lo sviluppo sostenibile nasce spesso quando piccoli rituali diventano ancore stabili.",
+          "integrationQuestion": "Come posso trasformare la salutogenesi da idea a cultura concreta della mia quotidianità?"
+        },
+        {
+          "title": "Dare forma attiva alla salute",
+          "intro": "Salutogenesi significa contribuire attivamente alla tua salute e rafforzarla ogni giorno con consapevolezza. Puoi partecipare alla direzione in cui vivi.",
+          "deepening": "Non si tratta di fare tutto nel modo giusto. Si tratta di entrare ripetutamente in relazione con ciò che ti rafforza, ti regola, ti orienta e dà senso alla tua vita. È proprio qui che nasce una salute vissuta in modo attivo.",
+          "nervousSystemLink": "Routine consapevoli orientate alla salute possono dare al sistema stabilità e costruire sicurezza interiore nel tempo.",
+          "exercise": {
+            "title": "Pratica del giorno",
+            "text": "Formula oggi un’intenzione chiara per il tuo prossimo ciclo: «Nei prossimi giorni desidero rafforzare soprattutto…»"
+          },
+          "journalPrompt": "Che cosa voglio coltivare con più consapevolezza nella mia quotidianità per sostenere la mia salute?",
+          "eveningReflection": "Da che cosa riconosco che mi sto muovendo nella direzione che mi fa bene?",
+          "premiumInsight": "Dare forma attiva alla salute rafforza coerenza, auto-guida e continuità interiore.",
+          "integrationQuestion": "Quale sarà il mio prossimo passo consapevole verso più stabilità e salute?"
+        }
+      ]
+    }
+  ]
+}
