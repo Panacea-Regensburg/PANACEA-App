@@ -1416,6 +1416,7 @@
     }
 
     function getPremiumVariantMap(){
+      const sourceDays = premiumDays.length ? premiumDays : dataDays;
       const currentCycle = getCurrentCycle();
       const savedCycle = parseInt(localStorage.getItem(LS_PREMIUM_CYCLE_ID) || "-1", 10);
       const savedMap = safeJsonParse(localStorage.getItem(LS_PREMIUM_VARIANT_MAP) || "[]", []);
@@ -1423,18 +1424,103 @@
       if(
         savedCycle === currentCycle &&
         Array.isArray(savedMap) &&
-        savedMap.length === premiumDays.length
+        savedMap.length === sourceDays.length
       ){
         return savedMap;
       }
 
       const previousMap = Array.isArray(savedMap) ? savedMap : [];
-      const newMap = generateVariantMap(premiumDays, previousMap);
+      const newMap = generateVariantMap(sourceDays, previousMap);
 
       localStorage.setItem(LS_PREMIUM_CYCLE_ID, String(currentCycle));
       localStorage.setItem(LS_PREMIUM_VARIANT_MAP, JSON.stringify(newMap));
 
       return newMap;
+    }
+
+    function normalizeFreeVariant(rawVariant){
+      if(!rawVariant) return {};
+
+      const free = rawVariant.free || rawVariant;
+
+      return {
+        title: free.title || "Inhalt in Vorbereitung",
+        explanation: free.explanation || "Dieser Tagesimpuls wird bald verfügbar sein.",
+        impuls: free.impuls || free.impulse || "Stabilität entsteht Schritt für Schritt.",
+        reflection: free.reflection || "Was unterstützt mich heute wirklich?",
+        insight: free.insight || free.Insight || "—",
+        question: free.question || free.Question || "—",
+        exercise: free.exercise || null
+      };
+    }
+
+    function normalizePremiumVariant(rawVariant, fallbackTitle = "Lifestyle"){
+      if(!rawVariant) return {};
+
+      const premium = rawVariant.premium || rawVariant;
+
+      const intro = premium.intro || premium.deepening || premium.text || "Noch kein Premium-Text vorhanden.";
+      const deepening = premium.deepening || premium.intro || premium.text || "Noch kein Premium-Text vorhanden.";
+      const nervousSystemLink = premium.nervousSystemLink || premium.regulation || "";
+
+      const insight =
+        premium.insight ||
+        premium.premiumInsight ||
+        premium.Insight ||
+        "—";
+
+      const question =
+        premium.question ||
+        premium.journalPrompt ||
+        premium.Question ||
+        "—";
+
+      const reflection =
+        premium.reflection ||
+        premium.eveningReflection ||
+        "—";
+
+      const integration =
+        premium.integration ||
+        premium.integrationQuestion ||
+        "—";
+
+      const exerciseTitle =
+        premium.exercise?.title ||
+        premium.exerciseTitle ||
+        "Tagespraxis";
+
+      const exerciseText =
+        premium.exercise?.text ||
+        premium.microstep ||
+        premium.microStep ||
+        "—";
+
+      return {
+        title: premium.title || fallbackTitle || "Vertiefung des Tages",
+        intro,
+        deepening,
+        nervousSystemLink,
+        insight,
+        question,
+        reflection,
+        integration,
+        exerciseTitle,
+        exerciseText,
+        focus:
+          premium.focus ||
+          premium.anchor ||
+          fallbackTitle ||
+          "Lifestyle",
+        microstep:
+          premium.microstep ||
+          premium.microStep ||
+          premium.exercise?.text ||
+          "—",
+        autoChoice: premium.autoChoice || "body",
+        smart: premium.smart || null,
+        practiceId: premium.practiceId || premium.practiceID || null
+      };
     }
 
     function getFreeVariantForDay(dayNumber){
@@ -1445,22 +1531,24 @@
 
       const variantMap = getFreeVariantMap();
       const variantIndex = variantMap[dayNumber - 1] ?? 0;
-      const variant = freeDay.variants[variantIndex] || freeDay.variants[0];
+      const rawVariant = freeDay.variants[variantIndex] || freeDay.variants[0];
+      const variant = normalizeFreeVariant(rawVariant);
 
-      return { freeDay, variantIndex, variant };
+      return { freeDay, variantIndex, variant, rawVariant };
     }
 
     function getPremiumVariantForDay(dayNumber){
-      const premiumDay = findPremiumDayObj(dayNumber);
-      if(!premiumDay || !Array.isArray(premiumDay.variants) || premiumDay.variants.length === 0){
+      const sourceDay = findPremiumDayObj(dayNumber) || findDayObj(dayNumber);
+      if(!sourceDay || !Array.isArray(sourceDay.variants) || sourceDay.variants.length === 0){
         return null;
       }
 
       const variantMap = getPremiumVariantMap();
       const variantIndex = variantMap[dayNumber - 1] ?? 0;
-      const variant = premiumDay.variants[variantIndex] || premiumDay.variants[0];
+      const rawVariant = sourceDay.variants[variantIndex] || sourceDay.variants[0];
+      const variant = normalizePremiumVariant(rawVariant, sourceDay.title || "Lifestyle");
 
-      return { premiumDay, variantIndex, variant };
+      return { premiumDay: sourceDay, variantIndex, variant, rawVariant };
     }
 
     function getChoiceLabel(choice){
@@ -1477,12 +1565,12 @@
       const practice = findPracticeById(variant.practiceId);
 
       return {
-        title: practice?.title || variant.activity?.title || "Smart-Übung",
-        intro: variant.activity?.instruction || practice?.instruction || "Wähle intuitiv den Bereich, der dir jetzt am meisten Stabilität geben kann.",
+        title: practice?.title || variant.exerciseTitle || "Smart-Übung",
+        intro: practice?.instruction || "Wähle intuitiv den Bereich, der dir jetzt am meisten Stabilität geben kann.",
         autoChoice: variant.autoChoice || "body",
-        body: variant.smart?.body || practice?.instruction || "Nimm deinen Körper wahr und wähle einen kleinen regulierenden Schritt.",
-        mind: variant.smart?.mind || "Wähle heute einen klaren, entlastenden Gedanken.",
-        action: variant.smart?.action || "Wähle heute eine kleine konkrete Handlung, die wirklich machbar ist."
+        body: variant.smart?.body || practice?.instruction || variant.exerciseText || "Nimm deinen Körper wahr und wähle einen kleinen regulierenden Schritt.",
+        mind: variant.smart?.mind || variant.question || "Wähle heute einen klaren, entlastenden Gedanken.",
+        action: variant.smart?.action || variant.integration || "Wähle heute eine kleine konkrete Handlung, die wirklich machbar ist."
       };
     }
 
@@ -1511,7 +1599,7 @@
     function renderFreeContent(dayData){
       const title = dayData.title || "Inhalt in Vorbereitung";
       const explanation = dayData.explanation || "Dieser Tagesimpuls wird bald verfügbar sein.";
-      const impuls = dayData.impuls || dayData.impulse || "Stabilität entsteht Schritt für Schritt.";
+      const impuls = dayData.impuls || "Stabilität entsteht Schritt für Schritt.";
       const reflection = dayData.reflection || "Was unterstützt mich heute wirklich?";
       const exercise = dayData.exercise || null;
 
@@ -1555,289 +1643,13 @@
 
       const { premiumDay, variantIndex, variant } = premiumData;
 
+      const deepTextParts = [
+        variant.intro,
+        variant.deepening && variant.deepening !== variant.intro ? variant.deepening : "",
+        variant.nervousSystemLink ? `Nervensystem-Link: ${variant.nervousSystemLink}` : ""
+      ].filter(Boolean);
+
       currentVariant = {
         label: getVariantLabel(variantIndex),
-        title: premiumDay.title || "Vertiefung des Tages",
-        sub: "Eine vertiefte, ruhigere und alltagsnahe Einordnung deines heutigen Lifestyle-Impulses.",
-        deepDive: variant.intro || "Noch kein Premium-Text vorhanden.",
-        insight: variant.premiumInsight || "—",
-        question: variant.premiumQuestion || "—",
-        closing: variant.integration || "—",
-        anchor: variant.focus || premiumDay.title || "Lifestyle",
-        micro: variant.microStep || "—",
-        smartExercise: buildSmartExerciseFromVariant(variant)
-      };
-
-      pTitle.textContent = `Mitgliederbereich – ${currentVariant.title}`;
-      pSub.textContent = currentVariant.sub;
-      pPill.textContent = currentVariant.label;
-
-      paperTitle.textContent = currentVariant.title;
-      paperText.textContent = currentVariant.deepDive;
-      paperAnchor.textContent = `🧭 Fokus: ${currentVariant.anchor}`;
-      paperMicro.textContent = `✨ Mikro-Schritt: ${currentVariant.micro}`;
-
-      premiumInsight.textContent = currentVariant.insight;
-      premiumQuestion.textContent = currentVariant.question;
-      premiumClosing.textContent = currentVariant.closing;
-      closingText.textContent = currentVariant.closing;
-
-      closingBox.style.display = "none";
-      renderSmartExercise(currentVariant, currentVariant.smartExercise.autoChoice || "body");
-    }
-
-    function updateImage(day){
-      dayImage.src = `./icons/${day}a.png`;
-      dayImage.alt = `Bild für Tag ${day}`;
-    }
-
-    function renderLockedContent(){
-      tagNumber.textContent = String(currentDay);
-      updateImage(currentDay);
-
-      elTitle.textContent = `Tag ${currentDay} ist noch gesperrt`;
-      elExplanation.textContent = `Dieser Tag wird automatisch freigeschaltet, sobald du ihn im natürlichen Verlauf deines 21-Tage-Programms erreichst.`;
-      elImpuls.textContent = `Nicht alles auf einmal. Heute zählt nur der Tag, der jetzt für dich offen ist.`;
-      elReflection.textContent = `Was hilft mir heute, im aktuellen Schritt zu bleiben – ohne vorauszueilen?`;
-
-      exerciseWrap.style.display = "none";
-      exerciseTitle.textContent = "Mini-Übung";
-      exerciseText.textContent = "—";
-
-      premiumTeaser.style.display = "block";
-      premiumBlock.style.display = "none";
-      closingBox.style.display = "none";
-      currentVariant = null;
-
-      premiumBadge.textContent = "Status: Free";
-      unlockBtnLink.style.display = "";
-      memberBtn.textContent = "Zum Mitgliederbereich";
-
-      prevBtn.disabled = currentDay <= 1;
-      nextBtn.disabled = true;
-      nextBtn.textContent = "Noch gesperrt 🔒";
-
-      completeBtn.disabled = true;
-      completeBtn.textContent = "Noch nicht verfügbar 🔒";
-
-      restartCycleBtn.style.display = "none";
-      cycleDoneBox.style.display = "none";
-    }
-
-    function render(){
-      syncCurrentDayWithUnlocked();
-
-      const locked = isCurrentDayLocked();
-      const freeData = getFreeVariantForDay(currentDay);
-      const dayData = freeData?.variant || {};
-      const completed = isDayCompleted(currentDay);
-      const cycleCompleted = isEntireCycleCompleted();
-
-      if(locked){
-        updateProgressUI();
-        renderLockedContent();
-        return;
-      }
-
-      tagNumber.textContent = String(currentDay);
-      updateImage(currentDay);
-      renderFreeContent(dayData);
-      updateProgressUI();
-
-      if(isMember()){
-        premiumBadge.textContent = "Status: Mitglied ✅";
-        unlockBtnLink.style.display = "none";
-        memberBtn.textContent = "Mitgliederbereich";
-        premiumTeaser.style.display = "none";
-        premiumBlock.style.display = "block";
-        renderPremium(currentDay);
-      } else {
-        premiumBadge.textContent = "Status: Free";
-        unlockBtnLink.style.display = "";
-        memberBtn.textContent = "Zum Mitgliederbereich";
-        premiumTeaser.style.display = "block";
-        premiumBlock.style.display = "none";
-        closingBox.style.display = "none";
-        currentVariant = null;
-      }
-
-      prevBtn.disabled = currentDay <= 1;
-
-      if(currentDay >= TOTAL_DAYS){
-        nextBtn.disabled = true;
-        nextBtn.textContent = completed ? "Letzter Tag ✓" : "Letzter Tag";
-      } else if(currentDay + 1 > getUnlockedDay()){
-        nextBtn.disabled = true;
-        nextBtn.textContent = "Noch gesperrt 🔒";
-      } else {
-        nextBtn.disabled = false;
-        nextBtn.textContent = "Weiter →";
-      }
-
-      if(completed){
-        completeBtn.disabled = true;
-        completeBtn.textContent = "Bereits abgeschlossen ✓";
-      } else {
-        completeBtn.disabled = false;
-        completeBtn.textContent = "Tag als abgeschlossen markieren ✓";
-      }
-
-      if(cycleCompleted){
-        cycleDoneBox.style.display = "block";
-        restartCycleBtn.style.display = "inline-flex";
-      } else {
-        cycleDoneBox.style.display = "none";
-        restartCycleBtn.style.display = "none";
-      }
-    }
-
-    async function loadFreeJSON(){
-      try{
-        const res = await fetch(JSON_URL, { cache: "no-store" });
-        if(!res.ok) throw new Error(`Free JSON fetch failed: ${res.status}`);
-        const json = await res.json();
-        dataDays = Array.isArray(json?.days) ? json.days : (Array.isArray(json) ? json : []);
-      } catch(error){
-        console.warn("Lifestyle FREE JSON konnte nicht geladen werden:", error);
-        dataDays = [];
-      }
-    }
-
-    async function loadPremiumJSON(){
-      try{
-        const res = await fetch(PREMIUM_JSON_URL, { cache: "no-store" });
-        if(!res.ok) throw new Error(`Premium JSON fetch failed: ${res.status}`);
-        const json = await res.json();
-        premiumDays = Array.isArray(json?.days) ? json.days : (Array.isArray(json) ? json : []);
-      } catch(error){
-        console.warn("Lifestyle PREMIUM JSON konnte nicht geladen werden:", error);
-        premiumDays = [];
-      }
-    }
-
-    async function loadPracticesJSON(){
-      try{
-        const res = await fetch(PRACTICES_JSON_URL, { cache: "no-store" });
-        if(!res.ok) throw new Error(`Practices JSON fetch failed: ${res.status}`);
-        const json = await res.json();
-        practices = Array.isArray(json?.practices) ? json.practices : [];
-      } catch(error){
-        console.warn("Practices JSON konnte nicht geladen werden:", error);
-        practices = [];
-      }
-    }
-
-    async function loadJSON(){
-      await Promise.all([loadFreeJSON(), loadPremiumJSON(), loadPracticesJSON()]);
-    }
-
-    function setLang(lang){
-      localStorage.setItem(LS_LANG, lang);
-      if(lang === "it"){
-        window.location.href = "./lifestyleIT.html";
-      } else {
-        btnDE.classList.add("active");
-        btnIT.classList.remove("active");
-      }
-    }
-
-    function initLang(){
-      const lang = (localStorage.getItem(LS_LANG) || "de").toLowerCase();
-      if(lang === "it"){
-        window.location.href = "./lifestyleIT.html";
-        return;
-      }
-      btnDE.classList.add("active");
-      btnIT.classList.remove("active");
-    }
-
-    function bindEvents(){
-      btnDE.addEventListener("click", () => setLang("de"));
-      btnIT.addEventListener("click", () => setLang("it"));
-
-      prevBtn.addEventListener("click", () => {
-        setStoredDay(currentDay - 1);
-      });
-
-      nextBtn.addEventListener("click", () => {
-        if(currentDay < TOTAL_DAYS && currentDay < getUnlockedDay()){
-          setStoredDay(currentDay + 1);
-        }
-      });
-
-      completeBtn.addEventListener("click", () => {
-        if(isCurrentDayLocked()) return;
-        markDayCompleted(currentDay);
-        render();
-      });
-
-      restartCycleBtn.addEventListener("click", () => {
-        restartCycle();
-      });
-
-      choiceBtns.forEach(btn => {
-        btn.addEventListener("click", () => {
-          if(!currentVariant) return;
-          renderSmartExercise(currentVariant, btn.dataset.choice);
-        });
-      });
-
-      applySmartBtn.addEventListener("click", () => {
-        gameResult.textContent = "Gut. Nimm genau diesen kleinen Schritt heute mit – nicht mehr, aber auch nicht weniger.";
-      });
-
-      finishBtn.addEventListener("click", () => {
-        if(!currentVariant) return;
-        closingBox.style.display = "block";
-        if(typeof closingBox.scrollIntoView === "function"){
-          closingBox.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      });
-
-      dayImage.addEventListener("error", () => {
-        dayImage.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(`
-          <svg xmlns="http://www.w3.org/2000/svg" width="800" height="500">
-            <defs>
-              <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#f6f1e6"/>
-                <stop offset="1" stop-color="#efe7d7"/>
-              </linearGradient>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#g)"/>
-            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
-              font-family="Arial" font-size="28" fill="#6b6b6b">
-              Bild folgt (Tag ${currentDay})
-            </text>
-          </svg>
-        `);
-        dayImage.alt = `Platzhalterbild für Tag ${currentDay}`;
-      });
-    }
-
-    async function init(){
-      ensureStartDate();
-      initLang();
-      bindEvents();
-      await loadJSON();
-
-      currentDay = getStoredDay();
-      localStorage.setItem(LS_DAY, String(currentDay));
-
-      updateProgressUI();
-      render();
-    }
-
-    init();
-  </script>
-
-  <script>
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker.register("./service-worker.js")
-          .then(reg => console.log("Service Worker registered", reg))
-          .catch(err => console.log("Service Worker failed", err));
-      });
-    }
-  </script>
-</body>
-</html>
+        title: premiumDay.title || variant.title || "Vertiefung des Tages",
+        sub: "Eine vertiefte, ruhigere und alltagsnahe Einordnung deines heutigen Lifestyle-
