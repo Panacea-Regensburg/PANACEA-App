@@ -1627,5 +1627,20 @@
       resetGame();
     })();
   </script>
+  <div class="premium-box">
+  <h3>Premium Übungen</h3>
+  <p>Vertiefe deine Übungen mit interaktiven Spielen, wissenschaftlichen Übungen und Audio-Guides.</p>
+  <button onclick="checkPremium()">Zu Premium Übungen</button>
+</div>
+
+<script>
+function checkPremium(){
+  if(localStorage.getItem("panacea_premium") === "true"){
+    window.location.href = "uebungen-premium.html";
+  } else {
+    window.location.href = "mitglieder.html";
+  }
+}
+</script>
 </body>
 </html>
