@@ -880,7 +880,7 @@
     <li><b>Geführte Audios, Meditationen und Bonus-Videos</b></li>
     <li><b>Ruhigere Premium-Ansicht</b> mit erweitertem Alltagstraining</li>
   </ul>
-  <a class="memberBtn" href="uebungen-premium.html">Premium Übungen öffnen →</a>
+  <a class="memberBtn" href="#" id="premiumAccessBtn">Premium Übungen öffnen →</a>
   <div class="note">Nach Freischaltung kann Premium automatisch sichtbar werden.</div>
 </div>
 
@@ -1443,5 +1443,26 @@
       resetGame();
     })();
   </script>
+  <script>
+  (function(){
+    const btn = document.getElementById("premiumAccessBtn");
+    if(!btn) return;
+
+    btn.addEventListener("click", function(e){
+      e.preventDefault();
+
+      const isMember =
+        localStorage.getItem("panacea_premium") === "true" ||
+        localStorage.getItem("premiumUnlocked") === "true" ||
+        localStorage.getItem("mitglied") === "true";
+
+      if(isMember){
+        window.location.href = "uebungen-premium.html";
+      } else {
+        window.location.href = "mitglieder.html";
+      }
+    });
+  })();
+</script>
 </body>
 </html>
