@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Panacea – Esercizi</title>
   <link rel="icon" href="./icons/icon-192.png" />
 
@@ -14,31 +14,38 @@
       --card2:#ffffffee;
       --gold:#c8a24a;
       --gold2:#e8d28a;
-      --gold3:#fff3cf;
+      --gold3:#fff6d6;
       --text:#2b2b2b;
       --muted:#6b6b6b;
+      --soft:#8d7b57;
       --ok:#2e7d32;
       --warn:#8a6d1d;
-      --shadow: 0 14px 40px rgba(0,0,0,.10);
-      --shadow2: 0 10px 26px rgba(0,0,0,.10);
-      --goldGlow: 0 0 24px rgba(200,162,74,.18);
-      --radius: 22px;
-      --radius2: 18px;
+      --shadow:0 14px 40px rgba(0,0,0,.10);
+      --shadow2:0 10px 26px rgba(0,0,0,.08);
+      --radius:22px;
+      --radius2:18px;
+
+      --fs-title: clamp(1.28rem, 1.04rem + 1vw, 1.55rem);
+      --fs-subtitle: clamp(1rem, .92rem + .38vw, 1.08rem);
+      --fs-section: clamp(.98rem, .9rem + .34vw, 1.04rem);
+      --fs-body: clamp(.9rem, .84rem + .2vw, .96rem);
+      --fs-small: clamp(.78rem, .74rem + .18vw, .84rem);
+      --fs-button: clamp(.84rem, .8rem + .16vw, .92rem);
     }
 
     *{ box-sizing:border-box; }
+
     html{ scroll-behavior:smooth; }
 
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color:var(--text);
-      background:
-        radial-gradient(1200px 800px at 30% 0%, var(--bg1), var(--bg2));
+      background: radial-gradient(1200px 800px at 30% 0%, var(--bg1), var(--bg2));
       min-height:100vh;
       display:flex;
       justify-content:center;
-      padding:28px 14px;
+      padding:14px 10px 24px;
     }
 
     .phone{
@@ -47,70 +54,113 @@
     }
 
     .topbar{
-      display:grid;
-      grid-template-columns: 1fr auto 1fr;
+      display:flex;
       align-items:center;
-      gap:10px;
-      margin-bottom:14px;
+      justify-content:space-between;
+      gap:8px;
+      margin-bottom:12px;
+      padding:8px 10px;
+      border-radius:18px;
+      background:rgba(255,255,255,.45);
+      backdrop-filter: blur(8px);
+      border:1px solid rgba(200,162,74,.14);
+      box-shadow: 0 8px 18px rgba(0,0,0,.04);
+      overflow:hidden;
+    }
+
+    .topLeft,
+    .topRight{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      min-width:0;
+      flex:1 1 0;
+    }
+
+    .topRight{
+      justify-content:flex-end;
     }
 
     .back{
-      justify-self:start;
       text-decoration:none;
       display:inline-flex;
       align-items:center;
-      gap:8px;
-      padding:10px 14px;
+      justify-content:center;
+      gap:6px;
+      padding:9px 12px;
       border-radius:999px;
       background: linear-gradient(180deg, var(--card2), var(--card));
       box-shadow: var(--shadow2);
       color:var(--text);
-      border:1px solid rgba(200,162,74,.20);
+      border:1px solid rgba(200,162,74,.18);
       white-space:nowrap;
       font-weight:800;
+      font-size:var(--fs-button);
+      line-height:1;
+      flex:0 0 auto;
     }
 
     .langToggle{
       display:flex;
-      gap:10px;
+      gap:6px;
       align-items:center;
-      justify-content:center;
+      min-width:0;
+      flex:0 1 auto;
     }
 
     .langBtn{
       appearance:none;
       border:none;
       cursor:pointer;
-      padding:10px 14px;
+      padding:9px 10px;
       border-radius:999px;
-      font-weight:900;
-      letter-spacing:.2px;
-      background: rgba(255,255,255,.70);
-      border:1px solid rgba(200,162,74,.18);
-      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+      font-weight:850;
+      letter-spacing:.1px;
+      background: rgba(255,255,255,.72);
+      border:1px solid rgba(200,162,74,.16);
+      box-shadow: 0 8px 18px rgba(0,0,0,.05);
       color: var(--text);
       white-space:nowrap;
+      font-size:var(--fs-button);
+      line-height:1;
+      min-width:0;
     }
 
     .langBtn.active{
-      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
-      border:1px solid rgba(200,162,74,.35);
+      background: radial-gradient(circle at 20% 10%, var(--gold3), var(--gold2));
+      border:1px solid rgba(200,162,74,.34);
       color:#3a2c10;
-      text-shadow: 0 0 10px rgba(200,162,74,.22);
+      text-shadow: 0 0 10px rgba(200,162,74,.18);
     }
 
     .brand{
-      justify-self:end;
+      min-width:0;
       text-align:right;
-      line-height:1.1;
+      line-height:1.05;
       white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
 
-    .brand .t1{ font-size:14px; color:var(--muted); }
-    .brand .t2{ font-size:18px; font-weight:800; letter-spacing:.2px; }
+    .brand .t1{
+      font-size:11px;
+      color:var(--muted);
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-weight:800;
+    }
+
+    .brand .t2{
+      font-size:15px;
+      font-weight:900;
+      letter-spacing:.1px;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
     .brand .glow{
       color:var(--gold);
-      text-shadow: 0 0 10px rgba(200,162,74,.30);
+      text-shadow: 0 0 10px rgba(200,162,74,.22);
       font-weight:900;
     }
 
@@ -123,71 +173,78 @@
     }
 
     .hero{
-      padding:18px 18px 14px 18px;
+      padding:18px 16px 14px;
       display:flex;
-      gap:14px;
+      gap:12px;
       align-items:center;
     }
 
     .badge{
-      width:64px;
-      height:64px;
+      width:60px;
+      height:60px;
       border-radius:18px;
       display:flex;
       align-items:center;
       justify-content:center;
       font-weight:900;
-      font-size:16px;
+      font-size:15px;
       color:#3a2c10;
-      background: radial-gradient(circle at 30% 20%, #fff6d6, #e8d28a);
-      border:1px solid rgba(200,162,74,.35);
-      box-shadow: 0 0 16px rgba(200,162,74,.25);
+      background: radial-gradient(circle at 30% 20%, var(--gold3), var(--gold2));
+      border:1px solid rgba(200,162,74,.32);
+      box-shadow: 0 0 16px rgba(200,162,74,.20);
       flex:0 0 auto;
     }
 
     .hero h1{
       margin:0;
-      font-size:20px;
-      letter-spacing:.2px;
+      font-size:var(--fs-title);
+      line-height:1.15;
+      font-weight:900;
+      letter-spacing:.1px;
+      color:#2a2113;
     }
 
     .hero p{
-      margin:6px 0 0 0;
+      margin:7px 0 0;
       color:var(--muted);
-      font-size:13px;
-      line-height:1.5;
+      font-size:var(--fs-body);
+      line-height:1.55;
+      font-weight:600;
     }
 
     .content{
-      padding:16px 18px 18px 18px;
+      padding:16px;
     }
 
     .intro{
       padding:14px;
       border-radius:18px;
-      border:1px solid rgba(200,162,74,.18);
-      background: rgba(255,255,255,.68);
-      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+      border:1px solid rgba(200,162,74,.16);
+      background: rgba(255,255,255,.7);
+      box-shadow: 0 10px 22px rgba(0,0,0,.05);
       margin-bottom:14px;
     }
 
     .intro h2,
     .sectionTitle,
-    .premiumSectionTitle{
-      margin:0 0 8px 0;
-      font-size:15px;
+    .premiumWrap h3{
+      margin:0 0 8px;
+      font-size:var(--fs-section);
       font-weight:900;
       color:#3a2c10;
-      letter-spacing:.2px;
+      letter-spacing:.12px;
+      line-height:1.2;
     }
 
     .intro p,
-    .sectionLead{
+    .sectionLead,
+    .miniText,
+    .premiumWrap ul{
       margin:0;
-      color: rgba(43,43,43,.78);
-      font-size:13px;
+      color: rgba(43,43,43,.82);
+      font-size:var(--fs-body);
       line-height:1.58;
-      font-weight:750;
+      font-weight:650;
     }
 
     .warning{
@@ -197,8 +254,8 @@
       background: rgba(255,248,230,.95);
       border:1px solid rgba(200,162,74,.22);
       color:#5f4a16;
-      font-size:12px;
-      line-height:1.48;
+      font-size:var(--fs-small);
+      line-height:1.5;
       font-weight:800;
     }
 
@@ -212,7 +269,7 @@
       display:flex;
       gap:8px;
       flex-wrap:wrap;
-      margin:12px 0 0 0;
+      margin-top:12px;
     }
 
     .navChip{
@@ -222,12 +279,13 @@
       padding:9px 12px;
       border-radius:999px;
       text-decoration:none;
-      font-weight:900;
-      font-size:12px;
+      font-weight:850;
+      font-size:var(--fs-small);
       color:#3a2c10;
-      background: rgba(255,255,255,.78);
-      border:1px solid rgba(200,162,74,.18);
+      background: rgba(255,255,255,.8);
+      border:1px solid rgba(200,162,74,.16);
       box-shadow: 0 8px 18px rgba(0,0,0,.05);
+      line-height:1.1;
     }
 
     .grid{
@@ -237,86 +295,88 @@
 
     .block,
     .toolCard,
-    .premiumWrap,
-    .premiumCard,
-    .premiumHeroCard,
-    .moduleCard{
+    .premiumWrap{
       border-radius:18px;
       border:1px solid rgba(200,162,74,.18);
-      background: rgba(255,255,255,.66);
+      background: rgba(255,255,255,.68);
       box-shadow: 0 10px 22px rgba(0,0,0,.06);
       overflow:hidden;
     }
 
     .blockHead,
-    .toolHead,
-    .premiumHead,
-    .moduleHead{
+    .toolHead{
       padding:12px 14px;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:10px;
       border-bottom:1px solid rgba(200,162,74,.14);
-      background: linear-gradient(180deg, rgba(255,255,255,.78), rgba(255,255,255,.58));
+      background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.58));
     }
 
     .blockTitle,
-    .toolTitle,
-    .premiumCardTitle,
-    .moduleTitle{
+    .toolTitle{
       font-weight:900;
-      font-size:14px;
+      font-size:var(--fs-section);
       color:#3a2c10;
-      letter-spacing:.2px;
+      letter-spacing:.1px;
+      line-height:1.25;
     }
 
     .blockMeta,
-    .toolMeta,
-    .premiumMeta,
-    .moduleMeta{
-      font-size:12px;
+    .toolMeta{
+      font-size:var(--fs-small);
       font-weight:800;
-      color: rgba(43,43,43,.72);
+      color: rgba(43,43,43,.74);
       display:flex;
       gap:8px;
       align-items:center;
       flex-wrap:wrap;
       justify-content:flex-end;
+      flex-shrink:0;
     }
 
-    .pill{
+    .pill,
+    .score{
       padding:7px 10px;
       border-radius:999px;
-      background: rgba(255,255,255,.75);
+      background: rgba(255,255,255,.78);
       border:1px solid rgba(200,162,74,.16);
-      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+      box-shadow: 0 8px 18px rgba(0,0,0,.04);
       font-variant-numeric: tabular-nums;
       white-space:nowrap;
+      font-weight:900;
+      font-size:var(--fs-small);
+      line-height:1;
+    }
+
+    .score{
+      min-width:42px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
     }
 
     .blockBody,
-    .toolBody,
-    .premiumBody,
-    .moduleBody{
-      padding:12px 14px 14px 14px;
+    .toolBody{
+      padding:12px 14px 14px;
     }
 
     .miniText{
-      margin:0 0 10px 0;
-      color: rgba(43,43,43,.76);
-      font-size:13px;
-      line-height:1.56;
-      font-weight:750;
+      margin:0 0 10px;
     }
 
-    .subtle{
-      color: rgba(43,43,43,.68);
-      font-size:12px;
-      line-height:1.45;
-      font-weight:800;
-      margin-top:8px;
+    .subtle,
+    .note,
+    .footerNote,
+    .tinyCard p{
+      color: rgba(43,43,43,.72);
+      font-size:var(--fs-small);
+      line-height:1.5;
+      font-weight:700;
     }
+
+    .subtle{ margin-top:8px; }
 
     .imgSlot{
       width:100%;
@@ -325,7 +385,7 @@
       object-fit:cover;
       border-radius:16px;
       display:none;
-      margin: 10px 0 12px;
+      margin:10px 0 12px;
       border:1px solid rgba(200,162,74,.16);
       box-shadow: 0 10px 22px rgba(0,0,0,.06);
     }
@@ -343,11 +403,11 @@
       display:flex;
       align-items:flex-start;
       gap:10px;
-      padding:10px 10px;
+      padding:10px;
       border-radius:14px;
-      background: rgba(255,255,255,.74);
+      background: rgba(255,255,255,.76);
       border:1px solid rgba(200,162,74,.14);
-      box-shadow: 0 8px 18px rgba(0,0,0,.05);
+      box-shadow: 0 8px 18px rgba(0,0,0,.04);
     }
 
     .item input{
@@ -361,10 +421,10 @@
 
     .item label{
       cursor:pointer;
-      font-size:14px;
-      line-height:1.45;
-      color: rgba(43,43,43,.82);
-      font-weight:800;
+      font-size:var(--fs-body);
+      line-height:1.48;
+      color: rgba(43,43,43,.84);
+      font-weight:750;
     }
 
     .item.done label{
@@ -376,60 +436,55 @@
     .actionRow{
       margin-top:12px;
       display:flex;
-      gap:10px;
+      gap:8px;
       flex-wrap:wrap;
       align-items:center;
       justify-content:space-between;
     }
 
-    .btn{
+    .btn,
+    .memberBtn{
       appearance:none;
       border:none;
       cursor:pointer;
-      padding:12px 14px;
+      padding:11px 13px;
       border-radius:14px;
-      font-weight:900;
-      letter-spacing:.2px;
+      font-weight:850;
+      letter-spacing:.08px;
       box-shadow: var(--shadow2);
-      border:1px solid rgba(200,162,74,.20);
+      border:1px solid rgba(200,162,74,.18);
       background: linear-gradient(180deg, #ffffff, #f7f2e6);
       color:var(--text);
-      flex:1;
-      min-width:120px;
+      font-size:var(--fs-button);
+      line-height:1.1;
+      text-align:center;
+    }
+
+    .btn{
+      flex:1 1 110px;
+      min-width:0;
       white-space:nowrap;
     }
 
-    .btn.primary{
-      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
-      border:1px solid rgba(200,162,74,.35);
+    .btn.primary,
+    .memberBtn{
+      background: radial-gradient(circle at 20% 10%, var(--gold3), var(--gold2));
+      border:1px solid rgba(200,162,74,.34);
       color:#3a2c10;
-      text-shadow: 0 0 10px rgba(200,162,74,.25);
+      text-shadow: 0 0 10px rgba(200,162,74,.18);
     }
 
     .resultBox{
       margin-top:12px;
       padding:12px;
       border-radius:14px;
-      background: rgba(255,255,255,.78);
+      background: rgba(255,255,255,.8);
       border:1px solid rgba(200,162,74,.16);
       min-height:52px;
-      font-size:14px;
-      line-height:1.5;
-      font-weight:800;
+      font-size:var(--fs-body);
+      line-height:1.55;
+      font-weight:750;
       color: rgba(43,43,43,.84);
-    }
-
-    .score{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-width:42px;
-      padding:7px 10px;
-      border-radius:999px;
-      background: rgba(255,255,255,.75);
-      border:1px solid rgba(200,162,74,.16);
-      font-weight:900;
-      font-variant-numeric: tabular-nums;
     }
 
     .tinyGrid{
@@ -439,267 +494,125 @@
       margin-top:12px;
     }
 
+    .tinyCard{
+      padding:12px;
+      border-radius:14px;
+      background: rgba(255,255,255,.76);
+      border:1px solid rgba(200,162,74,.14);
+      box-shadow: 0 8px 18px rgba(0,0,0,.04);
+    }
+
+    .tinyCard h4{
+      margin:0 0 6px;
+      font-size:var(--fs-small);
+      color:#3a2c10;
+      font-weight:900;
+      line-height:1.2;
+    }
+
     .premiumWrap{
       margin-top:14px;
       padding:14px;
-      border:1px solid rgba(200,162,74,.28);
-      background:
-        linear-gradient(180deg, rgba(255,246,214,.78), rgba(255,255,255,.80));
-      box-shadow: 0 0 18px rgba(200,162,74,.15);
-    }
-
-    .premiumWrap h3{
-      margin:0 0 10px 0;
-      font-size:15px;
-      font-weight:900;
-      color:#3a2c10;
-      letter-spacing:.2px;
+      border:1px solid rgba(200,162,74,.26);
+      background: linear-gradient(180deg, rgba(255,246,214,.72), rgba(255,255,255,.78));
+      box-shadow: 0 0 18px rgba(200,162,74,.12);
     }
 
     .premiumWrap ul{
-      margin:0;
       padding-left:18px;
-      line-height:1.58;
-      color: rgba(43,43,43,.80);
-      font-weight:750;
-      font-size:14px;
     }
 
     .premiumWrap li + li{ margin-top:6px; }
 
     .memberBtn{
       display:block;
-      text-align:center;
+      width:100%;
       text-decoration:none;
       margin-top:12px;
-      padding:12px 14px;
-      border-radius:14px;
-      font-weight:900;
-      letter-spacing:.2px;
-      color:#3a2c10;
-      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
-      border:1px solid rgba(200,162,74,.35);
-      box-shadow: 0 0 16px rgba(200,162,74,.20);
     }
 
     .note{
       margin-top:10px;
-      font-size:12px;
-      color:#6b6b6b;
       text-align:center;
-      font-weight:800;
-      line-height:1.45;
     }
 
     .footerNote{
       margin-top:14px;
       text-align:center;
-      color: rgba(43,43,43,.68);
-      font-size:12px;
-      line-height:1.5;
-      font-weight:800;
-    }
-
-    .premiumHeroCard{
-      position:relative;
-      padding:16px;
-      border:1px solid rgba(200,162,74,.34);
-      background:
-        radial-gradient(circle at top left, rgba(255,248,226,.95), rgba(255,255,255,.88)),
-        linear-gradient(180deg, rgba(255,246,214,.80), rgba(255,255,255,.86));
-      box-shadow: var(--goldGlow), 0 14px 36px rgba(0,0,0,.08);
-      overflow:hidden;
-    }
-
-    .premiumHeroCard::before{
-      content:"";
-      position:absolute;
-      inset:-40% -20% auto auto;
-      width:200px;
-      height:200px;
-      background: radial-gradient(circle, rgba(255,240,190,.35), transparent 70%);
-      pointer-events:none;
-    }
-
-    .premiumTop{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      margin-bottom:10px;
-    }
-
-    .premiumTitleBig{
-      font-size:18px;
-      font-weight:900;
-      color:#3a2c10;
-      letter-spacing:.2px;
-      margin:0;
-    }
-
-    .premiumSubtitle{
-      margin:6px 0 0 0;
-      color: rgba(43,43,43,.75);
-      font-size:13px;
-      line-height:1.58;
-      font-weight:750;
-    }
-
-    .premiumBadge{
-      padding:7px 10px;
-      border-radius:999px;
-      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
-      border:1px solid rgba(200,162,74,.35);
-      font-weight:900;
-      color:#3a2c10;
-      white-space:nowrap;
-      box-shadow: 0 8px 18px rgba(200,162,74,.16);
-    }
-
-    .luxList{
-      display:grid;
-      gap:10px;
-      margin-top:14px;
-    }
-
-    .luxItem{
-      display:flex;
-      align-items:flex-start;
-      gap:10px;
-      padding:11px 12px;
-      border-radius:14px;
-      background: rgba(255,255,255,.62);
-      border:1px solid rgba(200,162,74,.18);
-      box-shadow: 0 8px 18px rgba(0,0,0,.04);
-    }
-
-    .luxIcon{
-      width:28px;
-      height:28px;
-      border-radius:10px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
-      border:1px solid rgba(200,162,74,.30);
-      color:#3a2c10;
-      font-size:14px;
-      flex:0 0 auto;
-    }
-
-    .luxText{
-      font-size:13px;
-      line-height:1.5;
-      font-weight:800;
-      color: rgba(43,43,43,.82);
-    }
-
-    .premiumSection{
-      margin-top:14px;
-    }
-
-    .premiumCard{
-      border:1px solid rgba(200,162,74,.28);
-      background:
-        linear-gradient(180deg, rgba(255,248,226,.94), rgba(255,255,255,.86));
-      box-shadow: 0 0 18px rgba(200,162,74,.10);
-    }
-
-    .premiumMiniTag{
-      font-size:11px;
-      font-weight:900;
-      color:#6f5720;
-      background: rgba(255,255,255,.72);
-      border:1px solid rgba(200,162,74,.18);
-      padding:6px 8px;
-      border-radius:999px;
-      white-space:nowrap;
-    }
-
-    .moduleGrid{
-      display:grid;
-      gap:12px;
-      margin-top:12px;
-    }
-
-    .moduleCard{
-      border:1px solid rgba(200,162,74,.28);
-      background:
-        linear-gradient(180deg, rgba(255,249,232,.94), rgba(255,255,255,.86));
-      box-shadow: 0 0 18px rgba(200,162,74,.09);
-    }
-
-    .moduleHead{
-      align-items:flex-start;
-    }
-
-    .moduleIcon{
-      width:38px;
-      height:38px;
-      border-radius:14px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
-      border:1px solid rgba(200,162,74,.35);
-      color:#3a2c10;
-      font-size:18px;
-      box-shadow: 0 10px 18px rgba(200,162,74,.12);
-      flex:0 0 auto;
-    }
-
-    .moduleHeadLeft{
-      display:flex;
-      gap:10px;
-      align-items:center;
-    }
-
-    .moduleLead{
-      margin:0;
-      font-size:13px;
-      line-height:1.56;
-      color: rgba(43,43,43,.76);
-      font-weight:750;
-    }
-
-    .audioPills{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      margin-top:10px;
-    }
-
-    .audioPill{
-      padding:8px 10px;
-      border-radius:999px;
-      font-size:12px;
-      font-weight:900;
-      color:#3a2c10;
-      background: rgba(255,255,255,.72);
-      border:1px solid rgba(200,162,74,.16);
-      box-shadow: 0 8px 18px rgba(0,0,0,.04);
     }
 
     @media (max-width: 430px){
+      body{
+        padding:10px 8px 20px;
+      }
+
       .topbar{
-        grid-template-columns: 1fr;
+        gap:6px;
+        padding:8px;
       }
-      .back, .brand{
-        justify-self:center;
-        text-align:center;
+
+      .topLeft,
+      .topRight{
+        gap:6px;
       }
+
+      .back{
+        padding:8px 10px;
+      }
+
+      .langBtn{
+        padding:8px 9px;
+      }
+
+      .brand .t2{
+        font-size:14px;
+      }
+
       .hero{
         align-items:flex-start;
+        padding:16px 14px 12px;
       }
+
+      .content{
+        padding:14px;
+      }
+
       .tinyGrid{
         grid-template-columns: 1fr;
       }
-      .btn{
-        min-width:unset;
-      }
-      .premiumTop{
-        align-items:flex-start;
+
+      .blockHead,
+      .toolHead{
         flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .blockMeta,
+      .toolMeta{
+        justify-content:flex-start;
+      }
+    }
+
+    @media (max-width: 360px){
+      .topbar{
+        flex-wrap:nowrap;
+      }
+
+      .brand .t1{
+        display:none;
+      }
+
+      .brand .t2{
+        font-size:13px;
+      }
+
+      .back{
+        padding:8px 9px;
+      }
+
+      .langBtn{
+        padding:8px 8px;
+        font-size:.8rem;
       }
     }
   </style>
@@ -709,16 +622,20 @@
   <div class="phone">
 
     <div class="topbar">
-      <a class="back" href="indexIT.html">← Home</a>
+      <div class="topLeft">
+        <a class="back" href="indexIT.html">← Home</a>
 
-      <div class="langToggle" aria-label="Language toggle">
-        <button class="langBtn" id="btnDE" type="button">Deutsch</button>
-        <button class="langBtn" id="btnIT" type="button">Italiano</button>
+        <div class="langToggle" aria-label="Selezione lingua">
+          <button class="langBtn" id="btnDE" type="button">DE</button>
+          <button class="langBtn" id="btnIT" type="button">IT</button>
+        </div>
       </div>
 
-      <div class="brand">
-        <div class="t1">Panacea</div>
-        <div class="t2"><span class="glow">Esercizi</span> & Focus</div>
+      <div class="topRight">
+        <div class="brand">
+          <div class="t1">Panacea</div>
+          <div class="t2"><span class="glow">Esercizi</span> &amp; Focus</div>
+        </div>
       </div>
     </div>
 
@@ -727,7 +644,7 @@
         <div class="badge">ES</div>
         <div>
           <h1>Esercizi</h1>
-          <p>Brevi, eleganti e adatti alla vita quotidiana: 4 blocchi reset, 3 giochi interattivi per il focus e 3 mini esercizi gratuiti, pensati con delicatezza e attenzione al benessere.</p>
+          <p>Brevi, pratici e formulati con delicatezza: 4 blocchi reset, 3 giochi interattivi per il focus e 3 piccoli esercizi per accompagnarti con calma nella quotidianità.</p>
         </div>
       </div>
 
@@ -735,29 +652,30 @@
 
         <div class="intro">
           <h2>Avvertenza importante</h2>
-          <p>Questi contenuti sono pensati per la regolazione quotidiana e il benessere generale. Possono accompagnarti nel ritrovare più calma, presenza e orientamento, ma non sostituiscono una valutazione medica, psicologica, psicoterapeutica o fisioterapica.</p>
+          <p>Questi contenuti sono pensati per la autoregolazione nella vita quotidiana. Possono aiutare a ridurre lo stress, ordinare l’attenzione e attivare dolcemente il corpo. Non sostituiscono però una valutazione o un trattamento medico, psicoterapeutico o fisioterapico.</p>
+
           <div class="warning">
-            In caso di dolore acuto, vertigini, mancanza di respiro, dolore al petto, sintomi neurologici, forte panico o patologie note, interrompi l’esercizio e rivolgiti a un professionista sanitario.
+            In caso di dolore acuto, vertigini, difficoltà respiratoria, dolore toracico, sintomi neurologici, panico con forte perdita di controllo o patologie note, interrompere gli esercizi e rivolgersi a un professionista sanitario.
           </div>
 
           <div class="navChips">
-            <a class="navChip" href="#reset">4 Blocchi Reset</a>
-            <a class="navChip" href="#spiele">3 Giochi Focus</a>
-            <a class="navChip" href="#kurzuebungen">3 Mini Esercizi</a>
-            <a class="navChip" href="#premiumWrap">Area Membri</a>
+            <a class="navChip" href="#reset">4 blocchi reset</a>
+            <a class="navChip" href="#spiele">3 giochi focus</a>
+            <a class="navChip" href="#kurzuebungen">3 esercizi brevi</a>
+            <a class="navChip" href="#premiumWrap">Area membri</a>
           </div>
         </div>
 
         <div class="divider"></div>
 
-        <div id="reset" class="sectionTitle">4 Blocchi Reset</div>
-        <p class="sectionLead">Ogni blocco è breve e unisce checklist, timer e una direzione chiara: calmare, attivare, riordinare, integrare.</p>
+        <div id="reset" class="sectionTitle">4 blocchi reset</div>
+        <p class="sectionLead">Ogni blocco è volutamente breve e unisce checklist, timer e una direzione chiara: calmare, attivare, ordinare e concludere.</p>
 
         <div class="grid" style="margin-top:12px;">
 
           <div class="block" data-block="1">
             <div class="blockHead">
-              <div class="blockTitle">Blocco 1 · Tornare al presente (respiro)</div>
+              <div class="blockTitle">Blocco 1 · Arrivare nel momento (respiro)</div>
               <div class="blockMeta">
                 <span class="pill" id="t1">05:00</span>
                 <span class="pill" id="p1">0/4</span>
@@ -765,18 +683,18 @@
             </div>
 
             <div class="blockBody">
-              <p class="miniText">Obiettivo: rallentare il ritmo, allungare con dolcezza l’espirazione e offrire al corpo un segnale di maggiore sicurezza. Un respiro più lento può accompagnare la regolazione senza forzare nulla.</p>
+              <p class="miniText">Obiettivo: rallentare il ritmo, allungare l’espirazione e offrire al corpo un segnale più calmo. Un respiro lento può sostenere la regolazione, senza creare pressione.</p>
 
               <img class="imgSlot" id="img1" alt="Immagine esercizio 1" src="icons/1b.png">
 
               <ul class="checklist">
-                <li class="item"><input type="checkbox" id="b1i1"><label for="b1i1">Espira una volta in modo consapevole: un po’ più a lungo dell’inspirazione, ma senza sforzo.</label></li>
-                <li class="item"><input type="checkbox" id="b1i2"><label for="b1i2">5 respiri: 4 secondi inspiro, 6 secondi espiro.</label></li>
+                <li class="item"><input type="checkbox" id="b1i1"><label for="b1i1">Fai una espirazione consapevole, leggermente più lunga dell’inspirazione, ma senza forzare.</label></li>
+                <li class="item"><input type="checkbox" id="b1i2"><label for="b1i2">5 respiri: inspira per 4 secondi, espira per 6 secondi.</label></li>
                 <li class="item"><input type="checkbox" id="b1i3"><label for="b1i3">Lascia scendere le spalle e ammorbidisci la mandibola.</label></li>
-                <li class="item"><input type="checkbox" id="b1i4"><label for="b1i4">Una frase interiore: “Oggi posso rallentare un poco.”</label></li>
+                <li class="item"><input type="checkbox" id="b1i4"><label for="b1i4">Una frase interiore: “Oggi posso rallentare un po’.”</label></li>
               </ul>
 
-              <div class="subtle">Se portare l’attenzione sul respiro ti mette a disagio, puoi concentrarti solo sull’espirazione, sul contatto con il pavimento o su ciò che vedi intorno a te.</div>
+              <div class="subtle">Nota: se il focus sul respiro è scomodo, puoi orientarti solo sull’espirazione, sul contatto con il suolo o su ciò che ti circonda.</div>
 
               <div class="timerRow">
                 <button class="btn primary" data-action="start" data-min="5">Avvia timer</button>
@@ -796,18 +714,18 @@
             </div>
 
             <div class="blockBody">
-              <p class="miniText">Obiettivo: sciogliere un po’ di rigidità e riattivare con gentilezza corpo, circolazione e attenzione. Anche un movimento lieve può fare bene nei momenti di tensione.</p>
+              <p class="miniText">Obiettivo: sciogliere la rigidità, riattivare dolcemente la circolazione e riportare l’attenzione nel corpo. Anche un piccolo movimento può dare sollievo nella giornata.</p>
 
               <img class="imgSlot" id="img2" alt="Immagine esercizio 2" src="icons/2b.png">
 
               <ul class="checklist">
                 <li class="item"><input type="checkbox" id="b2i1"><label for="b2i1">10 rotazioni lente delle spalle all’indietro.</label></li>
                 <li class="item"><input type="checkbox" id="b2i2"><label for="b2i2">20–30 secondi di allungamento dolce del collo, senza dolore.</label></li>
-                <li class="item"><input type="checkbox" id="b2i3"><label for="b2i3">60 secondi di cammino lento o marcia sul posto.</label></li>
-                <li class="item"><input type="checkbox" id="b2i4"><label for="b2i4">Alla fine, una lunga espirazione e un breve momento di ascolto interno.</label></li>
+                <li class="item"><input type="checkbox" id="b2i3"><label for="b2i3">60 secondi di camminata morbida o marcia sul posto.</label></li>
+                <li class="item"><input type="checkbox" id="b2i4"><label for="b2i4">Alla fine una espirazione profonda e un breve ascolto del corpo.</label></li>
               </ul>
 
-              <div class="subtle">Evita movimenti bruschi. Se senti dolore, resta solo nel range che ti sembra piacevole e sicuro.</div>
+              <div class="subtle">Importante: evita movimenti bruschi. Se senti dolore, rimani solo in un range piacevole.</div>
 
               <div class="timerRow">
                 <button class="btn primary" data-action="start" data-min="6">Avvia timer</button>
@@ -827,18 +745,18 @@
             </div>
 
             <div class="blockBody">
-              <p class="miniText">Obiettivo: interrompere il rimuginio, riorganizzare l’attenzione e ritrovare un piccolo margine di azione. Spesso i passi semplici aiutano a ridurre il senso di sovraccarico.</p>
+              <p class="miniText">Obiettivo: interrompere il rimuginio, ordinare l’attenzione e restare presenti. Piccoli passi concreti sono spesso più utili della pressione interiore.</p>
 
               <img class="imgSlot" id="img3" alt="Immagine esercizio 3" src="icons/3b.png">
 
               <ul class="checklist">
-                <li class="item"><input type="checkbox" id="b3i1"><label for="b3i1">Nomina 3 cose che vedi · 2 che senti · 1 sensazione del corpo.</label></li>
-                <li class="item"><input type="checkbox" id="b3i2"><label for="b3i2">Una frase neutra: “Forse questo è solo un momento di stress.”</label></li>
-                <li class="item"><input type="checkbox" id="b3i3"><label for="b3i3">Definisci il prossimo passo più piccolo possibile.</label></li>
-                <li class="item"><input type="checkbox" id="b3i4"><label for="b3i4">10 secondi con lo sguardo in lontananza, lasciando morbide le spalle.</label></li>
+                <li class="item"><input type="checkbox" id="b3i1"><label for="b3i1">Nomina 3 cose che vedi · 2 cose che senti · 1 sensazione corporea.</label></li>
+                <li class="item"><input type="checkbox" id="b3i2"><label for="b3i2">Una frase neutra: “Forse questo è semplicemente un momento stressante.”</label></li>
+                <li class="item"><input type="checkbox" id="b3i3"><label for="b3i3">Scegli il prossimo piccolo passo possibile.</label></li>
+                <li class="item"><input type="checkbox" id="b3i4"><label for="b3i4">Per 10 secondi guarda lontano e lascia morbide le spalle.</label></li>
               </ul>
 
-              <div class="subtle">Questo orientamento può aiutare a riportare l’attenzione fuori dall’allarme interno e nuovamente verso il presente.</div>
+              <div class="subtle">Questo tipo di orientamento può aiutare a riportare l’attenzione dall’allarme interno verso l’esterno.</div>
 
               <div class="timerRow">
                 <button class="btn primary" data-action="start" data-min="4">Avvia timer</button>
@@ -858,18 +776,18 @@
             </div>
 
             <div class="blockBody">
-              <p class="miniText">Obiettivo: concludere questo piccolo reset, rafforzare il senso di autoefficacia e portare con te un punto di appoggio anche per più tardi.</p>
+              <p class="miniText">Obiettivo: chiudere bene l’esperienza, rafforzare il senso di autoefficacia e portare con sé un piccolo appiglio per più tardi.</p>
 
               <img class="imgSlot" id="img4" alt="Immagine esercizio 4" src="icons/4b.png">
 
               <ul class="checklist">
                 <li class="item"><input type="checkbox" id="b4i1"><label for="b4i1">Appoggia una mano sul petto o sull’addome e fai 3 respiri tranquilli.</label></li>
-                <li class="item"><input type="checkbox" id="b4i2"><label for="b4i2">Una frase: “Per ora va bene così.”</label></li>
-                <li class="item"><input type="checkbox" id="b4i3"><label for="b4i3">Annota una risorsa: “Oggi mi ha aiutato…”</label></li>
-                <li class="item"><input type="checkbox" id="b4i4"><label for="b4i4">Un mini piano: “Se lo stress sale, la prima cosa che farò sarà…”</label></li>
+                <li class="item"><input type="checkbox" id="b4i2"><label for="b4i2">Una frase: “Per questo momento va bene così.”</label></li>
+                <li class="item"><input type="checkbox" id="b4i3"><label for="b4i3">Annota una risorsa: “Oggi mi ha aiutato: …”</label></li>
+                <li class="item"><input type="checkbox" id="b4i4"><label for="b4i4">Un mini-piano: “Se lo stress sale, la prima cosa che faccio è …”</label></li>
               </ul>
 
-              <div class="subtle">Conta più la continuità della perfezione. Le piccole routine ripetute spesso funzionano meglio dei grandi propositi fatti una sola volta.</div>
+              <div class="subtle">La ripetizione conta più della perfezione. Piccoli rituali costanti spesso aiutano più di grandi propositi occasionali.</div>
 
               <div class="timerRow">
                 <button class="btn primary" data-action="start" data-min="3">Avvia timer</button>
@@ -883,7 +801,7 @@
         <div class="divider"></div>
 
         <div id="spiele" class="sectionTitle">3 giochi interattivi per il focus (gratis)</div>
-        <p class="sectionLead">Non come “giochi terapeutici”, ma come piccoli strumenti di autoregolazione: aiutano a raccogliere l’attenzione, alleggerire il sovraccarico mentale e ritrovare presenza.</p>
+        <p class="sectionLead">Non come “giochi terapeutici”, ma come piccoli strumenti attivanti di autoregolazione: raccogliere l’attenzione, orientare il focus e alleggerire un po’ la mente.</p>
 
         <div class="grid" style="margin-top:12px;">
 
@@ -896,16 +814,16 @@
               </div>
             </div>
             <div class="toolBody">
-              <p class="miniText">Tocca solo le parole che appartengono a <b>calma</b>, <b>corpo</b> o <b>focus</b>. Un piccolo esercizio per allenare l’attenzione selettiva in modo leggero.</p>
+              <p class="miniText">Tocca solo le parole che appartengono a <b>calma</b>, <b>corpo</b> o <b>focus</b>. Obiettivo: allenare l’attenzione selettiva.</p>
 
               <div class="tinyGrid" id="wordGameGrid"></div>
 
               <div class="actionRow">
-                <button class="btn primary" id="btnWordStart">Nuovo round</button>
+                <button class="btn primary" id="btnWordStart">Nuovo giro</button>
                 <button class="btn" id="btnWordReset">Reset</button>
               </div>
 
-              <div class="resultBox" id="wordResult">Pronta per iniziare con calma.</div>
+              <div class="resultBox" id="wordResult">Pronta per il primo giro.</div>
             </div>
           </div>
 
@@ -918,13 +836,13 @@
               </div>
             </div>
             <div class="toolBody">
-              <p class="miniText">Un classico esercizio di grounding: 5 cose da vedere, 4 sensazioni del corpo, 3 suoni, 2 odori, 1 gusto oppure una frase neutra.</p>
+              <p class="miniText">Un classico esercizio di grounding: 5 cose da vedere, 4 da sentire, 3 da ascoltare, 2 da annusare e 1 gusto o una frase neutra.</p>
 
               <ul class="checklist" id="groundingList">
                 <li class="item"><input type="checkbox" id="g1"><label for="g1">5 cose che vedi</label></li>
-                <li class="item"><input type="checkbox" id="g2"><label for="g2">4 cose che percepisci nel corpo</label></li>
-                <li class="item"><input type="checkbox" id="g3"><label for="g3">3 suoni che senti</label></li>
-                <li class="item"><input type="checkbox" id="g4"><label for="g4">2 odori</label></li>
+                <li class="item"><input type="checkbox" id="g2"><label for="g2">4 cose che senti nel corpo</label></li>
+                <li class="item"><input type="checkbox" id="g3"><label for="g3">3 suoni che ascolti</label></li>
+                <li class="item"><input type="checkbox" id="g4"><label for="g4">2 odori che percepisci</label></li>
                 <li class="item"><input type="checkbox" id="g5"><label for="g5">1 gusto o 1 frase neutra</label></li>
               </ul>
 
@@ -933,7 +851,7 @@
                 <button class="btn" id="btnGroundReset">Reset</button>
               </div>
 
-              <div class="resultBox" id="groundResult">Prenditi il tuo tempo. Qui non c’è nulla da fare perfettamente.</div>
+              <div class="resultBox" id="groundResult">Prenditi il tuo tempo. Qui non esiste “giusto” o “sbagliato”.</div>
             </div>
           </div>
 
@@ -946,40 +864,40 @@
               </div>
             </div>
             <div class="toolBody">
-              <p class="miniText">Aspetta finché il riquadro diventa dorato. Poi tocca. Un piccolo esercizio per allenare presenza e controllo dell’impulso.</p>
+              <p class="miniText">Aspetta finché il riquadro non si illumina d’oro. Solo allora tocca. Obiettivo: controllo dell’impulso e concentrazione.</p>
 
-              <div class="resultBox" id="reactionBox" style="text-align:center; font-size:16px; user-select:none;">Tocca “Start”.</div>
+              <div class="resultBox" id="reactionBox" style="text-align:center; font-size:16px; user-select:none;">Tocca “Inizia”.</div>
 
               <div class="actionRow">
-                <button class="btn primary" id="btnReactionStart">Start</button>
+                <button class="btn primary" id="btnReactionStart">Inizia</button>
                 <button class="btn" id="btnReactionReset">Reset</button>
               </div>
 
-              <div class="subtle">Se oggi senti già molta pressione o agitazione, forse è meglio scegliere il focus sulle parole o il grounding.</div>
+              <div class="subtle">Non è l’ideale se in questo momento la performance ti mette pressione. In quel caso meglio scegliere focus sulle parole o grounding.</div>
             </div>
           </div>
         </div>
 
         <div class="divider"></div>
 
-        <div id="kurzuebungen" class="sectionTitle">3 mini esercizi (gratis)</div>
-        <p class="sectionLead">Molto brevi, accessibili e delicati. Perfetti come piccola routine quotidiana.</p>
+        <div id="kurzuebungen" class="sectionTitle">3 esercizi brevi (gratis)</div>
+        <p class="sectionLead">Molto brevi, accessibili e formulati con attenzione. Perfetti come piccola routine quotidiana.</p>
 
         <div class="grid" style="margin-top:12px;">
 
           <div class="toolCard" data-short="1">
             <div class="toolHead">
-              <div class="toolTitle">Mini esercizio 1 · Espirazione più lunga</div>
+              <div class="toolTitle">Esercizio breve 1 · Espirazione più lunga</div>
               <div class="toolMeta">
                 <span class="pill" id="st1">01:30</span>
               </div>
             </div>
             <div class="toolBody">
-              <p class="miniText">Inspira per 4 secondi ed espira per 6. Per molte persone, un’espirazione un po’ più lunga può accompagnare una sensazione di maggiore calma.</p>
+              <p class="miniText">Inspira per 4 secondi ed espira per 6. Un’espirazione un po’ più lunga può risultare calmante per molte persone.</p>
               <ul class="checklist">
-                <li class="item"><input type="checkbox" id="s1a"><label for="s1a">Siediti o resta in piedi in modo comodo</label></li>
-                <li class="item"><input type="checkbox" id="s1b"><label for="s1b">Fai 5–8 respiri tranquilli nel tuo ritmo</label></li>
-                <li class="item"><input type="checkbox" id="s1c"><label for="s1c">Non creare pressione</label></li>
+                <li class="item"><input type="checkbox" id="s1a"><label for="s1a">Siediti o mettiti in piedi in modo comodo</label></li>
+                <li class="item"><input type="checkbox" id="s1b"><label for="s1b">5–8 respiri tranquilli nel tuo ritmo</label></li>
+                <li class="item"><input type="checkbox" id="s1c"><label for="s1c">Senza creare pressione</label></li>
               </ul>
               <div class="timerRow">
                 <button class="btn primary" data-short-action="start" data-min="1.5">Avvia timer</button>
@@ -991,13 +909,13 @@
 
           <div class="toolCard" data-short="2">
             <div class="toolHead">
-              <div class="toolTitle">Mini esercizio 2 · Lasciare andare la tensione</div>
+              <div class="toolTitle">Esercizio breve 2 · Lasciare andare la tensione</div>
               <div class="toolMeta">
                 <span class="pill" id="st2">02:00</span>
               </div>
             </div>
             <div class="toolBody">
-              <p class="miniText">Contrai per un momento mani, spalle e viso, poi rilascia con consapevolezza. Può aiutare a riconoscere meglio la tensione e lasciarla andare più facilmente.</p>
+              <p class="miniText">Contrai per un attimo mani, spalle e viso, poi lascia andare consapevolmente. Può aiutare a riconoscere meglio la tensione e a scioglierla.</p>
               <ul class="checklist">
                 <li class="item"><input type="checkbox" id="s2a"><label for="s2a">Stringi i pugni per 3 secondi</label></li>
                 <li class="item"><input type="checkbox" id="s2b"><label for="s2b">Lascia andare e percepisci l’espirazione</label></li>
@@ -1013,17 +931,17 @@
 
           <div class="toolCard" data-short="3">
             <div class="toolHead">
-              <div class="toolTitle">Mini esercizio 3 · Micro-movimento</div>
+              <div class="toolTitle">Esercizio breve 3 · Micro-movimento</div>
               <div class="toolMeta">
                 <span class="pill" id="st3">02:30</span>
               </div>
             </div>
             <div class="toolBody">
-              <p class="miniText">Cammina per 60–90 secondi, lascia morbide le braccia e alza leggermente lo sguardo. Anche pochi minuti di movimento possono aiutare a sciogliere la sensazione di blocco interiore.</p>
+              <p class="miniText">Cammina per 60–90 secondi, lascia morbide le braccia e solleva lo sguardo. Anche un piccolo movimento può riattivare la circolazione e sciogliere l’immobilità interiore.</p>
               <ul class="checklist">
                 <li class="item"><input type="checkbox" id="s3a"><label for="s3a">30 secondi di camminata o marcia sul posto</label></li>
                 <li class="item"><input type="checkbox" id="s3b"><label for="s3b">Lascia oscillare liberamente le braccia</label></li>
-                <li class="item"><input type="checkbox" id="s3c"><label for="s3c">Raddrizzati una volta con intenzione ed espira</label></li>
+                <li class="item"><input type="checkbox" id="s3c"><label for="s3c">Raddrizzati una volta consapevolmente ed espira</label></li>
               </ul>
               <div class="timerRow">
                 <button class="btn primary" data-short-action="start" data-min="2.5">Avvia timer</button>
@@ -1037,330 +955,42 @@
         <div class="divider"></div>
 
         <div class="premiumWrap" id="premiumWrap">
-          <h3 id="premiumTitle">Area Membri</h3>
+          <h3 id="premiumTitle">Area membri</h3>
 
           <div id="premiumFree">
             <ul>
               <li><b>10 giochi interattivi per il focus</b> invece di solo 3</li>
-              <li><b>10 esercizi brevi</b> formulati con cura e attenzione al benessere, invece di solo 3</li>
-              <li><b>Moduli extra per sonno, stress acuto, rigenerazione e concentrazione</b></li>
+              <li><b>10 esercizi brevi formulati con attenzione scientifica</b> invece di solo 3</li>
+              <li><b>Moduli extra su sonno, stress acuto, rigenerazione e concentrazione</b></li>
               <li><b>Audio guidati, meditazioni e video bonus</b></li>
-              <li><b>Un’esperienza Premium più calma, più raccolta e più ricca</b> per accompagnarti ogni giorno</li>
+              <li><b>Una vista premium più calma</b> con un allenamento quotidiano più ampio</li>
             </ul>
-            <a class="memberBtn" href="uebungen-premiumIT.html">Vai all’area Premium →</a>
-            <div class="note">Dopo l’attivazione, i contenuti Premium possono diventare visibili direttamente anche in questa pagina.</div>
+
+            <button class="memberBtn" id="premiumAccessBtn" type="button">
+              Apri esercizi premium →
+            </button>
+
+            <div class="note">Dopo lo sblocco, il premium può diventare visibile automaticamente.</div>
           </div>
 
           <div id="premiumOn" style="display:none;">
             <ul>
               <li><b>Premium attivo</b> ✅</li>
-              <li>Gli esercizi extra e gli strumenti di focus sono ora sbloccati.</li>
-              <li>Aree disponibili: <b>Sonno</b>, <b>Stress acuto</b>, <b>Focus</b>, <b>Movimento</b>, <b>Reset serale</b>.</li>
+              <li>Ora puoi entrare direttamente nella pagina premium separata.</li>
+              <li>Categorie premium utili: <b>sonno</b>, <b>stress acuto</b>, <b>focus</b>, <b>movimento</b>, <b>reset serale</b>.</li>
+              <li>Segnaposto immagini: <b>icons/1b.png, 2b.png, 3b.png …</b></li>
             </ul>
-            <div class="note">I contenuti Premium dorati sono stati aperti qui sotto.</div>
+
+            <button class="memberBtn" id="premiumOpenDirectBtn" type="button">
+              Vai agli esercizi premium →
+            </button>
+
+            <div class="note">Questo box diventa visibile quando <b>panacea_premium=true</b>.</div>
           </div>
-        </div>
-
-        <div id="premiumContent" style="display:none; margin-top:14px;">
-
-          <div class="premiumHeroCard">
-            <div class="premiumTop">
-              <div>
-                <h3 class="premiumTitleBig">Premium Reset Studio</h3>
-                <p class="premiumSubtitle">Una sezione più raffinata, raccolta e avvolgente: strumenti extra per calma, concentrazione, regolazione quotidiana e cura serale, con un’atmosfera ancora più calda e preziosa.</p>
-              </div>
-              <span class="premiumBadge">Premium</span>
-            </div>
-
-            <div class="luxList">
-              <div class="luxItem">
-                <div class="luxIcon">✦</div>
-                <div class="luxText">Più profondità senza diventare pesante: contenuti brevi, curati e semplici da usare davvero ogni giorno.</div>
-              </div>
-              <div class="luxItem">
-                <div class="luxIcon">☾</div>
-                <div class="luxText">Moduli dedicati ai momenti chiave: sera, stress acuto, concentrazione e recupero.</div>
-              </div>
-              <div class="luxItem">
-                <div class="luxIcon">♫</div>
-                <div class="luxText">Spazio per audio guidati e micro-pratiche che rendono l’esperienza più immersiva e più preziosa.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="divider"></div>
-
-          <div class="premiumSection">
-            <div class="premiumSectionTitle">Premium · Altri giochi per il focus</div>
-            <p class="sectionLead">Per i membri: strumenti aggiuntivi per orientare l’attenzione, rallentare l’impulso e alleggerire la mente con eleganza e semplicità.</p>
-
-            <div class="grid" style="margin-top:12px;">
-              <div class="premiumCard">
-                <div class="premiumHead">
-                  <div class="premiumCardTitle">Premium 1 · Focus sul colore</div>
-                  <div class="premiumMeta"><span class="premiumMiniTag">visivo</span></div>
-                </div>
-                <div class="premiumBody">
-                  <p class="miniText">Trova nell’ambiente tre oggetti dello stesso colore. Un piccolo esercizio per raccogliere il campo visivo e creare più ordine mentale.</p>
-                </div>
-              </div>
-
-              <div class="premiumCard">
-                <div class="premiumHead">
-                  <div class="premiumCardTitle">Premium 2 · Numeri e calma</div>
-                  <div class="premiumMeta"><span class="premiumMiniTag">mente</span></div>
-                </div>
-                <div class="premiumBody">
-                  <p class="miniText">Conta lentamente all’indietro a passi di 3. Un modo semplice per interrompere il rimuginio e ritrovare presenza.</p>
-                </div>
-              </div>
-
-              <div class="premiumCard">
-                <div class="premiumHead">
-                  <div class="premiumCardTitle">Premium 3 · Gioco delle categorie</div>
-                  <div class="premiumMeta"><span class="premiumMiniTag">risorse</span></div>
-                </div>
-                <div class="premiumBody">
-                  <p class="miniText">Nomina 5 luoghi tranquilli, 5 gesti che ti fanno sentire al sicuro o 5 piccole risorse della tua giornata.</p>
-                </div>
-              </div>
-
-              <div class="premiumCard">
-                <div class="premiumHead">
-                  <div class="premiumCardTitle">Premium 4 · Cambio di ritmo</div>
-                  <div class="premiumMeta"><span class="premiumMiniTag">corpo</span></div>
-                </div>
-                <div class="premiumBody">
-                  <p class="miniText">30 secondi molto lenti, 15 secondi normali, poi di nuovo lenti. Un modo delicato per percepire e modulare il tuo stato interno.</p>
-                </div>
-              </div>
-
-              <div class="premiumCard">
-                <div class="premiumHead">
-                  <div class="premiumCardTitle">Premium 5 · Focus sui suoni</div>
-                  <div class="premiumMeta"><span class="premiumMiniTag">sensoriale</span></div>
-                </div>
-                <div class="premiumBody">
-                  <p class="miniText">Scegli un suono neutro nell’ambiente e resta con lui per 20 secondi. Un piccolo esercizio per stabilizzare l’attenzione.</p>
-                </div>
-              </div>
-
-              <div class="premiumCard">
-                <div class="premiumHead">
-                  <div class="premiumCardTitle">Premium 6 · Riduzione degli stimoli</div>
-                  <div class="premiumMeta"><span class="premiumMiniTag">digitale</span></div>
-                </div>
-                <div class="premiumBody">
-                  <p class="miniText">Chiudi per un momento notifiche, tab o stimoli inutili. Un gesto semplice che può alleggerire subito il carico mentale.</p>
-                </div>
-              </div>
-
-              <div class="premiumCard">
-                <div class="premiumHead">
-                  <div class="premiumCardTitle">Premium 7 · Punto ancora visivo</div>
-                  <div class="premiumMeta"><span class="premiumMiniTag">stabilità</span></div>
-                </div>
-                <div class="premiumBody">
-                  <p class="miniText">Fissa un punto calmo nello spazio e accompagna lo sguardo con una respirazione lenta e morbida.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="divider"></div>
-
-          <div class="premiumSection">
-            <div class="premiumSectionTitle">Premium · Altri mini esercizi</div>
-            <p class="sectionLead">Più strumenti brevi per stress, sera, rigenerazione, concentrazione e autoregolazione dolce.</p>
-
-            <div class="grid" style="margin-top:12px;">
-              <div class="premiumCard">
-                <div class="premiumHead">
-                  <div class="premiumCardTitle">Premium 4 · Reset serale</div>
-                  <div class="premiumMeta"><span class="premiumMiniTag">2 min.</span></div>
-                </div>
-                <div class="premiumBody">
-                  <p class="miniText">Abbassa la luce, ammorbidisci le spalle e fai 5 espirazioni lente. Un piccolo passaggio verso quiete e decompressione.</p>
-                </div>
-              </div>
-
-              <div class="premiumCard">
-                <div class="premiumHead">
-                  <div class="premiumCardTitle">Premium 5 · Interrompere lo stress acuto</div>
-                  <div class="premiumMeta"><span class="premiumMiniTag">90 sec.</span></div>
-                </div>
-                <div class="premiumBody">
-                  <p class="miniText">Fermati, senti il pavimento sotto i piedi, fai un’espirazione lunga, guarda 3 cose e scegli un solo prossimo passo.</p>
-                </div>
-              </div>
-
-              <div class="premiumCard">
-                <div class="premiumHead">
-                  <div class="premiumCardTitle">Premium 6 · Collo e spalle più morbidi</div>
-                  <div class="premiumMeta"><span class="premiumMiniTag">2 min.</span></div>
-                </div>
-                <div class="premiumBody">
-                  <p class="miniText">Piccoli cerchi, rilascio graduale, nessuno stiramento forzato. Ideale per la tensione da schermo.</p>
-                </div>
-              </div>
-
-              <div class="premiumCard">
-                <div class="premiumHead">
-                  <div class="premiumCardTitle">Premium 7 · Avvio concentrazione</div>
-                  <div class="premiumMeta"><span class="premiumMiniTag">2 min.</span></div>
-                </div>
-                <div class="premiumBody">
-                  <p class="miniText">Ordina lo spazio, fai 3 respiri consapevoli e definisci una sola cosa da fare. Meno dispersione, più chiarezza.</p>
-                </div>
-              </div>
-
-              <div class="premiumCard">
-                <div class="premiumHead">
-                  <div class="premiumCardTitle">Premium 8 · Calmarsi attraverso le mani</div>
-                  <div class="premiumMeta"><span class="premiumMiniTag">1 min.</span></div>
-                </div>
-                <div class="premiumBody">
-                  <p class="miniText">Unisci i palmi, percepisci una lieve pressione, poi lascia andare lentamente. Un gesto semplice ma centrante.</p>
-                </div>
-              </div>
-
-              <div class="premiumCard">
-                <div class="premiumHead">
-                  <div class="premiumCardTitle">Premium 9 · Attivazione del mattino</div>
-                  <div class="premiumMeta"><span class="premiumMiniTag">2–3 min.</span></div>
-                </div>
-                <div class="premiumBody">
-                  <p class="miniText">Raddrizzati, solleva le braccia, cammina 30 secondi e apri lo sguardo. Un risveglio semplice ma intenzionale.</p>
-                </div>
-              </div>
-
-              <div class="premiumCard">
-                <div class="premiumHead">
-                  <div class="premiumCardTitle">Premium 10 · Mini rigenerazione</div>
-                  <div class="premiumMeta"><span class="premiumMiniTag">2 min.</span></div>
-                </div>
-                <div class="premiumBody">
-                  <p class="miniText">Per la giornata: breve pausa, espirazione più lunga, rilascio del tono muscolare e raccolta del focus.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="divider"></div>
-
-          <div class="premiumSection">
-            <div class="premiumSectionTitle">Premium · Studio Audio & Video</div>
-            <p class="sectionLead">Una struttura più “deluxe”, pronta a crescere in un’esperienza Premium completa.</p>
-
-            <div class="moduleGrid">
-              <div class="moduleCard">
-                <div class="moduleHead">
-                  <div class="moduleHeadLeft">
-                    <div class="moduleIcon">♫</div>
-                    <div>
-                      <div class="moduleTitle">Audio guidati</div>
-                      <div class="moduleLead">Micro-audio da 2 a 5 minuti per il respiro, la calma serale, la centratura e il reset nei momenti più intensi.</div>
-                    </div>
-                  </div>
-                  <div class="moduleMeta"><span class="premiumBadge">Audio</span></div>
-                </div>
-                <div class="moduleBody">
-                  <div class="audioPills">
-                    <span class="audioPill">Respiro lento</span>
-                    <span class="audioPill">Pausa mentale</span>
-                    <span class="audioPill">Reset serale</span>
-                    <span class="audioPill">Grounding dolce</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="moduleCard">
-                <div class="moduleHead">
-                  <div class="moduleHeadLeft">
-                    <div class="moduleIcon">▶</div>
-                    <div>
-                      <div class="moduleTitle">Video brevi</div>
-                      <div class="moduleLead">Piccole dimostrazioni eleganti per postura, rilascio delle spalle, micro-movimento e pratica respiratoria.</div>
-                    </div>
-                  </div>
-                  <div class="moduleMeta"><span class="premiumBadge">Video</span></div>
-                </div>
-                <div class="moduleBody">
-                  <div class="audioPills">
-                    <span class="audioPill">Postura</span>
-                    <span class="audioPill">Mobilità dolce</span>
-                    <span class="audioPill">Routine sera</span>
-                    <span class="audioPill">Attivazione mattino</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="divider"></div>
-
-          <div class="premiumSection">
-            <div class="premiumSectionTitle">Premium · Moduli speciali</div>
-
-            <div class="moduleGrid">
-              <div class="moduleCard">
-                <div class="moduleHead">
-                  <div class="moduleHeadLeft">
-                    <div class="moduleIcon">☾</div>
-                    <div>
-                      <div class="moduleTitle">Sonno</div>
-                      <div class="moduleLead">Routine serali brevi, distensione progressiva, respirazione più quieta e preparazione al riposo.</div>
-                    </div>
-                  </div>
-                  <div class="moduleMeta"><span class="premiumBadge">Sleep</span></div>
-                </div>
-              </div>
-
-              <div class="moduleCard">
-                <div class="moduleHead">
-                  <div class="moduleHeadLeft">
-                    <div class="moduleIcon">⚡</div>
-                    <div>
-                      <div class="moduleTitle">Stress acuto</div>
-                      <div class="moduleLead">Percorsi rapidi per i momenti in cui serve fermarsi, orientarsi e ridurre l’attivazione in poco tempo.</div>
-                    </div>
-                  </div>
-                  <div class="moduleMeta"><span class="premiumBadge">Fast reset</span></div>
-                </div>
-              </div>
-
-              <div class="moduleCard">
-                <div class="moduleHead">
-                  <div class="moduleHeadLeft">
-                    <div class="moduleIcon">✦</div>
-                    <div>
-                      <div class="moduleTitle">Concentrazione</div>
-                      <div class="moduleLead">Piccoli protocolli prima del lavoro, dello studio o di attività che richiedono più presenza mentale.</div>
-                    </div>
-                  </div>
-                  <div class="moduleMeta"><span class="premiumBadge">Focus</span></div>
-                </div>
-              </div>
-
-              <div class="moduleCard">
-                <div class="moduleHead">
-                  <div class="moduleHeadLeft">
-                    <div class="moduleIcon">❋</div>
-                    <div>
-                      <div class="moduleTitle">Movimento & scarico</div>
-                      <div class="moduleLead">Micro-attivazioni, rilascio corporeo, mobilità dolce e pratiche leggere per uscire dalla rigidità.</div>
-                    </div>
-                  </div>
-                  <div class="moduleMeta"><span class="premiumBadge">Body</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
         </div>
 
         <div class="footerNote">
-          Una parte gratuita già ricca e curata, con uno spazio Premium chiaramente più profondo, completo e prezioso.
+          Suggerimento: per la versione gratuita questa quantità è già molto valida. Così il valore del premium resta chiaro, senza far sembrare vuota la versione free.
         </div>
 
       </div>
@@ -1382,16 +1012,24 @@
         const map = {
           "index.html": "indexIT.html",
           "indexIT.html": "index.html",
+
           "wissen.html": "wissenIT.html",
           "wissenIT.html": "wissen.html",
+
           "daily-reset.html": "daily-resetIT.html",
           "daily-resetIT.html": "daily-reset.html",
+
           "lifestyle.html": "lifestyleIT.html",
           "lifestyleIT.html": "lifestyle.html",
+
           "mitglieder.html": "mitgliederIT.html",
           "mitgliederIT.html": "mitglieder.html",
+
           "uebungen.html": "uebungenIT.html",
           "uebungenIT.html": "uebungen.html",
+
+          "uebungen-premium.html": "uebungen-premiumIT.html",
+          "uebungen-premiumIT.html": "uebungen-premium.html"
         };
 
         if(targetLang === "it") return map[path] || path.replace(".html","IT.html");
@@ -1422,6 +1060,7 @@
         if(twin !== current) location.replace(twin);
         return;
       }
+
       if(stored === "de" && isITpage){
         const twin = getTwinUrl("de");
         if(twin !== current) location.replace(twin);
@@ -1435,15 +1074,14 @@
   <script>
     (function(){
       const PREMIUM_FLAG = "panacea_premium";
-      const isPremium = (localStorage.getItem(PREMIUM_FLAG) === "true");
+      const isPremium = localStorage.getItem(PREMIUM_FLAG) === "true";
+
       const free = document.getElementById("premiumFree");
       const on = document.getElementById("premiumOn");
-      const content = document.getElementById("premiumContent");
 
-      if(isPremium){
-        if(free) free.style.display = "none";
-        if(on) on.style.display = "block";
-        if(content) content.style.display = "block";
+      if(isPremium && free && on){
+        free.style.display = "none";
+        on.style.display = "block";
       }
     })();
   </script>
@@ -1540,7 +1178,9 @@
         if(img){
           img.addEventListener("error", ()=>{ img.style.display="none"; });
           img.addEventListener("load", ()=>{ img.style.display="block"; });
-          img.style.display = "block";
+          if(img.complete && img.naturalWidth > 0){
+            img.style.display = "block";
+          }
         }
 
         btnStart.addEventListener("click", () => {
@@ -1560,6 +1200,7 @@
 
           t.interval = setInterval(() => {
             if(!t.running || t.paused) return;
+
             t.left -= 1;
             if(t.left < 0) t.left = 0;
             setPillTime(blockN, t.left);
@@ -1658,6 +1299,7 @@
 
           t.interval = setInterval(() => {
             if(!t.running || t.paused) return;
+
             t.left -= 1;
             if(t.left < 0) t.left = 0;
             setPillTime(n, t.left);
@@ -1704,8 +1346,8 @@
 
       if(!grid || !result || !scoreEl || !btnStart || !btnReset) return;
 
-      const goodWords = ["Calma", "Respiro", "Corpo", "Focus", "Pausa", "Orientamento", "Espiro", "Presenza"];
-      const distractors = ["Caos", "Allarme", "Fretta", "Pressione", "Rumore", "Urgenza", "Tensione", "Eccesso"];
+      const goodWords = ["Calma", "Respiro", "Terra", "Focus", "Corpo", "Pausa", "Orientamento", "Espirazione"];
+      const distractors = ["Caos", "Allarme", "Frenesia", "Pressione", "Stimolo", "Velocità", "Rumore", "Fretta"];
 
       let score = 0;
 
@@ -1740,25 +1382,25 @@
               scoreEl.textContent = score;
               btn.textContent = "✓ " + word;
               result.textContent = score >= 4
-                ? "Molto bene: hai riconosciuto le parole che sostengono calma e presenza."
-                : "Bene, continua così.";
-            }else{
+                ? "Molto bene: hai riconosciuto le parole legate al focus calmo."
+                : "Bene, continua con calma.";
+            } else {
               btn.textContent = "– " + word;
-              result.textContent = "Va benissimo anche così. Qui contano attenzione e gentilezza, non la perfezione.";
+              result.textContent = "Non importa. Qui conta il focus, non la perfezione.";
             }
           });
 
           grid.appendChild(btn);
         });
 
-        result.textContent = "Nuovo round iniziato. Scegli le parole giuste.";
+        result.textContent = "Nuovo giro iniziato. Scegli le parole giuste.";
       }
 
       function resetGame(){
         score = 0;
         scoreEl.textContent = "0";
         grid.innerHTML = "";
-        result.textContent = "Pronta per iniziare con calma.";
+        result.textContent = "Pronta per il primo giro.";
       }
 
       btnStart.addEventListener("click", renderRound);
@@ -1779,19 +1421,22 @@
       function update(){
         const done = checks.filter(c => c.checked).length;
         scoreEl.textContent = `${done}/5`;
-        checks.forEach(c => c.closest(".item")?.classList.toggle("done", c.checked));
+
+        checks.forEach(c => {
+          c.closest(".item")?.classList.toggle("done", c.checked);
+        });
 
         if(done === 0){
-          result.textContent = "Prenditi il tuo tempo. Qui non c’è nulla da fare perfettamente.";
-        }else if(done < 5){
-          result.textContent = "Molto bene. Resta con percezioni semplici e procedi un passo alla volta.";
-        }else{
-          result.textContent = "Completato. Hai accompagnato l’attenzione verso più calma e presenza.";
+          result.textContent = "Prenditi il tuo tempo. Qui non esiste “giusto” o “sbagliato”.";
+        } else if(done < 5){
+          result.textContent = "Bene. Rimani su percezioni neutre e procedi un passo alla volta.";
+        } else {
+          result.textContent = "Completato. Hai riportato attenzione e presenza con calma.";
         }
       }
 
       btnStart.addEventListener("click", () => {
-        result.textContent = "Inizia da 5 cose che puoi vedere intorno a te.";
+        result.textContent = "Inizia con 5 cose che puoi vedere.";
       });
 
       btnReset.addEventListener("click", () => {
@@ -1822,7 +1467,7 @@
       let timeoutId = null;
 
       function resetVisual(){
-        box.style.background = "rgba(255,255,255,.78)";
+        box.style.background = "rgba(255,255,255,.80)";
         box.style.border = "1px solid rgba(200,162,74,.16)";
         box.style.color = "rgba(43,43,43,.84)";
       }
@@ -1831,17 +1476,22 @@
         waiting = false;
         ready = false;
         startedAt = 0;
-        if(timeoutId) clearTimeout(timeoutId);
-        timeoutId = null;
+
+        if(timeoutId){
+          clearTimeout(timeoutId);
+          timeoutId = null;
+        }
+
         score.textContent = "–";
-        box.textContent = "Tocca “Start”.";
+        box.textContent = "Tocca “Inizia”.";
         resetVisual();
       }
 
       btnStart.addEventListener("click", () => {
         resetGame();
         waiting = true;
-        box.textContent = "Attendi… non toccare troppo presto.";
+        box.textContent = "Aspetta… non toccare ancora.";
+
         const delay = 1500 + Math.floor(Math.random() * 2500);
 
         timeoutId = setTimeout(() => {
@@ -1876,6 +1526,37 @@
 
       btnReset.addEventListener("click", resetGame);
       resetGame();
+    })();
+  </script>
+
+  <script>
+    (function(){
+      function isPremiumUser(){
+        return (
+          localStorage.getItem("panacea_premium") === "true" ||
+          localStorage.getItem("premiumUnlocked") === "true" ||
+          localStorage.getItem("mitglied") === "true"
+        );
+      }
+
+      function openPremiumArea(){
+        if(isPremiumUser()){
+          window.location.href = "uebungen-premiumIT.html";
+        } else {
+          window.location.href = "mitgliederIT.html";
+        }
+      }
+
+      const btn = document.getElementById("premiumAccessBtn");
+      const btnDirect = document.getElementById("premiumOpenDirectBtn");
+
+      if(btn){
+        btn.addEventListener("click", openPremiumArea);
+      }
+
+      if(btnDirect){
+        btnDirect.addEventListener("click", openPremiumArea);
+      }
     })();
   </script>
 </body>
