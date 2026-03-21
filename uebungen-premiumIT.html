@@ -1420,3 +1420,343 @@
   </script>
 </body>
 </html>
+      {
+        category: "Attenzione",
+        title: "Parola guida",
+        text: "Scegli una parola che oggi possa accompagnarti e sostenerti interiormente.",
+        render: () => `
+          <div class="mini-area">
+            <input id="focusWord" type="text" placeholder="es. calma, chiarezza, fiducia" />
+            <button class="btn btn-gold" onclick="saveFocusWord()" style="margin-top:10px">Salva parola</button>
+            <div id="focusWordResult" class="result hidden"></div>
+          </div>
+        `
+      },
+      {
+        category: "Contatto con sé",
+        title: "Mini-journal",
+        text: "Rispondi in una frase: che cosa, oggi, era già abbastanza?",
+        render: () => `
+          <div class="mini-area">
+            <textarea id="journalInput" placeholder="La mia frase di oggi..."></textarea>
+            <button class="btn btn-gold" onclick="saveJournal()" style="margin-top:10px">Salva</button>
+            <div id="journalResult" class="result hidden"></div>
+          </div>
+        `
+      },
+      {
+        category: "Regolazione",
+        title: "Timer da 60 secondi",
+        text: "Un timer essenziale per arrivare con calma. Ideale per respirare, ritrovare presenza o concederti una breve pausa.",
+        render: () => `
+          <div class="mini-area">
+            <div class="timer-top">
+              <div class="timer-label">Mini timer</div>
+              <div id="oneMinuteDisplay" class="timer-display">01:00</div>
+            </div>
+            <div class="btn-row">
+              <button class="btn btn-gold" onclick="startOneMinute()">Start</button>
+              <button class="btn" onclick="resetOneMinute()">Reset</button>
+            </div>
+          </div>
+        `
+      }
+    ];
+
+    const exerciseGrid = document.getElementById("exerciseGrid");
+    const gameGrid = document.getElementById("gameGrid");
+
+    function renderExercises(){
+      if(!exerciseGrid) return;
+      exerciseGrid.innerHTML = exercises.map((item, index) => `
+        <article class="exercise-card">
+          <div class="cardHead">
+            <div class="label">${item.category}</div>
+            <h3>${index + 1}. ${item.title}</h3>
+          </div>
+          <div class="cardBody">
+            <div class="meta">
+              <span class="chip">${item.duration}</span>
+              <span class="chip">${item.level}</span>
+            </div>
+            <p class="text">${item.text}</p>
+            <ol class="practice-steps">
+              ${item.steps.map(step => `<li>${step}</li>`).join("")}
+            </ol>
+            <div class="effect"><strong>Possibile effetto:</strong> ${item.effect}</div>
+            ${item.timer ? `
+              <div class="timer-box">
+                <div class="timer-top">
+                  <div class="timer-label">Timer pratica opzionale</div>
+                  <div class="timer-display" id="timer-display-${index}">${formatTime(item.timer)}</div>
+                </div>
+                <div class="btn-row">
+                  <button class="btn btn-gold" onclick="startExerciseTimer(${index}, ${item.timer})">Start</button>
+                  <button class="btn" onclick="resetExerciseTimer(${index}, ${item.timer})">Reset</button>
+                </div>
+              </div>
+            ` : ``}
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function renderGames(){
+      if(!gameGrid) return;
+      gameGrid.innerHTML = games.map((item, index) => `
+        <article class="game-card">
+          <div class="cardHead">
+            <div class="label">${item.category}</div>
+            <h3>${index + 1}. ${item.title}</h3>
+          </div>
+          <div class="cardBody">
+            <p class="text">${item.text}</p>
+            ${item.render()}
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function formatTime(sec){
+      const m = String(Math.floor(sec / 60)).padStart(2,"0");
+      const s = String(sec % 60).padStart(2,"0");
+      return `${m}:${s}`;
+    }
+
+    const timers = {};
+
+    function startExerciseTimer(index, total){
+      clearInterval(timers[index]);
+      let left = total;
+      const el = document.getElementById(`timer-display-${index}`);
+      if(!el) return;
+      el.textContent = formatTime(left);
+
+      timers[index] = setInterval(() => {
+        left--;
+        el.textContent = formatTime(Math.max(left,0));
+        if(left <= 0){
+          clearInterval(timers[index]);
+          el.textContent = "Terminato";
+        }
+      }, 1000);
+    }
+
+    function resetExerciseTimer(index, total){
+      clearInterval(timers[index]);
+      const el = document.getElementById(`timer-display-${index}`);
+      if(el) el.textContent = formatTime(total);
+    }
+
+    function showResult(id, text){
+      const box = document.getElementById(id);
+      if(!box) return;
+      box.classList.remove("hidden");
+      box.innerHTML = text;
+    }
+
+    function analyzeThought(){
+      const value = document.getElementById("thoughtInput").value.trim();
+      if(!value){
+        showResult("thoughtResult", "Scrivi prima un pensiero.");
+        return;
+      }
+
+      const lower = value.toLowerCase();
+      let type = "interpretazione";
+      if (lower.includes("sempre") || lower.includes("mai") || lower.includes("sicuramente")) type = "paura o valutazione amplificata";
+      if (lower.includes("vedo") || lower.includes("ho") || lower.includes("è")) type = "possibile fatto o osservazione concreta";
+
+      showResult(
+        "thoughtResult",
+        `In questo momento il tuo pensiero assomiglia soprattutto a: <span class="accent">${type}</span>.<br><br>
+         Domanda utile: ci sono prove chiare oppure sta parlando soprattutto la tensione interna?`
+      );
+    }
+
+    function startNumberGame(){
+      const start = parseInt(document.getElementById("startNumber").value || "100", 10);
+      let current = start;
+      const seq = [];
+      for(let i=0;i<6;i++){
+        current -= 7;
+        seq.push(current);
+      }
+      showResult(
+        "numberGameResult",
+        `Prova ora a seguire lentamente questa sequenza:<br><br><span class="accent">${seq.join(" → ")}</span><br><br>
+         Osserva con curiosità: la mente diventa più calma, più chiara o più impaziente?`
+      );
+    }
+
+    function saveSafeThings(){
+      const values = [
+        document.getElementById("safe1").value.trim(),
+        document.getElementById("safe2").value.trim(),
+        document.getElementById("safe3").value.trim()
+      ].filter(Boolean);
+
+      if(values.length < 3){
+        showResult("safeResult", "Inserisci tre elementi concreti.");
+        return;
+      }
+
+      localStorage.setItem("panacea_safe_things", JSON.stringify(values));
+      showResult(
+        "safeResult",
+        `Salvato. I tuoi tre punti di stabilità per oggi:<br><br><span class="accent">${values.join(" · ")}</span>`
+      );
+    }
+
+    let currentMemoryAnswer = "";
+
+    function newMemoryGame(){
+      const seq = Array.from({length:5}, () => Math.floor(Math.random() * 9) + 1);
+      currentMemoryAnswer = seq.join("");
+      const container = document.getElementById("memorySequence");
+      if(!container) return;
+
+      container.innerHTML = seq.map(n => `<div class="memory-chip">${n}</div>`).join("");
+
+      setTimeout(() => {
+        if(container){
+          container.innerHTML = `<div class="small">Ora riscrivila.</div>`;
+        }
+      }, 2500);
+
+      showResult("memoryResult", "Memorizza la sequenza. Tra poco scomparirà.");
+    }
+
+    function checkMemoryGame(){
+      const answer = (document.getElementById("memoryAnswer").value || "").replace(/\s/g,"");
+      if(!currentMemoryAnswer){
+        showResult("memoryResult", "Avvia prima una nuova sequenza.");
+        return;
+      }
+      if(answer === currentMemoryAnswer){
+        showResult("memoryResult", "Molto bene. <span class='accent'>Corretto.</span> Il tuo focus è rimasto stabile.");
+      } else {
+        showResult("memoryResult", `Non completamente. La sequenza corretta era: <span class="accent">${currentMemoryAnswer}</span>`);
+      }
+    }
+
+    function needReflection(){
+      const val = document.getElementById("needSelect").value;
+      if(!val){
+        showResult("needResult", "Scegli prima un’opzione.");
+        return;
+      }
+
+      const map = {
+        "Calma": "Allora oggi potrebbe esserti utile meno stimolazione e più morbidezza.",
+        "Movimento": "Anche solo 2–5 minuti di movimento delicato possono aiutare a sciogliere il blocco interno.",
+        "Contatto": "Forse oggi una connessione autentica può sostenerti più del continuare semplicemente a funzionare.",
+        "Cibo": "Un corpo regolato ha spesso bisogno prima di nutrimento, non di ulteriore disciplina.",
+        "Acqua": "A volte il gesto più semplice è davvero quello più efficace.",
+        "Pausa": "Non devi arrivare allo stremo per meritarti una pausa.",
+        "Struttura": "Un piccolo ordine chiaro può trasmettere maggiore sicurezza al sistema nervoso."
+      };
+
+      showResult("needResult", `<span class="accent">${val}</span><br><br>${map[val]}`);
+    }
+
+    function stressInterpretation(){
+      const value = parseInt(document.getElementById("stressRange").value, 10);
+      let text = "";
+      if(value <= 3){
+        text = "Il tuo sistema appare piuttosto tranquillo o poco attivato. In questo momento possono esserti utili focus, movimento leggero o una pianificazione semplice e chiara.";
+      } else if(value <= 6){
+        text = "L’attivazione è media. È un buon momento per una regolazione consapevole, qualche respiro calmo o una piccola riorganizzazione.";
+      } else {
+        text = "L’attivazione è alta. In questo momento è più utile calmare, alleggerire e ridurre, piuttosto che spingerti ancora oltre.";
+      }
+      showResult("stressResult", `<span class="accent">Valore ${value}/10</span><br><br>${text}`);
+    }
+
+    function loadDecision(type){
+      const value = document.getElementById("loadInput").value.trim();
+      if(!value){
+        showResult("loadResult", "Nomina prima il tuo tema.");
+        return;
+      }
+
+      if(type === "handeln"){
+        showResult("loadResult", `Bene. Ora prova a formulare il <span class="accent">passo più piccolo possibile</span> rispetto a: "${value}".`);
+      } else {
+        showResult("loadResult", `Puoi parcheggiare consapevolmente "${value}" per oggi. Segnati un momento successivo e concedi al tuo sistema un po’ di sollievo.`);
+      }
+    }
+
+    function saveFocusWord(){
+      const word = document.getElementById("focusWord").value.trim();
+      if(!word){
+        showResult("focusWordResult", "Inserisci prima una parola.");
+        return;
+      }
+      localStorage.setItem("panacea_focus_word", word);
+      showResult("focusWordResult", `La tua parola guida di oggi è: <span class="accent">${word}</span>`);
+    }
+
+    function saveJournal(){
+      const text = document.getElementById("journalInput").value.trim();
+      if(!text){
+        showResult("journalResult", "Scrivi prima una frase.");
+        return;
+      }
+      localStorage.setItem("panacea_journal_today", text);
+      showResult("journalResult", `Salvato.<br><br><span class="accent">“${text}”</span>`);
+    }
+
+    let oneMinuteTimer = null;
+    let oneMinuteLeft = 60;
+
+    function updateOneMinuteDisplay(){
+      const el = document.getElementById("oneMinuteDisplay");
+      if(el) el.textContent = formatTime(oneMinuteLeft);
+    }
+
+    function startOneMinute(){
+      clearInterval(oneMinuteTimer);
+      oneMinuteLeft = 60;
+      updateOneMinuteDisplay();
+
+      oneMinuteTimer = setInterval(() => {
+        oneMinuteLeft--;
+        updateOneMinuteDisplay();
+        if(oneMinuteLeft <= 0){
+          clearInterval(oneMinuteTimer);
+          const el = document.getElementById("oneMinuteDisplay");
+          if(el) el.textContent = "Terminato";
+        }
+      }, 1000);
+    }
+        function resetOneMinute(){
+      clearInterval(oneMinuteTimer);
+      oneMinuteLeft = 60;
+      updateOneMinuteDisplay();
+    }
+
+    function initChecklist(){
+      const stored = JSON.parse(localStorage.getItem("panacea_premium_checklist") || "[]");
+      document.querySelectorAll('#dailyChecklist input[type="checkbox"]').forEach(cb => {
+        cb.checked = stored.includes(cb.dataset.check);
+        cb.closest(".check-item").classList.toggle("done", cb.checked);
+
+        cb.addEventListener("change", () => {
+          const active = Array.from(document.querySelectorAll('#dailyChecklist input[type="checkbox"]:checked'))
+            .map(x => x.dataset.check);
+          localStorage.setItem("panacea_premium_checklist", JSON.stringify(active));
+          cb.closest(".check-item").classList.toggle("done", cb.checked);
+        });
+      });
+    }
+
+    if (premiumUnlocked) {
+      renderExercises();
+      renderGames();
+      initChecklist();
+      updateOneMinuteDisplay();
+    }
+  </script>
+</body>
+</html>      
