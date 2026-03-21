@@ -535,11 +535,10 @@
 
   <script>
     const premiumUnlocked =
-      localStorage.setItem("panacea_premium", "true");
-localStorage.setItem("premiumUnlocked", "true");
-localStorage.setItem("mitglied", "true");
-window.location.href = "uebungen-premium.html";
-    
+     const premiumUnlocked =
+  localStorage.getItem("panacea_premium") === "true" ||
+  localStorage.getItem("premiumUnlocked") === "true" ||
+  localStorage.getItem("mitglied") === "true";
     const lockedCard = document.getElementById("lockedCard");
     const premiumContent = document.getElementById("premiumContent");
 
