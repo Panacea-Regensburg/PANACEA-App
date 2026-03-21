@@ -464,7 +464,7 @@
           Sobald dein Zugang aktiviert ist, wird dieser Bereich automatisch sichtbar.
         </p>
         <div class="btn-row" style="justify-content:center">
-          <a class="btn btn-gold" href="./mitglieder.html" style="text-decoration:none;display:inline-block;">Zugang freischalten</a>
+          <a class="btn btn-gold" href="./mitglieder.html?target=uebungen-premium.html" style="text-decoration:none;display:inline-block;">Zugang freischalten</a>
           <a class="btn btn-soft" href="./uebungen.html" style="text-decoration:none;display:inline-block;">Zur kostenlosen Übungen-Seite</a>
         </div>
       </div>
@@ -535,16 +535,20 @@
 
   <script>
     const premiumUnlocked =
-     const premiumUnlocked =
-  localStorage.getItem("panacea_premium") === "true" ||
-  localStorage.getItem("premiumUnlocked") === "true" ||
-  localStorage.getItem("mitglied") === "true";
+      localStorage.getItem("panacea_premium") === "true" ||
+      localStorage.getItem("premiumUnlocked") === "true" ||
+      localStorage.getItem("mitglied") === "true" ||
+      localStorage.getItem("panacea_member") === "true";
+
     const lockedCard = document.getElementById("lockedCard");
     const premiumContent = document.getElementById("premiumContent");
 
     if (premiumUnlocked) {
       lockedCard.classList.remove("show");
       premiumContent.classList.remove("hidden");
+    } else {
+      lockedCard.classList.add("show");
+      premiumContent.classList.add("hidden");
     }
 
     const exercises = [
@@ -973,10 +977,14 @@
       const seq = Array.from({length:5}, () => Math.floor(Math.random() * 9) + 1);
       currentMemoryAnswer = seq.join("");
       const container = document.getElementById("memorySequence");
+      if(!container) return;
+
       container.innerHTML = seq.map(n => `<div class="memory-chip">${n}</div>`).join("");
 
       setTimeout(() => {
-        container.innerHTML = `<div class="small">Jetzt eingeben.</div>`;
+        if(container){
+          container.innerHTML = `<div class="small">Jetzt eingeben.</div>`;
+        }
       }, 2500);
 
       showResult("memoryResult", "Merke dir die Folge. Nach kurzer Zeit verschwindet sie.");
