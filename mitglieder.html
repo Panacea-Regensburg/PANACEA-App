@@ -871,24 +871,28 @@
 
   const BASIS_PASSWORD = "PNC-79xL!qR26-Z";
 
-  const PREMIUM_KEY = "panacea_premium";
-  const LEGACY_PREMIUM_KEY = "panacea_member";
+  const PREMIUM_KEYS = [
+    "panacea_premium",
+    "premiumUnlocked",
+    "mitglied",
+    "panacea_member"
+  ];
 
   const params = new URLSearchParams(window.location.search);
   const targetPage = params.get("target");
 
   function isMember(){
-    return localStorage.getItem(PREMIUM_KEY) === "true" || localStorage.getItem(LEGACY_PREMIUM_KEY) === "true";
+    return PREMIUM_KEYS.some(key => localStorage.getItem(key) === "true");
   }
 
   function setMemberState(value){
-    localStorage.setItem(PREMIUM_KEY, value ? "true" : "false");
-    localStorage.setItem(LEGACY_PREMIUM_KEY, value ? "true" : "false");
+    PREMIUM_KEYS.forEach(key => {
+      localStorage.setItem(key, value ? "true" : "false");
+    });
   }
 
   function clearMemberState(){
-    localStorage.removeItem(PREMIUM_KEY);
-    localStorage.removeItem(LEGACY_PREMIUM_KEY);
+    PREMIUM_KEYS.forEach(key => localStorage.removeItem(key));
   }
 
   function cleanupMemberState(){
@@ -1567,7 +1571,7 @@
   syncSliderLabels();
 
   if(redirectToTargetIfNeeded()){
-    // già reindirizzato
+    // schon weitergeleitet
   } else if(isMember()){
     try{
       const last = JSON.parse(localStorage.getItem("panacea_last_profile_de") || "null");
