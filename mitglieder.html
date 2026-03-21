@@ -1,274 +1,178 @@
-<!doctype html> 
+<!doctype html>
 <html lang="de">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mitgliederbereich – Panacea</title>
 
   <style>
     :root{
       --bg1:#f6f1e6;
       --bg2:#efe7d7;
-      --card:#ffffffde;
-      --card2:#fffaf1;
+      --card:rgba(255,255,255,0.88);
+      --card2:rgba(255,255,255,0.76);
+      --text:#1f1f1f;
+      --muted:#5c5c5c;
       --gold:#c8a24a;
       --gold2:#e8d28a;
-      --gold3:#fff6d6;
-      --text:#2b2b2b;
-      --muted:#6b6b6b;
-      --soft:#8d7b57;
       --ink:#1a1a1a;
-      --ok:#2e7d32;
-      --danger:#a14c3f;
-      --line:#eadfcb;
-      --shadow:0 14px 40px rgba(0,0,0,.10);
-      --shadow2:0 10px 26px rgba(0,0,0,.08);
+      --shadow:0 14px 36px rgba(0,0,0,0.08);
+      --shadow2:0 8px 20px rgba(0,0,0,0.07);
       --radius:22px;
-      --radius2:18px;
-
-      --fs-title: clamp(1.28rem, 1.04rem + 1vw, 1.55rem);
-      --fs-section: clamp(.98rem, .9rem + .34vw, 1.04rem);
-      --fs-body: clamp(.9rem, .84rem + .2vw, .96rem);
-      --fs-small: clamp(.78rem, .74rem + .18vw, .84rem);
-      --fs-button: clamp(.84rem, .8rem + .16vw, .92rem);
+      --radius2:16px;
     }
 
     *{ box-sizing:border-box; }
-    html{ scroll-behavior:smooth; }
 
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--text);
-      background: radial-gradient(1200px 800px at 30% 0%, var(--bg1), var(--bg2));
+      background: radial-gradient(1200px 800px at 20% 0%, var(--bg2), var(--bg1));
       min-height:100vh;
-      display:flex;
-      justify-content:center;
-      padding:14px 10px 24px;
     }
 
-    .phone{
-      width:100%;
-      max-width:480px;
-    }
-
-    .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:8px;
-      margin-bottom:12px;
+    .fixedTopbar{
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      z-index:9999;
       padding:8px 10px;
-      border-radius:18px;
-      background:rgba(255,255,255,.45);
-      backdrop-filter: blur(8px);
-      border:1px solid rgba(200,162,74,.14);
-      box-shadow:0 8px 18px rgba(0,0,0,.04);
-      overflow:hidden;
+      background: rgba(255,255,255,0.58);
+      backdrop-filter: blur(14px);
+      border-bottom:1px solid rgba(255,255,255,0.35);
     }
 
-    .topLeft,
-    .topRight{
-      display:flex;
+    .fixedTopbarInner{
+      max-width:520px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns: 1fr auto 1fr;
       align-items:center;
       gap:8px;
+    }
+
+    .navLeft,.navCenter,.navRight{
+      display:flex;
+      align-items:center;
       min-width:0;
-      flex:1 1 0;
     }
 
-    .topRight{
-      justify-content:flex-end;
-    }
+    .navLeft{ justify-content:flex-start; }
+    .navCenter{ justify-content:center; gap:8px; }
+    .navRight{ justify-content:flex-end; }
 
-    .back{
+    .btn{
       text-decoration:none;
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:6px;
-      padding:9px 12px;
+      gap:8px;
+      padding:8px 12px;
       border-radius:999px;
-      background:linear-gradient(180deg, var(--card2), var(--card));
-      box-shadow:var(--shadow2);
-      color:var(--text);
-      border:1px solid rgba(200,162,74,.18);
-      white-space:nowrap;
+      background: rgba(255,255,255,0.82);
+      color:var(--ink);
       font-weight:800;
-      font-size:var(--fs-button);
-      line-height:1;
-      flex:0 0 auto;
+      font-size:12px;
+      border:1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+      cursor:pointer;
+      user-select:none;
+      white-space:nowrap;
+      transition: transform .15s ease;
     }
 
-    .langToggle{
-      display:flex;
-      gap:6px;
-      align-items:center;
-      min-width:0;
-      flex:0 1 auto;
-    }
+    .btn:hover{ transform: translateY(-1px); }
+    .btn:active{ transform: translateY(1px); }
 
     .langBtn{
-      appearance:none;
-      border:none;
-      cursor:pointer;
-      padding:9px 10px;
+      padding:8px 11px;
       border-radius:999px;
-      font-weight:850;
-      letter-spacing:.1px;
-      background:rgba(255,255,255,.72);
-      border:1px solid rgba(200,162,74,.16);
-      box-shadow:0 8px 18px rgba(0,0,0,.05);
-      color:var(--text);
+      font-weight:900;
+      font-size:12px;
+      background: rgba(255,255,255,0.72);
+      border:1px solid rgba(0,0,0,0.08);
+      cursor:pointer;
       white-space:nowrap;
-      font-size:var(--fs-button);
-      line-height:1;
-      min-width:0;
+      transition: transform .15s ease;
     }
+
+    .langBtn:hover{ transform: translateY(-1px); }
 
     .langBtn.active{
-      background:radial-gradient(circle at 20% 10%, var(--gold3), var(--gold2));
-      border:1px solid rgba(200,162,74,.34);
-      color:#3a2c10;
-      text-shadow:0 0 10px rgba(200,162,74,.18);
+      background: rgba(200,162,74,0.18);
+      border-color: rgba(200,162,74,0.45);
+      box-shadow: 0 8px 18px rgba(200,162,74,0.10);
     }
 
-    .brand{
-      min-width:0;
-      text-align:right;
-      line-height:1.05;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-
-    .brand .t1{
-      font-size:11px;
-      color:var(--muted);
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      font-weight:800;
-    }
-
-    .brand .t2{
-      font-size:15px;
+    .pageTitle{
       font-weight:900;
       letter-spacing:.1px;
+      font-size:12px;
+      padding:8px 10px;
+      border-radius:999px;
+      background: rgba(255,255,255,0.62);
+      border:1px solid rgba(0,0,0,0.06);
+      max-width:100%;
       overflow:hidden;
       text-overflow:ellipsis;
+      white-space:nowrap;
     }
 
-    .brand .glow{
-      color:var(--gold);
-      text-shadow:0 0 10px rgba(200,162,74,.22);
-      font-weight:900;
+    .wrap{
+      max-width:520px;
+      margin:0 auto;
+      padding:68px 10px 22px;
     }
 
     .card{
-      background:linear-gradient(180deg, var(--card2), var(--card));
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      border:1px solid rgba(200,162,74,.18);
-      overflow:hidden;
-      margin-bottom:12px;
+      background: var(--card);
+      backdrop-filter: blur(12px);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:14px;
+      border:1px solid rgba(200,162,74,0.14);
     }
 
-    .hero{
-      padding:18px 16px 14px;
-      display:flex;
-      gap:12px;
-      align-items:center;
-    }
+    .card + .card{ margin-top:12px; }
 
-    .badge{
-      width:60px;
-      height:60px;
-      border-radius:18px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:900;
-      font-size:15px;
-      color:#3a2c10;
-      background:radial-gradient(circle at 30% 20%, var(--gold3), var(--gold2));
-      border:1px solid rgba(200,162,74,.32);
-      box-shadow:0 0 16px rgba(200,162,74,.20);
-      flex:0 0 auto;
-    }
-
-    .hero h1{
-      margin:0 0 4px;
-      font-size:var(--fs-title);
-      line-height:1.15;
-      font-weight:900;
-      letter-spacing:.1px;
-      color:#2a2113;
-    }
-
-    .hero p{
+    .brandTitle{
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
       margin:0;
-      color:rgba(43,43,43,.76);
-      font-size:var(--fs-body);
-      line-height:1.55;
-      font-weight:650;
+      font-size:20px;
+      letter-spacing:.1px;
+      line-height:1.05;
     }
 
-    .content{
-      padding:16px;
+    .sub{
+      margin:7px 0 0;
+      color:var(--muted);
+      line-height:1.5;
+      font-size:12.5px;
+    }
+
+    .goldLine{
+      height:1px;
+      width:100%;
+      margin:10px 0;
+      background: linear-gradient(90deg, transparent, rgba(200,162,74,.55), transparent);
     }
 
     .pill{
       display:inline-flex;
       align-items:center;
-      justify-content:center;
-      padding:7px 11px;
+      gap:8px;
+      padding:5px 9px;
       border-radius:999px;
-      background:rgba(200,162,74,.12);
-      border:1px solid rgba(200,162,74,.26);
-      color:#6e5628;
-      font-size:var(--fs-small);
-      font-weight:850;
-      line-height:1.1;
-      letter-spacing:.03em;
-    }
-
-    .sectionCard{
-      background:rgba(255,255,255,.7);
-      border-radius:18px;
-      border:1px solid rgba(200,162,74,.16);
-      box-shadow:0 10px 22px rgba(0,0,0,.05);
-      padding:14px;
-      margin-bottom:12px;
-    }
-
-    .sectionTitle{
-      margin:0 0 6px;
-      font-size:var(--fs-section);
+      font-size:10px;
       font-weight:900;
-      color:#3a2c10;
-      line-height:1.2;
+      background: rgba(200,162,74,0.16);
+      border:1px solid rgba(200,162,74,0.28);
+      color:#2a2316;
     }
 
-    .sectionLead,
-    .sub,
-    .muted{
-      color:rgba(43,43,43,.76);
-      font-size:var(--fs-body);
-      line-height:1.55;
-      font-weight:650;
-    }
-
-    .miniText{
-      color:rgba(43,43,43,.82);
-      font-size:var(--fs-body);
-      line-height:1.58;
-      font-weight:650;
-    }
-
-    .goldLine{
-      height:1px;
-      background:linear-gradient(90deg, transparent, rgba(200,162,74,.35), transparent);
-      margin:14px 0;
-    }
+    .muted{ color:var(--muted); }
 
     .row{
       display:flex;
@@ -277,121 +181,79 @@
       align-items:center;
     }
 
-    .spaceBetween{
-      justify-content:space-between;
-    }
-
     .input{
-      flex:1 1 220px;
-      padding:12px 13px;
-      border-radius:14px;
-      border:1px solid rgba(200,162,74,.16);
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid rgba(0,0,0,0.12);
+      width:100%;
+      max-width:100%;
+      font-size:14px;
       background:#fff;
-      color:var(--text);
-      font:inherit;
       outline:none;
-      box-shadow:0 8px 18px rgba(0,0,0,.03);
     }
 
     .input:focus{
-      border-color:rgba(200,162,74,.45);
-      box-shadow:0 0 0 3px rgba(200,162,74,.12);
-    }
-
-    .btn,
-    .btnGold,
-    .btnSoft{
-      appearance:none;
-      border:none;
-      cursor:pointer;
-      padding:11px 13px;
-      border-radius:14px;
-      font-weight:850;
-      letter-spacing:.08px;
-      box-shadow:var(--shadow2);
-      border:1px solid rgba(200,162,74,.18);
-      background:linear-gradient(180deg, #ffffff, #f7f2e6);
-      color:var(--text);
-      font-size:var(--fs-button);
-      line-height:1.1;
-      text-align:center;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      transition:transform .15s ease;
-    }
-
-    .btn:hover,
-    .btnGold:hover,
-    .btnSoft:hover{
-      transform:translateY(-1px);
+      border-color: rgba(200,162,74,0.55);
+      box-shadow: 0 0 0 3px rgba(200,162,74,0.16);
     }
 
     .btnGold{
-      background:radial-gradient(circle at 20% 10%, var(--gold3), var(--gold2));
-      border:1px solid rgba(200,162,74,.34);
-      color:#3a2c10;
-      text-shadow:0 0 10px rgba(200,162,74,.18);
+      border:0;
+      font-weight:900;
+      padding:10px 13px;
+      border-radius:12px;
+      cursor:pointer;
+      color:#1f1a10;
+      background: linear-gradient(180deg, rgba(232,210,138,.95), rgba(200,162,74,.92));
+      box-shadow: 0 10px 24px rgba(200,162,74,.16);
+      white-space:nowrap;
+      font-size:12px;
+      transition: transform .15s ease;
     }
+
+    .btnGold:hover{ transform: translateY(-1px); }
 
     .btnSoft{
-      background:linear-gradient(180deg, rgba(255,255,255,.95), rgba(247,242,230,.9));
+      padding:10px 13px;
+      border-radius:12px;
+      border:1px solid rgba(0,0,0,0.10);
+      background: rgba(255,255,255,0.85);
+      font-weight:900;
+      cursor:pointer;
+      color:#1f1f1f;
+      font-size:12px;
+      transition: transform .15s ease;
     }
 
-    .statusLocked{
-      color:var(--danger);
-      font-weight:900;
-      font-size:var(--fs-small);
-    }
+    .btnSoft:hover{ transform: translateY(-1px); }
 
-    .statusOk{
-      color:var(--ok);
-      font-weight:900;
-      font-size:var(--fs-small);
-    }
+    .statusLocked{ color:#8a1f1f; font-weight:900; font-size:12px; }
+    .statusOk{ color:#116b2e; font-weight:900; font-size:12px; }
 
     .note{
-      margin-top:10px;
-      padding:12px;
-      border-radius:14px;
-      border:1px solid rgba(200,162,74,.18);
-      background:linear-gradient(180deg, rgba(255,248,230,.96), rgba(255,255,255,.82));
-      color:#6b5530;
-      font-size:var(--fs-small);
-      line-height:1.55;
-      font-weight:700;
+      margin-top:9px;
+      padding:10px 12px;
+      border-radius:12px;
+      background: rgba(255,255,255,0.62);
+      border:1px solid rgba(0,0,0,0.06);
+      font-size:11.5px;
+      line-height:1.45;
+      color:rgba(0,0,0,0.72);
     }
 
     .grid2{
       display:grid;
-      grid-template-columns:1fr;
+      grid-template-columns: 1fr;
       gap:10px;
       margin-top:10px;
     }
 
-    .linkGrid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:10px;
-      margin-top:12px;
-    }
-
-    .miniCard,
-    .protoBlock,
-    .goal,
-    .breathWrap{
-      border-radius:18px;
-      border:1px solid rgba(200,162,74,.18);
-      background:rgba(255,255,255,.76);
-      box-shadow:0 10px 22px rgba(0,0,0,.06);
-      overflow:hidden;
-    }
-
-    .miniCard,
-    .protoBlock,
-    .goal{
-      padding:12px;
+    .miniCard{
+      background: var(--card2);
+      border-radius: var(--radius2);
+      padding:11px;
+      border:1px solid rgba(0,0,0,0.06);
+      box-shadow: var(--shadow2);
     }
 
     .labelRow{
@@ -399,25 +261,24 @@
       justify-content:space-between;
       align-items:baseline;
       gap:10px;
-      margin-bottom:8px;
+      margin-bottom:6px;
     }
 
     .labelRow .lbl{
       font-weight:900;
       letter-spacing:.1px;
-      font-size:var(--fs-body);
-      color:#3a2c10;
+      font-size:12px;
     }
 
     .labelRow .val{
       font-weight:900;
-      color:rgba(43,43,43,.72);
-      font-size:var(--fs-small);
+      color: rgba(0,0,0,0.70);
+      font-size:12px;
     }
 
     input[type="range"]{
       width:100%;
-      accent-color:var(--gold);
+      accent-color: var(--gold);
     }
 
     .actionsRow{
@@ -426,31 +287,30 @@
       flex-wrap:wrap;
       align-items:center;
       justify-content:space-between;
-      margin-top:12px;
+      margin-top:10px;
     }
 
     .toggle{
       display:inline-flex;
       align-items:center;
       gap:9px;
-      padding:10px 12px;
-      border-radius:14px;
-      border:1px solid rgba(200,162,74,.16);
-      background:rgba(255,255,255,.78);
-      font-weight:850;
-      font-size:var(--fs-small);
+      padding:8px 10px;
+      border-radius:12px;
+      border:1px solid rgba(0,0,0,0.10);
+      background: rgba(255,255,255,0.78);
+      font-weight:900;
+      font-size:12px;
       cursor:pointer;
       user-select:none;
-      box-shadow:0 8px 18px rgba(0,0,0,.04);
     }
 
     .switch{
       width:40px;
       height:22px;
       border-radius:999px;
-      background:rgba(0,0,0,.10);
+      background: rgba(0,0,0,0.10);
       position:relative;
-      border:1px solid rgba(0,0,0,.08);
+      border:1px solid rgba(0,0,0,0.10);
     }
 
     .knob{
@@ -461,105 +321,134 @@
       top:1px;
       left:1px;
       background:#fff;
-      box-shadow:0 4px 12px rgba(0,0,0,.18);
-      transition:left .18s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+      transition: left .18s ease;
     }
 
     .switch.on{
-      background:rgba(200,162,74,.30);
-      border-color:rgba(200,162,74,.40);
+      background: rgba(200,162,74,0.30);
+      border-color: rgba(200,162,74,0.40);
     }
 
-    .switch.on .knob{
-      left:20px;
-    }
+    .switch.on .knob{ left:20px; }
 
     .protoGrid{
       display:grid;
-      gap:10px;
+      grid-template-columns: 1fr;
+      gap:9px;
       margin-top:10px;
     }
 
-    .protoBlock h3,
-    .goal h3,
-    .breathTitle{
-      margin:0 0 6px;
-      font-size:var(--fs-body);
-      font-weight:900;
-      color:#3a2c10;
-      line-height:1.2;
+    .protoBlock{
+      background: rgba(255,255,255,0.78);
+      border-radius:14px;
+      padding:11px;
+      border:1px solid rgba(0,0,0,0.06);
+      box-shadow: var(--shadow2);
     }
 
-    .protoBlock p,
+    .protoBlock h3{
+      margin:0 0 6px;
+      font-size:12.5px;
+      font-weight:900;
+      letter-spacing:.1px;
+    }
+
+    .protoBlock p{
+      margin:0;
+      line-height:1.5;
+      color: rgba(0,0,0,0.78);
+      font-size:12px;
+    }
+
+    .goal{
+      margin-top:10px;
+      padding:11px;
+      border-radius:14px;
+      background: rgba(255,255,255,0.78);
+      border:1px solid rgba(200,162,74,0.18);
+      box-shadow: var(--shadow2);
+    }
+
+    .goal h3{
+      margin:0 0 6px;
+      font-size:12.5px;
+      font-weight:900;
+    }
+
     .goal p{
       margin:0;
-      color:rgba(43,43,43,.82);
-      line-height:1.58;
-      font-size:var(--fs-body);
-      font-weight:650;
+      color: rgba(0,0,0,0.78);
+      line-height:1.5;
+      font-size:12px;
     }
 
     .breathWrap{
-      padding:12px;
       margin-top:10px;
-      background:linear-gradient(180deg, rgba(255,246,214,.70), rgba(255,255,255,.85));
-      box-shadow:0 0 16px rgba(200,162,74,.08);
+      background: rgba(255,255,255,0.78);
+      border-radius:14px;
+      border:1px solid rgba(0,0,0,0.06);
+      box-shadow: var(--shadow2);
+      padding:11px;
     }
 
     .breathTop{
       display:flex;
       justify-content:space-between;
-      align-items:flex-start;
-      gap:10px;
+      align-items:center;
+      gap:9px;
       flex-wrap:wrap;
+    }
+
+    .breathTitle{
+      font-weight:900;
+      font-size:12.5px;
+      margin:0;
     }
 
     .breathState{
       font-weight:900;
-      font-size:var(--fs-body);
-      color:#3a2c10;
-      text-align:right;
+      font-size:14px;
+      letter-spacing:.1px;
     }
 
     .breathTimer{
       font-weight:900;
-      font-size:var(--fs-small);
-      color:rgba(43,43,43,.72);
-      text-align:right;
+      font-size:12px;
+      color: rgba(0,0,0,0.72);
     }
 
     .breathPlan{
-      margin-top:10px;
-      font-size:var(--fs-small);
-      line-height:1.55;
-      color:#6b5530;
-      padding:10px 12px;
-      border-radius:14px;
-      background:rgba(255,255,255,.82);
-      border:1px solid rgba(200,162,74,.18);
-      font-weight:750;
+      margin-top:8px;
+      font-size:11px;
+      line-height:1.45;
+      color: rgba(0,0,0,0.70);
+      padding:8px 10px;
+      border-radius:12px;
+      background: rgba(255,255,255,0.62);
+      border:1px solid rgba(0,0,0,0.06);
     }
 
     .progress{
-      margin-top:10px;
+      margin-top:8px;
       height:8px;
       border-radius:999px;
-      background:rgba(0,0,0,.06);
+      background: rgba(0,0,0,0.06);
       overflow:hidden;
-      border:1px solid rgba(0,0,0,.06);
+      border:1px solid rgba(0,0,0,0.06);
     }
 
     .progress > div{
       height:100%;
       width:0%;
-      background:linear-gradient(90deg, rgba(200,162,74,.65), rgba(232,210,138,.95));
-      box-shadow:0 0 18px rgba(200,162,74,.18);
+      background: linear-gradient(90deg, rgba(200,162,74,.65), rgba(232,210,138,.95));
+      box-shadow: 0 0 18px rgba(200,162,74,.18);
       border-radius:999px;
-      transition:width .15s linear;
+      transition: width .15s linear;
     }
 
     .modeRow{
-      margin-top:10px;
+      margin-top:9px;
       display:flex;
       gap:8px;
       flex-wrap:wrap;
@@ -575,36 +464,34 @@
     }
 
     .modeBtn{
-      padding:9px 11px;
-      border-radius:14px;
-      border:1px solid rgba(200,162,74,.16);
-      background:rgba(255,255,255,.82);
-      font-weight:850;
+      padding:8px 10px;
+      border-radius:12px;
+      border:1px solid rgba(0,0,0,0.10);
+      background: rgba(255,255,255,0.80);
+      font-weight:900;
       cursor:pointer;
       user-select:none;
-      font-size:var(--fs-small);
-      box-shadow:0 8px 18px rgba(0,0,0,.04);
+      font-size:11px;
     }
 
     .modeBtn.active{
-      background:radial-gradient(circle at 20% 10%, var(--gold3), var(--gold2));
-      border-color:rgba(200,162,74,.34);
-      box-shadow:0 8px 18px rgba(200,162,74,.08);
-      color:#3a2c10;
+      background: rgba(200,162,74,0.18);
+      border-color: rgba(200,162,74,0.35);
+      box-shadow: 0 8px 18px rgba(200,162,74,0.08);
     }
 
     .linesWrap{
-      margin-top:10px;
-      padding:12px;
-      border-radius:16px;
-      background:rgba(255,255,255,.82);
-      border:1px solid rgba(200,162,74,.16);
+      margin-top:9px;
+      padding:10px;
+      border-radius:14px;
+      background: rgba(255,255,255,0.62);
+      border:1px solid rgba(0,0,0,0.06);
       display:none;
     }
 
     .lineRow{
       display:grid;
-      grid-template-columns:70px 1fr 34px;
+      grid-template-columns: 70px 1fr 34px;
       gap:8px;
       align-items:center;
       margin:8px 0;
@@ -612,15 +499,15 @@
 
     .lineLabel{
       font-weight:900;
-      color:rgba(43,43,43,.82);
-      font-size:var(--fs-small);
+      color: rgba(0,0,0,0.78);
+      font-size:11px;
     }
 
     .lineBar{
       height:9px;
       border-radius:999px;
-      background:rgba(0,0,0,.06);
-      border:1px solid rgba(0,0,0,.06);
+      background: rgba(0,0,0,0.06);
+      border:1px solid rgba(0,0,0,0.06);
       overflow:hidden;
     }
 
@@ -628,28 +515,27 @@
       height:100%;
       width:0%;
       border-radius:999px;
-      background:linear-gradient(90deg, rgba(232,210,138,.95), rgba(200,162,74,.65));
-      box-shadow:0 0 14px rgba(200,162,74,.14);
-      transition:width .12s linear;
+      background: linear-gradient(90deg, rgba(232,210,138,0.95), rgba(200,162,74,0.65));
+      box-shadow: 0 0 14px rgba(200,162,74,0.14);
+      transition: width .12s linear;
     }
 
     .lineSec{
       font-weight:900;
-      color:rgba(43,43,43,.72);
+      color: rgba(0,0,0,0.72);
       text-align:right;
-      font-size:var(--fs-small);
+      font-size:11px;
     }
 
     .linesHint{
       margin-top:7px;
-      font-size:var(--fs-small);
-      color:rgba(43,43,43,.68);
+      font-size:10.5px;
+      color: rgba(0,0,0,0.66);
       line-height:1.45;
-      font-weight:700;
     }
 
     .cloudWrap{
-      margin-top:10px;
+      margin-top:9px;
       display:none;
       gap:8px;
     }
@@ -659,26 +545,26 @@
       height:160px;
       margin:0 auto;
       position:relative;
-      border-radius:44% 56% 52% 48% / 48% 44% 56% 52%;
+      border-radius: 44% 56% 52% 48% / 48% 44% 56% 52%;
       background:
-        radial-gradient(circle at 35% 30%, rgba(255,255,255,.95), rgba(255,255,255,.72)),
-        radial-gradient(220px 220px at 50% 65%, rgba(232,210,138,.16), rgba(255,255,255,0));
-      border:1px solid rgba(200,162,74,.16);
-      box-shadow:0 14px 36px rgba(0,0,0,.08);
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,0.95), rgba(255,255,255,0.72)),
+        radial-gradient(220px 220px at 50% 65%, rgba(232,210,138,0.16), rgba(255,255,255,0));
+      border:1px solid rgba(200,162,74,0.16);
+      box-shadow: 0 14px 36px rgba(0,0,0,0.08);
       overflow:hidden;
     }
 
     .cloudSheen{
       position:absolute;
       inset:8px;
-      border-radius:44% 56% 52% 48% / 48% 44% 56% 52%;
-      background:conic-gradient(
+      border-radius: 44% 56% 52% 48% / 48% 44% 56% 52%;
+      background: conic-gradient(
         from 180deg,
-        rgba(200,162,74,.10),
-        rgba(232,210,138,.55),
-        rgba(200,162,74,.10),
-        rgba(255,255,255,0),
-        rgba(200,162,74,.12)
+        rgba(200,162,74,0.10),
+        rgba(232,210,138,0.55),
+        rgba(200,162,74,0.10),
+        rgba(255,255,255,0.0),
+        rgba(200,162,74,0.12)
       );
       opacity:.95;
       animation:sheen 10s linear infinite;
@@ -688,7 +574,7 @@
     }
 
     @keyframes sheen{
-      to { transform:rotate(360deg); }
+      to { transform: rotate(360deg); }
     }
 
     .cloudFill{
@@ -697,10 +583,10 @@
       right:0;
       bottom:0;
       height:0%;
-      background:linear-gradient(180deg, rgba(232,210,138,.82), rgba(200,162,74,.58));
-      box-shadow:0 -14px 32px rgba(200,162,74,.14);
-      transition:height .18s linear;
-      filter:saturate(1.03);
+      background: linear-gradient(180deg, rgba(232,210,138,0.82), rgba(200,162,74,0.58));
+      box-shadow: 0 -14px 32px rgba(200,162,74,0.14);
+      transition: height .18s linear;
+      filter: saturate(1.03);
     }
 
     .cloudText{
@@ -725,890 +611,30 @@
 
     .cloudPhase{
       font-weight:900;
-      font-size:var(--fs-body);
-      color:#3a2c10;
+      font-size:13px;
     }
 
     .cloudCount{
       font-weight:900;
-      font-size:1.3rem;
+      font-size:20px;
       letter-spacing:.1px;
-      color:#2b220f;
     }
 
     .cloudHint{
       font-weight:800;
-      font-size:var(--fs-small);
-      color:rgba(43,43,43,.62);
+      font-size:10px;
+      color: rgba(0,0,0,0.62);
       line-height:1.35;
     }
 
     .cueLine{
-      margin-top:8px;
-      display:flex;
-      justify-content:space-between;
-      gap:8px;
-      flex-wrap:wrap;
-      font-size:var(--fs-small);
-      color:rgba(43,43,43,.62);
-      font-weight:800;
-      padding:0 2px;
-    }
-
-    .breathControls{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      margin-top:10px;
-      align-items:center;
-      justify-content:center;
-    }
-
-    @media (max-width:430px){
-      body{ padding:10px 8px 20px; }
-      .topbar{ gap:6px; padding:8px; }
-      .topLeft, .topRight{ gap:6px; }
-      .back{ padding:8px 10px; }
-      .langBtn{ padding:8px 9px; }
-      .brand .t2{ font-size:14px; }
-      .hero{ align-items:flex-start; padding:16px 14px 12px; }
-      .content{ padding:14px; }
-      .linkGrid{ grid-template-columns:1fr; }
-    }
-
-    @media (max-width:360px){
-      .brand .t1{ display:none; }
-      .brand .t2{ font-size:13px; }
-      .back{ padding:8px 9px; }
-      .langBtn{ padding:8px 8px; font-size:.8rem; }
-      .lineRow{ grid-template-columns:62px 1fr 30px; }
-    }
-  </style>
-</head>
-
-<body>
-  <div class="phone">
-
-    <div class="topbar">
-      <div class="topLeft">
-        <a class="back" href="./index.html">← Home</a>
-
-        <div class="langToggle" aria-label="Sprachauswahl">
-          <button class="langBtn" id="langIT" type="button">IT</button>
-          <button class="langBtn active" id="langDE" type="button">DE</button>
-        </div>
-      </div>
-
-      <div class="topRight">
-        <div class="brand">
-          <div class="t1">Panacea</div>
-          <div class="t2"><span class="glow" id="pageTitleBadge">Mitglieder · Basis</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="hero">
-        <div class="badge">MB</div>
-        <div>
-          <h1>Mitgliederbereich</h1>
-          <p>Hier findest du zwei geschützte Zugänge: deinen Premium-Reset und deinen Kursbereich mit digitalen Inhalten, Materialien und Begleitformaten.</p>
-        </div>
-      </div>
-
-      <div class="content">
-        <div class="pill">2 geschützte Zugänge · Premium Reset · Kurse & Materialien</div>
-
-        <div class="goldLine"></div>
-
-        <p class="miniText">
-          Schön, dass du da bist.
-          <br><br>
-          In diesem Bereich kannst du entweder deinen <strong>Premium Reset</strong> oder deinen <strong>Kurszugang</strong> freischalten.
-          Je nachdem, welches Passwort du erhalten hast, öffnet sich automatisch der passende Bereich.
-          <br><br>
-          <span class="muted">So bleibt der Zugang klar, persönlich und gut geschützt.</span>
-        </p>
-      </div>
-    </div>
-
-    <div class="sectionCard" id="unlockBox">
-      <div class="pill">Zugang für Mitglieder</div>
-      <div class="goldLine"></div>
-
-      <p class="miniText" style="margin:0 0 10px;">
-        Gib hier dein persönliches Passwort ein.
-        <br>
-        <strong>Premium-Passwort</strong> = Premium Reset
-        <br>
-        <strong>Kurse-Passwort</strong> = Kursmaterialien & Inhalte
-      </p>
-
-      <div class="row">
-        <input id="codeInput" class="input" placeholder="Passwort eingeben (am besten kopieren und einfügen)" autocomplete="off" />
-        <button id="unlockBtn" class="btnGold" type="button">Freischalten</button>
-        <span id="status" class="statusLocked">Gesperrt</span>
-      </div>
-
-      <div class="note" id="targetNote">
-        Du erhältst dein Passwort automatisch nach dem Kauf.
-        <br>
-        Je nach Zugang öffnet sich entweder dein <strong>Premium Reset</strong> oder dein <strong>Kursbereich</strong>.
-      </div>
-    </div>
-    <!doctype html> 
-<html lang="de">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Mitgliederbereich – Panacea</title>
-
-  <style>
-    :root{
-      --bg1:#f6f1e6;
-      --bg2:#efe7d7;
-      --card:#ffffffde;
-      --card2:#fffaf1;
-      --gold:#c8a24a;
-      --gold2:#e8d28a;
-      --gold3:#fff6d6;
-      --text:#2b2b2b;
-      --muted:#6b6b6b;
-      --soft:#8d7b57;
-      --ink:#1a1a1a;
-      --ok:#2e7d32;
-      --danger:#a14c3f;
-      --line:#eadfcb;
-      --shadow:0 14px 40px rgba(0,0,0,.10);
-      --shadow2:0 10px 26px rgba(0,0,0,.08);
-      --radius:22px;
-      --radius2:18px;
-
-      --fs-title: clamp(1.28rem, 1.04rem + 1vw, 1.55rem);
-      --fs-section: clamp(.98rem, .9rem + .34vw, 1.04rem);
-      --fs-body: clamp(.9rem, .84rem + .2vw, .96rem);
-      --fs-small: clamp(.78rem, .74rem + .18vw, .84rem);
-      --fs-button: clamp(.84rem, .8rem + .16vw, .92rem);
-    }
-
-    *{ box-sizing:border-box; }
-    html{ scroll-behavior:smooth; }
-
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--text);
-      background: radial-gradient(1200px 800px at 30% 0%, var(--bg1), var(--bg2));
-      min-height:100vh;
-      display:flex;
-      justify-content:center;
-      padding:14px 10px 24px;
-    }
-
-    .phone{
-      width:100%;
-      max-width:480px;
-    }
-
-    .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:8px;
-      margin-bottom:12px;
-      padding:8px 10px;
-      border-radius:18px;
-      background:rgba(255,255,255,.45);
-      backdrop-filter: blur(8px);
-      border:1px solid rgba(200,162,74,.14);
-      box-shadow:0 8px 18px rgba(0,0,0,.04);
-      overflow:hidden;
-    }
-
-    .topLeft,
-    .topRight{
-      display:flex;
-      align-items:center;
-      gap:8px;
-      min-width:0;
-      flex:1 1 0;
-    }
-
-    .topRight{
-      justify-content:flex-end;
-    }
-
-    .back{
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:6px;
-      padding:9px 12px;
-      border-radius:999px;
-      background:linear-gradient(180deg, var(--card2), var(--card));
-      box-shadow:var(--shadow2);
-      color:var(--text);
-      border:1px solid rgba(200,162,74,.18);
-      white-space:nowrap;
-      font-weight:800;
-      font-size:var(--fs-button);
-      line-height:1;
-      flex:0 0 auto;
-    }
-
-    .langToggle{
-      display:flex;
-      gap:6px;
-      align-items:center;
-      min-width:0;
-      flex:0 1 auto;
-    }
-
-    .langBtn{
-      appearance:none;
-      border:none;
-      cursor:pointer;
-      padding:9px 10px;
-      border-radius:999px;
-      font-weight:850;
-      letter-spacing:.1px;
-      background:rgba(255,255,255,.72);
-      border:1px solid rgba(200,162,74,.16);
-      box-shadow:0 8px 18px rgba(0,0,0,.05);
-      color:var(--text);
-      white-space:nowrap;
-      font-size:var(--fs-button);
-      line-height:1;
-      min-width:0;
-    }
-
-    .langBtn.active{
-      background:radial-gradient(circle at 20% 10%, var(--gold3), var(--gold2));
-      border:1px solid rgba(200,162,74,.34);
-      color:#3a2c10;
-      text-shadow:0 0 10px rgba(200,162,74,.18);
-    }
-
-    .brand{
-      min-width:0;
-      text-align:right;
-      line-height:1.05;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-
-    .brand .t1{
-      font-size:11px;
-      color:var(--muted);
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      font-weight:800;
-    }
-
-    .brand .t2{
-      font-size:15px;
-      font-weight:900;
-      letter-spacing:.1px;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-
-    .brand .glow{
-      color:var(--gold);
-      text-shadow:0 0 10px rgba(200,162,74,.22);
-      font-weight:900;
-    }
-
-    .card{
-      background:linear-gradient(180deg, var(--card2), var(--card));
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      border:1px solid rgba(200,162,74,.18);
-      overflow:hidden;
-      margin-bottom:12px;
-    }
-
-    .hero{
-      padding:18px 16px 14px;
-      display:flex;
-      gap:12px;
-      align-items:center;
-    }
-
-    .badge{
-      width:60px;
-      height:60px;
-      border-radius:18px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:900;
-      font-size:15px;
-      color:#3a2c10;
-      background:radial-gradient(circle at 30% 20%, var(--gold3), var(--gold2));
-      border:1px solid rgba(200,162,74,.32);
-      box-shadow:0 0 16px rgba(200,162,74,.20);
-      flex:0 0 auto;
-    }
-
-    .hero h1{
-      margin:0 0 4px;
-      font-size:var(--fs-title);
-      line-height:1.15;
-      font-weight:900;
-      letter-spacing:.1px;
-      color:#2a2113;
-    }
-
-    .hero p{
-      margin:0;
-      color:rgba(43,43,43,.76);
-      font-size:var(--fs-body);
-      line-height:1.55;
-      font-weight:650;
-    }
-
-    .content{
-      padding:16px;
-    }
-
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:7px 11px;
-      border-radius:999px;
-      background:rgba(200,162,74,.12);
-      border:1px solid rgba(200,162,74,.26);
-      color:#6e5628;
-      font-size:var(--fs-small);
-      font-weight:850;
-      line-height:1.1;
-      letter-spacing:.03em;
-    }
-
-    .sectionCard{
-      background:rgba(255,255,255,.7);
-      border-radius:18px;
-      border:1px solid rgba(200,162,74,.16);
-      box-shadow:0 10px 22px rgba(0,0,0,.05);
-      padding:14px;
-      margin-bottom:12px;
-    }
-
-    .sectionTitle{
-      margin:0 0 6px;
-      font-size:var(--fs-section);
-      font-weight:900;
-      color:#3a2c10;
-      line-height:1.2;
-    }
-
-    .sectionLead,
-    .sub,
-    .muted{
-      color:rgba(43,43,43,.76);
-      font-size:var(--fs-body);
-      line-height:1.55;
-      font-weight:650;
-    }
-
-    .miniText{
-      color:rgba(43,43,43,.82);
-      font-size:var(--fs-body);
-      line-height:1.58;
-      font-weight:650;
-    }
-
-    .goldLine{
-      height:1px;
-      background:linear-gradient(90deg, transparent, rgba(200,162,74,.35), transparent);
-      margin:14px 0;
-    }
-
-    .row{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
-
-    .spaceBetween{
-      justify-content:space-between;
-    }
-
-    .input{
-      flex:1 1 220px;
-      padding:12px 13px;
-      border-radius:14px;
-      border:1px solid rgba(200,162,74,.16);
-      background:#fff;
-      color:var(--text);
-      font:inherit;
-      outline:none;
-      box-shadow:0 8px 18px rgba(0,0,0,.03);
-    }
-
-    .input:focus{
-      border-color:rgba(200,162,74,.45);
-      box-shadow:0 0 0 3px rgba(200,162,74,.12);
-    }
-
-    .btn,
-    .btnGold,
-    .btnSoft{
-      appearance:none;
-      border:none;
-      cursor:pointer;
-      padding:11px 13px;
-      border-radius:14px;
-      font-weight:850;
-      letter-spacing:.08px;
-      box-shadow:var(--shadow2);
-      border:1px solid rgba(200,162,74,.18);
-      background:linear-gradient(180deg, #ffffff, #f7f2e6);
-      color:var(--text);
-      font-size:var(--fs-button);
-      line-height:1.1;
-      text-align:center;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      transition:transform .15s ease;
-    }
-
-    .btn:hover,
-    .btnGold:hover,
-    .btnSoft:hover{
-      transform:translateY(-1px);
-    }
-
-    .btnGold{
-      background:radial-gradient(circle at 20% 10%, var(--gold3), var(--gold2));
-      border:1px solid rgba(200,162,74,.34);
-      color:#3a2c10;
-      text-shadow:0 0 10px rgba(200,162,74,.18);
-    }
-
-    .btnSoft{
-      background:linear-gradient(180deg, rgba(255,255,255,.95), rgba(247,242,230,.9));
-    }
-
-    .statusLocked{
-      color:var(--danger);
-      font-weight:900;
-      font-size:var(--fs-small);
-    }
-
-    .statusOk{
-      color:var(--ok);
-      font-weight:900;
-      font-size:var(--fs-small);
-    }
-
-    .note{
-      margin-top:10px;
-      padding:12px;
-      border-radius:14px;
-      border:1px solid rgba(200,162,74,.18);
-      background:linear-gradient(180deg, rgba(255,248,230,.96), rgba(255,255,255,.82));
-      color:#6b5530;
-      font-size:var(--fs-small);
-      line-height:1.55;
-      font-weight:700;
-    }
-
-    .grid2{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:10px;
-      margin-top:10px;
-    }
-
-    .linkGrid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:10px;
-      margin-top:12px;
-    }
-
-    .miniCard,
-    .protoBlock,
-    .goal,
-    .breathWrap{
-      border-radius:18px;
-      border:1px solid rgba(200,162,74,.18);
-      background:rgba(255,255,255,.76);
-      box-shadow:0 10px 22px rgba(0,0,0,.06);
-      overflow:hidden;
-    }
-
-    .miniCard,
-    .protoBlock,
-    .goal{
-      padding:12px;
-    }
-
-    .labelRow{
-      display:flex;
-      justify-content:space-between;
-      align-items:baseline;
-      gap:10px;
-      margin-bottom:8px;
-    }
-
-    .labelRow .lbl{
-      font-weight:900;
-      letter-spacing:.1px;
-      font-size:var(--fs-body);
-      color:#3a2c10;
-    }
-
-    .labelRow .val{
-      font-weight:900;
-      color:rgba(43,43,43,.72);
-      font-size:var(--fs-small);
-    }
-
-    input[type="range"]{
-      width:100%;
-      accent-color:var(--gold);
-    }
-
-    .actionsRow{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      align-items:center;
-      justify-content:space-between;
-      margin-top:12px;
-    }
-
-    .toggle{
-      display:inline-flex;
-      align-items:center;
-      gap:9px;
-      padding:10px 12px;
-      border-radius:14px;
-      border:1px solid rgba(200,162,74,.16);
-      background:rgba(255,255,255,.78);
-      font-weight:850;
-      font-size:var(--fs-small);
-      cursor:pointer;
-      user-select:none;
-      box-shadow:0 8px 18px rgba(0,0,0,.04);
-    }
-
-    .switch{
-      width:40px;
-      height:22px;
-      border-radius:999px;
-      background:rgba(0,0,0,.10);
-      position:relative;
-      border:1px solid rgba(0,0,0,.08);
-    }
-
-    .knob{
-      width:18px;
-      height:18px;
-      border-radius:999px;
-      position:absolute;
-      top:1px;
-      left:1px;
-      background:#fff;
-      box-shadow:0 4px 12px rgba(0,0,0,.18);
-      transition:left .18s ease;
-    }
-
-    .switch.on{
-      background:rgba(200,162,74,.30);
-      border-color:rgba(200,162,74,.40);
-    }
-
-    .switch.on .knob{
-      left:20px;
-    }
-
-    .protoGrid{
-      display:grid;
-      gap:10px;
-      margin-top:10px;
-    }
-
-    .protoBlock h3,
-    .goal h3,
-    .breathTitle{
-      margin:0 0 6px;
-      font-size:var(--fs-body);
-      font-weight:900;
-      color:#3a2c10;
-      line-height:1.2;
-    }
-
-    .protoBlock p,
-    .goal p{
-      margin:0;
-      color:rgba(43,43,43,.82);
-      line-height:1.58;
-      font-size:var(--fs-body);
-      font-weight:650;
-    }
-
-    .breathWrap{
-      padding:12px;
-      margin-top:10px;
-      background:linear-gradient(180deg, rgba(255,246,214,.70), rgba(255,255,255,.85));
-      box-shadow:0 0 16px rgba(200,162,74,.08);
-    }
-
-    .breathTop{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-start;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-
-    .breathState{
-      font-weight:900;
-      font-size:var(--fs-body);
-      color:#3a2c10;
-      text-align:right;
-    }
-
-    .breathTimer{
-      font-weight:900;
-      font-size:var(--fs-small);
-      color:rgba(43,43,43,.72);
-      text-align:right;
-    }
-
-    .breathPlan{
-      margin-top:10px;
-      font-size:var(--fs-small);
-      line-height:1.55;
-      color:#6b5530;
-      padding:10px 12px;
-      border-radius:14px;
-      background:rgba(255,255,255,.82);
-      border:1px solid rgba(200,162,74,.18);
-      font-weight:750;
-    }
-
-    .progress{
-      margin-top:10px;
-      height:8px;
-      border-radius:999px;
-      background:rgba(0,0,0,.06);
-      overflow:hidden;
-      border:1px solid rgba(0,0,0,.06);
-    }
-
-    .progress > div{
-      height:100%;
-      width:0%;
-      background:linear-gradient(90deg, rgba(200,162,74,.65), rgba(232,210,138,.95));
-      box-shadow:0 0 18px rgba(200,162,74,.18);
-      border-radius:999px;
-      transition:width .15s linear;
-    }
-
-    .modeRow{
-      margin-top:10px;
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      align-items:center;
-      justify-content:space-between;
-    }
-
-    .modeBtns{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
-
-    .modeBtn{
-      padding:9px 11px;
-      border-radius:14px;
-      border:1px solid rgba(200,162,74,.16);
-      background:rgba(255,255,255,.82);
-      font-weight:850;
-      cursor:pointer;
-      user-select:none;
-      font-size:var(--fs-small);
-      box-shadow:0 8px 18px rgba(0,0,0,.04);
-    }
-
-    .modeBtn.active{
-      background:radial-gradient(circle at 20% 10%, var(--gold3), var(--gold2));
-      border-color:rgba(200,162,74,.34);
-      box-shadow:0 8px 18px rgba(200,162,74,.08);
-      color:#3a2c10;
-    }
-
-    .linesWrap{
-      margin-top:10px;
-      padding:12px;
-      border-radius:16px;
-      background:rgba(255,255,255,.82);
-      border:1px solid rgba(200,162,74,.16);
-      display:none;
-    }
-
-    .lineRow{
-      display:grid;
-      grid-template-columns:70px 1fr 34px;
-      gap:8px;
-      align-items:center;
-      margin:8px 0;
-    }
-
-    .lineLabel{
-      font-weight:900;
-      color:rgba(43,43,43,.82);
-      font-size:var(--fs-small);
-    }
-
-    .lineBar{
-      height:9px;
-      border-radius:999px;
-      background:rgba(0,0,0,.06);
-      border:1px solid rgba(0,0,0,.06);
-      overflow:hidden;
-    }
-
-    .lineFill{
-      height:100%;
-      width:0%;
-      border-radius:999px;
-      background:linear-gradient(90deg, rgba(232,210,138,.95), rgba(200,162,74,.65));
-      box-shadow:0 0 14px rgba(200,162,74,.14);
-      transition:width .12s linear;
-    }
-
-    .lineSec{
-      font-weight:900;
-      color:rgba(43,43,43,.72);
-      text-align:right;
-      font-size:var(--fs-small);
-    }
-
-    .linesHint{
       margin-top:7px;
-      font-size:var(--fs-small);
-      color:rgba(43,43,43,.68);
-      line-height:1.45;
-      font-weight:700;
-    }
-
-    .cloudWrap{
-      margin-top:10px;
-      display:none;
-      gap:8px;
-    }
-
-    .cloud{
-      width:160px;
-      height:160px;
-      margin:0 auto;
-      position:relative;
-      border-radius:44% 56% 52% 48% / 48% 44% 56% 52%;
-      background:
-        radial-gradient(circle at 35% 30%, rgba(255,255,255,.95), rgba(255,255,255,.72)),
-        radial-gradient(220px 220px at 50% 65%, rgba(232,210,138,.16), rgba(255,255,255,0));
-      border:1px solid rgba(200,162,74,.16);
-      box-shadow:0 14px 36px rgba(0,0,0,.08);
-      overflow:hidden;
-    }
-
-    .cloudSheen{
-      position:absolute;
-      inset:8px;
-      border-radius:44% 56% 52% 48% / 48% 44% 56% 52%;
-      background:conic-gradient(
-        from 180deg,
-        rgba(200,162,74,.10),
-        rgba(232,210,138,.55),
-        rgba(200,162,74,.10),
-        rgba(255,255,255,0),
-        rgba(200,162,74,.12)
-      );
-      opacity:.95;
-      animation:sheen 10s linear infinite;
-      mask: radial-gradient(circle, transparent 62%, #000 63%);
-      -webkit-mask: radial-gradient(circle, transparent 62%, #000 63%);
-      pointer-events:none;
-    }
-
-    @keyframes sheen{
-      to { transform:rotate(360deg); }
-    }
-
-    .cloudFill{
-      position:absolute;
-      left:0;
-      right:0;
-      bottom:0;
-      height:0%;
-      background:linear-gradient(180deg, rgba(232,210,138,.82), rgba(200,162,74,.58));
-      box-shadow:0 -14px 32px rgba(200,162,74,.14);
-      transition:height .18s linear;
-      filter:saturate(1.03);
-    }
-
-    .cloudText{
-      position:absolute;
-      inset:16px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:8px;
-    }
-
-    .cloudTextInner{
-      display:flex;
-      flex-direction:column;
-      gap:4px;
-      line-height:1.1;
-      align-items:center;
-      justify-content:center;
-      max-width:130px;
-    }
-
-    .cloudPhase{
-      font-weight:900;
-      font-size:var(--fs-body);
-      color:#3a2c10;
-    }
-
-    .cloudCount{
-      font-weight:900;
-      font-size:1.3rem;
-      letter-spacing:.1px;
-      color:#2b220f;
-    }
-
-    .cloudHint{
-      font-weight:800;
-      font-size:var(--fs-small);
-      color:rgba(43,43,43,.62);
-      line-height:1.35;
-    }
-
-    .cueLine{
-      margin-top:8px;
       display:flex;
       justify-content:space-between;
       gap:8px;
       flex-wrap:wrap;
-      font-size:var(--fs-small);
-      color:rgba(43,43,43,.62);
+      font-size:10px;
+      color: rgba(0,0,0,0.62);
       font-weight:800;
       padding:0 2px;
     }
@@ -1617,147 +643,408 @@
       display:flex;
       gap:8px;
       flex-wrap:wrap;
-      margin-top:10px;
+      margin-top:9px;
       align-items:center;
       justify-content:center;
     }
 
-    @media (max-width:430px){
-      body{ padding:10px 8px 20px; }
-      .topbar{ gap:6px; padding:8px; }
-      .topLeft, .topRight{ gap:6px; }
-      .back{ padding:8px 10px; }
-      .langBtn{ padding:8px 9px; }
-      .brand .t2{ font-size:14px; }
-      .hero{ align-items:flex-start; padding:16px 14px 12px; }
-      .content{ padding:14px; }
-      .linkGrid{ grid-template-columns:1fr; }
-    }
-
-    @media (max-width:360px){
-      .brand .t1{ display:none; }
-      .brand .t2{ font-size:13px; }
-      .back{ padding:8px 9px; }
-      .langBtn{ padding:8px 8px; font-size:.8rem; }
-      .lineRow{ grid-template-columns:62px 1fr 30px; }
+    @media (max-width:520px){
+      .fixedTopbarInner{
+        max-width:100%;
+      }
+      .wrap{
+        padding:66px 8px 18px;
+      }
+      .card{
+        padding:12px;
+      }
+      .brandTitle{
+        font-size:18px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <div class="phone">
 
-    <div class="topbar">
-      <div class="topLeft">
-        <a class="back" href="./index.html">← Home</a>
-
-        <div class="langToggle" aria-label="Sprachauswahl">
-          <button class="langBtn" id="langIT" type="button">IT</button>
-          <button class="langBtn active" id="langDE" type="button">DE</button>
-        </div>
+  <div class="fixedTopbar">
+    <div class="fixedTopbarInner">
+      <div class="navLeft">
+        <a class="btn" href="./index.html">← Home</a>
       </div>
 
-      <div class="topRight">
-        <div class="brand">
-          <div class="t1">Panacea</div>
-          <div class="t2"><span class="glow" id="pageTitleBadge">Mitglieder · Basis</span></div>
-        </div>
+      <div class="navCenter">
+        <button class="langBtn" id="langIT" type="button">IT</button>
+        <button class="langBtn active" id="langDE" type="button">DE</button>
+      </div>
+
+      <div class="navRight">
+        <div class="pageTitle" id="pageTitleBadge">Mitglieder · Base</div>
       </div>
     </div>
+  </div>
+
+  <div class="wrap">
 
     <div class="card">
-      <div class="hero">
-        <div class="badge">MB</div>
-        <div>
-          <h1>Mitgliederbereich</h1>
-          <p>Hier findest du zwei geschützte Zugänge: deinen Premium-Reset und deinen Kursbereich mit digitalen Inhalten, Materialien und Begleitformaten.</p>
-        </div>
-      </div>
+      <div class="pill">Adaptiver Reset • echte Begleitung • personalisiertes Atmen</div>
+      <div class="goldLine"></div>
 
-      <div class="content">
-        <div class="pill">2 geschützte Zugänge · Premium Reset · Kurse & Materialien</div>
-
-        <div class="goldLine"></div>
-
-        <p class="miniText">
-          Schön, dass du da bist.
-          <br><br>
-          In diesem Bereich kannst du entweder deinen <strong>Premium Reset</strong> oder deinen <strong>Kurszugang</strong> freischalten.
-          Je nachdem, welches Passwort du erhalten hast, öffnet sich automatisch der passende Bereich.
-          <br><br>
-          <span class="muted">So bleibt der Zugang klar, persönlich und gut geschützt.</span>
-        </p>
-      </div>
+      <h1 class="brandTitle">Mitgliederbereich</h1>
+      <p class="sub">
+        Schön, dass du da bist. Hier musst du nichts „richtig“ machen.
+        <br><br>
+        Dieser Reset passt sich dir an – je nachdem, wie hoch dein <strong>Stress</strong> ist und wie viel <strong>Energie</strong> du gerade spürst.
+        Du bekommst eine klare, liebevolle Führung: zuerst <strong>runterfahren</strong>, dann <strong>sortieren</strong>, dann <strong>ein kleiner Schritt</strong>, der wirklich machbar ist.
+        <br><br>
+        <span class="muted">Was ist daran anders als bei vielen kostenlosen Apps?</span>
+        Es ist nicht immer derselbe Text. Die Guidance ändert sich – und fühlt sich dadurch näher an deinem echten Moment an.
+      </p>
     </div>
 
-    <div class="sectionCard" id="unlockBox">
+    <div class="card" id="unlockBox">
       <div class="pill">Zugang für Mitglieder</div>
       <div class="goldLine"></div>
 
-      <p class="miniText" style="margin:0 0 10px;">
-        Gib hier dein persönliches Passwort ein.
-        <br>
-        <strong>Premium-Passwort</strong> = Premium Reset
-        <br>
-        <strong>Kurse-Passwort</strong> = Kursmaterialien & Inhalte
-      </p>
-
       <div class="row">
-        <input id="codeInput" class="input" placeholder="Passwort eingeben (am besten kopieren und einfügen)" autocomplete="off" />
+        <input id="codeInput" class="input" placeholder="Passwort eingeben (am besten kopieren & einfügen)" autocomplete="off" />
         <button id="unlockBtn" class="btnGold" type="button">Freischalten</button>
         <span id="status" class="statusLocked">Gesperrt</span>
       </div>
 
       <div class="note" id="targetNote">
-        Du erhältst dein Passwort automatisch nach dem Kauf.
-        <br>
-        Je nach Zugang öffnet sich entweder dein <strong>Premium Reset</strong> oder dein <strong>Kursbereich</strong>.
+        Du bekommst dein Passwort <strong>automatisch</strong> nach dem Kauf.
+        <br>Hinweis: Der Zugang ist persönlich. Wenn ein Passwort öffentlich geteilt wird, wird es zum Schutz der Mitglieder ersetzt.
       </div>
     </div>
-      unlockBtn.addEventListener("click", () => {
+
+    <div class="card" id="premiumArea" style="display:none;">
+      <div class="row" style="justify-content:space-between;">
+        <div class="pill" id="statePill">Profil: —</div>
+        <button id="logoutBtn" class="btnSoft" type="button">Logout</button>
+      </div>
+
+      <div class="goldLine"></div>
+
+      <h2 style="margin:0; font-size:16px; font-weight:950;">Dein Reset – genau jetzt</h2>
+      <p class="sub" style="margin-top:6px;">
+        Stell die Regler so ein, wie es <em>gerade</em> ist. Nicht wie es sein sollte – sondern wie es wirklich ist.
+        Danach bekommst du einen Reset in 3 Schritten und eine Atemführung, die zu deinem Zustand passt.
+      </p>
+
+      <div class="grid2">
+        <div class="miniCard">
+          <div class="labelRow">
+            <div class="lbl">Stress</div>
+            <div class="val" id="stressVal">5/10</div>
+          </div>
+          <input id="stressM" type="range" min="1" max="10" value="5" />
+          <p class="muted" style="margin:8px 0 0; font-size:11.5px; line-height:1.45;">
+            Wenn Stress hoch ist, starten wir im Körper: erst beruhigen, dann klarer werden.
+          </p>
+        </div>
+
+        <div class="miniCard">
+          <div class="labelRow">
+            <div class="lbl">Energie</div>
+            <div class="val" id="energyVal">5/10</div>
+          </div>
+          <input id="energyM" type="range" min="1" max="10" value="5" />
+          <p class="muted" style="margin:8px 0 0; font-size:11.5px; line-height:1.45;">
+            Wenn Energie niedrig ist, geht es nicht um „mehr“. Es geht um das, was heute wirklich hilft.
+          </p>
+        </div>
+      </div>
+
+      <div class="actionsRow">
+        <button id="genM" class="btnGold" type="button">Meinen Reset erzeugen</button>
+
+        <div class="toggle" id="soundToggle" title="Leiser Signalton (optional)">
+          <span>Ton</span>
+          <span class="switch" id="soundSwitch"><span class="knob"></span></span>
+        </div>
+      </div>
+
+      <div class="goldLine"></div>
+
+      <div class="pill" style="margin-bottom:9px;">Reset-Protokoll (3 Schritte)</div>
+      <h3 id="mTitle" style="margin:0 0 6px; font-size:15px; font-weight:950;">—</h3>
+      <p class="muted" id="mSummary" style="margin:0 0 10px; font-size:12px; line-height:1.5;">—</p>
+
+      <div class="protoGrid">
+        <div class="protoBlock">
+          <h3>1) Erst einmal im Körper ankommen</h3>
+          <p id="mText1">—</p>
+        </div>
+        <div class="protoBlock">
+          <h3>2) Gedanken sortieren</h3>
+          <p id="mText2">—</p>
+        </div>
+        <div class="protoBlock">
+          <h3>3) Ein kleiner Schritt, der heute passt</h3>
+          <p id="mText3">—</p>
+        </div>
+      </div>
+
+      <div class="goal">
+        <h3>Ziel für die nächsten 10 Minuten</h3>
+        <p id="goalText">—</p>
+      </div>
+
+      <div class="breathWrap">
+        <div class="breathTop">
+          <div>
+            <p class="breathTitle">Atemführung</p>
+            <div class="muted" style="margin-top:5px; font-size:10.8px;">
+              Wähle die Darstellung, die sich für dich am angenehmsten anfühlt: <strong>Linien</strong> oder <strong>Wolke</strong>.
+            </div>
+          </div>
+          <div style="display:flex; gap:8px; align-items:baseline; flex-wrap:wrap; justify-content:flex-end;">
+            <div class="breathState" id="breathState">Bereit</div>
+            <div class="breathTimer" id="breathTimer">00:00</div>
+          </div>
+        </div>
+
+        <div class="breathPlan" id="breathPlan">—</div>
+        <div class="progress"><div id="progressBar"></div></div>
+
+        <div class="modeRow">
+          <div class="modeBtns">
+            <button class="modeBtn active" id="modeLinesBtn" type="button">Guide: Linien</button>
+            <button class="modeBtn" id="modeCloudBtn" type="button">Guide: Wolke</button>
+          </div>
+          <div class="pill" id="modePill">Linien</div>
+        </div>
+
+        <div class="linesWrap" id="linesWrap">
+          <div class="lineRow">
+            <div class="lineLabel">Einatmen</div>
+            <div class="lineBar"><div class="lineFill" id="inFill"></div></div>
+            <div class="lineSec" id="inSec">—</div>
+          </div>
+          <div class="lineRow">
+            <div class="lineLabel">Ausatmen</div>
+            <div class="lineBar"><div class="lineFill" id="outFill"></div></div>
+            <div class="lineSec" id="outSec">—</div>
+          </div>
+          <div class="linesHint" id="linesHint">
+            Folge der Leiste: Wenn „Einatmen“ läuft, atmest du ein. Wenn „Ausatmen“ läuft, lässt du die Luft wieder gehen.
+          </div>
+        </div>
+
+        <div class="cloudWrap" id="cloudWrap">
+          <div class="cloud" aria-label="Visuelle Atemführung">
+            <div class="cloudFill" id="cloudFill"></div>
+            <div class="cloudSheen"></div>
+            <div class="cloudText">
+              <div class="cloudTextInner">
+                <div class="cloudPhase" id="cloudPhase">Bereit</div>
+                <div class="cloudCount" id="cloudCount">—</div>
+                <div class="cloudHint" id="cloudHint">Wenn du willst, starten wir gemeinsam.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cueLine">
+            <span id="cueLeft">Langes Ausatmen = mehr Ruhe</span>
+            <span id="cueRight">Nicht drücken – einfach zulassen</span>
+          </div>
+        </div>
+
+        <div class="breathControls">
+          <button class="btnGold" id="breathStart" type="button">Start</button>
+          <button class="btnSoft" id="breathPause" type="button">Pause</button>
+          <button class="btnSoft" id="breathReset" type="button">Reset</button>
+        </div>
+      </div>
+
+      <p class="muted" style="margin-top:12px; font-size:10.8px; line-height:1.45;">
+        © Panacea Regensburg • Dieses Tool unterstützt deine tägliche Selbstregulation und ersetzt keine medizinische/psychotherapeutische Behandlung.
+      </p>
+    </div>
+
+  </div>
+
+<script>
+  const BASIS_PASSWORD = "PNC-79xL!qR26-Z";
+
+  const CANONICAL_PREMIUM_KEY = "panacea_premium";
+  const LEGACY_PREMIUM_KEYS = [
+    "premiumUnlocked",
+    "mitglied",
+    "panacea_member"
+  ];
+
+  const ALL_PREMIUM_KEYS = [CANONICAL_PREMIUM_KEY, ...LEGACY_PREMIUM_KEYS];
+
+  const ALLOWED_TARGETS = [
+    "uebungen-premium.html",
+    "uebungen-premiumIT.html",
+    "daily-reset.html",
+    "daily-resetIT.html",
+    "wissen.html",
+    "wissenIT.html",
+    "lifestyle.html",
+    "lifestyleIT.html"
+  ];
+
+  const params = new URLSearchParams(window.location.search);
+
+  function sanitizeTarget(raw){
+    if(!raw) return "";
+    const clean = String(raw).trim().replace(/^\.?\//, "");
+    return ALLOWED_TARGETS.includes(clean) ? clean : "";
+  }
+
+  const targetPage = sanitizeTarget(params.get("target"));
+
+  function currentFileName(){
+    const path = window.location.pathname.split("/").pop() || "";
+    return path.trim();
+  }
+
+  function buildLangUrl(file){
+    const url = new URL(file, window.location.href);
+    if(targetPage) url.searchParams.set("target", targetPage);
+    return url.toString();
+  }
+
+  function goDE(){
+    window.location.href = buildLangUrl("./mitglieder.html");
+  }
+
+  function goIT(){
+    const itTargetMap = {
+      "uebungen-premium.html": "uebungen-premiumIT.html",
+      "daily-reset.html": "daily-resetIT.html",
+      "wissen.html": "wissenIT.html",
+      "lifestyle.html": "lifestyleIT.html"
+    };
+    const translatedTarget = itTargetMap[targetPage] || targetPage;
+    const url = new URL("./mitgliederIT.html", window.location.href);
+    if(translatedTarget) url.searchParams.set("target", translatedTarget);
+    window.location.href = url.toString();
+  }
+
+  document.getElementById("langDE").addEventListener("click", goDE);
+  document.getElementById("langIT").addEventListener("click", goIT);
+
+  function isMember(){
+    return ALL_PREMIUM_KEYS.some(key => localStorage.getItem(key) === "true");
+  }
+
+  function syncLegacyKeysFromCanonical(){
+    if(localStorage.getItem(CANONICAL_PREMIUM_KEY) === "true"){
+      LEGACY_PREMIUM_KEYS.forEach(key => localStorage.setItem(key, "true"));
+    }
+  }
+
+  function setMemberState(value){
+    ALL_PREMIUM_KEYS.forEach(key => {
+      localStorage.setItem(key, value ? "true" : "false");
+    });
+  }
+
+  function clearMemberState(){
+    ALL_PREMIUM_KEYS.forEach(key => {
+      localStorage.removeItem(key);
+    });
+  }
+
+  function cleanupMemberState(){
+    [
+      "panacea_last_profile_de",
+      "panacea_breath_mode_de"
+    ].forEach(k => localStorage.removeItem(k));
+  }
+
+  function updateTopBadge(){
+    const badge = document.getElementById("pageTitleBadge");
+    badge.textContent = isMember() ? "Mitglieder · Premium" : "Mitglieder · Base";
+  }
+
+  function updateTargetNote(){
+    const note = document.getElementById("targetNote");
+    if(targetPage){
+      note.innerHTML = `
+        Du bekommst dein Passwort <strong>automatisch</strong> nach dem Kauf.
+        <br>Nach der Freischaltung wirst du direkt weitergeleitet zu: <strong>${targetPage}</strong>
+        <br>Hinweis: Der Zugang ist persönlich. Wenn ein Passwort öffentlich geteilt wird, wird es zum Schutz der Mitglieder ersetzt.
+      `;
+    } else {
+      note.innerHTML = `
+        Du bekommst dein Passwort <strong>automatisch</strong> nach dem Kauf.
+        <br>Hinweis: Der Zugang ist persönlich. Wenn ein Passwort öffentlich geteilt wird, wird es zum Schutz der Mitglieder ersetzt.
+      `;
+    }
+  }
+
+  function redirectToTargetIfNeeded(){
+    if(!isMember() || !targetPage) return false;
+
+    const current = currentFileName();
+    if(current === targetPage) return false;
+
+    window.location.href = `./${targetPage}`;
+    return true;
+  }
+
+  function setAccessUI(){
+    const unlockBox = document.getElementById("unlockBox");
+    const premiumArea = document.getElementById("premiumArea");
+    const status = document.getElementById("status");
+
+    updateTopBadge();
+
+    if(isMember()){
+      status.textContent = "Freigeschaltet ✅";
+      status.className = "statusOk";
+      unlockBox.style.display = "none";
+      premiumArea.style.display = "block";
+    } else {
+      status.textContent = "Gesperrt";
+      status.className = "statusLocked";
+      unlockBox.style.display = "block";
+      premiumArea.style.display = "none";
+    }
+  }
+
+  const unlockBtn = document.getElementById("unlockBtn");
+  const codeInput = document.getElementById("codeInput");
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  unlockBtn.addEventListener("click", () => {
     const code = (codeInput.value || "").trim();
-    const current = getAccessLevel();
 
-    if(code === PREMIUM_PASSWORD){
-      const nextLevel = current === "kurse" ? "full" : "premium";
-      setAccessLevel(nextLevel);
+    if(code === BASIS_PASSWORD){
+      setMemberState(true);
       localStorage.setItem("panacea_unlocked_at", String(Date.now()));
       codeInput.value = "";
+
+      if(targetPage){
+        window.location.href = `./${targetPage}`;
+        return;
+      }
+
       setAccessUI();
       generateReset();
-      alert(nextLevel === "full" ? "Premium + Kurse freigeschaltet ✅" : "Premium Reset freigeschaltet ✅");
-      return;
+      alert("Freigeschaltet ✅");
+    } else {
+      alert("Passwort falsch ❌");
     }
-
-    if(code === KURSE_PASSWORD){
-      const nextLevel = current === "premium" ? "full" : "kurse";
-      setAccessLevel(nextLevel);
-      localStorage.setItem("panacea_unlocked_at", String(Date.now()));
-      codeInput.value = "";
-      setAccessUI();
-      if(nextLevel === "full") generateReset();
-      alert(nextLevel === "full" ? "Premium + Kurse freigeschaltet ✅" : "Kurse freigeschaltet ✅");
-      return;
-    }
-
-    alert("Passwort falsch ❌");
   });
 
   codeInput.addEventListener("keydown", (e) => {
     if(e.key === "Enter") unlockBtn.click();
   });
 
-  function doLogout(){
-    clearAllAccess();
+  logoutBtn.addEventListener("click", () => {
+    clearMemberState();
     cleanupMemberState();
     stopBreathing(true);
     setAccessUI();
     renderBreathUI();
-    codeInput.value = "";
-  }
-
-  logoutBtn.addEventListener("click", doLogout);
-  logoutBtnKurse.addEventListener("click", doLogout);
+  });
 
   const stressM = document.getElementById("stressM");
   const energyM = document.getElementById("energyM");
@@ -1782,65 +1069,65 @@
   const PREMIUM_MAP = {
     "hoch|niedrig": {
       label: "Viel Anspannung, wenig Energie",
-      title: "Zuerst Sicherheit – dann der nächste Schritt",
-      summary: "Heute musst du nichts beweisen. Wir bringen dein System erst ein wenig herunter – und dann findest du wieder Boden unter den Füßen.",
+      title: "Erst Sicherheit – dann der nächste Schritt",
+      summary: "Heute musst du nichts beweisen. Wir bringen dich erst runter – und dann findest du wieder Boden unter den Füßen.",
       phase1: [
-        "Stell beide Füße auf den Boden und spür den Kontakt. Dann lass die Luft langsam ausströmen – so, als würdest du innerlich etwas mehr Raum schaffen.",
-        "Leg eine Hand auf den Brustkorb und eine auf den Bauch. Nimm dich einen Moment wahr. Dann atme länger aus, als du einatmest – ganz ohne Druck.",
+        "Stell beide Füße auf den Boden. Spür den Kontakt. Dann lass die Luft langsam hinaus – so, als würdest du innerlich Platz schaffen.",
+        "Leg eine Hand auf den Brustkorb und eine auf den Bauch. Nimm dich kurz wahr. Dann atme aus – länger als du einatmest. Ganz ohne Druck.",
         "Wenn du Spannung bemerkst: Du musst sie nicht wegdrücken. Nimm sie wahr – und erlaube deinem Körper, ein kleines Stück loszulassen."
       ],
       phase2: [
-        "Frag dich: Was würde mich jetzt auch nur um 10 % entlasten? Nicht perfekt. Nur ein kleines bisschen.",
-        "Wenn dein Kopf kreist, schreib einen Satz auf: „Gerade brauche ich…“ – und beende ihn mit nur einer Sache.",
-        "Wenn alles zu viel wirkt, geh noch einmal zurück zum Atem – und wähle dann eine Priorität, die heute wirklich realistisch ist."
+        "Frag dich: Was würde mich jetzt nur 10% entlasten? Nicht perfekt. Nur ein bisschen.",
+        "Wenn der Kopf kreist: Schreib einen Satz auf: „Gerade brauche ich…“ – und beende ihn mit einer einzigen Sache.",
+        "Wenn alles zu viel wirkt: Geh zurück zum Atem – und wähle dann eine Priorität, die heute wirklich realistisch ist."
       ],
       phase3: [
-        "Wähle eine Mini-Handlung für 2–3 Minuten: Wasser trinken, kurz an die frische Luft gehen oder eine kleine Ordnung schaffen. Etwas, das dir sofort Halt gibt.",
-        "Setz eine sanfte Grenze: Eine Sache, die du heute nicht lösen musst. Nicht aus Aufgeben – sondern aus Selbstschutz.",
-        "Und am Ende: Nimm wahr, dass du etwas für dich getan hast. Das zählt."
+        "Wähle eine Mini-Handlung (2–3 Minuten): Wasser, frische Luft, eine kleine Ordnung. Etwas, das dir sofort Halt gibt.",
+        "Setz eine sanfte Grenze: Eine Sache, die du heute nicht lösen musst. Nicht aus Aufgeben – sondern aus Schutz.",
+        "Am Ende: Nimm wahr, dass du etwas für dich getan hast. Das zählt."
       ],
       breath: { inhale:4, exhale:7, minutes:3, cueL:"Langes Ausatmen = mehr Ruhe", cueR:"Nicht drücken – einfach zulassen" },
       goal: [
-        "Stell dir einen Timer auf 10 Minuten und mach nur eine entlastende Sache. Danach stoppst du bewusst.",
-        "Wähle einen Mini-Schritt und beginne einfach. Nicht fertig werden – nur anfangen. Danach Pause.",
-        "In den nächsten 10 Minuten: Wasser trinken + einen kleinen Ordnungspunkt erledigen. Wenig – aber stabilisierend."
+        "Stell einen Timer auf 10 Minuten und mach nur eine entlastende Sache. Danach stoppst du bewusst.",
+        "Wähle einen Mini-Schritt und beginne ihn. Nicht fertig werden – nur anfangen. Dann Pause.",
+        "In 10 Minuten: Wasser + ein kleiner Ordnungspunkt. Wenig – aber stabilisierend."
       ]
     },
 
     "hoch|mittel": {
       label: "Hohe Anspannung, mittlere Energie",
-      title: "Erst herunterregeln – dann klarer werden",
-      summary: "Du hast Kraft, aber dein System ist gerade laut. Wir senken zuerst die innere Lautstärke – dann wird der nächste Schritt wieder leichter.",
+      title: "Erst runterregeln – dann klar werden",
+      summary: "Du hast Kraft, aber es ist laut im System. Wir senken erst die innere Lautstärke, dann wird der nächste Schritt wieder leicht.",
       phase1: [
-        "Mach eine lange Ausatmung, als würdest du ganz sanft eine Kerze auspusten – ohne Hast.",
-        "Beweg dich für etwa 20 Sekunden locker: ein paar Schritte, Schultern kreisen, kurz aufrichten. Danach einen Moment still werden.",
+        "Mach eine lange Ausatmung, als würdest du eine Kerze ganz sanft auspusten – ohne Hast.",
+        "Beweg dich 20 Sekunden locker (ein paar Schritte, Schultern kreisen). Dann kurz still werden.",
         "Spür Kiefer und Schultern. Du musst nicht alles lösen – nur ein wenig Spannung abgeben."
       ],
       phase2: [
-        "Wähle genau eine Sache, die heute wirklich zählt. Eine reicht.",
+        "Wähle genau eine Sache, die heute zählt. Eine reicht.",
         "Schreib: „Jetzt ist wichtig…“ – und beende den Satz. Danach gehst du in die Handlung.",
-        "Wenn du gereizt bist: Reduziere zuerst Reize. Danach kannst du klarer entscheiden."
+        "Wenn du gereizt bist: Reduziere zuerst Reize. Dann entscheidest du klarer."
       ],
       phase3: [
-        "Stell einen Timer auf 10 Minuten und mach nur den Anfang. Der Anfang bringt dich oft weiter als perfektes Planen.",
+        "Timer 10 Minuten: Mach nur den Anfang. Der Anfang bringt dich weiter als perfektes Planen.",
         "Sag einer Ablenkung bewusst „später“. Nur einer. Das reicht.",
         "Zum Schluss: ein kurzer Check-in – „Was tut mir jetzt gut?“"
       ],
       breath: { inhale:4, exhale:6, minutes:4, cueL:"Erst Ruhe, dann Klarheit", cueR:"Du musst nicht schneller werden" },
       goal: [
-        "In den nächsten 10 Minuten: Starte mit der wichtigsten Sache. Nur anfangen. Danach eine kurze Pause.",
-        "Wähle einen konkreten kleinen Schritt und bring ihn zu Ende – klein, aber abgeschlossen.",
-        "Mach es einfach: eine Priorität, 10 Minuten Fokus, dann bewusst stoppen."
+        "In 10 Minuten: Starte die wichtigste Sache. Nur starten. Dann kurze Pause.",
+        "Wähle einen konkreten Schritt und mach ihn fertig – klein, aber abgeschlossen.",
+        "Mach es einfach: eine Priorität, 10 Minuten Fokus, Stopp."
       ]
     },
 
     "hoch|hoch": {
       label: "Hohe Aktivierung",
-      title: "Energie nutzen – ohne dich zu erschöpfen",
-      summary: "Da ist viel Drive. Wir lenken ihn sinnvoll: Richtung, Grenze, Pause. So bleibt die Energie bei dir.",
+      title: "Energie nutzen – ohne dich zu verbrennen",
+      summary: "Da ist viel Drive. Wir machen ihn sinnvoll: Richtung, Grenze, Pause. So bleibt die Energie bei dir.",
       phase1: [
-        "Stopp kurz für 10 Sekunden. Eine lange Ausatmung. Dann geht es weiter – jetzt mit etwas mehr Kontrolle.",
-        "Achte darauf: Energie ist nicht gleich Härte. Wenn du magst, entspann einen Moment deinen Kiefer.",
+        "Stopp für 10 Sekunden. Eine lange Ausatmung. Dann weiter – jetzt mit mehr Kontrolle.",
+        "Achte darauf: Energie ist nicht gleich Härte. Wenn du magst, entspann kurz den Kiefer.",
         "Beginne in einem Tempo, das du halten kannst. Nicht maximal – sondern stabil."
       ],
       phase2: [
@@ -1849,15 +1136,15 @@
         "Kein Multitasking: Eine Sache nach der anderen bringt dich ruhiger ans Ziel."
       ],
       phase3: [
-        "Arbeite 10–15 Minuten fokussiert. Danach folgt eine echte Pause – auch wenn sie nur kurz ist.",
-        "Trink einen Schluck Wasser und schau für 10 Sekunden in die Ferne – kleine Regulation, große Wirkung.",
+        "Arbeite 10–15 Minuten fokussiert. Dann eine echte Pause (auch wenn sie kurz ist).",
+        "Trink einen Schluck Wasser und schau 10 Sekunden in die Ferne – kleine Regulation, große Wirkung.",
         "Zum Abschluss: „Für jetzt ist es genug.“"
       ],
-      breath: { inhale:4, exhale:6, minutes:3, cueL:"Energie ja – Hetze nein", cueR:"Grenzen geben Stabilität" },
+      breath: { inhale:4, exhale:6, minutes:3, cueL:"Energie ja – Hetze nein", cueR:"Grenze = Stabilität" },
       goal: [
-        "In den nächsten 10 Minuten: Schließe ein kleines Mini-Ergebnis ab. Danach stoppst du bewusst.",
+        "In 10 Minuten: Schließe ein Mini-Ergebnis ab. Danach stoppst du.",
         "Mach nur den wichtigsten Teil einer Aufgabe. Der Rest kann warten.",
-        "10 Minuten Fokus – und aufhören, bevor du leer bist."
+        "Fokus 10 Minuten – und hör auf, bevor du leer bist."
       ]
     },
 
@@ -1867,104 +1154,104 @@
       summary: "Heute geht es nicht ums Durchziehen. Es geht darum, dich wieder ein kleines Stück zu stabilisieren – ohne Druck.",
       phase1: [
         "Nimm zwei ruhige Atemzüge. Spür dabei, dass du getragen bist – vom Boden, vom Stuhl, vom Moment.",
-        "Wenn du magst: ein Schluck Wasser. Dann eine lange Ausatmung. Ganz schlicht, aber wirksam.",
-        "Sprich innerlich mit dir wie mit jemandem, den du gern hast: freundlich, nicht fordernd."
+        "Wenn du magst: ein Schluck Wasser. Dann eine lange Ausatmung. Ganz simpel, aber wirksam.",
+        "Sprich innerlich kurz mit dir wie mit jemandem, den du gern hast: freundlich, nicht fordernd."
       ],
       phase2: [
-        "Wähle eine Priorität – und eine Sache, die du heute loslassen darfst. Das ist klug, nicht schwach.",
-        "Frag dich: Was kann wirklich bis morgen warten, ohne Schaden? Erlaub dir genau das.",
-        "Schreib drei Worte auf: „Heute reicht es, wenn…“"
+        "Wähle eine Priorität – und eine Sache, die du heute lassen darfst. Das ist klug, nicht schwach.",
+        "Frag dich: Was kann wirklich bis morgen warten, ohne Schaden? Nimm dir diese Erlaubnis.",
+        "Schreib drei Worte: „Heute reicht es, wenn…“"
       ],
       phase3: [
-        "Mach einen 3-Minuten-Schritt, der den Weg ebnet: Datei öffnen, Material bereitlegen, Startpunkt festlegen.",
-        "Reduziere Reibung: Mach es deinem Morgen etwas leichter.",
-        "Zum Schluss: Nimm wahr, dass du dich um dich gekümmert hast."
+        "Mach einen 3-Minuten-Schritt, der den Weg ebnet (Datei öffnen, Material bereit legen, Startpunkt setzen).",
+        "Reduziere Reibung: Mach es deinem Morgen leichter.",
+        "Zum Schluss: Nimm wahr, dass du dich gekümmert hast."
       ],
-      breath: { inhale:4, exhale:7, minutes:3, cueL:"Erst erholen, dann handeln", cueR:"Das Minimum, das wirklich hilft" },
+      breath: { inhale:4, exhale:7, minutes:3, cueL:"Erst erholen, dann handeln", cueR:"Das Minimum, das hilft" },
       goal: [
-        "In den nächsten 10 Minuten: Bereite nur den ersten Schritt vor. Danach stoppst du.",
-        "Nimm eine Kleinigkeit weg, die dich stresst – visuell oder organisatorisch.",
-        "Eine entlastende Mini-Aktion – und dann Pause."
+        "In 10 Minuten: Bereite nur den ersten Schritt vor. Danach stoppst du.",
+        "Nimm eine Kleinigkeit weg, die dich stresst (visuell oder organisatorisch).",
+        "Eine entlastende Mini-Aktion – dann Pause."
       ]
     },
 
     "mittel|mittel": {
-      label: "Etwas wackelig im Gleichgewicht",
-      title: "Reset & sanfte Struktur",
-      summary: "Du bist in der Mitte – ideal für einen Reset ohne Härte. Schritt für Schritt, klar und ruhig.",
+      label: "Wackelig im Gleichgewicht",
+      title: "Reset & leichte Struktur",
+      summary: "Du bist in der Mitte – perfekt für einen Reset ohne Härte. Schritt für Schritt, klar und ruhig.",
       phase1: [
-        "Richte dich kurz auf und nimm dann eine lange Ausatmung. Wie ein kleiner innerer Neustart.",
-        "Mach eine kleine, langsame Nackenbewegung – und komm danach wieder zum Atem zurück.",
-        "Fünf gleichmäßige Atemzüge. Nicht perfekt – einfach nur da sein."
+        "Richte dich kurz auf. Dann eine lange Ausatmung. Das ist wie ein innerer Neustart.",
+        "Mach eine kleine Nackenbewegung langsam – dann zurück zum Atem.",
+        "Fünf gleichmäßige Atemzüge. Nicht perfekt – nur da sein."
       ],
       phase2: [
-        "Plane nur die nächsten 30 Minuten – nicht den ganzen Tag.",
-        "Wähle eine Sache, die du abschließen kannst. Abschlüsse machen den Kopf oft leiser.",
+        "Plane nur die nächsten 30 Minuten. Nicht den ganzen Tag.",
+        "Wähle eine Sache, die du abschließen kannst – Abschlüsse machen den Kopf leiser.",
         "Frag dich: Was ist die nächste sichtbare Handlung? Ein Schritt, keine Idee."
       ],
       phase3: [
-        "15 Minuten Fokus, danach 3 Minuten Pause. Das ist ein Rhythmus, den dein Nervensystem gut mögen kann.",
+        "15 Minuten Fokus, danach 3 Minuten Pause. Das ist ein Rhythmus, den das Nervensystem mag.",
         "Schalte eine Ablenkung aus – nur eine.",
-        "Zum Schluss: „Was hat heute schon funktioniert?“ Auch das Kleine zählt."
+        "Am Ende: „Was hat heute funktioniert?“ Auch klein zählt."
       ],
       breath: { inhale:4, exhale:6, minutes:4, cueL:"Struktur gibt Sicherheit", cueR:"Ruhe → Klarheit → Handlung" },
       goal: [
-        "In den nächsten 10 Minuten: Mach den ersten konkreten Schritt deiner Priorität.",
-        "Schließe einen kleinen Teil ab – ein „fertig“ beruhigt.",
-        "10 Minuten Fokus – mit einer Ablenkung weniger."
+        "In 10 Minuten: Mach den ersten konkreten Schritt deiner Priorität.",
+        "Schließe einen kleinen Teil ab – „fertig“ beruhigt.",
+        "10 Minuten Fokus, mit einer Ablenkung weniger."
       ]
     },
 
     "mittel|hoch": {
       label: "Mittlerer Stress, hohe Energie",
-      title: "Energie in eine Richtung bringen",
-      summary: "Du hast Energie – sehr gut. Wir machen sie klar und nachhaltig: Richtung, kurzer Fokusblock, Pause.",
+      title: "Energie in Richtung bringen",
+      summary: "Du hast Energie – sehr gut. Wir machen sie klar und nachhaltig: Richtung, kurzer Block, Pause.",
       phase1: [
-        "Ein langer Atemzug – dann startest du. Wie ein kurzer innerer Kompass.",
-        "Check kurz Kiefer und Schultern. Energie soll dich tragen, nicht verspannen.",
-        "Beginne ohne Hast – stabil ist besser als schnell."
+        "Ein langer Atemzug, dann startest du. Wie ein kurzer innerer Kompass.",
+        "Check: Kiefer und Schultern. Energie soll dich tragen, nicht verspannen.",
+        "Beginn ohne Hast – stabil ist besser als schnell."
       ],
       phase2: [
-        "Wähle ein Ziel und ein einfaches Erfolgskriterium: „Ich starte“ oder „Ich schließe einen Teil ab“.",
-        "Wähle auch, was du jetzt bewusst nicht machst. Das schützt deinen Fokus.",
-        "Schreib: „Jetzt mache ich…“ – und dann beginnst du."
+        "Wähle ein Ziel und ein einfaches Erfolgskriterium („ich starte / ich schließe einen Teil ab“).",
+        "Wähle auch, was du jetzt nicht machst. Das schützt deinen Fokus.",
+        "Schreib: „Jetzt mache ich…“ und dann machst du es."
       ],
       phase3: [
-        "10+2: Zehn Minuten Fokus, zwei Minuten Pause. Danach kannst du neu entscheiden.",
-        "Schließe ein Mini-Ergebnis ab, bevor du weiterspringst.",
-        "Zum Schluss: drei ruhige Atemzüge – damit du nicht im Gefühl des Getriebenseins hängen bleibst."
+        "10+2: Zehn Minuten Fokus, zwei Minuten Pause. Wiederholen, wenn du willst.",
+        "Schließe ein Mini-Ergebnis ab, bevor du weitergehst.",
+        "Zum Schluss: drei ruhige Atemzüge – damit du nicht im „Getrieben sein“ hängen bleibst."
       ],
-      breath: { inhale:4, exhale:6, minutes:3, cueL:"Energie – aber fokussiert", cueR:"Kurze Pause, aber wirklich Pause" },
+      breath: { inhale:4, exhale:6, minutes:3, cueL:"Energie – aber fokussiert", cueR:"Pause kurz, aber echt" },
       goal: [
-        "10 Minuten Fokus auf eine Sache – danach 2 Minuten Pause.",
-        "Schließe ein kleines Mini-Ergebnis ab und stopp dann bewusst.",
+        "10 Minuten Fokus auf eine Sache, danach 2 Minuten Pause.",
+        "Schließe ein Mini-Ergebnis ab und stopp dann bewusst.",
         "Ein Block „clean focus“ – nur eine Sache."
       ]
     },
 
     "niedrig|niedrig": {
       label: "Niedrige Aktivierung",
-      title: "Sanft wieder in Bewegung kommen",
-      summary: "Du musst dich nicht pushen. Wir setzen nur einen kleinen Impuls: Körper, Atem, ein machbarer Schritt.",
+      title: "Sanft wieder anschalten",
+      summary: "Du musst dich nicht pushen. Wir setzen nur eine kleine Zündung: Körper, Atem, ein machbarer Schritt.",
       phase1: [
-        "Wenn du kannst, steh kurz auf oder bewege dich für 30 Sekunden. Der Körper hilft oft schneller als Gedanken.",
-        "Atme etwas tiefer ein und lass die Luft danach langsam wieder ausströmen. Ohne Eile.",
-        "Spür kurz deine Hände oder dein Gesicht. Auch das ist bereits Regulation."
+        "Wenn du kannst: steh kurz auf oder bewege dich 30 Sekunden. Der Körper hilft oft schneller als Gedanken.",
+        "Atme etwas tiefer ein – dann lass die Luft langsam hinaus. Ohne Eile.",
+        "Spür Hände oder Gesicht. Aufmerksamkeit hier ist schon Regulation."
       ],
       phase2: [
-        "Was ist der kleinste Schritt, den du jetzt beginnen kannst? Wirklich klein.",
-        "Wähle eine 2-Minuten-Aufgabe. Anfangen bringt oft schon etwas Energie zurück.",
-        "Denk nicht „alles“. Denk nur „eins“."
+        "Was ist der kleinste Schritt, den du anfangen kannst? Wirklich klein.",
+        "Wähle eine 2-Minuten-Aufgabe. Starten bringt oft Energie zurück.",
+        "Denk nicht „alles“. Denk „eins“."
       ],
       phase3: [
-        "Mach 2 Minuten – dann stopp. Lass dir einen leichten Wiedereinstieg offen.",
-        "Entferne einen einzigen kleinen Widerstand: Material bereit, Datei geöffnet, Platz geschaffen.",
-        "Zum Schluss: „Es ist okay. Ich komme wieder in Bewegung.“"
+        "Mach 2 Minuten – dann stopp. Lass einen einfachen Wiedereinstieg liegen.",
+        "Entferne einen einzigen kleinen Widerstand (Material bereit, Datei offen).",
+        "Zum Schluss: „Es ist okay. Ich bin wieder in Bewegung.“"
       ],
-      breath: { inhale:4, exhale:4, minutes:2, cueL:"Ganz schlicht", cueR:"Ganz freundlich" },
+      breath: { inhale:4, exhale:4, minutes:2, cueL:"Ganz simpel", cueR:"Ganz freundlich" },
       goal: [
-        "2 Minuten Handlung + 1 Minute Pause, drei Mal – das reicht.",
-        "Beginne eine Mini-Aufgabe und hör dann bewusst auf. Auch das zählt.",
+        "2 Minuten Handlung + 1 Minute Pause, dreimal – fertig.",
+        "Beginne eine Mini-Aufgabe und hör dann auf. Das zählt.",
         "Ein kleiner Ordnungspunkt – mehr nicht."
       ]
     },
@@ -1972,53 +1259,53 @@
     "niedrig|mittel": {
       label: "Ruhig & stabil",
       title: "Stabil und klar",
-      summary: "Du bist in einer guten Zone. Wir halten die Ruhe – und machen daraus einen klaren, leichten Fortschritt.",
+      summary: "Du bist in einer guten Zone. Wir halten die Ruhe – und machen daraus einen klaren Fortschritt.",
       phase1: [
         "Sechs ruhige Atemzüge. Lass die Ausatmung ein kleines bisschen länger werden.",
-        "Entspann kurz deinen Kiefer. Dort sitzt oft unbemerkt Spannung.",
-        "Spür die Stabilität im Körper. Das ist eine gute Basis für Entscheidungen."
+        "Entspann den Kiefer. Oft ist dort unbemerkt Spannung gespeichert.",
+        "Spür Stabilität im Körper. Das ist eine gute Basis fürs Entscheiden."
       ],
       phase2: [
         "Wähle eine Priorität und maximal drei Stichpunkte.",
-        "Frag dich: Was macht diesen Tag heute realistisch zu einem guten Tag?",
-        "Streich eine Sache, die nicht nötig ist. Oft fühlt es sich sofort leichter an."
+        "Frag dich: Was macht heute realistisch zu einem guten Tag?",
+        "Streich eine Sache, die nicht nötig ist. Du wirst sofort leichter."
       ],
       phase3: [
-        "Mach den ersten Schritt sofort für 2 Minuten. Danach entscheidest du neu.",
-        "15 Minuten Fokus, 3 Minuten Pause – einfach und wirksam.",
+        "Mach den ersten Schritt sofort (2 Minuten). Danach entscheidest du neu.",
+        "15 Minuten Fokus, 3 Minuten Pause – einfach und effektiv.",
         "Zum Schluss: Anerkennen, was du geschafft hast."
       ],
       breath: { inhale:4, exhale:6, minutes:3, cueL:"Stabilität", cueR:"Einfacher Fortschritt" },
       goal: [
-        "In den nächsten 10 Minuten: Mach den ersten konkreten Schritt deiner Priorität.",
+        "In 10 Minuten: Mach den ersten konkreten Schritt deiner Priorität.",
         "Streich eine unnötige Sache – das bringt Luft.",
         "Drei Punkte sortieren, den ersten umsetzen."
       ]
     },
 
     "niedrig|hoch": {
-      label: "Ruhig & energievoll",
+      label: "Ruhig & viel Energie",
       title: "Schwung – ohne Hetze",
-      summary: "Das ist eine schöne Energie. Wir geben ihr einen sanften Rahmen, damit auch morgen noch etwas davon da ist.",
+      summary: "Das ist schöne Energie. Wir setzen einen sanften Rahmen, damit du morgen noch etwas davon hast.",
       phase1: [
         "Ein langer, ruhiger Atemzug. Dann startest du – ohne zu hetzen.",
         "Energie muss nicht verspannen. Wenn du magst: kurzer Kiefer-Check.",
-        "Gib dir 10 Sekunden, bevor du loslegst. Das macht oft klarer."
+        "Gib dir 10 Sekunden, bevor du loslegst. Das macht dich klarer."
       ],
       phase2: [
-        "Wähle eine Sache, die du in 20 Minuten gut voranbringen kannst.",
-        "Setz eine Grenze: Hör auf, bevor du leer wirst. Das ist klug.",
+        "Wähle eine Sache, die du in 20 Minuten voranbringst.",
+        "Setz eine Grenze: Stopp bevor du leer bist. Das ist klug.",
         "Schreib: „Heute entscheide ich mich für…“"
       ],
       phase3: [
         "10–20 Minuten Fokus, dann eine echte Pause.",
         "Zum Abschluss: drei ruhige Atemzüge, damit du nicht „oben“ hängen bleibst.",
-        "Nimm bewusst eine Sache wahr, die gut funktioniert hat."
+        "Nimm eine Sache wahr, die funktioniert hat."
       ],
       breath: { inhale:4, exhale:6, minutes:2, cueL:"Schöne Energie", cueR:"Sanfte Grenze" },
       goal: [
         "10 Minuten Fokus, dann Pause.",
-        "Schließe ein kleines Mini-Ergebnis ab und hör auf, bevor du leer wirst.",
+        "Schließe ein Mini-Ergebnis ab und hör auf, bevor du leer wirst.",
         "Eine Richtung wählen, 10 Minuten sauber umsetzen."
       ]
     }
@@ -2140,7 +1427,7 @@
 
     stopBreathing(true);
 
-    breathPlanEl.textContent = `Plan: Einatmen ${plan.inhale}s · Ausatmen ${plan.exhale}s · Dauer ${plan.minutes} Min`;
+    breathPlanEl.textContent = `Plan: Ein ${plan.inhale}s · Aus ${plan.exhale}s · Dauer ${plan.minutes} Min`;
     breathTimerEl.textContent = fmt(plan.minutes * 60);
     progressBarEl.style.width = "0%";
 
@@ -2148,12 +1435,12 @@
     outFill.style.width = "0%";
     inSec.textContent = "—";
     outSec.textContent = "—";
-    linesHint.textContent = "Folge der Leiste: Wenn „Einatmen“ läuft, atmest du ein. Wenn „Ausatmen“ läuft, lässt du die Luft wieder sanft ausströmen.";
+    linesHint.textContent = "Folge der Leiste: Wenn „Einatmen“ läuft, atmest du ein. Wenn „Ausatmen“ läuft, lässt du die Luft wieder gehen.";
 
     cloudFill.style.height = "0%";
     cloudPhase.textContent = "Bereit";
     cloudCount.textContent = "—";
-    cloudHint.textContent = "Wenn du magst, starten wir jetzt gemeinsam.";
+    cloudHint.textContent = "Wenn du willst, starten wir gemeinsam.";
 
     breathStateEl.textContent = "Bereit";
   }
@@ -2163,14 +1450,16 @@
       breathStateEl.textContent = "Bereit";
       breathTimerEl.textContent = fmt(plan.minutes * 60);
       progressBarEl.style.width = "0%";
+
       inFill.style.width = "0%";
       outFill.style.width = "0%";
       inSec.textContent = "—";
       outSec.textContent = "—";
+
       cloudFill.style.height = "0%";
       cloudPhase.textContent = "Bereit";
       cloudCount.textContent = "—";
-      cloudHint.textContent = "Wenn du magst, starten wir jetzt gemeinsam.";
+      cloudHint.textContent = "Wenn du willst, starten wir gemeinsam.";
       return;
     }
 
@@ -2178,14 +1467,16 @@
       breathStateEl.textContent = "Fertig ✅";
       breathTimerEl.textContent = "00:00";
       progressBarEl.style.width = "100%";
+
       inFill.style.width = "0%";
       outFill.style.width = "0%";
       inSec.textContent = "✓";
       outSec.textContent = "✓";
+
       cloudFill.style.height = "0%";
       cloudPhase.textContent = "Fertig";
       cloudCount.textContent = "✓";
-      cloudHint.textContent = "Sehr gut. Manchmal reichen schon ein paar Minuten.";
+      cloudHint.textContent = "Sehr gut. Ein paar Minuten reichen manchmal schon.";
       return;
     }
 
@@ -2199,11 +1490,13 @@
       const sec = phaseRemaining;
 
       breathStateEl.textContent = `Einatmen (${sec}s)`;
+
       inFill.style.width = (p * 100).toFixed(0) + "%";
       outFill.style.width = "0%";
       inSec.textContent = `${sec}s`;
       outSec.textContent = "—";
       linesHint.textContent = "Einatmen: Lass die Luft ruhig kommen – du musst nichts erzwingen.";
+
       cloudPhase.textContent = "Einatmen";
       cloudCount.textContent = String(sec);
       cloudHint.textContent = "Lass die Luft langsam einströmen…";
@@ -2213,14 +1506,16 @@
       const sec = phaseRemaining;
 
       breathStateEl.textContent = `Ausatmen (${sec}s)`;
+
       outFill.style.width = (p * 100).toFixed(0) + "%";
       inFill.style.width = "0%";
       outSec.textContent = `${sec}s`;
       inSec.textContent = "—";
-      linesHint.textContent = "Ausatmen: Lass die Luft langsam wieder ausströmen – leise und ohne Eile.";
+      linesHint.textContent = "Ausatmen: Lass die Luft langsam wieder gehen – wie ein leises Ausatmen ohne Eile.";
+
       cloudPhase.textContent = "Ausatmen";
       cloudCount.textContent = String(sec);
-      cloudHint.textContent = "Lass die Luft sanft wieder los…";
+      cloudHint.textContent = "Gib die Luft langsam frei…";
       cloudFill.style.height = (90 - p * 80).toFixed(0) + "%";
     }
   }
@@ -2306,9 +1601,11 @@
     statePill.textContent = `Profil: ${data.label}`;
     mTitle.textContent = data.title;
     mSummary.textContent = data.summary;
+
     mText1.textContent = pick1(data.phase1);
     mText2.textContent = pick1(data.phase2);
     mText3.textContent = pick1(data.phase3);
+
     goalText.textContent = pick1(data.goal || ["Stell dir 10 Minuten. Eine Sache. Danach stoppst du bewusst."]);
 
     setBreathPlan(data.breath);
@@ -2326,11 +1623,15 @@
 
   document.getElementById("genM").addEventListener("click", generateReset);
 
+  syncLegacyKeysFromCanonical();
+  updateTargetNote();
   setModeUI();
   setAccessUI();
   syncSliderLabels();
 
-  if(hasPremiumAccess()){
+  if(redirectToTargetIfNeeded()){
+    // redirect eseguito
+  } else if(isMember()){
     try{
       const last = JSON.parse(localStorage.getItem("panacea_last_profile_de") || "null");
       if(last && last.stress && last.energy){
