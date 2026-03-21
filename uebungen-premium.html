@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Panacea – Übungen Premium</title>
   <link rel="icon" href="./icons/icon-192.png" />
 
@@ -15,240 +15,292 @@
       --line:#eadfcb;
       --gold:#c8a24a;
       --gold2:#e7cf8d;
+      --gold3:#fff6d6;
       --text:#2b2b2b;
       --muted:#6b6b6b;
       --soft:#8d7b57;
       --ok:#2e7d32;
       --danger:#a14c3f;
-      --shadow:0 18px 45px rgba(0,0,0,.10);
-      --shadow2:0 10px 28px rgba(0,0,0,.08);
-      --radius:24px;
+      --shadow:0 14px 40px rgba(0,0,0,.10);
+      --shadow2:0 10px 26px rgba(0,0,0,.08);
+      --radius:22px;
       --radius2:18px;
-      --max:520px;
+
+      --fs-title: clamp(1.28rem, 1.04rem + 1vw, 1.55rem);
+      --fs-section: clamp(.98rem, .9rem + .34vw, 1.04rem);
+      --fs-body: clamp(.9rem, .84rem + .2vw, .96rem);
+      --fs-small: clamp(.78rem, .74rem + .18vw, .84rem);
+      --fs-button: clamp(.84rem, .8rem + .16vw, .92rem);
     }
 
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0}
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+
     body{
-      min-height:100vh;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color:var(--text);
-      background:
-        radial-gradient(circle at top, rgba(255,255,255,.75), transparent 30%),
-        linear-gradient(180deg,var(--bg1),var(--bg2));
+      background: radial-gradient(1200px 800px at 30% 0%, var(--bg1), var(--bg2));
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      padding:14px 10px 24px;
     }
 
-    .wrap{
-      width:min(100%, var(--max));
-      margin:0 auto;
-      padding:18px 14px 42px;
+    .phone{
+      width:100%;
+      max-width:480px;
     }
 
     .topbar{
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:10px;
-      margin-bottom:14px;
-      flex-wrap:wrap;
+      gap:8px;
+      margin-bottom:12px;
+      padding:8px 10px;
+      border-radius:18px;
+      background:rgba(255,255,255,.45);
+      backdrop-filter: blur(8px);
+      border:1px solid rgba(200,162,74,.14);
+      box-shadow: 0 8px 18px rgba(0,0,0,.04);
+      overflow:hidden;
     }
 
-    .nav-btn{
-      border:none;
-      background:rgba(255,255,255,.72);
-      color:var(--text);
-      border-radius:999px;
-      padding:10px 14px;
-      font-weight:700;
-      cursor:pointer;
-      box-shadow:var(--shadow2);
+    .topLeft,
+    .topRight{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      min-width:0;
+      flex:1 1 0;
+    }
+
+    .topRight{
+      justify-content:flex-end;
+    }
+
+    .back{
       text-decoration:none;
       display:inline-flex;
       align-items:center;
-      gap:8px;
+      justify-content:center;
+      gap:6px;
+      padding:9px 12px;
+      border-radius:999px;
+      background: linear-gradient(180deg, var(--card2), var(--card));
+      box-shadow: var(--shadow2);
+      color:var(--text);
+      border:1px solid rgba(200,162,74,.18);
+      white-space:nowrap;
+      font-weight:800;
+      font-size:var(--fs-button);
+      line-height:1;
+      flex:0 0 auto;
+    }
+
+    .langToggle{
+      display:flex;
+      gap:6px;
+      align-items:center;
+      min-width:0;
+      flex:0 1 auto;
+    }
+
+    .langBtn{
+      appearance:none;
+      border:none;
+      cursor:pointer;
+      padding:9px 10px;
+      border-radius:999px;
+      font-weight:850;
+      letter-spacing:.1px;
+      background: rgba(255,255,255,.72);
+      border:1px solid rgba(200,162,74,.16);
+      box-shadow: 0 8px 18px rgba(0,0,0,.05);
+      color: var(--text);
+      white-space:nowrap;
+      font-size:var(--fs-button);
+      line-height:1;
+      min-width:0;
+    }
+
+    .langBtn.active{
+      background: radial-gradient(circle at 20% 10%, var(--gold3), var(--gold2));
+      border:1px solid rgba(200,162,74,.34);
+      color:#3a2c10;
+      text-shadow: 0 0 10px rgba(200,162,74,.18);
+    }
+
+    .brand{
+      min-width:0;
+      text-align:right;
+      line-height:1.05;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brand .t1{
+      font-size:11px;
+      color:var(--muted);
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-weight:800;
+    }
+
+    .brand .t2{
+      font-size:15px;
+      font-weight:900;
+      letter-spacing:.1px;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brand .glow{
+      color:var(--gold);
+      text-shadow: 0 0 10px rgba(200,162,74,.22);
+      font-weight:900;
+    }
+
+    .card{
+      background: linear-gradient(180deg, var(--card2), var(--card));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border:1px solid rgba(200,162,74,.18);
+      overflow:hidden;
+      margin-bottom:12px;
     }
 
     .hero{
-      background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,248,236,.96));
-      border:1px solid rgba(200,162,74,.18);
-      border-radius:30px;
-      box-shadow:var(--shadow);
-      padding:26px 20px 22px;
-      position:relative;
-      overflow:hidden;
-      margin-bottom:16px;
-    }
-
-    .hero::after{
-      content:"";
-      position:absolute;
-      right:-60px;
-      top:-60px;
-      width:180px;
-      height:180px;
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(231,207,141,.35), transparent 70%);
+      padding:18px 16px 14px;
+      display:flex;
+      gap:12px;
+      align-items:center;
     }
 
     .badge{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 12px;
-      border-radius:999px;
-      background:rgba(200,162,74,.12);
-      color:#7a6030;
-      font-size:12px;
-      font-weight:800;
-      letter-spacing:.04em;
-      text-transform:uppercase;
-      margin-bottom:12px;
-    }
-
-    h1,h2,h3,p{margin:0}
-    h1{
-      font-size:30px;
-      line-height:1.08;
-      margin-bottom:10px;
-      letter-spacing:-.02em;
-    }
-
-    .lead{
-      color:var(--muted);
-      line-height:1.55;
-      font-size:15px;
-      margin-bottom:16px;
-    }
-
-    .premium-note{
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-      background:linear-gradient(180deg,#fffaf0,#fff4dd);
-      border:1px solid rgba(200,162,74,.25);
+      width:60px;
+      height:60px;
       border-radius:18px;
-      padding:14px;
-      color:#6d5730;
-      font-size:14px;
-      line-height:1.5;
-    }
-
-    .status-card,
-    .card{
-      background:var(--card);
-      border:1px solid rgba(255,255,255,.65);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow2);
-      padding:18px;
-      margin-bottom:14px;
-      backdrop-filter: blur(8px);
-    }
-
-    .status-card{
-      display:none;
-    }
-
-    .status-card.show{
-      display:block;
-    }
-
-    .locked{
-      text-align:center;
-      padding:26px 18px;
-    }
-
-    .locked h2{
-      font-size:24px;
-      margin-bottom:10px;
-    }
-
-    .locked p{
-      color:var(--muted);
-      line-height:1.6;
-      margin-bottom:16px;
-    }
-
-    .btn{
-      border:none;
-      border-radius:16px;
-      padding:13px 16px;
-      font-weight:800;
-      font-size:14px;
-      cursor:pointer;
-      box-shadow:var(--shadow2);
-      transition:transform .15s ease, opacity .15s ease;
-    }
-
-    .btn:hover{ transform:translateY(-1px); }
-    .btn:active{ transform:translateY(0); }
-
-    .btn-gold{
-      background:linear-gradient(180deg,var(--gold2),var(--gold));
-      color:#2b220f;
-    }
-
-    .btn-soft{
-      background:#fff;
-      color:var(--text);
-    }
-
-    .btn-row{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:14px;
-    }
-
-    .section-title{
       display:flex;
       align-items:center;
-      justify-content:space-between;
-      gap:12px;
+      justify-content:center;
+      font-weight:900;
+      font-size:15px;
+      color:#3a2c10;
+      background: radial-gradient(circle at 30% 20%, var(--gold3), var(--gold2));
+      border:1px solid rgba(200,162,74,.32);
+      box-shadow: 0 0 16px rgba(200,162,74,.20);
+      flex:0 0 auto;
+    }
+
+    .hero h1{
+      margin:0 0 4px;
+      font-size:var(--fs-title);
+      line-height:1.15;
+      font-weight:900;
+      letter-spacing:.1px;
+      color:#2a2113;
+    }
+
+    .hero p{
+      margin:0;
+      color:rgba(43,43,43,.76);
+      font-size:var(--fs-body);
+      line-height:1.55;
+      font-weight:650;
+    }
+
+    .content{
+      padding:16px;
+    }
+
+    .premiumNote{
+      margin-top:12px;
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(200,162,74,.26);
+      background: linear-gradient(180deg, rgba(255,246,214,.78), rgba(255,255,255,.78));
+      box-shadow: 0 0 18px rgba(200,162,74,.10);
+      color:#5d4820;
+      font-size:var(--fs-body);
+      line-height:1.58;
+      font-weight:700;
+    }
+
+    .sectionCard{
+      background: rgba(255,255,255,.7);
+      border-radius:18px;
+      border:1px solid rgba(200,162,74,.16);
+      box-shadow: 0 10px 22px rgba(0,0,0,.05);
+      padding:14px;
       margin-bottom:12px;
-      flex-wrap:wrap;
     }
 
-    .section-title h2{
-      font-size:22px;
-      letter-spacing:-.01em;
+    .sectionTitle{
+      margin:0 0 6px;
+      font-size:var(--fs-section);
+      font-weight:900;
+      color:#3a2c10;
+      line-height:1.2;
     }
 
-    .section-sub{
-      color:var(--muted);
-      font-size:13px;
+    .sectionLead{
+      margin:0;
+      color:rgba(43,43,43,.76);
+      font-size:var(--fs-small);
+      line-height:1.5;
+      font-weight:700;
     }
 
     .grid{
       display:grid;
       gap:12px;
+      margin-top:12px;
     }
 
     .exercise-card,
     .game-card{
-      background:linear-gradient(180deg, rgba(255,255,255,.98), rgba(255,250,242,.95));
-      border:1px solid var(--line);
-      border-radius:20px;
-      padding:16px;
+      border-radius:18px;
+      border:1px solid rgba(200,162,74,.18);
+      background: rgba(255,255,255,.76);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+      overflow:hidden;
+    }
+
+    .cardHead{
+      padding:12px 14px;
+      border-bottom:1px solid rgba(200,162,74,.14);
+      background: linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.60));
     }
 
     .label{
-      display:inline-block;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
       padding:6px 10px;
       border-radius:999px;
-      background:rgba(200,162,74,.11);
+      background: rgba(200,162,74,.12);
       color:#7a6030;
       font-size:11px;
-      font-weight:800;
+      font-weight:850;
       letter-spacing:.04em;
       text-transform:uppercase;
-      margin-bottom:10px;
+      margin-bottom:8px;
     }
 
     .exercise-card h3,
     .game-card h3{
-      font-size:18px;
-      margin-bottom:8px;
-      letter-spacing:-.01em;
+      margin:0;
+      font-size:var(--fs-section);
+      color:#2f2412;
+      line-height:1.25;
+      font-weight:900;
+    }
+
+    .cardBody{
+      padding:12px 14px 14px;
     }
 
     .meta{
@@ -264,56 +316,154 @@
       border-radius:999px;
       padding:6px 10px;
       font-size:12px;
-      font-weight:700;
+      font-weight:800;
+      border:1px solid rgba(200,162,74,.14);
     }
 
     .text{
-      color:var(--muted);
+      color:rgba(43,43,43,.82);
       line-height:1.58;
-      font-size:14px;
-      margin-bottom:10px;
-    }
-
-    .effect{
-      background:#fffdf7;
-      border-left:4px solid var(--gold);
-      border-radius:14px;
-      padding:10px 12px;
-      font-size:13px;
-      line-height:1.5;
-      color:#6b5b3f;
-      margin-top:10px;
+      font-size:var(--fs-body);
+      margin:0 0 10px;
+      font-weight:650;
     }
 
     .practice-steps{
-      padding-left:18px;
+      padding-left:20px;
       margin:10px 0 0;
       color:var(--text);
       line-height:1.55;
-      font-size:14px;
+      font-size:var(--fs-body);
+      font-weight:650;
     }
 
     .practice-steps li{ margin-bottom:6px; }
 
+    .effect{
+      margin-top:12px;
+      padding:11px 12px;
+      border-radius:16px;
+      border:1px solid rgba(200,162,74,.18);
+      background: linear-gradient(180deg, rgba(255,248,230,.96), rgba(255,255,255,.82));
+      color:#6b5530;
+      font-size:var(--fs-small);
+      line-height:1.55;
+      font-weight:750;
+    }
+
     .timer-box{
       margin-top:12px;
-      padding:14px;
+      padding:12px;
       border-radius:18px;
-      background:linear-gradient(180deg,#fffdf8,#f9f3e7);
-      border:1px solid var(--line);
+      border:1px solid rgba(200,162,74,.22);
+      background: linear-gradient(180deg, rgba(255,246,214,.70), rgba(255,255,255,.85));
+      box-shadow: 0 0 16px rgba(200,162,74,.08);
+    }
+
+    .timer-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:10px;
+      flex-wrap:wrap;
+    }
+
+    .timer-label{
+      color:#7a6030;
+      font-size:var(--fs-small);
+      font-weight:850;
+      letter-spacing:.02em;
     }
 
     .timer-display{
-      font-size:34px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:88px;
+      padding:8px 12px;
+      border-radius:14px;
+      background: rgba(255,255,255,.88);
+      border:1px solid rgba(200,162,74,.20);
+      box-shadow: 0 8px 18px rgba(0,0,0,.04);
+      font-size:1.25rem;
       font-weight:900;
-      letter-spacing:-.03em;
-      margin-bottom:10px;
+      letter-spacing:-.02em;
+      color:#3a2c10;
+      line-height:1;
     }
 
-    .small{
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.5;
+    .btn,
+    .memberBtn{
+      appearance:none;
+      border:none;
+      cursor:pointer;
+      padding:11px 13px;
+      border-radius:14px;
+      font-weight:850;
+      letter-spacing:.08px;
+      box-shadow: var(--shadow2);
+      border:1px solid rgba(200,162,74,.18);
+      background: linear-gradient(180deg, #ffffff, #f7f2e6);
+      color:var(--text);
+      font-size:var(--fs-button);
+      line-height:1.1;
+      text-align:center;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .btn-gold,
+    .memberBtn{
+      background: radial-gradient(circle at 20% 10%, var(--gold3), var(--gold2));
+      border:1px solid rgba(200,162,74,.34);
+      color:#3a2c10;
+      text-shadow: 0 0 10px rgba(200,162,74,.18);
+    }
+
+    .btn-row{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+
+    .btn-row .btn{
+      flex:1 1 120px;
+    }
+
+    .status-card{
+      display:none;
+    }
+
+    .status-card.show{
+      display:block;
+    }
+
+    .locked{
+      padding:16px;
+      text-align:center;
+    }
+
+    .locked h2{
+      margin:0 0 10px;
+      font-size:1.2rem;
+      color:#2f2412;
+      font-weight:900;
+    }
+
+    .locked p{
+      margin:0;
+      color:rgba(43,43,43,.76);
+      line-height:1.58;
+      font-size:var(--fs-body);
+      font-weight:650;
+    }
+
+    .hidden{
+      display:none !important;
     }
 
     .checklist{
@@ -330,12 +480,14 @@
       border-radius:16px;
       background:#fffdfa;
       border:1px solid var(--line);
+      box-shadow: 0 8px 18px rgba(0,0,0,.03);
     }
 
     .check-item input{
       margin-top:3px;
-      transform:scale(1.15);
+      transform:scale(1.08);
       accent-color:#b58b34;
+      flex:0 0 auto;
     }
 
     .check-item.done{
@@ -345,15 +497,23 @@
     .check-item strong{
       display:block;
       margin-bottom:4px;
-      font-size:14px;
+      font-size:var(--fs-body);
+      color:#2f2412;
+    }
+
+    .small{
+      color:var(--muted);
+      font-size:var(--fs-small);
+      line-height:1.5;
+      font-weight:700;
     }
 
     .mini-area{
       margin-top:12px;
-      padding:14px;
+      padding:12px;
       border-radius:18px;
       border:1px solid var(--line);
-      background:#fffdf8;
+      background: linear-gradient(180deg,#fffdf8,#fbf6ec);
     }
 
     input[type="text"],
@@ -391,13 +551,14 @@
       border-radius:14px;
       background:#fff;
       border:1px solid #eadfcb;
-      font-size:14px;
-      line-height:1.5;
+      font-size:var(--fs-body);
+      line-height:1.55;
+      font-weight:650;
     }
 
     .accent{
       color:#87661d;
-      font-weight:800;
+      font-weight:900;
     }
 
     .memory-seq{
@@ -413,86 +574,147 @@
       padding:10px 12px;
       border-radius:14px;
       background:#f6efdf;
-      font-weight:800;
+      font-weight:900;
+      border:1px solid rgba(200,162,74,.14);
     }
 
     .footer-space{
       height:18px;
     }
 
-    .hidden{
-      display:none !important;
+    @media (max-width: 430px){
+      body{
+        padding:10px 8px 20px;
+      }
+
+      .topbar{
+        gap:6px;
+        padding:8px;
+      }
+
+      .topLeft,
+      .topRight{
+        gap:6px;
+      }
+
+      .back{
+        padding:8px 10px;
+      }
+
+      .langBtn{
+        padding:8px 9px;
+      }
+
+      .brand .t2{
+        font-size:14px;
+      }
+
+      .hero{
+        align-items:flex-start;
+        padding:16px 14px 12px;
+      }
+
+      .content{
+        padding:14px;
+      }
     }
 
-    @media (max-width:420px){
-      h1{font-size:27px}
-      .timer-display{font-size:30px}
+    @media (max-width: 360px){
+      .brand .t1{
+        display:none;
+      }
+
+      .brand .t2{
+        font-size:13px;
+      }
+
+      .back{
+        padding:8px 9px;
+      }
+
+      .langBtn{
+        padding:8px 8px;
+        font-size:.8rem;
+      }
+
+      .timer-display{
+        min-width:78px;
+        font-size:1.08rem;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
+  <div class="phone">
 
     <div class="topbar">
-      <a class="nav-btn" href="./uebungen.html">← Übungen</a>
-      <a class="nav-btn" href="./index.html">← Home</a>
+      <div class="topLeft">
+        <a class="back" href="./uebungen.html">← Home</a>
+
+        <div class="langToggle" aria-label="Sprachauswahl">
+          <button class="langBtn active" id="btnDE" type="button">DE</button>
+          <button class="langBtn" id="btnIT" type="button">IT</button>
+        </div>
+      </div>
+
+      <div class="topRight">
+        <div class="brand">
+          <div class="t1">Panacea</div>
+          <div class="t2"><span class="glow">Übungen Premium</span></div>
+        </div>
+      </div>
     </div>
 
-    <section class="hero">
-      <div class="badge">✨ Premium Übungen</div>
-      <h1>Mehr Tiefe.<br>Mehr Regulation.<br>Mehr echte Praxis.</h1>
-      <p class="lead">
-        Dieser Premium-Bereich verbindet kurze wissenschaftlich orientierte Übungen mit intelligenten Mini-Formaten
-        für Fokus, Selbstregulation, mentale Klarheit und Alltagstransfer.
-      </p>
-
-      <div class="premium-note">
-        <div>🌿</div>
+    <div class="card">
+      <div class="hero">
+        <div class="badge">PR</div>
         <div>
-          Nicht Perfektion ist das Ziel – sondern ein ruhiger, klarer und regulierter Zustand.
+          <h1>Übungen Premium</h1>
+          <p>Mehr Tiefe, mehr Regulation und mehr alltagstaugliche Praxis – im vertrauten Panacea-Stil.</p>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="premiumNote">
+          Nicht Perfektion ist das Ziel, sondern ein ruhigerer, klarerer und besser regulierter Zustand.
           Wähle heute einfach die Übung, die zu deinem Nervensystem passt.
         </div>
       </div>
-    </section>
+    </div>
 
-    <section id="lockedCard" class="status-card show">
+    <section id="lockedCard" class="card status-card show">
       <div class="locked">
-        <div class="badge">Zugang geschützt</div>
+        <div class="label">Zugang geschützt</div>
         <h2>Premium Übungen noch nicht freigeschaltet</h2>
         <p>
           Diese Seite enthält die erweiterten Übungen, Fokus-Tools und Premium-Formate von Panacea.
           Sobald dein Zugang aktiviert ist, wird dieser Bereich automatisch sichtbar.
         </p>
-        <div class="btn-row" style="justify-content:center">
-          <a class="btn btn-gold" href="./mitglieder.html?target=uebungen-premium.html" style="text-decoration:none;display:inline-block;">Zugang freischalten</a>
-          <a class="btn btn-soft" href="./uebungen.html" style="text-decoration:none;display:inline-block;">Zur kostenlosen Übungen-Seite</a>
+
+        <div class="btn-row" style="justify-content:center; margin-top:14px;">
+          <a class="btn btn-gold" href="./mitglieder.html?target=uebungen-premium.html">Zugang freischalten</a>
+          <a class="btn" href="./uebungen.html">Zur kostenlosen Seite</a>
         </div>
       </div>
     </section>
 
     <div id="premiumContent" class="hidden">
 
-      <section class="card">
-        <div class="section-title">
-          <h2>Premium Fokus</h2>
-          <div class="section-sub">10 kurze wissenschaftlich inspirierte Übungen</div>
-        </div>
+      <section class="sectionCard">
+        <h2 class="sectionTitle">Premium Fokus</h2>
+        <p class="sectionLead">10 kurze wissenschaftlich inspirierte Übungen für Regulation, Klarheit und Alltag.</p>
         <div id="exerciseGrid" class="grid"></div>
       </section>
 
-      <section class="card">
-        <div class="section-title">
-          <h2>Intelligente Mini-Games</h2>
-          <div class="section-sub">10 kleine Tools für Klarheit, Regulation und Achtsamkeit</div>
-        </div>
+      <section class="sectionCard">
+        <h2 class="sectionTitle">Intelligente Mini-Games</h2>
+        <p class="sectionLead">10 kleine Tools für Fokus, Achtsamkeit und innere Ordnung.</p>
         <div id="gameGrid" class="grid"></div>
       </section>
 
-      <section class="card">
-        <div class="section-title">
-          <h2>Dein Premium-Check-in</h2>
-          <div class="section-sub">Eine ruhige Mini-Routine für heute</div>
-        </div>
+      <section class="sectionCard">
+        <h2 class="sectionTitle">Dein Premium-Check-in</h2>
+        <p class="sectionLead">Eine ruhige Mini-Routine für heute.</p>
 
         <div class="checklist" id="dailyChecklist">
           <label class="check-item">
@@ -532,6 +754,70 @@
       <div class="footer-space"></div>
     </div>
   </div>
+
+  <script>
+    (function(){
+      const KEY = "lang";
+
+      function setLang(l){ localStorage.setItem(KEY, l); }
+      function getLang(){
+        const v = (localStorage.getItem(KEY) || "").toLowerCase();
+        return (v === "it" || v === "de") ? v : "de";
+      }
+
+      function getTwinUrl(targetLang){
+        const path = location.pathname.split("/").pop() || "uebungen-premium.html";
+        const map = {
+          "index.html": "indexIT.html",
+          "indexIT.html": "index.html",
+
+          "wissen.html": "wissenIT.html",
+          "wissenIT.html": "wissen.html",
+
+          "daily-reset.html": "daily-resetIT.html",
+          "daily-resetIT.html": "daily-reset.html",
+
+          "lifestyle.html": "lifestyleIT.html",
+          "lifestyleIT.html": "lifestyle.html",
+
+          "mitglieder.html": "mitgliederIT.html",
+          "mitgliederIT.html": "mitglieder.html",
+
+          "uebungen.html": "uebungenIT.html",
+          "uebungenIT.html": "uebungen.html",
+
+          "uebungen-premium.html": "uebungen-premiumIT.html",
+          "uebungen-premiumIT.html": "uebungen-premium.html"
+        };
+
+        if(targetLang === "it") return map[path] || path.replace(".html","IT.html");
+        if(targetLang === "de") return map[path] || path.replace("IT.html",".html");
+        return path;
+      }
+
+      const btnDE = document.getElementById("btnDE");
+      const btnIT = document.getElementById("btnIT");
+
+      function paint(){
+        const l = getLang();
+        btnDE.classList.toggle("active", l === "de");
+        btnIT.classList.toggle("active", l === "it");
+        document.documentElement.lang = l;
+      }
+
+      btnDE.addEventListener("click", () => {
+        setLang("de");
+        location.href = getTwinUrl("de");
+      });
+
+      btnIT.addEventListener("click", () => {
+        setLang("it");
+        location.href = getTwinUrl("it");
+      });
+
+      paint();
+    })();
+  </script>
 
   <script>
     const premiumUnlocked =
@@ -742,7 +1028,7 @@
               <button class="btn btn-gold" onclick="newMemoryGame()">Neue Folge</button>
               <input id="memoryAnswer" type="text" placeholder="Zahlen eingeben" />
             </div>
-            <button class="btn btn-soft" onclick="checkMemoryGame()" style="margin-top:10px">Prüfen</button>
+            <button class="btn" onclick="checkMemoryGame()" style="margin-top:10px">Prüfen</button>
             <div id="memoryResult" class="result hidden"></div>
           </div>
         `
@@ -790,7 +1076,7 @@
             <textarea id="loadInput" placeholder="Was belastet mich gerade?"></textarea>
             <div class="inline" style="margin-top:10px">
               <button class="btn btn-gold" onclick="loadDecision('handeln')">Heute handeln</button>
-              <button class="btn btn-soft" onclick="loadDecision('parken')">Bewusst parken</button>
+              <button class="btn" onclick="loadDecision('parken')">Bewusst parken</button>
             </div>
             <div id="loadResult" class="result hidden"></div>
           </div>
@@ -826,10 +1112,13 @@
         text: "Ein minimalistischer Timer zum ruhigen Ankommen. Ideal für Atemfokus oder stilles Sitzen.",
         render: () => `
           <div class="mini-area">
-            <div id="oneMinuteDisplay" class="timer-display">01:00</div>
-            <div class="inline">
+            <div class="timer-top">
+              <div class="timer-label">Mini Timer</div>
+              <div id="oneMinuteDisplay" class="timer-display">01:00</div>
+            </div>
+            <div class="btn-row">
               <button class="btn btn-gold" onclick="startOneMinute()">Start</button>
-              <button class="btn btn-soft" onclick="resetOneMinute()">Reset</button>
+              <button class="btn" onclick="resetOneMinute()">Reset</button>
             </div>
           </div>
         `
@@ -843,27 +1132,33 @@
       if(!exerciseGrid) return;
       exerciseGrid.innerHTML = exercises.map((item, index) => `
         <article class="exercise-card">
-          <div class="label">${item.category}</div>
-          <h3>${index + 1}. ${item.title}</h3>
-          <div class="meta">
-            <span class="chip">${item.duration}</span>
-            <span class="chip">${item.level}</span>
+          <div class="cardHead">
+            <div class="label">${item.category}</div>
+            <h3>${index + 1}. ${item.title}</h3>
           </div>
-          <p class="text">${item.text}</p>
-          <ol class="practice-steps">
-            ${item.steps.map(step => `<li>${step}</li>`).join("")}
-          </ol>
-          <div class="effect"><strong>Wirkidee:</strong> ${item.effect}</div>
-          ${item.timer ? `
-            <div class="timer-box">
-              <div class="small">Optionaler Praxis-Timer</div>
-              <div class="timer-display" id="timer-display-${index}">${formatTime(item.timer)}</div>
-              <div class="btn-row">
-                <button class="btn btn-gold" onclick="startExerciseTimer(${index}, ${item.timer})">Start</button>
-                <button class="btn btn-soft" onclick="resetExerciseTimer(${index}, ${item.timer})">Reset</button>
-              </div>
+          <div class="cardBody">
+            <div class="meta">
+              <span class="chip">${item.duration}</span>
+              <span class="chip">${item.level}</span>
             </div>
-          ` : ``}
+            <p class="text">${item.text}</p>
+            <ol class="practice-steps">
+              ${item.steps.map(step => `<li>${step}</li>`).join("")}
+            </ol>
+            <div class="effect"><strong>Wirkidee:</strong> ${item.effect}</div>
+            ${item.timer ? `
+              <div class="timer-box">
+                <div class="timer-top">
+                  <div class="timer-label">Optionaler Praxis-Timer</div>
+                  <div class="timer-display" id="timer-display-${index}">${formatTime(item.timer)}</div>
+                </div>
+                <div class="btn-row">
+                  <button class="btn btn-gold" onclick="startExerciseTimer(${index}, ${item.timer})">Start</button>
+                  <button class="btn" onclick="resetExerciseTimer(${index}, ${item.timer})">Reset</button>
+                </div>
+              </div>
+            ` : ``}
+          </div>
         </article>
       `).join("");
     }
@@ -872,10 +1167,14 @@
       if(!gameGrid) return;
       gameGrid.innerHTML = games.map((item, index) => `
         <article class="game-card">
-          <div class="label">${item.category}</div>
-          <h3>${index + 1}. ${item.title}</h3>
-          <p class="text">${item.text}</p>
-          ${item.render()}
+          <div class="cardHead">
+            <div class="label">${item.category}</div>
+            <h3>${index + 1}. ${item.title}</h3>
+          </div>
+          <div class="cardBody">
+            <p class="text">${item.text}</p>
+            ${item.render()}
+          </div>
         </article>
       `).join("");
     }
