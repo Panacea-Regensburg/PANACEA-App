@@ -679,7 +679,7 @@
       </div>
 
       <div class="navRight">
-        <div class="pageTitle">Mitglieder · Base</div>
+        <div class="pageTitle" id="pageTitleBadge">Mitglieder · Base</div>
       </div>
     </div>
   </div>
@@ -712,7 +712,7 @@
         <span id="status" class="statusLocked">Gesperrt</span>
       </div>
 
-      <div class="note">
+      <div class="note" id="targetNote">
         Du bekommst dein Passwort <strong>automatisch</strong> nach dem Kauf.
         <br>Hinweis: Der Zugang ist persönlich. Wenn ein Passwort öffentlich geteilt wird, wird es zum Schutz der Mitglieder ersetzt.
       </div>
@@ -870,8 +870,26 @@
   function goIT(){ window.location.href = "./mitgliederIT.html"; }
 
   const BASIS_PASSWORD = "PNC-79xL!qR26-Z";
-  const PREMIUM_KEY = "panacea_member";
-  const isMember = () => localStorage.getItem(PREMIUM_KEY) === "true";
+
+  const PREMIUM_KEY = "panacea_premium";
+  const LEGACY_PREMIUM_KEY = "panacea_member";
+
+  const params = new URLSearchParams(window.location.search);
+  const targetPage = params.get("target");
+
+  function isMember(){
+    return localStorage.getItem(PREMIUM_KEY) === "true" || localStorage.getItem(LEGACY_PREMIUM_KEY) === "true";
+  }
+
+  function setMemberState(value){
+    localStorage.setItem(PREMIUM_KEY, value ? "true" : "false");
+    localStorage.setItem(LEGACY_PREMIUM_KEY, value ? "true" : "false");
+  }
+
+  function clearMemberState(){
+    localStorage.removeItem(PREMIUM_KEY);
+    localStorage.removeItem(LEGACY_PREMIUM_KEY);
+  }
 
   function cleanupMemberState(){
     const keysToClear = [
@@ -881,10 +899,41 @@
     keysToClear.forEach(k => localStorage.removeItem(k));
   }
 
+  function updateTopBadge(){
+    const badge = document.getElementById("pageTitleBadge");
+    badge.textContent = isMember() ? "Mitglieder · Premium" : "Mitglieder · Base";
+  }
+
+  function updateTargetNote(){
+    const note = document.getElementById("targetNote");
+    if(targetPage){
+      note.innerHTML = `
+        Du bekommst dein Passwort <strong>automatisch</strong> nach dem Kauf.
+        <br>Nach der Freischaltung wirst du direkt weitergeleitet zu: <strong>${targetPage}</strong>
+        <br>Hinweis: Der Zugang ist persönlich. Wenn ein Passwort öffentlich geteilt wird, wird es zum Schutz der Mitglieder ersetzt.
+      `;
+    } else {
+      note.innerHTML = `
+        Du bekommst dein Passwort <strong>automatisch</strong> nach dem Kauf.
+        <br>Hinweis: Der Zugang ist persönlich. Wenn ein Passwort öffentlich geteilt wird, wird es zum Schutz der Mitglieder ersetzt.
+      `;
+    }
+  }
+
+  function redirectToTargetIfNeeded(){
+    if(isMember() && targetPage){
+      window.location.href = targetPage;
+      return true;
+    }
+    return false;
+  }
+
   function setAccessUI(){
     const unlockBox = document.getElementById("unlockBox");
     const premiumArea = document.getElementById("premiumArea");
     const status = document.getElementById("status");
+
+    updateTopBadge();
 
     if(isMember()){
       status.textContent = "Freigeschaltet ✅";
@@ -899,12 +948,23 @@
     }
   }
 
-  document.getElementById("unlockBtn").addEventListener("click", () => {
-    const code = (document.getElementById("codeInput").value || "").trim();
+  const unlockBtn = document.getElementById("unlockBtn");
+  const codeInput = document.getElementById("codeInput");
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  unlockBtn.addEventListener("click", () => {
+    const code = (codeInput.value || "").trim();
+
     if(code === BASIS_PASSWORD){
-      localStorage.setItem(PREMIUM_KEY, "true");
-      document.getElementById("codeInput").value = "";
+      setMemberState(true);
+      codeInput.value = "";
       alert("Freigeschaltet ✅");
+
+      if(targetPage){
+        window.location.href = targetPage;
+        return;
+      }
+
       setAccessUI();
       generateReset();
     } else {
@@ -912,15 +972,16 @@
     }
   });
 
-  document.getElementById("codeInput").addEventListener("keydown", (e)=>{
-    if(e.key === "Enter") document.getElementById("unlockBtn").click();
+  codeInput.addEventListener("keydown", (e) => {
+    if(e.key === "Enter") unlockBtn.click();
   });
 
-  document.getElementById("logoutBtn").addEventListener("click", () => {
-    localStorage.removeItem(PREMIUM_KEY);
+  logoutBtn.addEventListener("click", () => {
+    clearMemberState();
     cleanupMemberState();
     stopBreathing(true);
     setAccessUI();
+    renderBreathUI();
   });
 
   const stressM = document.getElementById("stressM");
@@ -932,6 +993,7 @@
     stressVal.textContent = `${stressM.value}/10`;
     energyVal.textContent = `${energyM.value}/10`;
   }
+
   stressM.addEventListener("input", syncSliderLabels);
   energyM.addEventListener("input", syncSliderLabels);
 
@@ -1499,11 +1561,14 @@
 
   document.getElementById("genM").addEventListener("click", generateReset);
 
+  updateTargetNote();
   setModeUI();
   setAccessUI();
   syncSliderLabels();
 
-  if(isMember()){
+  if(redirectToTargetIfNeeded()){
+    // già reindirizzato
+  } else if(isMember()){
     try{
       const last = JSON.parse(localStorage.getItem("panacea_last_profile_de") || "null");
       if(last && last.stress && last.energy){
@@ -1511,6 +1576,7 @@
         energyM.value = String(last.energy);
       }
     } catch(e){}
+    syncSliderLabels();
     generateReset();
   } else {
     setBreathPlan({
