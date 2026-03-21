@@ -1,60 +1,69 @@
 <!doctype html>
-<html lang="it">
+<html lang="de">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Area Membri – Panacea</title>
+  <title>Mitgliederbereich – Panacea</title>
 
   <style>
     :root{
       --bg1:#f6f1e6;
       --bg2:#efe7d7;
-
-      --card:rgba(255,255,255,0.86);
-      --card2:rgba(255,255,255,0.72);
-
+      --card:rgba(255,255,255,0.88);
+      --card2:rgba(255,255,255,0.76);
       --text:#1f1f1f;
       --muted:#5c5c5c;
-
       --gold:#c8a24a;
       --gold2:#e8d28a;
-
       --ink:#1a1a1a;
-
-      --shadow:0 14px 40px rgba(0,0,0,0.10);
-      --shadow2:0 10px 26px rgba(0,0,0,0.10);
-
+      --shadow:0 14px 36px rgba(0,0,0,0.08);
+      --shadow2:0 8px 20px rgba(0,0,0,0.07);
       --radius:22px;
-      --radius2:18px;
+      --radius2:16px;
     }
 
     *{ box-sizing:border-box; }
+
+    html{ scroll-behavior:smooth; }
+
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--text);
       background: radial-gradient(1200px 800px at 20% 0%, var(--bg2), var(--bg1));
       min-height:100vh;
     }
 
-    /* fixed topbar */
+    button,input{ font:inherit; }
+
     .fixedTopbar{
-      position:fixed; top:0; left:0; right:0;
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
       z-index:9999;
-      padding:10px 10px;
+      padding:8px 10px;
       background: rgba(255,255,255,0.58);
       backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255,255,255,0.35);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom:1px solid rgba(255,255,255,0.35);
     }
+
     .fixedTopbarInner{
-      max-width: 980px;
+      max-width:520px;
       margin:0 auto;
       display:grid;
       grid-template-columns: 1fr auto 1fr;
       align-items:center;
-      gap:10px;
+      gap:8px;
     }
-    .navLeft,.navCenter,.navRight{ display:flex; align-items:center; min-width:0; }
+
+    .navLeft,.navCenter,.navRight{
+      display:flex;
+      align-items:center;
+      min-width:0;
+    }
+
     .navLeft{ justify-content:flex-start; }
     .navCenter{ justify-content:center; gap:8px; }
     .navRight{ justify-content:flex-end; }
@@ -65,83 +74,102 @@
       align-items:center;
       justify-content:center;
       gap:8px;
-      padding:10px 14px;
-      border-radius: 999px;
+      padding:8px 12px;
+      border-radius:999px;
       background: rgba(255,255,255,0.82);
       color:var(--ink);
       font-weight:800;
+      font-size:12px;
       border:1px solid rgba(0,0,0,0.06);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.06);
       cursor:pointer;
       user-select:none;
       white-space:nowrap;
+      transition: transform .15s ease, box-shadow .15s ease;
     }
+
+    .btn:hover{
+      transform: translateY(-1px);
+      box-shadow:0 9px 18px rgba(0,0,0,0.08);
+    }
+
     .btn:active{ transform: translateY(1px); }
 
     .langBtn{
-      padding:9px 12px;
-      border-radius: 999px;
+      padding:8px 11px;
+      border-radius:999px;
       font-weight:900;
-      font-size:13px;
+      font-size:12px;
       background: rgba(255,255,255,0.72);
-      border: 1px solid rgba(0,0,0,0.08);
+      border:1px solid rgba(0,0,0,0.08);
       cursor:pointer;
       white-space:nowrap;
+      transition: transform .15s ease, box-shadow .15s ease;
+      color:var(--ink);
     }
+
+    .langBtn:hover{
+      transform: translateY(-1px);
+      box-shadow:0 8px 16px rgba(0,0,0,0.06);
+    }
+
     .langBtn.active{
-      background: rgba(200,162,74,0.20);
+      background: rgba(200,162,74,0.18);
       border-color: rgba(200,162,74,0.45);
-      box-shadow: 0 10px 22px rgba(200,162,74,0.10);
+      box-shadow: 0 8px 18px rgba(200,162,74,0.10);
     }
 
     .pageTitle{
-      font-weight:950;
-      letter-spacing: .2px;
-      font-size: 14px;
-      padding:10px 12px;
-      border-radius: 999px;
+      font-weight:900;
+      letter-spacing:.1px;
+      font-size:12px;
+      padding:8px 10px;
+      border-radius:999px;
       background: rgba(255,255,255,0.62);
       border:1px solid rgba(0,0,0,0.06);
-      max-width: 100%;
+      max-width:100%;
       overflow:hidden;
       text-overflow:ellipsis;
       white-space:nowrap;
     }
 
     .wrap{
-      max-width: 980px;
+      max-width:520px;
       margin:0 auto;
-      padding:84px 14px 36px;
+      padding:68px 10px 22px;
     }
 
     .card{
       background: var(--card);
       backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding: 22px;
-      border: 1px solid rgba(200,162,74,0.14);
+      padding:14px;
+      border:1px solid rgba(200,162,74,0.14);
     }
-    .card + .card{ margin-top:14px; }
+
+    .card + .card{ margin-top:12px; }
 
     .brandTitle{
       font-family: ui-serif, Georgia, "Times New Roman", serif;
       margin:0;
-      font-size:32px;
-      letter-spacing:.2px;
+      font-size:20px;
+      letter-spacing:.1px;
       line-height:1.05;
     }
+
     .sub{
-      margin:10px 0 0;
+      margin:7px 0 0;
       color:var(--muted);
-      line-height:1.45;
-      font-size:14.7px;
+      line-height:1.5;
+      font-size:12.5px;
     }
 
     .goldLine{
       height:1px;
       width:100%;
-      margin:14px 0 14px;
+      margin:10px 0;
       background: linear-gradient(90deg, transparent, rgba(200,162,74,.55), transparent);
     }
 
@@ -149,100 +177,127 @@
       display:inline-flex;
       align-items:center;
       gap:8px;
-      padding:7px 10px;
+      padding:5px 9px;
       border-radius:999px;
-      font-size:12px;
+      font-size:10px;
       font-weight:900;
       background: rgba(200,162,74,0.16);
       border:1px solid rgba(200,162,74,0.28);
       color:#2a2316;
     }
+
     .muted{ color:var(--muted); }
 
-    /* unlock */
-    .row{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+    .row{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
     .input{
-      padding:12px 14px;
-      border-radius:14px;
+      flex:1 1 220px;
+      padding:10px 12px;
+      border-radius:12px;
       border:1px solid rgba(0,0,0,0.12);
-      width: 360px;
+      width:100%;
       max-width:100%;
-      font-size:16px;
+      font-size:14px;
       background:#fff;
       outline:none;
+      color:var(--ink);
     }
+
     .input:focus{
       border-color: rgba(200,162,74,0.55);
-      box-shadow: 0 0 0 3px rgba(200,162,74,0.18);
+      box-shadow: 0 0 0 3px rgba(200,162,74,0.16);
     }
 
     .btnGold{
       border:0;
-      font-weight:950;
-      padding:12px 16px;
-      border-radius: 14px;
+      font-weight:900;
+      padding:10px 13px;
+      border-radius:12px;
       cursor:pointer;
       color:#1f1a10;
       background: linear-gradient(180deg, rgba(232,210,138,.95), rgba(200,162,74,.92));
-      box-shadow: 0 14px 36px rgba(200,162,74,.18);
+      box-shadow: 0 10px 24px rgba(200,162,74,.16);
       white-space:nowrap;
+      font-size:12px;
+      transition: transform .15s ease, box-shadow .15s ease;
     }
-    .btnGold:active{ transform: translateY(1px); }
+
+    .btnGold:hover{
+      transform: translateY(-1px);
+      box-shadow:0 12px 28px rgba(200,162,74,.22);
+    }
 
     .btnSoft{
-      padding:12px 16px;
-      border-radius:14px;
+      padding:10px 13px;
+      border-radius:12px;
       border:1px solid rgba(0,0,0,0.10);
       background: rgba(255,255,255,0.85);
-      font-weight:950;
+      font-weight:900;
       cursor:pointer;
       color:#1f1f1f;
+      font-size:12px;
+      transition: transform .15s ease, box-shadow .15s ease;
     }
-    .btnSoft:active{ transform: translateY(1px); }
 
-    .statusLocked{ color:#8a1f1f; font-weight:950; }
-    .statusOk{ color:#116b2e; font-weight:950; }
+    .btnSoft:hover{
+      transform: translateY(-1px);
+      box-shadow:0 10px 22px rgba(0,0,0,0.06);
+    }
+
+    .statusLocked{ color:#8a1f1f; font-weight:900; font-size:12px; }
+    .statusOk{ color:#116b2e; font-weight:900; font-size:12px; }
 
     .note{
-      margin-top:12px;
-      padding:12px 14px;
-      border-radius: 14px;
+      margin-top:9px;
+      padding:10px 12px;
+      border-radius:12px;
       background: rgba(255,255,255,0.62);
       border:1px solid rgba(0,0,0,0.06);
-      font-size:13px;
+      font-size:11.5px;
       line-height:1.45;
       color:rgba(0,0,0,0.72);
     }
 
-    /* sliders */
     .grid2{
       display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:12px;
-      margin-top:12px;
+      grid-template-columns: 1fr;
+      gap:10px;
+      margin-top:10px;
     }
+
     .miniCard{
       background: var(--card2);
       border-radius: var(--radius2);
-      padding:14px;
+      padding:11px;
       border:1px solid rgba(0,0,0,0.06);
       box-shadow: var(--shadow2);
     }
+
     .labelRow{
       display:flex;
       justify-content:space-between;
       align-items:baseline;
       gap:10px;
-      margin-bottom:8px;
+      margin-bottom:6px;
     }
+
     .labelRow .lbl{
       font-weight:900;
       letter-spacing:.1px;
+      font-size:12px;
     }
+
     .labelRow .val{
       font-weight:900;
       color: rgba(0,0,0,0.70);
+      font-size:12px;
     }
+
     input[type="range"]{
       width:100%;
       accent-color: var(--gold);
@@ -250,423 +305,454 @@
 
     .actionsRow{
       display:flex;
-      gap:10px;
+      gap:8px;
       flex-wrap:wrap;
       align-items:center;
       justify-content:space-between;
-      margin-top:12px;
+      margin-top:10px;
     }
 
-    /* sound toggle */
     .toggle{
       display:inline-flex;
       align-items:center;
-      gap:10px;
-      padding:10px 12px;
-      border-radius: 14px;
+      gap:9px;
+      padding:8px 10px;
+      border-radius:12px;
       border:1px solid rgba(0,0,0,0.10);
       background: rgba(255,255,255,0.78);
       font-weight:900;
+      font-size:12px;
       cursor:pointer;
       user-select:none;
     }
+
     .switch{
-      width:44px; height:24px;
+      width:40px;
+      height:22px;
       border-radius:999px;
       background: rgba(0,0,0,0.10);
       position:relative;
       border:1px solid rgba(0,0,0,0.10);
+      transition: background .18s ease, border-color .18s ease;
     }
+
     .knob{
-      width:20px; height:20px;
+      width:18px;
+      height:18px;
       border-radius:999px;
-      position:absolute; top:1px; left:1px;
-      background: #fff;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+      position:absolute;
+      top:1px;
+      left:1px;
+      background:#fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.18);
       transition: left .18s ease;
     }
+
     .switch.on{
       background: rgba(200,162,74,0.30);
       border-color: rgba(200,162,74,0.40);
     }
-    .switch.on .knob{ left:22px; }
 
-    /* output blocks */
+    .switch.on .knob{ left:20px; }
+
     .protoGrid{
       display:grid;
       grid-template-columns: 1fr;
-      gap:12px;
-      margin-top:12px;
+      gap:9px;
+      margin-top:10px;
     }
+
     .protoBlock{
       background: rgba(255,255,255,0.78);
-      border-radius: 18px;
-      padding:14px;
+      border-radius:14px;
+      padding:11px;
       border:1px solid rgba(0,0,0,0.06);
       box-shadow: var(--shadow2);
     }
+
     .protoBlock h3{
-      margin:0 0 8px;
-      font-size:15px;
-      font-weight:950;
-      letter-spacing:.2px;
-    }
-    .protoBlock p{
-      margin:0;
-      line-height:1.55;
-      color: rgba(0,0,0,0.78);
-      font-size:14.3px;
+      margin:0 0 6px;
+      font-size:12.5px;
+      font-weight:900;
+      letter-spacing:.1px;
     }
 
-    /* 10-min goal */
+    .protoBlock p{
+      margin:0;
+      line-height:1.5;
+      color: rgba(0,0,0,0.78);
+      font-size:12px;
+    }
+
     .goal{
-      margin-top:12px;
-      padding:14px;
-      border-radius: 18px;
+      margin-top:10px;
+      padding:11px;
+      border-radius:14px;
       background: rgba(255,255,255,0.78);
       border:1px solid rgba(200,162,74,0.18);
       box-shadow: var(--shadow2);
     }
+
     .goal h3{
-      margin:0 0 8px;
-      font-size:15px;
-      font-weight:950;
+      margin:0 0 6px;
+      font-size:12.5px;
+      font-weight:900;
     }
+
     .goal p{
       margin:0;
       color: rgba(0,0,0,0.78);
-      line-height:1.55;
-      font-size:14.3px;
+      line-height:1.5;
+      font-size:12px;
     }
 
-    /* breathing module */
     .breathWrap{
-      margin-top:12px;
+      margin-top:10px;
       background: rgba(255,255,255,0.78);
-      border-radius: 18px;
+      border-radius:14px;
       border:1px solid rgba(0,0,0,0.06);
       box-shadow: var(--shadow2);
-      padding:14px;
+      padding:11px;
     }
+
     .breathTop{
       display:flex;
       justify-content:space-between;
       align-items:center;
-      gap:12px;
+      gap:9px;
       flex-wrap:wrap;
     }
+
     .breathTitle{
-      font-weight:950;
-      font-size:15px;
+      font-weight:900;
+      font-size:12.5px;
       margin:0;
     }
+
     .breathState{
-      font-weight:950;
-      font-size:18px;
-      letter-spacing:.2px;
+      font-weight:900;
+      font-size:14px;
+      letter-spacing:.1px;
     }
+
     .breathTimer{
-      font-weight:950;
-      font-size:16px;
+      font-weight:900;
+      font-size:12px;
       color: rgba(0,0,0,0.72);
     }
+
     .breathPlan{
-      margin-top:10px;
-      font-size:13px;
+      margin-top:8px;
+      font-size:11px;
       line-height:1.45;
       color: rgba(0,0,0,0.70);
-      padding:10px 12px;
-      border-radius: 14px;
+      padding:8px 10px;
+      border-radius:12px;
       background: rgba(255,255,255,0.62);
       border:1px solid rgba(0,0,0,0.06);
     }
 
     .progress{
-      margin-top:10px;
-      height:10px;
+      margin-top:8px;
+      height:8px;
       border-radius:999px;
       background: rgba(0,0,0,0.06);
       overflow:hidden;
       border:1px solid rgba(0,0,0,0.06);
     }
+
     .progress > div{
       height:100%;
       width:0%;
       background: linear-gradient(90deg, rgba(200,162,74,.65), rgba(232,210,138,.95));
-      box-shadow: 0 0 18px rgba(200,162,74,.22);
+      box-shadow: 0 0 18px rgba(200,162,74,.18);
       border-radius:999px;
       transition: width .15s linear;
     }
 
-    /* mode switch */
     .modeRow{
-      margin-top:12px;
+      margin-top:9px;
       display:flex;
-      gap:10px;
+      gap:8px;
       flex-wrap:wrap;
       align-items:center;
       justify-content:space-between;
     }
+
     .modeBtns{
       display:flex;
       gap:8px;
       flex-wrap:wrap;
       align-items:center;
     }
+
     .modeBtn{
-      padding:10px 12px;
-      border-radius: 14px;
+      padding:8px 10px;
+      border-radius:12px;
       border:1px solid rgba(0,0,0,0.10);
       background: rgba(255,255,255,0.80);
-      font-weight:950;
+      font-weight:900;
       cursor:pointer;
       user-select:none;
+      font-size:11px;
+      color:var(--ink);
+      transition: transform .15s ease, box-shadow .15s ease;
     }
+
+    .modeBtn:hover{
+      transform: translateY(-1px);
+      box-shadow:0 8px 18px rgba(0,0,0,0.06);
+    }
+
     .modeBtn.active{
       background: rgba(200,162,74,0.18);
       border-color: rgba(200,162,74,0.35);
-      box-shadow: 0 10px 22px rgba(200,162,74,0.10);
+      box-shadow: 0 8px 18px rgba(200,162,74,0.08);
     }
 
-    /* ===== MODE 1: LINEE ===== */
     .linesWrap{
-      margin-top:12px;
-      padding:14px;
-      border-radius:18px;
+      margin-top:9px;
+      padding:10px;
+      border-radius:14px;
       background: rgba(255,255,255,0.62);
       border:1px solid rgba(0,0,0,0.06);
       display:none;
     }
+
     .lineRow{
       display:grid;
-      grid-template-columns: 86px 1fr 44px;
-      gap:10px;
+      grid-template-columns: 70px 1fr 34px;
+      gap:8px;
       align-items:center;
-      margin:10px 0;
+      margin:8px 0;
     }
+
     .lineLabel{
-      font-weight:950;
+      font-weight:900;
       color: rgba(0,0,0,0.78);
-      font-size:13.5px;
+      font-size:11px;
     }
+
     .lineBar{
-      height:12px;
+      height:9px;
       border-radius:999px;
       background: rgba(0,0,0,0.06);
       border:1px solid rgba(0,0,0,0.06);
       overflow:hidden;
     }
+
     .lineFill{
       height:100%;
       width:0%;
       border-radius:999px;
       background: linear-gradient(90deg, rgba(232,210,138,0.95), rgba(200,162,74,0.65));
-      box-shadow: 0 0 18px rgba(200,162,74,0.18);
+      box-shadow: 0 0 14px rgba(200,162,74,0.14);
       transition: width .12s linear;
     }
+
     .lineSec{
-      font-weight:950;
+      font-weight:900;
       color: rgba(0,0,0,0.72);
       text-align:right;
-      font-size:13.5px;
+      font-size:11px;
     }
+
     .linesHint{
-      margin-top:8px;
-      font-size:12.7px;
+      margin-top:7px;
+      font-size:10.5px;
       color: rgba(0,0,0,0.66);
       line-height:1.45;
     }
 
-    /* ===== MODE 2: NUVOLA ===== */
     .cloudWrap{
-      margin-top:12px;
+      margin-top:9px;
       display:none;
-      gap:10px;
+      gap:8px;
     }
+
     .cloud{
-      width: 240px;
-      height: 240px;
-      margin: 0 auto;
-      position: relative;
+      width:160px;
+      height:160px;
+      margin:0 auto;
+      position:relative;
       border-radius: 44% 56% 52% 48% / 48% 44% 56% 52%;
       background:
         radial-gradient(circle at 35% 30%, rgba(255,255,255,0.95), rgba(255,255,255,0.72)),
         radial-gradient(220px 220px at 50% 65%, rgba(232,210,138,0.16), rgba(255,255,255,0));
-      border: 1px solid rgba(200,162,74,0.16);
-      box-shadow: 0 18px 50px rgba(0,0,0,0.10);
+      border:1px solid rgba(200,162,74,0.16);
+      box-shadow: 0 14px 36px rgba(0,0,0,0.08);
       overflow:hidden;
     }
 
     .cloudSheen{
       position:absolute;
-      inset: 10px;
+      inset:8px;
       border-radius: 44% 56% 52% 48% / 48% 44% 56% 52%;
       background: conic-gradient(
         from 180deg,
         rgba(200,162,74,0.10),
         rgba(232,210,138,0.55),
         rgba(200,162,74,0.10),
-        rgba(255,255,255,0.0),
+        rgba(255,255,255,0),
         rgba(200,162,74,0.12)
       );
-      opacity: 0.95;
-      animation: sheen 10s linear infinite;
+      opacity:.95;
+      animation:sheen 10s linear infinite;
       mask: radial-gradient(circle, transparent 62%, #000 63%);
       -webkit-mask: radial-gradient(circle, transparent 62%, #000 63%);
       pointer-events:none;
     }
-    @keyframes sheen{ to { transform: rotate(360deg); } }
+
+    @keyframes sheen{
+      to { transform: rotate(360deg); }
+    }
 
     .cloudFill{
       position:absolute;
-      left:0; right:0; bottom:0;
-      height: 0%;
+      left:0;
+      right:0;
+      bottom:0;
+      height:0%;
       background: linear-gradient(180deg, rgba(232,210,138,0.82), rgba(200,162,74,0.58));
-      box-shadow: 0 -18px 44px rgba(200,162,74,0.16);
+      box-shadow: 0 -14px 32px rgba(200,162,74,0.14);
       transition: height .18s linear;
       filter: saturate(1.03);
     }
 
     .cloudText{
       position:absolute;
-      inset: 22px;
+      inset:16px;
       display:flex;
       align-items:center;
       justify-content:center;
       text-align:center;
-      padding:14px;
+      padding:8px;
     }
+
     .cloudTextInner{
       display:flex;
       flex-direction:column;
-      gap:6px;
+      gap:4px;
       line-height:1.1;
       align-items:center;
       justify-content:center;
-      max-width: 190px;
+      max-width:130px;
     }
+
     .cloudPhase{
-      font-weight:950;
-      font-size:18px;
+      font-weight:900;
+      font-size:13px;
     }
+
     .cloudCount{
-      font-weight:950;
-      font-size:30px;
-      letter-spacing:.2px;
+      font-weight:900;
+      font-size:20px;
+      letter-spacing:.1px;
     }
+
     .cloudHint{
       font-weight:800;
-      font-size:12.5px;
+      font-size:10px;
       color: rgba(0,0,0,0.62);
       line-height:1.35;
     }
 
     .cueLine{
-      margin-top:10px;
+      margin-top:7px;
       display:flex;
       justify-content:space-between;
-      gap:10px;
+      gap:8px;
       flex-wrap:wrap;
-      font-size:12.5px;
+      font-size:10px;
       color: rgba(0,0,0,0.62);
       font-weight:800;
-      padding: 0 2px;
+      padding:0 2px;
     }
 
     .breathControls{
       display:flex;
-      gap:10px;
+      gap:8px;
       flex-wrap:wrap;
-      margin-top:12px;
+      margin-top:9px;
       align-items:center;
       justify-content:center;
     }
 
-    @media (max-width:780px){
-      .grid2{ grid-template-columns: 1fr; }
-      .brandTitle{ font-size:28px; }
-      .cloud{ width: 220px; height:220px; }
-    }
     @media (max-width:520px){
-      .wrap{ padding-left:12px; padding-right:12px; }
-      .card{ padding:18px; }
-      .brandTitle{ font-size:26px; }
-      .pageTitle{ font-size:13px; padding:9px 10px; }
-      .btn{ padding:9px 12px; }
-      .lineRow{ grid-template-columns: 80px 1fr 40px; }
+      .fixedTopbarInner{ max-width:100%; }
+      .wrap{ padding:66px 8px 18px; }
+      .card{ padding:12px; }
+      .brandTitle{ font-size:18px; }
+      .lineRow{ grid-template-columns: 62px 1fr 30px; }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- TOPBAR -->
   <div class="fixedTopbar">
     <div class="fixedTopbarInner">
       <div class="navLeft">
-        <a class="btn" href="./indexIT.html">← Home</a>
+        <a class="btn" href="./index.html">← Home</a>
       </div>
 
       <div class="navCenter">
-        <button class="langBtn active" type="button" onclick="goIT()">IT</button>
-        <button class="langBtn" type="button" onclick="goDE()">DE</button>
+        <button class="langBtn" id="langIT" type="button">IT</button>
+        <button class="langBtn active" id="langDE" type="button">DE</button>
       </div>
 
       <div class="navRight">
-        <div class="pageTitle">Area Membri · Base</div>
+        <div class="pageTitle" id="pageTitleBadge">Mitglieder · Base</div>
       </div>
     </div>
   </div>
 
   <div class="wrap">
 
-    <!-- HEADER -->
     <div class="card">
-      <div class="pill">Reset adattivo • parole che ti accompagnano • respiro personalizzato</div>
+      <div class="pill">Adaptiver Reset • echte Begleitung • personalisiertes Atmen</div>
       <div class="goldLine"></div>
 
-      <h1 class="brandTitle">Area Membri</h1>
+      <h1 class="brandTitle">Mitgliederbereich</h1>
       <p class="sub">
-        Benvenuta. Qui non devi “fare tutto bene”: devi solo ritrovare un po’ di spazio dentro di te.
+        Schön, dass du da bist. Hier musst du nichts „richtig“ machen.
         <br><br>
-        Questo Reset cambia in base a <strong>stress</strong> ed <strong>energia</strong>. Ti guida con un tono vicino e umano,
-        e ti aiuta a fare tre cose in pochi minuti: <strong>calmare</strong>, <strong>mettere ordine</strong>, <strong>scegliere un passo possibile</strong>.
+        Dieser Reset passt sich dir an – je nachdem, wie hoch dein <strong>Stress</strong> ist und wie viel <strong>Energie</strong> du gerade spürst.
+        Du bekommst eine klare, liebevolle Führung: zuerst <strong>runterfahren</strong>, dann <strong>sortieren</strong>, dann <strong>ein kleiner Schritt</strong>, der wirklich machbar ist.
         <br><br>
-        <span class="muted">Cosa lo rende diverso dalle app gratuite?</span>
-        Non ti dice sempre la stessa cosa. Qui la guida si adatta al tuo momento, con indicazioni brevi ma utili: non “motivazione”, ma direzione.
+        <span class="muted">Was ist daran anders als bei vielen kostenlosen Apps?</span>
+        Es ist nicht immer derselbe Text. Die Guidance ändert sich – und fühlt sich dadurch näher an deinem echten Moment an.
       </p>
     </div>
 
-    <!-- UNLOCK -->
     <div class="card" id="unlockBox">
-      <div class="pill">Accesso riservato ai membri</div>
+      <div class="pill">Zugang für Mitglieder</div>
       <div class="goldLine"></div>
 
       <div class="row">
-        <input id="codeInput" class="input" placeholder="Inserisci la password (copia e incolla)" autocomplete="off" />
-        <button id="unlockBtn" class="btnGold" type="button">Sblocca</button>
-        <span id="status" class="statusLocked">Bloccato</span>
+        <input id="codeInput" class="input" placeholder="Passwort eingeben (am besten kopieren & einfügen)" autocomplete="off" spellcheck="false" />
+        <button id="unlockBtn" class="btnGold" type="button">Freischalten</button>
+        <span id="status" class="statusLocked">Gesperrt</span>
       </div>
 
-      <div class="note">
-        Riceverai la password <strong>automaticamente</strong> via e-mail dopo l’acquisto.
-        <br>Nota: l’accesso è personale. Se una password viene condivisa pubblicamente, verrà sostituita per tutelare i membri.
+      <div class="note" id="targetNote">
+        Du bekommst dein Passwort <strong>automatisch</strong> nach dem Kauf.
+        <br>Hinweis: Der Zugang ist persönlich. Wenn ein Passwort öffentlich geteilt wird, wird es zum Schutz der Mitglieder ersetzt.
       </div>
     </div>
 
-    <!-- PREMIUM -->
     <div class="card" id="premiumArea" style="display:none;">
       <div class="row" style="justify-content:space-between;">
-        <div class="pill" id="statePill">Profilo: —</div>
+        <div class="pill" id="statePill">Profil: —</div>
         <button id="logoutBtn" class="btnSoft" type="button">Logout</button>
       </div>
 
       <div class="goldLine"></div>
 
-      <h2 style="margin:0; font-size:20px; font-weight:950;">Il tuo Reset, adesso</h2>
-      <p class="sub" style="margin-top:8px;">
-        Regola i cursori come ti senti <em>in questo momento</em>. Poi premi <strong>Genera</strong>:
-        ricevi un Reset in 3 passi e un respiro guidato con tempi coerenti.
+      <h2 style="margin:0; font-size:16px; font-weight:950;">Dein Reset – genau jetzt</h2>
+      <p class="sub" style="margin-top:6px;">
+        Stell die Regler so ein, wie es <em>gerade</em> ist. Nicht wie es sein sollte – sondern wie es wirklich ist.
+        Danach bekommst du einen Reset in 3 Schritten und eine Atemführung, die zu deinem Zustand passt.
       </p>
 
       <div class="grid2">
@@ -676,69 +762,69 @@
             <div class="val" id="stressVal">5/10</div>
           </div>
           <input id="stressM" type="range" min="1" max="10" value="5" />
-          <p class="muted" style="margin:10px 0 0; font-size:13.3px; line-height:1.45;">
-            Se lo stress è alto, partiamo dal corpo: prima calma, poi chiarezza.
+          <p class="muted" style="margin:8px 0 0; font-size:11.5px; line-height:1.45;">
+            Wenn Stress hoch ist, starten wir im Körper: erst beruhigen, dann klarer werden.
           </p>
         </div>
 
         <div class="miniCard">
           <div class="labelRow">
-            <div class="lbl">Energia</div>
+            <div class="lbl">Energie</div>
             <div class="val" id="energyVal">5/10</div>
           </div>
           <input id="energyM" type="range" min="1" max="10" value="5" />
-          <p class="muted" style="margin:10px 0 0; font-size:13.3px; line-height:1.45;">
-            Se l’energia è bassa, non ti chiederò “di più”: ti chiederò “il minimo che aiuta davvero”.
+          <p class="muted" style="margin:8px 0 0; font-size:11.5px; line-height:1.45;">
+            Wenn Energie niedrig ist, geht es nicht um „mehr“. Es geht um das, was heute wirklich hilft.
           </p>
         </div>
       </div>
 
       <div class="actionsRow">
-        <button id="genM" class="btnGold" type="button">Genera il mio Reset</button>
+        <button id="genM" class="btnGold" type="button">Meinen Reset erzeugen</button>
 
-        <div class="toggle" id="soundToggle" title="Suono leggero (opzionale)">
-          <span>Suono</span>
+        <div class="toggle" id="soundToggle" title="Leiser Signalton (optional)">
+          <span>Ton</span>
           <span class="switch" id="soundSwitch"><span class="knob"></span></span>
         </div>
       </div>
 
       <div class="goldLine"></div>
 
-      <div class="pill" style="margin-bottom:10px;">Protocollo in 3 passi</div>
-      <h3 id="mTitle" style="margin:0 0 8px; font-size:18px; font-weight:950;">—</h3>
-      <p class="muted" id="mSummary" style="margin:0 0 12px; font-size:13.8px; line-height:1.55;">—</p>
+      <div class="pill" style="margin-bottom:9px;">Reset-Protokoll (3 Schritte)</div>
+      <h3 id="mTitle" style="margin:0 0 6px; font-size:15px; font-weight:950;">—</h3>
+      <p class="muted" id="mSummary" style="margin:0 0 10px; font-size:12px; line-height:1.5;">—</p>
 
       <div class="protoGrid">
         <div class="protoBlock">
-          <h3>1) Torna nel corpo</h3>
+          <h3>1) Erst einmal im Körper ankommen</h3>
           <p id="mText1">—</p>
         </div>
         <div class="protoBlock">
-          <h3>2) Metti ordine nella mente</h3>
+          <h3>2) Gedanken sortieren</h3>
           <p id="mText2">—</p>
         </div>
         <div class="protoBlock">
-          <h3>3) Un passo piccolo (ma vero)</h3>
+          <h3>3) Ein kleiner Schritt, der heute passt</h3>
           <p id="mText3">—</p>
         </div>
       </div>
 
       <div class="goal">
-        <h3>Obiettivo dei prossimi 10 minuti</h3>
+        <h3>Ziel für die nächsten 10 Minuten</h3>
         <p id="goalText">—</p>
       </div>
 
-      <!-- RESPIRO -->
       <div class="breathWrap">
         <div class="breathTop">
           <div>
-            <p class="breathTitle" style="margin:0;">Respiro guidato</p>
-            <div class="muted" style="margin-top:6px; font-size:13px;">
-              Scegli lo stile che ti è più naturale: <strong>Linee</strong> o <strong>Nuvola</strong>.
+            <p class="breathTitle">Atemführung</p>
+            <div class="muted" style="margin-top:5px; font-size:10.8px;">
+              Wähle die Darstellung, die sich für dich am angenehmsten anfühlt: <strong>Linien</strong> oder <strong>Wolke</strong>.
             </div>
           </div>
-          <div style="display:flex; gap:12px; align-items:baseline; flex-wrap:wrap; justify-content:flex-end;">
-            <div class="breathState" id="breathState">Pronta</div>
+
+          <div style="display:flex; gap:8px; align-items:baseline; flex-wrap:wrap; justify-content:flex-end;">
+            <div class="breathState" id="breathState">Bereit</div>
             <div class="breathTimer" id="breathTimer">00:00</div>
           </div>
         </div>
@@ -748,84 +834,187 @@
 
         <div class="modeRow">
           <div class="modeBtns">
-            <button class="modeBtn active" id="modeLinesBtn" type="button">Guida: Linee</button>
-            <button class="modeBtn" id="modeCloudBtn" type="button">Guida: Nuvola</button>
+            <button class="modeBtn active" id="modeLinesBtn" type="button">Guide: Linien</button>
+            <button class="modeBtn" id="modeCloudBtn" type="button">Guide: Wolke</button>
           </div>
-          <div class="pill" id="modePill">Linee</div>
+          <div class="pill" id="modePill">Linien</div>
         </div>
 
-        <!-- MODE 1: LINEE -->
         <div class="linesWrap" id="linesWrap">
           <div class="lineRow">
-            <div class="lineLabel">Inspira</div>
+            <div class="lineLabel">Einatmen</div>
             <div class="lineBar"><div class="lineFill" id="inFill"></div></div>
             <div class="lineSec" id="inSec">—</div>
           </div>
+
           <div class="lineRow">
-            <div class="lineLabel">Espira</div>
+            <div class="lineLabel">Ausatmen</div>
             <div class="lineBar"><div class="lineFill" id="outFill"></div></div>
             <div class="lineSec" id="outSec">—</div>
           </div>
+
           <div class="linesHint" id="linesHint">
-            Segui la barra: quando si riempie, inspiri. Quando lavora l’altra, lasci uscire l’aria.
+            Folge der Leiste: Wenn „Einatmen“ läuft, atmest du ein. Wenn „Ausatmen“ läuft, lässt du die Luft wieder gehen.
           </div>
         </div>
 
-        <!-- MODE 2: NUVOLA -->
         <div class="cloudWrap" id="cloudWrap">
-          <div class="cloud" aria-label="Guida visiva del respiro">
+          <div class="cloud" aria-label="Visuelle Atemführung">
             <div class="cloudFill" id="cloudFill"></div>
             <div class="cloudSheen"></div>
             <div class="cloudText">
               <div class="cloudTextInner">
-                <div class="cloudPhase" id="cloudPhase">Pronta</div>
+                <div class="cloudPhase" id="cloudPhase">Bereit</div>
                 <div class="cloudCount" id="cloudCount">—</div>
-                <div class="cloudHint" id="cloudHint">Quando vuoi, iniziamo insieme.</div>
+                <div class="cloudHint" id="cloudHint">Wenn du willst, starten wir gemeinsam.</div>
               </div>
             </div>
           </div>
 
           <div class="cueLine">
-            <span id="cueLeft">Espira lunga = più calma</span>
-            <span id="cueRight">Non forzare: lascia che succeda</span>
+            <span id="cueLeft">Langes Ausatmen = mehr Ruhe</span>
+            <span id="cueRight">Nicht drücken – einfach zulassen</span>
           </div>
         </div>
 
         <div class="breathControls">
-          <button class="btnGold" id="breathStart" type="button">Avvia</button>
-          <button class="btnSoft" id="breathPause" type="button">Pausa</button>
+          <button class="btnGold" id="breathStart" type="button">Start</button>
+          <button class="btnSoft" id="breathPause" type="button">Pause</button>
           <button class="btnSoft" id="breathReset" type="button">Reset</button>
         </div>
       </div>
 
-      <p class="muted" style="margin-top:16px; font-size:12.5px; line-height:1.45;">
-        © Panacea Regensburg • Questo strumento supporta la regolazione quotidiana e non sostituisce un percorso medico/psicologico.
+      <p class="muted" style="margin-top:12px; font-size:10.8px; line-height:1.45;">
+        © Panacea Regensburg • Dieses Tool unterstützt deine tägliche Selbstregulation und ersetzt keine medizinische/psychotherapeutische Behandlung.
       </p>
     </div>
 
   </div>
-
-<script>
-  // =========================
-  // NAV
-  // =========================
-  function goDE(){ window.location.href = "./mitglieder.html"; }
-  function goIT(){ window.location.href = "./mitgliederIT.html"; }
-
-  // =========================
-  // ACCESSO
-  // =========================
+  <script>
   const BASIS_PASSWORD = "PNC-79xL!qR26-Z";
-  const PREMIUM_KEY = "panacea_member"; // <-- se vuoi cambiare nome: "panacea_menber" (typo) o "panacea_member"
-  const isMember = () => localStorage.getItem(PREMIUM_KEY) === "true";
 
-  // Optional: pulizia elegante dei dati locali “membri”
+  const CANONICAL_PREMIUM_KEY = "panacea_premium";
+  const LEGACY_PREMIUM_KEYS = [
+    "premiumUnlocked",
+    "mitglied",
+    "panacea_member"
+  ];
+
+  const ALL_PREMIUM_KEYS = [CANONICAL_PREMIUM_KEY, ...LEGACY_PREMIUM_KEYS];
+
+  const ALLOWED_TARGETS = [
+    "uebungen-premium.html",
+    "uebungen-premiumIT.html",
+    "daily-reset.html",
+    "daily-resetIT.html",
+    "wissen.html",
+    "wissenIT.html",
+    "lifestyle.html",
+    "lifestyleIT.html"
+  ];
+
+  const params = new URLSearchParams(window.location.search);
+
+  function sanitizeTarget(raw){
+    if(!raw) return "";
+    const clean = String(raw).trim().replace(/^\.?\//, "");
+    return ALLOWED_TARGETS.includes(clean) ? clean : "";
+  }
+
+  const targetPage = sanitizeTarget(params.get("target"));
+
+  function currentFileName(){
+    const path = window.location.pathname.split("/").pop() || "";
+    return path.trim();
+  }
+
+  function buildLangUrl(file, target){
+    const url = new URL(file, window.location.href);
+    if(target) url.searchParams.set("target", target);
+    return url.toString();
+  }
+
+  function goDE(){
+    const deTargetMap = {
+      "uebungen-premiumIT.html": "uebungen-premium.html",
+      "daily-resetIT.html": "daily-reset.html",
+      "wissenIT.html": "wissen.html",
+      "lifestyleIT.html": "lifestyle.html"
+    };
+    const translatedTarget = deTargetMap[targetPage] || targetPage;
+    window.location.href = buildLangUrl("./mitglieder.html", translatedTarget);
+  }
+
+  function goIT(){
+    const itTargetMap = {
+      "uebungen-premium.html": "uebungen-premiumIT.html",
+      "daily-reset.html": "daily-resetIT.html",
+      "wissen.html": "wissenIT.html",
+      "lifestyle.html": "lifestyleIT.html"
+    };
+    const translatedTarget = itTargetMap[targetPage] || targetPage;
+    window.location.href = buildLangUrl("./mitgliederIT.html", translatedTarget);
+  }
+
+  document.getElementById("langDE").addEventListener("click", goDE);
+  document.getElementById("langIT").addEventListener("click", goIT);
+
+  function isMember(){
+    return ALL_PREMIUM_KEYS.some(key => localStorage.getItem(key) === "true");
+  }
+
+  function syncLegacyKeysFromCanonical(){
+    if(localStorage.getItem(CANONICAL_PREMIUM_KEY) === "true"){
+      LEGACY_PREMIUM_KEYS.forEach(key => localStorage.setItem(key, "true"));
+    }
+  }
+
+  function setMemberState(value){
+    ALL_PREMIUM_KEYS.forEach(key => {
+      localStorage.setItem(key, value ? "true" : "false");
+    });
+  }
+
+  function clearMemberState(){
+    ALL_PREMIUM_KEYS.forEach(key => localStorage.removeItem(key));
+  }
+
   function cleanupMemberState(){
-    const keysToClear = [
-      "panacea_last_profile_it",
-      "panacea_breath_mode_it"
-    ];
-    keysToClear.forEach(k => localStorage.removeItem(k));
+    [
+      "panacea_last_profile_de",
+      "panacea_breath_mode_de"
+    ].forEach(k => localStorage.removeItem(k));
+  }
+
+  function updateTopBadge(){
+    const badge = document.getElementById("pageTitleBadge");
+    badge.textContent = isMember() ? "Mitglieder · Premium" : "Mitglieder · Base";
+  }
+
+  function updateTargetNote(){
+    const note = document.getElementById("targetNote");
+    if(targetPage){
+      note.innerHTML = `
+        Du bekommst dein Passwort <strong>automatisch</strong> nach dem Kauf.
+        <br>Nach der Freischaltung wirst du direkt weitergeleitet zu: <strong>${targetPage}</strong>
+        <br>Hinweis: Der Zugang ist persönlich. Wenn ein Passwort öffentlich geteilt wird, wird es zum Schutz der Mitglieder ersetzt.
+      `;
+    } else {
+      note.innerHTML = `
+        Du bekommst dein Passwort <strong>automatisch</strong> nach dem Kauf.
+        <br>Hinweis: Der Zugang ist persönlich. Wenn ein Passwort öffentlich geteilt wird, wird es zum Schutz der Mitglieder ersetzt.
+      `;
+    }
+  }
+
+  function redirectToTargetIfNeeded(){
+    if(!isMember() || !targetPage) return false;
+
+    const current = currentFileName();
+    if(current === targetPage) return false;
+
+    window.location.href = `./${targetPage}`;
+    return true;
   }
 
   function setAccessUI(){
@@ -833,46 +1022,58 @@
     const premiumArea = document.getElementById("premiumArea");
     const status = document.getElementById("status");
 
+    updateTopBadge();
+
     if(isMember()){
-      status.textContent = "Sbloccato ✅";
+      status.textContent = "Freigeschaltet ✅";
       status.className = "statusOk";
       unlockBox.style.display = "none";
       premiumArea.style.display = "block";
     } else {
-      status.textContent = "Bloccato";
+      status.textContent = "Gesperrt";
       status.className = "statusLocked";
       unlockBox.style.display = "block";
       premiumArea.style.display = "none";
     }
   }
 
-  document.getElementById("unlockBtn").addEventListener("click", () => {
-    const code = (document.getElementById("codeInput").value || "").trim();
+  const unlockBtn = document.getElementById("unlockBtn");
+  const codeInput = document.getElementById("codeInput");
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  unlockBtn.addEventListener("click", () => {
+    const code = (codeInput.value || "").trim();
+
     if(code === BASIS_PASSWORD){
-      localStorage.setItem(PREMIUM_KEY, "true");
-      document.getElementById("codeInput").value = "";
-      alert("Sbloccato ✅");
+      setMemberState(true);
+      localStorage.setItem("panacea_unlocked_at", String(Date.now()));
+      codeInput.value = "";
+
+      if(targetPage){
+        window.location.href = `./${targetPage}`;
+        return;
+      }
+
       setAccessUI();
-      generateReset(); // effetto wow
+      generateReset();
+      alert("Freigeschaltet ✅");
     } else {
-      alert("Password errata ❌");
+      alert("Passwort falsch ❌");
     }
   });
 
-  document.getElementById("codeInput").addEventListener("keydown", (e)=>{
-    if(e.key === "Enter") document.getElementById("unlockBtn").click();
+  codeInput.addEventListener("keydown", (e) => {
+    if(e.key === "Enter") unlockBtn.click();
   });
 
-  document.getElementById("logoutBtn").addEventListener("click", () => {
-    localStorage.removeItem(PREMIUM_KEY);
+  logoutBtn.addEventListener("click", () => {
+    clearMemberState();
     cleanupMemberState();
     stopBreathing(true);
     setAccessUI();
+    renderBreathUI();
   });
 
-  // =========================
-  // SLIDERS UI
-  // =========================
   const stressM = document.getElementById("stressM");
   const energyM = document.getElementById("energyM");
   const stressVal = document.getElementById("stressVal");
@@ -882,260 +1083,258 @@
     stressVal.textContent = `${stressM.value}/10`;
     energyVal.textContent = `${energyM.value}/10`;
   }
+
   stressM.addEventListener("input", syncSliderLabels);
   energyM.addEventListener("input", syncSliderLabels);
 
-  // =========================
-  // PROFILO
-  // =========================
   function band(v){
     v = Number(v);
-    if(v >= 7) return "alto";
-    if(v >= 4) return "medio";
-    return "basso";
+    if(v >= 7) return "hoch";
+    if(v >= 4) return "mittel";
+    return "niedrig";
   }
 
   const PREMIUM_MAP = {
-    "alto|basso": {
-      label: "Tanta tensione, poca energia",
-      title: "Prima sicurezza, poi il resto",
-      summary: "Oggi non devi dimostrare niente. Ti accompagno a rallentare, a sentirti più stabile e a scegliere un passo piccolo, possibile.",
+    "hoch|niedrig": {
+      label: "Viel Anspannung, wenig Energie",
+      title: "Erst Sicherheit – dann der nächste Schritt",
+      summary: "Heute musst du nichts beweisen. Wir bringen dich erst runter – und dann findest du wieder Boden unter den Füßen.",
       phase1: [
-        "Trova una posizione comoda. Appoggia bene i piedi. Fai uscire l’aria lentamente… e poi ricomincia. È già un buon inizio.",
-        "Metti una mano sul petto e una sull’addome. Sentile. Poi lascia uscire l’aria un po’ più a lungo: come dire al corpo “adesso può andare bene”.",
-        "Se noti tensione, non combatterla. Dille solo: “ti ho vista”. E prova a sciogliere un millimetro."
+        "Stell beide Füße auf den Boden. Spür den Kontakt. Dann lass die Luft langsam hinaus – so, als würdest du innerlich Platz schaffen.",
+        "Leg eine Hand auf den Brustkorb und eine auf den Bauch. Nimm dich kurz wahr. Dann atme aus – länger als du einatmest. Ganz ohne Druck.",
+        "Wenn du Spannung bemerkst: Du musst sie nicht wegdrücken. Nimm sie wahr – und erlaube deinem Körper, ein kleines Stück loszulassen."
       ],
       phase2: [
-        "Scegliamo chiarezza: cosa ti aiuterebbe a stare solo un 10% meglio? Non di più. Solo un piccolo miglioramento.",
-        "Se la mente corre, scrivi una frase: “In questo momento mi serve…” e completa. Una cosa sola.",
-        "Se senti confusione, è normale. Torna al respiro e scegli la priorità più gentile verso di te."
+        "Frag dich: Was würde mich jetzt nur 10% entlasten? Nicht perfekt. Nur ein bisschen.",
+        "Wenn der Kopf kreist: Schreib einen Satz auf: „Gerade brauche ich…“ – und beende ihn mit einer einzigen Sache.",
+        "Wenn alles zu viel wirkt: Geh zurück zum Atem – und wähle dann eine Priorität, die heute wirklich realistisch ist."
       ],
       phase3: [
-        "Scegli un gesto piccolo ma reale (2–3 minuti): acqua, aria, ordine visivo. Piccolo, ma vero: il corpo ama la concretezza.",
-        "Metti un confine gentile: una cosa che oggi puoi rimandare, senza colpa. Proteggere energia è cura.",
-        "Quando hai fatto, chiudi con una frase semplice: “Va bene così”. Non è resa: è regolazione."
+        "Wähle eine Mini-Handlung (2–3 Minuten): Wasser, frische Luft, eine kleine Ordnung. Etwas, das dir sofort Halt gibt.",
+        "Setz eine sanfte Grenze: Eine Sache, die du heute nicht lösen musst. Nicht aus Aufgeben – sondern aus Schutz.",
+        "Am Ende: Nimm wahr, dass du etwas für dich getan hast. Das zählt."
       ],
-      breath: { inhale:4, exhale:7, minutes:3, cueL:"Espira lunga = più calma", cueR:"Non forzare: lascia che succeda" },
+      breath: { inhale:4, exhale:7, minutes:3, cueL:"Langes Ausatmen = mehr Ruhe", cueR:"Nicht drücken – einfach zulassen" },
       goal: [
-        "Metti un timer di 10 minuti e fai solo una cosa che ti alleggerisce un po’. Poi ti fermi.",
-        "Scegli un compito micro. In 10 minuti fai l’inizio, non la perfezione. Poi pausa.",
-        "In 10 minuti: acqua + ordine visivo (un punto solo). Poco, ma ti rimette in carreggiata."
+        "Stell einen Timer auf 10 Minuten und mach nur eine entlastende Sache. Danach stoppst du bewusst.",
+        "Wähle einen Mini-Schritt und beginne ihn. Nicht fertig werden – nur anfangen. Dann Pause.",
+        "In 10 Minuten: Wasser + ein kleiner Ordnungspunkt. Wenig – aber stabilisierend."
       ]
     },
 
-    "alto|medio": {
-      label: "Tensione alta, energia media",
-      title: "Scarico dolce → chiarezza",
-      summary: "Hai abbastanza energia per ripartire, ma prima abbassiamo un po’ il volume. Poi scegliamo una direzione semplice.",
+    "hoch|mittel": {
+      label: "Hohe Anspannung, mittlere Energie",
+      title: "Erst runterregeln – dann klar werden",
+      summary: "Du hast Kraft, aber es ist laut im System. Wir senken erst die innere Lautstärke, dann wird der nächste Schritt wieder leicht.",
       phase1: [
-        "Per un minuto muovi il corpo in modo leggero (due passi, scuoti le braccia). Poi fermati. Spesso basta questo per cambiare marcia.",
-        "Fai un’espirazione lenta, come se spegnessi una candela senza fretta. Il corpo capisce al volo.",
-        "Senti spalle e mandibola: non devi ‘sistemare tutto’. Solo togliere un po’ di tensione."
+        "Mach eine lange Ausatmung, als würdest du eine Kerze ganz sanft auspusten – ohne Hast.",
+        "Beweg dich 20 Sekunden locker (ein paar Schritte, Schultern kreisen). Dann kurz still werden.",
+        "Spür Kiefer und Schultern. Du musst nicht alles lösen – nur ein wenig Spannung abgeben."
       ],
       phase2: [
-        "Scegli un obiettivo realistico per oggi (uno). Se ne scegli tre, diventa sovraccarico.",
-        "Scrivi: “La cosa più importante adesso è…” e completa. Poi basta.",
-        "Se senti irritazione, riduci stimoli prima di decidere: ti aiuta a scegliere meglio."
+        "Wähle genau eine Sache, die heute zählt. Eine reicht.",
+        "Schreib: „Jetzt ist wichtig…“ – und beende den Satz. Danach gehst du in die Handlung.",
+        "Wenn du gereizt bist: Reduziere zuerst Reize. Dann entscheidest du klarer."
       ],
       phase3: [
-        "Timer 10 minuti: fai solo l’inizio. L’inizio è più potente della motivazione.",
-        "Dai un “no” a una distrazione sola. Un solo “no” ti restituisce spazio.",
-        "Concludi con tre respiri tranquilli: è il tuo modo di dire al corpo “possiamo rallentare”."
+        "Timer 10 Minuten: Mach nur den Anfang. Der Anfang bringt dich weiter als perfektes Planen.",
+        "Sag einer Ablenkung bewusst „später“. Nur einer. Das reicht.",
+        "Zum Schluss: ein kurzer Check-in – „Was tut mir jetzt gut?“"
       ],
-      breath: { inhale:4, exhale:6, minutes:4, cueL:"Rallenta il volume", cueR:"Chiarezza dopo calma" },
+      breath: { inhale:4, exhale:6, minutes:4, cueL:"Erst Ruhe, dann Klarheit", cueR:"Du musst nicht schneller werden" },
       goal: [
-        "In 10 minuti: fai l’inizio del compito più importante. Solo l’inizio. Poi pausa breve.",
-        "Scegli una cosa da chiudere in piccolo: un passo operativo concreto.",
-        "Metti tutto su “modalità semplice”: una sola priorità, 10 minuti di focus, stop."
+        "In 10 Minuten: Starte die wichtigste Sache. Nur starten. Dann kurze Pause.",
+        "Wähle einen konkreten Schritt und mach ihn fertig – klein, aber abgeschlossen.",
+        "Mach es einfach: eine Priorität, 10 Minuten Fokus, Stopp."
       ]
     },
 
-    "alto|alto": {
-      label: "Attivazione alta",
-      title: "Usa l’energia senza consumarti",
-      summary: "C’è spinta. Bene. La rendiamo intelligente: una direzione e un limite, così resta tua e non ti brucia.",
+    "hoch|hoch": {
+      label: "Hohe Aktivierung",
+      title: "Energie nutzen – ohne dich zu verbrennen",
+      summary: "Da ist viel Drive. Wir machen ihn sinnvoll: Richtung, Grenze, Pause. So bleibt die Energie bei dir.",
       phase1: [
-        "Fermati 10 secondi. Un’espirazione lunga. Poi riparti: è come rimettere le mani sul volante.",
-        "Scegli un ritmo sostenibile (non ‘al massimo’). Il massimo spesso è stress travestito.",
-        "Energia non significa rigidità: controlla spalle e mandibola e toglie un po’ di tensione."
+        "Stopp für 10 Sekunden. Eine lange Ausatmung. Dann weiter – jetzt mit mehr Kontrolle.",
+        "Achte darauf: Energie ist nicht gleich Härte. Wenn du magst, entspann kurz den Kiefer.",
+        "Beginne in einem Tempo, das du halten kannst. Nicht maximal – sondern stabil."
       ],
       phase2: [
-        "Decidi una direzione sola: cosa vuoi portare avanti oggi, davvero?",
-        "Metti un limite: quando ti fermi? Un limite è cura, non debolezza.",
-        "Evita il multitasking: ti dà l’illusione di fare, ma ti toglie presenza."
+        "Wähle eine Richtung: Was möchtest du heute wirklich voranbringen?",
+        "Setz eine Grenze: Wann hörst du auf? Grenzen sind Selbstschutz.",
+        "Kein Multitasking: Eine Sache nach der anderen bringt dich ruhiger ans Ziel."
       ],
       phase3: [
-        "Fai 10–15 minuti di focus e poi stop intenzionale. Recupero breve, ma reale.",
-        "Bevi un sorso d’acqua e guarda lontano 10 secondi: è una micro-ricarica per il sistema nervoso.",
-        "Chiudi con una frase: “Ho fatto abbastanza per adesso”."
+        "Arbeite 10–15 Minuten fokussiert. Dann eine echte Pause (auch wenn sie kurz ist).",
+        "Trink einen Schluck Wasser und schau 10 Sekunden in die Ferne – kleine Regulation, große Wirkung.",
+        "Zum Abschluss: „Für jetzt ist es genug.“"
       ],
-      breath: { inhale:4, exhale:6, minutes:3, cueL:"Energia sì, fretta no", cueR:"Limite = stabilità" },
+      breath: { inhale:4, exhale:6, minutes:3, cueL:"Energie ja – Hetze nein", cueR:"Grenze = Stabilität" },
       goal: [
-        "In 10 minuti: chiudi un micro-risultato concreto (una cosa finita). Poi stop.",
-        "Scegli un compito ad alto impatto e fai solo il pezzo più importante.",
-        "Fai 10 minuti con un ritmo sostenibile. Finisci prima di stancarti."
+        "In 10 Minuten: Schließe ein Mini-Ergebnis ab. Danach stoppst du.",
+        "Mach nur den wichtigsten Teil einer Aufgabe. Der Rest kann warten.",
+        "Fokus 10 Minuten – und hör auf, bevor du leer bist."
       ]
     },
 
-    "medio|basso": {
-      label: "Stress medio, energia bassa",
-      title: "Gentilezza e un passo possibile",
-      summary: "Oggi non serve ‘spingere’. Serve rientrare in contatto e fare il minimo che ti aiuta davvero.",
+    "mittel|niedrig": {
+      label: "Mittlerer Stress, wenig Energie",
+      title: "Sanft sammeln – ein Schritt, der passt",
+      summary: "Heute geht es nicht ums Durchziehen. Es geht darum, dich wieder ein kleines Stück zu stabilisieren – ohne Druck.",
       phase1: [
-        "Fai due respiri un po’ più lenti e senti il corpo appoggiato. Come dire: “Ok, ci sono”.",
-        "Una cosa piccola: un sorso d’acqua, una mano sul petto, uno sguardo rilassato. Non è banalità: è regolazione.",
-        "Se ti senti stanca, non è colpa tua. Trattati come tratteresti una persona che ami."
+        "Nimm zwei ruhige Atemzüge. Spür dabei, dass du getragen bist – vom Boden, vom Stuhl, vom Moment.",
+        "Wenn du magst: ein Schluck Wasser. Dann eine lange Ausatmung. Ganz simpel, aber wirksam.",
+        "Sprich innerlich kurz mit dir wie mit jemandem, den du gern hast: freundlich, nicht fordernd."
       ],
       phase2: [
-        "Scegli una priorità e una rinuncia. Proteggere energia è una competenza.",
-        "Chiediti: cosa posso lasciare per domani senza danni? Scegline una.",
-        "Scrivi tre parole: “oggi è abbastanza se…”. E completa."
+        "Wähle eine Priorität – und eine Sache, die du heute lassen darfst. Das ist klug, nicht schwach.",
+        "Frag dich: Was kann wirklich bis morgen warten, ohne Schaden? Nimm dir diese Erlaubnis.",
+        "Schreib drei Worte: „Heute reicht es, wenn…“"
       ],
       phase3: [
-        "Fai un gesto di 3 minuti che ti prepara il dopo: aprire un file, mettere una cosa pronta, fare il primo passo.",
-        "Riduci attrito: prepara l’ambiente perché domani sia più facile.",
-        "Chiudi con un piccolo riconoscimento: “Ho fatto quello che potevo”."
+        "Mach einen 3-Minuten-Schritt, der den Weg ebnet (Datei öffnen, Material bereit legen, Startpunkt setzen).",
+        "Reduziere Reibung: Mach es deinem Morgen leichter.",
+        "Zum Schluss: Nimm wahr, dass du dich gekümmert hast."
       ],
-      breath: { inhale:4, exhale:7, minutes:3, cueL:"Recupero prima", cueR:"Minimo utile" },
+      breath: { inhale:4, exhale:7, minutes:3, cueL:"Erst erholen, dann handeln", cueR:"Das Minimum, das hilft" },
       goal: [
-        "In 10 minuti: prepara il primo passo per dopo (non devi fare tutto).",
-        "Fai una cosa che riduce attrito: ordine visivo, acqua, spazio pronto.",
-        "Scegli una micro-azione che ti alleggerisce. Poi ti fermi."
+        "In 10 Minuten: Bereite nur den ersten Schritt vor. Danach stoppst du.",
+        "Nimm eine Kleinigkeit weg, die dich stresst (visuell oder organisatorisch).",
+        "Eine entlastende Mini-Aktion – dann Pause."
       ]
     },
 
-    "medio|medio": {
-      label: "Equilibrio instabile",
-      title: "Reset e struttura leggera",
-      summary: "Sei nel mezzo: perfetto per fare ordine senza rigidità. Un passo alla volta, con calma.",
+    "mittel|mittel": {
+      label: "Wackelig im Gleichgewicht",
+      title: "Reset & leichte Struktur",
+      summary: "Du bist in der Mitte – perfekt für einen Reset ohne Härte. Schritt für Schritt, klar und ruhig.",
       phase1: [
-        "Allunga un po’ la schiena e lascia uscire l’aria lentamente. È un reset più potente di quanto sembri.",
-        "Fai un micro-movimento del collo (lento). Poi torna al respiro.",
-        "Concediti cinque respiri regolari. Niente di speciale: solo presenza."
+        "Richte dich kurz auf. Dann eine lange Ausatmung. Das ist wie ein innerer Neustart.",
+        "Mach eine kleine Nackenbewegung langsam – dann zurück zum Atem.",
+        "Fünf gleichmäßige Atemzüge. Nicht perfekt – nur da sein."
       ],
       phase2: [
-        "Pianifica solo i prossimi 30 minuti. Non la giornata intera.",
-        "Scegli una cosa da chiudere: chiudere riduce il rumore mentale.",
-        "Domanda semplice: qual è la prossima azione visibile? (un gesto, non un’idea)."
+        "Plane nur die nächsten 30 Minuten. Nicht den ganzen Tag.",
+        "Wähle eine Sache, die du abschließen kannst – Abschlüsse machen den Kopf leiser.",
+        "Frag dich: Was ist die nächste sichtbare Handlung? Ein Schritt, keine Idee."
       ],
       phase3: [
-        "15 minuti di focus e poi 3 minuti di pausa. È un ritmo che il sistema nervoso capisce.",
-        "Spegni una distrazione per un blocco. Solo una.",
-        "Alla fine chiediti: cosa ha funzionato? Anche poco, ma vero."
+        "15 Minuten Fokus, danach 3 Minuten Pause. Das ist ein Rhythmus, den das Nervensystem mag.",
+        "Schalte eine Ablenkung aus – nur eine.",
+        "Am Ende: „Was hat heute funktioniert?“ Auch klein zählt."
       ],
-      breath: { inhale:4, exhale:6, minutes:4, cueL:"Struttura = sicurezza", cueR:"Calma → azione" },
+      breath: { inhale:4, exhale:6, minutes:4, cueL:"Struktur gibt Sicherheit", cueR:"Ruhe → Klarheit → Handlung" },
       goal: [
-        "In 10 minuti: fai il primo passo operativo della tua priorità.",
-        "Scegli una cosa da chiudere in piccolo. Finire calma.",
-        "10 minuti di focus con una sola distrazione in meno."
+        "In 10 Minuten: Mach den ersten konkreten Schritt deiner Priorität.",
+        "Schließe einen kleinen Teil ab – „fertig“ beruhigt.",
+        "10 Minuten Fokus, mit einer Ablenkung weniger."
       ]
     },
 
-    "medio|alto": {
-      label: "Stress medio, energia alta",
-      title: "Energia focalizzata",
-      summary: "Hai energia: bellissimo. La rendiamo chiara e sostenibile: direzione, azione breve, poi pausa.",
+    "mittel|hoch": {
+      label: "Mittlerer Stress, hohe Energie",
+      title: "Energie in Richtung bringen",
+      summary: "Du hast Energie – sehr gut. Wir machen sie klar und nachhaltig: Richtung, kurzer Block, Pause.",
       phase1: [
-        "Un respiro lungo. Poi parti. È come mettere una bussola prima del movimento.",
-        "Controlla il corpo: energia non deve diventare tensione. Se serve, sciogli un po’ spalle e mandibola.",
-        "Inizia con un passo sostenibile, senza fretta."
+        "Ein langer Atemzug, dann startest du. Wie ein kurzer innerer Kompass.",
+        "Check: Kiefer und Schultern. Energie soll dich tragen, nicht verspannen.",
+        "Beginn ohne Hast – stabil ist besser als schnell."
       ],
       phase2: [
-        "Decidi un obiettivo solo e un criterio semplice di successo (tipo: “faccio l’inizio / chiudo un pezzo”).",
-        "Scegli cosa NON fai adesso: proteggere il focus è un superpotere.",
-        "Scrivi una frase: “Ora faccio…” e completa. Poi fallo."
+        "Wähle ein Ziel und ein einfaches Erfolgskriterium („ich starte / ich schließe einen Teil ab“).",
+        "Wähle auch, was du jetzt nicht machst. Das schützt deinen Fokus.",
+        "Schreib: „Jetzt mache ich…“ und dann machst du es."
       ],
       phase3: [
-        "Blocchi 10+2: dieci minuti di azione, due minuti di pausa. Ripeti se vuoi.",
-        "Chiudi un micro-risultato prima di passare oltre. Il cervello ama le chiusure.",
-        "Concludi con tre respiri tranquilli: così esci dal ‘fare’ e torni presente."
+        "10+2: Zehn Minuten Fokus, zwei Minuten Pause. Wiederholen, wenn du willst.",
+        "Schließe ein Mini-Ergebnis ab, bevor du weitergehst.",
+        "Zum Schluss: drei ruhige Atemzüge – damit du nicht im „Getrieben sein“ hängen bleibst."
       ],
-      breath: { inhale:4, exhale:6, minutes:3, cueL:"Energia focalizzata", cueR:"Pausa breve, ma vera" },
+      breath: { inhale:4, exhale:6, minutes:3, cueL:"Energie – aber fokussiert", cueR:"Pause kurz, aber echt" },
       goal: [
-        "In 10 minuti: fai un blocco secco sulla tua priorità. Poi 2 minuti di pausa.",
-        "Chiudi un micro-risultato: qualcosa di finito, anche piccolo.",
-        "Fai 10 minuti di focus “pulito” (una sola cosa)."
+        "10 Minuten Fokus auf eine Sache, danach 2 Minuten Pause.",
+        "Schließe ein Mini-Ergebnis ab und stopp dann bewusst.",
+        "Ein Block „clean focus“ – nur eine Sache."
       ]
     },
 
-    "basso|basso": {
-      label: "Bassa attivazione",
-      title: "Riaccensione gentile",
-      summary: "Non serve sforzarti. Serve una scintilla piccola e possibile: corpo, respiro, un gesto.",
+    "niedrig|niedrig": {
+      label: "Niedrige Aktivierung",
+      title: "Sanft wieder anschalten",
+      summary: "Du musst dich nicht pushen. Wir setzen nur eine kleine Zündung: Körper, Atem, ein machbarer Schritt.",
       phase1: [
-        "Se puoi, alzati un attimo. Anche 30–60 secondi. Il corpo spesso aiuta la mente più delle parole.",
-        "Fai un respiro un po’ più profondo e poi lascia uscire l’aria lentamente. Senza fretta.",
-        "Senti mani e viso: portare attenzione qui è già una forma di presenza."
+        "Wenn du kannst: steh kurz auf oder bewege dich 30 Sekunden. Der Körper hilft oft schneller als Gedanken.",
+        "Atme etwas tiefer ein – dann lass die Luft langsam hinaus. Ohne Eile.",
+        "Spür Hände oder Gesicht. Aufmerksamkeit hier ist schon Regulation."
       ],
       phase2: [
-        "Qual è la cosa più piccola che puoi iniziare? Piccola davvero.",
-        "Scegli un compito da 2 minuti. Iniziare spesso riaccende energia.",
-        "Non pensare “tutto”. Pensa “uno”. Un passo."
+        "Was ist der kleinste Schritt, den du anfangen kannst? Wirklich klein.",
+        "Wähle eine 2-Minuten-Aufgabe. Starten bringt oft Energie zurück.",
+        "Denk nicht „alles“. Denk „eins“."
       ],
       phase3: [
-        "Fai 2 minuti e poi stop. Lascia un ‘gancio’ per riprendere facile.",
-        "Prepara l’ambiente: togli un ostacolo. Un solo ostacolo.",
-        "Chiudi con una frase gentile: “Va bene così, sto ripartendo”."
+        "Mach 2 Minuten – dann stopp. Lass einen einfachen Wiedereinstieg liegen.",
+        "Entferne einen einzigen kleinen Widerstand (Material bereit, Datei offen).",
+        "Zum Schluss: „Es ist okay. Ich bin wieder in Bewegung.“"
       ],
-      breath: { inhale:4, exhale:4, minutes:2, cueL:"Semplice", cueR:"Gentile" },
+      breath: { inhale:4, exhale:4, minutes:2, cueL:"Ganz simpel", cueR:"Ganz freundlich" },
       goal: [
-        "In 10 minuti: 2 minuti di azione + 1 minuto di pausa. Ripeti 3 volte.",
-        "Scegli un compito minuscolo e inizia. Poi stop.",
-        "Ordine minimo: sistema un punto e lascia tutto il resto."
+        "2 Minuten Handlung + 1 Minute Pause, dreimal – fertig.",
+        "Beginne eine Mini-Aufgabe und hör dann auf. Das zählt.",
+        "Ein kleiner Ordnungspunkt – mehr nicht."
       ]
     },
 
-    "basso|medio": {
-      label: "Calma e stabilità",
-      title: "Stabile e chiaro",
-      summary: "Sei in una zona buona. Manteniamo calma e trasformiamola in un progresso semplice.",
+    "niedrig|mittel": {
+      label: "Ruhig & stabil",
+      title: "Stabil und klar",
+      summary: "Du bist in einer guten Zone. Wir halten die Ruhe – und machen daraus einen klaren Fortschritt.",
       phase1: [
-        "Fai 6 respiri regolari. Lascia che l’espirazione sia appena più lunga.",
-        "Rilassa la mandibola: spesso è la prima a irrigidirsi senza accorgercene.",
-        "Senti il corpo stabile. È una base ottima per decidere bene."
+        "Sechs ruhige Atemzüge. Lass die Ausatmung ein kleines bisschen länger werden.",
+        "Entspann den Kiefer. Oft ist dort unbemerkt Spannung gespeichert.",
+        "Spür Stabilität im Körper. Das ist eine gute Basis fürs Entscheiden."
       ],
       phase2: [
-        "Scegli una priorità e scrivi tre punti massimo.",
-        "Chiediti: cosa rende oggi un ‘buon giorno’ in modo realistico?",
-        "Taglia una cosa non essenziale. Ti restituisce spazio."
+        "Wähle eine Priorität und maximal drei Stichpunkte.",
+        "Frag dich: Was macht heute realistisch zu einem guten Tag?",
+        "Streich eine Sache, die nicht nötig ist. Du wirst sofort leichter."
       ],
       phase3: [
-        "Fai il primo passo subito (2 minuti). Poi continui se vuoi.",
-        "15 minuti di focus e poi 3 di pausa: ritmo semplice, efficiente.",
-        "Chiudi riconoscendo il progresso. Anche piccolo."
+        "Mach den ersten Schritt sofort (2 Minuten). Danach entscheidest du neu.",
+        "15 Minuten Fokus, 3 Minuten Pause – einfach und effektiv.",
+        "Zum Schluss: Anerkennen, was du geschafft hast."
       ],
-      breath: { inhale:4, exhale:6, minutes:3, cueL:"Stabilità", cueR:"Progresso semplice" },
+      breath: { inhale:4, exhale:6, minutes:3, cueL:"Stabilität", cueR:"Einfacher Fortschritt" },
       goal: [
-        "In 10 minuti: fai il primo passo concreto della tua priorità.",
-        "Scegli una cosa non essenziale da tagliare: ti alleggerisce subito.",
-        "Metti in ordine tre punti e agisci sul primo."
+        "In 10 Minuten: Mach den ersten konkreten Schritt deiner Priorität.",
+        "Streich eine unnötige Sache – das bringt Luft.",
+        "Drei Punkte sortieren, den ersten umsetzen."
       ]
     },
 
-    "basso|alto": {
-      label: "Calma e energia alta",
-      title: "Slancio senza fretta",
-      summary: "Energia pulita: la usi per creare. Mettiamo un limite gentile così domani ne hai ancora.",
+    "niedrig|hoch": {
+      label: "Ruhig & viel Energie",
+      title: "Schwung – ohne Hetze",
+      summary: "Das ist schöne Energie. Wir setzen einen sanften Rahmen, damit du morgen noch etwas davon hast.",
       phase1: [
-        "Un respiro lungo e tranquillo. Poi parti senza fretta.",
-        "Controlla spalle e mandibola: energia non deve diventare durezza.",
-        "Fai spazio prima dell’azione: anche solo dieci secondi."
+        "Ein langer, ruhiger Atemzug. Dann startest du – ohne zu hetzen.",
+        "Energie muss nicht verspannen. Wenn du magst: kurzer Kiefer-Check.",
+        "Gib dir 10 Sekunden, bevor du loslegst. Das macht dich klarer."
       ],
       phase2: [
-        "Decidi cosa vuoi creare/chiudere oggi in 20 minuti (una cosa).",
-        "Metti un limite: fermati prima di esaurirti. È intelligenza, non pigrizia.",
-        "Scrivi una frase di intento: “Oggi scelgo…”."
+        "Wähle eine Sache, die du in 20 Minuten voranbringst.",
+        "Setz eine Grenze: Stopp bevor du leer bist. Das ist klug.",
+        "Schreib: „Heute entscheide ich mich für…“"
       ],
       phase3: [
-        "Fai 10–20 minuti di focus. Poi pausa vera.",
-        "Chiudi con tre respiri tranquilli: così non resti ‘accelerata’ anche dopo.",
-        "Nota una cosa che funziona. Rinforza fiducia."
+        "10–20 Minuten Fokus, dann eine echte Pause.",
+        "Zum Abschluss: drei ruhige Atemzüge, damit du nicht „oben“ hängen bleibst.",
+        "Nimm eine Sache wahr, die funktioniert hat."
       ],
-      breath: { inhale:4, exhale:6, minutes:2, cueL:"Energia pulita", cueR:"Limite gentile" },
+      breath: { inhale:4, exhale:6, minutes:2, cueL:"Schöne Energie", cueR:"Sanfte Grenze" },
       goal: [
-        "In 10 minuti: fai un blocco creativo/operativo e poi pausa.",
-        "Chiudi un micro-risultato e fermati prima di stancarti.",
-        "Scegli una direzione e fai 10 minuti “puliti” su quella."
+        "10 Minuten Fokus, dann Pause.",
+        "Schließe ein Mini-Ergebnis ab und hör auf, bevor du leer wirst.",
+        "Eine Richtung wählen, 10 Minuten sauber umsetzen."
       ]
     }
   };
@@ -1143,19 +1342,26 @@
   function getPlan(stress, energy){
     const s = band(stress);
     const e = band(energy);
-    return PREMIUM_MAP[`${s}|${e}`] || PREMIUM_MAP["medio|medio"];
+    return PREMIUM_MAP[`${s}|${e}`] || PREMIUM_MAP["mittel|mittel"];
   }
-  function pick1(arr){ return arr[Math.floor(Math.random() * arr.length)]; }
 
-  // =========================
-  // SUONO (opzionale)
-  // =========================
+  function pick1(arr){
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
   let soundOn = false;
   const soundToggle = document.getElementById("soundToggle");
   const soundSwitch = document.getElementById("soundSwitch");
 
-  function setSoundUI(){ soundSwitch.classList.toggle("on", soundOn); }
-  soundToggle.addEventListener("click", ()=>{ soundOn = !soundOn; setSoundUI(); });
+  function setSoundUI(){
+    soundSwitch.classList.toggle("on", soundOn);
+  }
+
+  soundToggle.addEventListener("click", () => {
+    soundOn = !soundOn;
+    setSoundUI();
+  });
+
   setSoundUI();
 
   function softBeep(){
@@ -1167,24 +1373,25 @@
       o.type = "sine";
       o.frequency.value = 523.25;
       g.gain.value = 0.0001;
-      o.connect(g); g.connect(ctx.destination);
+      o.connect(g);
+      g.connect(ctx.destination);
       o.start();
       g.gain.exponentialRampToValueAtTime(0.03, ctx.currentTime + 0.02);
       g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.18);
-      setTimeout(()=>{ o.stop(); ctx.close(); }, 220);
-    } catch(e){}
+      setTimeout(() => {
+        o.stop();
+        ctx.close();
+      }, 220);
+    }catch(e){}
   }
 
-  // =========================
-  // MODALITÀ GUIDA RESPIRO
-  // =========================
   const modeLinesBtn = document.getElementById("modeLinesBtn");
   const modeCloudBtn = document.getElementById("modeCloudBtn");
   const modePill = document.getElementById("modePill");
   const linesWrap = document.getElementById("linesWrap");
   const cloudWrap = document.getElementById("cloudWrap");
 
-  let breathMode = localStorage.getItem("panacea_breath_mode_it") || "lines"; // lines | cloud
+  let breathMode = localStorage.getItem("panacea_breath_mode_de") || "lines";
 
   function setModeUI(){
     const isLines = breathMode === "lines";
@@ -1192,28 +1399,25 @@
     modeCloudBtn.classList.toggle("active", !isLines);
     linesWrap.style.display = isLines ? "block" : "none";
     cloudWrap.style.display = isLines ? "none" : "grid";
-    modePill.textContent = isLines ? "Linee" : "Nuvola";
+    modePill.textContent = isLines ? "Linien" : "Wolke";
   }
 
-  modeLinesBtn.addEventListener("click", ()=>{
+  modeLinesBtn.addEventListener("click", () => {
     breathMode = "lines";
-    localStorage.setItem("panacea_breath_mode_it", breathMode);
-    setModeUI();
-  });
-  modeCloudBtn.addEventListener("click", ()=>{
-    breathMode = "cloud";
-    localStorage.setItem("panacea_breath_mode_it", breathMode);
+    localStorage.setItem("panacea_breath_mode_de", breathMode);
     setModeUI();
   });
 
-  // =========================
-  // RESPIRO GUIDATO
-  // =========================
+  modeCloudBtn.addEventListener("click", () => {
+    breathMode = "cloud";
+    localStorage.setItem("panacea_breath_mode_de", breathMode);
+    setModeUI();
+  });
+
   let breathInterval = null;
   let breathRunning = false;
-
   let plan = { inhale:4, exhale:6, minutes:3, cueL:"", cueR:"" };
-  let phase = "pronta"; // inspira | espira | fine | pronta
+  let phase = "bereit";
   let phaseRemaining = 0;
   let totalRemaining = 0;
   let totalStart = 0;
@@ -1222,61 +1426,57 @@
   const breathTimerEl = document.getElementById("breathTimer");
   const breathPlanEl  = document.getElementById("breathPlan");
   const progressBarEl = document.getElementById("progressBar");
-
   const cueLeft = document.getElementById("cueLeft");
   const cueRight = document.getElementById("cueRight");
 
-  // Lines
   const inFill = document.getElementById("inFill");
   const outFill = document.getElementById("outFill");
   const inSec = document.getElementById("inSec");
   const outSec = document.getElementById("outSec");
   const linesHint = document.getElementById("linesHint");
 
-  // Cloud
   const cloudFill = document.getElementById("cloudFill");
   const cloudPhase = document.getElementById("cloudPhase");
   const cloudCount = document.getElementById("cloudCount");
-  const cloudHint  = document.getElementById("cloudHint");
+  const cloudHint = document.getElementById("cloudHint");
 
   function fmt(sec){
     sec = Math.max(0, Math.floor(sec));
-    const m = String(Math.floor(sec/60)).padStart(2,"0");
-    const s = String(sec%60).padStart(2,"0");
+    const m = String(Math.floor(sec / 60)).padStart(2, "0");
+    const s = String(sec % 60).padStart(2, "0");
     return `${m}:${s}`;
   }
 
   function setBreathPlan(newPlan){
     plan = {...newPlan};
 
-    cueLeft.textContent  = plan.cueL || "Espira lunga = più calma";
-    cueRight.textContent = plan.cueR || "Non forzare: lascia che succeda";
+    cueLeft.textContent = plan.cueL || "Langes Ausatmen = mehr Ruhe";
+    cueRight.textContent = plan.cueR || "Nicht drücken – einfach zulassen";
 
     stopBreathing(true);
 
-    breathPlanEl.textContent = `Piano: Inspira ${plan.inhale}s · Espira ${plan.exhale}s · Durata ${plan.minutes} min`;
+    breathPlanEl.textContent = `Plan: Ein ${plan.inhale}s · Aus ${plan.exhale}s · Dauer ${plan.minutes} Min`;
     breathTimerEl.textContent = fmt(plan.minutes * 60);
     progressBarEl.style.width = "0%";
 
-    // reset visuals
     inFill.style.width = "0%";
     outFill.style.width = "0%";
     inSec.textContent = "—";
     outSec.textContent = "—";
-    linesHint.textContent = "Segui la barra: inspiri quando si riempie “Inspira”, lasci uscire l’aria quando lavora “Espira”.";
+    linesHint.textContent = "Folge der Leiste: Wenn „Einatmen“ läuft, atmest du ein. Wenn „Ausatmen“ läuft, lässt du die Luft wieder gehen.";
 
     cloudFill.style.height = "0%";
-    cloudPhase.textContent = "Pronta";
+    cloudPhase.textContent = "Bereit";
     cloudCount.textContent = "—";
-    cloudHint.textContent = "Quando vuoi, iniziamo insieme.";
+    cloudHint.textContent = "Wenn du willst, starten wir gemeinsam.";
 
-    breathStateEl.textContent = "Pronta";
+    breathStateEl.textContent = "Bereit";
   }
 
   function renderBreathUI(){
-    if(!breathRunning && phase === "pronta"){
-      breathStateEl.textContent = "Pronta";
-      breathTimerEl.textContent = fmt(plan.minutes*60);
+    if(!breathRunning && phase === "bereit"){
+      breathStateEl.textContent = "Bereit";
+      breathTimerEl.textContent = fmt(plan.minutes * 60);
       progressBarEl.style.width = "0%";
 
       inFill.style.width = "0%";
@@ -1285,14 +1485,14 @@
       outSec.textContent = "—";
 
       cloudFill.style.height = "0%";
-      cloudPhase.textContent = "Pronta";
+      cloudPhase.textContent = "Bereit";
       cloudCount.textContent = "—";
-      cloudHint.textContent = "Quando vuoi, iniziamo insieme.";
+      cloudHint.textContent = "Wenn du willst, starten wir gemeinsam.";
       return;
     }
 
-    if(phase === "fine"){
-      breathStateEl.textContent = "Finito ✅";
+    if(phase === "fertig"){
+      breathStateEl.textContent = "Fertig ✅";
       breathTimerEl.textContent = "00:00";
       progressBarEl.style.width = "100%";
 
@@ -1302,59 +1502,57 @@
       outSec.textContent = "✓";
 
       cloudFill.style.height = "0%";
-      cloudPhase.textContent = "Finito";
+      cloudPhase.textContent = "Fertig";
       cloudCount.textContent = "✓";
-      cloudHint.textContent = "Brava. Anche pochi minuti contano davvero.";
+      cloudHint.textContent = "Sehr gut. Ein paar Minuten reichen manchmal schon.";
       return;
     }
 
     const done = totalStart - totalRemaining;
-    const pctAll = totalStart > 0 ? Math.min(100, Math.max(0, (done/totalStart)*100)) : 0;
+    const pctAll = totalStart > 0 ? Math.min(100, Math.max(0, (done / totalStart) * 100)) : 0;
     progressBarEl.style.width = pctAll.toFixed(1) + "%";
     breathTimerEl.textContent = fmt(totalRemaining);
 
-    if(phase === "inspira"){
+    if(phase === "ein"){
       const p = 1 - (phaseRemaining / plan.inhale);
       const sec = phaseRemaining;
 
-      breathStateEl.textContent = `Inspira (${sec}s)`;
-
-      inFill.style.width = (p*100).toFixed(0) + "%";
+      breathStateEl.textContent = `Einatmen (${sec}s)`;
+      inFill.style.width = (p * 100).toFixed(0) + "%";
       outFill.style.width = "0%";
       inSec.textContent = `${sec}s`;
       outSec.textContent = "—";
-      linesHint.textContent = "Inspira: lascia entrare l’aria, senza forzare. Il petto si apre da solo, piano piano.";
+      linesHint.textContent = "Einatmen: Lass die Luft ruhig kommen – du musst nichts erzwingen.";
 
-      cloudPhase.textContent = "Inspira";
+      cloudPhase.textContent = "Einatmen";
       cloudCount.textContent = String(sec);
-      cloudHint.textContent = "Lascia entrare l’aria… con calma.";
-      cloudFill.style.height = (10 + p*80).toFixed(0) + "%";
+      cloudHint.textContent = "Lass die Luft langsam einströmen…";
+      cloudFill.style.height = (10 + p * 80).toFixed(0) + "%";
     } else {
       const p = 1 - (phaseRemaining / plan.exhale);
       const sec = phaseRemaining;
 
-      breathStateEl.textContent = `Espira (${sec}s)`;
-
-      outFill.style.width = (p*100).toFixed(0) + "%";
+      breathStateEl.textContent = `Ausatmen (${sec}s)`;
+      outFill.style.width = (p * 100).toFixed(0) + "%";
       inFill.style.width = "0%";
       outSec.textContent = `${sec}s`;
       inSec.textContent = "—";
-      linesHint.textContent = "Espira: lascia uscire l’aria lentamente, come se svuotassi i polmoni senza fretta.";
+      linesHint.textContent = "Ausatmen: Lass die Luft langsam wieder gehen – wie ein leises Ausatmen ohne Eile.";
 
-      cloudPhase.textContent = "Espira";
+      cloudPhase.textContent = "Ausatmen";
       cloudCount.textContent = String(sec);
-      cloudHint.textContent = "Lascia uscire l’aria… lunga e lenta.";
-      cloudFill.style.height = (90 - p*80).toFixed(0) + "%";
+      cloudHint.textContent = "Gib die Luft langsam frei…";
+      cloudFill.style.height = (90 - p * 80).toFixed(0) + "%";
     }
   }
 
   function startBreathing(){
     if(breathRunning) return;
 
-    if(phase === "pronta" || phase === "fine"){
+    if(phase === "bereit" || phase === "fertig"){
       totalRemaining = plan.minutes * 60;
       totalStart = totalRemaining;
-      phase = "inspira";
+      phase = "ein";
       phaseRemaining = plan.inhale;
       softBeep();
     }
@@ -1362,10 +1560,10 @@
     breathRunning = true;
     renderBreathUI();
 
-    breathInterval = setInterval(()=>{
+    breathInterval = setInterval(() => {
       if(totalRemaining <= 0){
         stopBreathing(false);
-        phase = "fine";
+        phase = "fertig";
         renderBreathUI();
         return;
       }
@@ -1374,13 +1572,8 @@
       phaseRemaining -= 1;
 
       if(phaseRemaining <= 0){
-        if(phase === "inspira"){
-          phase = "espira";
-          phaseRemaining = plan.exhale;
-        } else {
-          phase = "inspira";
-          phaseRemaining = plan.inhale;
-        }
+        phase = (phase === "ein") ? "aus" : "ein";
+        phaseRemaining = (phase === "ein") ? plan.inhale : plan.exhale;
         softBeep();
       }
 
@@ -1402,7 +1595,7 @@
     breathRunning = false;
 
     if(resetToReady){
-      phase = "pronta";
+      phase = "bereit";
       phaseRemaining = 0;
       totalRemaining = 0;
       totalStart = 0;
@@ -1411,14 +1604,11 @@
 
   document.getElementById("breathStart").addEventListener("click", startBreathing);
   document.getElementById("breathPause").addEventListener("click", pauseBreathing);
-  document.getElementById("breathReset").addEventListener("click", ()=>{
+  document.getElementById("breathReset").addEventListener("click", () => {
     stopBreathing(true);
     renderBreathUI();
   });
 
-  // =========================
-  // GENERATORE RESET
-  // =========================
   const statePill = document.getElementById("statePill");
   const mTitle = document.getElementById("mTitle");
   const mSummary = document.getElementById("mSummary");
@@ -1434,43 +1624,56 @@
     const energy = Number(energyM.value);
     const data = getPlan(stress, energy);
 
-    statePill.textContent = `Profilo: ${data.label}`;
+    statePill.textContent = `Profil: ${data.label}`;
     mTitle.textContent = data.title;
     mSummary.textContent = data.summary;
 
     mText1.textContent = pick1(data.phase1);
     mText2.textContent = pick1(data.phase2);
     mText3.textContent = pick1(data.phase3);
-
-    goalText.textContent = pick1(data.goal || ["In 10 minuti: scegli un passo piccolo e fai solo quello. Poi pausa."]);
+    goalText.textContent = pick1(data.goal || ["Stell dir 10 Minuten. Eine Sache. Danach stoppst du bewusst."]);
 
     setBreathPlan(data.breath);
 
     try{
-      localStorage.setItem("panacea_last_profile_it", JSON.stringify({stress, energy, label:data.label, title:data.title, ts: Date.now()}));
+      localStorage.setItem("panacea_last_profile_de", JSON.stringify({
+        stress,
+        energy,
+        label:data.label,
+        title:data.title,
+        ts: Date.now()
+      }));
     } catch(e){}
   }
 
   document.getElementById("genM").addEventListener("click", generateReset);
 
-  // =========================
-  // INIT
-  // =========================
+  syncLegacyKeysFromCanonical();
+  updateTargetNote();
   setModeUI();
   setAccessUI();
   syncSliderLabels();
 
-  if(isMember()){
+  if(redirectToTargetIfNeeded()){
+    // redirect eseguito
+  } else if(isMember()){
     try{
-      const last = JSON.parse(localStorage.getItem("panacea_last_profile_it") || "null");
+      const last = JSON.parse(localStorage.getItem("panacea_last_profile_de") || "null");
       if(last && last.stress && last.energy){
         stressM.value = String(last.stress);
         energyM.value = String(last.energy);
       }
     } catch(e){}
+    syncSliderLabels();
     generateReset();
   } else {
-    setBreathPlan({ inhale:4, exhale:6, minutes:3, cueL:"Espira lunga = più calma", cueR:"Non forzare: lascia che succeda" });
+    setBreathPlan({
+      inhale:4,
+      exhale:6,
+      minutes:3,
+      cueL:"Langes Ausatmen = mehr Ruhe",
+      cueR:"Nicht drücken – einfach zulassen"
+    });
     renderBreathUI();
   }
 </script>
