@@ -2,177 +2,273 @@
 <html lang="de">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Mitgliederbereich – Panacea</title>
 
   <style>
     :root{
       --bg1:#f6f1e6;
       --bg2:#efe7d7;
-      --card:rgba(255,255,255,0.88);
-      --card2:rgba(255,255,255,0.76);
-      --text:#1f1f1f;
-      --muted:#5c5c5c;
+      --card:#ffffffde;
+      --card2:#fffaf1;
       --gold:#c8a24a;
       --gold2:#e8d28a;
+      --gold3:#fff6d6;
+      --text:#2b2b2b;
+      --muted:#6b6b6b;
+      --soft:#8d7b57;
       --ink:#1a1a1a;
-      --shadow:0 14px 36px rgba(0,0,0,0.08);
-      --shadow2:0 8px 20px rgba(0,0,0,0.07);
+      --ok:#2e7d32;
+      --danger:#a14c3f;
+      --line:#eadfcb;
+      --shadow:0 14px 40px rgba(0,0,0,.10);
+      --shadow2:0 10px 26px rgba(0,0,0,.08);
       --radius:22px;
-      --radius2:16px;
+      --radius2:18px;
+
+      --fs-title: clamp(1.28rem, 1.04rem + 1vw, 1.55rem);
+      --fs-section: clamp(.98rem, .9rem + .34vw, 1.04rem);
+      --fs-body: clamp(.9rem, .84rem + .2vw, .96rem);
+      --fs-small: clamp(.78rem, .74rem + .18vw, .84rem);
+      --fs-button: clamp(.84rem, .8rem + .16vw, .92rem);
     }
 
     *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
 
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color:var(--text);
-      background: radial-gradient(1200px 800px at 20% 0%, var(--bg2), var(--bg1));
+      background: radial-gradient(1200px 800px at 30% 0%, var(--bg1), var(--bg2));
       min-height:100vh;
+      display:flex;
+      justify-content:center;
+      padding:14px 10px 24px;
     }
 
-    .fixedTopbar{
-      position:fixed;
-      top:0;
-      left:0;
-      right:0;
-      z-index:9999;
-      padding:8px 10px;
-      background: rgba(255,255,255,0.58);
-      backdrop-filter: blur(14px);
-      border-bottom:1px solid rgba(255,255,255,0.35);
+    .phone{
+      width:100%;
+      max-width:480px;
     }
 
-    .fixedTopbarInner{
-      max-width:520px;
-      margin:0 auto;
-      display:grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items:center;
-      gap:8px;
-    }
-
-    .navLeft,.navCenter,.navRight{
+    .topbar{
       display:flex;
       align-items:center;
-      min-width:0;
+      justify-content:space-between;
+      gap:8px;
+      margin-bottom:12px;
+      padding:8px 10px;
+      border-radius:18px;
+      background:rgba(255,255,255,.45);
+      backdrop-filter: blur(8px);
+      border:1px solid rgba(200,162,74,.14);
+      box-shadow:0 8px 18px rgba(0,0,0,.04);
+      overflow:hidden;
     }
 
-    .navLeft{ justify-content:flex-start; }
-    .navCenter{ justify-content:center; gap:8px; }
-    .navRight{ justify-content:flex-end; }
+    .topLeft,
+    .topRight{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      min-width:0;
+      flex:1 1 0;
+    }
 
-    .btn{
+    .topRight{
+      justify-content:flex-end;
+    }
+
+    .back{
       text-decoration:none;
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:8px;
-      padding:8px 12px;
+      gap:6px;
+      padding:9px 12px;
       border-radius:999px;
-      background: rgba(255,255,255,0.82);
-      color:var(--ink);
-      font-weight:800;
-      font-size:12px;
-      border:1px solid rgba(0,0,0,0.06);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.06);
-      cursor:pointer;
-      user-select:none;
+      background:linear-gradient(180deg, var(--card2), var(--card));
+      box-shadow:var(--shadow2);
+      color:var(--text);
+      border:1px solid rgba(200,162,74,.18);
       white-space:nowrap;
-      transition: transform .15s ease;
+      font-weight:800;
+      font-size:var(--fs-button);
+      line-height:1;
+      flex:0 0 auto;
     }
 
-    .btn:hover{ transform: translateY(-1px); }
-    .btn:active{ transform: translateY(1px); }
+    .langToggle{
+      display:flex;
+      gap:6px;
+      align-items:center;
+      min-width:0;
+      flex:0 1 auto;
+    }
 
     .langBtn{
-      padding:8px 11px;
-      border-radius:999px;
-      font-weight:900;
-      font-size:12px;
-      background: rgba(255,255,255,0.72);
-      border:1px solid rgba(0,0,0,0.08);
+      appearance:none;
+      border:none;
       cursor:pointer;
+      padding:9px 10px;
+      border-radius:999px;
+      font-weight:850;
+      letter-spacing:.1px;
+      background:rgba(255,255,255,.72);
+      border:1px solid rgba(200,162,74,.16);
+      box-shadow:0 8px 18px rgba(0,0,0,.05);
+      color:var(--text);
       white-space:nowrap;
-      transition: transform .15s ease;
+      font-size:var(--fs-button);
+      line-height:1;
+      min-width:0;
     }
-
-    .langBtn:hover{ transform: translateY(-1px); }
 
     .langBtn.active{
-      background: rgba(200,162,74,0.18);
-      border-color: rgba(200,162,74,0.45);
-      box-shadow: 0 8px 18px rgba(200,162,74,0.10);
+      background:radial-gradient(circle at 20% 10%, var(--gold3), var(--gold2));
+      border:1px solid rgba(200,162,74,.34);
+      color:#3a2c10;
+      text-shadow:0 0 10px rgba(200,162,74,.18);
     }
 
-    .pageTitle{
-      font-weight:900;
-      letter-spacing:.1px;
-      font-size:12px;
-      padding:8px 10px;
-      border-radius:999px;
-      background: rgba(255,255,255,0.62);
-      border:1px solid rgba(0,0,0,0.06);
-      max-width:100%;
+    .brand{
+      min-width:0;
+      text-align:right;
+      line-height:1.05;
+      white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
-      white-space:nowrap;
     }
 
-    .wrap{
-      max-width:520px;
-      margin:0 auto;
-      padding:68px 10px 22px;
+    .brand .t1{
+      font-size:11px;
+      color:var(--muted);
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-weight:800;
+    }
+
+    .brand .t2{
+      font-size:15px;
+      font-weight:900;
+      letter-spacing:.1px;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brand .glow{
+      color:var(--gold);
+      text-shadow:0 0 10px rgba(200,162,74,.22);
+      font-weight:900;
     }
 
     .card{
-      background: var(--card);
-      backdrop-filter: blur(12px);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding:14px;
-      border:1px solid rgba(200,162,74,0.14);
+      background:linear-gradient(180deg, var(--card2), var(--card));
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      border:1px solid rgba(200,162,74,.18);
+      overflow:hidden;
+      margin-bottom:12px;
     }
 
-    .card + .card{ margin-top:12px; }
+    .hero{
+      padding:18px 16px 14px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
 
-    .brandTitle{
-      font-family: ui-serif, Georgia, "Times New Roman", serif;
-      margin:0;
-      font-size:20px;
+    .badge{
+      width:60px;
+      height:60px;
+      border-radius:18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      font-size:15px;
+      color:#3a2c10;
+      background:radial-gradient(circle at 30% 20%, var(--gold3), var(--gold2));
+      border:1px solid rgba(200,162,74,.32);
+      box-shadow:0 0 16px rgba(200,162,74,.20);
+      flex:0 0 auto;
+    }
+
+    .hero h1{
+      margin:0 0 4px;
+      font-size:var(--fs-title);
+      line-height:1.15;
+      font-weight:900;
       letter-spacing:.1px;
-      line-height:1.05;
+      color:#2a2113;
     }
 
-    .sub{
-      margin:7px 0 0;
-      color:var(--muted);
-      line-height:1.5;
-      font-size:12.5px;
+    .hero p{
+      margin:0;
+      color:rgba(43,43,43,.76);
+      font-size:var(--fs-body);
+      line-height:1.55;
+      font-weight:650;
     }
 
-    .goldLine{
-      height:1px;
-      width:100%;
-      margin:10px 0;
-      background: linear-gradient(90deg, transparent, rgba(200,162,74,.55), transparent);
+    .content{
+      padding:16px;
     }
 
     .pill{
       display:inline-flex;
       align-items:center;
-      gap:8px;
-      padding:5px 9px;
+      justify-content:center;
+      padding:7px 11px;
       border-radius:999px;
-      font-size:10px;
-      font-weight:900;
-      background: rgba(200,162,74,0.16);
-      border:1px solid rgba(200,162,74,0.28);
-      color:#2a2316;
+      background:rgba(200,162,74,.12);
+      border:1px solid rgba(200,162,74,.26);
+      color:#6e5628;
+      font-size:var(--fs-small);
+      font-weight:850;
+      line-height:1.1;
+      letter-spacing:.03em;
     }
 
-    .muted{ color:var(--muted); }
+    .sectionCard{
+      background:rgba(255,255,255,.7);
+      border-radius:18px;
+      border:1px solid rgba(200,162,74,.16);
+      box-shadow:0 10px 22px rgba(0,0,0,.05);
+      padding:14px;
+      margin-bottom:12px;
+    }
+
+    .sectionTitle{
+      margin:0 0 6px;
+      font-size:var(--fs-section);
+      font-weight:900;
+      color:#3a2c10;
+      line-height:1.2;
+    }
+
+    .sectionLead,
+    .sub,
+    .muted{
+      color:rgba(43,43,43,.76);
+      font-size:var(--fs-body);
+      line-height:1.55;
+      font-weight:650;
+    }
+
+    .miniText{
+      color:rgba(43,43,43,.82);
+      font-size:var(--fs-body);
+      line-height:1.58;
+      font-weight:650;
+    }
+
+    .goldLine{
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(200,162,74,.35), transparent);
+      margin:14px 0;
+    }
 
     .row{
       display:flex;
@@ -181,79 +277,114 @@
       align-items:center;
     }
 
+    .spaceBetween{
+      justify-content:space-between;
+    }
+
     .input{
-      padding:10px 12px;
-      border-radius:12px;
-      border:1px solid rgba(0,0,0,0.12);
-      width:100%;
-      max-width:100%;
-      font-size:14px;
+      flex:1 1 220px;
+      padding:12px 13px;
+      border-radius:14px;
+      border:1px solid rgba(200,162,74,.16);
       background:#fff;
+      color:var(--text);
+      font:inherit;
       outline:none;
+      box-shadow:0 8px 18px rgba(0,0,0,.03);
     }
 
     .input:focus{
-      border-color: rgba(200,162,74,0.55);
-      box-shadow: 0 0 0 3px rgba(200,162,74,0.16);
+      border-color:rgba(200,162,74,.45);
+      box-shadow:0 0 0 3px rgba(200,162,74,.12);
+    }
+
+    .btn,
+    .btnGold,
+    .btnSoft{
+      appearance:none;
+      border:none;
+      cursor:pointer;
+      padding:11px 13px;
+      border-radius:14px;
+      font-weight:850;
+      letter-spacing:.08px;
+      box-shadow:var(--shadow2);
+      border:1px solid rgba(200,162,74,.18);
+      background:linear-gradient(180deg, #ffffff, #f7f2e6);
+      color:var(--text);
+      font-size:var(--fs-button);
+      line-height:1.1;
+      text-align:center;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      transition:transform .15s ease;
+    }
+
+    .btn:hover,
+    .btnGold:hover,
+    .btnSoft:hover{
+      transform:translateY(-1px);
     }
 
     .btnGold{
-      border:0;
-      font-weight:900;
-      padding:10px 13px;
-      border-radius:12px;
-      cursor:pointer;
-      color:#1f1a10;
-      background: linear-gradient(180deg, rgba(232,210,138,.95), rgba(200,162,74,.92));
-      box-shadow: 0 10px 24px rgba(200,162,74,.16);
-      white-space:nowrap;
-      font-size:12px;
-      transition: transform .15s ease;
+      background:radial-gradient(circle at 20% 10%, var(--gold3), var(--gold2));
+      border:1px solid rgba(200,162,74,.34);
+      color:#3a2c10;
+      text-shadow:0 0 10px rgba(200,162,74,.18);
     }
-
-    .btnGold:hover{ transform: translateY(-1px); }
 
     .btnSoft{
-      padding:10px 13px;
-      border-radius:12px;
-      border:1px solid rgba(0,0,0,0.10);
-      background: rgba(255,255,255,0.85);
-      font-weight:900;
-      cursor:pointer;
-      color:#1f1f1f;
-      font-size:12px;
-      transition: transform .15s ease;
+      background:linear-gradient(180deg, rgba(255,255,255,.95), rgba(247,242,230,.9));
     }
 
-    .btnSoft:hover{ transform: translateY(-1px); }
+    .statusLocked{
+      color:var(--danger);
+      font-weight:900;
+      font-size:var(--fs-small);
+    }
 
-    .statusLocked{ color:#8a1f1f; font-weight:900; font-size:12px; }
-    .statusOk{ color:#116b2e; font-weight:900; font-size:12px; }
+    .statusOk{
+      color:var(--ok);
+      font-weight:900;
+      font-size:var(--fs-small);
+    }
 
     .note{
-      margin-top:9px;
-      padding:10px 12px;
-      border-radius:12px;
-      background: rgba(255,255,255,0.62);
-      border:1px solid rgba(0,0,0,0.06);
-      font-size:11.5px;
-      line-height:1.45;
-      color:rgba(0,0,0,0.72);
+      margin-top:10px;
+      padding:12px;
+      border-radius:14px;
+      border:1px solid rgba(200,162,74,.18);
+      background:linear-gradient(180deg, rgba(255,248,230,.96), rgba(255,255,255,.82));
+      color:#6b5530;
+      font-size:var(--fs-small);
+      line-height:1.55;
+      font-weight:700;
     }
 
     .grid2{
       display:grid;
-      grid-template-columns: 1fr;
+      grid-template-columns:1fr;
       gap:10px;
       margin-top:10px;
     }
 
-    .miniCard{
-      background: var(--card2);
-      border-radius: var(--radius2);
-      padding:11px;
-      border:1px solid rgba(0,0,0,0.06);
-      box-shadow: var(--shadow2);
+    .miniCard,
+    .protoBlock,
+    .goal,
+    .breathWrap{
+      border-radius:18px;
+      border:1px solid rgba(200,162,74,.18);
+      background:rgba(255,255,255,.76);
+      box-shadow:0 10px 22px rgba(0,0,0,.06);
+      overflow:hidden;
+    }
+
+    .miniCard,
+    .protoBlock,
+    .goal{
+      padding:12px;
     }
 
     .labelRow{
@@ -261,24 +392,25 @@
       justify-content:space-between;
       align-items:baseline;
       gap:10px;
-      margin-bottom:6px;
+      margin-bottom:8px;
     }
 
     .labelRow .lbl{
       font-weight:900;
       letter-spacing:.1px;
-      font-size:12px;
+      font-size:var(--fs-body);
+      color:#3a2c10;
     }
 
     .labelRow .val{
       font-weight:900;
-      color: rgba(0,0,0,0.70);
-      font-size:12px;
+      color:rgba(43,43,43,.72);
+      font-size:var(--fs-small);
     }
 
     input[type="range"]{
       width:100%;
-      accent-color: var(--gold);
+      accent-color:var(--gold);
     }
 
     .actionsRow{
@@ -287,30 +419,31 @@
       flex-wrap:wrap;
       align-items:center;
       justify-content:space-between;
-      margin-top:10px;
+      margin-top:12px;
     }
 
     .toggle{
       display:inline-flex;
       align-items:center;
       gap:9px;
-      padding:8px 10px;
-      border-radius:12px;
-      border:1px solid rgba(0,0,0,0.10);
-      background: rgba(255,255,255,0.78);
-      font-weight:900;
-      font-size:12px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(200,162,74,.16);
+      background:rgba(255,255,255,.78);
+      font-weight:850;
+      font-size:var(--fs-small);
       cursor:pointer;
       user-select:none;
+      box-shadow:0 8px 18px rgba(0,0,0,.04);
     }
 
     .switch{
       width:40px;
       height:22px;
       border-radius:999px;
-      background: rgba(0,0,0,0.10);
+      background:rgba(0,0,0,.10);
       position:relative;
-      border:1px solid rgba(0,0,0,0.10);
+      border:1px solid rgba(0,0,0,.08);
     }
 
     .knob{
@@ -321,134 +454,105 @@
       top:1px;
       left:1px;
       background:#fff;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.18);
-      transition: left .18s ease;
+      box-shadow:0 4px 12px rgba(0,0,0,.18);
+      transition:left .18s ease;
     }
 
     .switch.on{
-      background: rgba(200,162,74,0.30);
-      border-color: rgba(200,162,74,0.40);
+      background:rgba(200,162,74,.30);
+      border-color:rgba(200,162,74,.40);
     }
 
-    .switch.on .knob{ left:20px; }
+    .switch.on .knob{
+      left:20px;
+    }
 
     .protoGrid{
       display:grid;
-      grid-template-columns: 1fr;
-      gap:9px;
+      gap:10px;
       margin-top:10px;
     }
 
-    .protoBlock{
-      background: rgba(255,255,255,0.78);
-      border-radius:14px;
-      padding:11px;
-      border:1px solid rgba(0,0,0,0.06);
-      box-shadow: var(--shadow2);
-    }
-
-    .protoBlock h3{
+    .protoBlock h3,
+    .goal h3,
+    .breathTitle{
       margin:0 0 6px;
-      font-size:12.5px;
+      font-size:var(--fs-body);
       font-weight:900;
-      letter-spacing:.1px;
+      color:#3a2c10;
+      line-height:1.2;
     }
 
-    .protoBlock p{
-      margin:0;
-      line-height:1.5;
-      color: rgba(0,0,0,0.78);
-      font-size:12px;
-    }
-
-    .goal{
-      margin-top:10px;
-      padding:11px;
-      border-radius:14px;
-      background: rgba(255,255,255,0.78);
-      border:1px solid rgba(200,162,74,0.18);
-      box-shadow: var(--shadow2);
-    }
-
-    .goal h3{
-      margin:0 0 6px;
-      font-size:12.5px;
-      font-weight:900;
-    }
-
+    .protoBlock p,
     .goal p{
       margin:0;
-      color: rgba(0,0,0,0.78);
-      line-height:1.5;
-      font-size:12px;
+      color:rgba(43,43,43,.82);
+      line-height:1.58;
+      font-size:var(--fs-body);
+      font-weight:650;
     }
 
     .breathWrap{
+      padding:12px;
       margin-top:10px;
-      background: rgba(255,255,255,0.78);
-      border-radius:14px;
-      border:1px solid rgba(0,0,0,0.06);
-      box-shadow: var(--shadow2);
-      padding:11px;
+      background:linear-gradient(180deg, rgba(255,246,214,.70), rgba(255,255,255,.85));
+      box-shadow:0 0 16px rgba(200,162,74,.08);
     }
 
     .breathTop{
       display:flex;
       justify-content:space-between;
-      align-items:center;
-      gap:9px;
+      align-items:flex-start;
+      gap:10px;
       flex-wrap:wrap;
-    }
-
-    .breathTitle{
-      font-weight:900;
-      font-size:12.5px;
-      margin:0;
     }
 
     .breathState{
       font-weight:900;
-      font-size:14px;
-      letter-spacing:.1px;
+      font-size:var(--fs-body);
+      color:#3a2c10;
+      text-align:right;
     }
 
     .breathTimer{
       font-weight:900;
-      font-size:12px;
-      color: rgba(0,0,0,0.72);
+      font-size:var(--fs-small);
+      color:rgba(43,43,43,.72);
+      text-align:right;
     }
 
     .breathPlan{
-      margin-top:8px;
-      font-size:11px;
-      line-height:1.45;
-      color: rgba(0,0,0,0.70);
-      padding:8px 10px;
-      border-radius:12px;
-      background: rgba(255,255,255,0.62);
-      border:1px solid rgba(0,0,0,0.06);
+      margin-top:10px;
+      font-size:var(--fs-small);
+      line-height:1.55;
+      color:#6b5530;
+      padding:10px 12px;
+      border-radius:14px;
+      background:rgba(255,255,255,.82);
+      border:1px solid rgba(200,162,74,.18);
+      font-weight:750;
     }
 
     .progress{
-      margin-top:8px;
+      margin-top:10px;
       height:8px;
       border-radius:999px;
-      background: rgba(0,0,0,0.06);
+      background:rgba(0,0,0,.06);
       overflow:hidden;
-      border:1px solid rgba(0,0,0,0.06);
+      border:1px solid rgba(0,0,0,.06);
     }
 
     .progress > div{
       height:100%;
       width:0%;
-      background: linear-gradient(90deg, rgba(200,162,74,.65), rgba(232,210,138,.95));
-      box-shadow: 0 0 18px rgba(200,162,74,.18);
+      background:linear-gradient(90deg, rgba(200,162,74,.65), rgba(232,210,138,.95));
+      box-shadow:0 0 18px rgba(200,162,74,.18);
       border-radius:999px;
-      transition: width .15s linear;
+      transition:width .15s linear;
     }
 
     .modeRow{
-      margin-top:9px;
+      margin-top:10px;
       display:flex;
       gap:8px;
       flex-wrap:wrap;
@@ -464,34 +568,36 @@
     }
 
     .modeBtn{
-      padding:8px 10px;
-      border-radius:12px;
-      border:1px solid rgba(0,0,0,0.10);
-      background: rgba(255,255,255,0.80);
-      font-weight:900;
+      padding:9px 11px;
+      border-radius:14px;
+      border:1px solid rgba(200,162,74,.16);
+      background:rgba(255,255,255,.82);
+      font-weight:850;
       cursor:pointer;
       user-select:none;
-      font-size:11px;
+      font-size:var(--fs-small);
+      box-shadow:0 8px 18px rgba(0,0,0,.04);
     }
 
     .modeBtn.active{
-      background: rgba(200,162,74,0.18);
-      border-color: rgba(200,162,74,0.35);
-      box-shadow: 0 8px 18px rgba(200,162,74,0.08);
+      background:radial-gradient(circle at 20% 10%, var(--gold3), var(--gold2));
+      border-color:rgba(200,162,74,.34);
+      box-shadow:0 8px 18px rgba(200,162,74,.08);
+      color:#3a2c10;
     }
 
     .linesWrap{
-      margin-top:9px;
-      padding:10px;
-      border-radius:14px;
-      background: rgba(255,255,255,0.62);
-      border:1px solid rgba(0,0,0,0.06);
+      margin-top:10px;
+      padding:12px;
+      border-radius:16px;
+      background:rgba(255,255,255,.82);
+      border:1px solid rgba(200,162,74,.16);
       display:none;
     }
 
     .lineRow{
       display:grid;
-      grid-template-columns: 70px 1fr 34px;
+      grid-template-columns:70px 1fr 34px;
       gap:8px;
       align-items:center;
       margin:8px 0;
@@ -499,15 +605,15 @@
 
     .lineLabel{
       font-weight:900;
-      color: rgba(0,0,0,0.78);
-      font-size:11px;
+      color:rgba(43,43,43,.82);
+      font-size:var(--fs-small);
     }
 
     .lineBar{
       height:9px;
       border-radius:999px;
-      background: rgba(0,0,0,0.06);
-      border:1px solid rgba(0,0,0,0.06);
+      background:rgba(0,0,0,.06);
+      border:1px solid rgba(0,0,0,.06);
       overflow:hidden;
     }
 
@@ -515,27 +621,28 @@
       height:100%;
       width:0%;
       border-radius:999px;
-      background: linear-gradient(90deg, rgba(232,210,138,0.95), rgba(200,162,74,0.65));
-      box-shadow: 0 0 14px rgba(200,162,74,0.14);
-      transition: width .12s linear;
+      background:linear-gradient(90deg, rgba(232,210,138,.95), rgba(200,162,74,.65));
+      box-shadow:0 0 14px rgba(200,162,74,.14);
+      transition:width .12s linear;
     }
 
     .lineSec{
       font-weight:900;
-      color: rgba(0,0,0,0.72);
+      color:rgba(43,43,43,.72);
       text-align:right;
-      font-size:11px;
+      font-size:var(--fs-small);
     }
 
     .linesHint{
       margin-top:7px;
-      font-size:10.5px;
-      color: rgba(0,0,0,0.66);
+      font-size:var(--fs-small);
+      color:rgba(43,43,43,.68);
       line-height:1.45;
+      font-weight:700;
     }
 
     .cloudWrap{
-      margin-top:9px;
+      margin-top:10px;
       display:none;
       gap:8px;
     }
@@ -545,26 +652,26 @@
       height:160px;
       margin:0 auto;
       position:relative;
-      border-radius: 44% 56% 52% 48% / 48% 44% 56% 52%;
+      border-radius:44% 56% 52% 48% / 48% 44% 56% 52%;
       background:
-        radial-gradient(circle at 35% 30%, rgba(255,255,255,0.95), rgba(255,255,255,0.72)),
-        radial-gradient(220px 220px at 50% 65%, rgba(232,210,138,0.16), rgba(255,255,255,0));
-      border:1px solid rgba(200,162,74,0.16);
-      box-shadow: 0 14px 36px rgba(0,0,0,0.08);
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,.95), rgba(255,255,255,.72)),
+        radial-gradient(220px 220px at 50% 65%, rgba(232,210,138,.16), rgba(255,255,255,0));
+      border:1px solid rgba(200,162,74,.16);
+      box-shadow:0 14px 36px rgba(0,0,0,.08);
       overflow:hidden;
     }
 
     .cloudSheen{
       position:absolute;
       inset:8px;
-      border-radius: 44% 56% 52% 48% / 48% 44% 56% 52%;
-      background: conic-gradient(
+      border-radius:44% 56% 52% 48% / 48% 44% 56% 52%;
+      background:conic-gradient(
         from 180deg,
-        rgba(200,162,74,0.10),
-        rgba(232,210,138,0.55),
-        rgba(200,162,74,0.10),
-        rgba(255,255,255,0.0),
-        rgba(200,162,74,0.12)
+        rgba(200,162,74,.10),
+        rgba(232,210,138,.55),
+        rgba(200,162,74,.10),
+        rgba(255,255,255,0),
+        rgba(200,162,74,.12)
       );
       opacity:.95;
       animation:sheen 10s linear infinite;
@@ -574,7 +681,7 @@
     }
 
     @keyframes sheen{
-      to { transform: rotate(360deg); }
+      to { transform:rotate(360deg); }
     }
 
     .cloudFill{
@@ -583,10 +690,10 @@
       right:0;
       bottom:0;
       height:0%;
-      background: linear-gradient(180deg, rgba(232,210,138,0.82), rgba(200,162,74,0.58));
-      box-shadow: 0 -14px 32px rgba(200,162,74,0.14);
-      transition: height .18s linear;
-      filter: saturate(1.03);
+      background:linear-gradient(180deg, rgba(232,210,138,.82), rgba(200,162,74,.58));
+      box-shadow:0 -14px 32px rgba(200,162,74,.14);
+      transition:height .18s linear;
+      filter:saturate(1.03);
     }
 
     .cloudText{
@@ -611,30 +718,32 @@
 
     .cloudPhase{
       font-weight:900;
-      font-size:13px;
+      font-size:var(--fs-body);
+      color:#3a2c10;
     }
 
     .cloudCount{
       font-weight:900;
-      font-size:20px;
+      font-size:1.3rem;
       letter-spacing:.1px;
+      color:#2b220f;
     }
 
     .cloudHint{
       font-weight:800;
-      font-size:10px;
-      color: rgba(0,0,0,0.62);
+      font-size:var(--fs-small);
+      color:rgba(43,43,43,.62);
       line-height:1.35;
     }
 
     .cueLine{
-      margin-top:7px;
+      margin-top:8px;
       display:flex;
       justify-content:space-between;
       gap:8px;
       flex-wrap:wrap;
-      font-size:10px;
-      color: rgba(0,0,0,0.62);
+      font-size:var(--fs-small);
+      color:rgba(43,43,43,.62);
       font-weight:800;
       padding:0 2px;
     }
@@ -643,66 +752,121 @@
       display:flex;
       gap:8px;
       flex-wrap:wrap;
-      margin-top:9px;
+      margin-top:10px;
       align-items:center;
       justify-content:center;
     }
 
-    @media (max-width:520px){
-      .fixedTopbarInner{
-        max-width:100%;
+    @media (max-width:430px){
+      body{
+        padding:10px 8px 20px;
       }
-      .wrap{
-        padding:66px 8px 18px;
+
+      .topbar{
+        gap:6px;
+        padding:8px;
       }
-      .card{
-        padding:12px;
+
+      .topLeft,
+      .topRight{
+        gap:6px;
       }
-      .brandTitle{
-        font-size:18px;
+
+      .back{
+        padding:8px 10px;
+      }
+
+      .langBtn{
+        padding:8px 9px;
+      }
+
+      .brand .t2{
+        font-size:14px;
+      }
+
+      .hero{
+        align-items:flex-start;
+        padding:16px 14px 12px;
+      }
+
+      .content{
+        padding:14px;
+      }
+    }
+
+    @media (max-width:360px){
+      .brand .t1{
+        display:none;
+      }
+
+      .brand .t2{
+        font-size:13px;
+      }
+
+      .back{
+        padding:8px 9px;
+      }
+
+      .langBtn{
+        padding:8px 8px;
+        font-size:.8rem;
+      }
+
+      .lineRow{
+        grid-template-columns:62px 1fr 30px;
       }
     }
   </style>
 </head>
 
 <body>
+  <div class="phone">
 
-  <div class="fixedTopbar">
-    <div class="fixedTopbarInner">
-      <div class="navLeft">
-        <a class="btn" href="./index.html">← Home</a>
+    <div class="topbar">
+      <div class="topLeft">
+        <a class="back" href="./index.html">← Home</a>
+
+        <div class="langToggle" aria-label="Sprachauswahl">
+          <button class="langBtn" id="langIT" type="button">IT</button>
+          <button class="langBtn active" id="langDE" type="button">DE</button>
+        </div>
       </div>
 
-      <div class="navCenter">
-        <button class="langBtn" id="langIT" type="button">IT</button>
-        <button class="langBtn active" id="langDE" type="button">DE</button>
-      </div>
-
-      <div class="navRight">
-        <div class="pageTitle" id="pageTitleBadge">Mitglieder · Base</div>
+      <div class="topRight">
+        <div class="brand">
+          <div class="t1">Panacea</div>
+          <div class="t2"><span class="glow" id="pageTitleBadge">Mitglieder · Base</span></div>
+        </div>
       </div>
     </div>
-  </div>
-
-  <div class="wrap">
 
     <div class="card">
-      <div class="pill">Adaptiver Reset • echte Begleitung • personalisiertes Atmen</div>
-      <div class="goldLine"></div>
+      <div class="hero">
+        <div class="badge">MB</div>
+        <div>
+          <h1>Mitgliederbereich</h1>
+          <p>Ein adaptiver Reset, der sich an Stress, Energie und deinen echten Moment anpasst – ruhig, klar und alltagstauglich.</p>
+        </div>
+      </div>
 
-      <h1 class="brandTitle">Mitgliederbereich</h1>
-      <p class="sub">
-        Schön, dass du da bist. Hier musst du nichts „richtig“ machen.
-        <br><br>
-        Dieser Reset passt sich dir an – je nachdem, wie hoch dein <strong>Stress</strong> ist und wie viel <strong>Energie</strong> du gerade spürst.
-        Du bekommst eine klare, liebevolle Führung: zuerst <strong>runterfahren</strong>, dann <strong>sortieren</strong>, dann <strong>ein kleiner Schritt</strong>, der wirklich machbar ist.
-        <br><br>
-        <span class="muted">Was ist daran anders als bei vielen kostenlosen Apps?</span>
-        Es ist nicht immer derselbe Text. Die Guidance ändert sich – und fühlt sich dadurch näher an deinem echten Moment an.
-      </p>
+      <div class="content">
+        <div class="pill">Adaptiver Reset · echte Begleitung · personalisiertes Atmen</div>
+
+        <div class="goldLine"></div>
+
+        <p class="miniText">
+          Schön, dass du da bist. Hier musst du nichts „richtig“ machen.
+          <br><br>
+          Dieser Reset passt sich dir an – je nachdem, wie hoch dein <strong>Stress</strong> ist und wie viel <strong>Energie</strong> du gerade spürst.
+          Du bekommst eine klare, liebevolle Führung: zuerst <strong>runterfahren</strong>, dann <strong>sortieren</strong>, dann <strong>ein kleiner Schritt</strong>, der wirklich machbar ist.
+          <br><br>
+          <span class="muted">Was ist daran anders als bei vielen kostenlosen Apps?</span><br>
+          Es ist nicht immer derselbe Text. Die Guidance ändert sich – und fühlt sich dadurch näher an deinem echten Moment an.
+        </p>
+      </div>
     </div>
 
-    <div class="card" id="unlockBox">
+    <div class="sectionCard" id="unlockBox">
       <div class="pill">Zugang für Mitglieder</div>
       <div class="goldLine"></div>
 
@@ -718,16 +882,16 @@
       </div>
     </div>
 
-    <div class="card" id="premiumArea" style="display:none;">
-      <div class="row" style="justify-content:space-between;">
+    <div class="sectionCard" id="premiumArea" style="display:none;">
+      <div class="row spaceBetween">
         <div class="pill" id="statePill">Profil: —</div>
         <button id="logoutBtn" class="btnSoft" type="button">Logout</button>
       </div>
 
       <div class="goldLine"></div>
 
-      <h2 style="margin:0; font-size:16px; font-weight:950;">Dein Reset – genau jetzt</h2>
-      <p class="sub" style="margin-top:6px;">
+      <h2 class="sectionTitle" style="margin-bottom:6px;">Dein Reset – genau jetzt</h2>
+      <p class="sectionLead">
         Stell die Regler so ein, wie es <em>gerade</em> ist. Nicht wie es sein sollte – sondern wie es wirklich ist.
         Danach bekommst du einen Reset in 3 Schritten und eine Atemführung, die zu deinem Zustand passt.
       </p>
@@ -739,7 +903,7 @@
             <div class="val" id="stressVal">5/10</div>
           </div>
           <input id="stressM" type="range" min="1" max="10" value="5" />
-          <p class="muted" style="margin:8px 0 0; font-size:11.5px; line-height:1.45;">
+          <p class="muted" style="margin:8px 0 0; font-size:var(--fs-small);">
             Wenn Stress hoch ist, starten wir im Körper: erst beruhigen, dann klarer werden.
           </p>
         </div>
@@ -750,7 +914,7 @@
             <div class="val" id="energyVal">5/10</div>
           </div>
           <input id="energyM" type="range" min="1" max="10" value="5" />
-          <p class="muted" style="margin:8px 0 0; font-size:11.5px; line-height:1.45;">
+          <p class="muted" style="margin:8px 0 0; font-size:var(--fs-small);">
             Wenn Energie niedrig ist, geht es nicht um „mehr“. Es geht um das, was heute wirklich hilft.
           </p>
         </div>
@@ -767,9 +931,9 @@
 
       <div class="goldLine"></div>
 
-      <div class="pill" style="margin-bottom:9px;">Reset-Protokoll (3 Schritte)</div>
-      <h3 id="mTitle" style="margin:0 0 6px; font-size:15px; font-weight:950;">—</h3>
-      <p class="muted" id="mSummary" style="margin:0 0 10px; font-size:12px; line-height:1.5;">—</p>
+      <div class="pill" style="margin-bottom:10px;">Reset-Protokoll (3 Schritte)</div>
+      <h3 id="mTitle" class="sectionTitle" style="margin-bottom:6px;">—</h3>
+      <p class="sectionLead" id="mSummary" style="margin-bottom:10px;">—</p>
 
       <div class="protoGrid">
         <div class="protoBlock">
@@ -795,10 +959,11 @@
         <div class="breathTop">
           <div>
             <p class="breathTitle">Atemführung</p>
-            <div class="muted" style="margin-top:5px; font-size:10.8px;">
+            <div class="muted" style="margin-top:5px; font-size:var(--fs-small);">
               Wähle die Darstellung, die sich für dich am angenehmsten anfühlt: <strong>Linien</strong> oder <strong>Wolke</strong>.
             </div>
           </div>
+
           <div style="display:flex; gap:8px; align-items:baseline; flex-wrap:wrap; justify-content:flex-end;">
             <div class="breathState" id="breathState">Bereit</div>
             <div class="breathTimer" id="breathTimer">00:00</div>
@@ -822,11 +987,13 @@
             <div class="lineBar"><div class="lineFill" id="inFill"></div></div>
             <div class="lineSec" id="inSec">—</div>
           </div>
+
           <div class="lineRow">
             <div class="lineLabel">Ausatmen</div>
             <div class="lineBar"><div class="lineFill" id="outFill"></div></div>
             <div class="lineSec" id="outSec">—</div>
           </div>
+
           <div class="linesHint" id="linesHint">
             Folge der Leiste: Wenn „Einatmen“ läuft, atmest du ein. Wenn „Ausatmen“ läuft, lässt du die Luft wieder gehen.
           </div>
@@ -858,8 +1025,8 @@
         </div>
       </div>
 
-      <p class="muted" style="margin-top:12px; font-size:10.8px; line-height:1.45;">
-        © Panacea Regensburg • Dieses Tool unterstützt deine tägliche Selbstregulation und ersetzt keine medizinische/psychotherapeutische Behandlung.
+      <p class="muted" style="margin-top:12px; font-size:var(--fs-small); line-height:1.45;">
+        © Panacea Regensburg • Dieses Tool unterstützt deine tägliche Selbstregulation und ersetzt keine medizinische / psychotherapeutische Behandlung.
       </p>
     </div>
 
@@ -999,13 +1166,17 @@
     if(isMember()){
       status.textContent = "Freigeschaltet ✅";
       status.className = "statusOk";
-      unlockBox.style.display = "none";
+      unlockBox.style.display = "block";
       premiumArea.style.display = "block";
+      document.getElementById("codeInput").placeholder = "Bereich bereits freigeschaltet";
+      document.getElementById("unlockBtn").style.display = "none";
     } else {
       status.textContent = "Gesperrt";
       status.className = "statusLocked";
       unlockBox.style.display = "block";
       premiumArea.style.display = "none";
+      document.getElementById("codeInput").placeholder = "Passwort eingeben (am besten kopieren & einfügen)";
+      document.getElementById("unlockBtn").style.display = "inline-flex";
     }
   }
 
