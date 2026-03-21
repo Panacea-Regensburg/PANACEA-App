@@ -2,191 +2,273 @@
 <html lang="it">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Area Membri – Panacea</title>
 
   <style>
     :root{
       --bg1:#f6f1e6;
       --bg2:#efe7d7;
-      --card:rgba(255,255,255,0.88);
-      --card2:rgba(255,255,255,0.76);
-      --text:#1f1f1f;
-      --muted:#5c5c5c;
+      --card:#ffffffde;
+      --card2:#fffaf1;
       --gold:#c8a24a;
       --gold2:#e8d28a;
+      --gold3:#fff6d6;
+      --text:#2b2b2b;
+      --muted:#6b6b6b;
+      --soft:#8d7b57;
       --ink:#1a1a1a;
-      --shadow:0 14px 36px rgba(0,0,0,0.08);
-      --shadow2:0 8px 20px rgba(0,0,0,0.07);
+      --ok:#2e7d32;
+      --danger:#a14c3f;
+      --line:#eadfcb;
+      --shadow:0 14px 40px rgba(0,0,0,.10);
+      --shadow2:0 10px 26px rgba(0,0,0,.08);
       --radius:22px;
-      --radius2:16px;
+      --radius2:18px;
+
+      --fs-title: clamp(1.28rem, 1.04rem + 1vw, 1.55rem);
+      --fs-section: clamp(.98rem, .9rem + .34vw, 1.04rem);
+      --fs-body: clamp(.9rem, .84rem + .2vw, .96rem);
+      --fs-small: clamp(.78rem, .74rem + .18vw, .84rem);
+      --fs-button: clamp(.84rem, .8rem + .16vw, .92rem);
     }
 
     *{ box-sizing:border-box; }
-
     html{ scroll-behavior:smooth; }
 
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color:var(--text);
-      background: radial-gradient(1200px 800px at 20% 0%, var(--bg2), var(--bg1));
+      background: radial-gradient(1200px 800px at 30% 0%, var(--bg1), var(--bg2));
       min-height:100vh;
+      display:flex;
+      justify-content:center;
+      padding:14px 10px 24px;
     }
 
-    button,input{ font:inherit; }
-
-    .fixedTopbar{
-      position:fixed;
-      top:0;
-      left:0;
-      right:0;
-      z-index:9999;
-      padding:8px 10px;
-      background: rgba(255,255,255,0.58);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom:1px solid rgba(255,255,255,0.35);
+    .phone{
+      width:100%;
+      max-width:480px;
     }
 
-    .fixedTopbarInner{
-      max-width:520px;
-      margin:0 auto;
-      display:grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items:center;
-      gap:8px;
-    }
-
-    .navLeft,.navCenter,.navRight{
+    .topbar{
       display:flex;
       align-items:center;
-      min-width:0;
+      justify-content:space-between;
+      gap:8px;
+      margin-bottom:12px;
+      padding:8px 10px;
+      border-radius:18px;
+      background:rgba(255,255,255,.45);
+      backdrop-filter: blur(8px);
+      border:1px solid rgba(200,162,74,.14);
+      box-shadow:0 8px 18px rgba(0,0,0,.04);
+      overflow:hidden;
     }
 
-    .navLeft{ justify-content:flex-start; }
-    .navCenter{ justify-content:center; gap:8px; }
-    .navRight{ justify-content:flex-end; }
+    .topLeft,
+    .topRight{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      min-width:0;
+      flex:1 1 0;
+    }
 
-    .btn{
+    .topRight{
+      justify-content:flex-end;
+    }
+
+    .back{
       text-decoration:none;
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:8px;
-      padding:8px 12px;
+      gap:6px;
+      padding:9px 12px;
       border-radius:999px;
-      background: rgba(255,255,255,0.82);
-      color:var(--ink);
-      font-weight:800;
-      font-size:12px;
-      border:1px solid rgba(0,0,0,0.06);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.06);
-      cursor:pointer;
-      user-select:none;
+      background:linear-gradient(180deg, var(--card2), var(--card));
+      box-shadow:var(--shadow2);
+      color:var(--text);
+      border:1px solid rgba(200,162,74,.18);
       white-space:nowrap;
-      transition: transform .15s ease, box-shadow .15s ease;
+      font-weight:800;
+      font-size:var(--fs-button);
+      line-height:1;
+      flex:0 0 auto;
     }
 
-    .btn:hover{
-      transform: translateY(-1px);
-      box-shadow:0 9px 18px rgba(0,0,0,0.08);
+    .langToggle{
+      display:flex;
+      gap:6px;
+      align-items:center;
+      min-width:0;
+      flex:0 1 auto;
     }
-
-    .btn:active{ transform: translateY(1px); }
 
     .langBtn{
-      padding:8px 11px;
-      border-radius:999px;
-      font-weight:900;
-      font-size:12px;
-      background: rgba(255,255,255,0.72);
-      border:1px solid rgba(0,0,0,0.08);
+      appearance:none;
+      border:none;
       cursor:pointer;
+      padding:9px 10px;
+      border-radius:999px;
+      font-weight:850;
+      letter-spacing:.1px;
+      background:rgba(255,255,255,.72);
+      border:1px solid rgba(200,162,74,.16);
+      box-shadow:0 8px 18px rgba(0,0,0,.05);
+      color:var(--text);
       white-space:nowrap;
-      transition: transform .15s ease, box-shadow .15s ease;
-      color:var(--ink);
-    }
-
-    .langBtn:hover{
-      transform: translateY(-1px);
-      box-shadow:0 8px 16px rgba(0,0,0,0.06);
+      font-size:var(--fs-button);
+      line-height:1;
+      min-width:0;
     }
 
     .langBtn.active{
-      background: rgba(200,162,74,0.18);
-      border-color: rgba(200,162,74,0.45);
-      box-shadow: 0 8px 18px rgba(200,162,74,0.10);
+      background:radial-gradient(circle at 20% 10%, var(--gold3), var(--gold2));
+      border:1px solid rgba(200,162,74,.34);
+      color:#3a2c10;
+      text-shadow:0 0 10px rgba(200,162,74,.18);
     }
 
-    .pageTitle{
-      font-weight:900;
-      letter-spacing:.1px;
-      font-size:12px;
-      padding:8px 10px;
-      border-radius:999px;
-      background: rgba(255,255,255,0.62);
-      border:1px solid rgba(0,0,0,0.06);
-      max-width:100%;
+    .brand{
+      min-width:0;
+      text-align:right;
+      line-height:1.05;
+      white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
-      white-space:nowrap;
     }
 
-    .wrap{
-      max-width:520px;
-      margin:0 auto;
-      padding:68px 10px 22px;
+    .brand .t1{
+      font-size:11px;
+      color:var(--muted);
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-weight:800;
+    }
+
+    .brand .t2{
+      font-size:15px;
+      font-weight:900;
+      letter-spacing:.1px;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brand .glow{
+      color:var(--gold);
+      text-shadow:0 0 10px rgba(200,162,74,.22);
+      font-weight:900;
     }
 
     .card{
-      background: var(--card);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding:14px;
-      border:1px solid rgba(200,162,74,0.14);
+      background:linear-gradient(180deg, var(--card2), var(--card));
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      border:1px solid rgba(200,162,74,.18);
+      overflow:hidden;
+      margin-bottom:12px;
     }
 
-    .card + .card{ margin-top:12px; }
+    .hero{
+      padding:18px 16px 14px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
 
-    .brandTitle{
-      font-family: ui-serif, Georgia, "Times New Roman", serif;
-      margin:0;
-      font-size:20px;
+    .badge{
+      width:60px;
+      height:60px;
+      border-radius:18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      font-size:15px;
+      color:#3a2c10;
+      background:radial-gradient(circle at 30% 20%, var(--gold3), var(--gold2));
+      border:1px solid rgba(200,162,74,.32);
+      box-shadow:0 0 16px rgba(200,162,74,.20);
+      flex:0 0 auto;
+    }
+
+    .hero h1{
+      margin:0 0 4px;
+      font-size:var(--fs-title);
+      line-height:1.15;
+      font-weight:900;
       letter-spacing:.1px;
-      line-height:1.05;
+      color:#2a2113;
     }
 
-    .sub{
-      margin:7px 0 0;
-      color:var(--muted);
-      line-height:1.5;
-      font-size:12.5px;
+    .hero p{
+      margin:0;
+      color:rgba(43,43,43,.76);
+      font-size:var(--fs-body);
+      line-height:1.55;
+      font-weight:650;
     }
 
-    .goldLine{
-      height:1px;
-      width:100%;
-      margin:10px 0;
-      background: linear-gradient(90deg, transparent, rgba(200,162,74,.55), transparent);
+    .content{
+      padding:16px;
     }
 
     .pill{
       display:inline-flex;
       align-items:center;
-      gap:8px;
-      padding:5px 9px;
+      justify-content:center;
+      padding:7px 11px;
       border-radius:999px;
-      font-size:10px;
-      font-weight:900;
-      background: rgba(200,162,74,0.16);
-      border:1px solid rgba(200,162,74,0.28);
-      color:#2a2316;
+      background:rgba(200,162,74,.12);
+      border:1px solid rgba(200,162,74,.26);
+      color:#6e5628;
+      font-size:var(--fs-small);
+      font-weight:850;
+      line-height:1.1;
+      letter-spacing:.03em;
     }
 
-    .muted{ color:var(--muted); }
+    .sectionCard{
+      background:rgba(255,255,255,.7);
+      border-radius:18px;
+      border:1px solid rgba(200,162,74,.16);
+      box-shadow:0 10px 22px rgba(0,0,0,.05);
+      padding:14px;
+      margin-bottom:12px;
+    }
+
+    .sectionTitle{
+      margin:0 0 6px;
+      font-size:var(--fs-section);
+      font-weight:900;
+      color:#3a2c10;
+      line-height:1.2;
+    }
+
+    .sectionLead,
+    .sub,
+    .muted{
+      color:rgba(43,43,43,.76);
+      font-size:var(--fs-body);
+      line-height:1.55;
+      font-weight:650;
+    }
+
+    .miniText{
+      color:rgba(43,43,43,.82);
+      font-size:var(--fs-body);
+      line-height:1.58;
+      font-weight:650;
+    }
+
+    .goldLine{
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(200,162,74,.35), transparent);
+      margin:14px 0;
+    }
 
     .row{
       display:flex;
@@ -195,87 +277,120 @@
       align-items:center;
     }
 
+    .spaceBetween{
+      justify-content:space-between;
+    }
+
     .input{
       flex:1 1 220px;
-      padding:10px 12px;
-      border-radius:12px;
-      border:1px solid rgba(0,0,0,0.12);
-      width:100%;
-      max-width:100%;
-      font-size:14px;
+      padding:12px 13px;
+      border-radius:14px;
+      border:1px solid rgba(200,162,74,.16);
       background:#fff;
+      color:var(--text);
+      font:inherit;
       outline:none;
-      color:var(--ink);
+      box-shadow:0 8px 18px rgba(0,0,0,.03);
     }
 
     .input:focus{
-      border-color: rgba(200,162,74,0.55);
-      box-shadow: 0 0 0 3px rgba(200,162,74,0.16);
+      border-color:rgba(200,162,74,.45);
+      box-shadow:0 0 0 3px rgba(200,162,74,.12);
+    }
+
+    .btn,
+    .btnGold,
+    .btnSoft{
+      appearance:none;
+      border:none;
+      cursor:pointer;
+      padding:11px 13px;
+      border-radius:14px;
+      font-weight:850;
+      letter-spacing:.08px;
+      box-shadow:var(--shadow2);
+      border:1px solid rgba(200,162,74,.18);
+      background:linear-gradient(180deg, #ffffff, #f7f2e6);
+      color:var(--text);
+      font-size:var(--fs-button);
+      line-height:1.1;
+      text-align:center;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      transition:transform .15s ease;
+    }
+
+    .btn:hover,
+    .btnGold:hover,
+    .btnSoft:hover{
+      transform:translateY(-1px);
     }
 
     .btnGold{
-      border:0;
-      font-weight:900;
-      padding:10px 13px;
-      border-radius:12px;
-      cursor:pointer;
-      color:#1f1a10;
-      background: linear-gradient(180deg, rgba(232,210,138,.95), rgba(200,162,74,.92));
-      box-shadow: 0 10px 24px rgba(200,162,74,.16);
-      white-space:nowrap;
-      font-size:12px;
-      transition: transform .15s ease, box-shadow .15s ease;
-    }
-
-    .btnGold:hover{
-      transform: translateY(-1px);
-      box-shadow:0 12px 28px rgba(200,162,74,.22);
+      background:radial-gradient(circle at 20% 10%, var(--gold3), var(--gold2));
+      border:1px solid rgba(200,162,74,.34);
+      color:#3a2c10;
+      text-shadow:0 0 10px rgba(200,162,74,.18);
     }
 
     .btnSoft{
-      padding:10px 13px;
-      border-radius:12px;
-      border:1px solid rgba(0,0,0,0.10);
-      background: rgba(255,255,255,0.85);
+      background:linear-gradient(180deg, rgba(255,255,255,.95), rgba(247,242,230,.9));
+    }
+
+    .statusLocked{
+      color:var(--danger);
       font-weight:900;
-      cursor:pointer;
-      color:#1f1f1f;
-      font-size:12px;
-      transition: transform .15s ease, box-shadow .15s ease;
+      font-size:var(--fs-small);
     }
 
-    .btnSoft:hover{
-      transform: translateY(-1px);
-      box-shadow:0 10px 22px rgba(0,0,0,0.06);
+    .statusOk{
+      color:var(--ok);
+      font-weight:900;
+      font-size:var(--fs-small);
     }
-
-    .statusLocked{ color:#8a1f1f; font-weight:900; font-size:12px; }
-    .statusOk{ color:#116b2e; font-weight:900; font-size:12px; }
 
     .note{
-      margin-top:9px;
-      padding:10px 12px;
-      border-radius:12px;
-      background: rgba(255,255,255,0.62);
-      border:1px solid rgba(0,0,0,0.06);
-      font-size:11.5px;
-      line-height:1.45;
-      color:rgba(0,0,0,0.72);
+      margin-top:10px;
+      padding:12px;
+      border-radius:14px;
+      border:1px solid rgba(200,162,74,.18);
+      background:linear-gradient(180deg, rgba(255,248,230,.96), rgba(255,255,255,.82));
+      color:#6b5530;
+      font-size:var(--fs-small);
+      line-height:1.55;
+      font-weight:700;
     }
-
-    .grid2{
+        .grid2{
       display:grid;
-      grid-template-columns: 1fr;
+      grid-template-columns:1fr;
       gap:10px;
       margin-top:10px;
     }
 
-    .miniCard{
-      background: var(--card2);
-      border-radius: var(--radius2);
-      padding:11px;
-      border:1px solid rgba(0,0,0,0.06);
-      box-shadow: var(--shadow2);
+    .linkGrid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .miniCard,
+    .protoBlock,
+    .goal,
+    .breathWrap{
+      border-radius:18px;
+      border:1px solid rgba(200,162,74,.18);
+      background:rgba(255,255,255,.76);
+      box-shadow:0 10px 22px rgba(0,0,0,.06);
+      overflow:hidden;
+    }
+
+    .miniCard,
+    .protoBlock,
+    .goal{
+      padding:12px;
     }
 
     .labelRow{
@@ -283,24 +398,25 @@
       justify-content:space-between;
       align-items:baseline;
       gap:10px;
-      margin-bottom:6px;
+      margin-bottom:8px;
     }
 
     .labelRow .lbl{
       font-weight:900;
       letter-spacing:.1px;
-      font-size:12px;
+      font-size:var(--fs-body);
+      color:#3a2c10;
     }
 
     .labelRow .val{
       font-weight:900;
-      color: rgba(0,0,0,0.70);
-      font-size:12px;
+      color:rgba(43,43,43,.72);
+      font-size:var(--fs-small);
     }
 
     input[type="range"]{
       width:100%;
-      accent-color: var(--gold);
+      accent-color:var(--gold);
     }
 
     .actionsRow{
@@ -309,31 +425,31 @@
       flex-wrap:wrap;
       align-items:center;
       justify-content:space-between;
-      margin-top:10px;
+      margin-top:12px;
     }
 
     .toggle{
       display:inline-flex;
       align-items:center;
       gap:9px;
-      padding:8px 10px;
-      border-radius:12px;
-      border:1px solid rgba(0,0,0,0.10);
-      background: rgba(255,255,255,0.78);
-      font-weight:900;
-      font-size:12px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(200,162,74,.16);
+      background:rgba(255,255,255,.78);
+      font-weight:850;
+      font-size:var(--fs-small);
       cursor:pointer;
       user-select:none;
+      box-shadow:0 8px 18px rgba(0,0,0,.04);
     }
 
     .switch{
       width:40px;
       height:22px;
       border-radius:999px;
-      background: rgba(0,0,0,0.10);
+      background:rgba(0,0,0,.10);
       position:relative;
-      border:1px solid rgba(0,0,0,0.10);
-      transition: background .18s ease, border-color .18s ease;
+      border:1px solid rgba(0,0,0,.08);
     }
 
     .knob{
@@ -344,134 +460,105 @@
       top:1px;
       left:1px;
       background:#fff;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.18);
-      transition: left .18s ease;
+      box-shadow:0 4px 12px rgba(0,0,0,.18);
+      transition:left .18s ease;
     }
 
     .switch.on{
-      background: rgba(200,162,74,0.30);
-      border-color: rgba(200,162,74,0.40);
+      background:rgba(200,162,74,.30);
+      border-color:rgba(200,162,74,.40);
     }
 
-    .switch.on .knob{ left:20px; }
+    .switch.on .knob{
+      left:20px;
+    }
 
     .protoGrid{
       display:grid;
-      grid-template-columns: 1fr;
-      gap:9px;
+      gap:10px;
       margin-top:10px;
     }
 
-    .protoBlock{
-      background: rgba(255,255,255,0.78);
-      border-radius:14px;
-      padding:11px;
-      border:1px solid rgba(0,0,0,0.06);
-      box-shadow: var(--shadow2);
-    }
-
-    .protoBlock h3{
+    .protoBlock h3,
+    .goal h3,
+    .breathTitle{
       margin:0 0 6px;
-      font-size:12.5px;
+      font-size:var(--fs-body);
       font-weight:900;
-      letter-spacing:.1px;
+      color:#3a2c10;
+      line-height:1.2;
     }
 
-    .protoBlock p{
-      margin:0;
-      line-height:1.5;
-      color: rgba(0,0,0,0.78);
-      font-size:12px;
-    }
-
-    .goal{
-      margin-top:10px;
-      padding:11px;
-      border-radius:14px;
-      background: rgba(255,255,255,0.78);
-      border:1px solid rgba(200,162,74,0.18);
-      box-shadow: var(--shadow2);
-    }
-
-    .goal h3{
-      margin:0 0 6px;
-      font-size:12.5px;
-      font-weight:900;
-    }
-
+    .protoBlock p,
     .goal p{
       margin:0;
-      color: rgba(0,0,0,0.78);
-      line-height:1.5;
-      font-size:12px;
+      color:rgba(43,43,43,.82);
+      line-height:1.58;
+      font-size:var(--fs-body);
+      font-weight:650;
     }
 
     .breathWrap{
+      padding:12px;
       margin-top:10px;
-      background: rgba(255,255,255,0.78);
-      border-radius:14px;
-      border:1px solid rgba(0,0,0,0.06);
-      box-shadow: var(--shadow2);
-      padding:11px;
+      background:linear-gradient(180deg, rgba(255,246,214,.70), rgba(255,255,255,.85));
+      box-shadow:0 0 16px rgba(200,162,74,.08);
     }
 
     .breathTop{
       display:flex;
       justify-content:space-between;
-      align-items:center;
-      gap:9px;
+      align-items:flex-start;
+      gap:10px;
       flex-wrap:wrap;
-    }
-
-    .breathTitle{
-      font-weight:900;
-      font-size:12.5px;
-      margin:0;
     }
 
     .breathState{
       font-weight:900;
-      font-size:14px;
-      letter-spacing:.1px;
+      font-size:var(--fs-body);
+      color:#3a2c10;
+      text-align:right;
     }
 
     .breathTimer{
       font-weight:900;
-      font-size:12px;
-      color: rgba(0,0,0,0.72);
+      font-size:var(--fs-small);
+      color:rgba(43,43,43,.72);
+      text-align:right;
     }
 
     .breathPlan{
-      margin-top:8px;
-      font-size:11px;
-      line-height:1.45;
-      color: rgba(0,0,0,0.70);
-      padding:8px 10px;
-      border-radius:12px;
-      background: rgba(255,255,255,0.62);
-      border:1px solid rgba(0,0,0,0.06);
+      margin-top:10px;
+      font-size:var(--fs-small);
+      line-height:1.55;
+      color:#6b5530;
+      padding:10px 12px;
+      border-radius:14px;
+      background:rgba(255,255,255,.82);
+      border:1px solid rgba(200,162,74,.18);
+      font-weight:750;
     }
 
     .progress{
-      margin-top:8px;
+      margin-top:10px;
       height:8px;
       border-radius:999px;
-      background: rgba(0,0,0,0.06);
+      background:rgba(0,0,0,.06);
       overflow:hidden;
-      border:1px solid rgba(0,0,0,0.06);
+      border:1px solid rgba(0,0,0,.06);
     }
 
     .progress > div{
       height:100%;
       width:0%;
-      background: linear-gradient(90deg, rgba(200,162,74,.65), rgba(232,210,138,.95));
-      box-shadow: 0 0 18px rgba(200,162,74,.18);
+      background:linear-gradient(90deg, rgba(200,162,74,.65), rgba(232,210,138,.95));
+      box-shadow:0 0 18px rgba(200,162,74,.18);
       border-radius:999px;
-      transition: width .15s linear;
+      transition:width .15s linear;
     }
 
     .modeRow{
-      margin-top:9px;
+      margin-top:10px;
       display:flex;
       gap:8px;
       flex-wrap:wrap;
@@ -487,41 +574,36 @@
     }
 
     .modeBtn{
-      padding:8px 10px;
-      border-radius:12px;
-      border:1px solid rgba(0,0,0,0.10);
-      background: rgba(255,255,255,0.80);
-      font-weight:900;
+      padding:9px 11px;
+      border-radius:14px;
+      border:1px solid rgba(200,162,74,.16);
+      background:rgba(255,255,255,.82);
+      font-weight:850;
       cursor:pointer;
       user-select:none;
-      font-size:11px;
-      color:var(--ink);
-      transition: transform .15s ease, box-shadow .15s ease;
-    }
-
-    .modeBtn:hover{
-      transform: translateY(-1px);
-      box-shadow:0 8px 18px rgba(0,0,0,0.06);
+      font-size:var(--fs-small);
+      box-shadow:0 8px 18px rgba(0,0,0,.04);
     }
 
     .modeBtn.active{
-      background: rgba(200,162,74,0.18);
-      border-color: rgba(200,162,74,0.35);
-      box-shadow: 0 8px 18px rgba(200,162,74,0.08);
+      background:radial-gradient(circle at 20% 10%, var(--gold3), var(--gold2));
+      border-color:rgba(200,162,74,.34);
+      box-shadow:0 8px 18px rgba(200,162,74,.08);
+      color:#3a2c10;
     }
 
     .linesWrap{
-      margin-top:9px;
-      padding:10px;
-      border-radius:14px;
-      background: rgba(255,255,255,0.62);
-      border:1px solid rgba(0,0,0,0.06);
+      margin-top:10px;
+      padding:12px;
+      border-radius:16px;
+      background:rgba(255,255,255,.82);
+      border:1px solid rgba(200,162,74,.16);
       display:none;
     }
 
     .lineRow{
       display:grid;
-      grid-template-columns: 70px 1fr 34px;
+      grid-template-columns:70px 1fr 34px;
       gap:8px;
       align-items:center;
       margin:8px 0;
@@ -529,15 +611,15 @@
 
     .lineLabel{
       font-weight:900;
-      color: rgba(0,0,0,0.78);
-      font-size:11px;
+      color:rgba(43,43,43,.82);
+      font-size:var(--fs-small);
     }
 
     .lineBar{
       height:9px;
       border-radius:999px;
-      background: rgba(0,0,0,0.06);
-      border:1px solid rgba(0,0,0,0.06);
+      background:rgba(0,0,0,.06);
+      border:1px solid rgba(0,0,0,.06);
       overflow:hidden;
     }
 
@@ -545,27 +627,27 @@
       height:100%;
       width:0%;
       border-radius:999px;
-      background: linear-gradient(90deg, rgba(232,210,138,0.95), rgba(200,162,74,0.65));
-      box-shadow: 0 0 14px rgba(200,162,74,0.14);
-      transition: width .12s linear;
+      background:linear-gradient(90deg, rgba(232,210,138,.95), rgba(200,162,74,.65));
+      box-shadow:0 0 14px rgba(200,162,74,.14);
+      transition:width .12s linear;
     }
 
     .lineSec{
       font-weight:900;
-      color: rgba(0,0,0,0.72);
+      color:rgba(43,43,43,.72);
       text-align:right;
-      font-size:11px;
+      font-size:var(--fs-small);
     }
 
     .linesHint{
       margin-top:7px;
-      font-size:10.5px;
-      color: rgba(0,0,0,0.66);
+      font-size:var(--fs-small);
+      color:rgba(43,43,43,.68);
       line-height:1.45;
+      font-weight:700;
     }
-
-    .cloudWrap{
-      margin-top:9px;
+        .cloudWrap{
+      margin-top:10px;
       display:none;
       gap:8px;
     }
@@ -575,26 +657,26 @@
       height:160px;
       margin:0 auto;
       position:relative;
-      border-radius: 44% 56% 52% 48% / 48% 44% 56% 52%;
+      border-radius:44% 56% 52% 48% / 48% 44% 56% 52%;
       background:
-        radial-gradient(circle at 35% 30%, rgba(255,255,255,0.95), rgba(255,255,255,0.72)),
-        radial-gradient(220px 220px at 50% 65%, rgba(232,210,138,0.16), rgba(255,255,255,0));
-      border:1px solid rgba(200,162,74,0.16);
-      box-shadow: 0 14px 36px rgba(0,0,0,0.08);
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,.95), rgba(255,255,255,.72)),
+        radial-gradient(220px 220px at 50% 65%, rgba(232,210,138,.16), rgba(255,255,255,0));
+      border:1px solid rgba(200,162,74,.16);
+      box-shadow:0 14px 36px rgba(0,0,0,.08);
       overflow:hidden;
     }
 
     .cloudSheen{
       position:absolute;
       inset:8px;
-      border-radius: 44% 56% 52% 48% / 48% 44% 56% 52%;
-      background: conic-gradient(
+      border-radius:44% 56% 52% 48% / 48% 44% 56% 52%;
+      background:conic-gradient(
         from 180deg,
-        rgba(200,162,74,0.10),
-        rgba(232,210,138,0.55),
-        rgba(200,162,74,0.10),
+        rgba(200,162,74,.10),
+        rgba(232,210,138,.55),
+        rgba(200,162,74,.10),
         rgba(255,255,255,0),
-        rgba(200,162,74,0.12)
+        rgba(200,162,74,.12)
       );
       opacity:.95;
       animation:sheen 10s linear infinite;
@@ -604,7 +686,7 @@
     }
 
     @keyframes sheen{
-      to { transform: rotate(360deg); }
+      to { transform:rotate(360deg); }
     }
 
     .cloudFill{
@@ -613,10 +695,10 @@
       right:0;
       bottom:0;
       height:0%;
-      background: linear-gradient(180deg, rgba(232,210,138,0.82), rgba(200,162,74,0.58));
-      box-shadow: 0 -14px 32px rgba(200,162,74,0.14);
-      transition: height .18s linear;
-      filter: saturate(1.03);
+      background:linear-gradient(180deg, rgba(232,210,138,.82), rgba(200,162,74,.58));
+      box-shadow:0 -14px 32px rgba(200,162,74,.14);
+      transition:height .18s linear;
+      filter:saturate(1.03);
     }
 
     .cloudText{
@@ -641,30 +723,32 @@
 
     .cloudPhase{
       font-weight:900;
-      font-size:13px;
+      font-size:var(--fs-body);
+      color:#3a2c10;
     }
 
     .cloudCount{
       font-weight:900;
-      font-size:20px;
+      font-size:1.3rem;
       letter-spacing:.1px;
+      color:#2b220f;
     }
 
     .cloudHint{
       font-weight:800;
-      font-size:10px;
-      color: rgba(0,0,0,0.62);
+      font-size:var(--fs-small);
+      color:rgba(43,43,43,.62);
       line-height:1.35;
     }
 
     .cueLine{
-      margin-top:7px;
+      margin-top:8px;
       display:flex;
       justify-content:space-between;
       gap:8px;
       flex-wrap:wrap;
-      font-size:10px;
-      color: rgba(0,0,0,0.62);
+      font-size:var(--fs-small);
+      color:rgba(43,43,43,.62);
       font-weight:800;
       padding:0 2px;
     }
@@ -673,86 +757,120 @@
       display:flex;
       gap:8px;
       flex-wrap:wrap;
-      margin-top:9px;
+      margin-top:10px;
       align-items:center;
       justify-content:center;
     }
 
-    @media (max-width:520px){
-      .fixedTopbarInner{ max-width:100%; }
-      .wrap{ padding:66px 8px 18px; }
-      .card{ padding:12px; }
-      .brandTitle{ font-size:18px; }
-      .lineRow{ grid-template-columns: 62px 1fr 30px; }
+    .hidden{
+      display:none !important;
+    }
+
+    @media (max-width:430px){
+      body{ padding:10px 8px 20px; }
+      .topbar{ gap:6px; padding:8px; }
+      .topLeft, .topRight{ gap:6px; }
+      .back{ padding:8px 10px; }
+      .langBtn{ padding:8px 9px; }
+      .brand .t2{ font-size:14px; }
+      .hero{ align-items:flex-start; padding:16px 14px 12px; }
+      .content{ padding:14px; }
+      .linkGrid{ grid-template-columns:1fr; }
+    }
+
+    @media (max-width:360px){
+      .brand .t1{ display:none; }
+      .brand .t2{ font-size:13px; }
+      .back{ padding:8px 9px; }
+      .langBtn{ padding:8px 8px; font-size:.8rem; }
+      .lineRow{ grid-template-columns:62px 1fr 30px; }
     }
   </style>
 </head>
 
 <body>
+  <div class="phone">
 
-  <div class="fixedTopbar">
-    <div class="fixedTopbarInner">
-      <div class="navLeft">
-        <a class="btn" href="./indexIT.html">← Home</a>
+    <div class="topbar">
+      <div class="topLeft">
+        <a class="back" href="./indexIT.html">← Home</a>
+
+        <div class="langToggle" aria-label="Selezione lingua">
+          <button class="langBtn active" id="langIT" type="button">IT</button>
+          <button class="langBtn" id="langDE" type="button">DE</button>
+        </div>
       </div>
 
-      <div class="navCenter">
-        <button class="langBtn active" id="langIT" type="button">IT</button>
-        <button class="langBtn" id="langDE" type="button">DE</button>
-      </div>
-
-      <div class="navRight">
-        <div class="pageTitle" id="pageTitleBadge">Membri · Base</div>
+      <div class="topRight">
+        <div class="brand">
+          <div class="t1">Panacea</div>
+          <div class="t2"><span class="glow" id="pageTitleBadge">Membri · Base</span></div>
+        </div>
       </div>
     </div>
-  </div>
-
-  <div class="wrap">
 
     <div class="card">
-      <div class="pill">Reset adattivo • guida reale • respiro personalizzato</div>
-      <div class="goldLine"></div>
+      <div class="hero">
+        <div class="badge">MB</div>
+        <div>
+          <h1>Area Membri</h1>
+          <p>Qui trovi due accessi protetti: il tuo Premium Reset e la tua area corsi con contenuti digitali, materiali e percorsi di accompagnamento.</p>
+        </div>
+      </div>
 
-      <h1 class="brandTitle">Area Membri</h1>
-      <p class="sub">
-        È bello averti qui. In questo spazio non devi fare nulla “nel modo giusto”.
-        <br><br>
-        Questo reset si adatta a te: a seconda di quanto è alto il tuo <strong>stress</strong> e di quanta <strong>energia</strong> senti in questo momento.
-        Ricevi una guida chiara e accogliente: prima <strong>calmare</strong>, poi <strong>mettere ordine</strong>, poi fare <strong>un piccolo passo</strong> davvero possibile.
-        <br><br>
-        <span class="muted">In cosa è diverso da molte app gratuite?</span>
-        Non è sempre lo stesso testo. La guida cambia in base al momento che stai vivendo — e per questo può risultare più vicina, più concreta, più vera.
-      </p>
+      <div class="content">
+        <div class="pill">2 accessi protetti · Premium Reset · Corsi & materiali</div>
+
+        <div class="goldLine"></div>
+
+        <p class="miniText">
+          È bello averti qui.
+          <br><br>
+          In questa area puoi sbloccare il tuo <strong>Premium Reset</strong> oppure il tuo <strong>accesso corsi</strong>.
+          In base alla password che hai ricevuto, si aprirà automaticamente la sezione corretta.
+          <br><br>
+          <span class="muted">Così l’accesso rimane chiaro, personale e ben protetto.</span>
+        </p>
+      </div>
     </div>
 
-    <div class="card" id="unlockBox">
-      <div class="pill">Accesso per membri</div>
+    <div class="sectionCard" id="unlockBox">
+      <div class="pill">Accesso membri</div>
       <div class="goldLine"></div>
 
+      <p class="miniText" style="margin:0 0 10px;">
+        Inserisci qui la tua password personale.
+        <br>
+        <strong>Password Premium</strong> = Premium Reset
+        <br>
+        <strong>Password Corsi</strong> = materiali e contenuti del corso
+      </p>
+
       <div class="row">
-        <input id="codeInput" class="input" placeholder="Inserisci la password (meglio copiare e incollare)" autocomplete="off" spellcheck="false" />
+        <input id="codeInput" class="input" placeholder="Inserisci la password (meglio copiare e incollare)" autocomplete="off" />
         <button id="unlockBtn" class="btnGold" type="button">Sblocca</button>
         <span id="status" class="statusLocked">Bloccato</span>
       </div>
 
       <div class="note" id="targetNote">
-        Ricevi la tua password <strong>automaticamente</strong> dopo l’acquisto.
-        <br>Nota: l’accesso è personale. Se una password viene condivisa pubblicamente, verrà sostituita per proteggere l’area membri.
+        Riceverai automaticamente la password dopo l’acquisto.
+        <br>
+        In base al tuo accesso si aprirà il <strong>Premium Reset</strong> oppure la tua <strong>area corsi</strong>.
       </div>
     </div>
 
-    <div class="card" id="premiumArea" style="display:none;">
-      <div class="row" style="justify-content:space-between;">
-        <div class="pill" id="statePill">Profilo: —</div>
+    <div class="sectionCard" id="premiumPanel">
+      <div class="row spaceBetween">
+        <div class="pill" id="statePill">Profilo: non ancora generato</div>
         <button id="logoutBtn" class="btnSoft" type="button">Logout</button>
       </div>
 
       <div class="goldLine"></div>
 
-      <h2 style="margin:0; font-size:16px; font-weight:950;">Il tuo reset — proprio adesso</h2>
-      <p class="sub" style="margin-top:6px;">
-        Regola i cursori in base a come ti senti <em>ora</em>. Non come “dovresti” stare, ma come stai davvero.
-        Poi riceverai un reset in 3 passaggi e una guida respiratoria adatta al tuo stato.
+      <h2 class="sectionTitle">Premium Reset</h2>
+      <p class="sectionLead">
+        Qui ricevi un reset più personalizzato in base al tuo livello attuale di stress ed energia.
+        Il tono è intenzionalmente calmo, concreto e realistico.
       </p>
 
       <div class="grid2">
@@ -762,9 +880,6 @@
             <div class="val" id="stressVal">5/10</div>
           </div>
           <input id="stressM" type="range" min="1" max="10" value="5" />
-          <p class="muted" style="margin:8px 0 0; font-size:11.5px; line-height:1.45;">
-            Quando lo stress è alto, iniziamo dal corpo: prima calma, poi chiarezza.
-          </p>
         </div>
 
         <div class="miniCard">
@@ -773,71 +888,78 @@
             <div class="val" id="energyVal">5/10</div>
           </div>
           <input id="energyM" type="range" min="1" max="10" value="5" />
-          <p class="muted" style="margin:8px 0 0; font-size:11.5px; line-height:1.45;">
-            Quando l’energia è bassa, non si tratta di fare “di più”. Si tratta di trovare ciò che oggi può davvero aiutarti.
-          </p>
         </div>
       </div>
 
       <div class="actionsRow">
-        <button id="genM" class="btnGold" type="button">Crea il mio reset</button>
+        <button id="genM" class="btnGold" type="button">Genera Premium Reset</button>
 
-        <div class="toggle" id="soundToggle" title="Segnale sonoro delicato (opzionale)">
+        <div class="toggle" id="soundToggle" role="button" tabindex="0" aria-label="Suono on off">
+          <div class="switch" id="soundSwitch"><div class="knob"></div></div>
           <span>Suono</span>
-          <span class="switch" id="soundSwitch"><span class="knob"></span></span>
         </div>
       </div>
 
-      <div class="goldLine"></div>
-
-      <div class="pill" style="margin-bottom:9px;">Protocollo reset (3 passaggi)</div>
-      <h3 id="mTitle" style="margin:0 0 6px; font-size:15px; font-weight:950;">—</h3>
-      <p class="muted" id="mSummary" style="margin:0 0 10px; font-size:12px; line-height:1.5;">—</p>
-
-      <div class="protoGrid">
+      <div class="protoGrid" style="margin-top:14px;">
         <div class="protoBlock">
-          <h3>1) Tornare prima nel corpo</h3>
-          <p id="mText1">—</p>
+          <h3 id="mTitle">Il tuo reset apparirà qui</h3>
+          <p id="mSummary">Dopo la generazione vedrai qui un breve orientamento personalizzato.</p>
         </div>
+
         <div class="protoBlock">
-          <h3>2) Mettere ordine nei pensieri</h3>
-          <p id="mText2">—</p>
+          <h3>Fase 1 · Regolazione</h3>
+          <p id="mText1">Qui apparirà il primo impulso.</p>
         </div>
+
         <div class="protoBlock">
-          <h3>3) Un piccolo passo adatto a oggi</h3>
-          <p id="mText3">—</p>
+          <h3>Fase 2 · Chiarezza</h3>
+          <p id="mText2">Qui apparirà il secondo impulso.</p>
+        </div>
+
+        <div class="protoBlock">
+          <h3>Fase 3 · Piccolo passo</h3>
+          <p id="mText3">Qui apparirà il terzo impulso.</p>
+        </div>
+
+        <div class="goal">
+          <h3>Micro-obiettivo per adesso</h3>
+          <p id="goalText">Qui apparirà un mini-obiettivo concreto.</p>
         </div>
       </div>
+    </div>
+        <div class="sectionCard" id="premiumBreathPanel">
+      <div class="row spaceBetween">
+        <div class="pill">Respirazione guidata</div>
+        <div class="pill">Modalità: <span id="modePill" style="margin-left:6px;">Linee</span></div>
+      </div>
 
-      <div class="goal">
-        <h3>Obiettivo per i prossimi 10 minuti</h3>
-        <p id="goalText">—</p>
+      <div class="modeRow">
+        <div class="modeBtns">
+          <button class="modeBtn active" id="modeLinesBtn" type="button">Linee</button>
+          <button class="modeBtn" id="modeCloudBtn" type="button">Nuvola</button>
+        </div>
       </div>
 
       <div class="breathWrap">
         <div class="breathTop">
           <div>
-            <p class="breathTitle">Guida respiratoria</p>
-            <div class="muted" style="margin-top:5px; font-size:10.8px;">
-              Scegli la visualizzazione che per te è più piacevole: <strong>Linee</strong> oppure <strong>Nuvola</strong>.
-            </div>
+            <div class="breathTitle">Respiro del momento</div>
+            <div class="breathPlan" id="breathPlan">Piano: inspirazione 4s · espirazione 6s · durata 3 min</div>
           </div>
 
-          <div style="display:flex; gap:8px; align-items:baseline; flex-wrap:wrap; justify-content:flex-end;">
+          <div>
             <div class="breathState" id="breathState">Pronto</div>
-            <div class="breathTimer" id="breathTimer">00:00</div>
+            <div class="breathTimer" id="breathTimer">03:00</div>
           </div>
         </div>
 
-        <div class="breathPlan" id="breathPlan">—</div>
-        <div class="progress"><div id="progressBar"></div></div>
+        <div class="progress">
+          <div id="progressBar"></div>
+        </div>
 
-        <div class="modeRow">
-          <div class="modeBtns">
-            <button class="modeBtn active" id="modeLinesBtn" type="button">Guida: Linee</button>
-            <button class="modeBtn" id="modeCloudBtn" type="button">Guida: Nuvola</button>
-          </div>
-          <div class="pill" id="modePill">Linee</div>
+        <div class="cueLine">
+          <span id="cueLeft">Espirazione lunga = più calma</span>
+          <span id="cueRight">Non forzare, lascia fluire</span>
         </div>
 
         <div class="linesWrap" id="linesWrap">
@@ -854,629 +976,610 @@
           </div>
 
           <div class="linesHint" id="linesHint">
-            Segui la barra: quando vedi “Inspira”, lasci entrare l’aria. Quando vedi “Espira”, la lasci uscire lentamente.
+            Segui la barra: quando vedi “Inspira”, lascia entrare l’aria. Quando vedi “Espira”, lasciala uscire lentamente.
           </div>
         </div>
 
         <div class="cloudWrap" id="cloudWrap">
-          <div class="cloud" aria-label="Guida respiratoria visiva">
-            <div class="cloudFill" id="cloudFill"></div>
+          <div class="cloud">
             <div class="cloudSheen"></div>
+            <div class="cloudFill" id="cloudFill"></div>
+
             <div class="cloudText">
               <div class="cloudTextInner">
                 <div class="cloudPhase" id="cloudPhase">Pronto</div>
                 <div class="cloudCount" id="cloudCount">—</div>
-                <div class="cloudHint" id="cloudHint">Se vuoi, iniziamo insieme.</div>
+                <div class="cloudHint" id="cloudHint">Se vuoi, iniziamo adesso insieme.</div>
               </div>
             </div>
-          </div>
-
-          <div class="cueLine">
-            <span id="cueLeft">Un’espirazione lunga favorisce la calma</span>
-            <span id="cueRight">Non forzare — lascia semplicemente accadere</span>
           </div>
         </div>
 
         <div class="breathControls">
-          <button class="btnGold" id="breathStart" type="button">Avvia</button>
-          <button class="btnSoft" id="breathPause" type="button">Pausa</button>
-          <button class="btnSoft" id="breathReset" type="button">Reset</button>
+          <button id="breathStart" class="btnGold" type="button">Start</button>
+          <button id="breathPause" class="btnSoft" type="button">Pausa</button>
+          <button id="breathReset" class="btnSoft" type="button">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sectionCard" id="kursePanel">
+      <div class="row spaceBetween">
+        <div class="pill">Area corsi</div>
+        <button id="logoutBtnKurse" class="btnSoft" type="button">Logout</button>
+      </div>
+
+      <div class="goldLine"></div>
+
+      <h2 class="sectionTitle">Corsi & materiali</h2>
+      <p class="sectionLead">
+        Qui puoi raccogliere i tuoi contenuti riservati: materiali PDF, audio, video, corsi guidati e ulteriori approfondimenti.
+      </p>
+
+      <div class="linkGrid">
+        <a class="btnGold" href="./kurseIT.html">Vai ai corsi</a>
+        <a class="btnSoft" href="./daily-resetIT.html">Vai a Daily Reset</a>
+      </div>
+
+      <div class="grid2" style="margin-top:12px;">
+        <div class="miniCard">
+          <h3 class="sectionTitle" style="margin-bottom:6px;">Materiali guidati</h3>
+          <p class="miniText">Qui puoi inserire PDF, audio di supporto, schede pratiche e materiali di approfondimento.</p>
+        </div>
+
+        <div class="miniCard">
+          <h3 class="sectionTitle" style="margin-bottom:6px;">Percorsi digitali</h3>
+          <p class="miniText">Quest’area è perfetta per corsi, lezioni registrate, mini-programmi, video e contenuti esclusivi.</p>
         </div>
       </div>
 
-      <p class="muted" style="margin-top:12px; font-size:10.8px; line-height:1.45;">
-        © Panacea Regensburg • Questo strumento sostiene la tua autoregolazione quotidiana e non sostituisce un trattamento medico o psicoterapeutico.
-      </p>
+      <div class="note">
+        Se disponi dell’accesso completo, puoi usare sia il Premium Reset sia l’area corsi nello stesso spazio membri.
+      </div>
     </div>
 
   </div>
 
   <script>
-  const BASIS_PASSWORD = "PNC-79xL!qR26-Z";
+    const PREMIUM_PASSWORD = "PREMIUM2026";
+    const KURSE_PASSWORD = "KURSE2026";
+    const ACCESS_KEY = "panacea_access_level";
 
-  const CANONICAL_PREMIUM_KEY = "panacea_premium";
-  const LEGACY_PREMIUM_KEYS = [
-    "premiumUnlocked",
-    "mitglied",
-    "panacea_member"
-  ];
+    const codeInput = document.getElementById("codeInput");
+    const unlockBtn = document.getElementById("unlockBtn");
+    const statusEl = document.getElementById("status");
+    const targetNote = document.getElementById("targetNote");
 
-  const ALL_PREMIUM_KEYS = [CANONICAL_PREMIUM_KEY, ...LEGACY_PREMIUM_KEYS];
+    const premiumPanel = document.getElementById("premiumPanel");
+    const premiumBreathPanel = document.getElementById("premiumBreathPanel");
+    const kursePanel = document.getElementById("kursePanel");
 
-  const ALLOWED_TARGETS = [
-    "uebungen-premium.html",
-    "uebungen-premiumIT.html",
-    "daily-reset.html",
-    "daily-resetIT.html",
-    "wissen.html",
-    "wissenIT.html",
-    "lifestyle.html",
-    "lifestyleIT.html"
-  ];
+    const logoutBtn = document.getElementById("logoutBtn");
+    const logoutBtnKurse = document.getElementById("logoutBtnKurse");
 
-  const params = new URLSearchParams(window.location.search);
+    const pageTitleBadge = document.getElementById("pageTitleBadge");
+    const langIT = document.getElementById("langIT");
+    const langDE = document.getElementById("langDE");
 
-  function sanitizeTarget(raw){
-    if(!raw) return "";
-    const clean = String(raw).trim().replace(/^\.?\//, "");
-    return ALLOWED_TARGETS.includes(clean) ? clean : "";
-  }
-
-  const targetPage = sanitizeTarget(params.get("target"));
-
-  function currentFileName(){
-    const path = window.location.pathname.split("/").pop() || "";
-    return path.trim();
-  }
-
-  function buildLangUrl(file, target){
-    const url = new URL(file, window.location.href);
-    if(target) url.searchParams.set("target", target);
-    return url.toString();
-  }
-
-  function goDE(){
-    const deTargetMap = {
-      "uebungen-premiumIT.html": "uebungen-premium.html",
-      "daily-resetIT.html": "daily-reset.html",
-      "wissenIT.html": "wissen.html",
-      "lifestyleIT.html": "lifestyle.html"
-    };
-    const translatedTarget = deTargetMap[targetPage] || targetPage;
-    window.location.href = buildLangUrl("./mitglieder.html", translatedTarget);
-  }
-
-  function goIT(){
-    const itTargetMap = {
-      "uebungen-premium.html": "uebungen-premiumIT.html",
-      "daily-reset.html": "daily-resetIT.html",
-      "wissen.html": "wissenIT.html",
-      "lifestyle.html": "lifestyleIT.html"
-    };
-    const translatedTarget = itTargetMap[targetPage] || targetPage;
-    window.location.href = buildLangUrl("./mitgliederIT.html", translatedTarget);
-  }
-
-  document.getElementById("langDE").addEventListener("click", goDE);
-  document.getElementById("langIT").addEventListener("click", goIT);
-
-  function isMember(){
-    return ALL_PREMIUM_KEYS.some(key => localStorage.getItem(key) === "true");
-  }
-
-  function syncLegacyKeysFromCanonical(){
-    if(localStorage.getItem(CANONICAL_PREMIUM_KEY) === "true"){
-      LEGACY_PREMIUM_KEYS.forEach(key => localStorage.setItem(key, "true"));
-    }
-  }
-
-  function setMemberState(value){
-    ALL_PREMIUM_KEYS.forEach(key => {
-      localStorage.setItem(key, value ? "true" : "false");
+    langIT.addEventListener("click", () => {
+      localStorage.setItem("lang", "it");
+      window.location.href = "./mitgliederIT.html";
     });
-  }
 
-  function clearMemberState(){
-    ALL_PREMIUM_KEYS.forEach(key => localStorage.removeItem(key));
-  }
+    langDE.addEventListener("click", () => {
+      localStorage.setItem("lang", "de");
+      window.location.href = "./mitglieder.html";
+    });
 
-  function cleanupMemberState(){
-    [
-      "panacea_last_profile_it",
-      "panacea_breath_mode_it"
-    ].forEach(k => localStorage.removeItem(k));
-  }
-
-  function updateTopBadge(){
-    const badge = document.getElementById("pageTitleBadge");
-    badge.textContent = isMember() ? "Membri · Premium" : "Membri · Base";
-  }
-
-  function updateTargetNote(){
-    const note = document.getElementById("targetNote");
-    if(targetPage){
-      note.innerHTML = `
-        Ricevi la tua password <strong>automaticamente</strong> dopo l’acquisto.
-        <br>Dopo lo sblocco verrai reindirizzato direttamente a: <strong>${targetPage}</strong>
-        <br>Nota: l’accesso è personale. Se una password viene condivisa pubblicamente, verrà sostituita per proteggere l’area membri.
-      `;
-    } else {
-      note.innerHTML = `
-        Ricevi la tua password <strong>automaticamente</strong> dopo l’acquisto.
-        <br>Nota: l’accesso è personale. Se una password viene condivisa pubblicamente, verrà sostituita per proteggere l’area membri.
-      `;
+    function getAccessLevel(){
+      return localStorage.getItem(ACCESS_KEY) || "free";
     }
-  }
 
-  function redirectToTargetIfNeeded(){
-    if(!isMember() || !targetPage) return false;
-
-    const current = currentFileName();
-    if(current === targetPage) return false;
-
-    window.location.href = `./${targetPage}`;
-    return true;
-  }
-
-  function setAccessUI(){
-    const unlockBox = document.getElementById("unlockBox");
-    const premiumArea = document.getElementById("premiumArea");
-    const status = document.getElementById("status");
-
-    updateTopBadge();
-
-    if(isMember()){
-      status.textContent = "Sbloccato ✅";
-      status.className = "statusOk";
-      unlockBox.style.display = "none";
-      premiumArea.style.display = "block";
-    } else {
-      status.textContent = "Bloccato";
-      status.className = "statusLocked";
-      unlockBox.style.display = "block";
-      premiumArea.style.display = "none";
+    function setAccessLevel(level){
+      localStorage.setItem(ACCESS_KEY, level);
     }
-  }
 
-  const unlockBtn = document.getElementById("unlockBtn");
-  const codeInput = document.getElementById("codeInput");
-  const logoutBtn = document.getElementById("logoutBtn");
+    function hasPremiumAccess(){
+      const access = getAccessLevel();
+      return access === "premium" || access === "full";
+    }
 
-  unlockBtn.addEventListener("click", () => {
-    const code = (codeInput.value || "").trim();
+    function hasKurseAccess(){
+      const access = getAccessLevel();
+      return access === "kurse" || access === "full";
+    }
 
-    if(code === BASIS_PASSWORD){
-      setMemberState(true);
-      localStorage.setItem("panacea_unlocked_at", String(Date.now()));
-      codeInput.value = "";
+    function clearAllAccess(){
+      localStorage.removeItem(ACCESS_KEY);
+      localStorage.removeItem("panacea_unlocked_at");
+    }
 
-      if(targetPage){
-        window.location.href = `./${targetPage}`;
+    function cleanupMemberState(){
+      localStorage.removeItem("panacea_last_profile_it");
+    }
+
+    function setAccessUI(){
+      const access = getAccessLevel();
+      const premium = hasPremiumAccess();
+      const kurse = hasKurseAccess();
+
+      premiumPanel.classList.toggle("hidden", !premium);
+      premiumBreathPanel.classList.toggle("hidden", !premium);
+      kursePanel.classList.toggle("hidden", !kurse);
+
+      if(access === "full"){
+        statusEl.textContent = "Premium + corsi sbloccati";
+        statusEl.className = "statusOk";
+        targetNote.innerHTML = `
+          Accesso completo attivo.
+          <br>
+          Hai sbloccato sia il <strong>Premium Reset</strong> sia l’<strong>area corsi</strong>.
+        `;
+        pageTitleBadge.textContent = "Membri · Completo";
+      } else if(access === "premium"){
+        statusEl.textContent = "Premium sbloccato";
+        statusEl.className = "statusOk";
+        targetNote.innerHTML = `
+          Accesso Premium attivo.
+          <br>
+          La tua area <strong>Premium Reset</strong> è stata aperta con successo.
+        `;
+        pageTitleBadge.textContent = "Membri · Premium";
+      } else if(access === "kurse"){
+        statusEl.textContent = "Corsi sbloccati";
+        statusEl.className = "statusOk";
+        targetNote.innerHTML = `
+          Accesso corsi attivo.
+          <br>
+          La tua <strong>area corsi</strong> è stata aperta con successo.
+        `;
+        pageTitleBadge.textContent = "Membri · Corsi";
+      } else {
+        statusEl.textContent = "Bloccato";
+        statusEl.className = "statusLocked";
+        targetNote.innerHTML = `
+          Riceverai automaticamente la password dopo l’acquisto.
+          <br>
+          In base al tuo accesso si aprirà il <strong>Premium Reset</strong> oppure la tua <strong>area corsi</strong>.
+        `;
+        pageTitleBadge.textContent = "Membri · Base";
+      }
+    }
+
+    unlockBtn.addEventListener("click", () => {
+      const code = (codeInput.value || "").trim();
+      const current = getAccessLevel();
+
+      if(code === PREMIUM_PASSWORD){
+        const nextLevel = current === "kurse" ? "full" : "premium";
+        setAccessLevel(nextLevel);
+        localStorage.setItem("panacea_unlocked_at", String(Date.now()));
+        codeInput.value = "";
+        setAccessUI();
+        generateReset();
+        alert(nextLevel === "full" ? "Premium + corsi sbloccati ✅" : "Premium Reset sbloccato ✅");
         return;
       }
 
+      if(code === KURSE_PASSWORD){
+        const nextLevel = current === "premium" ? "full" : "kurse";
+        setAccessLevel(nextLevel);
+        localStorage.setItem("panacea_unlocked_at", String(Date.now()));
+        codeInput.value = "";
+        setAccessUI();
+        if(nextLevel === "full") generateReset();
+        alert(nextLevel === "full" ? "Premium + corsi sbloccati ✅" : "Corsi sbloccati ✅");
+        return;
+      }
+
+      alert("Password errata ❌");
+    });
+
+    codeInput.addEventListener("keydown", (e) => {
+      if(e.key === "Enter") unlockBtn.click();
+    });
+
+    function doLogout(){
+      clearAllAccess();
+      cleanupMemberState();
+      stopBreathing(true);
       setAccessUI();
-      generateReset();
-      alert("Accesso sbloccato ✅");
-    } else {
-      alert("Password non corretta ❌");
+      renderBreathUI();
+      codeInput.value = "";
     }
-  });
 
-  codeInput.addEventListener("keydown", (e) => {
-    if(e.key === "Enter") unlockBtn.click();
-  });
+    logoutBtn.addEventListener("click", doLogout);
+    logoutBtnKurse.addEventListener("click", doLogout);
 
-  logoutBtn.addEventListener("click", () => {
-    clearMemberState();
-    cleanupMemberState();
-    stopBreathing(true);
-    setAccessUI();
-    renderBreathUI();
-  });
+    const stressM = document.getElementById("stressM");
+    const energyM = document.getElementById("energyM");
+    const stressVal = document.getElementById("stressVal");
+    const energyVal = document.getElementById("energyVal");
 
-  const stressM = document.getElementById("stressM");
-  const energyM = document.getElementById("energyM");
-  const stressVal = document.getElementById("stressVal");
-  const energyVal = document.getElementById("energyVal");
-
-  function syncSliderLabels(){
-    stressVal.textContent = `${stressM.value}/10`;
-    energyVal.textContent = `${energyM.value}/10`;
-  }
-
-  stressM.addEventListener("input", syncSliderLabels);
-  energyM.addEventListener("input", syncSliderLabels);
-
-  function band(v){
-    v = Number(v);
-    if(v >= 7) return "alto";
-    if(v >= 4) return "medio";
-    return "basso";
-  }
-
-  const PREMIUM_MAP = {
-    "alto|basso": {
-      label: "Molto stress, poca energia",
-      title: "Prima sicurezza — poi il passo successivo",
-      summary: "Oggi non devi dimostrare nulla. Prima ti aiutiamo a scendere di tono, poi a ritrovare terreno sotto i piedi.",
-      phase1: [
-        "Appoggia bene entrambi i piedi a terra. Senti il contatto. Poi lascia uscire lentamente l’aria, come se stessi creando un po’ di spazio dentro di te.",
-        "Metti una mano sul petto e una sul ventre. Per un momento, semplicemente ascoltati. Poi espira più a lungo di quanto inspiri. Senza sforzo.",
-        "Se senti tensione, non hai bisogno di combatterla. Riconoscila e concedi al corpo di lasciarne andare almeno una piccola parte."
-      ],
-      phase2: [
-        "Chiediti: cosa mi alleggerirebbe anche solo del 10% in questo momento? Non perfettamente. Solo un po’.",
-        "Se la mente gira troppo, scrivi una frase: “In questo momento ho bisogno di…” e completala con una sola cosa.",
-        "Se tutto sembra troppo, torna prima al respiro e poi scegli una sola priorità davvero realistica per oggi."
-      ],
-      phase3: [
-        "Scegli una mini-azione di 2–3 minuti: acqua, aria fresca, un piccolo riordino. Qualcosa che ti dia subito un po’ di sostegno.",
-        "Metti un confine gentile: c’è una cosa che oggi non devi risolvere. Non è rinuncia, è protezione.",
-        "Alla fine, riconosci che hai fatto qualcosa per te. Questo ha valore."
-      ],
-      breath: { inhale:4, exhale:7, minutes:3, cueL:"Un’espirazione lunga favorisce la calma", cueR:"Non forzare — lascia semplicemente accadere" },
-      goal: [
-        "Imposta 10 minuti e fai una sola cosa che ti alleggerisce. Poi fermati consapevolmente.",
-        "Scegli un micro-passo e inizia. Non serve finirlo, basta cominciare. Poi pausa.",
-        "Nei prossimi 10 minuti: acqua + un piccolo gesto di ordine. Poco, ma stabilizzante."
-      ]
-    },
-
-    "alto|medio": {
-      label: "Stress alto, energia media",
-      title: "Prima regolare — poi ritrovare chiarezza",
-      summary: "Hai ancora forza, ma il sistema è rumoroso. Prima abbassiamo il volume interno, poi il passo successivo diventa più semplice.",
-      phase1: [
-        "Fai un’espirazione lunga, come se volessi spegnere una candela con delicatezza — senza fretta.",
-        "Muoviti per 20 secondi in modo sciolto (qualche passo, spalle che ruotano), poi fermati un attimo.",
-        "Osserva mandibola e spalle. Non devi sciogliere tutto, basta lasciare andare un po’ di tensione."
-      ],
-      phase2: [
-        "Scegli una sola cosa che conta davvero oggi. Una sola è sufficiente.",
-        "Scrivi: “Adesso è importante…” e completa la frase. Poi passa all’azione.",
-        "Se ti senti irritata o agitata, riduci prima gli stimoli. Dopo deciderai con più chiarezza."
-      ],
-      phase3: [
-        "Metti un timer di 10 minuti e fai solo l’inizio. L’inizio ti porta più avanti della pianificazione perfetta.",
-        "Di’ consapevolmente “dopo” a una distrazione. Basta una.",
-        "Alla fine: un piccolo check-in — “Di cosa ho bisogno adesso?”"
-      ],
-      breath: { inhale:4, exhale:6, minutes:4, cueL:"Prima calma, poi chiarezza", cueR:"Non devi accelerare" },
-      goal: [
-        "Nei prossimi 10 minuti: inizia la cosa più importante. Solo iniziare, poi una piccola pausa.",
-        "Scegli un passo concreto e portalo a termine — piccolo, ma concluso.",
-        "Semplifica: una priorità, 10 minuti di focus, stop."
-      ]
-    },
-
-    "alto|alto": {
-      label: "Alta attivazione",
-      title: "Usare l’energia senza consumarti",
-      summary: "C’è molta spinta. La rendiamo utile: direzione, confine, pausa. Così l’energia resta dalla tua parte.",
-      phase1: [
-        "Fermati per 10 secondi. Fai una lunga espirazione. Poi riparti — con più controllo.",
-        "Ricorda: avere energia non significa irrigidirsi. Se vuoi, rilassa un attimo la mandibola.",
-        "Inizia con un ritmo che puoi sostenere. Non al massimo — ma in modo stabile."
-      ],
-      phase2: [
-        "Scegli una direzione: che cosa vuoi davvero portare avanti oggi?",
-        "Metti un confine: quando ti fermerai? I limiti sono una forma di protezione.",
-        "Niente multitasking: una cosa alla volta ti porta al risultato con più calma."
-      ],
-      phase3: [
-        "Lavora 10–15 minuti con focus, poi fai una vera pausa, anche se breve.",
-        "Bevi un sorso d’acqua e guarda per 10 secondi in lontananza — una piccola regolazione con grande effetto.",
-        "Alla fine: “Per adesso può bastare.”"
-      ],
-      breath: { inhale:4, exhale:6, minutes:3, cueL:"Energia sì — fretta no", cueR:"Il confine crea stabilità" },
-      goal: [
-        "Nei prossimi 10 minuti: completa un mini-risultato. Poi fermati.",
-        "Fai solo la parte più importante di un compito. Il resto può aspettare.",
-        "Focus per 10 minuti — e smetti prima di svuotarti."
-      ]
-    },
-
-    "medio|basso": {
-      label: "Stress medio, poca energia",
-      title: "Raccoglierti con dolcezza — un passo che ti corrisponde",
-      summary: "Oggi non serve stringere i denti. Si tratta piuttosto di ritrovare un po’ di stabilità, senza pressione.",
-      phase1: [
-        "Fai due respiri tranquilli. Senti che sei sostenuta: dal pavimento, dalla sedia, dal momento presente.",
-        "Se vuoi, bevi un sorso d’acqua. Poi fai una lunga espirazione. Semplice, ma efficace.",
-        "Parlati dentro come parleresti a una persona a cui vuoi bene: con gentilezza, non con pretese."
-      ],
-      phase2: [
-        "Scegli una priorità — e una cosa che oggi puoi lasciare andare. È saggezza, non debolezza.",
-        "Chiediti: cosa può davvero aspettare fino a domani senza creare danno? Concediti questo permesso.",
-        "Scrivi tre parole: “Oggi è sufficiente se…”"
-      ],
-      phase3: [
-        "Fai un passo di 3 minuti che prepari il terreno: aprire un file, mettere a portata il materiale, segnare il punto di partenza.",
-        "Riduci l’attrito: rendi più facile il domani.",
-        "Alla fine, riconosci che ti sei presa cura di te."
-      ],
-      breath: { inhale:4, exhale:7, minutes:3, cueL:"Prima recuperare, poi agire", cueR:"Il minimo che davvero aiuta" },
-      goal: [
-        "Nei prossimi 10 minuti: prepara solo il primo passo. Poi fermati.",
-        "Togli una piccola cosa che ti appesantisce, visivamente o mentalmente.",
-        "Una mini-azione che alleggerisce — poi pausa."
-      ]
-    },
-
-    "medio|medio": {
-      label: "Equilibrio fragile",
-      title: "Reset e struttura leggera",
-      summary: "Sei in una zona intermedia — perfetta per un reset senza durezza. Un passo dopo l’altro, con calma e chiarezza.",
-      phase1: [
-        "Raddrizzati per un momento. Poi fai una lunga espirazione. È come un piccolo riavvio interiore.",
-        "Fai un lieve movimento del collo, lentamente — poi torna al respiro.",
-        "Cinque respiri regolari. Non devono essere perfetti, basta esserci."
-      ],
-      phase2: [
-        "Organizza solo i prossimi 30 minuti, non l’intera giornata.",
-        "Scegli una cosa che puoi concludere — le conclusioni alleggeriscono la mente.",
-        "Chiediti: qual è la prossima azione visibile? Un passo, non un’idea."
-      ],
-      phase3: [
-        "15 minuti di focus, poi 3 minuti di pausa. È un ritmo che il sistema nervoso tollera bene.",
-        "Spegni una sola distrazione. Ne basta una.",
-        "Alla fine chiediti: “Che cosa ha funzionato oggi?” Anche il piccolo conta."
-      ],
-      breath: { inhale:4, exhale:6, minutes:4, cueL:"La struttura dà sicurezza", cueR:"Calma → chiarezza → azione" },
-      goal: [
-        "Nei prossimi 10 minuti: fai il primo passo concreto della tua priorità.",
-        "Concludi una piccola parte — il “finito” calma.",
-        "10 minuti di focus, con una distrazione in meno."
-      ]
-    },
-
-    "medio|alto": {
-      label: "Stress medio, energia alta",
-      title: "Dare una direzione all’energia",
-      summary: "Hai energia — ed è una buona base. Ora la rendiamo chiara e sostenibile: direzione, blocco breve, pausa.",
-      phase1: [
-        "Un respiro lungo, poi inizi. Come un piccolo orientamento interiore.",
-        "Controlla mandibola e spalle. L’energia dovrebbe sostenerti, non irrigidirti.",
-        "Comincia senza fretta — la stabilità vale più della velocità."
-      ],
-      phase2: [
-        "Scegli un obiettivo e un criterio di successo semplice (“inizio” / “chiudo una piccola parte”).",
-        "Scegli anche ciò che adesso non farai. Questo protegge il tuo focus.",
-        "Scrivi: “Adesso faccio…” e poi fallo."
-      ],
-      phase3: [
-        "10+2: dieci minuti di focus, due minuti di pausa. Puoi ripetere, se vuoi.",
-        "Concludi un mini-risultato prima di passare oltre.",
-        "Alla fine: tre respiri tranquilli, per non restare nella sensazione di essere sempre spinta."
-      ],
-      breath: { inhale:4, exhale:6, minutes:3, cueL:"Energia — ma focalizzata", cueR:"Pausa breve, ma vera" },
-      goal: [
-        "10 minuti di focus su una sola cosa, poi 2 minuti di pausa.",
-        "Concludi un mini-risultato e poi fermati consapevolmente.",
-        "Un blocco di focus pulito — una sola cosa."
-      ]
-    },
-
-    "basso|basso": {
-      label: "Attivazione bassa",
-      title: "Riaccendersi con dolcezza",
-      summary: "Non hai bisogno di spingerti con forza. Mettiamo solo una piccola scintilla: corpo, respiro, un passo possibile.",
-      phase1: [
-        "Se puoi, alzati un momento o muoviti per 30 secondi. Spesso il corpo aiuta più velocemente dei pensieri.",
-        "Inspira un po’ più profondamente, poi lascia uscire l’aria lentamente. Senza fretta.",
-        "Senti le mani o il viso. Portare attenzione qui è già regolazione."
-      ],
-      phase2: [
-        "Qual è il passo più piccolo con cui puoi iniziare? Davvero piccolo.",
-        "Scegli un compito da 2 minuti. Cominciare spesso fa tornare un po’ di energia.",
-        "Non pensare “tutto”. Pensa “uno”."
-      ],
-      phase3: [
-        "Fai 2 minuti — poi fermati. Lascia pronto un rientro semplice.",
-        "Rimuovi un solo piccolo ostacolo: materiale pronto, file aperto, spazio più chiaro.",
-        "Alla fine: “Va bene così. Mi sono rimessa in movimento.”"
-      ],
-      breath: { inhale:4, exhale:4, minutes:2, cueL:"Molto semplice", cueR:"Molto gentile" },
-      goal: [
-        "2 minuti di azione + 1 minuto di pausa, per tre volte — è sufficiente.",
-        "Inizia un micro-compito e poi fermati. Conta anche questo.",
-        "Un piccolo punto di ordine — niente di più."
-      ]
-    },
-
-    "basso|medio": {
-      label: "Calma e stabilità",
-      title: "Stabile e lucida",
-      summary: "Sei in una buona zona. Manteniamo la calma e la trasformiamo in un progresso semplice e chiaro.",
-      phase1: [
-        "Sei respiri tranquilli. Lascia che l’espirazione diventi leggermente più lunga.",
-        "Rilassa la mandibola. Spesso lì si accumula tensione senza accorgercene.",
-        "Senti stabilità nel corpo. È una buona base per decidere."
-      ],
-      phase2: [
-        "Scegli una priorità e al massimo tre punti chiave.",
-        "Chiediti: cosa renderebbe oggi una buona giornata, in modo realistico?",
-        "Elimina una cosa non necessaria. Ti sentirai subito più leggera."
-      ],
-      phase3: [
-        "Fai subito il primo passo, anche solo per 2 minuti. Poi deciderai come proseguire.",
-        "15 minuti di focus, 3 minuti di pausa — semplice ed efficace.",
-        "Alla fine, riconosci ciò che hai fatto."
-      ],
-      breath: { inhale:4, exhale:6, minutes:3, cueL:"Stabilità", cueR:"Progresso semplice" },
-      goal: [
-        "Nei prossimi 10 minuti: fai il primo passo concreto della tua priorità.",
-        "Elimina una cosa superflua — così si crea spazio.",
-        "Metti in ordine tre punti e realizza il primo."
-      ]
-    },
-
-    "basso|alto": {
-      label: "Calma con molta energia",
-      title: "Slancio — senza fretta",
-      summary: "Questa è una bella energia. Le diamo un contenitore gentile, così domani ne avrai ancora.",
-      phase1: [
-        "Un respiro lungo e tranquillo. Poi puoi iniziare — senza correre.",
-        "Avere energia non significa irrigidirsi. Se vuoi, fai un breve check della mandibola.",
-        "Concediti 10 secondi prima di partire. Ti renderà più chiara."
-      ],
-      phase2: [
-        "Scegli una cosa che vuoi portare avanti in 20 minuti.",
-        "Metti un limite: fermati prima di svuotarti. È intelligenza, non rinuncia.",
-        "Scrivi: “Oggi scelgo di…”"
-      ],
-      phase3: [
-        "10–20 minuti di focus, poi una vera pausa.",
-        "Alla fine: tre respiri tranquilli, per non restare troppo “su”.",
-        "Riconosci una cosa che ha funzionato."
-      ],
-      breath: { inhale:4, exhale:6, minutes:2, cueL:"Bella energia", cueR:"Confine gentile" },
-      goal: [
-        "10 minuti di focus, poi pausa.",
-        "Concludi un mini-risultato e fermati prima di esaurirti.",
-        "Scegli una direzione e realizzala con chiarezza per 10 minuti."
-      ]
+    function syncSliderLabels(){
+      stressVal.textContent = `${stressM.value}/10`;
+      energyVal.textContent = `${energyM.value}/10`;
     }
-  };
 
-  function getPlan(stress, energy){
-    const s = band(stress);
-    const e = band(energy);
-    return PREMIUM_MAP[`${s}|${e}`] || PREMIUM_MAP["medio|medio"];
-  }
+    stressM.addEventListener("input", syncSliderLabels);
+    energyM.addEventListener("input", syncSliderLabels);
 
-  function pick1(arr){
-    return arr[Math.floor(Math.random() * arr.length)];
-  }
+    function band(v){
+      v = Number(v);
+      if(v >= 7) return "alto";
+      if(v >= 4) return "medio";
+      return "basso";
+    }
 
-  let soundOn = false;
-  const soundToggle = document.getElementById("soundToggle");
-  const soundSwitch = document.getElementById("soundSwitch");
+    const PREMIUM_MAP = {
+      "alto|basso": {
+        label: "Tanta tensione, poca energia",
+        title: "Prima sicurezza, poi il passo successivo",
+        summary: "Oggi non devi dimostrare nulla. Prima aiutiamo il tuo sistema a calmarsi un po’, poi ritrovi lentamente una base più stabile.",
+        phase1: [
+          "Appoggia bene entrambi i piedi a terra e senti il contatto. Poi lascia uscire l’aria lentamente, come se dentro si aprisse un po’ più di spazio.",
+          "Metti una mano sul petto e una sul ventre. Per un momento, semplicemente percepisciti. Poi espira un po’ più a lungo di quanto inspiri, senza sforzo.",
+          "Se senti tensione, non devi scacciarla. Notala e permetti al corpo di lasciar andare almeno un piccolo pezzo."
+        ],
+        phase2: [
+          "Chiediti: cosa mi alleggerirebbe anche solo del 10%? Non deve essere perfetto. Solo un po’ meglio.",
+          "Se la mente gira in tondo, scrivi una frase: “In questo momento ho bisogno di…” e completala con una sola cosa.",
+          "Se tutto sembra troppo, torna ancora un attimo al respiro e scegli poi una sola priorità davvero realistica per oggi."
+        ],
+        phase3: [
+          "Scegli una mini-azione di 2–3 minuti: bere acqua, prendere un po’ d’aria o fare un piccolo gesto di ordine. Qualcosa che ti dia subito un minimo di appoggio.",
+          "Metti un limite gentile: una cosa che oggi non devi risolvere. Non per rinunciare, ma per proteggerti.",
+          "Alla fine, riconosci che hai fatto qualcosa per te. Anche questo conta."
+        ],
+        breath: { inhale:4, exhale:7, minutes:3, cueL:"Espirazione lunga = più calma", cueR:"Non forzare, lascia fluire" },
+        goal: [
+          "Imposta 10 minuti e fai una sola cosa che alleggerisce. Poi fermati consapevolmente.",
+          "Scegli un mini-passo e comincia. Non per finire tutto, solo per iniziare. Poi fai una pausa.",
+          "Nei prossimi 10 minuti: bevi acqua e fai un piccolo gesto di ordine. Poco, ma stabilizzante."
+        ]
+      },
 
-  function setSoundUI(){
-    soundSwitch.classList.toggle("on", soundOn);
-  }
+      "alto|medio": {
+        label: "Alta tensione, energia media",
+        title: "Prima regolarti, poi fare chiarezza",
+        summary: "Hai ancora energia, ma il tuo sistema è rumoroso. Prima abbassiamo il volume interno, poi il passo successivo diventa più semplice.",
+        phase1: [
+          "Fai una lunga espirazione, come se stessi spegnendo una candela molto delicatamente.",
+          "Muoviti per circa 20 secondi in modo morbido: qualche passo, spalle che ruotano, schiena che si riallinea. Poi fermati un attimo.",
+          "Senti mandibola e spalle. Non devi sciogliere tutto, basta lasciare andare un po’ di tensione."
+        ],
+        phase2: [
+          "Scegli una sola cosa davvero importante per oggi. Una è sufficiente.",
+          "Scrivi: “Adesso è importante…” e completa la frase. Poi passa all’azione.",
+          "Se ti senti irritata, riduci prima gli stimoli. Dopo decidere sarà più facile."
+        ],
+        phase3: [
+          "Metti un timer di 10 minuti e fai solo l’inizio. Spesso l’inizio porta più avanti della pianificazione perfetta.",
+          "Di’ consapevolmente “dopo” a una distrazione. Solo a una. Basta così.",
+          "Infine, fai un breve check-in: “Che cosa mi farebbe bene adesso?”"
+        ],
+        breath: { inhale:4, exhale:6, minutes:4, cueL:"Prima calma, poi chiarezza", cueR:"Non devi accelerare" },
+        goal: [
+          "Nei prossimi 10 minuti: inizia dalla cosa più importante. Solo iniziare. Poi una breve pausa.",
+          "Scegli un piccolo passo concreto e portalo a termine. Piccolo, ma concluso.",
+          "Rendilo semplice: una priorità, 10 minuti di focus, poi stop consapevole."
+        ]
+      },
 
-  soundToggle.addEventListener("click", () => {
-    soundOn = !soundOn;
+      "alto|alto": {
+        label: "Alta attivazione",
+        title: "Usare l’energia senza esaurirti",
+        summary: "C’è molta spinta. La orientiamo bene: direzione, limite, pausa. Così l’energia resta al tuo servizio.",
+        phase1: [
+          "Fermati per 10 secondi. Una lunga espirazione. Poi riprendi, con un po’ più di controllo.",
+          "Ricordati: energia non significa durezza. Se vuoi, rilassa per un attimo la mandibola.",
+          "Comincia in un ritmo che puoi sostenere. Non massimo: stabile."
+        ],
+        phase2: [
+          "Scegli una direzione: che cosa vuoi davvero far avanzare oggi?",
+          "Metti un limite: quando ti fermerai? I limiti proteggono.",
+          "Niente multitasking: una cosa per volta ti porta più lontano e con più calma."
+        ],
+        phase3: [
+          "Lavora 10–15 minuti con focus. Poi fai una vera pausa, anche se breve.",
+          "Bevi un sorso d’acqua e guarda lontano per 10 secondi: una piccola regolazione con un grande effetto.",
+          "Alla fine: “Per adesso è abbastanza.”"
+        ],
+        breath: { inhale:4, exhale:6, minutes:3, cueL:"Energia sì, fretta no", cueR:"I limiti danno stabilità" },
+        goal: [
+          "Nei prossimi 10 minuti: chiudi un piccolo mini-risultato. Poi fermati consapevolmente.",
+          "Fai solo la parte più importante di un compito. Il resto può aspettare.",
+          "10 minuti di focus e fermati prima di svuotarti."
+        ]
+      },
+            "medio|basso": {
+        label: "Stress medio, poca energia",
+        title: "Raccoglierti con dolcezza, un passo che ti somiglia",
+        summary: "Oggi non si tratta di forzare. Si tratta di stabilizzarti un po’, senza pressione.",
+        phase1: [
+          "Fai due respiri tranquilli. Senti di essere sostenuta dal pavimento, dalla sedia, dal momento presente.",
+          "Se vuoi, bevi un sorso d’acqua. Poi una lunga espirazione. Semplice, ma efficace.",
+          "Parlati dentro come parleresti a qualcuno a cui vuoi bene: con gentilezza, non con pretese."
+        ],
+        phase2: [
+          "Scegli una priorità e una cosa che oggi puoi lasciare andare. È intelligenza, non debolezza.",
+          "Chiediti: cosa può davvero aspettare fino a domani senza danni? Conceditelo.",
+          "Scrivi tre parole: “Per oggi basta che…”"
+        ],
+        phase3: [
+          "Fai un passo di 3 minuti che prepara la strada: aprire un file, sistemare il materiale, definire il punto di partenza.",
+          "Riduci l’attrito: rendi un po’ più facile il tuo domani.",
+          "Alla fine, riconosci che ti sei presa cura di te."
+        ],
+        breath: { inhale:4, exhale:7, minutes:3, cueL:"Prima recupera, poi agisci", cueR:"Il minimo che aiuta davvero" },
+        goal: [
+          "Nei prossimi 10 minuti: prepara solo il primo passo. Poi fermati.",
+          "Togli una piccola cosa che ti stressa, visiva o organizzativa.",
+          "Una mini-azione che alleggerisce, e poi pausa."
+        ]
+      },
+
+      "medio|medio": {
+        label: "Equilibrio un po’ instabile",
+        title: "Reset e struttura gentile",
+        summary: "Sei in una zona intermedia: ideale per un reset senza durezza. Passo dopo passo, con chiarezza e calma.",
+        phase1: [
+          "Raddrizzati per un momento e poi fai una lunga espirazione. Come un piccolo riavvio interiore.",
+          "Fai un piccolo movimento lento del collo, poi torna al respiro.",
+          "Cinque respiri regolari. Non perfetti, solo presenti."
+        ],
+        phase2: [
+          "Pianifica solo i prossimi 30 minuti, non tutta la giornata.",
+          "Scegli una cosa che puoi concludere. Le conclusioni rendono spesso la mente più silenziosa.",
+          "Chiediti: qual è la prossima azione visibile? Un passo, non un’idea."
+        ],
+        phase3: [
+          "15 minuti di focus, poi 3 minuti di pausa. È un ritmo che il sistema nervoso può tollerare bene.",
+          "Spegni una distrazione. Solo una.",
+          "Alla fine: “Che cosa ha già funzionato oggi?” Anche il piccolo conta."
+        ],
+        breath: { inhale:4, exhale:6, minutes:4, cueL:"La struttura dà sicurezza", cueR:"Calma → chiarezza → azione" },
+        goal: [
+          "Nei prossimi 10 minuti: fai il primo passo concreto della tua priorità.",
+          "Concludi una piccola parte: un “finito” calma.",
+          "10 minuti di focus con una distrazione in meno."
+        ]
+      },
+
+      "medio|alto": {
+        label: "Stress medio, energia alta",
+        title: "Portare l’energia in una direzione",
+        summary: "Hai energia, ed è una buona base. Ora la rendiamo chiara e sostenibile: direzione, focus breve, pausa.",
+        phase1: [
+          "Un respiro lungo, poi inizi. Come un breve orientamento interno.",
+          "Controlla mandibola e spalle. L’energia deve sostenerti, non irrigidirti.",
+          "Comincia senza fretta: stabile è meglio di veloce."
+        ],
+        phase2: [
+          "Scegli un obiettivo e un criterio semplice di riuscita: “inizio” oppure “concludo una parte”.",
+          "Scegli anche ciò che adesso non farai. Questo protegge il tuo focus.",
+          "Scrivi: “Adesso faccio…” e poi comincia."
+        ],
+        phase3: [
+          "10+2: dieci minuti di focus, due minuti di pausa. Poi puoi decidere di nuovo.",
+          "Concludi un mini-risultato prima di saltare altrove.",
+          "Alla fine, tre respiri tranquilli per non restare bloccata nella sensazione di corsa."
+        ],
+        breath: { inhale:4, exhale:6, minutes:3, cueL:"Energia, ma focalizzata", cueR:"Pausa breve, ma vera" },
+        goal: [
+          "10 minuti di focus su una cosa, poi 2 minuti di pausa.",
+          "Concludi un piccolo mini-risultato e poi fermati consapevolmente.",
+          "Un blocco di focus pulito: una cosa sola."
+        ]
+      },
+
+      "basso|basso": {
+        label: "Bassa attivazione",
+        title: "Rimetterti in movimento con gentilezza",
+        summary: "Non devi spingerti. Mettiamo solo un piccolo impulso: corpo, respiro, un passo fattibile.",
+        phase1: [
+          "Se puoi, alzati un attimo o muoviti per 30 secondi. Il corpo aiuta spesso più in fretta dei pensieri.",
+          "Inspira un po’ più a fondo e lascia poi uscire l’aria lentamente, senza fretta.",
+          "Senti per un momento le mani o il viso. Anche questo è già regolazione."
+        ],
+        phase2: [
+          "Qual è il passo più piccolo che puoi iniziare adesso? Davvero piccolo.",
+          "Scegli un compito da 2 minuti. Iniziare riporta spesso un po’ di energia.",
+          "Non pensare “tutto”. Pensa solo “uno”."
+        ],
+        phase3: [
+          "Fai 2 minuti, poi fermati. Lasciati aperta la possibilità di rientrare dopo.",
+          "Togli un solo piccolo ostacolo: materiale pronto, file aperto, spazio liberato.",
+          "Alla fine: “Va bene. Mi sto rimettendo in movimento.”"
+        ],
+        breath: { inhale:4, exhale:4, minutes:2, cueL:"Molto semplice", cueR:"Molto gentile" },
+        goal: [
+          "2 minuti di azione + 1 minuto di pausa, per tre volte: è sufficiente.",
+          "Inizia una mini-attività e poi fermati consapevolmente. Anche questo vale.",
+          "Un piccolo gesto di ordine, niente di più."
+        ]
+      },
+
+      "basso|medio": {
+        label: "Calma e stabilità",
+        title: "Stabile e chiara",
+        summary: "Sei in una buona zona. Manteniamo la calma e la trasformiamo in un progresso semplice e concreto.",
+        phase1: [
+          "Sei respiri tranquilli. Lascia che l’espirazione diventi appena un po’ più lunga.",
+          "Rilassa per un momento la mandibola. Spesso lì si accumula tensione senza accorgercene.",
+          "Senti la stabilità nel corpo. È una buona base per decidere."
+        ],
+        phase2: [
+          "Scegli una priorità e al massimo tre punti essenziali.",
+          "Chiediti: che cosa renderebbe questo giorno realisticamente un buon giorno?",
+          "Elimina una cosa non necessaria. Spesso si respira meglio subito."
+        ],
+        phase3: [
+          "Fai subito il primo passo per 2 minuti. Poi decidi di nuovo.",
+          "15 minuti di focus, 3 minuti di pausa: semplice ed efficace.",
+          "Alla fine, riconosci ciò che hai fatto."
+        ],
+        breath: { inhale:4, exhale:6, minutes:3, cueL:"Stabilità", cueR:"Progresso semplice" },
+        goal: [
+          "Nei prossimi 10 minuti: fai il primo passo concreto della tua priorità.",
+          "Elimina una cosa superflua: crea più spazio.",
+          "Ordina tre punti e realizza il primo."
+        ]
+      },
+
+      "basso|alto": {
+        label: "Calma con buona energia",
+        title: "Slancio senza fretta",
+        summary: "È una bella energia. Le diamo un contenimento gentile, così ne rimane anche per dopo.",
+        phase1: [
+          "Un respiro lungo e tranquillo. Poi inizi, senza rincorrerti.",
+          "L’energia non deve irrigidire. Se vuoi, fai un rapido check della mandibola.",
+          "Concediti 10 secondi prima di partire. Spesso chiarisce molto."
+        ],
+        phase2: [
+          "Scegli una cosa che puoi far avanzare bene in 20 minuti.",
+          "Metti un limite: fermati prima di svuotarti. È una scelta intelligente.",
+          "Scrivi: “Oggi scelgo di…”"
+        ],
+        phase3: [
+          "10–20 minuti di focus, poi una vera pausa.",
+          "Alla fine, tre respiri tranquilli per non restare troppo “su”.",
+          "Nota consapevolmente una cosa che ha funzionato bene."
+        ],
+        breath: { inhale:4, exhale:6, minutes:2, cueL:"Bella energia", cueR:"Limite gentile" },
+        goal: [
+          "10 minuti di focus, poi pausa.",
+          "Concludi un piccolo mini-risultato e fermati prima di svuotarti.",
+          "Scegli una direzione e realizzala bene per 10 minuti."
+        ]
+      }
+    };
+
+    function getPlan(stress, energy){
+      const s = band(stress);
+      const e = band(energy);
+      return PREMIUM_MAP[`${s}|${e}`] || PREMIUM_MAP["medio|medio"];
+    }
+
+    function pick1(arr){
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    let soundOn = false;
+    const soundToggle = document.getElementById("soundToggle");
+    const soundSwitch = document.getElementById("soundSwitch");
+
+    function setSoundUI(){
+      soundSwitch.classList.toggle("on", soundOn);
+    }
+
+    soundToggle.addEventListener("click", ()=>{
+      soundOn = !soundOn;
+      setSoundUI();
+    });
+
+    soundToggle.addEventListener("keydown", (e)=>{
+      if(e.key === "Enter" || e.key === " "){
+        e.preventDefault();
+        soundOn = !soundOn;
+        setSoundUI();
+      }
+    });
+
     setSoundUI();
-  });
 
-  setSoundUI();
+    function softBeep(){
+      if(!soundOn) return;
+      try{
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const o = ctx.createOscillator();
+        const g = ctx.createGain();
+        o.type = "sine";
+        o.frequency.value = 523.25;
+        g.gain.value = 0.0001;
+        o.connect(g);
+        g.connect(ctx.destination);
+        o.start();
+        g.gain.exponentialRampToValueAtTime(0.03, ctx.currentTime + 0.02);
+        g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.18);
+        setTimeout(()=>{
+          o.stop();
+          ctx.close();
+        }, 220);
+      }catch(e){}
+    }
 
-  function softBeep(){
-    if(!soundOn) return;
-    try{
-      const ctx = new (window.AudioContext || window.webkitAudioContext)();
-      const o = ctx.createOscillator();
-      const g = ctx.createGain();
-      o.type = "sine";
-      o.frequency.value = 523.25;
-      g.gain.value = 0.0001;
-      o.connect(g);
-      g.connect(ctx.destination);
-      o.start();
-      g.gain.exponentialRampToValueAtTime(0.03, ctx.currentTime + 0.02);
-      g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.18);
-      setTimeout(() => {
-        o.stop();
-        ctx.close();
-      }, 220);
-    }catch(e){}
-  }
+    const modeLinesBtn = document.getElementById("modeLinesBtn");
+    const modeCloudBtn = document.getElementById("modeCloudBtn");
+    const modePill = document.getElementById("modePill");
+    const linesWrap = document.getElementById("linesWrap");
+    const cloudWrap = document.getElementById("cloudWrap");
 
-  const modeLinesBtn = document.getElementById("modeLinesBtn");
-  const modeCloudBtn = document.getElementById("modeCloudBtn");
-  const modePill = document.getElementById("modePill");
-  const linesWrap = document.getElementById("linesWrap");
-  const cloudWrap = document.getElementById("cloudWrap");
+    let breathMode = localStorage.getItem("panacea_breath_mode_it") || "lines";
 
-  let breathMode = localStorage.getItem("panacea_breath_mode_it") || "lines";
+    function setModeUI(){
+      const isLines = breathMode === "lines";
+      modeLinesBtn.classList.toggle("active", isLines);
+      modeCloudBtn.classList.toggle("active", !isLines);
+      linesWrap.style.display = isLines ? "block" : "none";
+      cloudWrap.style.display = isLines ? "none" : "grid";
+      modePill.textContent = isLines ? "Linee" : "Nuvola";
+    }
 
-  function setModeUI(){
-    const isLines = breathMode === "lines";
-    modeLinesBtn.classList.toggle("active", isLines);
-    modeCloudBtn.classList.toggle("active", !isLines);
-    linesWrap.style.display = isLines ? "block" : "none";
-    cloudWrap.style.display = isLines ? "none" : "grid";
-    modePill.textContent = isLines ? "Linee" : "Nuvola";
-  }
+    modeLinesBtn.addEventListener("click", ()=>{
+      breathMode = "lines";
+      localStorage.setItem("panacea_breath_mode_it", breathMode);
+      setModeUI();
+    });
 
-  modeLinesBtn.addEventListener("click", () => {
-    breathMode = "lines";
-    localStorage.setItem("panacea_breath_mode_it", breathMode);
-    setModeUI();
-  });
+    modeCloudBtn.addEventListener("click", ()=>{
+      breathMode = "cloud";
+      localStorage.setItem("panacea_breath_mode_it", breathMode);
+      setModeUI();
+    });
 
-  modeCloudBtn.addEventListener("click", () => {
-    breathMode = "cloud";
-    localStorage.setItem("panacea_breath_mode_it", breathMode);
-    setModeUI();
-  });
+    let breathInterval = null;
+    let breathRunning = false;
+    let plan = { inhale:4, exhale:6, minutes:3, cueL:"", cueR:"" };
+    let phase = "pronto";
+    let phaseRemaining = 0;
+    let totalRemaining = 0;
+    let totalStart = 0;
 
-  let breathInterval = null;
-  let breathRunning = false;
-  let plan = { inhale:4, exhale:6, minutes:3, cueL:"", cueR:"" };
-  let phase = "pronto";
-  let phaseRemaining = 0;
-  let totalRemaining = 0;
-  let totalStart = 0;
+    const breathStateEl = document.getElementById("breathState");
+    const breathTimerEl = document.getElementById("breathTimer");
+    const breathPlanEl  = document.getElementById("breathPlan");
+    const progressBarEl = document.getElementById("progressBar");
+    const cueLeft = document.getElementById("cueLeft");
+    const cueRight = document.getElementById("cueRight");
 
-  const breathStateEl = document.getElementById("breathState");
-  const breathTimerEl = document.getElementById("breathTimer");
-  const breathPlanEl  = document.getElementById("breathPlan");
-  const progressBarEl = document.getElementById("progressBar");
-  const cueLeft = document.getElementById("cueLeft");
-  const cueRight = document.getElementById("cueRight");
+    const inFill = document.getElementById("inFill");
+    const outFill = document.getElementById("outFill");
+    const inSec = document.getElementById("inSec");
+    const outSec = document.getElementById("outSec");
+    const linesHint = document.getElementById("linesHint");
 
-  const inFill = document.getElementById("inFill");
-  const outFill = document.getElementById("outFill");
-  const inSec = document.getElementById("inSec");
-  const outSec = document.getElementById("outSec");
-  const linesHint = document.getElementById("linesHint");
+    const cloudFill = document.getElementById("cloudFill");
+    const cloudPhase = document.getElementById("cloudPhase");
+    const cloudCount = document.getElementById("cloudCount");
+    const cloudHint  = document.getElementById("cloudHint");
 
-  const cloudFill = document.getElementById("cloudFill");
-  const cloudPhase = document.getElementById("cloudPhase");
-  const cloudCount = document.getElementById("cloudCount");
-  const cloudHint = document.getElementById("cloudHint");
+    function fmt(sec){
+      sec = Math.max(0, Math.floor(sec));
+      const m = String(Math.floor(sec/60)).padStart(2,"0");
+      const s = String(sec%60).padStart(2,"0");
+      return `${m}:${s}`;
+    }
 
-  function fmt(sec){
-    sec = Math.max(0, Math.floor(sec));
-    const m = String(Math.floor(sec / 60)).padStart(2, "0");
-    const s = String(sec % 60).padStart(2, "0");
-    return `${m}:${s}`;
-  }
+    function setBreathPlan(newPlan){
+      plan = {...newPlan};
 
-  function setBreathPlan(newPlan){
-    plan = {...newPlan};
+      cueLeft.textContent  = plan.cueL || "Espirazione lunga = più calma";
+      cueRight.textContent = plan.cueR || "Non forzare, lascia fluire";
 
-    cueLeft.textContent = plan.cueL || "Un’espirazione lunga favorisce la calma";
-    cueRight.textContent = plan.cueR || "Non forzare — lascia semplicemente accadere";
+      stopBreathing(true);
 
-    stopBreathing(true);
-
-    breathPlanEl.textContent = `Piano: Inspira ${plan.inhale}s · Espira ${plan.exhale}s · Durata ${plan.minutes} min`;
-    breathTimerEl.textContent = fmt(plan.minutes * 60);
-    progressBarEl.style.width = "0%";
-
-    inFill.style.width = "0%";
-    outFill.style.width = "0%";
-    inSec.textContent = "—";
-    outSec.textContent = "—";
-    linesHint.textContent = "Segui la barra: quando vedi “Inspira”, lasci entrare l’aria. Quando vedi “Espira”, la lasci uscire lentamente.";
-
-    cloudFill.style.height = "0%";
-    cloudPhase.textContent = "Pronto";
-    cloudCount.textContent = "—";
-    cloudHint.textContent = "Se vuoi, iniziamo insieme.";
-
-    breathStateEl.textContent = "Pronto";
-  }
-
-  function renderBreathUI(){
-    if(!breathRunning && phase === "pronto"){
-      breathStateEl.textContent = "Pronto";
+      breathPlanEl.textContent = `Piano: inspirazione ${plan.inhale}s · espirazione ${plan.exhale}s · durata ${plan.minutes} min`;
       breathTimerEl.textContent = fmt(plan.minutes * 60);
       progressBarEl.style.width = "0%";
 
@@ -1484,199 +1587,208 @@
       outFill.style.width = "0%";
       inSec.textContent = "—";
       outSec.textContent = "—";
+      linesHint.textContent = "Segui la barra: quando vedi “Inspira”, inspiri. Quando vedi “Espira”, lasci uscire lentamente l’aria.";
 
       cloudFill.style.height = "0%";
       cloudPhase.textContent = "Pronto";
       cloudCount.textContent = "—";
-      cloudHint.textContent = "Se vuoi, iniziamo insieme.";
-      return;
+      cloudHint.textContent = "Se vuoi, iniziamo adesso insieme.";
+
+      breathStateEl.textContent = "Pronto";
     }
 
-    if(phase === "finito"){
-      breathStateEl.textContent = "Finito ✅";
-      breathTimerEl.textContent = "00:00";
-      progressBarEl.style.width = "100%";
-
-      inFill.style.width = "0%";
-      outFill.style.width = "0%";
-      inSec.textContent = "✓";
-      outSec.textContent = "✓";
-
-      cloudFill.style.height = "0%";
-      cloudPhase.textContent = "Finito";
-      cloudCount.textContent = "✓";
-      cloudHint.textContent = "Molto bene. A volte bastano davvero pochi minuti.";
-      return;
-    }
-
-    const done = totalStart - totalRemaining;
-    const pctAll = totalStart > 0 ? Math.min(100, Math.max(0, (done / totalStart) * 100)) : 0;
-    progressBarEl.style.width = pctAll.toFixed(1) + "%";
-    breathTimerEl.textContent = fmt(totalRemaining);
-
-    if(phase === "inspira"){
-      const p = 1 - (phaseRemaining / plan.inhale);
-      const sec = phaseRemaining;
-
-      breathStateEl.textContent = `Inspira (${sec}s)`;
-      inFill.style.width = (p * 100).toFixed(0) + "%";
-      outFill.style.width = "0%";
-      inSec.textContent = `${sec}s`;
-      outSec.textContent = "—";
-      linesHint.textContent = "Inspirazione: lascia entrare l’aria con calma — non c’è nulla da forzare.";
-
-      cloudPhase.textContent = "Inspira";
-      cloudCount.textContent = String(sec);
-      cloudHint.textContent = "Lascia entrare lentamente l’aria…";
-      cloudFill.style.height = (10 + p * 80).toFixed(0) + "%";
-    } else {
-      const p = 1 - (phaseRemaining / plan.exhale);
-      const sec = phaseRemaining;
-
-      breathStateEl.textContent = `Espira (${sec}s)`;
-      outFill.style.width = (p * 100).toFixed(0) + "%";
-      inFill.style.width = "0%";
-      outSec.textContent = `${sec}s`;
-      inSec.textContent = "—";
-      linesHint.textContent = "Espirazione: lascia uscire lentamente l’aria — come un soffio morbido, senza fretta.";
-
-      cloudPhase.textContent = "Espira";
-      cloudCount.textContent = String(sec);
-      cloudHint.textContent = "Lascia andare lentamente l’aria…";
-      cloudFill.style.height = (90 - p * 80).toFixed(0) + "%";
-    }
-  }
-
-  function startBreathing(){
-    if(breathRunning) return;
-
-    if(phase === "pronto" || phase === "finito"){
-      totalRemaining = plan.minutes * 60;
-      totalStart = totalRemaining;
-      phase = "inspira";
-      phaseRemaining = plan.inhale;
-      softBeep();
-    }
-
-    breathRunning = true;
-    renderBreathUI();
-
-    breathInterval = setInterval(() => {
-      if(totalRemaining <= 0){
-        stopBreathing(false);
-        phase = "finito";
-        renderBreathUI();
+    function renderBreathUI(){
+      if(!breathRunning && phase === "pronto"){
+        breathStateEl.textContent = "Pronto";
+        breathTimerEl.textContent = fmt(plan.minutes * 60);
+        progressBarEl.style.width = "0%";
+        inFill.style.width = "0%";
+        outFill.style.width = "0%";
+        inSec.textContent = "—";
+        outSec.textContent = "—";
+        cloudFill.style.height = "0%";
+        cloudPhase.textContent = "Pronto";
+        cloudCount.textContent = "—";
+        cloudHint.textContent = "Se vuoi, iniziamo adesso insieme.";
         return;
       }
 
-      totalRemaining -= 1;
-      phaseRemaining -= 1;
+      if(phase === "finito"){
+        breathStateEl.textContent = "Finito ✅";
+        breathTimerEl.textContent = "00:00";
+        progressBarEl.style.width = "100%";
+        inFill.style.width = "0%";
+        outFill.style.width = "0%";
+        inSec.textContent = "✓";
+        outSec.textContent = "✓";
+        cloudFill.style.height = "0%";
+        cloudPhase.textContent = "Finito";
+        cloudCount.textContent = "✓";
+        cloudHint.textContent = "Molto bene. A volte bastano pochi minuti.";
+        return;
+      }
 
-      if(phaseRemaining <= 0){
-        phase = (phase === "inspira") ? "espira" : "inspira";
-        phaseRemaining = (phase === "inspira") ? plan.inhale : plan.exhale;
+      const done = totalStart - totalRemaining;
+      const pctAll = totalStart > 0 ? Math.min(100, Math.max(0, (done / totalStart) * 100)) : 0;
+      progressBarEl.style.width = pctAll.toFixed(1) + "%";
+      breathTimerEl.textContent = fmt(totalRemaining);
+
+      if(phase === "in"){
+        const p = 1 - (phaseRemaining / plan.inhale);
+        const sec = phaseRemaining;
+
+        breathStateEl.textContent = `Inspira (${sec}s)`;
+        inFill.style.width = (p * 100).toFixed(0) + "%";
+        outFill.style.width = "0%";
+        inSec.textContent = `${sec}s`;
+        outSec.textContent = "—";
+        linesHint.textContent = "Inspirazione: lascia entrare l’aria con calma, senza sforzare.";
+        cloudPhase.textContent = "Inspira";
+        cloudCount.textContent = String(sec);
+        cloudHint.textContent = "Lascia entrare lentamente l’aria…";
+        cloudFill.style.height = (10 + p * 80).toFixed(0) + "%";
+      } else {
+        const p = 1 - (phaseRemaining / plan.exhale);
+        const sec = phaseRemaining;
+
+        breathStateEl.textContent = `Espira (${sec}s)`;
+        outFill.style.width = (p * 100).toFixed(0) + "%";
+        inFill.style.width = "0%";
+        outSec.textContent = `${sec}s`;
+        inSec.textContent = "—";
+        linesHint.textContent = "Espirazione: lascia uscire lentamente l’aria, senza fretta.";
+        cloudPhase.textContent = "Espira";
+        cloudCount.textContent = String(sec);
+        cloudHint.textContent = "Lascia andare l’aria con dolcezza…";
+        cloudFill.style.height = (90 - p * 80).toFixed(0) + "%";
+      }
+    }
+
+    function startBreathing(){
+      if(breathRunning) return;
+
+      if(phase === "pronto" || phase === "finito"){
+        totalRemaining = plan.minutes * 60;
+        totalStart = totalRemaining;
+        phase = "in";
+        phaseRemaining = plan.inhale;
         softBeep();
       }
 
+      breathRunning = true;
       renderBreathUI();
-    }, 1000);
-  }
 
-  function pauseBreathing(){
-    if(!breathRunning) return;
-    breathRunning = false;
-    if(breathInterval) clearInterval(breathInterval);
-    breathInterval = null;
-    renderBreathUI();
-  }
+      breathInterval = setInterval(()=>{
+        if(totalRemaining <= 0){
+          stopBreathing(false);
+          phase = "finito";
+          renderBreathUI();
+          return;
+        }
 
-  function stopBreathing(resetToReady){
-    if(breathInterval) clearInterval(breathInterval);
-    breathInterval = null;
-    breathRunning = false;
+        totalRemaining -= 1;
+        phaseRemaining -= 1;
 
-    if(resetToReady){
-      phase = "pronto";
-      phaseRemaining = 0;
-      totalRemaining = 0;
-      totalStart = 0;
+        if(phaseRemaining <= 0){
+          phase = (phase === "in") ? "out" : "in";
+          phaseRemaining = (phase === "in") ? plan.inhale : plan.exhale;
+          softBeep();
+        }
+
+        renderBreathUI();
+      }, 1000);
     }
-  }
 
-  document.getElementById("breathStart").addEventListener("click", startBreathing);
-  document.getElementById("breathPause").addEventListener("click", pauseBreathing);
-  document.getElementById("breathReset").addEventListener("click", () => {
-    stopBreathing(true);
-    renderBreathUI();
-  });
+    function pauseBreathing(){
+      if(!breathRunning) return;
+      breathRunning = false;
+      if(breathInterval) clearInterval(breathInterval);
+      breathInterval = null;
+      renderBreathUI();
+    }
 
-  const statePill = document.getElementById("statePill");
-  const mTitle = document.getElementById("mTitle");
-  const mSummary = document.getElementById("mSummary");
-  const mText1 = document.getElementById("mText1");
-  const mText2 = document.getElementById("mText2");
-  const mText3 = document.getElementById("mText3");
-  const goalText = document.getElementById("goalText");
+    function stopBreathing(resetToReady){
+      if(breathInterval) clearInterval(breathInterval);
+      breathInterval = null;
+      breathRunning = false;
 
-  function generateReset(){
-    syncSliderLabels();
-
-    const stress = Number(stressM.value);
-    const energy = Number(energyM.value);
-    const data = getPlan(stress, energy);
-
-    statePill.textContent = `Profilo: ${data.label}`;
-    mTitle.textContent = data.title;
-    mSummary.textContent = data.summary;
-
-    mText1.textContent = pick1(data.phase1);
-    mText2.textContent = pick1(data.phase2);
-    mText3.textContent = pick1(data.phase3);
-    goalText.textContent = pick1(data.goal || ["Concediti 10 minuti. Una sola cosa. Poi fermati consapevolmente."]);
-
-    setBreathPlan(data.breath);
-
-    try{
-      localStorage.setItem("panacea_last_profile_it", JSON.stringify({
-        stress,
-        energy,
-        label:data.label,
-        title:data.title,
-        ts: Date.now()
-      }));
-    } catch(e){}
-  }
-
-  document.getElementById("genM").addEventListener("click", generateReset);
-
-  syncLegacyKeysFromCanonical();
-  updateTargetNote();
-  setModeUI();
-  setAccessUI();
-  syncSliderLabels();
-
-  if(redirectToTargetIfNeeded()){
-    // redirect eseguito
-  } else if(isMember()){
-    try{
-      const last = JSON.parse(localStorage.getItem("panacea_last_profile_it") || "null");
-      if(last && last.stress && last.energy){
-        stressM.value = String(last.stress);
-        energyM.value = String(last.energy);
+      if(resetToReady){
+        phase = "pronto";
+        phaseRemaining = 0;
+        totalRemaining = 0;
+        totalStart = 0;
       }
-    } catch(e){}
-    syncSliderLabels();
-    generateReset();
-  } else {
-    setBreathPlan({
-      inhale:4,
-      exhale:6,
-      minutes:3,
-      cueL:"Un’espirazione lunga favorisce la calma",
-      cueR:"Non forzare — lascia semplicemente accadere"
+    }
+
+    document.getElementById("breathStart").addEventListener("click", startBreathing);
+    document.getElementById("breathPause").addEventListener("click", pauseBreathing);
+    document.getElementById("breathReset").addEventListener("click", ()=>{
+      stopBreathing(true);
+      renderBreathUI();
     });
-    renderBreathUI();
-  }
+
+    const statePill = document.getElementById("statePill");
+    const mTitle = document.getElementById("mTitle");
+    const mSummary = document.getElementById("mSummary");
+    const mText1 = document.getElementById("mText1");
+    const mText2 = document.getElementById("mText2");
+    const mText3 = document.getElementById("mText3");
+    const goalText = document.getElementById("goalText");
+
+    function generateReset(){
+      syncSliderLabels();
+
+      const stress = Number(stressM.value);
+      const energy = Number(energyM.value);
+      const data = getPlan(stress, energy);
+
+      statePill.textContent = `Profilo: ${data.label}`;
+      mTitle.textContent = data.title;
+      mSummary.textContent = data.summary;
+      mText1.textContent = pick1(data.phase1);
+      mText2.textContent = pick1(data.phase2);
+      mText3.textContent = pick1(data.phase3);
+      goalText.textContent = pick1(data.goal || ["Imposta 10 minuti. Una cosa sola. Poi fermati consapevolmente."]);
+
+      setBreathPlan(data.breath);
+
+      try{
+        localStorage.setItem("panacea_last_profile_it", JSON.stringify({
+          stress,
+          energy,
+          label:data.label,
+          title:data.title,
+          ts: Date.now()
+        }));
+      } catch(e){}
+    }
+
+    document.getElementById("genM").addEventListener("click", generateReset);
+
+    setModeUI();
+    setAccessUI();
+    syncSliderLabels();
+
+    if(hasPremiumAccess()){
+      try{
+        const last = JSON.parse(localStorage.getItem("panacea_last_profile_it") || "null");
+        if(last && last.stress && last.energy){
+          stressM.value = String(last.stress);
+          energyM.value = String(last.energy);
+        }
+      } catch(e){}
+      syncSliderLabels();
+      generateReset();
+    } else {
+      setBreathPlan({
+        inhale:4,
+        exhale:6,
+        minutes:3,
+        cueL:"Espirazione lunga = più calma",
+        cueR:"Non forzare, lascia fluire"
+      });
+      renderBreathUI();
+    }
   </script>
 
 </body>
