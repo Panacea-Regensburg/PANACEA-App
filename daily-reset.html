@@ -20,7 +20,6 @@
       --radius: 22px;
       --radius2: 18px;
 
-      /* responsive sizing */
       --pad: clamp(14px, 3.6vw, 22px);
       --gap: clamp(10px, 2.8vw, 14px);
       --orb: clamp(210px, 58vw, 270px);
@@ -45,7 +44,6 @@
       max-width: min(520px, 100%);
     }
 
-    /* ===== Topbar (true centered language buttons) ===== */
     .topbar{
       display:grid;
       grid-template-columns: 1fr auto 1fr;
@@ -133,7 +131,6 @@
       margin:16px 0;
     }
 
-    /* ---------- language toggle (DE/IT only) ---------- */
     .langToggle{
       justify-self:center;
       display:flex;
@@ -167,7 +164,6 @@
       text-shadow: 0 0 10px rgba(200,162,74,.22);
     }
 
-    /* --------- Free box --------- */
     .freeBox{
       margin-top:0;
       padding:14px;
@@ -186,13 +182,12 @@
     .freeBox .rx{
       margin:0;
       font-size:14px;
-      line-height:1.48;
-      color: rgba(43,43,43,.76);
+      line-height:1.52;
+      color: rgba(43,43,43,.78);
       font-weight:700;
       white-space: pre-line;
     }
 
-    /* --------- Breath area --------- */
     .breathWrap{
       display:flex;
       flex-direction:column;
@@ -300,9 +295,14 @@
       color:var(--text);
       flex:1;
       min-width:130px;
-      transition: transform .15s ease;
+      transition: transform .15s ease, opacity .15s ease;
     }
     button:hover{ transform: translateY(-1px); }
+    button:disabled{
+      cursor:not-allowed;
+      opacity:.58;
+      transform:none;
+    }
 
     button.primary{
       background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
@@ -350,7 +350,6 @@
       line-height: 1.4;
     }
 
-    /* ===== Premium teaser box (golden / more premium) ===== */
     .premiumTeaser{
       margin-top:14px;
       padding:14px;
@@ -485,9 +484,7 @@
       position:relative;
       z-index:2;
     }
-
-    /* ===== Premium Block (Pergament + Spiel + Abschluss) ===== */
-    .premiumBlock{
+        .premiumBlock{
       margin-top:14px;
       padding:14px;
       border-radius:18px;
@@ -500,7 +497,7 @@
         0 16px 44px rgba(0,0,0,.08);
       position:relative;
       overflow:hidden;
-      display:none; /* shown only for members */
+      display:none;
     }
     .premiumBlock::before{
       content:"";
@@ -522,6 +519,7 @@
       justify-content:space-between;
       gap:12px;
     }
+
     .premiumTitle{
       margin:0 0 6px 0;
       font-size:15px;
@@ -529,6 +527,7 @@
       color:#3a2c10;
       letter-spacing:.2px;
     }
+
     .premiumSub{
       margin:0;
       font-size:13.6px;
@@ -566,6 +565,7 @@
         inset 0 0 0 1px rgba(255,255,255,.40),
         0 12px 28px rgba(0,0,0,.08);
     }
+
     .paper::before{
       content:"";
       position:absolute;
@@ -577,6 +577,7 @@
       pointer-events:none;
       border-radius:18px;
     }
+
     .paper h4{
       position:relative;
       margin:0 0 8px 0;
@@ -585,6 +586,7 @@
       color:#3a2c10;
       letter-spacing:.2px;
     }
+
     .paper .paperText{
       position:relative;
       margin:0;
@@ -606,6 +608,7 @@
       font-size:12.6px;
       font-weight:780;
     }
+
     .chip{
       display:inline-flex;
       align-items:center;
@@ -617,7 +620,6 @@
       box-shadow: 0 10px 22px rgba(0,0,0,.06);
     }
 
-    /* Game area */
     .gameCard{
       position:relative;
       z-index:2;
@@ -629,18 +631,21 @@
       box-shadow: 0 12px 26px rgba(0,0,0,.06);
       overflow:hidden;
     }
+
     .gameHead{
       display:flex;
       align-items:flex-start;
       justify-content:space-between;
       gap:10px;
     }
+
     .gameCard h4{
       margin:0 0 6px;
       font-size:14px;
       font-weight:950;
       color:#3a2c10;
     }
+
     .gameCard p{
       margin:0;
       font-size:13.6px;
@@ -677,8 +682,13 @@
       transform: translate(-50%, -50%) scale(1);
       transition: transform .12s ease, opacity .18s ease;
     }
+
     .dot:active{ transform: translate(-50%, -50%) scale(.94); }
-    .dot.collected{ opacity:0; transform: translate(-50%, -50%) scale(.60); pointer-events:none; }
+    .dot.collected{
+      opacity:0;
+      transform: translate(-50%, -50%) scale(.60);
+      pointer-events:none;
+    }
 
     .gameFooter{
       margin-top:10px;
@@ -691,12 +701,14 @@
       font-size:12.8px;
       font-weight:820;
     }
+
     .gameBtns{
       display:flex;
       gap:10px;
       flex-wrap:wrap;
       width:100%;
     }
+
     .miniBtn{
       padding:10px 12px;
       border-radius:14px;
@@ -708,6 +720,7 @@
       flex:1;
       min-width:140px;
     }
+
     .miniBtn.primary{
       background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
       border:1px solid rgba(200,162,74,.35);
@@ -725,12 +738,14 @@
       background: rgba(255,255,255,.74);
       box-shadow: 0 12px 26px rgba(0,0,0,.06);
     }
+
     .closing h4{
       margin:0 0 6px;
       font-size:14px;
       font-weight:950;
       color:#3a2c10;
     }
+
     .closing p{
       margin:0;
       font-size:13.8px;
@@ -755,7 +770,7 @@
     <div class="topbar">
       <a class="back" href="index.html">← Home</a>
 
-      <div class="langToggle" aria-label="Language toggle">
+      <div class="langToggle" aria-label="Sprachauswahl">
         <button class="langBtn active" id="btnDE" type="button">DE</button>
         <button class="langBtn" id="btnIT" type="button">IT</button>
       </div>
@@ -771,110 +786,106 @@
         <div class="badge">DR</div>
         <div>
           <h1>Daily Reset</h1>
-          <p>3–5 Minuten für innere Stabilität: ruhig atmen, Körper spüren, Klarheit finden.</p>
+          <p>3–5 Minuten für mehr innere Stabilität: ruhig atmen, den Körper spüren und wieder bei dir ankommen.</p>
         </div>
       </div>
 
       <div class="content">
 
-        <!-- FREE -->
         <div class="freeBox">
           <div class="rt" id="dailyFocusTitle">Heute</div>
-          <p class="rx" id="dailyFocusText">Lade…</p>
+          <p class="rx" id="dailyFocusText">Lädt…</p>
         </div>
 
         <div class="divider"></div>
 
-        <!-- Breathing (FREE) -->
         <div class="breathWrap">
           <div class="phase" id="phaseLabel">Bereit</div>
 
           <div class="timerRow">
-            <span>Restzeit</span>
+            <span>Verbleibende Zeit</span>
             <span class="time" id="timeLeft">03:00</span>
           </div>
 
-          <div class="orb" aria-label="Atem-Animation">
+          <div class="orb" aria-label="Atemanimation">
             <div class="pulse" id="pulse"></div>
             <div class="orbText">
               <div class="focus" id="focusText">Heute: langsamer ausatmen</div>
-              <div class="hint" id="hintText">Tippe auf Start. Folge dem Kreis: Einatmen → Ausatmen.</div>
+              <div class="hint" id="hintText">Tippe auf Start und folge dem Rhythmus: einatmen, ausatmen, ankommen.</div>
             </div>
           </div>
         </div>
 
         <div class="controls">
-          <button class="primary" id="startBtn">Start</button>
-          <button id="pauseBtn" disabled>Pausieren</button>
-          <button id="resetBtn">Reset</button>
+          <button class="primary" id="startBtn" type="button">Start</button>
+          <button id="pauseBtn" type="button" disabled>Pausieren</button>
+          <button id="resetBtn" type="button">Zurücksetzen</button>
         </div>
 
         <div class="settings">
           <div class="row">
             <span>Einatmen (Sek.)</span>
-            <input id="inhale" type="number" min="2" max="8" value="4">
+            <input id="inhale" type="number" min="2" max="8" value="4" inputmode="numeric">
           </div>
           <div class="row">
             <span>Ausatmen (Sek.)</span>
-            <input id="exhale" type="number" min="3" max="10" value="6">
+            <input id="exhale" type="number" min="3" max="10" value="6" inputmode="numeric">
           </div>
           <div class="row">
             <span>Dauer (Min.)</span>
-            <input id="minutes" type="number" min="1" max="10" value="3">
+            <input id="minutes" type="number" min="1" max="10" value="3" inputmode="numeric">
           </div>
 
           <div class="mini">
-            Tipp: Längeres Ausatmen (z. B. 4–6) unterstützt die Beruhigung des Nervensystems.
+            Tipp: Ein längeres Ausatmen, zum Beispiel 4–6, kann dein Nervensystem spürbar beruhigen.
           </div>
         </div>
 
         <div class="divider"></div>
 
-        <!-- PREMIUM TEASER -->
         <div class="premiumTeaser" id="premiumTeaser">
           <div class="premiumHead">
             <div>
-              <h3>Premium Reset (Mitglieder)</h3>
+              <h3>Premium Reset für Mitglieder</h3>
               <p>
-                Eine intensivere Version – mit einer warmen, „pergamentartigen“ Wochenreflexion.
+                Eine tiefere, besonders warme Version – mit wöchentlicher Reflexion, sanfter Fokussierung und kleinen Abschlussimpulsen.
               </p>
             </div>
             <div class="premiumBadge" id="premiumBadge">Status: Free</div>
           </div>
 
           <ul class="premiumList">
-            <li><b>Wöchentliche Pergament-Reflexion</b></li>
-            <li><b>3 Varianten</b> pro Wochentag – Rotation für immer neue Kombinationen</li>
-            <li><b>Mini-Spiel</b> (visuell, beruhigend, fokussierend)</li>
-            <li><b>Motivationssatz</b> zum Abschluss – jeden Tag anders</li>
+            <li><b>Wöchentliche Reflexion im warmen Pergamentstil</b></li>
+            <li><b>Drei Varianten</b> pro Wochentag für abwechslungsreiche Impulse</li>
+            <li><b>Ein visuelles Mini-Spiel</b> für Ruhe, Fokus und Präsenz</li>
+            <li><b>Ein täglicher Abschlusssatz</b> als sanfter Ausklang</li>
           </ul>
 
           <div class="premiumActions">
             <a class="linkBtn" id="memberBtn" href="mitglieder.html">Zum Mitgliederbereich</a>
-            <a class="subLink" id="unlockBtnLink" href="mitglieder.html">Mitglieder freischalten</a>
+            <a class="subLink" id="unlockBtnLink" href="mitglieder.html">Mitgliedschaft freischalten</a>
           </div>
 
           <div class="smallNote">
-            Hinweis: Premium wird nach dem Freischalten automatisch hier eingeblendet.
+            Hinweis: Nach der Freischaltung wird dein Premium-Bereich hier automatisch eingeblendet.
           </div>
         </div>
 
-        <!-- PREMIUM BLOCK (shown only for members) -->
         <div class="premiumBlock" id="premiumBlock" aria-label="Premium Daily Reset Deluxe">
           <div class="premiumTop">
             <div>
               <h3 class="premiumTitle" id="pTitle">Premium Reset Deluxe</h3>
-              <p class="premiumSub" id="pSub">Lade…</p>
+              <p class="premiumSub" id="pSub">Lädt…</p>
             </div>
             <div class="pill" id="pPill">Variante A</div>
           </div>
 
           <div class="paper">
             <h4 id="paperTitle">Pergament</h4>
-            <p class="paperText" id="paperText">Lade…</p>
+            <p class="paperText" id="paperText">Lädt…</p>
             <div class="paperMeta">
               <span class="chip" id="paperAnchor">🧭 Fokus: …</span>
-              <span class="chip" id="paperMicro">✨ Mikro-Schritt: …</span>
+              <span class="chip" id="paperMicro">✨ Kleiner Schritt: …</span>
             </div>
           </div>
 
@@ -882,7 +893,7 @@
             <div class="gameHead">
               <div>
                 <h4 id="gameTitle">Spiel</h4>
-                <p id="gamePrompt">Lade…</p>
+                <p id="gamePrompt">Lädt…</p>
               </div>
               <div class="pill" id="gameScore">0/0</div>
             </div>
@@ -895,13 +906,13 @@
             </div>
 
             <div class="gameBtns">
-              <button class="miniBtn primary" id="spawnBtn" type="button">Neustart</button>
+              <button class="miniBtn primary" id="spawnBtn" type="button">Neu starten</button>
               <button class="miniBtn" id="finishBtn" type="button">Abschluss anzeigen</button>
             </div>
           </div>
 
           <div class="closing" id="closingBox" style="display:none;">
-            <h4>Zum Schluss</h4>
+            <h4>Zum Abschluss</h4>
             <p id="closingText">…</p>
           </div>
         </div>
@@ -912,26 +923,25 @@
   </div>
 
   <script>
-    // ---------------- Daily Focus (7-day rotation) ----------------
     const dailyFocus = [
-      { title: "Montag – Fokus", text: "Richte deine Aufmerksamkeit auf einen klaren nächsten Schritt. Nicht alles – nur den nächsten." },
-      { title: "Dienstag – Ruhe", text: "Verlängere heute bewusst dein Ausatmen. Dein Nervensystem liebt Sicherheit." },
-      { title: "Mittwoch – Klarheit", text: "Beobachte deine Gedanken wie Wolken. Du musst ihnen nicht folgen." },
-      { title: "Donnerstag – Struktur", text: "Plane nur die nächsten 30 Minuten – nicht den ganzen Tag." },
-      { title: "Freitag – Energie", text: "Atme tief ein, öffne den Brustraum, richte dich auf. Energie entsteht durch Haltung." },
-      { title: "Samstag – Regeneration", text: "Erlaube dir heute bewusst kleine Pausen. 3 Minuten reichen." },
-      { title: "Sonntag – Reflexion", text: "Was hat dir diese Woche Stabilität gegeben? Wiederhole genau das." }
+      { title: "Montag – Fokus", text: "Richte deine Aufmerksamkeit heute auf den nächsten klaren Schritt. Nicht auf alles – nur auf das, was jetzt wirklich dran ist." },
+      { title: "Dienstag – Ruhe", text: "Verlängere heute bewusst dein Ausatmen. Dein Nervensystem reagiert besonders gut auf langsame, sichere Rhythmen." },
+      { title: "Mittwoch – Klarheit", text: "Beobachte deine Gedanken wie Wolken am Himmel. Du darfst sie wahrnehmen, ohne ihnen sofort folgen zu müssen." },
+      { title: "Donnerstag – Struktur", text: "Plane nur den nächsten überschaubaren Abschnitt – nicht den ganzen Tag. Weniger Druck schafft oft mehr Stabilität." },
+      { title: "Freitag – Energie", text: "Atme tief ein, richte dich sanft auf und öffne den Brustraum. Energie beginnt oft mit einer veränderten Haltung." },
+      { title: "Samstag – Regeneration", text: "Erlaube dir heute bewusst kleine Pausen. Schon wenige Minuten können deinem System spürbar guttun." },
+      { title: "Sonntag – Reflexion", text: "Was hat dir diese Woche Stabilität gegeben? Genau das darf dich auch in die nächste Woche begleiten." }
     ];
-    const today0 = new Date().getDay(); // 0=Sonntag
-    const idxFree = today0 === 0 ? 6 : today0 - 1; // Monday=0..Sunday=6
+
+    const today0 = new Date().getDay();
+    const idxFree = today0 === 0 ? 6 : today0 - 1;
     document.getElementById("dailyFocusTitle").textContent = dailyFocus[idxFree].title;
     document.getElementById("dailyFocusText").textContent = dailyFocus[idxFree].text;
   </script>
 
   <script>
-    // ---------------- Premium status (reads member flag) ----------------
-    const MEMBER_KEY = "panacea_member"; // keep consistent with mitglieder.html
-    const isMember = localStorage.getItem(MEMBER_KEY) === "true";
+    const MEMBER_KEYS = ["panacea_member", "panacea_premium"];
+    const isMember = MEMBER_KEYS.some(key => localStorage.getItem(key) === "true");
 
     const premiumBadge = document.getElementById("premiumBadge");
     const unlockBtnLink = document.getElementById("unlockBtnLink");
@@ -945,8 +955,6 @@
       unlockBtnLink.style.display = "none";
       memberBtn.textContent = "Mitgliederbereich";
       premiumBlock.style.display = "block";
-      // optional: keep teaser visible as a header OR hide it
-      // premiumTeaser.style.display = "none";
     } else {
       premiumBadge.textContent = "Status: Free";
       unlockBtnLink.style.display = "";
@@ -956,186 +964,175 @@
   </script>
 
   <script>
-    // ---------------- Premium Deluxe Content: 7 days × 3 variants ----------------
-    // Rotation logic: choose variant by ISO-week + dayIndex so it changes every week and stays deterministic.
     function getISOWeek(d){
       const date = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
-      const dayNum = date.getUTCDay() || 7; // Mon=1..Sun=7
+      const dayNum = date.getUTCDay() || 7;
       date.setUTCDate(date.getUTCDate() + 4 - dayNum);
       const yearStart = new Date(Date.UTC(date.getUTCFullYear(),0,1));
-      const weekNo = Math.ceil((((date - yearStart) / 86400000) + 1) / 7);
-      return weekNo;
+      return Math.ceil((((date - yearStart) / 86400000) + 1) / 7);
     }
 
     const weekdays = ["Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag","Sonntag"];
 
-    // 0=Mon..6=Sun
     const premiumByDay = [
-      // MONDAY
       {
         anchor: "Fokus & Start",
         variants: [
           {
             title: "Montag – Sanfter Neustart",
-            sub: "Wir starten nicht hart. Wir starten klug: mit Ruhe, Klarheit und einem einzigen nächsten Schritt.",
+            sub: "Wir starten nicht hart, sondern klug: mit Ruhe, Klarheit und einem einzigen nächsten Schritt.",
             text:
-`Stell dir vor, dein Nervensystem ist heute wie ein Raum nach einem langen Wochenende: nicht chaotisch, aber ein bisschen „voll“. Du musst jetzt nicht alles aufräumen – du brauchst zuerst Licht und Ordnung im Kleinen.
+`Stell dir vor, dein Nervensystem ist heute wie ein Raum nach einem langen Wochenende: nicht chaotisch, aber ein wenig voll. Du musst jetzt nicht alles ordnen – zuerst braucht es Licht und etwas Ruhe im Kleinen.
 
-Beginne mit einem Mini-Check-in: Wo in deinem Körper ist gerade Spannung? Kiefer, Brust, Bauch? Lege eine Hand dorthin und atme zweimal länger aus als ein. Das ist wie ein leises Signal: „Ich bin da. Ich kümmere mich.“
+Beginne mit einem kurzen Check-in: Wo spürst du gerade Spannung? Im Kiefer, in der Brust, im Bauch? Lege eine Hand dorthin und atme zweimal länger aus als ein. Das ist ein stilles Signal an dich selbst: „Ich bin da. Ich kümmere mich.“
 
-Dann wähle EINE Sache, die heute zählt. Nicht die größte. Die nächste. Ein klarer, machbarer Schritt. Wenn du merkst, dass dein Kopf zehn Dinge gleichzeitig aufmacht, sag innerlich: „Nur eins. Nur jetzt.“`,
-            micro: "Wähle 1 Schritt, der in 10 Minuten möglich ist.",
-            gameTitle: "Gold-Fokus (Mini-Spiel)",
-            gamePrompt: "Sammle die Goldpunkte. Bei jedem Klick: einmal langsam ausatmen. Du trainierst Fokus + Beruhigung gleichzeitig.",
+Dann wähle genau EINE Sache, die heute wirklich zählt. Nicht die größte. Nicht die perfekte. Einfach die nächste. Wenn dein Kopf zehn Dinge gleichzeitig aufmacht, sag innerlich: „Nur eins. Nur jetzt.“`,
+            micro: "Wähle einen Schritt, der in 10 Minuten machbar ist.",
+            gameTitle: "Gold-Fokus",
+            gamePrompt: "Sammle die Goldpunkte. Bei jedem Klick atmest du einmal langsam aus. So trainierst du Fokus und Beruhigung gleichzeitig.",
             goal: 5
           },
           {
             title: "Montag – Klarer Rahmen",
             sub: "Heute geht es nicht um Leistung, sondern um Richtung. Richtung fühlt sich sicher an.",
             text:
-`Manchmal ist der Montag laut – nicht außen, sondern innen. To-do-Listen, Erwartungen, Gedankenketten. Der Trick ist nicht „mehr Kontrolle“, sondern ein freundlicher Rahmen.
+`Manchmal ist der Montag laut – nicht außen, sondern innen. To-do-Listen, Erwartungen, Gedankenspiralen. Dann hilft nicht mehr Kontrolle, sondern ein freundlicher Rahmen.
 
-Mach es dir leicht: Setze dir für die nächsten 60 Minuten nur zwei Ziele. Ziel 1 ist körperlich: Wasser trinken, Schultern lösen, einmal ans Fenster. Ziel 2 ist praktisch: eine Sache beginnen, ohne sie perfekt zu machen.
+Mach es dir heute leichter: Setze dir für die nächste Stunde nur zwei Ziele. Eines für deinen Körper – zum Beispiel Wasser trinken, die Schultern lockern oder kurz ans Fenster gehen. Und eines für den Alltag – beginne mit einer Sache, ohne sie perfekt machen zu müssen.
 
-Wenn du merkst, dass du dich innerlich antreibst, wechsel die Sprache: statt „Ich muss“ sag „Ich darf“. Das klingt klein – und wirkt groß. Denn dein Nervensystem hört mit. Und Sicherheit entsteht durch Tonfall, nicht durch Druck.`,
-            micro: "Schreibe 2 Mini-Ziele für die nächste Stunde.",
+Wenn du merkst, dass du dich innerlich antreibst, ändere bewusst deine Sprache: statt „Ich muss“ sag „Ich darf“. Das wirkt kleiner, als es ist – aber dein Nervensystem hört genau hin. Sicherheit entsteht oft über Tonfall, nicht über Druck.`,
+            micro: "Formuliere zwei kleine Ziele für die nächste Stunde.",
             gameTitle: "Gold-Rahmen",
-            gamePrompt: "Sammle die Punkte in Ruhe. Zwischen den Klicks: Schultern sinken lassen. Kein Stress – nur Rhythmus.",
+            gamePrompt: "Sammle die Punkte in Ruhe. Zwischen den Klicks dürfen die Schultern weich werden. Kein Druck, nur Rhythmus.",
             goal: 6
           },
           {
             title: "Montag – Freundliche Selbstführung",
-            sub: "Du bist nicht zu spät. Du bist hier. Und das reicht als Startpunkt.",
+            sub: "Du bist nicht zu spät. Du bist hier. Und das reicht als Anfang.",
             text:
-`Heute darfst du dich führen, wie du einen Menschen führen würdest, den du magst: klar, freundlich, ohne Drama.
+`Heute darfst du dich so führen, wie du einen Menschen führen würdest, den du gernhast: klar, freundlich und ohne Härte.
 
-Sag dir einen Satz, der nicht bewertet, sondern begleitet: „Ich beginne klein.“ Dann: Blick weich werden lassen, Kiefer lösen, Ausatmen verlängern. Das ist Führung auf Körperebene.
+Sag dir einen Satz, der dich begleitet statt bewertet: „Ich beginne im Kleinen.“ Dann: Blick weich werden lassen, Kiefer lockern, Ausatmen verlängern. Das ist Selbstführung auf Körperebene.
 
-Und dann kommt der wichtigste Teil: Entscheide, was du heute NICHT tust. Ja, wirklich. Ein bewusstes „Nein“ ist ein Schutzschild für dein System. Wenn du immer „ja“ sagst, arbeitet dein Nervensystem im Dauer-Alarm. Ein kleines Nein schafft Raum. Raum schafft Energie.`,
-            micro: "Streiche heute bewusst 1 unnötige Sache.",
+Und dann kommt der wichtigste Teil: Entscheide bewusst, was du heute nicht tust. Ja, wirklich. Ein klares Nein kann ein Schutzschild für dein System sein. Wenn du zu allem Ja sagst, bleibt dein Nervensystem leicht im Dauer-Alarm. Ein kleines Nein schafft Raum – und Raum schafft Energie.`,
+            micro: "Streiche heute bewusst eine unnötige Sache.",
             gameTitle: "Gold-Nein",
-            gamePrompt: "Sammle die Punkte. Bei jedem Punkt sag leise (oder innerlich): „Nein zu Druck. Ja zu Klarheit.“",
+            gamePrompt: "Sammle die Punkte. Bei jedem Punkt sagst du innerlich: „Nein zu Druck. Ja zu Klarheit.“",
             goal: 5
           }
         ]
       },
-
-      // TUESDAY
-      {
+            {
         anchor: "Beruhigung & Sicherheit",
         variants: [
           {
             title: "Dienstag – Sicherheit im Körper",
-            sub: "Heute bauen wir Sicherheit nicht im Kopf, sondern im Körper. Das ist schneller und ehrlicher.",
+            sub: "Heute bauen wir Sicherheit nicht im Kopf, sondern im Körper auf. Das ist oft direkter und ehrlicher.",
             text:
-`Wenn dein System unruhig ist, hilft selten noch ein Gedanke mehr. Hilfreich ist ein körperliches Signal: „Alles okay. Ich bin in Sicherheit.“
+`Wenn dein System unruhig ist, hilft selten noch ein Gedanke mehr. Hilfreicher ist oft ein körperliches Signal: „Es ist okay. Ich bin hier. Ich bin sicher.“
 
 Mach jetzt drei Dinge in dieser Reihenfolge:
-1) Ausatmen länger als einatmen (mindestens zweimal).
-2) Füße spüren: drücke die Zehen kurz in den Boden, dann loslassen.
-3) Augen entspannen: schau nicht „auf etwas“, sondern „in den Raum“.
+1) Atme länger aus als ein – mindestens zweimal.
+2) Spüre deine Füße: drücke die Zehen sanft in den Boden und lass wieder los.
+3) Entspanne den Blick und schau nicht auf etwas, sondern in den Raum.
 
-Das wirkt wie ein Reset-Knopf für Alarm. Und dann: wähle heute einen sanften Rhythmus. Lieber 80% konstant als 120% kurz und danach Crash. Stabilität ist kein Sprint. Stabilität ist Wiederholung.`,
-            micro: "2x Ausatmen verlängern, dann Füße spüren.",
+Das wirkt wie ein kleiner Reset-Knopf für Alarm. Und dann: wähle heute lieber einen sanften, konstanten Rhythmus statt kurze Spitzen mit anschließendem Einbruch. Stabilität ist kein Sprint. Stabilität entsteht durch Wiederholung.`,
+            micro: "Zweimal länger ausatmen und danach die Füße bewusst spüren.",
             gameTitle: "Gold-Ruhe",
-            gamePrompt: "Sammle die Punkte langsam. Ziel: keine Hast. Atme mit jedem Klick länger aus als ein.",
+            gamePrompt: "Sammle die Punkte langsam. Ziel ist nicht Schnelligkeit, sondern Ruhe. Atme bei jedem Klick länger aus als ein.",
             goal: 6
           },
           {
-            title: "Dienstag – Nervensystem-Wärme",
-            sub: "Du musst dich nicht „zusammenreißen“. Du darfst dich beruhigen – Schritt für Schritt.",
+            title: "Dienstag – Wärme fürs Nervensystem",
+            sub: "Du musst dich nicht zusammenreißen. Du darfst dich beruhigen – Schritt für Schritt.",
             text:
-`Stell dir vor, du legst deinem Nervensystem heute eine warme Decke über die Schultern. Diese Decke heißt: Tempo runter, Ton weich, Atem tief.
+`Stell dir vor, du legst deinem Nervensystem heute eine warme Decke über die Schultern. Diese Decke heißt: weniger Tempo, ein weicherer Ton und ein tieferer Atem.
 
-Ein kleiner Trick: Sprich innerlich langsamer. Nicht lauter, nicht härter – langsamer. Das verändert den inneren Druck. Und wenn du merkst, dass du dich selbst kritisierst: setze einen Punkt. Wirklich einen Punkt. „Stopp.“
+Ein kleiner Trick: Sprich innerlich langsamer mit dir. Nicht lauter, nicht strenger – nur langsamer. Schon das verändert oft den inneren Druck. Und wenn du merkst, dass du dich kritisierst, setze bewusst einen Punkt: „Stopp.“
 
-Dann: mach aus dem nächsten Schritt eine „Kleinigkeit“. Ein Glas Wasser. Eine E-Mail. Ein Anruf. Kein Berg. Nur ein Stein.
+Danach wird aus dem nächsten Schritt nur noch eine Kleinigkeit. Ein Glas Wasser. Eine E-Mail. Ein kurzer Anruf. Kein Berg – nur ein Stein.
 
-Du wirst sehen: Wenn dein System Wärme bekommt, wird dein Kopf klarer. Und Klarheit kommt nicht durch Druck, sondern durch Entspannung.`,
-            micro: "Wähle heute eine Aufgabe, die du „als Kleinigkeit“ machst.",
+Du wirst merken: Wenn dein System Wärme bekommt, wird dein Kopf oft klarer. Klarheit entsteht selten durch Druck, aber sehr oft durch Entspannung.`,
+            micro: "Wähle heute eine Aufgabe, die du als kleine Sache behandelst.",
             gameTitle: "Gold-Decke",
-            gamePrompt: "Sammle die Punkte. Mit jedem Punkt: Schultern weich. Kiefer weich. Du bist sicher.",
+            gamePrompt: "Sammle die Punkte. Mit jedem Klick dürfen Schultern und Kiefer weicher werden.",
             goal: 5
           },
           {
             title: "Dienstag – Sanfte Grenzen",
-            sub: "Beruhigung ist oft eine Grenze. Eine Grenze ist oft Selbstrespekt.",
+            sub: "Beruhigung ist oft eine Grenze. Und eine Grenze ist oft Selbstrespekt.",
             text:
-`Heute darfst du eine Grenze setzen – nicht gegen andere, sondern für dich. Grenzen sind ein Signal an dein Nervensystem: „Ich passe auf mich auf.“
+`Heute darfst du eine Grenze setzen – nicht gegen andere, sondern für dich. Grenzen senden deinem Nervensystem die Botschaft: „Ich passe auf mich auf.“
 
-Beginne mit einer Mini-Grenze: 10 Minuten ohne neue Inputs. Kein Scrollen, keine Nachrichten. Nur du, Atem, Raum. Das ist keine Vermeidung – das ist Regeneration.
+Beginne mit einer kleinen Grenze: zehn Minuten ohne neue Reize. Kein Scrollen, keine Nachrichten, kein zusätzliches Input. Nur du, dein Atem und etwas Raum. Das ist keine Vermeidung – das ist Regeneration.
 
-Und wenn du heute „ja“ sagst, sag es bewusst. Wenn du „nein“ sagst, sag es freundlich. Du musst niemanden überzeugen. Du darfst dich schützen.
+Und wenn du heute Ja sagst, dann bewusst. Wenn du Nein sagst, dann freundlich. Du musst dich nicht rechtfertigen, um dich schützen zu dürfen.
 
-Beruhigung ist kein Zustand, den man verdient. Beruhigung ist ein Recht. Und du darfst es dir heute nehmen.`,
-            micro: "10 Minuten ohne Input (kein Handy).",
+Beruhigung ist kein Zustand, den man sich verdienen muss. Beruhigung ist etwas, das du dir erlauben darfst.`,
+            micro: "Nimm dir 10 Minuten ganz ohne Handy oder neue Reize.",
             gameTitle: "Gold-Grenze",
-            gamePrompt: "Sammle die Punkte. Danach: 60 Sekunden Augen schließen. Das ist deine Grenze für heute.",
+            gamePrompt: "Sammle die Punkte. Danach schließe für 60 Sekunden die Augen. Das ist deine kleine Grenze für heute.",
             goal: 7
           }
         ]
       },
-
-      // WEDNESDAY
       {
         anchor: "Klarheit & Gedankenruhe",
         variants: [
           {
             title: "Mittwoch – Gedanken wie Wolken",
-            sub: "Du musst nicht jeden Gedanken lösen. Du darfst ihn vorbeiziehen lassen.",
+            sub: "Du musst nicht jeden Gedanken lösen. Manche Gedanken dürfen einfach weiterziehen.",
             text:
-`Heute üben wir eine Fähigkeit, die sofort entlastet: Abstand zu Gedanken. Gedanken sind oft schnell, überzeugend und laut – aber sie sind nicht immer wahr.
+`Heute üben wir etwas, das sofort entlasten kann: Abstand zu Gedanken. Gedanken sind oft schnell, laut und überzeugend – aber nicht automatisch wahr.
 
-Wenn ein Gedanke kommt („Ich schaffe das nicht“, „Das ist zu viel“), sag innerlich: „Aha. Ein Gedanke.“ Nicht bekämpfen. Nicht glauben. Nur benennen.
+Wenn ein Gedanke auftaucht wie „Ich schaffe das nicht“ oder „Das ist zu viel“, sag innerlich: „Aha, ein Gedanke.“ Nicht bekämpfen. Nicht festhalten. Nur benennen.
 
-Dann lenke dich zurück auf etwas Konkretes: den Druck deiner Füße am Boden, den Kontakt der Kleidung auf der Haut, das Geräusch im Raum. Konkretes beruhigt das System – Abstraktes stresst es oft.
+Dann richte deine Aufmerksamkeit wieder auf etwas Konkretes: den Kontakt deiner Füße zum Boden, den Stoff auf der Haut oder ein Geräusch im Raum. Konkretes beruhigt oft, während Abstraktes leicht stresst.
 
-Und noch etwas: Klarheit entsteht, wenn du freundlich bist. Strenge macht dich nicht klar. Strenge macht dich eng.`,
-            micro: "1 Gedanke → benennen: „Aha, ein Gedanke.“",
+Und noch etwas: Klarheit entsteht meist nicht durch Härte. Härte macht eng. Freundlichkeit schafft Weite.`,
+            micro: "Benenne heute einen Gedanken bewusst mit: „Aha, ein Gedanke.“",
             gameTitle: "Gold-Klarheit",
-            gamePrompt: "Sammle die Punkte. Bei jedem Punkt: nenne innerlich 1 neutrales Faktum („Ich sitze. Ich atme.“).",
+            gamePrompt: "Sammle die Punkte. Bei jedem Punkt nennst du innerlich ein neutrales Faktum, zum Beispiel: „Ich sitze. Ich atme.“",
             goal: 6
           },
           {
-            title: "Mittwoch – Weniger „Warum“, mehr „Was jetzt“",
-            sub: "Heute tauschen wir Grübeln gegen Handlung. Nicht groß – nur passend.",
+            title: "Mittwoch – Weniger Warum, mehr Was jetzt",
+            sub: "Heute ersetzen wir Grübeln durch kleine Handlung. Nicht groß – nur passend.",
             text:
-`Grübeln klingt oft wie Problemlösen, ist aber meistens Stress in Schleife. Der Wechsel ist simpel: vom „Warum ist das so?“ zum „Was ist der nächste kleine Schritt?“
+`Grübeln fühlt sich oft wie Problemlösen an, ist aber häufig eher Stress in Dauerschleife. Der Wechsel ist einfach: vom „Warum ist das so?“ zum „Was ist jetzt der nächste kleine Schritt?“
 
-Frag dich: Was würde meinem Körper jetzt gut tun? Was würde meinem Tag jetzt helfen? Das sind „Was jetzt“-Fragen. Sie bringen dich zurück in die Gegenwart.
+Frag dich: Was würde meinem Körper jetzt guttun? Was würde meinem Tag jetzt helfen? Diese Was-jetzt-Fragen holen dich in die Gegenwart zurück.
 
-Und wenn du merkst, dass du wieder wegdriftest: Atme aus, als würdest du eine Kerze nicht ausblasen, sondern nur bewegen. Sanft. Lang. Das ist ein körperliches „Zurückkommen“.
+Und wenn du wieder abschweifst, atme aus, als würdest du eine Kerze nicht ausblasen, sondern nur sanft bewegen. Das ist ein körperliches Zurückkommen.
 
-Du musst nicht alles verstehen, um gut zu handeln. Du darfst einfach wieder in Richtung Stabilität gehen.`,
-            micro: "Stelle dir 1x: „Was ist jetzt der nächste kleine Schritt?“",
-            gameTitle: "Gold-„Was jetzt“",
-            gamePrompt: "Sammle die Punkte. Nach jedem Punkt: „Was jetzt?“ – und nimm die erste einfache Antwort.",
+Du musst nicht alles verstehen, um gut weiterzugehen. Du darfst einfach den nächsten stabilen Schritt wählen.`,
+            micro: "Frag dich einmal bewusst: „Was ist jetzt der nächste kleine Schritt?“",
+            gameTitle: "Gold-Was-jetzt",
+            gamePrompt: "Sammle die Punkte. Nach jedem Punkt fragst du innerlich: „Was jetzt?“ und nimmst die einfachste ehrliche Antwort.",
             goal: 5
           },
           {
-            title: "Mittwoch – Klarer Kopf durch Körper",
-            sub: "Klarheit ist oft ein körperlicher Zustand – nicht nur eine Idee.",
+            title: "Mittwoch – Klarer Kopf über den Körper",
+            sub: "Klarheit ist oft ein körperlicher Zustand – nicht nur ein Gedanke.",
             text:
-`Wenn du dich „vernebelt“ fühlst, versuch nicht, dich herauszudenken. Geh über den Körper. Der Körper ist der schnellste Weg zu Klarheit.
+`Wenn du dich innerlich vernebelt fühlst, versuche nicht, dich mit noch mehr Denken herauszuholen. Geh über den Körper. Das ist oft der schnellste Weg zurück zu Klarheit.
 
 Mini-Reset:
 - Kiefer locker.
-- Zunge liegt weich.
-- Schultern sinken.
+- Zunge weich.
+- Schultern sinken lassen.
 - Ausatmen verlängern.
 
-Dann: Blick heben. Nicht auf den Bildschirm. In den Raum. Das signalisiert deinem System: „Ich bin nicht in Gefahr.“ Und plötzlich wird es innerlich leiser.
+Dann heb den Blick. Nicht nur auf den Bildschirm, sondern in den Raum. So bekommt dein System das Signal: „Ich bin gerade nicht in Gefahr.“ Und oft wird es genau dann innerlich leiser.
 
-Heute darf Klarheit simpel sein: weniger Inputs, weniger Multitasking, mehr Präsenz. Ein Ding nach dem anderen. Das ist kein Rückschritt. Das ist Hygiene fürs Nervensystem.`,
-            micro: "90 Sekunden: Kiefer lösen + Blick in den Raum.",
+Heute darf Klarheit schlicht sein: weniger Reize, weniger Multitasking, mehr Gegenwart.`,
+            micro: "Nimm dir 90 Sekunden für Kiefer, Schultern und einen weiten Blick.",
             gameTitle: "Gold-Präsenz",
-            gamePrompt: "Sammle die Punkte ohne Eile. Zwischen den Klicks: spüre den Atem im Bauch.",
+            gamePrompt: "Sammle die Punkte ohne Eile. Zwischen den Klicks spürst du den Atem im Bauch.",
             goal: 7
           }
         ]
       },
-
-      // THURSDAY
       {
         anchor: "Struktur & Selbstwirksamkeit",
         variants: [
@@ -1143,238 +1140,232 @@ Heute darf Klarheit simpel sein: weniger Inputs, weniger Multitasking, mehr Prä
             title: "Donnerstag – Struktur beruhigt",
             sub: "Struktur ist kein Käfig. Struktur ist ein Geländer für dein Nervensystem.",
             text:
-`Heute geben wir deinem Tag ein Geländer: zwei klare Zeitfenster. Nicht den ganzen Tag planen – nur den nächsten Abschnitt.
+`Heute bekommt dein Tag ein Geländer: zwei klare Zeitfenster. Nicht den ganzen Tag planen – nur den nächsten überschaubaren Abschnitt.
 
 Wähle:
-1) Ein Fokus-Block (25 Minuten): eine Aufgabe, keine Wechsel.
-2) Ein Pflege-Block (5 Minuten): Wasser, Dehnung, Fenster, Atem.
+1) Einen Fokus-Block von 25 Minuten mit nur einer Aufgabe.
+2) Einen Pflege-Block von 5 Minuten für Wasser, Dehnung, Fenster oder Atem.
 
-Wenn du das machst, passiert etwas Wichtiges: Du erlebst Selbstwirksamkeit. Dein System merkt: „Ich kann steuern.“ Und das reduziert Stress tiefer als jedes „positive Denken“.
+Wenn du das tust, passiert etwas Wichtiges: Du spürst Selbstwirksamkeit. Dein System erlebt: „Ich kann steuern.“ Genau das kann Stress tiefer reduzieren als jedes oberflächliche positive Denken.
 
-Und bitte: Feiere das Kleine. Kleine Schritte sind nicht „zu wenig“. Kleine Schritte sind die Form, in der Stabilität entsteht.`,
-            micro: "25 Minuten Fokus + 5 Minuten Pflege.",
+Und bitte: Feiere das Kleine. Kleine Schritte sind nicht zu wenig. Kleine Schritte sind oft die Form, in der Stabilität wächst.`,
+            micro: "Plane 25 Minuten Fokus und 5 Minuten Fürsorge.",
             gameTitle: "Gold-Geländer",
-            gamePrompt: "Sammle die Punkte. Danach: starte deinen 25-Minuten-Block – ohne Perfektion.",
+            gamePrompt: "Sammle die Punkte. Danach startest du deinen Fokus-Block – ruhig und ohne Perfektionsdruck.",
             goal: 6
           },
           {
-            title: "Donnerstag – Ein Ding nach dem anderen",
-            sub: "Multitasking ist für das Nervensystem wie laute Musik im Hintergrund. Wir drehen leiser.",
+            title: "Donnerstag – Eins nach dem anderen",
+            sub: "Multitasking ist für das Nervensystem oft wie Dauerlärm im Hintergrund. Heute wird es leiser.",
             text:
-`Heute üben wir: ein Ding. Nicht alles. Ein Ding.
+`Heute üben wir: eins nach dem anderen. Nicht alles gleichzeitig. Nur das eine, das jetzt dran ist.
 
-Wähle die Aufgabe, die am meisten Druck macht – und teile sie in drei Mini-Schritte. Nur der erste zählt jetzt. Alles andere ist „später“.
+Wähle die Aufgabe, die am meisten Druck macht, und teile sie in drei kleine Schritte. Im Moment zählt nur Schritt eins. Alles andere ist später.
 
-Wenn du merkst, dass du dich ablenkst, sag nicht „Ich bin diszipliniertlos“. Sag: „Mein System sucht Entlastung.“ Und gib ihm eine bessere Entlastung: drei lange Ausatmungen, Schultern sinken, Augen weich.
+Wenn du merkst, dass du dich ablenkst, bewerte dich nicht mit „Ich bin undiszipliniert“. Sag lieber: „Mein System sucht Entlastung.“ Und gib ihm dann eine hilfreiche Entlastung: drei lange Ausatmungen, weiche Schultern, entspannte Augen.
 
-Selbstführung ist nicht hart. Selbstführung ist klug: du gibst deinem System weniger Chaos und mehr Rhythmus.`,
-            micro: "Teile 1 Aufgabe in 3 Mini-Schritte. Starte mit Schritt 1.",
+Selbstführung ist nicht hart. Selbstführung ist klug.`,
+            micro: "Teile eine Aufgabe in drei kleine Schritte und beginne mit Schritt 1.",
             gameTitle: "Gold-Rhythmus",
-            gamePrompt: "Sammle die Punkte in Ruhe. Jede Berührung ist ein „Ein Ding“-Signal.",
+            gamePrompt: "Sammle die Punkte in Ruhe. Jeder Klick erinnert dich: eins nach dem anderen.",
             goal: 5
           },
           {
             title: "Donnerstag – Selbstwirksamkeit spüren",
             sub: "Du brauchst nicht mehr Willenskraft. Du brauchst spürbare kleine Erfolge.",
             text:
-`Heute geht es um ein Gefühl: „Ich kann etwas bewegen.“ Das ist Selbstwirksamkeit. Und es ist ein Stress-Gegengift.
+`Heute geht es um das Gefühl: „Ich kann etwas bewegen.“ Genau das ist Selbstwirksamkeit – und sie wirkt wie ein Gegengewicht zu Stress.
 
-Wähle eine Mini-Aufgabe, die du in 3 Minuten abschließen kannst: etwas wegräumen, eine kurze Notiz, ein Glas Wasser + Tablette, eine Rechnung öffnen (nur öffnen!). Abschluss zählt.
+Wähle eine Mini-Aufgabe, die du in drei Minuten abschließen kannst: etwas wegräumen, eine kurze Notiz schreiben, ein Glas Wasser holen oder eine Rechnung einfach nur öffnen. Abschluss zählt.
 
-Dann nimm dir 10 Sekunden und registriere: „Erledigt.“ Nicht sofort weiter hetzen. Das Gehirn lernt über Pause nach Erfolg.
+Danach nimm dir zehn Sekunden und registriere bewusst: „Erledigt.“ Geh nicht sofort weiter. Das Gehirn lernt besonders gut aus der kurzen Pause nach einem kleinen Erfolg.
 
-Je öfter du das machst, desto mehr Vertrauen baut dein System auf. Und Vertrauen ist die Basis für Energie.`,
-            micro: "Wähle 1 Mini-Aufgabe (3 Minuten) und schließe sie ab.",
+Je öfter du das übst, desto mehr Vertrauen entsteht im System.`,
+            micro: "Wähle heute eine Aufgabe von maximal 3 Minuten und bring sie zu Ende.",
             gameTitle: "Gold-Erfolg",
-            gamePrompt: "Sammle die Punkte. Danach: mache sofort deine 3-Minuten-Aufgabe. Dann komm zurück für den Abschluss.",
+            gamePrompt: "Sammle die Punkte. Danach machst du direkt deine kleine Aufgabe und kommst dann zum Abschluss zurück.",
             goal: 7
           }
         ]
       },
-
-      // FRIDAY
       {
         anchor: "Energie & Aufrichtung",
         variants: [
           {
             title: "Freitag – Energie durch Haltung",
-            sub: "Energie ist nicht nur Schlaf. Energie ist auch Aufrichtung: körperlich und innerlich.",
+            sub: "Energie ist nicht nur Schlaf. Energie entsteht auch durch Aufrichtung – körperlich und innerlich.",
             text:
-`Heute nutzen wir einen simplen Hebel: Haltung. Wenn du dich klein machst, wird die Atmung flacher – und das Nervensystem interpretiert das als Stress.
+`Heute nutzen wir einen einfachen Hebel: deine Haltung. Wenn du dich klein machst, wird der Atem oft flacher – und das Nervensystem interpretiert das leicht als Stress.
 
 Mini-Reset:
 - Füße stabil.
-- Brustbein leicht anheben.
-- Schultern hinten-unten.
-- Ausatmen langsam.
+- Brustbein sanft anheben.
+- Schultern locker nach hinten unten.
+- Langsam ausatmen.
 
-Und dann: Entscheide, was heute „gut genug“ ist. Freitag darf leicht sein. Du musst nicht alles beweisen. Du darfst abschließen, sortieren, abrunden.
+Und dann entscheide bewusst, was heute gut genug ist. Freitag darf leicht sein. Du musst nicht mehr beweisen. Du darfst abschließen, sortieren und den Tag in Ruhe runder machen.
 
-Energie entsteht oft, wenn du aufhörst, Energie zu verlieren: an Grübeln, an Perfektion, an innere Kämpfe. Heute: weniger Kampf. Mehr Aufrichtung.`,
-            micro: "30 Sekunden Aufrichtung + 2 lange Ausatmungen.",
+Energie entsteht oft nicht dadurch, dass du dich noch mehr antreibst, sondern dadurch, dass du aufhörst, Energie zu verlieren.`,
+            micro: "30 Sekunden Aufrichtung und zwei lange Ausatmungen.",
             gameTitle: "Gold-Aufrichtung",
-            gamePrompt: "Sammle die Punkte im Stehen (wenn möglich). Spüre die Füße. Das ist dein Energiestart.",
+            gamePrompt: "Sammle die Punkte möglichst im Stehen. Spüre deine Füße – das ist dein Energiestart.",
             goal: 6
           },
           {
-            title: "Freitag – Abschluss statt Overload",
-            sub: "Heute ist ein guter Tag, um Dinge rund zu machen. Rund macht ruhig.",
+            title: "Freitag – Abschluss statt Überforderung",
+            sub: "Heute ist ein guter Tag, um Dinge rund zu machen. Rund fühlt sich oft ruhiger an.",
             text:
-`Offene Schleifen kosten Energie. Nicht, weil sie groß sind – sondern weil sie im Kopf weiterlaufen. Heute schließen wir eine Schleife.
+`Offene Schleifen kosten Energie – nicht unbedingt, weil sie groß sind, sondern weil sie innerlich weiterlaufen. Heute schließen wir eine davon.
 
-Wähle EINE offene Kleinigkeit und bring sie zu Ende: eine Nachricht beantworten, einen Termin setzen, eine Sache weglegen. Dann: kurz durchatmen und spüren: „Jetzt ist weniger offen.“
+Wähle eine kleine offene Sache und bring sie zu Ende: eine Nachricht beantworten, einen Termin festlegen oder etwas an seinen Platz zurücklegen. Dann atme kurz durch und spüre: „Jetzt ist etwas weniger offen.“
 
-Wenn du das Gefühl hast, du müsstest „alles“ schaffen, erinnere dich: Dein Nervensystem liebt klare Enden. Enden bedeuten Sicherheit.
+Wenn du meinst, du müsstest alles schaffen, erinnere dich: Dein Nervensystem liebt klare Enden. Ein Ende bedeutet Sicherheit.
 
-Und ja: Auch du darfst ein Ende setzen. Enden sind nicht Verlust. Enden sind Entlastung.`,
-            micro: "Schließe 1 kleine offene Schleife.",
+Auch du darfst heute ein Ende setzen. Das ist keine Härte. Das ist Entlastung.`,
+            micro: "Schließe heute bewusst eine kleine offene Schleife.",
             gameTitle: "Gold-Ende",
-            gamePrompt: "Sammle die Punkte. Bei jedem Punkt: „Eine Schleife weniger.“ Danach schließe deine 1 Sache.",
+            gamePrompt: "Sammle die Punkte. Bei jedem Punkt sagst du innerlich: „Eine Schleife weniger.“",
             goal: 5
           },
           {
             title: "Freitag – Freundliche Energie",
-            sub: "Energie wird größer, wenn du sie nicht mit Druck erzwingst.",
+            sub: "Energie wächst leichter, wenn du sie nicht mit Druck erzwingst.",
             text:
-`Heute machen wir Energie „freundlich“. Stell dir vor, du lädst dein System nicht mit Stromschlägen, sondern mit Sonnenlicht.
+`Heute machen wir Energie freundlich. Stell dir vor, du lädst dein System nicht mit Stromstößen, sondern eher mit Sonnenlicht auf.
 
-Wähle 1 Energiespender:
-- 2 Minuten frische Luft,
-- 8 tiefe Atemzüge,
+Wähle einen kleinen Energiespender:
+- zwei Minuten frische Luft,
+- acht tiefe Atemzüge,
 - ein Glas Wasser,
-- Musik für 90 Sekunden.
+- neunzig Sekunden Musik.
 
-Mach es bewusst, nicht nebenbei. Nebenbei zählt weniger. Bewusst ist wie ein „Ja“ an den Körper.
+Mach es bewusst und nicht nur nebenbei. Bewusst heißt: dein Körper bekommt wirklich mit, dass gerade etwas Gutes passiert.
 
-Und dann: Sag dir einen Satz, der dich nicht antreibt, sondern begleitet: „Ich darf in meinem Tempo gehen.“ Das ist nicht weich. Das ist stabil.`,
-            micro: "Wähle 1 Energiespender und mach ihn bewusst.",
+Und dann sag dir einen Satz, der dich begleitet statt antreibt: „Ich darf in meinem Tempo gehen.“`,
+            micro: "Wähle einen Energiespender und mache ihn ganz bewusst.",
             gameTitle: "Gold-Sonnenlicht",
-            gamePrompt: "Sammle die Punkte. Stell dir bei jedem Punkt warmes Licht im Brustraum vor.",
+            gamePrompt: "Sammle die Punkte. Stell dir bei jedem Punkt ein warmes Licht im Brustraum vor.",
             goal: 7
           }
         ]
       },
-
-      // SATURDAY
       {
         anchor: "Regeneration & Weichheit",
         variants: [
           {
-            title: "Samstag – Regeneration ist Training",
+            title: "Samstag – Regeneration ist Teil des Weges",
             sub: "Ausruhen ist nicht Pause vom Leben. Ausruhen ist ein Teil davon.",
             text:
-`Heute darf dein System weicher werden. Nicht „faul“, nicht „unproduktiv“ – weich. Weichheit ist ein biologischer Zustand, in dem Reparatur möglich ist.
+`Heute darf dein System weicher werden. Nicht faul, nicht unproduktiv – einfach weich. Genau in dieser Weichheit wird oft Reparatur möglich.
 
-Gib dir eine Mini-Regeneration: 5 Minuten ohne Ziel. Setz dich hin, atme, spüre. Wenn Gedanken kommen, lass sie wie Hintergrundgeräusche sein.
+Gib dir eine kleine Regeneration ohne Ziel: Setz dich hin, atme und spüre. Wenn Gedanken kommen, dürfen sie wie Hintergrundgeräusche sein.
 
-Und dann: wähle eine Sache, die deinem Körper gut tut. Nicht „muss“, sondern „darf“: Bewegung, Dehnung, Wärme, ruhige Musik.
+Dann wähle eine Sache, die deinem Körper guttut. Nicht weil du musst, sondern weil du darfst: Wärme, sanfte Bewegung, Dehnung oder ruhige Musik.
 
-Regeneration ist nicht etwas, das du dir erst verdienen musst. Regeneration ist das Fundament, auf dem du funktionierst.`,
-            micro: "5 Minuten ohne Ziel – nur atmen und spüren.",
+Regeneration ist nichts, das man sich erst verdienen muss. Sie ist Grundlage.`,
+            micro: "Nimm dir 5 Minuten nur zum Atmen und Spüren.",
             gameTitle: "Gold-Weichheit",
-            gamePrompt: "Sammle die Punkte ganz langsam. Ziel: weicher werden, nicht schneller.",
+            gamePrompt: "Sammle die Punkte ganz langsam. Es geht heute nicht um schneller, sondern um weicher.",
             goal: 5
           },
           {
-            title: "Samstag – Nervensystem-Reset zuhause",
-            sub: "Du brauchst nicht mehr Input. Du brauchst mehr Ruhe im System.",
+            title: "Samstag – Reset für zuhause",
+            sub: "Du brauchst heute vielleicht nicht mehr Input, sondern mehr Ruhe im System.",
             text:
-`Heute machen wir einen „Zuhause-Reset“: klein, aber wirksam.
+`Heute machen wir einen kleinen Zuhause-Reset:
 
-1) Räume eine kleine Fläche frei (nur 1 Quadratmeter).
-2) Öffne ein Fenster oder atme dreimal tief.
-3) Berühre etwas Angenehmes: Stoff, Tasse, Decke.
+1) Räume eine kleine Fläche frei.
+2) Öffne ein Fenster oder atme dreimal tief durch.
+3) Berühre etwas, das sich angenehm anfühlt – Stoff, Tasse, Decke.
 
-Das klingt simpel – und genau das macht es so gut. Dein Nervensystem liebt einfache Signale. Und Ordnung im Kleinen fühlt sich oft wie Ordnung im Inneren an.
+Es klingt schlicht. Genau deshalb wirkt es oft so gut. Das Nervensystem liebt einfache, klare Signale. Ordnung im Kleinen fühlt sich oft auch innerlich ordnend an.
 
-Wenn heute etwas nicht klappt, ist das kein Problem. Es ist ein Samstag. Und Samstage sind zum Nachfüllen da.`,
-            micro: "1 Quadratmeter Ordnung + 3 tiefe Atemzüge.",
+Und wenn heute nicht alles klappt, ist das in Ordnung. Samstage dürfen freundlich sein.`,
+            micro: "Ein kleiner Bereich, drei Atemzüge, ein Moment von Sinnesruhe.",
             gameTitle: "Gold-Zuhause",
-            gamePrompt: "Sammle die Punkte. Danach: räume 60 Sekunden eine kleine Fläche frei. Fertig ist perfekt.",
+            gamePrompt: "Sammle die Punkte. Danach räumst du 60 Sekunden lang einen kleinen Bereich auf. Mehr ist nicht nötig.",
             goal: 6
           },
           {
             title: "Samstag – Sanfter Körperkontakt",
             sub: "Beruhigung geht oft über Berührung. Nicht kompliziert – nur echt.",
             text:
-`Leg eine Hand auf deine Brust oder deinen Bauch. Spüre den Kontakt. Sag dir: „Ich bin da.“ Das ist nicht esoterisch. Das ist Nervensystem.
+`Lege eine Hand auf deine Brust oder auf deinen Bauch und spüre den Kontakt. Sag dir: „Ich bin da.“ Das ist nicht kompliziert – das ist Regulation.
 
-Dann mach drei Atemzüge:
-- Einatmen: weich.
-- Ausatmen: länger.
-- Pause: kurz.
+Dann drei Atemzüge:
+- Einatmen weich.
+- Ausatmen länger.
+- Kurze Pause.
 
-Wenn du dich heute emotional empfindlich fühlst, ist das kein Fehler. Es ist oft ein Zeichen, dass dein System endlich wieder etwas spürt. Und das ist ein guter Weg.
+Wenn du dich heute empfindlich fühlst, ist das kein Fehler. Es kann auch bedeuten, dass dein System wieder mehr wahrnimmt.
 
-Heute brauchst du keine Perfektion. Du brauchst Präsenz. Und die hast du schon, weil du hier bist.`,
-            micro: "Hand auf Brust/Bauch + 3 Atemzüge mit langem Ausatmen.",
+Heute brauchst du keine Perfektion. Nur Präsenz. Und die bringst du gerade schon mit.`,
+            micro: "Hand auf Brust oder Bauch und drei ruhige Atemzüge.",
             gameTitle: "Gold-Kontakt",
-            gamePrompt: "Sammle die Punkte mit der freien Hand. Die andere bleibt auf dem Körper – als Anker.",
+            gamePrompt: "Sammle die Punkte mit der freien Hand. Die andere bleibt als Anker auf deinem Körper.",
             goal: 7
           }
         ]
       },
-
-      // SUNDAY
       {
         anchor: "Integration & Ausrichtung",
         variants: [
           {
             title: "Sonntag – Integration statt Bewertung",
-            sub: "Heute schauen wir zurück, ohne hart zu werden. Nur mit Klarheit und Wärme.",
+            sub: "Heute schaust du zurück – nicht hart, sondern klar und freundlich.",
             text:
-`Sonntag ist ein guter Tag für Integration: Was war gut? Was war schwer? Und was darf leichter werden?
+`Sonntag ist ein guter Tag für Integration: Was war gut? Was war schwer? Und was darf nächste Woche leichter werden?
 
-Nimm dir drei Sätze:
-1) Diese Woche war ich stark, weil…
-2) Diese Woche war es schwer, weil…
-3) Nächste Woche unterstütze ich mich, indem…
+Drei Sätze genügen:
+1) Diese Woche war ich stark, weil …
+2) Diese Woche war es schwer, weil …
+3) Nächste Woche unterstütze ich mich, indem …
 
-Kein Drama. Keine Anklage. Nur Wahrheit mit Freundlichkeit. Dein Nervensystem braucht keine Schuld. Es braucht Orientierung.
+Kein Drama. Keine Anklage. Nur Ehrlichkeit mit Wärme. Dein Nervensystem braucht keine Schuld – es braucht Orientierung.
 
-Und dann: wähle einen Anker für morgen. Ein Mini-Ritual: Wasser direkt nach dem Aufstehen, 2 Minuten Atmen, 10 Minuten ohne Handy. Kleine Anker tragen große Wochen.`,
-            micro: "Schreibe 3 Sätze (stark/schwer/unterstützen).",
+Und dann wähle einen kleinen Anker für morgen. Ein Ritual, das dich trägt.`,
+            micro: "Schreibe drei kurze Sätze zu Stärke, Schwierigkeit und Unterstützung.",
             gameTitle: "Gold-Integration",
-            gamePrompt: "Sammle die Punkte. Nach jedem Punkt: denke 1 Satz aus den drei Sätzen weiter – ohne Bewertung.",
+            gamePrompt: "Sammle die Punkte. Nach jedem Punkt führst du einen deiner drei Sätze innerlich weiter.",
             goal: 6
           },
           {
-            title: "Sonntag – Sanfter Neustart planen",
-            sub: "Planen heißt nicht kontrollieren. Planen heißt: dich unterstützen.",
+            title: "Sonntag – Den Neustart freundlich planen",
+            sub: "Planen heißt nicht kontrollieren. Planen heißt, dich selbst zu unterstützen.",
             text:
-`Heute planen wir nicht „alles“. Wir planen nur Unterstützung.
+`Heute planen wir nicht alles. Wir planen nur Unterstützung.
 
-Wähle 2 Dinge, die dir nächste Woche Stabilität geben:
-- ein Termin für Bewegung,
-- ein Termin für Pause,
-- ein Termin für Verbindung (ein Gespräch, eine Nachricht),
-- ein Termin für „nichts“.
+Wähle zwei Dinge, die dir nächste Woche Stabilität geben:
+- Bewegung,
+- Pause,
+- Verbindung,
+- ein freier Moment ohne Müssen.
 
-Schreibe sie auf. So simpel. Das Gehirn liebt Sichtbarkeit. Und wenn es sichtbar ist, muss es nicht dauernd daran erinnern.
+Schreib sie auf. Sichtbarkeit entlastet den Kopf. Was sichtbar ist, muss nicht die ganze Zeit innerlich festgehalten werden.
 
-Sonntag ist kein Ende. Sonntag ist ein Übergang. Und Übergänge sind leichter, wenn du sie freundlich gestaltest.`,
-            micro: "Plane 2 Unterstützer-Termine (Pause/Bewegung/Verbindung).",
+Sonntag ist kein Ende. Sonntag ist ein Übergang. Und Übergänge dürfen weich sein.`,
+            micro: "Plane zwei kleine Unterstützer-Termine für die kommende Woche.",
             gameTitle: "Gold-Übergang",
-            gamePrompt: "Sammle die Punkte. Danach: schreibe 2 Termine auf. Kurz, klar, machbar.",
+            gamePrompt: "Sammle die Punkte. Danach notierst du zwei kurze, realistische Termine.",
             goal: 5
           },
           {
-            title: "Sonntag – Dankbarkeit ohne Zwang",
-            sub: "Dankbarkeit ist nicht „alles ist gut“. Dankbarkeit ist: etwas ist da.",
+            title: "Sonntag – Dankbarkeit ohne Druck",
+            sub: "Dankbarkeit heißt nicht, dass alles gut ist. Dankbarkeit heißt: Etwas ist da, das trägt.",
             text:
-`Heute machen wir Dankbarkeit klein und echt. Nicht „Ich muss positiv sein“, sondern: „Ich finde etwas, das trägt.“
+`Heute halten wir Dankbarkeit klein und echt. Nicht als Zwang zur Positivität, sondern als leises Wahrnehmen.
 
-Drei Mini-Dankbarkeiten:
-- etwas im Körper (z. B. warme Hände),
-- etwas im Alltag (z. B. eine Tasse Tee),
-- etwas im Inneren (z. B. Mut, überhaupt weiterzumachen).
+Drei mögliche Mini-Dankbarkeiten:
+- etwas im Körper,
+- etwas im Alltag,
+- etwas in dir selbst.
 
-Wenn dir das schwerfällt, ist das okay. Dann wähle nur eine. Dein Nervensystem lernt nicht durch Zwang, sondern durch ehrliche Wiederholung.
+Wenn dir das schwerfällt, reicht auch nur eine. Das Nervensystem lernt nicht über Zwang, sondern über ehrliche Wiederholung.
 
-Du bist nicht hier, um perfekt zu sein. Du bist hier, um dich zu begleiten. Und das machst du gerade.`,
-            micro: "1 echte Mini-Dankbarkeit finden.",
+Du musst nicht perfekt sein. Du darfst dich begleiten. Genau das tust du gerade.`,
+            micro: "Finde heute eine einzige, echte Mini-Dankbarkeit.",
             gameTitle: "Gold-Tragen",
-            gamePrompt: "Sammle die Punkte. Bei jedem Punkt: nenne innerlich 1 Mini-Dankbarkeit (klein reicht).",
+            gamePrompt: "Sammle die Punkte. Bei jedem Punkt nennst du innerlich eine kleine Dankbarkeit.",
             goal: 7
           }
         ]
@@ -1382,40 +1373,42 @@ Du bist nicht hier, um perfekt zu sein. Du bist hier, um dich zu begleiten. Und 
     ];
 
     const closingPool = [
-      "Du musst heute nicht glänzen. Es reicht, wenn du da bist – und dich freundlich behandelst.",
-      "Ein ruhiger Atemzug ist ein kleiner Neubeginn. Und du darfst heute viele Neubeginne haben.",
-      "Du hast gerade etwas Wichtiges getan: dich reguliert. Das ist echte Stärke.",
-      "Wenn es heute wackelt: bleib weich. Weichheit ist Stabilität ohne Kampf.",
-      "Du bist nicht „zu viel“. Du bist ein Mensch mit Nervensystem. Und du lernst, es zu führen.",
-      "Kleine Schritte sind kein Umweg. Kleine Schritte sind der Weg.",
-      "Heute zählt nicht Perfektion. Heute zählt Präsenz. Und die hast du.",
-      "Du darfst langsam sein. Langsam ist oft genau richtig für Heilung und Klarheit.",
-      "Dein System darf sich sicher fühlen. Und du darfst das aktiv unterstützen – so wie gerade.",
-      "Du bist nicht allein mit diesem Gefühl. Und du bist fähig, dich da heraus zu begleiten.",
-      "Weniger Druck. Mehr Richtung. Das ist dein Luxus für heute.",
-      "Du darfst dich ernst nehmen – ohne dich hart anzufassen.",
-      "Auch ein kleines „Ich mache weiter“ ist ein großes Versprechen an dich.",
-      "Stabilität ist kein Zustand. Stabilität ist Übung. Und du übst.",
-      "Atme aus. Lass los. Und nimm nur das mit, was dir gut tut.",
-      "Heute war ein Reset. Morgen ist ein neuer Versuch – und du hast alles dafür.",
-      "Du bist nicht hinterher. Du bist unterwegs. Und das ist genug.",
-      "Deine Ruhe ist wertvoll. Sie ist nicht „Zeitverlust“, sie ist „Energiequelle“."
+      "Du musst heute nicht glänzen. Es reicht, dass du da bist und freundlich mit dir umgehst.",
+      "Ein ruhiger Atemzug kann ein kleiner Neubeginn sein. Und du darfst heute viele Neubeginne haben.",
+      "Du hast gerade etwas Wichtiges getan: Du hast dich reguliert. Das ist echte Stärke.",
+      "Wenn es heute wackelt, bleib weich. Weichheit ist Stabilität ohne Kampf.",
+      "Du bist nicht zu viel. Du bist ein Mensch mit einem Nervensystem – und du lernst, gut für dich zu sorgen.",
+      "Kleine Schritte sind kein Umweg. Kleine Schritte sind oft genau der Weg.",
+      "Heute zählt nicht Perfektion. Heute zählt Präsenz. Und die bringst du bereits mit.",
+      "Du darfst langsam sein. Langsam ist oft genau das richtige Tempo für Heilung und Klarheit.",
+      "Dein System darf sich sicher fühlen. Und du darfst aktiv dazu beitragen – so wie gerade.",
+      "Du bist mit diesem Gefühl nicht allein. Und du darfst dich Schritt für Schritt begleiten.",
+      "Weniger Druck. Mehr Richtung. Das darf heute dein Luxus sein.",
+      "Du darfst dich ernst nehmen, ohne hart mit dir zu werden.",
+      "Auch ein kleines „Ich gehe weiter“ ist ein großes Versprechen an dich selbst.",
+      "Stabilität ist kein perfekter Zustand. Stabilität ist eine Praxis. Und du übst sie gerade.",
+      "Atme aus. Lass los. Und nimm nur das mit, was dir heute wirklich guttut.",
+      "Heute war ein Reset. Morgen ist ein neuer Anfang – und du bringst schon viel dafür mit.",
+      "Du bist nicht zu spät. Du bist unterwegs. Und das ist genug.",
+      "Deine Ruhe ist kostbar. Sie ist keine verlorene Zeit, sondern eine Quelle von Energie."
     ];
 
     function dayIndexMon0(d){
-      const wd0 = d.getDay(); // 0 Sun
+      const wd0 = d.getDay();
       return wd0 === 0 ? 6 : wd0 - 1;
     }
 
-    function variantLabel(v){ return v === 0 ? "Variante A" : (v === 1 ? "Variante B" : "Variante C"); }
+    function variantLabel(v){
+      return v === 0 ? "Variante A" : (v === 1 ? "Variante B" : "Variante C");
+    }
 
     function renderPremium(){
       if(!isMember) return;
 
       const now = new Date();
-      const dIdx = dayIndexMon0(now); // 0..6
+      const dIdx = dayIndexMon0(now);
       const isoWeek = getISOWeek(now);
-      const vIdx = (isoWeek + dIdx) % 3; // 0..2 rotation
+      const vIdx = (isoWeek + dIdx) % 3;
       const day = premiumByDay[dIdx];
       const v = day.variants[vIdx];
 
@@ -1423,23 +1416,20 @@ Du bist nicht hier, um perfekt zu sein. Du bist hier, um dich zu begleiten. Und 
       document.getElementById("pSub").textContent   = v.sub;
       document.getElementById("pPill").textContent  = variantLabel(vIdx);
 
-      document.getElementById("paperTitle").textContent = v.title;
-      document.getElementById("paperText").textContent  = v.text;
+      document.getElementById("paperTitle").textContent  = v.title;
+      document.getElementById("paperText").textContent   = v.text;
       document.getElementById("paperAnchor").textContent = `🧭 Fokus: ${day.anchor}`;
-      document.getElementById("paperMicro").textContent  = `✨ Mikro-Schritt: ${v.micro}`;
+      document.getElementById("paperMicro").textContent  = `✨ Kleiner Schritt: ${v.micro}`;
 
-      document.getElementById("gameTitle").textContent  = v.gameTitle;
-      document.getElementById("gamePrompt").textContent = v.gamePrompt;
+      document.getElementById("gameTitle").textContent   = v.gameTitle;
+      document.getElementById("gamePrompt").textContent  = v.gamePrompt;
 
-      // Closing (always different): deterministic index across days/weeks
       const closeIdx = (isoWeek * 7 + dIdx + vIdx * 3) % closingPool.length;
       document.getElementById("closingText").textContent = closingPool[closeIdx];
 
-      // Spawn game
       startGame(v.goal, vIdx, dIdx);
     }
 
-    // -------- Mini-game: collect golden dots (breath + focus) --------
     const gameArea = document.getElementById("gameArea");
     const gameScore = document.getElementById("gameScore");
     const gameHint = document.getElementById("gameHint");
@@ -1452,8 +1442,7 @@ Du bist nicht hier, um perfekt zu sein. Du bist hier, um dich zu begleiten. Und 
     let collected = 0;
 
     function pseudoRand(seed){
-      // deterministic-ish small PRNG for stable layout per day/week/variant
-      let x = Math.sin(seed) * 10000;
+      const x = Math.sin(seed) * 10000;
       return x - Math.floor(x);
     }
 
@@ -1473,20 +1462,19 @@ Du bist nicht hier, um perfekt zu sein. Du bist hier, um dich zu begleiten. Und 
       goal = newGoal;
       clearDots();
       spawnDots(vIdx, dIdx);
-      gameHint.textContent = "Tipp: Mit jedem Klick 1× langsam ausatmen. (Das beruhigt wirklich.)";
+      gameHint.textContent = "Tipp: Atme bei jedem Klick einmal langsam aus. Das kann wirklich beruhigend wirken.";
     }
 
     function spawnDots(vIdx, dIdx){
-      // Create goal dots. Positions are deterministic per (week, day, variant) to feel intentional.
       const now = new Date();
       const isoWeek = getISOWeek(now);
       const seedBase = isoWeek * 100 + dIdx * 10 + vIdx;
 
       const rect = gameArea.getBoundingClientRect();
-      const w = Math.max(260, rect.width);
-      const h = gameArea.clientHeight;
+      const w = Math.max(260, rect.width || gameArea.clientWidth || 260);
+      const h = Math.max(180, gameArea.clientHeight || 180);
 
-      for(let i=0;i<goal;i++){
+      for(let i = 0; i < goal; i++){
         const dot = document.createElement("div");
         dot.className = "dot";
         dot.textContent = "✦";
@@ -1494,7 +1482,6 @@ Du bist nicht hier, um perfekt zu sein. Du bist hier, um dich zu begleiten. Und 
         const rx = pseudoRand(seedBase + i * 1.13);
         const ry = pseudoRand(seedBase + i * 2.07);
 
-        // keep inside bounds, with margins
         const x = 20 + rx * (w - 40);
         const y = 20 + ry * (h - 40);
 
@@ -1508,35 +1495,32 @@ Du bist nicht hier, um perfekt zu sein. Du bist hier, um dich zu begleiten. Und 
           updateScore();
 
           if(collected === goal){
-            gameResult.textContent = "Geschafft. Nimm dir 10 Sekunden: Schultern weich, Ausatmen lang.";
+            gameResult.textContent = "Geschafft. Nimm dir jetzt 10 Sekunden: Schultern weich, Ausatmen lang.";
           }
         });
 
         gameArea.appendChild(dot);
       }
+
       updateScore();
     }
 
-    spawnBtn.addEventListener("click", () => {
-      // restart with same goal; re-render premium to keep text + new dots consistent
+    spawnBtn?.addEventListener("click", () => {
       renderPremium();
     });
 
-    finishBtn.addEventListener("click", () => {
-      // show closing even if not all dots are collected (but encourage completion)
+    finishBtn?.addEventListener("click", () => {
       if(collected < goal){
-        gameResult.textContent = "Du kannst noch weitersammeln – oder jetzt freundlich abschließen. Beides ist okay.";
+        gameResult.textContent = "Du kannst weitersammeln oder hier freundlich abschließen. Beides ist vollkommen in Ordnung.";
       }
       closingBox.style.display = "block";
       closingBox.scrollIntoView({ behavior:"smooth", block:"start" });
     });
 
-    // Run once
     renderPremium();
   </script>
 
   <script>
-    // ---------------- Breathing timer ----------------
     const phaseLabel = document.getElementById("phaseLabel");
     const timeLeftEl = document.getElementById("timeLeft");
     const pulse = document.getElementById("pulse");
@@ -1563,20 +1547,34 @@ Du bist nicht hier, um perfekt zu sein. Du bist hier, um dich zu begleiten. Und 
     let tickInterval = null;
 
     function pad(n){ return String(n).padStart(2,"0"); }
+
     function fmtTime(s){
-      const m = Math.floor(s/60);
+      const m = Math.floor(s / 60);
       const r = s % 60;
       return `${pad(m)}:${pad(r)}`;
     }
 
+    function clampNumber(value, min, max, fallback){
+      const n = Number(value);
+      if(Number.isNaN(n)) return fallback;
+      return Math.max(min, Math.min(max, n));
+    }
+
     function readSettings(){
-      inhaleSec = Math.max(2, Math.min(8, Number(inhaleInput.value || 4)));
-      exhaleSec = Math.max(3, Math.min(10, Number(exhaleInput.value || 6)));
-      const mins = Math.max(1, Math.min(10, Number(minutesInput.value || 3)));
+      inhaleSec = clampNumber(inhaleInput.value, 2, 8, 4);
+      exhaleSec = clampNumber(exhaleInput.value, 3, 10, 6);
+      const mins = clampNumber(minutesInput.value, 1, 10, 3);
+
+      inhaleInput.value = inhaleSec;
+      exhaleInput.value = exhaleSec;
+      minutesInput.value = mins;
+
       totalSeconds = mins * 60;
     }
 
-    function updateTimeUI(){ timeLeftEl.textContent = fmtTime(remainingSeconds); }
+    function updateTimeUI(){
+      timeLeftEl.textContent = fmtTime(remainingSeconds);
+    }
 
     function setPhase(newPhase){
       phase = newPhase;
@@ -1599,6 +1597,8 @@ Du bist nicht hier, um perfekt zu sein. Du bist hier, um dich zu begleiten. Und 
     function scheduleNextPhase(){
       if(!running || paused) return;
 
+      clearTimeout(phaseTimeout);
+
       if(phase === "INHALE"){
         phaseTimeout = setTimeout(() => {
           setPhase("EXHALE");
@@ -1619,14 +1619,16 @@ Du bist nicht hier, um perfekt zu sein. Du bist hier, um dich zu begleiten. Und 
 
       running = true;
       paused = false;
+
       startBtn.disabled = true;
       pauseBtn.disabled = false;
       pauseBtn.textContent = "Pausieren";
-      hintText.textContent = "Folge dem Kreis. Wenn Gedanken kommen: sanft zurück zum Ausatmen.";
+      hintText.textContent = "Folge dem Rhythmus. Wenn Gedanken kommen, kehre sanft wieder zum Ausatmen zurück.";
 
       setPhase("INHALE");
       scheduleNextPhase();
 
+      clearInterval(tickInterval);
       tickInterval = setInterval(() => {
         if(!running || paused) return;
 
@@ -1646,11 +1648,11 @@ Du bist nicht hier, um perfekt zu sein. Du bist hier, um dich zu begleiten. Und 
 
       if(paused){
         pauseBtn.textContent = "Weiter";
-        hintText.textContent = "Pause. Wenn du bereit bist: Weiter.";
+        hintText.textContent = "Pause. Wenn du bereit bist, kannst du sanft weitermachen.";
         clearTimeout(phaseTimeout);
       } else {
         pauseBtn.textContent = "Pausieren";
-        hintText.textContent = "Weiter. Folge dem Kreis.";
+        hintText.textContent = "Weiter im Rhythmus. Bleib freundlich bei dir.";
         scheduleNextPhase();
       }
     }
@@ -1669,7 +1671,7 @@ Du bist nicht hier, um perfekt zu sein. Du bist hier, um dich zu begleiten. Und 
       updateTimeUI();
 
       setPhase("READY");
-      hintText.textContent = "Tippe auf Start. Folge dem Kreis: Einatmen → Ausatmen.";
+      hintText.textContent = "Tippe auf Start und folge dem Kreis: einatmen, ausatmen, ankommen.";
 
       startBtn.disabled = false;
       pauseBtn.disabled = true;
@@ -1683,12 +1685,14 @@ Du bist nicht hier, um perfekt zu sein. Du bist hier, um dich zu begleiten. Und 
 
       clearTimeout(phaseTimeout);
       clearInterval(tickInterval);
+      phaseTimeout = null;
+      tickInterval = null;
 
       setPhase("READY");
       remainingSeconds = 0;
       updateTimeUI();
 
-      hintText.textContent = "Fertig. Spüre kurz nach: Wie fühlt sich dein Körper jetzt an?";
+      hintText.textContent = "Geschafft. Spüre einen Moment nach: Was hat sich in deinem Körper verändert?";
       startBtn.disabled = false;
       pauseBtn.disabled = true;
       pauseBtn.textContent = "Pausieren";
@@ -1707,20 +1711,24 @@ Du bist nicht hier, um perfekt zu sein. Du bist hier, um dich zu begleiten. Und 
     inhaleInput.addEventListener("change", resetAll);
     exhaleInput.addEventListener("change", resetAll);
     minutesInput.addEventListener("change", resetAll);
+
+    inhaleInput.addEventListener("input", readSettings);
+    exhaleInput.addEventListener("input", readSettings);
+    minutesInput.addEventListener("input", readSettings);
   </script>
 
-  <!-- Language toggle: DE/IT only -->
   <script>
     function paintLang(){
       const v = (localStorage.getItem("lang") || "de").toLowerCase();
       document.getElementById("btnDE")?.classList.toggle("active", v === "de");
       document.getElementById("btnIT")?.classList.toggle("active", v === "it");
     }
+
     paintLang();
 
     document.getElementById("btnDE")?.addEventListener("click", function() {
       localStorage.setItem("lang","de");
-      let page = location.pathname.split("/").pop() || "daily-reset.html";
+      const page = location.pathname.split("/").pop() || "daily-reset.html";
       if(page.includes("IT.html")){
         location.href = page.replace("IT.html",".html");
       } else {
@@ -1730,7 +1738,7 @@ Du bist nicht hier, um perfekt zu sein. Du bist hier, um dich zu begleiten. Und 
 
     document.getElementById("btnIT")?.addEventListener("click", function() {
       localStorage.setItem("lang","it");
-      let page = location.pathname.split("/").pop() || "daily-reset.html";
+      const page = location.pathname.split("/").pop() || "daily-reset.html";
       if(!page.includes("IT.html")){
         location.href = page.replace(".html","IT.html");
       } else {
@@ -1738,14 +1746,15 @@ Du bist nicht hier, um perfekt zu sein. Du bist hier, um dich zu begleiten. Und 
       }
     });
   </script>
-<script>
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./service-worker.js")
-      .then(reg => console.log("Service Worker registered", reg))
-      .catch(err => console.log("Service Worker failed", err));
-  });
-}
-</script>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./service-worker.js")
+          .then(reg => console.log("Service Worker registered", reg))
+          .catch(err => console.log("Service Worker failed", err));
+      });
+    }
+  </script>
 </body>
 </html>
