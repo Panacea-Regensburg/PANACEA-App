@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="manifest" href="manifest-it.webmanifest" />
+  <link rel="icon" href="./icons/icon-192.png" />
+  <title>Panacea – Corsi</title>
+
+  <style>
+    :root{
+      --bg1:#f6f1e6;
+      --bg2:#efe7d7;
+
+      --card:#ffffffde;
+      --card2:#ffffffef;
+
+      --text:#1f2a24;
+      --muted:#55635b;
+
+      --gold:#c8a24a;
+      --gold2:#e8d28a;
+      --green:#1f3b2f;
+
+      --shadow: 0 16px 42px rgba(0,0,0,.10);
+      --shadow2: 0 10px 26px rgba(0,0,0,.10);
+
+      --radius: 26px;
+      --radius2: 22px;
+    }
+
+    *{ box-sizing:border-box; }
+
+    html, body{
+      overflow-x:hidden;
+    }
+
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color:var(--text);
+      background: radial-gradient(1200px 800px at 30% 0%, var(--bg1), var(--bg2));
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      padding:26px 14px 40px;
+      position:relative;
+    }
+
+    .phone{
+      width:100%;
+      max-width:480px;
+      position:relative;
+      z-index:1;
+    }
+
+    .bg{
+      position:fixed;
+      inset:0;
+      z-index:-2;
+      background:
+        radial-gradient(1200px 800px at 30% 0%, rgba(246,241,230,.92), rgba(239,231,215,.92));
+    }
+
+    .bg::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:url("icons/sfondo.png");
+      background-size:cover;
+      background-position:center;
+      opacity:.20;
+      pointer-events:none;
+    }
+
+    .langBar{
+      display:flex;
+      justify-content:center;
+      margin-bottom:16px;
+    }
+
+    .langWrap{
+      display:flex;
+      gap:8px;
+      padding:6px;
+      border-radius:999px;
+      background:linear-gradient(180deg, var(--card2), var(--card));
+      border:1px solid rgba(200,162,74,.18);
+      box-shadow:var(--shadow2);
+      backdrop-filter:blur(6px);
+      -webkit-backdrop-filter:blur(6px);
+    }
+
+    .langBtn{
+      border:none;
+      cursor:pointer;
+      padding:10px 14px;
+      border-radius:999px;
+      font-weight:800;
+      background:transparent;
+      color:var(--text);
+      opacity:.72;
+      transition:all .18s ease;
+      font-size:14px;
+    }
+
+    .langBtn.active{
+      opacity:1;
+      background:radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      border:1px solid rgba(200,162,74,.25);
+      box-shadow:0 0 16px rgba(200,162,74,.18);
+      color:#3a2c10;
+    }
+
+    .headerCard{
+      background:linear-gradient(180deg, var(--card2), var(--card));
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      border:1px solid rgba(200,162,74,.18);
+      padding:22px 22px 18px;
+      margin-bottom:16px;
+      backdrop-filter:blur(8px);
+      -webkit-backdrop-filter:blur(8px);
+    }
+
+    .title{
+      margin:0;
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+      letter-spacing:.2px;
+      color:var(--green);
+      line-height:1.02;
+      font-weight:900;
+      font-size:44px;
+    }
+
+    .title .line2{
+      display:block;
+      margin-top:6px;
+      font-size:38px;
+    }
+
+    .titleGlow{
+      text-shadow:
+        0 0 14px rgba(200,162,74,.18),
+        0 0 26px rgba(200,162,74,.12);
+    }
+
+    .subtitle{
+      margin:10px 0 0 0;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.4;
+      font-weight:600;
+    }
+
+    .infoCard,
+    .premiumCard{
+      background:linear-gradient(180deg, var(--card2), var(--card));
+      border-radius:var(--radius2);
+      box-shadow:var(--shadow2);
+      border:1px solid rgba(200,162,74,.18);
+      padding:18px 18px 16px;
+      margin-bottom:16px;
+      backdrop-filter:blur(8px);
+      -webkit-backdrop-filter:blur(8px);
+    }
+
+    .premiumCard{
+      background:linear-gradient(180deg, rgba(255,248,228,.96), rgba(255,252,243,.92));
+      border:1px solid rgba(200,162,74,.28);
+    }
+
+    .sectionTitle{
+      margin:0 0 8px 0;
+      font-size:20px;
+      line-height:1.2;
+      font-weight:900;
+      color:var(--green);
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+    }
+
+    .sectionText{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.55;
+      font-weight:600;
+    }
+
+    .sectionText strong{
+      color:var(--text);
+    }
+        .grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      margin-bottom:18px;
+    }
+
+    .tile{
+      text-decoration:none;
+      color:inherit;
+      background:linear-gradient(180deg, var(--card2), var(--card));
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      border:1px solid rgba(200,162,74,.18);
+      padding:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:180px;
+      position:relative;
+      overflow:hidden;
+      transition:transform .14s ease, box-shadow .14s ease;
+      backdrop-filter:blur(8px);
+      -webkit-backdrop-filter:blur(8px);
+    }
+
+    .tile:hover{
+      transform:translateY(-2px);
+      box-shadow:0 18px 40px rgba(0,0,0,.12);
+    }
+
+    .grid .tile img,
+    .grid .tile .menuIcon{
+      width:min(220px, 82%) !important;
+      max-width:220px !important;
+      height:auto !important;
+      max-height:140px !important;
+      object-fit:contain !important;
+      display:block !important;
+      margin:0 auto 28px auto !important;
+    }
+
+    .menuIcon{
+      width:min(220px, 82%);
+      max-width:220px;
+      max-height:140px;
+      height:auto !important;
+      object-fit:contain;
+      display:block;
+      margin:0 auto 28px auto;
+      user-select:none;
+      -webkit-user-drag:none;
+    }
+
+    .tileLabel{
+      position:absolute;
+      left:12px;
+      right:12px;
+      bottom:12px;
+      text-align:center;
+      font-weight:800;
+      color:var(--green);
+      opacity:.92;
+      font-size:14px;
+      line-height:1.2;
+    }
+
+    .ctaWrap{
+      margin-top:2px;
+      margin-bottom:6px;
+    }
+
+    .ctaBtn{
+      width:100%;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      text-decoration:none;
+      border:none;
+      cursor:pointer;
+      min-height:54px;
+      padding:14px 18px;
+      border-radius:999px;
+      font-weight:900;
+      font-size:15px;
+      color:#3a2c10;
+      background:radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      box-shadow:0 10px 24px rgba(200,162,74,.22);
+      border:1px solid rgba(200,162,74,.30);
+      transition:transform .14s ease, box-shadow .14s ease;
+    }
+
+    .ctaBtn:hover{
+      transform:translateY(-1px);
+      box-shadow:0 14px 28px rgba(200,162,74,.26);
+    }
+
+    .bottomNote{
+      margin-top:10px;
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+      font-weight:700;
+      line-height:1.4;
+    }
+
+    .spacer{
+      height:10px;
+    }
+
+    @media (max-width:420px){
+      body{
+        padding:20px 12px 32px;
+      }
+
+      .title{
+        font-size:40px;
+      }
+
+      .title .line2{
+        font-size:34px;
+      }
+
+      .tile{
+        min-height:168px;
+      }
+
+      .menuIcon{
+        max-width:200px;
+        max-height:128px;
+      }
+
+      .tileLabel{
+        font-size:13px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg"></div>
+
+  <div class="phone">
+
+    <div class="langBar">
+      <div class="langWrap" role="tablist" aria-label="Lingua">
+        <button class="langBtn" id="btnDE" type="button" aria-selected="false">Deutsch</button>
+        <button class="langBtn active" id="btnIT" type="button" aria-selected="true">Italiano</button>
+      </div>
+    </div>
+
+    <div class="headerCard">
+      <h1 class="title titleGlow">
+        <span>Panacea</span>
+        <span class="line2">Corsi</span>
+      </h1>
+      <p class="subtitle">
+        Programmi guidati per ritrovare più stabilità, chiarezza e routine sane nella vita di ogni giorno.
+      </p>
+    </div>
+
+    <div class="premiumCard">
+      <h2 class="sectionTitle">Disponibile solo con abbonamento mensile</h2>
+      <p class="sectionText">
+        Questa sezione è riservata ai membri con un <strong>abbonamento mensile attivo</strong>.
+        Qui trovi corsi strutturati, programmi guidati e contenuti di approfondimento pensati per accompagnarti nel tuo percorso personale.
+      </p>
+    </div>
+
+    <div class="grid">
+      <a class="tile" href="mitgliederIT.html" aria-label="Reset Mentale">
+        <img class="menuIcon" data-src="icons/1c.png" alt="Reset Mentale" />
+        <div class="tileLabel">Reset Mentale</div>
+      </a>
+
+      <a class="tile" href="mitgliederIT.html" aria-label="Corso di Resilienza">
+        <img class="menuIcon" data-src="icons/2c.png" alt="Corso di Resilienza" />
+        <div class="tileLabel">Corso di Resilienza</div>
+      </a>
+
+      <a class="tile" href="mitgliederIT.html" aria-label="Equilibrio del Sistema Nervoso">
+        <img class="menuIcon" data-src="icons/3c.png" alt="Equilibrio del Sistema Nervoso" />
+        <div class="tileLabel">Equilibrio del Sistema Nervoso</div>
+      </a>
+
+      <a class="tile" href="mitgliederIT.html" aria-label="Programma Lifestyle">
+        <img class="menuIcon" data-src="icons/4c.png" alt="Programma Lifestyle" />
+        <div class="tileLabel">Programma Lifestyle</div>
+      </a>
+    </div>
+
+    <div class="infoCard">
+      <h2 class="sectionTitle">Il tuo accesso a tutti i corsi</h2>
+      <p class="sectionText">
+        Con l’abbonamento mensile accedi a tutte le aree corso disponibili, a nuovi contenuti,
+        a impulsi guidati e ai futuri ampliamenti dell’universo Panacea.
+      </p>
+    </div>
+
+    <div class="ctaWrap">
+      <a class="ctaBtn" href="mitgliederIT.html" aria-label="Vai all’area membri">
+        Vai all’area membri
+      </a>
+    </div>
+
+    <div class="bottomNote">
+      L’area corsi cresce passo dopo passo e viene ampliata continuamente.
+    </div>
+
+    <div class="spacer"></div>
+  </div>
+    <script>
+    (function(){
+      const v = Date.now();
+      document.querySelectorAll("img[data-src]").forEach(img => {
+        img.src = img.getAttribute("data-src") + "?v=" + v;
+      });
+    })();
+
+    const STORAGE_LANG = "lang";
+    const btnDE = document.getElementById("btnDE");
+    const btnIT = document.getElementById("btnIT");
+
+    function setActiveLang(lang){
+      const isDE = lang === "de";
+
+      btnDE.classList.toggle("active", isDE);
+      btnIT.classList.toggle("active", !isDE);
+
+      btnDE.setAttribute("aria-selected", isDE ? "true" : "false");
+      btnIT.setAttribute("aria-selected", !isDE ? "true" : "false");
+
+      document.documentElement.lang = isDE ? "de" : "it";
+      localStorage.setItem(STORAGE_LANG, lang);
+    }
+
+    function goToLang(lang){
+      setActiveLang(lang);
+
+      if(lang === "de"){
+        window.location.href = "kurse.html";
+      } else {
+        window.location.href = "kurseIT.html";
+      }
+    }
+
+    setActiveLang("it");
+
+    btnDE.addEventListener("click", () => goToLang("de"));
+    btnIT.addEventListener("click", () => goToLang("it"));
+  </script>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./service-worker.js")
+          .then(reg => console.log("Service Worker registered", reg))
+          .catch(err => console.log("Service Worker failed", err));
+      });
+    }
+  </script>
+</body>
+</html>
