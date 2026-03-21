@@ -25,7 +25,6 @@
     }
 
     *{ box-sizing:border-box; }
-
     html{ scroll-behavior:smooth; }
 
     body{
@@ -234,7 +233,8 @@
 
     .block,
     .toolCard,
-    .premiumWrap{
+    .premiumWrap,
+    .premiumCard{
       border-radius:18px;
       border:1px solid rgba(200,162,74,.18);
       background: rgba(255,255,255,.66);
@@ -243,7 +243,8 @@
     }
 
     .blockHead,
-    .toolHead{
+    .toolHead,
+    .premiumHead{
       padding:12px 14px;
       display:flex;
       align-items:center;
@@ -254,7 +255,8 @@
     }
 
     .blockTitle,
-    .toolTitle{
+    .toolTitle,
+    .premiumCardTitle{
       font-weight:900;
       font-size:14px;
       color:#3a2c10;
@@ -262,7 +264,8 @@
     }
 
     .blockMeta,
-    .toolMeta{
+    .toolMeta,
+    .premiumMeta{
       font-size:12px;
       font-weight:800;
       color: rgba(43,43,43,.72);
@@ -284,7 +287,8 @@
     }
 
     .blockBody,
-    .toolBody{
+    .toolBody,
+    .premiumBody{
       padding:12px 14px 14px 14px;
     }
 
@@ -507,6 +511,30 @@
       font-weight:800;
     }
 
+    .premiumSectionTitle{
+      margin:0 0 8px 0;
+      font-size:15px;
+      font-weight:900;
+      color:#3a2c10;
+      letter-spacing:.2px;
+    }
+
+    .premiumCard{
+      border:1px solid rgba(200,162,74,.28);
+      background: linear-gradient(180deg, rgba(255,248,226,.92), rgba(255,255,255,.84));
+      box-shadow: 0 0 18px rgba(200,162,74,.10);
+    }
+
+    .premiumBadge{
+      padding:7px 10px;
+      border-radius:999px;
+      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      border:1px solid rgba(200,162,74,.35);
+      font-weight:900;
+      color:#3a2c10;
+      white-space:nowrap;
+    }
+
     @media (max-width: 430px){
       .topbar{
         grid-template-columns: 1fr;
@@ -578,7 +606,6 @@
 
         <div class="grid" style="margin-top:12px;">
 
-          <!-- BLOCK 1 -->
           <div class="block" data-block="1">
             <div class="blockHead">
               <div class="blockTitle">Block 1 · Ankommen (Atmung)</div>
@@ -610,7 +637,6 @@
             </div>
           </div>
 
-          <!-- BLOCK 2 -->
           <div class="block" data-block="2">
             <div class="blockHead">
               <div class="blockTitle">Block 2 · Körper (sanfte Aktivierung)</div>
@@ -642,7 +668,6 @@
             </div>
           </div>
 
-          <!-- BLOCK 3 -->
           <div class="block" data-block="3">
             <div class="blockHead">
               <div class="blockTitle">Block 3 · Kopf (Klarheit)</div>
@@ -674,7 +699,6 @@
             </div>
           </div>
 
-          <!-- BLOCK 4 -->
           <div class="block" data-block="4">
             <div class="blockHead">
               <div class="blockTitle">Block 4 · Integration (Abschluss)</div>
@@ -714,7 +738,6 @@
 
         <div class="grid" style="margin-top:12px;">
 
-          <!-- SPIEL 1 -->
           <div class="toolCard">
             <div class="toolHead">
               <div class="toolTitle">Spiel 1 · Wortfokus</div>
@@ -737,7 +760,6 @@
             </div>
           </div>
 
-          <!-- SPIEL 2 -->
           <div class="toolCard">
             <div class="toolHead">
               <div class="toolTitle">Spiel 2 · 5-4-3-2-1 Orientierung</div>
@@ -766,7 +788,6 @@
             </div>
           </div>
 
-          <!-- SPIEL 3 -->
           <div class="toolCard">
             <div class="toolHead">
               <div class="toolTitle">Spiel 3 · Reaktionsfokus</div>
@@ -797,7 +818,6 @@
 
         <div class="grid" style="margin-top:12px;">
 
-          <!-- KURZ 1 -->
           <div class="toolCard" data-short="1">
             <div class="toolHead">
               <div class="toolTitle">Kurz-Übung 1 · Längere Ausatmung</div>
@@ -820,7 +840,6 @@
             </div>
           </div>
 
-          <!-- KURZ 2 -->
           <div class="toolCard" data-short="2">
             <div class="toolHead">
               <div class="toolTitle">Kurz-Übung 2 · Muskel lösen</div>
@@ -843,7 +862,6 @@
             </div>
           </div>
 
-          <!-- KURZ 3 -->
           <div class="toolCard" data-short="3">
             <div class="toolHead">
               <div class="toolTitle">Kurz-Übung 3 · Mikro-Bewegung</div>
@@ -881,18 +899,210 @@
               <li><b>Ruhigere Premium-Ansicht</b> mit erweitertem Alltagstraining</li>
             </ul>
             <a class="memberBtn" href="mitglieder.html">Mitglieder freischalten →</a>
-            <div class="note">Nach Freischaltung kann Premium automatisch sichtbar werden.</div>
+            <div class="note">Nach Freischaltung wird der Premium-Bereich direkt in dieser Seite sichtbar.</div>
           </div>
 
           <div id="premiumOn" style="display:none;">
             <ul>
               <li><b>Premium aktiv</b> ✅</li>
-              <li>Hier kannst du später 10 Spiele, 10 Übungen, Audio, Video und Schlaf-/Stress-Module einbauen.</li>
-              <li>Sinnvolle Premium-Kategorien: <b>Schlaf</b>, <b>Akutstress</b>, <b>Fokus</b>, <b>Bewegung</b>, <b>Abend-Reset</b>.</li>
-              <li>Bild-Platzhalter: <b>icons/1b.png, 2b.png, 3b.png …</b></li>
+              <li>Zusätzliche Übungen und Fokus-Tools sind jetzt freigeschaltet.</li>
+              <li>Bereiche: <b>Schlaf</b>, <b>Akutstress</b>, <b>Fokus</b>, <b>Bewegung</b>, <b>Abend-Reset</b>.</li>
             </ul>
-            <div class="note">Diese Box wird sichtbar, wenn <b>panacea_premium=true</b> gesetzt ist.</div>
+            <div class="note">Die goldenen Premium-Inhalte wurden unten geöffnet.</div>
           </div>
+        </div>
+
+        <div id="premiumContent" style="display:none; margin-top:14px;">
+
+          <div class="divider"></div>
+
+          <div class="premiumSectionTitle">Premium · Weitere Fokus-Spiele</div>
+          <p class="sectionLead">Für Mitglieder: zusätzliche Übungen zur Aufmerksamkeitslenkung, Impulskontrolle und mentalen Entlastung.</p>
+
+          <div class="grid" style="margin-top:12px;">
+            <div class="premiumCard">
+              <div class="premiumHead">
+                <div class="premiumCardTitle">Premium 1 · Farb-Fokus</div>
+                <div class="premiumMeta"><span class="premiumBadge">Premium</span></div>
+              </div>
+              <div class="premiumBody">
+                <p class="miniText">Finde im Raum drei Dinge in derselben Farbe. Ziel: visuelle Aufmerksamkeit bündeln.</p>
+              </div>
+            </div>
+
+            <div class="premiumCard">
+              <div class="premiumHead">
+                <div class="premiumCardTitle">Premium 2 · Zahlen-Ruhe</div>
+                <div class="premiumMeta"><span class="premiumBadge">Premium</span></div>
+              </div>
+              <div class="premiumBody">
+                <p class="miniText">Zähle langsam rückwärts in 3er-Schritten. Ziel: Grübelschleifen kurz unterbrechen.</p>
+              </div>
+            </div>
+
+            <div class="premiumCard">
+              <div class="premiumHead">
+                <div class="premiumCardTitle">Premium 3 · Kategorien-Spiel</div>
+                <div class="premiumMeta"><span class="premiumBadge">Premium</span></div>
+              </div>
+              <div class="premiumBody">
+                <p class="miniText">Nenne 5 ruhige Orte, 5 sichere Tätigkeiten oder 5 stärkende Routinen.</p>
+              </div>
+            </div>
+
+            <div class="premiumCard">
+              <div class="premiumHead">
+                <div class="premiumCardTitle">Premium 4 · Tempo-Wechsel</div>
+                <div class="premiumMeta"><span class="premiumBadge">Premium</span></div>
+              </div>
+              <div class="premiumBody">
+                <p class="miniText">30 Sekunden langsam gehen, 15 Sekunden normal, dann wieder langsam. Ziel: bewusste Steuerung.</p>
+              </div>
+            </div>
+
+            <div class="premiumCard">
+              <div class="premiumHead">
+                <div class="premiumCardTitle">Premium 5 · Geräusch-Fokus</div>
+                <div class="premiumMeta"><span class="premiumBadge">Premium</span></div>
+              </div>
+              <div class="premiumBody">
+                <p class="miniText">Wähle ein neutrales Geräusch aus der Umgebung und bleibe 20 Sekunden nur dabei.</p>
+              </div>
+            </div>
+
+            <div class="premiumCard">
+              <div class="premiumHead">
+                <div class="premiumCardTitle">Premium 6 · Reiz-Reduktion</div>
+                <div class="premiumMeta"><span class="premiumBadge">Premium</span></div>
+              </div>
+              <div class="premiumBody">
+                <p class="miniText">Schließe für einen Moment unnötige Tabs, Reize oder Benachrichtigungen. Ziel: kognitive Entlastung.</p>
+              </div>
+            </div>
+
+            <div class="premiumCard">
+              <div class="premiumHead">
+                <div class="premiumCardTitle">Premium 7 · Blick-Anker</div>
+                <div class="premiumMeta"><span class="premiumBadge">Premium</span></div>
+              </div>
+              <div class="premiumBody">
+                <p class="miniText">Fixiere einen ruhigen Punkt im Raum und kombiniere dies mit langsamer Atmung.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="premiumSectionTitle">Premium · Weitere Kurz-Übungen</div>
+          <p class="sectionLead">Zusätzliche Mini-Übungen für Stress, Abendruhe, Regeneration, Konzentration und Selbstberuhigung.</p>
+
+          <div class="grid" style="margin-top:12px;">
+            <div class="premiumCard">
+              <div class="premiumHead">
+                <div class="premiumCardTitle">Premium Übung 4 · Abend-Reset</div>
+                <div class="premiumMeta"><span class="premiumBadge">2 Min.</span></div>
+              </div>
+              <div class="premiumBody">
+                <p class="miniText">Licht reduzieren, Schultern lösen, 5 langsame Ausatmungen. Ziel: Übergang in Ruhe.</p>
+              </div>
+            </div>
+
+            <div class="premiumCard">
+              <div class="premiumHead">
+                <div class="premiumCardTitle">Premium Übung 5 · Akutstress kurz abfangen</div>
+                <div class="premiumMeta"><span class="premiumBadge">90 Sek.</span></div>
+              </div>
+              <div class="premiumBody">
+                <p class="miniText">Stehen bleiben, Boden spüren, 1 langen Ausatemzug, 3 Dinge sehen, 1 nächsten Schritt wählen.</p>
+              </div>
+            </div>
+
+            <div class="premiumCard">
+              <div class="premiumHead">
+                <div class="premiumCardTitle">Premium Übung 6 · Schulter-Nacken weich</div>
+                <div class="premiumMeta"><span class="premiumBadge">2 Min.</span></div>
+              </div>
+              <div class="premiumBody">
+                <p class="miniText">Kleine Kreise, sanftes Lösen, kein Ziehen. Für typische Bildschirm-Anspannung.</p>
+              </div>
+            </div>
+
+            <div class="premiumCard">
+              <div class="premiumHead">
+                <div class="premiumCardTitle">Premium Übung 7 · Konzentrationsstart</div>
+                <div class="premiumMeta"><span class="premiumBadge">2 Min.</span></div>
+              </div>
+              <div class="premiumBody">
+                <p class="miniText">Arbeitsplatz ordnen, 3 bewusste Atemzüge, nur 1 Aufgabe definieren.</p>
+              </div>
+            </div>
+
+            <div class="premiumCard">
+              <div class="premiumHead">
+                <div class="premiumCardTitle">Premium Übung 8 · Hände beruhigen</div>
+                <div class="premiumMeta"><span class="premiumBadge">1 Min.</span></div>
+              </div>
+              <div class="premiumBody">
+                <p class="miniText">Handflächen aneinanderlegen, Druck leicht wahrnehmen, langsam lösen.</p>
+              </div>
+            </div>
+
+            <div class="premiumCard">
+              <div class="premiumHead">
+                <div class="premiumCardTitle">Premium Übung 9 · Morgen-Aktivierung</div>
+                <div class="premiumMeta"><span class="premiumBadge">2–3 Min.</span></div>
+              </div>
+              <div class="premiumBody">
+                <p class="miniText">Aufrichten, Arme heben, 30 Sekunden gehen, Blick öffnen, Tagesstart bewusst setzen.</p>
+              </div>
+            </div>
+
+            <div class="premiumCard">
+              <div class="premiumHead">
+                <div class="premiumCardTitle">Premium Übung 10 · Mini-Regeneration</div>
+                <div class="premiumMeta"><span class="premiumBadge">2 Min.</span></div>
+              </div>
+              <div class="premiumBody">
+                <p class="miniText">Für zwischendurch: kurze Pause, Ausatmung verlängern, Muskeltonus lösen, Fokus neu sammeln.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="premiumSectionTitle">Premium · Audio, Video & Module</div>
+          <div class="grid" style="margin-top:12px;">
+            <div class="premiumCard">
+              <div class="premiumHead">
+                <div class="premiumCardTitle">Audio-Module</div>
+                <div class="premiumMeta"><span class="premiumBadge">Premium</span></div>
+              </div>
+              <div class="premiumBody">
+                <p class="miniText">Platz für kurze geführte Audios: Atmung, Abendruhe, Reset bei Stress, Fokus vor Arbeit.</p>
+              </div>
+            </div>
+
+            <div class="premiumCard">
+              <div class="premiumHead">
+                <div class="premiumCardTitle">Video-Module</div>
+                <div class="premiumMeta"><span class="premiumBadge">Premium</span></div>
+              </div>
+              <div class="premiumBody">
+                <p class="miniText">Platz für kleine Demonstrations-Videos: Haltung, Bewegung, Atmung, kurze Regenerationsroutinen.</p>
+              </div>
+            </div>
+
+            <div class="premiumCard">
+              <div class="premiumHead">
+                <div class="premiumCardTitle">Spezialbereiche</div>
+                <div class="premiumMeta"><span class="premiumBadge">Premium</span></div>
+              </div>
+              <div class="premiumBody">
+                <p class="miniText">Sinnvolle Kategorien: Schlaf, Akutstress, Konzentration, Abend-Reset, Nervensystem-Beruhigung.</p>
+              </div>
+            </div>
+          </div>
+
         </div>
 
         <div class="footerNote">
@@ -904,9 +1114,6 @@
   </div>
 
   <script>
-    // =========================================================
-    // Language switch (DE/IT)
-    // =========================================================
     (function(){
       const KEY = "lang";
 
@@ -921,19 +1128,14 @@
         const map = {
           "index.html": "indexIT.html",
           "indexIT.html": "index.html",
-
           "wissen.html": "wissenIT.html",
           "wissenIT.html": "wissen.html",
-
           "daily-reset.html": "daily-resetIT.html",
           "daily-resetIT.html": "daily-reset.html",
-
           "lifestyle.html": "lifestyleIT.html",
           "lifestyleIT.html": "lifestyle.html",
-
           "mitglieder.html": "mitgliederIT.html",
           "mitgliederIT.html": "mitglieder.html",
-
           "uebungen.html": "uebungenIT.html",
           "uebungenIT.html": "uebungen.html",
         };
@@ -977,25 +1179,22 @@
   </script>
 
   <script>
-    // =========================================================
-    // Premium visibility
-    // =========================================================
     (function(){
       const PREMIUM_FLAG = "panacea_premium";
       const isPremium = (localStorage.getItem(PREMIUM_FLAG) === "true");
       const free = document.getElementById("premiumFree");
       const on = document.getElementById("premiumOn");
-      if(isPremium && free && on){
-        free.style.display = "none";
-        on.style.display = "block";
+      const content = document.getElementById("premiumContent");
+
+      if(isPremium){
+        if(free) free.style.display = "none";
+        if(on) on.style.display = "block";
+        if(content) content.style.display = "block";
       }
     })();
   </script>
 
   <script>
-    // =========================================================
-    // Checklist save + progress for reset blocks
-    // =========================================================
     (function(){
       const KEY = "panacea_uebungen_checks_v2";
 
@@ -1041,9 +1240,6 @@
   </script>
 
   <script>
-    // =========================================================
-    // Timers for reset blocks
-    // =========================================================
     (function(){
       const timers = {};
 
@@ -1151,9 +1347,6 @@
   </script>
 
   <script>
-    // =========================================================
-    // Short exercise timers
-    // =========================================================
     (function(){
       const timers = {};
 
@@ -1248,9 +1441,6 @@
   </script>
 
   <script>
-    // =========================================================
-    // Word focus game
-    // =========================================================
     (function(){
       const grid = document.getElementById("wordGameGrid");
       const result = document.getElementById("wordResult");
@@ -1326,9 +1516,6 @@
   </script>
 
   <script>
-    // =========================================================
-    // Grounding checklist game
-    // =========================================================
     (function(){
       const checks = Array.from(document.querySelectorAll('#groundingList input[type="checkbox"]'));
       const scoreEl = document.getElementById("scoreGround");
@@ -1370,9 +1557,6 @@
   </script>
 
   <script>
-    // =========================================================
-    // Reaction focus game
-    // =========================================================
     (function(){
       const box = document.getElementById("reactionBox");
       const score = document.getElementById("reactionScore");
@@ -1413,7 +1597,7 @@
           waiting = false;
           ready = true;
           startedAt = performance.now();
-          box.textContent = "JETZT TIPpen";
+          box.textContent = "JETZT TIPPEN";
           box.style.background = "radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a)";
           box.style.border = "1px solid rgba(200,162,74,.35)";
           box.style.color = "#3a2c10";
