@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Panacea – Body &amp; Mind</title>
+  <link rel="manifest" href="manifest.webmanifest" />
   <link rel="icon" href="./icons/icon-192.png" />
+  <title>Panacea – Body &amp; Mind</title>
 
   <style>
     :root{
@@ -86,8 +87,8 @@
       background:linear-gradient(180deg, var(--card2), var(--card));
       border:1px solid rgba(200,162,74,.18);
       box-shadow:var(--shadow2);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter:blur(6px);
+      -webkit-backdrop-filter:blur(6px);
     }
 
     .langBtn{
@@ -118,8 +119,8 @@
       border:1px solid rgba(200,162,74,.18);
       padding:22px 22px 18px;
       margin-bottom:16px;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter:blur(8px);
+      -webkit-backdrop-filter:blur(8px);
     }
 
     .title{
@@ -174,8 +175,8 @@
       position:relative;
       overflow:hidden;
       transition:transform .14s ease, box-shadow .14s ease;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter:blur(8px);
+      -webkit-backdrop-filter:blur(8px);
     }
 
     .tile:hover{
@@ -273,13 +274,14 @@
       </a>
 
       <a class="tile" href="wissen.html" aria-label="Wissen und Klarheit">
-        <img class="menuIcon" data-src="icons/wissen-klarheit.png" alt="Wissen &amp; Klarheit" />
+        <img class="menuIcon" data-src="icons/wissen-klarheit.png" alt="Wissen und Klarheit" />
       </a>
 
       <a class="tile" href="lifestyle.html" aria-label="Lifestyle">
         <img class="menuIcon" data-src="icons/lifestyle.png" alt="Lifestyle" />
       </a>
-            <a class="tile" href="uebungen-premium.html" aria-label="Übungen">
+
+      <a class="tile" href="uebungen-premium.html" aria-label="Übungen">
         <img class="menuIcon" data-src="icons/uebungen.png" alt="Übungen" />
       </a>
 
@@ -309,6 +311,7 @@
 
     function setActiveLang(lang){
       const isDE = lang === "de";
+
       btnDE.classList.toggle("active", isDE);
       btnIT.classList.toggle("active", !isDE);
 
@@ -329,8 +332,7 @@
       }
     }
 
-    const savedLang = localStorage.getItem(STORAGE_LANG) || "de";
-    setActiveLang(savedLang === "it" ? "de" : "de");
+    setActiveLang("de");
 
     btnDE.addEventListener("click", () => goToLang("de"));
     btnIT.addEventListener("click", () => goToLang("it"));
