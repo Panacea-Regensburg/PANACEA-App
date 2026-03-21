@@ -875,7 +875,7 @@
     <div class="topbar">
       <a class="back" href="./index.html">← Home</a>
 
-      <div class="langToggle" aria-label="Language toggle">
+      <div class="langToggle" aria-label="Sprachauswahl">
         <button class="langBtn active" id="btnDE" type="button">DE</button>
         <button class="langBtn" id="btnIT" type="button">IT</button>
       </div>
@@ -891,7 +891,7 @@
         <div class="badge">WK</div>
         <div>
           <h1>Wissen & Klarheit</h1>
-          <p>Dein 21-Tage-Weg zu mehr Orientierung, innerer Ruhe und praktischer Klarheit im Alltag.</p>
+          <p>Dein 21-Tage-Weg zu mehr Orientierung, innerer Ruhe und alltagsnaher Klarheit.</p>
         </div>
       </div>
 
@@ -908,7 +908,7 @@
         <div class="softBox" id="dayCard">
           <div class="label">Tag <span id="tagNumber">1</span><span id="dayDone" class="dayDone">○</span></div>
           <div class="imgWrap">
-            <img id="dayImage" src="./icons/1.png" alt="Bild für Tag 1" />
+            <img id="dayImage" src="./icons/1.png" alt="Bild zu Tag 1" />
           </div>
         </div>
 
@@ -955,8 +955,8 @@
         <div class="cycleDoneBox" id="cycleDoneBox">
           <h4>21 Tage abgeschlossen ✨</h4>
           <p>
-            Du hast diesen Zyklus abgeschlossen. Du kannst jetzt einen neuen 21-Tage-Zyklus beginnen
-            und die Inhalte in einem neuen Rhythmus erneut erleben.
+            Du hast diesen Zyklus abgeschlossen. Jetzt kannst du einen neuen 21-Tage-Zyklus beginnen
+            und die Inhalte in einem neuen Rhythmus noch einmal bewusst erleben.
           </p>
         </div>
 
@@ -965,10 +965,10 @@
         <div class="premiumTeaser" id="premiumTeaser">
           <div class="premiumHead">
             <div>
-              <h3>Mitglieder – Wissen Deluxe</h3>
+              <h3>Mitgliederbereich – Wissen Deluxe</h3>
               <p>
                 Eine vertiefte Version deines Tagesimpulses – mit mehr Einordnung, mehr Transfer
-                und einer warmen, hochwertigen Premium-Begleitung.
+                und einer ruhigen, hochwertigen Premium-Begleitung.
               </p>
             </div>
             <div class="premiumBadge" id="premiumBadge">Status: Free</div>
@@ -977,8 +977,8 @@
           <ul class="premiumList">
             <li><b>Vertiefung des Themas</b> mit mehr psychologischer und alltagsnaher Einordnung</li>
             <li><b>3 Premium-Varianten</b> in dynamischer 21-Tage-Rotation für mehr Abwechslung</li>
-            <li><b>Smarte Übung</b> mit Körper-, Gedanken- oder Handlungsfokus</li>
-            <li><b>Abschluss-Integration</b> für einen klaren Transfer in den Alltag</li>
+            <li><b>Smarte Übung</b> mit Fokus auf Körper, Gedanken oder Handlung</li>
+            <li><b>Abschluss-Integration</b> für einen klaren Transfer in deinen Alltag</li>
           </ul>
 
           <div class="premiumActions">
@@ -987,7 +987,7 @@
           </div>
 
           <div class="smallNote">
-            Hinweis: Nach der Freischaltung wird dein Premium-Bereich automatisch direkt hier eingeblendet.
+            Hinweis: Nach der Freischaltung wird dein Premium-Bereich automatisch direkt hier angezeigt.
           </div>
         </div>
 
@@ -1042,7 +1042,7 @@
             </div>
 
             <div class="smartOutput" id="smartOutput">
-              Wähle einen Bereich. Du bekommst sofort einen kleinen, intelligenten nächsten Schritt.
+              Wähle einen Bereich. Du bekommst sofort einen kleinen, klaren nächsten Schritt.
             </div>
 
             <div class="autoHint" id="autoHint">
@@ -1050,7 +1050,7 @@
             </div>
 
             <div class="gameFooter">
-              <div id="gameHint">Tipp: Wähle intuitiv – nicht perfekt.</div>
+              <div id="gameHint">Tipp: Wähle intuitiv, nicht perfekt.</div>
               <div id="gameResult"></div>
             </div>
 
@@ -1061,7 +1061,7 @@
           </div>
 
           <div class="closing" id="closingBox">
-            <h4>Zum Schluss</h4>
+            <h4>Zum Abschluss</h4>
             <p id="closingText">…</p>
           </div>
         </div>
@@ -1435,10 +1435,10 @@
     function buildSmartExerciseFromVariant(variant){
       return {
         title: variant.activity?.title || "Smart-Übung",
-        intro: variant.activity?.instruction || "Wähle intuitiv den Bereich, der dir jetzt am meisten Klarheit oder Stabilität geben kann.",
+        intro: variant.activity?.instruction || "Wähle intuitiv den Bereich, der dir im Moment am meisten Klarheit oder Stabilität geben kann.",
         autoChoice: "mind",
-        body: variant.smart?.koerper || "Nimm deinen Körper wahr und atme ruhig aus.",
-        mind: variant.smart?.gedanke || "Formuliere einen klaren Gedanken für heute.",
+        body: variant.smart?.koerper || "Spüre deinen Körper bewusst und atme langsam aus.",
+        mind: variant.smart?.gedanke || "Formuliere für heute einen klaren, hilfreichen Gedanken.",
         action: variant.smart?.handlung || "Wähle den kleinsten machbaren nächsten Schritt."
       };
     }
@@ -1452,11 +1452,11 @@
       });
 
       gameTitle.textContent = exercise.title || "Smart-Übung";
-      gamePrompt.textContent = exercise.intro || "Wähle intuitiv den Bereich, der dir jetzt am meisten Klarheit oder Stabilität geben kann.";
+      gamePrompt.textContent = exercise.intro || "Wähle intuitiv den Bereich, der dir im Moment am meisten Klarheit oder Stabilität geben kann.";
 
       const outputMap = {
-        body: exercise.body || "Nimm deinen Körper wahr und atme ruhig aus.",
-        mind: exercise.mind || "Formuliere einen klaren Gedanken für heute.",
+        body: exercise.body || "Spüre deinen Körper bewusst und atme langsam aus.",
+        mind: exercise.mind || "Formuliere für heute einen klaren, hilfreichen Gedanken.",
         action: exercise.action || "Wähle eine kleine Handlung, die heute wirklich machbar ist."
       };
 
@@ -1494,10 +1494,10 @@
 
       if(!premiumData){
         pTitle.textContent = "Mitgliederbereich – Vertiefung des Tages";
-        pSub.textContent = "Noch kein Premium-Inhalt vorhanden.";
+        pSub.textContent = "Für diesen Tag ist noch kein Premium-Inhalt verfügbar.";
         pPill.textContent = "Variante A";
         paperTitle.textContent = "Tagesvertiefung";
-        paperText.textContent = "Noch kein Premium-Text vorhanden.";
+        paperText.textContent = "Für diesen Tag ist noch kein Premium-Text verfügbar.";
         paperAnchor.textContent = "🧭 Fokus: —";
         paperMicro.textContent = "✨ Mikro-Schritt: —";
         premiumInsight.textContent = "—";
@@ -1514,8 +1514,8 @@
       currentVariant = {
         label: getVariantLabel(variantIndex),
         title: premiumDay.title || "Vertiefung des Tages",
-        sub: "Eine vertiefte, ruhigere und alltagsnahe Einordnung deines heutigen Wissen-Impulses.",
-        deepDive: variant.intro || "Noch kein Premium-Text vorhanden.",
+        sub: "Eine ruhigere, vertiefte und alltagsnahe Einordnung deines heutigen Wissensimpulses.",
+        deepDive: variant.intro || "Für diesen Tag ist noch kein Premium-Text verfügbar.",
         insight: variant.premiumInsight || "—",
         question: variant.premiumQuestion || "—",
         closing: variant.integration || "—",
@@ -1544,30 +1544,39 @@
 
     function updateImage(day){
       dayImage.src = `./icons/${day}.png`;
-      dayImage.alt = `Bild für Tag ${day}`;
+      dayImage.alt = `Bild zu Tag ${day}`;
     }
 
     function renderLockedContent(){
+      const member = isMember();
+
       tagNumber.textContent = String(currentDay);
       updateImage(currentDay);
 
       elTitle.textContent = `Tag ${currentDay} ist noch gesperrt`;
-      elExplanation.textContent = `Dieser Tag wird automatisch freigeschaltet, sobald du ihn im natürlichen Verlauf deines 21-Tage-Programms erreichst.`;
-      elImpuls.textContent = `Nicht alles auf einmal. Heute zählt nur der Tag, der jetzt für dich offen ist.`;
-      elReflection.textContent = `Was hilft mir heute, im aktuellen Schritt zu bleiben – ohne vorauszueilen?`;
+      elExplanation.textContent = "Dieser Tag wird automatisch freigeschaltet, sobald du ihn im natürlichen Verlauf deines 21-Tage-Programms erreichst.";
+      elImpuls.textContent = "Du musst nicht alles auf einmal machen. Heute zählt nur der Tag, der jetzt für dich offen ist.";
+      elReflection.textContent = "Was hilft mir heute, im aktuellen Schritt zu bleiben, ohne vorauszueilen?";
 
       exerciseWrap.style.display = "none";
       exerciseTitle.textContent = "Mini-Übung";
       exerciseText.textContent = "—";
 
-      premiumTeaser.style.display = "block";
       premiumBlock.style.display = "none";
       closingBox.style.display = "none";
       currentVariant = null;
 
-      premiumBadge.textContent = "Status: Free";
-      unlockBtnLink.style.display = "";
-      memberBtn.textContent = "Zum Mitgliederbereich";
+      if(member){
+        premiumBadge.textContent = "Status: Mitglied ✅";
+        premiumTeaser.style.display = "none";
+        unlockBtnLink.style.display = "none";
+        memberBtn.textContent = "Mitgliederbereich";
+      } else {
+        premiumBadge.textContent = "Status: Free";
+        premiumTeaser.style.display = "block";
+        unlockBtnLink.style.display = "";
+        memberBtn.textContent = "Zum Mitgliederbereich";
+      }
 
       prevBtn.disabled = currentDay <= 1;
       nextBtn.disabled = true;
