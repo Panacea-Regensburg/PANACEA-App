@@ -1,0 +1,1113 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Panacea – Übungen Premium</title>
+  <link rel="icon" href="./icons/icon-192.png" />
+
+  <style>
+    :root{
+      --bg1:#f6f1e6;
+      --bg2:#efe7d7;
+      --card:#ffffffde;
+      --card2:#fffaf1;
+      --line:#eadfcb;
+      --gold:#c8a24a;
+      --gold2:#e7cf8d;
+      --text:#2b2b2b;
+      --muted:#6b6b6b;
+      --soft:#8d7b57;
+      --ok:#2e7d32;
+      --danger:#a14c3f;
+      --shadow:0 18px 45px rgba(0,0,0,.10);
+      --shadow2:0 10px 28px rgba(0,0,0,.08);
+      --radius:24px;
+      --radius2:18px;
+      --max:520px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      min-height:100vh;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top, rgba(255,255,255,.75), transparent 30%),
+        linear-gradient(180deg,var(--bg1),var(--bg2));
+    }
+
+    .wrap{
+      width:min(100%, var(--max));
+      margin:0 auto;
+      padding:18px 14px 42px;
+    }
+
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:14px;
+    }
+
+    .nav-btn{
+      border:none;
+      background:rgba(255,255,255,.72);
+      color:var(--text);
+      border-radius:999px;
+      padding:10px 14px;
+      font-weight:700;
+      cursor:pointer;
+      box-shadow:var(--shadow2);
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .hero{
+      background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,248,236,.96));
+      border:1px solid rgba(200,162,74,.18);
+      border-radius:30px;
+      box-shadow:var(--shadow);
+      padding:26px 20px 22px;
+      position:relative;
+      overflow:hidden;
+      margin-bottom:16px;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      right:-60px;
+      top:-60px;
+      width:180px;
+      height:180px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(231,207,141,.35), transparent 70%);
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(200,162,74,.12);
+      color:#7a6030;
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      margin-bottom:12px;
+    }
+
+    h1,h2,h3,p{margin:0}
+    h1{
+      font-size:30px;
+      line-height:1.08;
+      margin-bottom:10px;
+      letter-spacing:-.02em;
+    }
+
+    .lead{
+      color:var(--muted);
+      line-height:1.55;
+      font-size:15px;
+      margin-bottom:16px;
+    }
+
+    .premium-note{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      background:linear-gradient(180deg,#fffaf0,#fff4dd);
+      border:1px solid rgba(200,162,74,.25);
+      border-radius:18px;
+      padding:14px;
+      color:#6d5730;
+      font-size:14px;
+      line-height:1.5;
+    }
+
+    .status-card,
+    .card{
+      background:var(--card);
+      border:1px solid rgba(255,255,255,.65);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow2);
+      padding:18px;
+      margin-bottom:14px;
+      backdrop-filter: blur(8px);
+    }
+
+    .status-card{
+      display:none;
+    }
+
+    .status-card.show{
+      display:block;
+    }
+
+    .locked{
+      text-align:center;
+      padding:26px 18px;
+    }
+
+    .locked h2{
+      font-size:24px;
+      margin-bottom:10px;
+    }
+
+    .locked p{
+      color:var(--muted);
+      line-height:1.6;
+      margin-bottom:16px;
+    }
+
+    .btn{
+      border:none;
+      border-radius:16px;
+      padding:13px 16px;
+      font-weight:800;
+      font-size:14px;
+      cursor:pointer;
+      box-shadow:var(--shadow2);
+      transition:transform .15s ease, opacity .15s ease;
+    }
+
+    .btn:hover{ transform:translateY(-1px); }
+    .btn:active{ transform:translateY(0); }
+
+    .btn-gold{
+      background:linear-gradient(180deg,var(--gold2),var(--gold));
+      color:#2b220f;
+    }
+
+    .btn-soft{
+      background:#fff;
+      color:var(--text);
+    }
+
+    .btn-row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+
+    .section-title{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:12px;
+    }
+
+    .section-title h2{
+      font-size:22px;
+      letter-spacing:-.01em;
+    }
+
+    .section-sub{
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .grid{
+      display:grid;
+      gap:12px;
+    }
+
+    .exercise-card,
+    .game-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.98), rgba(255,250,242,.95));
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:16px;
+    }
+
+    .label{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(200,162,74,.11);
+      color:#7a6030;
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      margin-bottom:10px;
+    }
+
+    .exercise-card h3,
+    .game-card h3{
+      font-size:18px;
+      margin-bottom:8px;
+      letter-spacing:-.01em;
+    }
+
+    .meta{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-bottom:10px;
+    }
+
+    .chip{
+      background:#f7f1e4;
+      color:#6b5b3f;
+      border-radius:999px;
+      padding:6px 10px;
+      font-size:12px;
+      font-weight:700;
+    }
+
+    .text{
+      color:var(--muted);
+      line-height:1.58;
+      font-size:14px;
+      margin-bottom:10px;
+    }
+
+    .effect{
+      background:#fffdf7;
+      border-left:4px solid var(--gold);
+      border-radius:14px;
+      padding:10px 12px;
+      font-size:13px;
+      line-height:1.5;
+      color:#6b5b3f;
+      margin-top:10px;
+    }
+
+    .practice-steps{
+      padding-left:18px;
+      margin:10px 0 0;
+      color:var(--text);
+      line-height:1.55;
+      font-size:14px;
+    }
+
+    .practice-steps li{ margin-bottom:6px; }
+
+    .timer-box{
+      margin-top:12px;
+      padding:14px;
+      border-radius:18px;
+      background:linear-gradient(180deg,#fffdf8,#f9f3e7);
+      border:1px solid var(--line);
+    }
+
+    .timer-display{
+      font-size:34px;
+      font-weight:900;
+      letter-spacing:-.03em;
+      margin-bottom:10px;
+    }
+
+    .small{
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.5;
+    }
+
+    .checklist{
+      display:grid;
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .check-item{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:12px;
+      border-radius:16px;
+      background:#fffdfa;
+      border:1px solid var(--line);
+    }
+
+    .check-item input{
+      margin-top:3px;
+      transform:scale(1.15);
+      accent-color:#b58b34;
+    }
+
+    .check-item.done{
+      opacity:.68;
+    }
+
+    .check-item strong{
+      display:block;
+      margin-bottom:4px;
+      font-size:14px;
+    }
+
+    .mini-area{
+      margin-top:12px;
+      padding:14px;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:#fffdf8;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    textarea,
+    select{
+      width:100%;
+      padding:12px 13px;
+      border-radius:14px;
+      border:1px solid #dccfb7;
+      background:#fff;
+      color:var(--text);
+      font:inherit;
+      outline:none;
+    }
+
+    textarea{
+      min-height:90px;
+      resize:vertical;
+    }
+
+    .inline{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .inline > *{
+      flex:1 1 140px;
+    }
+
+    .result{
+      margin-top:10px;
+      padding:12px 13px;
+      border-radius:14px;
+      background:#fff;
+      border:1px solid #eadfcb;
+      font-size:14px;
+      line-height:1.5;
+    }
+
+    .accent{
+      color:#87661d;
+      font-weight:800;
+    }
+
+    .memory-seq{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin:10px 0;
+    }
+
+    .memory-chip{
+      min-width:42px;
+      text-align:center;
+      padding:10px 12px;
+      border-radius:14px;
+      background:#f6efdf;
+      font-weight:800;
+    }
+
+    .footer-space{
+      height:18px;
+    }
+
+    .hidden{
+      display:none !important;
+    }
+
+    @media (max-width:420px){
+      h1{font-size:27px}
+      .timer-display{font-size:30px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <div class="topbar">
+      <a class="nav-btn" href="./uebungen.html">← Zurück</a>
+      <a class="nav-btn" href="./index.html">Panacea</a>
+    </div>
+
+    <section class="hero">
+      <div class="badge">✨ Premium Übungen</div>
+      <h1>Mehr Tiefe.<br>Mehr Regulation.<br>Mehr echte Praxis.</h1>
+      <p class="lead">
+        Dieser Premium-Bereich verbindet kurze wissenschaftlich orientierte Übungen mit intelligenten Mini-Formaten
+        für Fokus, Selbstregulation, mentale Klarheit und Alltagstransfer.
+      </p>
+
+      <div class="premium-note">
+        <div>🌿</div>
+        <div>
+          Nicht Perfektion ist das Ziel – sondern ein ruhiger, klarer und regulierter Zustand.
+          Wähle heute einfach die Übung, die zu deinem Nervensystem passt.
+        </div>
+      </div>
+    </section>
+
+    <section id="lockedCard" class="status-card show">
+      <div class="locked">
+        <div class="badge">Zugang geschützt</div>
+        <h2>Premium-Inhalte freischalten</h2>
+        <p>
+          Diese Seite ist für Mitglieder gedacht. Nach der Freischaltung erhältst du Zugriff auf vertiefte Übungen,
+          interaktive Mini-Tools, Checklisten und fokussierte Praxisformate.
+        </p>
+        <div class="btn-row" style="justify-content:center">
+          <a class="btn btn-gold" href="./mitglieder.html" style="text-decoration:none;display:inline-block;">Mitgliederbereich öffnen</a>
+          <a class="btn btn-soft" href="./uebungen.html" style="text-decoration:none;display:inline-block;">Zur kostenlosen Seite</a>
+        </div>
+      </div>
+    </section>
+
+    <div id="premiumContent" class="hidden">
+
+      <section class="card">
+        <div class="section-title">
+          <h2>Premium Fokus</h2>
+          <div class="section-sub">10 kurze wissenschaftlich inspirierte Übungen</div>
+        </div>
+        <div id="exerciseGrid" class="grid"></div>
+      </section>
+
+      <section class="card">
+        <div class="section-title">
+          <h2>Intelligente Mini-Games</h2>
+          <div class="section-sub">10 kleine Tools für Klarheit, Regulation und Achtsamkeit</div>
+        </div>
+        <div id="gameGrid" class="grid"></div>
+      </section>
+
+      <section class="card">
+        <div class="section-title">
+          <h2>Dein Premium-Check-in</h2>
+          <div class="section-sub">Eine ruhige Mini-Routine für heute</div>
+        </div>
+
+        <div class="checklist" id="dailyChecklist">
+          <label class="check-item">
+            <input type="checkbox" data-check="1">
+            <div>
+              <strong>1 Minute ankommen</strong>
+              <div class="small">Einmal bewusst langsamer werden und den Körper wahrnehmen.</div>
+            </div>
+          </label>
+
+          <label class="check-item">
+            <input type="checkbox" data-check="2">
+            <div>
+              <strong>Eine Übung wählen</strong>
+              <div class="small">Nicht alles machen – nur die Übung, die heute wirklich passt.</div>
+            </div>
+          </label>
+
+          <label class="check-item">
+            <input type="checkbox" data-check="3">
+            <div>
+              <strong>Ein Spiel für mentale Klarheit</strong>
+              <div class="small">Kurzer Fokusimpuls statt digitaler Überforderung.</div>
+            </div>
+          </label>
+
+          <label class="check-item">
+            <input type="checkbox" data-check="4">
+            <div>
+              <strong>Mit einem Satz abschließen</strong>
+              <div class="small">Was tut mir nach dieser Praxis jetzt gut?</div>
+            </div>
+          </label>
+        </div>
+      </section>
+
+      <div class="footer-space"></div>
+    </div>
+  </div>
+
+  <script>
+    const premiumUnlocked =
+      localStorage.getItem("panacea_premium") === "true" ||
+      localStorage.getItem("premiumUnlocked") === "true" ||
+      localStorage.getItem("mitglied") === "true";
+
+    const lockedCard = document.getElementById("lockedCard");
+    const premiumContent = document.getElementById("premiumContent");
+
+    if (premiumUnlocked) {
+      lockedCard.classList.remove("show");
+      premiumContent.classList.remove("hidden");
+    }
+
+    const exercises = [
+      {
+        category: "Atmung",
+        title: "Längeres Ausatmen",
+        duration: "2 Minuten",
+        level: "sehr sanft",
+        text: "Diese Übung unterstützt eine ruhige Regulation über die Atmung. Der Fokus liegt nicht auf tiefem Einatmen, sondern auf einem etwas längeren Ausatmen.",
+        steps: [
+          "Atme 4 Sekunden durch die Nase ein.",
+          "Atme 6 Sekunden langsam aus.",
+          "Wiederhole dies 8 bis 10 Atemzüge lang."
+        ],
+        effect: "Kann helfen, das autonome Nervensystem aus einem höheren Aktivierungsniveau langsam in mehr Ruhe zu führen.",
+        timer: 120
+      },
+      {
+        category: "Grounding",
+        title: "5–4–3–2–1 Orientierung",
+        duration: "2–3 Minuten",
+        level: "stabilisierend",
+        text: "Eine klassische Orientierungsübung, um aus Grübeln oder innerer Enge zurück ins Hier und Jetzt zu kommen.",
+        steps: [
+          "Nenne 5 Dinge, die du sehen kannst.",
+          "Nenne 4 Dinge, die du spüren kannst.",
+          "Nenne 3 Dinge, die du hören kannst.",
+          "Nenne 2 Dinge, die du riechen kannst.",
+          "Nenne 1 Sache, für die du gerade dankbar bist."
+        ],
+        effect: "Kann helfen, Aufmerksamkeit umzulenken und Reizüberflutung innerlich etwas zu ordnen."
+      },
+      {
+        category: "Körper",
+        title: "Progressive Mikro-Entspannung",
+        duration: "3 Minuten",
+        level: "mittel",
+        text: "Hier spannst du einzelne Muskelgruppen ganz kurz an und lässt bewusst los. Das schafft oft einen deutlichen Unterschied zwischen Spannung und Entlastung.",
+        steps: [
+          "Hände 5 Sekunden anspannen, loslassen.",
+          "Schultern 5 Sekunden anheben, loslassen.",
+          "Gesicht 5 Sekunden anspannen, loslassen.",
+          "Füße 5 Sekunden spannen, loslassen."
+        ],
+        effect: "Kann helfen, muskuläre Restspannung schneller wahrzunehmen und gezielt zu reduzieren."
+      },
+      {
+        category: "Fokus",
+        title: "Ein Punkt – ein Atemzug",
+        duration: "90 Sekunden",
+        level: "leicht",
+        text: "Fixiere einen ruhigen Punkt im Raum und verbinde den Blick mit langsamer Atmung. Sehr hilfreich bei mentalem Zerstreutsein.",
+        steps: [
+          "Wähle einen unbewegten Punkt.",
+          "Bleibe weich mit dem Blick dort.",
+          "Atme 6 ruhige Atemzüge."
+        ],
+        effect: "Kann helfen, mentale Sprünge zu reduzieren und den Fokus wieder zu bündeln."
+      },
+      {
+        category: "Selbstregulation",
+        title: "Hand auf Brust – Hand auf Bauch",
+        duration: "2 Minuten",
+        level: "sanft",
+        text: "Eine einfache Berührungsübung mit beruhigendem Charakter. Sie kann Sicherheit und Selbstkontakt fördern.",
+        steps: [
+          "Lege eine Hand auf die Brust.",
+          "Lege die andere Hand auf den Bauch.",
+          "Spüre 8 langsame Atemzüge lang nur den Kontakt."
+        ],
+        effect: "Kann das Erleben von innerer Sicherheit und Körperkontakt unterstützen."
+      },
+      {
+        category: "Nervensystem",
+        title: "Seufzer-Reset",
+        duration: "1 Minute",
+        level: "leicht",
+        text: "Mehrere bewusste, erleichternde Ausatem-Seufzer können helfen, angestaute Spannung kurz zu entladen.",
+        steps: [
+          "Atme normal ein.",
+          "Lass beim Ausatmen einen hörbaren Seufzer zu.",
+          "Wiederhole 5 Mal ohne Druck."
+        ],
+        effect: "Kann kurzfristig emotionale oder körperliche Anspannung lösen."
+      },
+      {
+        category: "Klarheit",
+        title: "Gedanken parken",
+        duration: "3 Minuten",
+        level: "reflektierend",
+        text: "Eine Mini-Schreibübung, um kreisende Gedanken aus dem Kopf in eine sichtbare Form zu bringen.",
+        steps: [
+          "Nimm Papier oder Handy-Notiz.",
+          "Schreibe 60 Sekunden lang alles auf, was gerade in deinem Kopf kreist.",
+          "Markiere danach nur einen Punkt, der heute wirklich wichtig ist."
+        ],
+        effect: "Kann helfen, geistige Überladung zu strukturieren und Prioritäten zu klären."
+      },
+      {
+        category: "Mobilisation",
+        title: "Schulter-Nacken-Lockerung",
+        duration: "2 Minuten",
+        level: "aktivierend",
+        text: "Sanfte Bewegung für einen Bereich, in dem Stress sich besonders oft festsetzt.",
+        steps: [
+          "Kreise die Schultern 10 Mal nach hinten.",
+          "Neige den Kopf sanft rechts und links.",
+          "Bewege das Kinn 5 Mal leicht Richtung Brust und wieder hoch."
+        ],
+        effect: "Kann muskuläre Starre im oberen Rücken- und Nackenbereich reduzieren."
+      },
+      {
+        category: "Emotion",
+        title: "Gefühl benennen",
+        duration: "90 Sekunden",
+        level: "achtsam",
+        text: "Allein das präzise Benennen eines inneren Zustands kann regulierend wirken.",
+        steps: [
+          "Halte kurz inne.",
+          "Frage dich: Was ist gerade am deutlichsten da?",
+          "Benenne das Gefühl in 1 bis 3 Wörtern."
+        ],
+        effect: "Emotionale Zustände verlieren oft etwas an Intensität, wenn sie bewusst benannt werden."
+      },
+      {
+        category: "Abschluss",
+        title: "Mini-Reset mit Zukunftssatz",
+        duration: "1 Minute",
+        level: "leicht",
+        text: "Eine kurze mentale Ausrichtung nach der Übung, damit der Transfer in den Alltag leichter wird.",
+        steps: [
+          "Atme einmal ruhig ein und aus.",
+          "Beende mit dem Satz: Für die nächste Stunde wähle ich …",
+          "Setze nur eine kleine, realistische Handlung ein."
+        ],
+        effect: "Kann helfen, Regulation mit echter Alltagsumsetzung zu verbinden."
+      }
+    ];
+
+    const games = [
+      {
+        category: "Klarheit",
+        title: "Gedankenfilter",
+        text: "Schreibe einen Gedanken auf und entscheide: Fakt, Befürchtung oder Interpretation?",
+        render: () => `
+          <div class="mini-area">
+            <textarea id="thoughtInput" placeholder="Schreibe hier einen Gedanken..."></textarea>
+            <div class="inline" style="margin-top:10px">
+              <button class="btn btn-gold" onclick="analyzeThought()">Einordnen</button>
+            </div>
+            <div id="thoughtResult" class="result hidden"></div>
+          </div>
+        `
+      },
+      {
+        category: "Fokus",
+        title: "Zahlenfokus",
+        text: "Zähle in 7er-Schritten rückwärts. Ein kleines Konzentrationstraining gegen mentales Springen.",
+        render: () => `
+          <div class="mini-area">
+            <div class="inline">
+              <input id="startNumber" type="number" value="100" />
+              <button class="btn btn-gold" onclick="startNumberGame()">Start</button>
+            </div>
+            <div id="numberGameResult" class="result hidden"></div>
+          </div>
+        `
+      },
+      {
+        category: "Achtsamkeit",
+        title: "Drei sichere Dinge",
+        text: "Nenne drei Dinge, die dir heute Stabilität geben.",
+        render: () => `
+          <div class="mini-area">
+            <input id="safe1" type="text" placeholder="Erste Ressource" />
+            <input id="safe2" type="text" placeholder="Zweite Ressource" style="margin-top:8px" />
+            <input id="safe3" type="text" placeholder="Dritte Ressource" style="margin-top:8px" />
+            <button class="btn btn-gold" onclick="saveSafeThings()" style="margin-top:10px">Speichern</button>
+            <div id="safeResult" class="result hidden"></div>
+          </div>
+        `
+      },
+      {
+        category: "Gedächtnis",
+        title: "Merkfolge",
+        text: "Merke dir eine kurze Zahlenfolge und gib sie danach ein.",
+        render: () => `
+          <div class="mini-area">
+            <div id="memorySequence" class="memory-seq"></div>
+            <div class="inline">
+              <button class="btn btn-gold" onclick="newMemoryGame()">Neue Folge</button>
+              <input id="memoryAnswer" type="text" placeholder="Zahlen eingeben" />
+            </div>
+            <button class="btn btn-soft" onclick="checkMemoryGame()" style="margin-top:10px">Prüfen</button>
+            <div id="memoryResult" class="result hidden"></div>
+          </div>
+        `
+      },
+      {
+        category: "Reflexion",
+        title: "Was brauche ich wirklich?",
+        text: "Wähle aus: Ruhe, Bewegung, Kontakt, Essen, Wasser, Pause, Struktur.",
+        render: () => `
+          <div class="mini-area">
+            <select id="needSelect">
+              <option value="">Bitte wählen</option>
+              <option>Ruhe</option>
+              <option>Bewegung</option>
+              <option>Kontakt</option>
+              <option>Essen</option>
+              <option>Wasser</option>
+              <option>Pause</option>
+              <option>Struktur</option>
+            </select>
+            <button class="btn btn-gold" onclick="needReflection()" style="margin-top:10px">Weiter</button>
+            <div id="needResult" class="result hidden"></div>
+          </div>
+        `
+      },
+      {
+        category: "Stress",
+        title: "Belastungsskala",
+        text: "Ordne deine aktuelle innere Aktivierung auf einer Skala von 1 bis 10 ein.",
+        render: () => `
+          <div class="mini-area">
+            <input id="stressRange" type="range" min="1" max="10" value="5" oninput="document.getElementById('stressValue').textContent=this.value">
+            <div class="result">Aktueller Wert: <span id="stressValue" class="accent">5</span></div>
+            <button class="btn btn-gold" onclick="stressInterpretation()" style="margin-top:10px">Interpretieren</button>
+            <div id="stressResult" class="result hidden"></div>
+          </div>
+        `
+      },
+      {
+        category: "Mental Load",
+        title: "Loslassen oder handeln?",
+        text: "Schreibe ein Thema auf. Entscheide danach: heute handeln oder bewusst parken?",
+        render: () => `
+          <div class="mini-area">
+            <textarea id="loadInput" placeholder="Was belastet mich gerade?"></textarea>
+            <div class="inline" style="margin-top:10px">
+              <button class="btn btn-gold" onclick="loadDecision('handeln')">Heute handeln</button>
+              <button class="btn btn-soft" onclick="loadDecision('parken')">Bewusst parken</button>
+            </div>
+            <div id="loadResult" class="result hidden"></div>
+          </div>
+        `
+      },
+      {
+        category: "Aufmerksamkeit",
+        title: "Wortfokus",
+        text: "Wähle ein Wort, das dich heute innerlich tragen soll.",
+        render: () => `
+          <div class="mini-area">
+            <input id="focusWord" type="text" placeholder="z. B. Ruhe, Klarheit, Vertrauen" />
+            <button class="btn btn-gold" onclick="saveFocusWord()" style="margin-top:10px">Wort setzen</button>
+            <div id="focusWordResult" class="result hidden"></div>
+          </div>
+        `
+      },
+      {
+        category: "Selbstkontakt",
+        title: "Mini-Journal",
+        text: "Beantworte in einem Satz: Was war heute schon gut genug?",
+        render: () => `
+          <div class="mini-area">
+            <textarea id="journalInput" placeholder="Mein Satz für heute..."></textarea>
+            <button class="btn btn-gold" onclick="saveJournal()" style="margin-top:10px">Speichern</button>
+            <div id="journalResult" class="result hidden"></div>
+          </div>
+        `
+      },
+      {
+        category: "Regulation",
+        title: "60-Sekunden-Timer",
+        text: "Ein minimalistischer Timer zum ruhigen Ankommen. Ideal für Atemfokus oder stilles Sitzen.",
+        render: () => `
+          <div class="mini-area">
+            <div id="oneMinuteDisplay" class="timer-display">01:00</div>
+            <div class="inline">
+              <button class="btn btn-gold" onclick="startOneMinute()">Start</button>
+              <button class="btn btn-soft" onclick="resetOneMinute()">Reset</button>
+            </div>
+          </div>
+        `
+      }
+    ];
+
+    const exerciseGrid = document.getElementById("exerciseGrid");
+    const gameGrid = document.getElementById("gameGrid");
+
+    function renderExercises(){
+      if(!exerciseGrid) return;
+      exerciseGrid.innerHTML = exercises.map((item, index) => `
+        <article class="exercise-card">
+          <div class="label">${item.category}</div>
+          <h3>${index + 1}. ${item.title}</h3>
+          <div class="meta">
+            <span class="chip">${item.duration}</span>
+            <span class="chip">${item.level}</span>
+          </div>
+          <p class="text">${item.text}</p>
+          <ol class="practice-steps">
+            ${item.steps.map(step => `<li>${step}</li>`).join("")}
+          </ol>
+          <div class="effect"><strong>Wirkidee:</strong> ${item.effect}</div>
+          ${item.timer ? `
+            <div class="timer-box">
+              <div class="small">Optionaler Praxis-Timer</div>
+              <div class="timer-display" id="timer-display-${index}">${formatTime(item.timer)}</div>
+              <div class="btn-row">
+                <button class="btn btn-gold" onclick="startExerciseTimer(${index}, ${item.timer})">Start</button>
+                <button class="btn btn-soft" onclick="resetExerciseTimer(${index}, ${item.timer})">Reset</button>
+              </div>
+            </div>
+          ` : ``}
+        </article>
+      `).join("");
+    }
+
+    function renderGames(){
+      if(!gameGrid) return;
+      gameGrid.innerHTML = games.map((item, index) => `
+        <article class="game-card">
+          <div class="label">${item.category}</div>
+          <h3>${index + 1}. ${item.title}</h3>
+          <p class="text">${item.text}</p>
+          ${item.render()}
+        </article>
+      `).join("");
+    }
+
+    function formatTime(sec){
+      const m = String(Math.floor(sec / 60)).padStart(2,"0");
+      const s = String(sec % 60).padStart(2,"0");
+      return `${m}:${s}`;
+    }
+
+    const timers = {};
+
+    function startExerciseTimer(index, total){
+      clearInterval(timers[index]);
+      let left = total;
+      const el = document.getElementById(`timer-display-${index}`);
+      if(!el) return;
+      el.textContent = formatTime(left);
+
+      timers[index] = setInterval(() => {
+        left--;
+        el.textContent = formatTime(Math.max(left,0));
+        if(left <= 0){
+          clearInterval(timers[index]);
+          el.textContent = "Fertig";
+        }
+      }, 1000);
+    }
+
+    function resetExerciseTimer(index, total){
+      clearInterval(timers[index]);
+      const el = document.getElementById(`timer-display-${index}`);
+      if(el) el.textContent = formatTime(total);
+    }
+
+    function showResult(id, text){
+      const box = document.getElementById(id);
+      if(!box) return;
+      box.classList.remove("hidden");
+      box.innerHTML = text;
+    }
+
+    function analyzeThought(){
+      const value = document.getElementById("thoughtInput").value.trim();
+      if(!value){
+        showResult("thoughtResult", "Bitte schreibe zuerst einen Gedanken auf.");
+        return;
+      }
+
+      const lower = value.toLowerCase();
+      let type = "Interpretation";
+      if (lower.includes("immer") || lower.includes("nie") || lower.includes("bestimmt")) type = "Befürchtung oder zugespitzte Bewertung";
+      if (lower.includes("ich sehe") || lower.includes("ich habe") || lower.includes("es ist")) type = "möglicher Fakt oder beobachtbare Aussage";
+
+      showResult(
+        "thoughtResult",
+        `Dein Gedanke wirkt aktuell am ehesten wie: <span class="accent">${type}</span>.<br><br>
+         Zusatzfrage: Gibt es dafür einen klaren Beleg – oder spricht gerade eher Anspannung aus dir?`
+      );
+    }
+
+    function startNumberGame(){
+      const start = parseInt(document.getElementById("startNumber").value || "100", 10);
+      let current = start;
+      const seq = [];
+      for(let i=0;i<6;i++){
+        current -= 7;
+        seq.push(current);
+      }
+      showResult(
+        "numberGameResult",
+        `Versuche jetzt innerlich langsam mitzugehen:<br><br><span class="accent">${seq.join(" → ")}</span><br><br>
+         Beobachte dabei: Wird dein Geist ruhiger, klarer oder eher ungeduldig?`
+      );
+    }
+
+    function saveSafeThings(){
+      const values = [
+        document.getElementById("safe1").value.trim(),
+        document.getElementById("safe2").value.trim(),
+        document.getElementById("safe3").value.trim()
+      ].filter(Boolean);
+
+      if(values.length < 3){
+        showResult("safeResult", "Bitte nenne drei konkrete Dinge.");
+        return;
+      }
+
+      localStorage.setItem("panacea_safe_things", JSON.stringify(values));
+      showResult(
+        "safeResult",
+        `Gespeichert. Deine drei stabilisierenden Punkte für heute:<br><br><span class="accent">${values.join(" · ")}</span>`
+      );
+    }
+
+    let currentMemoryAnswer = "";
+
+    function newMemoryGame(){
+      const seq = Array.from({length:5}, () => Math.floor(Math.random() * 9) + 1);
+      currentMemoryAnswer = seq.join("");
+      const container = document.getElementById("memorySequence");
+      container.innerHTML = seq.map(n => `<div class="memory-chip">${n}</div>`).join("");
+
+      setTimeout(() => {
+        container.innerHTML = `<div class="small">Jetzt eingeben.</div>`;
+      }, 2500);
+
+      showResult("memoryResult", "Merke dir die Folge. Nach kurzer Zeit verschwindet sie.");
+    }
+
+    function checkMemoryGame(){
+      const answer = (document.getElementById("memoryAnswer").value || "").replace(/\s/g,"");
+      if(!currentMemoryAnswer){
+        showResult("memoryResult", "Bitte starte zuerst eine neue Folge.");
+        return;
+      }
+      if(answer === currentMemoryAnswer){
+        showResult("memoryResult", "Sehr gut. <span class='accent'>Treffer.</span> Dein Fokus war stabil.");
+      } else {
+        showResult("memoryResult", `Nicht ganz. Richtig war: <span class="accent">${currentMemoryAnswer}</span>`);
+      }
+    }
+
+    function needReflection(){
+      const val = document.getElementById("needSelect").value;
+      if(!val){
+        showResult("needResult", "Bitte wähle zuerst etwas aus.");
+        return;
+      }
+
+      const map = {
+        Ruhe: "Dann ist heute weniger Reiz vielleicht hilfreicher als noch mehr Input.",
+        Bewegung: "Schon 2 bis 5 Minuten sanfte Bewegung können inneren Stau lösen.",
+        Kontakt: "Vielleicht hilft dir heute eine kurze echte Verbindung mehr als weiteres Funktionieren.",
+        Essen: "Ein regulierter Körper braucht oft zuerst Versorgung statt Disziplin.",
+        Wasser: "Manchmal ist der einfachste Schritt tatsächlich der wirksamste.",
+        Pause: "Du musst nicht erst völlig erschöpft sein, um eine Pause zu verdienen.",
+        Struktur: "Eine kleine klare Reihenfolge kann dem Nervensystem Sicherheit geben."
+      };
+
+      showResult("needResult", `<span class="accent">${val}</span><br><br>${map[val]}`);
+    }
+
+    function stressInterpretation(){
+      const value = parseInt(document.getElementById("stressRange").value, 10);
+      let text = "";
+      if(value <= 3){
+        text = "Dein System wirkt eher ruhig oder niedrig aktiviert. Jetzt passen Fokus, leichte Bewegung oder klare Planung.";
+      } else if(value <= 6){
+        text = "Mittlere Aktivierung. Ideal für bewusste Regulation, Atemarbeit oder kurze Strukturierung.";
+      } else {
+        text = "Hohe Aktivierung. Jetzt eher beruhigen, reduzieren, entlasten – nicht zusätzlich pushen.";
+      }
+      showResult("stressResult", `<span class="accent">Skalenwert ${value}/10</span><br><br>${text}`);
+    }
+
+    function loadDecision(type){
+      const value = document.getElementById("loadInput").value.trim();
+      if(!value){
+        showResult("loadResult", "Bitte benenne zuerst dein Thema.");
+        return;
+      }
+
+      if(type === "handeln"){
+        showResult("loadResult", `Gut. Formuliere jetzt den <span class="accent">kleinsten nächsten Schritt</span> zu: "${value}".`);
+      } else {
+        showResult("loadResult", `Du darfst "${value}" für heute bewusst parken. Schreibe dir dazu einen späteren Zeitpunkt auf und gib deinem System vorerst Entlastung.`);
+      }
+    }
+
+    function saveFocusWord(){
+      const word = document.getElementById("focusWord").value.trim();
+      if(!word){
+        showResult("focusWordResult", "Bitte gib ein Wort ein.");
+        return;
+      }
+      localStorage.setItem("panacea_focus_word", word);
+      showResult("focusWordResult", `Dein Wort für heute lautet: <span class="accent">${word}</span>`);
+    }
+
+    function saveJournal(){
+      const text = document.getElementById("journalInput").value.trim();
+      if(!text){
+        showResult("journalResult", "Bitte schreibe einen Satz.");
+        return;
+      }
+      localStorage.setItem("panacea_journal_today", text);
+      showResult("journalResult", `Gespeichert.<br><br><span class="accent">„${text}“</span>`);
+    }
+
+    let oneMinuteTimer = null;
+    let oneMinuteLeft = 60;
+
+    function updateOneMinuteDisplay(){
+      const el = document.getElementById("oneMinuteDisplay");
+      if(el) el.textContent = formatTime(oneMinuteLeft);
+    }
+
+    function startOneMinute(){
+      clearInterval(oneMinuteTimer);
+      oneMinuteTimer = setInterval(() => {
+        oneMinuteLeft--;
+        updateOneMinuteDisplay();
+        if(oneMinuteLeft <= 0){
+          clearInterval(oneMinuteTimer);
+          const el = document.getElementById("oneMinuteDisplay");
+          if(el) el.textContent = "Fertig";
+        }
+      }, 1000);
+    }
+
+    function resetOneMinute(){
+      clearInterval(oneMinuteTimer);
+      oneMinuteLeft = 60;
+      updateOneMinuteDisplay();
+    }
+
+    function initChecklist(){
+      const stored = JSON.parse(localStorage.getItem("panacea_premium_checklist") || "[]");
+      document.querySelectorAll('#dailyChecklist input[type="checkbox"]').forEach(cb => {
+        cb.checked = stored.includes(cb.dataset.check);
+        cb.closest(".check-item").classList.toggle("done", cb.checked);
+
+        cb.addEventListener("change", () => {
+          const active = Array.from(document.querySelectorAll('#dailyChecklist input[type="checkbox"]:checked'))
+            .map(x => x.dataset.check);
+          localStorage.setItem("panacea_premium_checklist", JSON.stringify(active));
+          cb.closest(".check-item").classList.toggle("done", cb.checked);
+        });
+      });
+    }
+
+    if (premiumUnlocked) {
+      renderExercises();
+      renderGames();
+      initChecklist();
+      updateOneMinuteDisplay();
+    }
+  </script>
+</body>
+</html>
