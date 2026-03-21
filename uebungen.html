@@ -34,7 +34,6 @@
     }
 
     *{ box-sizing:border-box; }
-
     html{ scroll-behavior:smooth; }
 
     body{
@@ -124,6 +123,15 @@
       font-size:var(--fs-button);
       line-height:1;
       min-width:0;
+      transition: transform .14s ease, box-shadow .14s ease, opacity .14s ease;
+    }
+
+    .langBtn:hover,
+    .back:hover,
+    .btn:hover,
+    .memberBtn:hover,
+    .navChip:hover{
+      transform: translateY(-1px);
     }
 
     .langBtn.active{
@@ -278,6 +286,7 @@
       border:1px solid rgba(200,162,74,.16);
       box-shadow: 0 8px 18px rgba(0,0,0,.05);
       line-height:1.1;
+      transition: transform .14s ease, box-shadow .14s ease;
     }
 
     .grid{
@@ -422,8 +431,7 @@
       opacity:.72;
       text-decoration: line-through;
     }
-
-    .timerRow,
+        .timerRow,
     .actionRow{
       margin-top:12px;
       display:flex;
@@ -449,6 +457,13 @@
       font-size:var(--fs-button);
       line-height:1.1;
       text-align:center;
+      transition: transform .14s ease, box-shadow .14s ease, opacity .14s ease;
+    }
+
+    .btn:disabled{
+      cursor:not-allowed;
+      opacity:.64;
+      transform:none;
     }
 
     .btn{
@@ -637,10 +652,16 @@
 
         <div class="intro">
           <h2>Wichtiger Hinweis</h2>
-          <p>Diese Inhalte dienen der Selbstregulation im Alltag. Sie können helfen, Stress zu reduzieren, Aufmerksamkeit zu ordnen und den Körper sanft zu aktivieren. Sie ersetzen jedoch keine ärztliche, psychotherapeutische oder physiotherapeutische Behandlung.</p>
+          <p>
+            Diese Inhalte dienen der Selbstregulation im Alltag. Sie können dabei helfen,
+            Stress zu reduzieren, die Aufmerksamkeit zu ordnen und den Körper sanft zu aktivieren.
+            Sie ersetzen jedoch keine ärztliche, psychotherapeutische oder physiotherapeutische Behandlung.
+          </p>
 
           <div class="warning">
-            Bei akuten Schmerzen, Schwindel, Atemnot, Brustschmerzen, neurologischen Symptomen, Panik mit starkem Kontrollverlust oder bekannten Erkrankungen bitte die Übungen abbrechen und medizinisch abklären lassen.
+            Bei akuten Schmerzen, Schwindel, Atemnot, Brustschmerzen, neurologischen Symptomen,
+            Panik mit starkem Kontrollverlust oder bekannten Vorerkrankungen bitte die Übungen abbrechen
+            und medizinisch abklären lassen.
           </div>
 
           <div class="navChips">
@@ -654,7 +675,10 @@
         <div class="divider"></div>
 
         <div id="reset" class="sectionTitle">4 Reset-Blöcke</div>
-        <p class="sectionLead">Jeder Block ist bewusst kurz gehalten und kombiniert Checkliste, Timer und eine klare Ausrichtung: beruhigen, aktivieren, ordnen und abschließen.</p>
+        <p class="sectionLead">
+          Jeder Block ist bewusst kurz gehalten und verbindet Checkliste, Timer und eine klare Ausrichtung:
+          beruhigen, aktivieren, ordnen und abschließen.
+        </p>
 
         <div class="grid" style="margin-top:12px;">
 
@@ -668,7 +692,10 @@
             </div>
 
             <div class="blockBody">
-              <p class="miniText">Ziel: das Tempo senken, die Ausatmung verlängern und dem Körper ein ruhigeres Signal geben. Langsame Atmung kann die Selbstregulation unterstützen, ohne dass dabei Druck entstehen soll.</p>
+              <p class="miniText">
+                Ziel: das innere Tempo senken, die Ausatmung verlängern und dem Körper ein ruhigeres Signal geben.
+                Langsame Atmung kann die Selbstregulation unterstützen – ganz ohne Leistungsdruck.
+              </p>
 
               <img class="imgSlot" id="img1" alt="Übung Bild 1" src="icons/1b.png">
 
@@ -679,7 +706,10 @@
                 <li class="item"><input type="checkbox" id="b1i4"><label for="b1i4">Ein innerer Satz: „Ich darf heute einen Gang herunterschalten.“</label></li>
               </ul>
 
-              <div class="subtle">Hinweis: Wenn Atemfokus unangenehm ist, richte die Aufmerksamkeit stattdessen auf die Ausatmung, den Bodenkontakt oder die Umgebung.</div>
+              <div class="subtle">
+                Hinweis: Wenn Atemfokus unangenehm ist, richte die Aufmerksamkeit stattdessen
+                auf die Ausatmung, den Bodenkontakt oder die Umgebung.
+              </div>
 
               <div class="timerRow">
                 <button class="btn primary" data-action="start" data-min="5">Timer starten</button>
@@ -699,7 +729,10 @@
             </div>
 
             <div class="blockBody">
-              <p class="miniText">Ziel: Steifigkeit lösen, den Kreislauf sanft anregen und den Fokus wieder in den Körper bringen. Schon leichte Bewegung kann im Alltag spürbar entlasten.</p>
+              <p class="miniText">
+                Ziel: Steifigkeit lösen, den Kreislauf sanft anregen und den Fokus wieder in den Körper bringen.
+                Schon leichte Bewegung kann im Alltag spürbar entlasten.
+              </p>
 
               <img class="imgSlot" id="img2" alt="Übung Bild 2" src="icons/2b.png">
 
@@ -710,7 +743,9 @@
                 <li class="item"><input type="checkbox" id="b2i4"><label for="b2i4">Zum Abschluss einmal tief ausatmen und kurz nachspüren.</label></li>
               </ul>
 
-              <div class="subtle">Wichtig: Keine ruckartigen Bewegungen. Bei Schmerzen nur in einem angenehmen Bereich bleiben.</div>
+              <div class="subtle">
+                Wichtig: Keine ruckartigen Bewegungen. Bei Schmerzen bitte nur in einem angenehmen Bereich bleiben.
+              </div>
 
               <div class="timerRow">
                 <button class="btn primary" data-action="start" data-min="6">Timer starten</button>
@@ -730,7 +765,10 @@
             </div>
 
             <div class="blockBody">
-              <p class="miniText">Ziel: Grübeln unterbrechen, Aufmerksamkeit ordnen und handlungsfähig bleiben. Kleine, konkrete Schritte sind oft hilfreicher als großer innerer Druck.</p>
+              <p class="miniText">
+                Ziel: Grübeln unterbrechen, Aufmerksamkeit ordnen und handlungsfähig bleiben.
+                Kleine, konkrete Schritte sind oft hilfreicher als innerer Druck.
+              </p>
 
               <img class="imgSlot" id="img3" alt="Übung Bild 3" src="icons/3b.png">
 
@@ -741,7 +779,9 @@
                 <li class="item"><input type="checkbox" id="b3i4"><label for="b3i4">10 Sekunden in die Ferne schauen und die Schultern locker lassen.</label></li>
               </ul>
 
-              <div class="subtle">Diese Form der Orientierung kann helfen, die Aufmerksamkeit aus dem inneren Alarm wieder nach außen zu lenken.</div>
+              <div class="subtle">
+                Diese Form der Orientierung kann helfen, die Aufmerksamkeit aus dem inneren Alarm wieder nach außen zu lenken.
+              </div>
 
               <div class="timerRow">
                 <button class="btn primary" data-action="start" data-min="4">Timer starten</button>
@@ -750,8 +790,7 @@
               </div>
             </div>
           </div>
-
-          <div class="block" data-block="4">
+                    <div class="block" data-block="4">
             <div class="blockHead">
               <div class="blockTitle">Block 4 · Integration (Abschluss)</div>
               <div class="blockMeta">
@@ -761,7 +800,9 @@
             </div>
 
             <div class="blockBody">
-              <p class="miniText">Ziel: die Übung gut abrunden, Selbstwirksamkeit stärken und einen kleinen Anker für später mitnehmen.</p>
+              <p class="miniText">
+                Ziel: die Übung gut abrunden, Selbstwirksamkeit stärken und einen kleinen Anker für später mitnehmen.
+              </p>
 
               <img class="imgSlot" id="img4" alt="Übung Bild 4" src="icons/4b.png">
 
@@ -772,7 +813,9 @@
                 <li class="item"><input type="checkbox" id="b4i4"><label for="b4i4">Ein Mini-Plan: „Wenn der Stress steigt, mache ich zuerst …“</label></li>
               </ul>
 
-              <div class="subtle">Wiederholung ist wichtiger als Perfektion. Kleine Routinen wirken oft nachhaltiger als seltene große Vorsätze.</div>
+              <div class="subtle">
+                Wiederholung ist wichtiger als Perfektion. Kleine Routinen wirken oft nachhaltiger als seltene große Vorsätze.
+              </div>
 
               <div class="timerRow">
                 <button class="btn primary" data-action="start" data-min="3">Timer starten</button>
@@ -786,7 +829,10 @@
         <div class="divider"></div>
 
         <div id="spiele" class="sectionTitle">3 interaktive Fokus-Spiele (gratis)</div>
-        <p class="sectionLead">Nicht als „Therapie-Spiel“, sondern als kurze, aktivierende Tools zur Selbstregulation: Aufmerksamkeit bündeln, Reizfokus steuern und den Kopf etwas entlasten.</p>
+        <p class="sectionLead">
+          Nicht als „Therapie-Spiel“, sondern als kurze, aktivierende Tools zur Selbstregulation:
+          Aufmerksamkeit bündeln, Reizfokus steuern und den Kopf etwas entlasten.
+        </p>
 
         <div class="grid" style="margin-top:12px;">
 
@@ -799,7 +845,10 @@
               </div>
             </div>
             <div class="toolBody">
-              <p class="miniText">Tippe nur auf die Wörter, die zu <b>Ruhe</b>, <b>Körper</b> oder <b>Fokus</b> passen. Ziel: selektive Aufmerksamkeit trainieren.</p>
+              <p class="miniText">
+                Tippe nur auf die Wörter, die zu <b>Ruhe</b>, <b>Körper</b> oder <b>Fokus</b> passen.
+                Ziel: selektive Aufmerksamkeit trainieren.
+              </p>
 
               <div class="tinyGrid" id="wordGameGrid"></div>
 
@@ -821,7 +870,10 @@
               </div>
             </div>
             <div class="toolBody">
-              <p class="miniText">Ein klassisches Grounding-Format: 5 Dinge sehen, 4 Dinge spüren, 3 Dinge hören, 2 Dinge riechen und 1 Geschmack oder einen neutralen Satz benennen.</p>
+              <p class="miniText">
+                Ein klassisches Grounding-Format: 5 Dinge sehen, 4 Dinge spüren, 3 Dinge hören,
+                2 Dinge riechen und 1 Geschmack oder einen neutralen Satz benennen.
+              </p>
 
               <ul class="checklist" id="groundingList">
                 <li class="item"><input type="checkbox" id="g1"><label for="g1">5 Dinge sehen</label></li>
@@ -849,16 +901,22 @@
               </div>
             </div>
             <div class="toolBody">
-              <p class="miniText">Warte, bis das Feld gold leuchtet. Erst dann tippen. Ziel: Impulskontrolle und Fokus.</p>
+              <p class="miniText">
+                Warte, bis das Feld gold leuchtet. Erst dann tippen. Ziel: Impulskontrolle und Fokus.
+              </p>
 
-              <div class="resultBox" id="reactionBox" style="text-align:center; font-size:16px; user-select:none;">Tippe auf „Start“.</div>
+              <div class="resultBox" id="reactionBox" style="text-align:center; font-size:16px; user-select:none;">
+                Tippe auf „Start“.
+              </div>
 
               <div class="actionRow">
                 <button class="btn primary" id="btnReactionStart">Start</button>
                 <button class="btn" id="btnReactionReset">Reset</button>
               </div>
 
-              <div class="subtle">Nicht ideal, wenn dich Leistungsdruck gerade eher stresst. Dann lieber Wortfokus oder Grounding wählen.</div>
+              <div class="subtle">
+                Nicht ideal, wenn dich Leistungsdruck gerade zusätzlich stresst. Dann lieber Wortfokus oder Grounding wählen.
+              </div>
             </div>
           </div>
         </div>
@@ -866,7 +924,9 @@
         <div class="divider"></div>
 
         <div id="kurzuebungen" class="sectionTitle">3 kurze Übungen (gratis)</div>
-        <p class="sectionLead">Sehr kurz, niedrigschwellig und bewusst vorsichtig formuliert. Ideal als kleine tägliche Routine.</p>
+        <p class="sectionLead">
+          Sehr kurz, niedrigschwellig und bewusst vorsichtig formuliert. Ideal als kleine tägliche Routine.
+        </p>
 
         <div class="grid" style="margin-top:12px;">
 
@@ -878,11 +938,13 @@
               </div>
             </div>
             <div class="toolBody">
-              <p class="miniText">Atme 4 Sekunden ein und 6 Sekunden aus. Eine etwas längere Ausatmung kann auf viele Menschen beruhigend wirken.</p>
+              <p class="miniText">
+                Atme 4 Sekunden ein und 6 Sekunden aus. Eine etwas längere Ausatmung kann auf viele Menschen beruhigend wirken.
+              </p>
               <ul class="checklist">
                 <li class="item"><input type="checkbox" id="s1a"><label for="s1a">Bequem hinsetzen oder hinstellen</label></li>
                 <li class="item"><input type="checkbox" id="s1b"><label for="s1b">5–8 ruhige Atemzüge in deinem eigenen Tempo</label></li>
-                <li class="item"><input type="checkbox" id="s1c"><label for="s1c">Keinen Druck erzeugen</label></li>
+                <li class="item"><input type="checkbox" id="s1c"><label for="s1c">Keinen Druck entstehen lassen</label></li>
               </ul>
               <div class="timerRow">
                 <button class="btn primary" data-short-action="start" data-min="1.5">Timer starten</button>
@@ -900,7 +962,10 @@
               </div>
             </div>
             <div class="toolBody">
-              <p class="miniText">Hände, Schultern und Gesicht kurz anspannen und dann bewusst lösen. Das kann helfen, Anspannung feiner wahrzunehmen und wieder loszulassen.</p>
+              <p class="miniText">
+                Hände, Schultern und Gesicht kurz anspannen und dann bewusst lösen.
+                Das kann helfen, Anspannung feiner wahrzunehmen und wieder loszulassen.
+              </p>
               <ul class="checklist">
                 <li class="item"><input type="checkbox" id="s2a"><label for="s2a">Die Fäuste 3 Sekunden anspannen</label></li>
                 <li class="item"><input type="checkbox" id="s2b"><label for="s2b">Loslassen und die Ausatmung wahrnehmen</label></li>
@@ -922,7 +987,10 @@
               </div>
             </div>
             <div class="toolBody">
-              <p class="miniText">60–90 Sekunden gehen, die Arme locker schwingen und den Blick heben. Schon kleine Bewegungseinheiten können den Kreislauf aktivieren und innere Starre lösen.</p>
+              <p class="miniText">
+                60–90 Sekunden gehen, die Arme locker schwingen und den Blick heben.
+                Schon kleine Bewegungseinheiten können den Kreislauf aktivieren und innere Starre lösen.
+              </p>
               <ul class="checklist">
                 <li class="item"><input type="checkbox" id="s3a"><label for="s3a">30 Sekunden gehen oder auf der Stelle marschieren</label></li>
                 <li class="item"><input type="checkbox" id="s3b"><label for="s3b">Die Arme locker mitschwingen lassen</label></li>
@@ -945,7 +1013,7 @@
           <div id="premiumFree">
             <ul>
               <li><b>10 interaktive Fokus-Spiele</b> statt nur 3</li>
-              <li><b>10 kurze, wissenschaftlich achtsam formulierte Übungen</b> statt nur 3</li>
+              <li><b>10 kurze, achtsam und wissenschaftlich orientiert formulierte Übungen</b> statt nur 3</li>
               <li><b>Zusatzmodule zu Schlaf, akutem Stress, Regeneration und Konzentration</b></li>
               <li><b>Geführte Audios, Meditationen und Bonus-Videos</b></li>
               <li><b>Eine ruhigere Premium-Ansicht</b> mit erweitertem Alltagstraining</li>
@@ -964,7 +1032,7 @@
             </ul>
 
             <button class="memberBtn" id="premiumOpenDirectBtn" type="button">
-              Zu Premium-Übungen →
+              Zu den Premium-Übungen →
             </button>
           </div>
         </div>
@@ -972,15 +1040,17 @@
       </div>
     </div>
   </div>
-
-  <script>
+    <script>
     (function(){
-      const KEY = "lang";
+      const LANG_KEY = "lang";
 
-      function setLang(l){ localStorage.setItem(KEY, l); }
+      function setLang(lang){
+        localStorage.setItem(LANG_KEY, lang);
+      }
+
       function getLang(){
-        const v = (localStorage.getItem(KEY) || "").toLowerCase();
-        return (v === "it" || v === "de") ? v : "de";
+        const value = (localStorage.getItem(LANG_KEY) || "").toLowerCase();
+        return (value === "it" || value === "de") ? value : "de";
       }
 
       function getTwinUrl(targetLang){
@@ -988,94 +1058,103 @@
         const map = {
           "index.html": "indexIT.html",
           "indexIT.html": "index.html",
-
           "wissen.html": "wissenIT.html",
           "wissenIT.html": "wissen.html",
-
           "daily-reset.html": "daily-resetIT.html",
           "daily-resetIT.html": "daily-reset.html",
-
           "lifestyle.html": "lifestyleIT.html",
           "lifestyleIT.html": "lifestyle.html",
-
           "mitglieder.html": "mitgliederIT.html",
           "mitgliederIT.html": "mitglieder.html",
-
           "uebungen.html": "uebungenIT.html",
           "uebungenIT.html": "uebungen.html",
-
           "uebungen-premium.html": "uebungen-premiumIT.html",
           "uebungen-premiumIT.html": "uebungen-premium.html"
         };
 
-        if(targetLang === "it") return map[path] || path.replace(".html","IT.html");
-        if(targetLang === "de") return map[path] || path.replace("IT.html",".html");
+        if(targetLang === "it") return map[path] || path.replace(".html", "IT.html");
+        if(targetLang === "de") return map[path] || path.replace("IT.html", ".html");
         return path;
       }
 
       const btnDE = document.getElementById("btnDE");
       const btnIT = document.getElementById("btnIT");
-      if(!btnDE || !btnIT) return;
 
-      function paint(){
-        const l = getLang();
-        btnDE.classList.toggle("active", l === "de");
-        btnIT.classList.toggle("active", l === "it");
-        document.documentElement.lang = l;
+      function paintLangButtons(){
+        const currentLang = getLang();
+        btnDE?.classList.toggle("active", currentLang === "de");
+        btnIT?.classList.toggle("active", currentLang === "it");
+        document.documentElement.lang = currentLang;
       }
 
-      btnDE.addEventListener("click", () => { setLang("de"); location.href = getTwinUrl("de"); });
-      btnIT.addEventListener("click", () => { setLang("it"); location.href = getTwinUrl("it"); });
+      btnDE?.addEventListener("click", () => {
+        setLang("de");
+        location.href = getTwinUrl("de");
+      });
 
-      const current = location.pathname.split("/").pop() || "";
-      const stored = getLang();
-      const isITpage = current.includes("IT.html");
+      btnIT?.addEventListener("click", () => {
+        setLang("it");
+        location.href = getTwinUrl("it");
+      });
 
-      if(stored === "it" && !isITpage){
+      const currentFile = location.pathname.split("/").pop() || "";
+      const storedLang = getLang();
+      const isITPage = currentFile.includes("IT.html");
+
+      if(storedLang === "it" && !isITPage){
         const twin = getTwinUrl("it");
-        if(twin !== current) location.replace(twin);
-        return;
+        if(twin !== currentFile){
+          location.replace(twin);
+          return;
+        }
       }
 
-      if(stored === "de" && isITpage){
+      if(storedLang === "de" && isITPage){
         const twin = getTwinUrl("de");
-        if(twin !== current) location.replace(twin);
-        return;
+        if(twin !== currentFile){
+          location.replace(twin);
+          return;
+        }
       }
 
-      paint();
+      paintLangButtons();
     })();
   </script>
 
   <script>
     (function(){
-      const PREMIUM_FLAG = "panacea_premium";
-      const isPremium = localStorage.getItem(PREMIUM_FLAG) === "true";
+      const premiumActive =
+        localStorage.getItem("panacea_premium") === "true" ||
+        localStorage.getItem("premiumUnlocked") === "true" ||
+        localStorage.getItem("mitglied") === "true";
 
       const free = document.getElementById("premiumFree");
-      const on = document.getElementById("premiumOn");
+      const active = document.getElementById("premiumOn");
 
-      if(isPremium && free && on){
+      if(premiumActive && free && active){
         free.style.display = "none";
-        on.style.display = "block";
+        active.style.display = "block";
       }
     })();
   </script>
 
   <script>
     (function(){
-      const KEY = "panacea_uebungen_checks_v2";
+      const CHECK_KEY = "panacea_uebungen_checks_v2";
 
-      function load(){
-        try{ return JSON.parse(localStorage.getItem(KEY) || "{}"); }
-        catch(e){ return {}; }
+      function loadState(){
+        try{
+          return JSON.parse(localStorage.getItem(CHECK_KEY) || "{}");
+        }catch(e){
+          return {};
+        }
       }
 
-      function save(state){
-        localStorage.setItem(KEY, JSON.stringify(state));
+      function saveState(state){
+        localStorage.setItem(CHECK_KEY, JSON.stringify(state));
       }
 
-      const state = load();
+      const state = loadState();
 
       function updateBlockProgress(blockN){
         const inputs = Array.from(document.querySelectorAll(`.block[data-block="${blockN}"] input[type="checkbox"]`));
@@ -1086,228 +1165,163 @@
       }
 
       document.querySelectorAll(".block").forEach(block => {
-        const n = block.getAttribute("data-block");
+        const blockN = block.getAttribute("data-block");
         const inputs = block.querySelectorAll('input[type="checkbox"]');
 
-        inputs.forEach(inp => {
-          const checked = !!state[inp.id];
-          inp.checked = checked;
-          inp.closest(".item")?.classList.toggle("done", checked);
+        inputs.forEach(input => {
+          const checked = !!state[input.id];
+          input.checked = checked;
+          input.closest(".item")?.classList.toggle("done", checked);
 
-          inp.addEventListener("change", () => {
-            state[inp.id] = inp.checked;
-            save(state);
-            inp.closest(".item")?.classList.toggle("done", inp.checked);
-            updateBlockProgress(n);
+          input.addEventListener("change", () => {
+            state[input.id] = input.checked;
+            saveState(state);
+            input.closest(".item")?.classList.toggle("done", input.checked);
+            updateBlockProgress(blockN);
           });
         });
 
-        updateBlockProgress(n);
+        updateBlockProgress(blockN);
       });
     })();
   </script>
 
   <script>
     (function(){
-      const timers = {};
-
-      function pad(n){ return String(n).padStart(2,"0"); }
-      function fmt(sec){
-        const m = Math.floor(sec/60);
-        const s = sec % 60;
+      function pad(n){ return String(n).padStart(2, "0"); }
+      function formatTime(seconds){
+        const m = Math.floor(seconds / 60);
+        const s = seconds % 60;
         return `${pad(m)}:${pad(s)}`;
       }
 
-      function setPillTime(blockN, sec){
-        const pill = document.getElementById(`t${blockN}`);
-        if(pill) pill.textContent = fmt(sec);
-      }
+      function initImageVisibility(){
+        document.querySelectorAll(".imgSlot").forEach(img => {
+          const show = () => { img.style.display = "block"; };
+          const hide = () => { img.style.display = "none"; };
 
-      function ensure(blockN, minutes){
-        if(!timers[blockN]){
-          const total = Math.max(1, Math.round(minutes * 60));
-          timers[blockN] = { total, left: total, running:false, interval:null, paused:false };
-          setPillTime(blockN, timers[blockN].left);
-        }
-      }
+          img.addEventListener("load", show);
+          img.addEventListener("error", hide);
 
-      function stop(blockN){
-        const t = timers[blockN];
-        if(!t) return;
-        if(t.interval) clearInterval(t.interval);
-        t.interval = null;
-        t.running = false;
-        t.paused = false;
-      }
-
-      function bindBlock(block){
-        const blockN = block.getAttribute("data-block");
-        const btnStart = block.querySelector('[data-action="start"]');
-        const btnPause = block.querySelector('[data-action="pause"]');
-        const btnReset = block.querySelector('[data-action="reset"]');
-        if(!btnStart || !btnPause || !btnReset) return;
-
-        const minutes = Number(btnStart.getAttribute("data-min") || 3);
-        ensure(blockN, minutes);
-
-        const img = block.querySelector(".imgSlot");
-        if(img){
-          img.addEventListener("error", ()=>{ img.style.display="none"; });
-          img.addEventListener("load", ()=>{ img.style.display="block"; });
           if(img.complete && img.naturalWidth > 0){
-            img.style.display = "block";
+            show();
           }
+        });
+      }
+
+      function createTimerGroup(config){
+        const timers = {};
+
+        function setDisplay(id, sec){
+          const el = document.getElementById(`${config.prefix}${id}`);
+          if(el) el.textContent = formatTime(sec);
         }
 
-        btnStart.addEventListener("click", () => {
-          ensure(blockN, minutes);
-          const t = timers[blockN];
-          if(t.running) return;
-
-          t.left = t.total;
-          setPillTime(blockN, t.left);
-
-          t.running = true;
-          t.paused = false;
-
-          btnStart.disabled = true;
-          btnPause.disabled = false;
-          btnPause.textContent = "Pause";
-
-          t.interval = setInterval(() => {
-            if(!t.running || t.paused) return;
-
-            t.left -= 1;
-            if(t.left < 0) t.left = 0;
-            setPillTime(blockN, t.left);
-
-            if(t.left <= 0){
-              stop(blockN);
-              btnStart.disabled = false;
-              btnPause.disabled = true;
-              btnPause.textContent = "Pause";
-              btnStart.textContent = "Fertig ✅";
-              setTimeout(()=>{ btnStart.textContent = "Timer starten"; }, 1200);
-            }
-          }, 1000);
-        });
-
-        btnPause.addEventListener("click", () => {
-          const t = timers[blockN];
-          if(!t || !t.running) return;
-          t.paused = !t.paused;
-          btnPause.textContent = t.paused ? "Weiter" : "Pause";
-        });
-
-        btnReset.addEventListener("click", () => {
-          ensure(blockN, minutes);
-          const t = timers[blockN];
-          stop(blockN);
-          t.left = t.total;
-          setPillTime(blockN, t.left);
-          btnStart.disabled = false;
-          btnPause.disabled = true;
-          btnPause.textContent = "Pause";
-        });
-
-        btnPause.disabled = true;
-      }
-
-      document.querySelectorAll(".block").forEach(bindBlock);
-    })();
-  </script>
-
-  <script>
-    (function(){
-      const timers = {};
-
-      function pad(n){ return String(n).padStart(2,"0"); }
-      function fmt(sec){
-        const m = Math.floor(sec/60);
-        const s = sec % 60;
-        return `${pad(m)}:${pad(s)}`;
-      }
-
-      function setPillTime(n, sec){
-        const pill = document.getElementById(`st${n}`);
-        if(pill) pill.textContent = fmt(sec);
-      }
-
-      function ensure(n, minutes){
-        if(!timers[n]){
-          const total = Math.max(1, Math.round(minutes * 60));
-          timers[n] = { total, left: total, running:false, interval:null, paused:false };
-          setPillTime(n, total);
+        function ensure(id, minutes){
+          if(!timers[id]){
+            const total = Math.max(1, Math.round(minutes * 60));
+            timers[id] = {
+              total,
+              left: total,
+              running: false,
+              paused: false,
+              interval: null
+            };
+            setDisplay(id, total);
+          }
+          return timers[id];
         }
-      }
 
-      function stop(n){
-        const t = timers[n];
-        if(!t) return;
-        if(t.interval) clearInterval(t.interval);
-        t.interval = null;
-        t.running = false;
-        t.paused = false;
-      }
+        function stop(id){
+          const timer = timers[id];
+          if(!timer) return;
+          if(timer.interval) clearInterval(timer.interval);
+          timer.interval = null;
+          timer.running = false;
+          timer.paused = false;
+        }
 
-      document.querySelectorAll('[data-short]').forEach(card => {
-        const n = card.getAttribute('data-short');
-        const btnStart = card.querySelector('[data-short-action="start"]');
-        const btnPause = card.querySelector('[data-short-action="pause"]');
-        const btnReset = card.querySelector('[data-short-action="reset"]');
-        const minutes = Number(btnStart?.getAttribute('data-min') || 2);
+        document.querySelectorAll(config.cardSelector).forEach(card => {
+          const id = card.getAttribute(config.idAttr);
+          const btnStart = card.querySelector(config.startSelector);
+          const btnPause = card.querySelector(config.pauseSelector);
+          const btnReset = card.querySelector(config.resetSelector);
 
-        ensure(n, minutes);
-        btnPause.disabled = true;
+          if(!id || !btnStart || !btnPause || !btnReset) return;
 
-        btnStart.addEventListener('click', () => {
-          ensure(n, minutes);
-          const t = timers[n];
-          if(t.running) return;
-
-          t.left = t.total;
-          setPillTime(n, t.left);
-          t.running = true;
-          t.paused = false;
-          btnStart.disabled = true;
-          btnPause.disabled = false;
-          btnPause.textContent = "Pause";
-
-          t.interval = setInterval(() => {
-            if(!t.running || t.paused) return;
-
-            t.left -= 1;
-            if(t.left < 0) t.left = 0;
-            setPillTime(n, t.left);
-
-            if(t.left <= 0){
-              stop(n);
-              btnStart.disabled = false;
-              btnPause.disabled = true;
-              btnPause.textContent = "Pause";
-              btnStart.textContent = "Fertig ✅";
-              setTimeout(()=>{ btnStart.textContent = "Timer starten"; }, 1200);
-            }
-          }, 1000);
-        });
-
-        btnPause.addEventListener('click', () => {
-          const t = timers[n];
-          if(!t || !t.running) return;
-          t.paused = !t.paused;
-          btnPause.textContent = t.paused ? "Weiter" : "Pause";
-        });
-
-        btnReset.addEventListener('click', () => {
-          ensure(n, minutes);
-          const t = timers[n];
-          stop(n);
-          t.left = t.total;
-          setPillTime(n, t.left);
-          btnStart.disabled = false;
+          const minutes = Number(btnStart.getAttribute("data-min") || 1);
+          ensure(id, minutes);
           btnPause.disabled = true;
-          btnPause.textContent = "Pause";
+
+          btnStart.addEventListener("click", () => {
+            const timer = ensure(id, minutes);
+            if(timer.running) return;
+
+            timer.left = timer.total;
+            timer.running = true;
+            timer.paused = false;
+            setDisplay(id, timer.left);
+
+            btnStart.disabled = true;
+            btnPause.disabled = false;
+            btnPause.textContent = "Pause";
+
+            timer.interval = setInterval(() => {
+              if(!timer.running || timer.paused) return;
+
+              timer.left -= 1;
+              if(timer.left < 0) timer.left = 0;
+              setDisplay(id, timer.left);
+
+              if(timer.left <= 0){
+                stop(id);
+                btnStart.disabled = false;
+                btnPause.disabled = true;
+                btnPause.textContent = "Pause";
+                btnStart.textContent = "Fertig ✅";
+                setTimeout(() => { btnStart.textContent = "Timer starten"; }, 1200);
+              }
+            }, 1000);
+          });
+
+          btnPause.addEventListener("click", () => {
+            const timer = timers[id];
+            if(!timer || !timer.running) return;
+            timer.paused = !timer.paused;
+            btnPause.textContent = timer.paused ? "Weiter" : "Pause";
+          });
+
+          btnReset.addEventListener("click", () => {
+            const timer = ensure(id, minutes);
+            stop(id);
+            timer.left = timer.total;
+            setDisplay(id, timer.left);
+            btnStart.disabled = false;
+            btnPause.disabled = true;
+            btnPause.textContent = "Pause";
+            btnStart.textContent = "Timer starten";
+          });
         });
+      }
+
+      initImageVisibility();
+
+      createTimerGroup({
+        prefix: "t",
+        cardSelector: ".block",
+        idAttr: "data-block",
+        startSelector: '[data-action="start"]',
+        pauseSelector: '[data-action="pause"]',
+        resetSelector: '[data-action="reset"]'
+      });
+
+      createTimerGroup({
+        prefix: "st",
+        cardSelector: "[data-short]",
+        idAttr: "data-short",
+        startSelector: '[data-short-action="start"]',
+        pauseSelector: '[data-short-action="pause"]',
+        resetSelector: '[data-short-action="reset"]'
       });
     })();
   </script>
@@ -1320,67 +1334,66 @@
       const btnStart = document.getElementById("btnWordStart");
       const btnReset = document.getElementById("btnWordReset");
 
-      if(!grid || !result || !scoreEl || !btnStart || !btnReset) return;
+      if(grid && result && scoreEl && btnStart && btnReset){
+        const goodWords = ["Ruhe", "Atmung", "Boden", "Fokus", "Körper", "Pause", "Orientierung", "Ausatmung"];
+        const distractors = ["Chaos", "Alarm", "Hektik", "Druck", "Reiz", "Tempo", "Lärm", "Eile"];
+        let score = 0;
 
-      const goodWords = ["Ruhe", "Atmung", "Boden", "Fokus", "Körper", "Pause", "Orientierung", "Ausatmung"];
-      const distractors = ["Chaos", "Alarm", "Hektik", "Druck", "Reiz", "Tempo", "Lärm", "Eile"];
+        function shuffle(arr){
+          return [...arr].sort(() => Math.random() - 0.5);
+        }
 
-      let score = 0;
+        function renderRound(){
+          score = 0;
+          scoreEl.textContent = "0";
+          grid.innerHTML = "";
 
-      function shuffle(arr){
-        return [...arr].sort(() => Math.random() - 0.5);
-      }
+          const selectedGood = shuffle(goodWords).slice(0, 4);
+          const selectedBad = shuffle(distractors).slice(0, 4);
+          const words = shuffle([...selectedGood, ...selectedBad]);
 
-      function renderRound(){
-        score = 0;
-        scoreEl.textContent = score;
-        grid.innerHTML = "";
+          words.forEach(word => {
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "btn";
+            btn.style.flex = "unset";
+            btn.style.minWidth = "unset";
+            btn.textContent = word;
+            btn.dataset.good = selectedGood.includes(word) ? "1" : "0";
 
-        const selectedGood = shuffle(goodWords).slice(0, 4);
-        const selectedBad = shuffle(distractors).slice(0, 4);
-        const words = shuffle([...selectedGood, ...selectedBad]);
+            btn.addEventListener("click", () => {
+              if(btn.disabled) return;
+              btn.disabled = true;
 
-        words.forEach(word => {
-          const btn = document.createElement("button");
-          btn.type = "button";
-          btn.className = "btn";
-          btn.style.flex = "unset";
-          btn.style.minWidth = "unset";
-          btn.textContent = word;
-          btn.dataset.good = selectedGood.includes(word) ? "1" : "0";
+              if(btn.dataset.good === "1"){
+                score++;
+                scoreEl.textContent = String(score);
+                btn.textContent = `✓ ${word}`;
+                result.textContent = score >= 4
+                  ? "Sehr gut – du hast die passenden Fokus-Wörter erkannt."
+                  : "Gut – wähle in Ruhe weiter aus.";
+              } else {
+                btn.textContent = `– ${word}`;
+                result.textContent = "Nicht schlimm. Hier geht es um Aufmerksamkeit, nicht um Perfektion.";
+              }
+            });
 
-          btn.addEventListener("click", () => {
-            if(btn.disabled) return;
-            btn.disabled = true;
-
-            if(btn.dataset.good === "1"){
-              score++;
-              scoreEl.textContent = score;
-              btn.textContent = "✓ " + word;
-              result.textContent = score >= 4
-                ? "Sehr gut – du hast die passenden Fokus-Wörter erkannt."
-                : "Gut – wähle in Ruhe weiter aus.";
-            } else {
-              btn.textContent = "– " + word;
-              result.textContent = "Nicht schlimm. Hier geht es um Fokus, nicht um Perfektion.";
-            }
+            grid.appendChild(btn);
           });
 
-          grid.appendChild(btn);
-        });
+          result.textContent = "Neue Runde gestartet. Wähle die passenden Wörter.";
+        }
 
-        result.textContent = "Neue Runde gestartet. Wähle die passenden Wörter.";
+        function resetGame(){
+          score = 0;
+          scoreEl.textContent = "0";
+          grid.innerHTML = "";
+          result.textContent = "Bereit für die erste Runde.";
+        }
+
+        btnStart.addEventListener("click", renderRound);
+        btnReset.addEventListener("click", resetGame);
       }
-
-      function resetGame(){
-        score = 0;
-        scoreEl.textContent = "0";
-        grid.innerHTML = "";
-        result.textContent = "Bereit für die erste Runde.";
-      }
-
-      btnStart.addEventListener("click", renderRound);
-      btnReset.addEventListener("click", resetGame);
     })();
   </script>
 
@@ -1392,39 +1405,39 @@
       const btnStart = document.getElementById("btnGroundStart");
       const btnReset = document.getElementById("btnGroundReset");
 
-      if(!checks.length || !scoreEl || !result || !btnStart || !btnReset) return;
+      if(checks.length && scoreEl && result && btnStart && btnReset){
+        function update(){
+          const done = checks.filter(c => c.checked).length;
+          scoreEl.textContent = `${done}/5`;
 
-      function update(){
-        const done = checks.filter(c => c.checked).length;
-        scoreEl.textContent = `${done}/5`;
+          checks.forEach(c => {
+            c.closest(".item")?.classList.toggle("done", c.checked);
+          });
 
-        checks.forEach(c => {
-          c.closest(".item")?.classList.toggle("done", c.checked);
-        });
-
-        if(done === 0){
-          result.textContent = "Nimm dir Zeit. Hier gibt es kein „richtig“ oder „falsch“.";
-        } else if(done < 5){
-          result.textContent = "Gut. Bleibe bei neutralen Sinneseindrücken und gehe Schritt für Schritt weiter.";
-        } else {
-          result.textContent = "Fertig. Du hast deine Aufmerksamkeit ruhig und klar geordnet.";
+          if(done === 0){
+            result.textContent = "Nimm dir Zeit. Hier gibt es kein „richtig“ oder „falsch“.";
+          } else if(done < 5){
+            result.textContent = "Gut. Bleibe bei neutralen Sinneseindrücken und gehe Schritt für Schritt weiter.";
+          } else {
+            result.textContent = "Fertig. Du hast deine Aufmerksamkeit ruhig und klar geordnet.";
+          }
         }
-      }
 
-      btnStart.addEventListener("click", () => {
-        result.textContent = "Beginne mit 5 Dingen, die du sehen kannst.";
-      });
-
-      btnReset.addEventListener("click", () => {
-        checks.forEach(c => {
-          c.checked = false;
-          c.closest(".item")?.classList.remove("done");
+        btnStart.addEventListener("click", () => {
+          result.textContent = "Beginne mit 5 Dingen, die du sehen kannst.";
         });
-        update();
-      });
 
-      checks.forEach(c => c.addEventListener("change", update));
-      update();
+        btnReset.addEventListener("click", () => {
+          checks.forEach(c => {
+            c.checked = false;
+            c.closest(".item")?.classList.remove("done");
+          });
+          update();
+        });
+
+        checks.forEach(c => c.addEventListener("change", update));
+        update();
+      }
     })();
   </script>
 
@@ -1435,73 +1448,73 @@
       const btnStart = document.getElementById("btnReactionStart");
       const btnReset = document.getElementById("btnReactionReset");
 
-      if(!box || !score || !btnStart || !btnReset) return;
+      if(box && score && btnStart && btnReset){
+        let waiting = false;
+        let ready = false;
+        let startedAt = 0;
+        let timeoutId = null;
 
-      let waiting = false;
-      let ready = false;
-      let startedAt = 0;
-      let timeoutId = null;
-
-      function resetVisual(){
-        box.style.background = "rgba(255,255,255,.80)";
-        box.style.border = "1px solid rgba(200,162,74,.16)";
-        box.style.color = "rgba(43,43,43,.84)";
-      }
-
-      function resetGame(){
-        waiting = false;
-        ready = false;
-        startedAt = 0;
-
-        if(timeoutId){
-          clearTimeout(timeoutId);
-          timeoutId = null;
+        function resetVisual(){
+          box.style.background = "rgba(255,255,255,.80)";
+          box.style.border = "1px solid rgba(200,162,74,.16)";
+          box.style.color = "rgba(43,43,43,.84)";
         }
 
-        score.textContent = "–";
-        box.textContent = "Tippe auf „Start“.";
-        resetVisual();
-      }
-
-      btnStart.addEventListener("click", () => {
-        resetGame();
-        waiting = true;
-        box.textContent = "Warte … bitte noch nicht tippen.";
-
-        const delay = 1500 + Math.floor(Math.random() * 2500);
-
-        timeoutId = setTimeout(() => {
+        function resetGame(){
           waiting = false;
-          ready = true;
-          startedAt = performance.now();
-          box.textContent = "JETZT TIPpen";
-          box.style.background = "radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a)";
-          box.style.border = "1px solid rgba(200,162,74,.35)";
-          box.style.color = "#3a2c10";
-        }, delay);
-      });
-
-      box.addEventListener("click", () => {
-        if(waiting){
-          if(timeoutId) clearTimeout(timeoutId);
-          waiting = false;
-          box.textContent = "Zu früh. Starte einfach noch einmal in Ruhe.";
-          score.textContent = "–";
-          resetVisual();
-          return;
-        }
-
-        if(ready){
-          const rt = Math.round(performance.now() - startedAt);
           ready = false;
-          score.textContent = `${rt} ms`;
-          box.textContent = `Reaktionszeit: ${rt} ms`;
+          startedAt = 0;
+
+          if(timeoutId){
+            clearTimeout(timeoutId);
+            timeoutId = null;
+          }
+
+          score.textContent = "–";
+          box.textContent = "Tippe auf „Start“.";
           resetVisual();
         }
-      });
 
-      btnReset.addEventListener("click", resetGame);
-      resetGame();
+        btnStart.addEventListener("click", () => {
+          resetGame();
+          waiting = true;
+          box.textContent = "Warte … bitte noch nicht tippen.";
+
+          const delay = 1500 + Math.floor(Math.random() * 2500);
+
+          timeoutId = setTimeout(() => {
+            waiting = false;
+            ready = true;
+            startedAt = performance.now();
+            box.textContent = "JETZT TIPPEN";
+            box.style.background = "radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a)";
+            box.style.border = "1px solid rgba(200,162,74,.35)";
+            box.style.color = "#3a2c10";
+          }, delay);
+        });
+
+        box.addEventListener("click", () => {
+          if(waiting){
+            if(timeoutId) clearTimeout(timeoutId);
+            waiting = false;
+            box.textContent = "Zu früh. Starte einfach noch einmal ganz in Ruhe.";
+            score.textContent = "–";
+            resetVisual();
+            return;
+          }
+
+          if(ready){
+            const rt = Math.round(performance.now() - startedAt);
+            ready = false;
+            score.textContent = `${rt} ms`;
+            box.textContent = `Reaktionszeit: ${rt} ms`;
+            resetVisual();
+          }
+        });
+
+        btnReset.addEventListener("click", resetGame);
+        resetGame();
+      }
     })();
   </script>
 
