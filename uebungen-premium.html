@@ -50,6 +50,7 @@
       justify-content:space-between;
       gap:10px;
       margin-bottom:14px;
+      flex-wrap:wrap;
     }
 
     .nav-btn{
@@ -204,6 +205,7 @@
       justify-content:space-between;
       gap:12px;
       margin-bottom:12px;
+      flex-wrap:wrap;
     }
 
     .section-title h2{
@@ -432,8 +434,8 @@
   <div class="wrap">
 
     <div class="topbar">
-      <a class="nav-btn" href="./uebungen.html">← Zurück</a>
-      <a class="nav-btn" href="./index.html">Panacea</a>
+      <a class="nav-btn" href="./uebungen.html">← Übungen</a>
+      <a class="nav-btn" href="./index.html">← Home</a>
     </div>
 
     <section class="hero">
@@ -456,14 +458,14 @@
     <section id="lockedCard" class="status-card show">
       <div class="locked">
         <div class="badge">Zugang geschützt</div>
-        <h2>Premium-Inhalte freischalten</h2>
+        <h2>Premium Übungen noch nicht freigeschaltet</h2>
         <p>
-          Diese Seite ist für Mitglieder gedacht. Nach der Freischaltung erhältst du Zugriff auf vertiefte Übungen,
-          interaktive Mini-Tools, Checklisten und fokussierte Praxisformate.
+          Diese Seite enthält die erweiterten Übungen, Fokus-Tools und Premium-Formate von Panacea.
+          Sobald dein Zugang aktiviert ist, wird dieser Bereich automatisch sichtbar.
         </p>
         <div class="btn-row" style="justify-content:center">
-          <a class="btn btn-gold" href="./mitglieder.html" style="text-decoration:none;display:inline-block;">Mitgliederbereich öffnen</a>
-          <a class="btn btn-soft" href="./uebungen.html" style="text-decoration:none;display:inline-block;">Zur kostenlosen Seite</a>
+          <a class="btn btn-gold" href="./mitglieder.html" style="text-decoration:none;display:inline-block;">Zugang freischalten</a>
+          <a class="btn btn-soft" href="./uebungen.html" style="text-decoration:none;display:inline-block;">Zur kostenlosen Übungen-Seite</a>
         </div>
       </div>
     </section>
@@ -1070,6 +1072,9 @@
 
     function startOneMinute(){
       clearInterval(oneMinuteTimer);
+      oneMinuteLeft = 60;
+      updateOneMinuteDisplay();
+
       oneMinuteTimer = setInterval(() => {
         oneMinuteLeft--;
         updateOneMinuteDisplay();
