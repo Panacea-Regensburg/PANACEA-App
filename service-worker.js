@@ -1,4 +1,4 @@
-const CACHE_VERSION = "v39";
+const CACHE_VERSION = "v40";
 const CACHE_NAME = `panacea-cache-${CACHE_VERSION}`;
 
 const APP_SHELL = [
@@ -17,6 +17,8 @@ const APP_SHELL = [
   "./uebungenIT.html",
   "./uebungen-premium.html",
   "./uebungen-premiumIT.html",
+  "./kurse.html",
+  "./kurseIT.html",
 
   "./manifest.webmanifest",
   "./manifest-it.webmanifest"
@@ -60,7 +62,12 @@ const ICON_FILES = [
   "./icons/18.png",
   "./icons/19.png",
   "./icons/20.png",
-  "./icons/21.png"
+  "./icons/21.png",
+
+  "./icons/1c.png",
+  "./icons/2c.png",
+  "./icons/3c.png",
+  "./icons/4c.png"
 ];
 
 const ASSETS = [
@@ -85,7 +92,6 @@ function isImageRequest(pathname) {
     pathname.endsWith(".ico")
   );
 }
-
 function isStaticAsset(pathname) {
   return (
     pathname.endsWith(".png") ||
@@ -190,7 +196,6 @@ async function genericCacheFirst(request) {
     return Response.error();
   }
 }
-
 self.addEventListener("install", (event) => {
   event.waitUntil(
     (async () => {
