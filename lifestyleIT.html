@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Panacea – Lifestyle Reset</title>
+  <title>Panacea – Lifestyle</title>
   <link rel="icon" href="./icons/icon-192.png" />
 
   <style>
@@ -18,11 +18,15 @@
       --muted:#6b6b6b;
       --shadow: 0 14px 40px rgba(0,0,0,.10);
       --shadow2: 0 10px 26px rgba(0,0,0,.10);
-      --radius: 20px;
-      --radius2: 16px;
+      --radius: 22px;
+      --radius2: 18px;
+
+      --pad: clamp(14px, 3.6vw, 22px);
+      --gap: clamp(10px, 2.8vw, 14px);
     }
 
     *{ box-sizing:border-box; }
+    html,body{ height:100%; }
 
     body{
       margin:0;
@@ -32,47 +36,43 @@
       min-height:100vh;
       display:flex;
       justify-content:center;
-      padding:20px 10px;
+      padding: clamp(16px, 3.5vw, 28px) 14px;
     }
 
     .phone{
       width:100%;
-      max-width:430px;
+      max-width:min(520px,100%);
     }
 
     .topbar{
       display:grid;
       grid-template-columns: 1fr auto 1fr;
-      align-items:start;
-      gap:10px;
-      margin-bottom:12px;
+      align-items:center;
+      gap: var(--gap);
+      margin-bottom:14px;
     }
 
-    .leftSlot{ justify-self:start; }
-    .centerSlot{ justify-self:center; }
-    .rightSlot{ justify-self:end; text-align:right; }
-
     .back{
+      justify-self:start;
       text-decoration:none;
       display:inline-flex;
       align-items:center;
-      gap:6px;
-      padding:8px 12px;
+      gap:8px;
+      padding:10px 14px;
       border-radius:999px;
       background: linear-gradient(180deg, var(--card2), var(--card));
       box-shadow: var(--shadow2);
       color:var(--text);
       border:1px solid rgba(200,162,74,.20);
+      white-space:nowrap;
       transition: transform .15s ease;
-      font-size:13px;
-      font-weight:700;
     }
-
     .back:hover{ transform: translateY(-1px); }
 
     .langToggle{
+      justify-self:center;
       display:flex;
-      gap:8px;
+      gap:10px;
       align-items:center;
       justify-content:center;
     }
@@ -81,21 +81,20 @@
       appearance:none;
       border:none;
       cursor:pointer;
-      padding:8px 12px;
+      padding:10px 14px;
       border-radius:999px;
-      font-weight:900;
-      letter-spacing:.2px;
+      font-weight:950;
+      letter-spacing:.12em;
       background: rgba(255,255,255,.70);
       border:1px solid rgba(200,162,74,.18);
       box-shadow: 0 10px 22px rgba(0,0,0,.06);
       color: var(--text);
-      line-height:1;
-      font-size:12px;
-      transition: transform .15s ease, box-shadow .15s ease;
+      white-space:nowrap;
+      transition: transform .15s ease;
+      min-width:56px;
+      text-align:center;
     }
-
     .langBtn:hover{ transform: translateY(-1px); }
-
     .langBtn.active{
       background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
       border:1px solid rgba(200,162,74,.35);
@@ -103,9 +102,22 @@
       text-shadow: 0 0 10px rgba(200,162,74,.22);
     }
 
-    .brand{ line-height:1.1; }
-    .brand .t1{ font-size:12px; color:var(--muted); }
-    .brand .t2{ font-size:16px; font-weight:800; letter-spacing:.2px; }
+    .brand{
+      justify-self:end;
+      text-align:right;
+      line-height:1.1;
+      white-space:nowrap;
+      margin-left:0;
+    }
+    .brand .t1{
+      font-size:13px;
+      color:var(--muted);
+    }
+    .brand .t2{
+      font-size:18px;
+      font-weight:800;
+      letter-spacing:.2px;
+    }
     .brand .glow{
       color:var(--gold);
       text-shadow: 0 0 10px rgba(200,162,74,.30);
@@ -121,951 +133,1751 @@
     }
 
     .hero{
-      padding:15px 15px 12px 15px;
+      padding: var(--pad);
       display:flex;
-      gap:12px;
+      gap:14px;
       align-items:center;
     }
 
-    .daybadge{
-      width:54px;
-      height:54px;
-      border-radius:16px;
+    .badge{
+      width:64px;
+      height:64px;
+      border-radius:18px;
       display:flex;
       align-items:center;
       justify-content:center;
-      text-align:center;
       font-weight:900;
-      font-size:14px;
+      font-size:16px;
       color:#3a2c10;
       background: radial-gradient(circle at 30% 20%, #fff6d6, #e8d28a);
       border:1px solid rgba(200,162,74,.35);
       box-shadow: 0 0 16px rgba(200,162,74,.25);
       flex:0 0 auto;
+      text-align:center;
+      line-height:1.05;
+      padding:6px;
     }
 
     .hero h1{
       margin:0;
-      font-size:16px;
+      font-size:18px;
       letter-spacing:.2px;
-      line-height:1.25;
     }
-
     .hero p{
-      margin:5px 0 0 0;
+      margin:6px 0 0 0;
       color:var(--muted);
-      font-size:12px;
-      line-height:1.4;
-    }
-
-    .imagewrap{
-      position:relative;
-      padding:0 15px 14px 15px;
-    }
-
-    .dayimg{
-      width:100%;
-      height:auto;
-      max-height:220px;
-      object-fit:cover;
-      border-radius:16px;
-      display:block;
+      font-size:13px;
+      line-height:1.45;
     }
 
     .content{
-      padding:14px 15px 16px 15px;
+      padding: 0 var(--pad) var(--pad) var(--pad);
     }
 
-    .title{
-      margin:0 0 8px 0;
-      font-size:16px;
+    .progressBox{
+      margin: 0 var(--pad) 14px var(--pad);
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(200,162,74,.18);
+      background: rgba(255,255,255,.72);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+    }
+
+    .progressTop{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:12px;
+    }
+
+    .progressText{
+      font-size:13px;
       font-weight:900;
-      line-height:1.3;
+      color:rgba(43,43,43,.82);
     }
 
-    .impulse{
-      margin:0;
-      font-size:14px;
-      line-height:1.55;
-      white-space:pre-line;
+    .progressCount{
+      font-size:13px;
+      font-weight:950;
+      color:#3a2c10;
+    }
+
+    .progressDots{
+      display:grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap:8px;
+    }
+
+    .progressDot{
+      height:28px;
+      border-radius:999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:11px;
+      font-weight:950;
+      border:1px solid rgba(200,162,74,.18);
+      background: rgba(255,255,255,.78);
+      color: rgba(43,43,43,.65);
+      box-shadow: 0 8px 18px rgba(0,0,0,.05);
+      user-select:none;
+    }
+
+    .progressDot.done{
+      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      border:1px solid rgba(200,162,74,.35);
+      color:#3a2c10;
+      box-shadow:
+        0 0 14px rgba(200,162,74,.16),
+        0 8px 18px rgba(0,0,0,.05);
+    }
+
+    .progressDot.current{
+      outline:2px solid rgba(200,162,74,.28);
+      outline-offset:1px;
+    }
+
+    .progressDot.locked{
+      background: rgba(255,255,255,.62);
+      border:1px solid rgba(0,0,0,.08);
+      color: rgba(43,43,43,.42);
+    }
+
+    .dayDone{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      margin-left:8px;
+      min-width:26px;
+      height:26px;
+      padding:0 8px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:950;
+      background: rgba(255,255,255,.78);
+      border:1px solid rgba(200,162,74,.18);
+      color:rgba(43,43,43,.70);
+      box-shadow: 0 8px 18px rgba(0,0,0,.05);
+    }
+
+    .dayDone.done{
+      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      border:1px solid rgba(200,162,74,.35);
+      color:#3a2c10;
+    }
+
+    .dayDone.locked{
+      background: rgba(255,255,255,.78);
+      border:1px solid rgba(0,0,0,.08);
+      color:rgba(43,43,43,.55);
+    }
+
+    .softBox.lockedBox{
+      opacity:0.62;
+      filter:grayscale(0.16);
     }
 
     .divider{
       height:1px;
       background: linear-gradient(90deg, transparent, rgba(200,162,74,.35), transparent);
-      margin:14px 0;
+      margin:16px 0;
     }
 
-    .row{
+    .softBox{
+      margin-top:0;
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(200,162,74,.16);
+      background: rgba(255,255,255,.72);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+    }
+
+    .imgWrap{
+      margin-top:12px;
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid rgba(200,162,74,.18);
+      box-shadow: var(--shadow2);
+      background:#fff;
+    }
+    .imgWrap img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+
+    .dayTitle{
+      margin:0 0 8px 0;
+      font-size:20px;
+      font-weight:950;
+      color:rgba(43,43,43,.92);
+      letter-spacing:.1px;
+    }
+
+    .label{
+      margin:0 0 6px 0;
+      font-size:12px;
+      font-weight:950;
+      letter-spacing:.08em;
+      color:rgba(43,43,43,.62);
+      text-transform:uppercase;
+    }
+
+    .text{
+      margin:0;
+      font-size:14px;
+      line-height:1.56;
+      color:rgba(43,43,43,.78);
+      font-weight:760;
+      white-space:pre-line;
+    }
+
+    .impuls{
+      margin:0;
+      font-size:15px;
+      line-height:1.55;
+      color:rgba(43,43,43,.86);
+      font-weight:920;
+      white-space:pre-line;
+    }
+
+    .text strong,
+    .impuls strong{
+      font-weight:1000;
+      color:#3a2c10;
+    }
+
+    .navRow{
       display:flex;
-      gap:8px;
+      gap:10px;
       flex-wrap:wrap;
+      margin-top:14px;
     }
 
-    .btn{
+    button{
       appearance:none;
       border:none;
       cursor:pointer;
-      padding:10px 12px;
-      border-radius:13px;
-      font-weight:800;
-      font-size:13px;
+      padding:12px 14px;
+      border-radius:14px;
+      font-weight:950;
       letter-spacing:.2px;
       box-shadow: var(--shadow2);
       border:1px solid rgba(200,162,74,.20);
       background: linear-gradient(180deg, #ffffff, #f7f2e6);
       color:var(--text);
       flex:1;
-      min-width:110px;
-      transition: transform .15s ease, box-shadow .15s ease;
+      min-width:130px;
+      transition: transform .15s ease, opacity .15s ease;
     }
+    button:hover{ transform: translateY(-1px); }
 
-    .btn:hover{ transform: translateY(-1px); }
-
-    .btn.primary{
+    button.primary{
       background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
       border:1px solid rgba(200,162,74,.35);
       color:#3a2c10;
       text-shadow: 0 0 10px rgba(200,162,74,.25);
     }
 
-    .btn:disabled{
-      opacity:.55;
+    button:disabled{
+      opacity:.45;
       cursor:not-allowed;
-      transform:none;
+      transform:none !important;
+      box-shadow:none;
     }
 
-    .small{
-      margin-top:10px;
-      font-size:11px;
-      color:var(--muted);
+    .cycleDoneBox{
+      margin-top:14px;
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(200,162,74,.34);
+      background:
+        radial-gradient(800px 260px at 20% 0%, rgba(255,246,214,.92), rgba(255,255,255,.72)),
+        linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.75));
+      box-shadow:
+        0 0 22px rgba(200,162,74,.18),
+        0 16px 42px rgba(0,0,0,.08);
+      display:none;
+    }
+
+    .cycleDoneBox h4{
+      margin:0 0 6px 0;
+      font-size:15px;
+      font-weight:950;
+      color:#3a2c10;
+    }
+
+    .cycleDoneBox p{
+      margin:0;
+      color: rgba(43,43,43,.80);
+      font-weight:760;
+      font-size:13.8px;
+      line-height:1.5;
+    }
+
+    .premiumTeaser{
+      margin-top:14px;
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(200,162,74,.34);
+      background:
+        radial-gradient(800px 260px at 20% 0%, rgba(255,246,214,.92), rgba(255,255,255,.72)),
+        linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.75));
+      box-shadow:
+        0 0 22px rgba(200,162,74,.18),
+        0 16px 42px rgba(0,0,0,.08);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .premiumTeaser::before{
+      content:"";
+      position:absolute;
+      inset:-40px;
+      background: radial-gradient(circle at 30% 20%, rgba(200,162,74,.22), transparent 55%);
+      filter: blur(8px);
+      opacity:.9;
+      pointer-events:none;
+    }
+
+    .premiumHead{
       display:flex;
+      align-items:flex-start;
       justify-content:space-between;
+      gap:12px;
+      position:relative;
+      z-index:2;
+    }
+
+    .premiumTeaser h3{
+      margin:0 0 6px 0;
+      font-size:14.5px;
+      font-weight:950;
+      color:#3a2c10;
+      letter-spacing:.2px;
+    }
+
+    .premiumTeaser p{
+      margin:0;
+      color: rgba(43,43,43,.78);
+      font-weight:760;
+      font-size:13.6px;
+      line-height:1.45;
+    }
+
+    .premiumBadge{
+      flex:0 0 auto;
+      display:inline-flex;
+      align-items:center;
       gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      background: rgba(200,162,74,.18);
+      border:1px solid rgba(200,162,74,.35);
+      color:#3a2c10;
+      font-weight:950;
+      white-space:nowrap;
+      position:relative;
+      z-index:2;
+    }
+
+    .premiumList{
+      margin:12px 0 0;
+      padding-left:18px;
+      line-height:1.55;
+      color: rgba(43,43,43,.78);
+      font-weight:760;
+      font-size:13.6px;
+      position:relative;
+      z-index:2;
+    }
+
+    .premiumActions{
+      display:flex;
+      gap:10px;
       flex-wrap:wrap;
+      margin-top:12px;
+      position:relative;
+      z-index:2;
+    }
+
+    .linkBtn{
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 14px;
+      border-radius:14px;
+      font-weight:950;
+      letter-spacing:.2px;
+      border:1px solid rgba(200,162,74,.35);
+      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      color:#3a2c10;
+      box-shadow: 0 14px 30px rgba(200,162,74,.18);
+      flex:1;
+      min-width:180px;
+      transition: transform .15s ease;
+      white-space:nowrap;
+    }
+    .linkBtn:hover{ transform: translateY(-1px); }
+
+    .subLink{
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 14px;
+      border-radius:14px;
+      font-weight:950;
+      letter-spacing:.2px;
+      border:1px solid rgba(0,0,0,0.10);
+      background: rgba(255,255,255,0.78);
+      color: rgba(43,43,43,.88);
+      flex:1;
+      min-width:180px;
+      transition: transform .15s ease;
+      white-space:nowrap;
+    }
+    .subLink:hover{ transform: translateY(-1px); }
+
+    .smallNote{
+      margin-top:10px;
+      font-size:12.6px;
+      color: rgba(43,43,43,.62);
+      font-weight:760;
+      line-height:1.45;
+      position:relative;
+      z-index:2;
+    }
+
+    .premiumBlock{
+      margin-top:14px;
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(200,162,74,.38);
+      background:
+        radial-gradient(900px 340px at 20% 0%, rgba(255,246,214,.88), rgba(255,255,255,.70)),
+        linear-gradient(180deg, rgba(255,255,255,.60), rgba(255,255,255,.78));
+      box-shadow:
+        0 0 26px rgba(200,162,74,.18),
+        0 16px 44px rgba(0,0,0,.08);
+      position:relative;
+      overflow:hidden;
+      display:none;
+    }
+    .premiumBlock::before{
+      content:"";
+      position:absolute;
+      inset:-50px;
+      background:
+        radial-gradient(circle at 28% 12%, rgba(200,162,74,.24), transparent 55%),
+        radial-gradient(circle at 75% 40%, rgba(232,210,138,.22), transparent 55%);
+      filter: blur(9px);
+      opacity:.95;
+      pointer-events:none;
+    }
+
+    .premiumTop{
+      position:relative;
+      z-index:2;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    .premiumTitle{
+      margin:0 0 6px 0;
+      font-size:15px;
+      font-weight:950;
+      color:#3a2c10;
+      letter-spacing:.2px;
+    }
+
+    .premiumSub{
+      margin:0;
+      font-size:13.6px;
+      line-height:1.45;
+      color: rgba(43,43,43,.78);
+      font-weight:780;
     }
 
     .pill{
-      padding:7px 9px;
+      flex:0 0 auto;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
       border-radius:999px;
-      background: rgba(255,255,255,.65);
-      border:1px solid rgba(200,162,74,.16);
+      background: rgba(200,162,74,.18);
+      border:1px solid rgba(200,162,74,.35);
+      color:#3a2c10;
+      font-weight:950;
+      white-space:nowrap;
+      position:relative;
+      z-index:2;
+    }
+
+    .paper{
+      position:relative;
+      z-index:2;
+      margin-top:12px;
+      padding:14px 14px 12px;
+      border-radius:18px;
+      border:1px solid rgba(58,44,16,.16);
+      background: linear-gradient(180deg, rgba(255,250,238,.86), rgba(245,235,214,.82));
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.40),
+        0 12px 28px rgba(0,0,0,.08);
+    }
+    .paper::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(200,162,74,.10), transparent 60%),
+        radial-gradient(circle at 100% 40%, rgba(200,162,74,.08), transparent 55%);
+      opacity:.9;
+      pointer-events:none;
+      border-radius:18px;
+    }
+
+    .paper h4{
+      position:relative;
+      margin:0 0 8px 0;
+      font-size:14px;
+      font-weight:950;
+      color:#3a2c10;
+      letter-spacing:.2px;
+    }
+
+    .paperText{
+      position:relative;
+      margin:0;
+      font-size:13.8px;
+      line-height:1.56;
+      color: rgba(43,43,43,.86);
+      font-weight:760;
+      white-space:pre-line;
+    }
+
+    .paperMeta{
+      position:relative;
+      margin-top:10px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      color: rgba(43,43,43,.72);
+      font-size:12.6px;
+      font-weight:780;
+    }
+
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(200,162,74,.25);
+      background: rgba(255,255,255,.62);
       box-shadow: 0 10px 22px rgba(0,0,0,.06);
     }
 
-    .premiumBox{
-      margin-top:10px;
-      padding:12px 12px 10px;
-      border-radius:16px;
-      border:1px solid rgba(200,162,74,.16);
-      background: linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.74));
-      box-shadow: 0 8px 18px rgba(0,0,0,.06);
-      display:none;
-      outline:none;
-    }
-
-    .premiumBox.visible{ display:block; }
-
-    .premiumBox h3{
-      margin:0 0 6px 0;
-      font-size:13px;
-      font-weight:800;
-      letter-spacing:.1px;
-      color:#3a2c10;
-      line-height:1.3;
-    }
-
-    .premiumLead{
-      margin:0 0 8px 0;
-      font-size:12px;
-      line-height:1.5;
-      color:var(--text);
-      white-space:pre-line;
-    }
-
-    .premiumSection{
-      margin-top:9px;
-      padding-top:9px;
-      border-top:1px solid rgba(200,162,74,.18);
-    }
-
-    .premiumLabel{
-      display:inline-block;
-      margin-bottom:5px;
-      font-size:10px;
-      font-weight:900;
-      color:#3a2c10;
-      letter-spacing:.1px;
-      text-transform:uppercase;
-    }
-
-    .premiumText{
-      margin:0;
-      font-size:12px;
-      line-height:1.5;
-      color:var(--text);
-      white-space:pre-line;
-    }
-
-    .premiumQuestion{
-      margin:0;
-      font-size:12px;
-      line-height:1.45;
-      color:#3a2c10;
-      font-weight:700;
-      white-space:pre-line;
-    }
-
-    .exerciseCard{
-      margin-top:10px;
-      padding:10px 11px;
-      border-radius:13px;
-      background: rgba(255,255,255,.62);
-      border:1px solid rgba(200,162,74,.16);
-      display:none;
-    }
-
-    .exerciseTitle{
-      margin:0 0 4px 0;
-      font-size:11px;
-      font-weight:900;
-      color:#3a2c10;
-    }
-
-    .exerciseText{
-      margin:0;
-      font-size:12px;
-      line-height:1.5;
-      white-space:pre-line;
-    }
-
-    .premiumHint{
-      margin-top:10px;
-      font-size:10px;
-      color:var(--muted);
-    }
-
-    .error{
-      margin-top:10px;
-      padding:11px 13px;
-      border-radius:14px;
-      border:1px solid rgba(190,40,40,.25);
-      background: rgba(255,240,240,.8);
-      color:#7a1d1d;
-      display:none;
-      white-space:pre-line;
-      font-size:12px;
-      line-height:1.45;
-    }
-
-    .memberTeaser{
+    .premiumGrid{
+      position:relative;
+      z-index:2;
+      display:grid;
+      gap:12px;
       margin-top:12px;
-      padding:12px;
+    }
+
+    .premiumGrid .softBox{
+      background: rgba(255,255,255,.74);
+    }
+
+    .gameCard{
+      position:relative;
+      z-index:2;
+      margin-top:12px;
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(200,162,74,.22);
+      background: rgba(255,255,255,.70);
+      box-shadow: 0 12px 26px rgba(0,0,0,.06);
+      overflow:hidden;
+    }
+
+    .gameHead{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+    }
+
+    .gameCard h4{
+      margin:0 0 6px;
+      font-size:14px;
+      font-weight:950;
+      color:#3a2c10;
+    }
+
+    .gameCard p{
+      margin:0;
+      font-size:13.6px;
+      line-height:1.45;
+      color: rgba(43,43,43,.78);
+      font-weight:760;
+    }
+
+    .smartChoices{
+      margin-top:12px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:10px;
+    }
+
+    .choiceBtn{
+      appearance:none;
+      border:none;
+      cursor:pointer;
+      padding:12px 10px;
       border-radius:16px;
-      border:1px solid rgba(200,162,74,.16);
-      background: linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.74));
-      box-shadow: 0 8px 18px rgba(0,0,0,.06);
+      font-weight:950;
+      letter-spacing:.1px;
+      border:1px solid rgba(200,162,74,.22);
+      background: rgba(255,255,255,.78);
+      color:var(--text);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .choiceBtn:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 12px 24px rgba(0,0,0,.07);
+    }
+    .choiceBtn.active{
+      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      border:1px solid rgba(200,162,74,.35);
+      color:#3a2c10;
+      text-shadow: 0 0 10px rgba(200,162,74,.18);
+    }
+
+    .smartOutput{
+      margin-top:12px;
+      padding:13px 14px;
+      border-radius:18px;
+      border:1px solid rgba(200,162,74,.18);
+      background: rgba(255,255,255,.74);
+      box-shadow: 0 10px 22px rgba(0,0,0,.05);
+      font-size:13.8px;
+      line-height:1.52;
+      color:rgba(43,43,43,.82);
+      font-weight:760;
+      white-space:pre-line;
+    }
+
+    .autoHint{
+      margin-top:8px;
+      font-size:12.8px;
+      line-height:1.45;
+      color:rgba(43,43,43,.65);
+      font-weight:700;
+    }
+
+    .gameFooter{
+      margin-top:10px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      color: rgba(43,43,43,.74);
+      font-size:12.8px;
+      font-weight:820;
+    }
+
+    .gameBtns{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      width:100%;
+      margin-top:10px;
+    }
+
+    .miniBtn{
+      padding:10px 12px;
+      border-radius:14px;
+      font-weight:950;
+      letter-spacing:.2px;
+      border:1px solid rgba(200,162,74,.22);
+      background: rgba(255,255,255,.78);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+      flex:1;
+      min-width:140px;
+    }
+    .miniBtn.primary{
+      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
+      border:1px solid rgba(200,162,74,.35);
+      color:#3a2c10;
+      text-shadow: 0 0 10px rgba(200,162,74,.18);
+    }
+
+    .closing{
+      position:relative;
+      z-index:2;
+      margin-top:12px;
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(200,162,74,.22);
+      background: rgba(255,255,255,.74);
+      box-shadow: 0 12px 26px rgba(0,0,0,.06);
       display:none;
     }
 
-    .memberHeader{
-      display:flex;
-      align-items:center;
-      gap:8px;
-      margin-bottom:8px;
-    }
-
-    .memberBadge{
-      padding:4px 8px;
-      border-radius:999px;
-      font-weight:800;
-      font-size:10px;
+    .closing h4{
+      margin:0 0 6px;
+      font-size:14px;
+      font-weight:950;
       color:#3a2c10;
-      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
-      border:1px solid rgba(200,162,74,.28);
-      box-shadow: 0 0 10px rgba(200,162,74,.12);
     }
 
-    .memberTitle{
-      font-weight:800;
-      color:#3a2c10;
-      font-size:12px;
-      line-height:1.3;
+    .closing p{
+      margin:0;
+      font-size:13.8px;
+      line-height:1.52;
+      color: rgba(43,43,43,.82);
+      font-weight:780;
+      white-space:pre-line;
     }
 
-    .memberList{
-      margin:8px 0 10px;
-      padding-left:16px;
-      color:#2b2b2b;
-      font-size:12px;
-      line-height:1.45;
-    }
-
-    .memberBtn{
-      display:block;
-      text-align:center;
-      text-decoration:none;
-      padding:10px 12px;
-      border-radius:12px;
-      font-weight:800;
-      font-size:12px;
-      letter-spacing:.1px;
-      color:#3a2c10;
-      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
-      border:1px solid rgba(200,162,74,.30);
-      box-shadow: 0 0 12px rgba(200,162,74,.14);
-      transition: transform .15s ease;
-    }
-
-    .memberBtn:hover{ transform: translateY(-1px); }
-
-    .memberNote{
-      margin-top:8px;
-      font-size:10px;
-      color:#6b6b6b;
-      text-align:center;
-      line-height:1.4;
-    }
-
-    @media (max-width: 380px){
-      .topbar{
-        grid-template-columns: 1fr;
-        gap:10px;
-      }
-
-      .leftSlot, .centerSlot, .rightSlot{
-        justify-self:center;
-        text-align:center;
-      }
-
-      .row{
+    @media (max-width: 420px){
+      .topbar{ grid-template-columns: 1fr auto 1fr; }
+      .navRow button{ min-width:100%; }
+      .smartChoices{ grid-template-columns:1fr; }
+      .premiumHead,
+      .premiumTop,
+      .gameHead,
+      .progressTop{
         flex-direction:column;
+        align-items:flex-start;
       }
-
-      .btn{
-        width:100%;
+      .progressDots{
+        grid-template-columns: repeat(5, minmax(0, 1fr));
       }
     }
   </style>
 </head>
+
 <body>
   <div class="phone">
+
     <div class="topbar">
-      <div class="leftSlot">
-        <a class="back" href="indexIT.html">← Home</a>
+      <a class="back" href="./indexIT.html">← Home</a>
+
+      <div class="langToggle" aria-label="Selettore lingua">
+        <button class="langBtn" id="btnDE" type="button">DE</button>
+        <button class="langBtn active" id="btnIT" type="button">IT</button>
       </div>
 
-      <div class="centerSlot">
-        <div class="langToggle" aria-label="Language toggle">
-          <button class="langBtn" id="btnDE" type="button">Deutsch</button>
-          <button class="langBtn" id="btnIT" type="button">Italiano</button>
-        </div>
-      </div>
-
-      <div class="rightSlot">
-        <div class="brand">
-          <div class="t1">Panacea</div>
-          <div class="t2"><span class="glow">Lifestyle</span> Reset</div>
-        </div>
+      <div class="brand">
+        <div class="t1">Panacea</div>
+        <div class="t2"><span class="glow">Lifestyle</span> Reset</div>
       </div>
     </div>
 
     <div class="card">
       <div class="hero">
-        <div class="daybadge" id="dayBadge">Giorno 1</div>
+        <div class="badge">LS</div>
         <div>
-          <h1 id="dayHeadline">21 giorni Lifestyle (Salutogenesi)</h1>
-          <p>Piccoli passi per alimentazione, calma, movimento e stabilità sociale — concreti e quotidiani.</p>
+          <h1>Lifestyle Reset</h1>
+          <p>Il tuo percorso di 21 giorni verso più stabilità, energia e salutogenesi concreta nella vita di ogni giorno.</p>
         </div>
       </div>
 
-      <div class="imagewrap">
-        <img id="dayImage" class="dayimg" src="icons/1a.png" alt="Lifestyle – immagine del giorno">
+      <div class="progressBox">
+        <div class="progressTop">
+          <div class="progressText">Il tuo percorso</div>
+          <div class="progressCount"><span id="progressCount">0</span> / 21 giorni</div>
+        </div>
+        <div class="progressDots" id="progressDots"></div>
       </div>
 
       <div class="content">
-        <h2 class="title" id="dayTitle">Caricamento contenuto…</h2>
-        <p class="impulse" id="dayImpulse">Attendi un momento.</p>
 
-        <div class="premiumBox" id="premiumBox" aria-live="polite">
-          <h3 id="premiumTitle">Impulso Premium</h3>
-          <p class="premiumLead" id="premiumIntro"></p>
-
-          <div class="premiumSection" id="premiumDeepeningWrap">
-            <div class="premiumLabel">Approfondimento</div>
-            <p class="premiumText" id="premiumDeepening"></p>
+        <div class="softBox" id="dayCard">
+          <div class="label">Giorno <span id="tagNumber">1</span><span id="dayDone" class="dayDone">○</span></div>
+          <div class="imgWrap">
+            <img id="dayImage" src="./icons/1a.png" alt="Immagine del giorno 1" />
           </div>
-
-          <div class="premiumSection" id="premiumNervousWrap">
-            <div class="premiumLabel">Sistema nervoso</div>
-            <p class="premiumText" id="premiumNervousSystem"></p>
-          </div>
-
-          <div class="exerciseCard" id="exerciseCard">
-            <p class="exerciseTitle" id="premiumExerciseTitle"></p>
-            <p class="exerciseText" id="premiumExerciseText"></p>
-          </div>
-
-          <div class="premiumSection" id="premiumJournalWrap">
-            <div class="premiumLabel">Journaling</div>
-            <p class="premiumQuestion" id="premiumJournal"></p>
-          </div>
-
-          <div class="premiumSection" id="premiumEveningWrap">
-            <div class="premiumLabel">Riflessione serale</div>
-            <p class="premiumQuestion" id="premiumEvening"></p>
-          </div>
-
-          <div class="premiumSection" id="premiumInsightWrap">
-            <div class="premiumLabel">Insight</div>
-            <p class="premiumText" id="premiumInsight"></p>
-          </div>
-
-          <div class="premiumSection" id="premiumIntegrationWrap">
-            <div class="premiumLabel">Integrazione</div>
-            <p class="premiumQuestion" id="premiumIntegration"></p>
-          </div>
-
-          <div class="premiumHint" id="premiumHint"></div>
-        </div>
-
-        <div class="error" id="errorBox"></div>
-
-        <div class="memberTeaser" id="memberTeaser">
-          <div class="memberHeader">
-            <div class="memberBadge">Membri</div>
-            <div class="memberTitle">Più profondità. Più struttura. Più risultati nella vita quotidiana.</div>
-          </div>
-
-          <ul class="memberList">
-            <li><b>Approfondimento quotidiano</b> con varianti Premium</li>
-            <li><b>Sistema nervoso, esercizio, journaling</b> e riflessione serale</li>
-            <li><b>Reset aggiuntivi</b> nell’area membri</li>
-          </ul>
-
-          <a class="memberBtn" id="memberBtn" href="mitgliederIT.html">Sblocca area membri →</a>
-          <div class="memberNote">Dopo lo sblocco, la parte Premium apparirà direttamente qui.</div>
         </div>
 
         <div class="divider"></div>
 
-        <div class="row">
-          <button class="btn" id="prevBtn">← Indietro</button>
-          <button class="btn primary" id="doneBtn">✔ Oggi completato</button>
-          <button class="btn" id="nextBtn">Avanti →</button>
+        <div class="softBox">
+          <h2 class="dayTitle" id="title">—</h2>
+          <div class="label">Contesto</div>
+          <p class="text" id="explanation">—</p>
         </div>
 
-        <div class="small">
-          <div class="pill" id="progressPill">Progresso: 0/21</div>
-          <div class="pill" id="premiumPill">Premium: no</div>
+        <div class="divider"></div>
+
+        <div class="softBox">
+          <div class="label">Impulso centrale</div>
+          <p class="impuls" id="impuls">—</p>
         </div>
+
+        <div class="divider"></div>
+
+        <div class="softBox">
+          <div class="label">Autoriflessione</div>
+          <p class="text" id="reflection">—</p>
+        </div>
+
+        <div id="exerciseWrap" style="display:none;">
+          <div class="divider"></div>
+          <div class="softBox">
+            <div class="label" id="exerciseTitle">Mini esercizio</div>
+            <p class="text" id="exerciseText">—</p>
+          </div>
+        </div>
+
+        <div class="navRow">
+          <button id="prevBtn" type="button">← Indietro</button>
+          <button class="primary" id="nextBtn" type="button">Avanti →</button>
+        </div>
+
+        <div class="navRow" style="margin-top:10px;">
+          <button id="completeBtn" type="button">Segna il giorno come completato ✓</button>
+          <button id="restartCycleBtn" type="button" style="display:none;">Inizia un nuovo ciclo di 21 giorni ↺</button>
+        </div>
+
+        <div class="cycleDoneBox" id="cycleDoneBox">
+          <h4>21 giorni completati ✨</h4>
+          <p>
+            Hai concluso questo ciclo. Ora puoi iniziare un nuovo percorso di 21 giorni
+            e vivere nuovamente i contenuti con un ritmo nuovo e più profondo.
+          </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="premiumTeaser" id="premiumTeaser">
+          <div class="premiumHead">
+            <div>
+              <h3>Area Membri – Lifestyle Deluxe</h3>
+              <p>
+                Una versione più profonda del tuo impulso quotidiano: con più significato,
+                più integrazione e un accompagnamento premium caldo, elegante e concreto.
+              </p>
+            </div>
+            <div class="premiumBadge" id="premiumBadge">Stato: Free</div>
+          </div>
+
+          <ul class="premiumList">
+            <li><b>Approfondimento del tema</b> con una lettura più chiara e vicina alla vita reale</li>
+            <li><b>3 varianti premium</b> in una rotazione dinamica di 21 giorni</li>
+            <li><b>Esercizio intelligente</b> con focus su corpo, pensiero o azione</li>
+            <li><b>Integrazione finale</b> per portare davvero il contenuto nella tua quotidianità</li>
+          </ul>
+
+          <div class="premiumActions">
+            <a class="linkBtn" id="memberBtn" href="./mitgliederIT.html">Vai all’area membri</a>
+            <a class="subLink" id="unlockBtnLink" href="./mitgliederIT.html">Sblocca accesso membri</a>
+          </div>
+
+          <div class="smallNote">
+            Nota: dopo lo sblocco, la tua area premium apparirà automaticamente direttamente qui.
+          </div>
+        </div>
+
+        <div class="premiumBlock" id="premiumBlock" aria-label="Premium Lifestyle Deluxe">
+          <div class="premiumTop">
+            <div>
+              <h3 class="premiumTitle" id="pTitle">Area Membri – Approfondimento del giorno</h3>
+              <p class="premiumSub" id="pSub">Caricamento…</p>
+            </div>
+            <div class="pill" id="pPill">Variante A</div>
+          </div>
+
+          <div class="paper">
+            <h4 id="paperTitle">Approfondimento del giorno</h4>
+            <p class="paperText" id="paperText">Caricamento…</p>
+            <div class="paperMeta">
+              <span class="chip" id="paperAnchor">🧭 Focus: …</span>
+              <span class="chip" id="paperMicro">✨ Micro-passo: …</span>
+            </div>
+          </div>
+
+          <div class="premiumGrid">
+            <div class="softBox">
+              <div class="label">Premium Insight</div>
+              <p class="text" id="premiumInsight">—</p>
+            </div>
+
+            <div class="softBox">
+              <div class="label">Domanda Premium</div>
+              <p class="text" id="premiumQuestion">—</p>
+            </div>
+
+            <div class="softBox">
+              <div class="label">Integrazione</div>
+              <p class="text" id="premiumClosing">—</p>
+            </div>
+          </div>
+
+          <div class="gameCard">
+            <div class="gameHead">
+              <div>
+                <h4 id="gameTitle">Esercizio intelligente</h4>
+                <p id="gamePrompt">Caricamento…</p>
+              </div>
+              <div class="pill">Smart</div>
+            </div>
+
+            <div class="smartChoices">
+              <button class="choiceBtn" data-choice="body" type="button">Corpo</button>
+              <button class="choiceBtn" data-choice="mind" type="button">Pensiero</button>
+              <button class="choiceBtn" data-choice="action" type="button">Azione</button>
+            </div>
+
+            <div class="smartOutput" id="smartOutput">
+              Scegli un’area. Riceverai subito un piccolo passo intelligente e concreto da applicare.
+            </div>
+
+            <div class="autoHint" id="autoHint">
+              Suggerimento automatico: il focus di oggi è già stato preselezionato per te.
+            </div>
+
+            <div class="gameFooter">
+              <div id="gameHint">Suggerimento: scegli in modo intuitivo, non perfetto.</div>
+              <div id="gameResult"></div>
+            </div>
+
+            <div class="gameBtns">
+              <button class="miniBtn primary" id="applySmartBtn" type="button">Applica l’impulso</button>
+              <button class="miniBtn" id="finishBtn" type="button">Mostra conclusione</button>
+            </div>
+          </div>
+
+          <div class="closing" id="closingBox">
+            <h4>Per concludere</h4>
+            <p id="closingText">…</p>
+          </div>
+        </div>
+
       </div>
     </div>
+
   </div>
 
   <script>
-    (function(){
-      const KEY = "lang";
+  const JSON_URL = "./data/lifestyleIT.json";
+  const PREMIUM_JSON_URL = "./data/lifestyle-premiumIT.json";
+  const PRACTICES_JSON_URL = "./data/practicesIT.json";
+  const TOTAL_DAYS = 21;
 
-      function setLang(l){
-        localStorage.setItem(KEY, l);
+  const LS_DAY = "panacea_lifestyle_day";
+  const LS_START = "panacea_lifestyle_start";
+  const LS_LANG = "lang";
+  const LS_MEMBER = "panacea_member";
+  const LS_PREMIUM_CYCLE_ID = "panacea_lifestyle_premium_cycle_id";
+  const LS_PREMIUM_VARIANT_MAP = "panacea_lifestyle_premium_variant_map";
+  const LS_FREE_CYCLE_ID = "panacea_lifestyle_free_cycle_id";
+  const LS_FREE_VARIANT_MAP = "panacea_lifestyle_free_variant_map";
+  const LS_PROGRESS = "panacea_lifestyle_progress";
+
+  const btnDE = document.getElementById("btnDE");
+  const btnIT = document.getElementById("btnIT");
+
+  const tagNumber = document.getElementById("tagNumber");
+  const dayDone = document.getElementById("dayDone");
+  const progressCount = document.getElementById("progressCount");
+  const progressDots = document.getElementById("progressDots");
+  const dayImage = document.getElementById("dayImage");
+  const dayCard = document.getElementById("dayCard");
+
+  const elTitle = document.getElementById("title");
+  const elExplanation = document.getElementById("explanation");
+  const elImpuls = document.getElementById("impuls");
+  const elReflection = document.getElementById("reflection");
+
+  const exerciseWrap = document.getElementById("exerciseWrap");
+  const exerciseTitle = document.getElementById("exerciseTitle");
+  const exerciseText = document.getElementById("exerciseText");
+
+  const premiumTeaser = document.getElementById("premiumTeaser");
+  const premiumBadge = document.getElementById("premiumBadge");
+  const memberBtn = document.getElementById("memberBtn");
+  const unlockBtnLink = document.getElementById("unlockBtnLink");
+  const premiumBlock = document.getElementById("premiumBlock");
+
+  const pTitle = document.getElementById("pTitle");
+  const pSub = document.getElementById("pSub");
+  const pPill = document.getElementById("pPill");
+  const paperTitle = document.getElementById("paperTitle");
+  const paperText = document.getElementById("paperText");
+  const paperAnchor = document.getElementById("paperAnchor");
+  const paperMicro = document.getElementById("paperMicro");
+  const premiumInsight = document.getElementById("premiumInsight");
+  const premiumQuestion = document.getElementById("premiumQuestion");
+  const premiumClosing = document.getElementById("premiumClosing");
+
+  const gameTitle = document.getElementById("gameTitle");
+  const gamePrompt = document.getElementById("gamePrompt");
+  const smartOutput = document.getElementById("smartOutput");
+  const autoHint = document.getElementById("autoHint");
+  const gameResult = document.getElementById("gameResult");
+  const applySmartBtn = document.getElementById("applySmartBtn");
+  const finishBtn = document.getElementById("finishBtn");
+  const closingBox = document.getElementById("closingBox");
+  const closingText = document.getElementById("closingText");
+  const choiceBtns = Array.from(document.querySelectorAll(".choiceBtn"));
+
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const completeBtn = document.getElementById("completeBtn");
+  const restartCycleBtn = document.getElementById("restartCycleBtn");
+  const cycleDoneBox = document.getElementById("cycleDoneBox");
+
+  let dataDays = [];
+  let premiumDays = [];
+  let practices = [];
+  let currentDay = 1;
+  let currentVariant = null;
+
+  function clampDay(value){
+    const n = parseInt(value, 10);
+    if (!Number.isFinite(n)) return 1;
+    return Math.min(TOTAL_DAYS, Math.max(1, n));
+  }
+
+  function isMember(){
+    const raw = String(localStorage.getItem(LS_MEMBER) || "").toLowerCase();
+    return raw === "1" || raw === "true" || raw === "yes" || raw === "on";
+  }
+
+  function ensureStartDate(){
+    if(!localStorage.getItem(LS_START)){
+      localStorage.setItem(LS_START, new Date().toISOString().slice(0,10));
+    }
+  }
+
+  function getCompletedDays(){
+    const saved = localStorage.getItem(LS_PROGRESS);
+    try{
+      const parsed = JSON.parse(saved || "[]");
+      if(Array.isArray(parsed)){
+        return parsed
+          .map(n => clampDay(n))
+          .filter((n, i, arr) => arr.indexOf(n) === i)
+          .sort((a, b) => a - b);
+      }
+    }catch{}
+    return [];
+  }
+
+  function getStartDate(){
+    ensureStartDate();
+    const raw = localStorage.getItem(LS_START);
+    const parsed = new Date(raw + "T00:00:00");
+    return Number.isNaN(parsed.getTime()) ? new Date() : parsed;
+  }
+
+  function diffDays(a, b){
+    const ms = 24 * 60 * 60 * 1000;
+    const utcA = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+    const utcB = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+    return Math.floor((utcB - utcA) / ms);
+  }
+
+  function getAbsoluteDay(){
+    const start = getStartDate();
+    const today = new Date();
+    return diffDays(start, today) + 1;
+  }
+
+  function getUnlockedDay(){
+    return Math.min(TOTAL_DAYS, Math.max(1, getAbsoluteDay()));
+  }
+
+  function getStoredDay(){
+    const savedDay = clampDay(localStorage.getItem(LS_DAY));
+    const unlockedDay = getUnlockedDay();
+    const completed = getCompletedDays();
+
+    let firstOpenDay = 1;
+    for(let i = 1; i <= unlockedDay; i++){
+      if(!completed.includes(i)){
+        firstOpenDay = i;
+        break;
+      }
+      firstOpenDay = i;
+    }
+
+    if(savedDay <= unlockedDay && !completed.includes(savedDay)){
+      return savedDay;
+    }
+
+    if(completed.length >= unlockedDay){
+      return unlockedDay;
+    }
+
+    return firstOpenDay;
+  }
+
+  function saveCompletedDays(days){
+    localStorage.setItem(LS_PROGRESS, JSON.stringify(days));
+  }
+
+  function markDayCompleted(day){
+    const completed = getCompletedDays();
+    const safeDay = clampDay(day);
+    if(!completed.includes(safeDay)){
+      completed.push(safeDay);
+      completed.sort((a, b) => a - b);
+      saveCompletedDays(completed);
+    }
+  }
+
+  function isDayCompleted(day){
+    return getCompletedDays().includes(clampDay(day));
+  }
+
+  function isCurrentDayLocked(){
+    return currentDay > getUnlockedDay();
+  }
+
+  function syncCurrentDayWithUnlocked(){
+    const unlocked = getUnlockedDay();
+    if(currentDay > unlocked){
+      currentDay = unlocked;
+      localStorage.setItem(LS_DAY, String(currentDay));
+    }
+  }
+
+  function isEntireCycleCompleted(){
+    return getCompletedDays().length >= TOTAL_DAYS;
+  }
+
+  function restartCycle(){
+    const oldStart = getStartDate();
+    const newStartDate = new Date(oldStart);
+    newStartDate.setDate(newStartDate.getDate() + TOTAL_DAYS);
+
+    const yyyy = newStartDate.getFullYear();
+    const mm = String(newStartDate.getMonth() + 1).padStart(2, "0");
+    const dd = String(newStartDate.getDate()).padStart(2, "0");
+    const iso = `${yyyy}-${mm}-${dd}`;
+
+    localStorage.setItem(LS_START, iso);
+    localStorage.setItem(LS_DAY, "1");
+    localStorage.setItem(LS_PROGRESS, JSON.stringify([]));
+
+    currentDay = 1;
+
+    localStorage.removeItem(LS_PREMIUM_VARIANT_MAP);
+    localStorage.removeItem(LS_PREMIUM_CYCLE_ID);
+    localStorage.removeItem(LS_FREE_VARIANT_MAP);
+    localStorage.removeItem(LS_FREE_CYCLE_ID);
+
+    render();
+  }
+
+  function renderProgressDots(){
+    const completed = getCompletedDays();
+    const unlocked = getUnlockedDay();
+
+    progressDots.innerHTML = "";
+
+    for(let i = 1; i <= TOTAL_DAYS; i++){
+      const dot = document.createElement("div");
+      dot.className = "progressDot";
+      dot.textContent = String(i);
+
+      if(completed.includes(i)){
+        dot.classList.add("done");
+      } else if(i > unlocked){
+        dot.classList.add("locked");
+        dot.textContent = "🔒";
       }
 
-      function getLang(){
-        const v = (localStorage.getItem(KEY) || "").toLowerCase();
-        return (v === "it" || v === "de") ? v : "it";
+      if(i === currentDay){
+        dot.classList.add("current");
       }
 
-      function getTwinUrl(targetLang){
-        const path = location.pathname.split("/").pop() || "indexIT.html";
+      progressDots.appendChild(dot);
+    }
+  }
 
-        const map = {
-          "index.html": "indexIT.html",
-          "indexIT.html": "index.html",
-          "daily-reset.html": "daily-resetIT.html",
-          "daily-resetIT.html": "daily-reset.html",
-          "wissen.html": "wissenIT.html",
-          "wissenIT.html": "wissen.html",
-          "lifestyle.html": "lifestyleIT.html",
-          "lifestyleIT.html": "lifestyle.html",
-          "mitglieder.html": "mitgliederIT.html",
-          "mitgliederIT.html": "mitglieder.html",
-          "uebungen.html": "uebungenIT.html",
-          "uebungenIT.html": "uebungen.html"
-        };
+  function updateProgressUI(){
+    const completed = getCompletedDays();
+    const done = completed.length;
+    const locked = isCurrentDayLocked();
+    const currentCompleted = completed.includes(currentDay);
 
-        if(targetLang === "it"){
-          return map[path] || (path.includes("IT.html") ? path : path.replace(".html", "IT.html"));
-        }
+    progressCount.textContent = String(done);
+    renderProgressDots();
 
-        if(targetLang === "de"){
-          return map[path] || (path.includes("IT.html") ? path.replace("IT.html", ".html") : path);
-        }
+    dayDone.classList.remove("done", "locked");
 
-        return path;
-      }
+    if(locked){
+      dayDone.textContent = "🔒";
+      dayDone.classList.add("locked");
+      dayCard.classList.add("lockedBox");
+    } else if(currentCompleted){
+      dayDone.textContent = "✓";
+      dayDone.classList.add("done");
+      dayCard.classList.remove("lockedBox");
+    } else {
+      dayDone.textContent = "○";
+      dayCard.classList.remove("lockedBox");
+    }
+  }
 
-      const btnDE = document.getElementById("btnDE");
-      const btnIT = document.getElementById("btnIT");
-      if(!btnDE || !btnIT) return;
+  function setStoredDay(day){
+    const unlocked = getUnlockedDay();
+    currentDay = clampDay(day);
 
-      function paint(){
-        const l = getLang();
-        btnDE.classList.toggle("active", l === "de");
-        btnIT.classList.toggle("active", l === "it");
-      }
-
-      btnDE.addEventListener("click", () => {
-        setLang("de");
-        location.href = getTwinUrl("de");
-      });
-
-      btnIT.addEventListener("click", () => {
-        setLang("it");
-        location.href = getTwinUrl("it");
-      });
-
-      const current = location.pathname.split("/").pop() || "";
-      const stored = getLang();
-      const isITpage = current.includes("IT.html");
-
-      if(stored === "it" && !isITpage){
-        const twin = getTwinUrl("it");
-        if(twin !== current) location.replace(twin);
-        return;
-      }
-
-      if(stored === "de" && isITpage){
-        const twin = getTwinUrl("de");
-        if(twin !== current) location.replace(twin);
-        return;
-      }
-
-      document.documentElement.lang = getLang();
-      paint();
-    })();
-  </script>
-
-  <script>
-    const STORAGE_DAY = "panacea_lifestyle_day";
-    const STORAGE_DONE = "panacea_lifestyle_done";
-    const PREMIUM_FLAG = "panacea_premium";
-    const TOTAL_DAYS = 21;
-
-    const dayBadge = document.getElementById("dayBadge");
-    const dayTitle = document.getElementById("dayTitle");
-    const dayImpulse = document.getElementById("dayImpulse");
-    const dayImage = document.getElementById("dayImage");
-    const progressPill = document.getElementById("progressPill");
-    const premiumPill = document.getElementById("premiumPill");
-    const premiumBox = document.getElementById("premiumBox");
-    const premiumTitleEl = document.getElementById("premiumTitle");
-    const premiumIntroEl = document.getElementById("premiumIntro");
-    const premiumDeepeningEl = document.getElementById("premiumDeepening");
-    const premiumNervousSystemEl = document.getElementById("premiumNervousSystem");
-    const premiumExerciseTitleEl = document.getElementById("premiumExerciseTitle");
-    const premiumExerciseTextEl = document.getElementById("premiumExerciseText");
-    const premiumJournalEl = document.getElementById("premiumJournal");
-    const premiumEveningEl = document.getElementById("premiumEvening");
-    const premiumInsightEl = document.getElementById("premiumInsight");
-    const premiumIntegrationEl = document.getElementById("premiumIntegration");
-    const premiumHintEl = document.getElementById("premiumHint");
-    const exerciseCardEl = document.getElementById("exerciseCard");
-    const errorBox = document.getElementById("errorBox");
-    const memberTeaser = document.getElementById("memberTeaser");
-    const memberBtn = document.getElementById("memberBtn");
-    const prevBtn = document.getElementById("prevBtn");
-    const nextBtn = document.getElementById("nextBtn");
-    const doneBtn = document.getElementById("doneBtn");
-
-    const premiumDeepeningWrap = document.getElementById("premiumDeepeningWrap");
-    const premiumNervousWrap = document.getElementById("premiumNervousWrap");
-    const premiumJournalWrap = document.getElementById("premiumJournalWrap");
-    const premiumEveningWrap = document.getElementById("premiumEveningWrap");
-    const premiumInsightWrap = document.getElementById("premiumInsightWrap");
-    const premiumIntegrationWrap = document.getElementById("premiumIntegrationWrap");
-
-    function clamp(n, min, max){
-      return Math.max(min, Math.min(max, n));
+    if(currentDay > unlocked){
+      currentDay = unlocked;
     }
 
-    function getLang(){
-      const v = (localStorage.getItem("lang") || "").toLowerCase();
-      return (v === "it" || v === "de") ? v : "it";
+    localStorage.setItem(LS_DAY, String(currentDay));
+    render();
+  }
+
+  function getCurrentCycle(){
+    const absoluteDay = Math.max(1, getAbsoluteDay());
+    return Math.floor((absoluteDay - 1) / TOTAL_DAYS);
+  }
+
+  function safeJsonParse(value, fallback){
+    try{
+      return JSON.parse(value);
+    }catch{
+      return fallback;
+    }
+  }
+
+  function normalizeDays(json){
+    if(Array.isArray(json?.days)) return json.days;
+    if(Array.isArray(json)) return json;
+    return [];
+  }
+
+  function findDayObj(day){
+    return dataDays.find(item => Number(item.day) === Number(day));
+  }
+
+  function findPremiumDayObj(day){
+    return premiumDays.find(item => Number(item.day) === Number(day));
+  }
+
+  function getVariantLabel(index){
+    return index === 0 ? "Variante A" : index === 1 ? "Variante B" : "Variante C";
+  }
+
+  function generateVariantMap(days, previousMap = []){
+    return days.map((day, index) => {
+      const count = Array.isArray(day.variants) ? day.variants.length : 0;
+      if(count <= 1) return 0;
+
+      let choice = 0;
+      let attempts = 0;
+
+      do{
+        choice = Math.floor(Math.random() * count);
+        attempts++;
+      } while (
+        count > 1 &&
+        previousMap[index] === choice &&
+        attempts < 10
+      );
+
+      return choice;
+    });
+  }
+
+  function getFreeVariantMap(){
+    const currentCycle = getCurrentCycle();
+    const savedCycle = parseInt(localStorage.getItem(LS_FREE_CYCLE_ID) || "-1", 10);
+    const savedMap = safeJsonParse(localStorage.getItem(LS_FREE_VARIANT_MAP) || "[]", []);
+
+    if(
+      savedCycle === currentCycle &&
+      Array.isArray(savedMap) &&
+      savedMap.length === dataDays.length
+    ){
+      return savedMap;
     }
 
-    function t(val){
-      const lang = getLang();
-      if (val == null) return "";
-      if (typeof val === "string") return val;
-      if (typeof val === "object") return val[lang] || val.it || val.de || "";
-      return "";
+    const previousMap = Array.isArray(savedMap) ? savedMap : [];
+    const newMap = generateVariantMap(dataDays, previousMap);
+
+    localStorage.setItem(LS_FREE_CYCLE_ID, String(currentCycle));
+    localStorage.setItem(LS_FREE_VARIANT_MAP, JSON.stringify(newMap));
+
+    return newMap;
+  }
+
+  function getPremiumVariantMap(){
+    const sourceDays = premiumDays.length ? premiumDays : dataDays;
+    const currentCycle = getCurrentCycle();
+    const savedCycle = parseInt(localStorage.getItem(LS_PREMIUM_CYCLE_ID) || "-1", 10);
+    const savedMap = safeJsonParse(localStorage.getItem(LS_PREMIUM_VARIANT_MAP) || "[]", []);
+
+    if(
+      savedCycle === currentCycle &&
+      Array.isArray(savedMap) &&
+      savedMap.length === sourceDays.length
+    ){
+      return savedMap;
     }
 
-    function getMembersUrl(){
-      return getLang() === "it" ? "mitgliederIT.html" : "mitglieder.html";
-    }
+    const previousMap = Array.isArray(savedMap) ? savedMap : [];
+    const newMap = generateVariantMap(sourceDays, previousMap);
 
-    function getCurrentDay(){
-      const raw = localStorage.getItem(STORAGE_DAY);
-      const n = parseInt(raw || "1", 10);
-      return clamp(isNaN(n) ? 1 : n, 1, TOTAL_DAYS);
-    }
+    localStorage.setItem(LS_PREMIUM_CYCLE_ID, String(currentCycle));
+    localStorage.setItem(LS_PREMIUM_VARIANT_MAP, JSON.stringify(newMap));
 
-    function setCurrentDay(day){
-      localStorage.setItem(STORAGE_DAY, String(clamp(day, 1, TOTAL_DAYS)));
-    }
+    return newMap;
+  }
 
-    function getDone(){
-      try{
-        const raw = localStorage.getItem(STORAGE_DONE);
-        const arr = raw ? JSON.parse(raw) : [];
-        if(!Array.isArray(arr)) return [];
-        return [...new Set(arr.map(x => parseInt(x, 10)).filter(x => x >= 1 && x <= TOTAL_DAYS))].sort((a,b) => a-b);
-      }catch(e){
-        return [];
-      }
-    }
-
-    function setDone(arr){
-      localStorage.setItem(STORAGE_DONE, JSON.stringify(arr));
-    }
-
-    function isPremium(){
-      return localStorage.getItem(PREMIUM_FLAG) === "true";
-    }
-
-    function updatePills(){
-      const done = getDone();
-      progressPill.textContent = `Progresso: ${done.length}/${TOTAL_DAYS}`;
-      premiumPill.textContent = `Premium: ${isPremium() ? "sì" : "no"}`;
-      if(memberBtn) memberBtn.href = getMembersUrl();
-    }
-
-    function showError(msg){
-      errorBox.style.display = "block";
-      errorBox.textContent = msg;
-    }
-
-    function hideError(){
-      errorBox.style.display = "none";
-      errorBox.textContent = "";
-    }
-
-    function toggleWrap(el, hasContent){
-      if(!el) return;
-      el.style.display = hasContent ? "block" : "none";
-    }
-
-    const FREE_DAYS = [
-      {
-        title:"Giorno 1 – Inizio: piccoli passi",
-        impulse:"Oggi conta la fattibilità: scegli un piccolo passo che puoi davvero fare. Fai un pasto semplice e stabile con proteine e fibre invece di cercare la perfezione. Bevi un bicchiere d’acqua in più e chiediti: di cosa ha bisogno il mio corpo adesso? La sera, rallenta 10 minuti prima del solito."
-      },
-      {
-        title:"Giorno 2 – Glicemia stabile",
-        impulse:"Inizia con più struttura: un pasto con proteine e fibre. Evita il solo caffè a colazione, perché in molte persone può aumentare lo stress fisico. Dopo il pasto, fai 10 minuti di camminata. Domandati: è fame o stress? Prima di uno snack, fai 3 espirazioni lente."
-      },
-      {
-        title:"Giorno 3 – Il sonno come regolatore",
-        impulse:"Il sonno è un sistema di regolazione dello stress. Oggi conta soprattutto il ritmo. Scegli un orario fisso per rallentare la sera. Evita pasti molto pesanti e tardivi. Mini rituale: doccia calda o pediluvio con espirazione lenta."
-      },
-      {
-        title:"Giorno 4 – Movimento senza pressione",
-        impulse:"Il movimento può essere un reset per il sistema nervoso, anche in modo molto dolce. Oggi bastano 10–15 minuti di camminata leggera o stretching. L’obiettivo è la circolazione, non la performance. Se ti senti tesa, allunga l’espirazione mentre ti muovi."
-      },
-      {
-        title:"Giorno 5 – Micro-pause",
-        impulse:"Piccole pause comunicano sicurezza al corpo. Bastano 60–90 secondi. Metti oggi due mini-timer per respirare e rilassare le spalle. Bevi lentamente 5 sorsi d’acqua e senti il contatto dei piedi con il pavimento."
-      },
-      {
-        title:"Giorno 6 – Risorsa sociale",
-        impulse:"La connessione sociale attenua lo stress in modo reale. Invia oggi un messaggio breve ma autentico a qualcuno. Se è troppo, basta un sorriso consapevole o un grazie sincero. La sera chiediti: chi o che cosa mi ha sostenuto oggi?"
-      },
-      {
-        title:"Giorno 7 – Reset settimanale",
-        impulse:"La riflessione crea coerenza. Scegli una sola abitudine che vuoi portare con te nella prossima settimana. Pianifica un pasto semplice e leggero per domani. Festeggia i progressi: scrivi tre cose che oggi sono andate abbastanza bene."
-      },
-      {
-        title:"Giorno 8 – Basi anti-infiammatorie",
-        impulse:"Più varietà vegetale significa spesso più supporto per il corpo. Oggi aggiungi una porzione in più di verdura o frutta. Usa grassi buoni come olio d’oliva, semi o frutta secca. Se puoi, sostituisci uno snack molto zuccherato con una scelta più stabile."
-      },
-      {
-        title:"Giorno 9 – Caffeina e stress",
-        impulse:"La caffeina può amplificare i segnali di stress. Se bevi caffè, meglio dopo colazione e non a stomaco vuoto. Osserva il corpo: agitazione, tachicardia, tensione? Oggi prova una tazza in meno oppure più tardi."
-      },
-      {
-        title:"Giorno 10 – Sistema nervoso e respiro",
-        impulse:"Un’espirazione più lunga favorisce la modalità di calma. Per 2 minuti: inspira per 4 secondi ed espira per 6–8 secondi, senza forzare. Poi rilassa spalle e mandibola. Il punto non è fare di più, ma ridurre l’allarme interno."
-      },
-      {
-        title:"Giorno 11 – Senso e valori",
-        impulse:"La salutogenesi ha bisogno di significato. Chiediti: perché lo faccio? Per salute, energia, libertà, famiglia? Scegli una mini-azione coerente con questo valore. Scrivi una frase: oggi è stato importante perché…"
-      },
-      {
-        title:"Giorno 12 – Ordine e alleggerimento",
-        impulse:"L’ambiente influisce sul sistema nervoso. Oggi dedica 5 minuti a riordinare una piccola superficie. Poi fai un respiro consapevole e nota se dentro ti senti un po’ più leggera."
-      },
-      {
-        title:"Giorno 13 – Proteine e stabilità",
-        impulse:"Le proteine aiutano sazietà, energia stabile e tono fisico. Oggi inserisci una fonte proteica in due pasti. Abbinala a fibre come verdure, avena o cereali integrali. Bevi anche acqua: a volte la sete sembra fame."
-      },
-      {
-        title:"Giorno 14 – Piacere senza colpa",
-        impulse:"Stress e regole rigide portano spesso al tutto-o-niente. Oggi concediti qualcosa di piacevole in piccola quantità, lentamente e senza distrazioni. Chiediti: lo sto davvero gustando? L’obiettivo è stabilità, non proibizione."
-      },
-      {
-        title:"Giorno 15 – Natura e luce",
-        impulse:"La luce del giorno stabilizza il ritmo circadiano e può aiutare il sonno. Oggi prova a stare fuori 10 minuti al mattino, anche se il cielo è coperto. Se puoi, abbina un po’ di movimento leggero."
-      },
-      {
-        title:"Giorno 16 – Confini e no",
-        impulse:"La salute mentale passa anche dai confini. Oggi dì gentilmente di no a una cosa, oppure rimandala. Una frase utile: oggi non riesco, ti rispondo domani. Proteggere la tua energia è prevenzione."
-      },
-      {
-        title:"Giorno 17 – Micro-allenamento",
-        impulse:"La forza protegge nel lungo termine: metabolismo, postura, fiducia nel corpo. Oggi prova 6 minuti di mini-forza, lentamente e senza dolore. Poi bevi acqua e riconosci il tuo piccolo successo."
-      },
-      {
-        title:"Giorno 18 – Routine culturale e sociale",
-        impulse:"Rituali, musica, cucina, lingua e tradizioni danno senso di casa e sicurezza. Oggi dedica 10 minuti a un rituale che ti fa sentire radicata. Se puoi, condividilo con qualcuno."
-      },
-      {
-        title:"Giorno 19 – Digestione e calma",
-        impulse:"Lo stress influisce anche sulla digestione. Dopo un pasto, cammina lentamente 5–10 minuti oppure siediti in calma. Mangia più lentamente e mastica bene. Se l’addome è teso: bevanda calda ed espirazione lunga."
-      },
-      {
-        title:"Giorno 20 – Piano invece di pressione",
-        impulse:"La struttura riduce il caos mentale. Oggi pianifica un pasto sano per domani e un’alternativa di snack. Metti qualcosa di utile in vista. Il tuo io di domani ti ringrazierà."
-      },
-      {
-        title:"Giorno 21 – Integrazione",
-        impulse:"Hai costruito risorse: questa è salutogenesi in azione. Scegli tre cose da mantenere: una per l’alimentazione, una per il movimento, una per la calma. Scrivi un piano semplice: quando lo faccio, concretamente? La stabilità nasce dalla ripetizione, non dalla perfezione."
-      }
-    ];
-
-    let premiumDays = [];
-
-    async function fetchJsonWithFallback(urls){
-      for(const url of urls){
-        try{
-          const res = await fetch(url, { cache: "no-store" });
-          if(!res.ok) continue;
-          const data = await res.json();
-          if(data && Array.isArray(data.days)){
-            return data;
-          }
-        }catch(e){
-          console.warn("JSON load failed:", url, e);
-        }
-      }
+  function getFreeVariantForDay(dayNumber){
+    const freeDay = findDayObj(dayNumber);
+    if(!freeDay || !Array.isArray(freeDay.variants) || freeDay.variants.length === 0){
       return null;
     }
 
-    async function loadPremiumJson(){
-      const data = await fetchJsonWithFallback([
-        "./data/lifestyleIT.json",
-        "./data/lifestyle.json"
-      ]);
+    const variantMap = getFreeVariantMap();
+    const variantIndex = variantMap[dayNumber - 1] ?? 0;
+    const variant = freeDay.variants[variantIndex] || freeDay.variants[0];
 
-      if(data && Array.isArray(data.days)){
-        premiumDays = data.days;
-      } else {
-        premiumDays = [];
-        console.warn("Nessun JSON Lifestyle Premium valido trovato.");
-      }
-    }
+    return { freeDay, variantIndex, variant };
+  }
 
-    function clearPremiumContent(){
-      premiumTitleEl.textContent = "Impulso Premium";
-      premiumIntroEl.textContent = "";
-      premiumDeepeningEl.textContent = "";
-      premiumNervousSystemEl.textContent = "";
-      premiumExerciseTitleEl.textContent = "";
-      premiumExerciseTextEl.textContent = "";
-      premiumJournalEl.textContent = "";
-      premiumEveningEl.textContent = "";
-      premiumInsightEl.textContent = "";
-      premiumIntegrationEl.textContent = "";
-      premiumHintEl.textContent = "";
-
-      exerciseCardEl.style.display = "none";
-      toggleWrap(premiumDeepeningWrap, false);
-      toggleWrap(premiumNervousWrap, false);
-      toggleWrap(premiumJournalWrap, false);
-      toggleWrap(premiumEveningWrap, false);
-      toggleWrap(premiumInsightWrap, false);
-      toggleWrap(premiumIntegrationWrap, false);
-    }
-
-    function getDayEntry(day){
-      return premiumDays.find(entry => Number(entry.day) === Number(day)) || null;
-    }
-
-    function pickVariant(dayEntry, day){
-      if(!dayEntry || !Array.isArray(dayEntry.variants) || !dayEntry.variants.length) return null;
-
-      const key = `panacea_lifestyle_variant_day_${day}`;
-      let storedIndex = parseInt(localStorage.getItem(key) || "-1", 10);
-
-      if(isNaN(storedIndex) || storedIndex < 0 || storedIndex >= dayEntry.variants.length){
-        storedIndex = Math.floor(Math.random() * dayEntry.variants.length);
-        localStorage.setItem(key, String(storedIndex));
-      }
-
-      return dayEntry.variants[storedIndex];
-    }
-
-    function getPremiumPayload(variant){
-      if(!variant) return null;
-
-      if(variant.premium && typeof variant.premium === "object"){
-        return variant.premium;
-      }
-
-      if(
-        variant.intro ||
-        variant.deepening ||
-        variant.nervousSystemLink ||
-        variant.journalPrompt ||
-        variant.eveningReflection ||
-        variant.premiumInsight ||
-        variant.integrationQuestion ||
-        variant.exercise
-      ){
-        return variant;
-      }
-
+  function getPremiumVariantForDay(dayNumber){
+    const sourceDay = findPremiumDayObj(dayNumber) || findDayObj(dayNumber);
+    if(!sourceDay || !Array.isArray(sourceDay.variants) || sourceDay.variants.length === 0){
       return null;
     }
 
-    function renderPremiumSection(day){
-      clearPremiumContent();
+    const variantMap = getPremiumVariantMap();
+    const variantIndex = variantMap[dayNumber - 1] ?? 0;
+    const variant = sourceDay.variants[variantIndex] || sourceDay.variants[0];
 
-      if(!isPremium()){
-        premiumBox.classList.remove("visible");
-        memberTeaser.style.display = "block";
-        return;
-      }
+    return { premiumDay: sourceDay, variantIndex, variant };
+  }
 
-      memberTeaser.style.display = "none";
-      premiumBox.classList.add("visible");
+  function getChoiceLabel(choice){
+    if(choice === "body") return "Corpo";
+    if(choice === "action") return "Azione";
+    return "Pensiero";
+  }
 
-      const dayEntry = getDayEntry(day);
-      const variant = pickVariant(dayEntry, day);
-      const premium = getPremiumPayload(variant);
+  function findPracticeById(id){
+    return practices.find(p => Number(p.id) === Number(id)) || null;
+  }
 
-      if (!premium) {
-        premiumTitleEl.textContent = "Impulso Premium";
-        premiumIntroEl.textContent = "Per questo giorno non è stata ancora trovata una variante Premium.";
-        premiumHintEl.textContent = `Controlla il file data/lifestyleIT.json o data/lifestyle.json per il giorno ${day}.`;
-        return;
-      }
+  function pickSmartText(choice, premiumObj, practice){
+    const exerciseText = premiumObj?.exercise?.text || premiumObj?.microstep || "";
+    const nervous = premiumObj?.nervousSystemLink || "";
+    const journal = premiumObj?.journalPrompt || premiumObj?.question || "";
+    const integration = premiumObj?.integrationQuestion || premiumObj?.integration || "";
+    const basePractice = practice?.instruction || "";
 
-      const pTitle = t(variant?.title) || t(premium?.title) || `Impulso Premium · Giorno ${day}`;
-      const pIntro = t(premium.intro);
-      const pDeepening = t(premium.deepening);
-      const pNervous = t(premium.nervousSystemLink);
-      const pJournal = t(premium.journalPrompt);
-      const pEvening = t(premium.eveningReflection);
-      const pInsight = t(premium.premiumInsight);
-      const pIntegration = t(premium.integrationQuestion);
-      const exTitle = premium.exercise ? t(premium.exercise.title) : "";
-      const exText = premium.exercise ? t(premium.exercise.text) : "";
-
-      premiumTitleEl.textContent = pTitle;
-      premiumIntroEl.textContent = pIntro || "";
-
-      premiumDeepeningEl.textContent = pDeepening || "";
-      premiumNervousSystemEl.textContent = pNervous || "";
-      premiumJournalEl.textContent = pJournal || "";
-      premiumEveningEl.textContent = pEvening || "";
-      premiumInsightEl.textContent = pInsight || "";
-      premiumIntegrationEl.textContent = pIntegration || "";
-
-      toggleWrap(premiumDeepeningWrap, !!pDeepening);
-      toggleWrap(premiumNervousWrap, !!pNervous);
-      toggleWrap(premiumJournalWrap, !!pJournal);
-      toggleWrap(premiumEveningWrap, !!pEvening);
-      toggleWrap(premiumInsightWrap, !!pInsight);
-      toggleWrap(premiumIntegrationWrap, !!pIntegration);
-
-      if(exTitle || exText){
-        exerciseCardEl.style.display = "block";
-        premiumExerciseTitleEl.textContent = exTitle || "Esercizio";
-        premiumExerciseTextEl.textContent = exText || "";
-      } else {
-        exerciseCardEl.style.display = "none";
-      }
-
-      premiumHintEl.textContent = "Questa variante Premium appartiene direttamente al tuo giorno Lifestyle di oggi.";
+    if(choice === "body"){
+      return exerciseText || basePractice || nervous || "Ascolta il tuo corpo e scegli oggi un piccolo gesto che possa regolarlo e sostenerlo.";
     }
-
-    function renderDay(day){
-      hideError();
-
-      dayBadge.textContent = `Giorno ${day}`;
-      dayImage.src = `icons/${day}a.png`;
-      dayImage.alt = `Lifestyle – Giorno ${day}`;
-
-      const entry = FREE_DAYS[day - 1] || { title:`Giorno ${day}`, impulse:"" };
-      dayTitle.textContent = entry.title || `Giorno ${day}`;
-      dayImpulse.textContent = entry.impulse || "";
-
-      renderPremiumSection(day);
-
-      prevBtn.disabled = day <= 1;
-      nextBtn.disabled = day >= TOTAL_DAYS;
-
-      const done = getDone();
-      const isDoneToday = done.includes(day);
-
-      doneBtn.textContent = isDoneToday ? "✔ Completato" : "✔ Oggi completato";
-      doneBtn.classList.toggle("primary", !isDoneToday);
-
-      updatePills();
+    if(choice === "mind"){
+      return journal || nervous || "Scegli oggi un pensiero più chiaro e più gentile, capace di darti orientamento.";
     }
+    return integration || exerciseText || "Trasforma il contenuto di oggi in una piccola azione reale, concreta e possibile.";
+  }
 
-    dayImage.addEventListener("error", () => {
-      dayImage.src = "icons/sfondo.png";
-      showError("Immagine non trovata.\nControlla i file: icons/1a.png fino a icons/21a.png");
+  function buildSmartExerciseFromVariant(variant){
+    const premiumObj = variant?.premium || {};
+    const ids = variant?.practiceIds || premiumObj?.practiceIds || [];
+    const firstPracticeId = Array.isArray(ids) && ids.length ? ids[0] : variant?.practiceId;
+    const practice = findPracticeById(firstPracticeId);
+
+    return {
+      title: premiumObj?.exercise?.title || practice?.title || "Esercizio intelligente",
+      intro: premiumObj?.deepening || premiumObj?.intro || practice?.instruction || "Scegli intuitivamente l’area che in questo momento può offrirti più stabilità.",
+      autoChoice: variant?.autoChoice || "body",
+      body: pickSmartText("body", premiumObj, practice),
+      mind: pickSmartText("mind", premiumObj, practice),
+      action: pickSmartText("action", premiumObj, practice)
+    };
+  }
+
+  function renderSmartExercise(variantObj, forcedChoice){
+    const exercise = variantObj.smartExercise || {};
+    const selected = forcedChoice || exercise.autoChoice || "body";
+
+    choiceBtns.forEach(btn => {
+      btn.classList.toggle("active", btn.dataset.choice === selected);
     });
 
+    gameTitle.textContent = exercise.title || "Esercizio intelligente";
+    gamePrompt.textContent = exercise.intro || "Scegli intuitivamente l’area che in questo momento può offrirti più stabilità.";
+
+    const outputMap = {
+      body: exercise.body || "Prenditi cura del tuo corpo con un gesto semplice e regolante.",
+      mind: exercise.mind || "Scegli oggi un pensiero più chiaro, più lieve e più utile.",
+      action: exercise.action || "Scegli oggi una piccola azione concreta, davvero realizzabile."
+    };
+
+    smartOutput.textContent = outputMap[selected];
+    autoHint.textContent = `Suggerimento automatico: oggi è stato selezionato “${getChoiceLabel(selected)}” come primo focus.`;
+    gameResult.textContent = "";
+  }
+
+  function renderFreeContent(variantObj){
+    const free = variantObj?.free || variantObj || {};
+    const title = free.title || "Contenuto in preparazione";
+    const explanation = free.explanation || "Questo impulso del giorno sarà disponibile presto.";
+    const impuls = free.impuls || free.impulse || "La stabilità nasce passo dopo passo.";
+    const reflection = free.reflection || "Che cosa può davvero sostenermi oggi?";
+    const exercise = free.exercise || null;
+
+    elTitle.textContent = title;
+    elExplanation.textContent = explanation;
+    elImpuls.textContent = impuls;
+    elReflection.textContent = reflection;
+
+    if(exercise && (exercise.text || exercise.title)){
+      exerciseWrap.style.display = "block";
+      exerciseTitle.textContent = exercise.title || "Mini esercizio";
+      exerciseText.textContent = exercise.text || "—";
+    } else {
+      exerciseWrap.style.display = "none";
+      exerciseTitle.textContent = "Mini esercizio";
+      exerciseText.textContent = "—";
+    }
+  }
+
+  function renderPremium(dayNumber){
+    if(!isMember()) return;
+
+    const premiumData = getPremiumVariantForDay(dayNumber);
+
+    if(!premiumData){
+      pTitle.textContent = "Area Membri – Approfondimento del giorno";
+      pSub.textContent = "Nessun contenuto premium ancora disponibile.";
+      pPill.textContent = "Variante A";
+      paperTitle.textContent = "Approfondimento del giorno";
+      paperText.textContent = "Nessun testo premium ancora disponibile.";
+      paperAnchor.textContent = "🧭 Focus: —";
+      paperMicro.textContent = "✨ Micro-passo: —";
+      premiumInsight.textContent = "—";
+      premiumQuestion.textContent = "—";
+      premiumClosing.textContent = "—";
+      closingText.textContent = "—";
+      closingBox.style.display = "none";
+      currentVariant = null;
+      return;
+    }
+
+    const { premiumDay, variantIndex, variant } = premiumData;
+    const premium = variant?.premium || variant || {};
+    const free = variant?.free || {};
+
+    const intro = premium.intro || "Nessun testo premium ancora disponibile.";
+    const deepening = premium.deepening || "";
+    const nervousSystemLink = premium.nervousSystemLink || "";
+    const combinedPaper = [intro, deepening, nervousSystemLink].filter(Boolean).join("\n\n");
+
+    const insightText = premium.insight || premium.premiumInsight || "—";
+    const questionText = premium.question || premium.journalPrompt || "—";
+    const integrationText = premium.integration || premium.integrationQuestion || "—";
+    const microText = premium.microstep || premium.microStep || premium.exercise?.text || "—";
+    const anchorText = free.title || premiumDay?.program || premiumDay?.title || "Lifestyle";
+
+    currentVariant = {
+      label: getVariantLabel(variantIndex),
+      title: premiumDay?.title || free.title || "Approfondimento del giorno",
+      sub: "Una lettura più profonda, più calma e più concreta del tuo impulso Lifestyle di oggi.",
+      deepDive: combinedPaper || "Nessun testo premium ancora disponibile.",
+      insight: insightText,
+      question: questionText,
+      closing: integrationText,
+      anchor: anchorText,
+      micro: microText,
+      smartExercise: buildSmartExerciseFromVariant(variant)
+    };
+
+    pTitle.textContent = `Area Membri – ${currentVariant.title}`;
+    pSub.textContent = currentVariant.sub;
+    pPill.textContent = currentVariant.label;
+
+    paperTitle.textContent = premium.exercise?.title || "Approfondimento del giorno";
+    paperText.textContent = currentVariant.deepDive;
+    paperAnchor.textContent = `🧭 Focus: ${currentVariant.anchor}`;
+    paperMicro.textContent = `✨ Micro-passo: ${currentVariant.micro}`;
+
+    premiumInsight.textContent = currentVariant.insight;
+    premiumQuestion.textContent = currentVariant.question;
+    premiumClosing.textContent = currentVariant.closing;
+    closingText.textContent = currentVariant.closing;
+
+    closingBox.style.display = "none";
+    renderSmartExercise(currentVariant, currentVariant.smartExercise.autoChoice || "body");
+  }
+
+  function updateImage(day){
+    dayImage.src = `./icons/${day}a.png`;
+    dayImage.alt = `Immagine del giorno ${day}`;
+  }
+
+  function renderLockedContent(){
+    tagNumber.textContent = String(currentDay);
+    updateImage(currentDay);
+
+    elTitle.textContent = `Il giorno ${currentDay} è ancora bloccato`;
+    elExplanation.textContent = "Questo giorno si sbloccherà automaticamente quando lo raggiungerai nel ritmo naturale del tuo programma di 21 giorni.";
+    elImpuls.textContent = "Non serve vivere tutto insieme. Oggi conta soltanto il giorno che è davvero aperto per te.";
+    elReflection.textContent = "Che cosa può aiutarmi oggi a restare nel passo presente, senza correre avanti?";
+
+    exerciseWrap.style.display = "none";
+    exerciseTitle.textContent = "Mini esercizio";
+    exerciseText.textContent = "—";
+
+    premiumTeaser.style.display = "block";
+    premiumBlock.style.display = "none";
+    closingBox.style.display = "none";
+    currentVariant = null;
+
+    premiumBadge.textContent = "Stato: Free";
+    unlockBtnLink.style.display = "";
+    memberBtn.textContent = "Vai all’area membri";
+
+    prevBtn.disabled = currentDay <= 1;
+    nextBtn.disabled = true;
+    nextBtn.textContent = "Ancora bloccato 🔒";
+
+    completeBtn.disabled = true;
+    completeBtn.textContent = "Non ancora disponibile 🔒";
+
+    restartCycleBtn.style.display = "none";
+    cycleDoneBox.style.display = "none";
+  }
+
+  function render(){
+    syncCurrentDayWithUnlocked();
+
+    const locked = isCurrentDayLocked();
+    const freeData = getFreeVariantForDay(currentDay);
+    const dayData = freeData?.variant || {};
+    const completed = isDayCompleted(currentDay);
+    const cycleCompleted = isEntireCycleCompleted();
+
+    if(locked){
+      updateProgressUI();
+      renderLockedContent();
+      return;
+    }
+
+    tagNumber.textContent = String(currentDay);
+    updateImage(currentDay);
+    renderFreeContent(dayData);
+    updateProgressUI();
+
+    if(isMember()){
+      premiumBadge.textContent = "Stato: Membro ✅";
+      unlockBtnLink.style.display = "none";
+      memberBtn.textContent = "Area membri";
+      premiumTeaser.style.display = "none";
+      premiumBlock.style.display = "block";
+      renderPremium(currentDay);
+    } else {
+      premiumBadge.textContent = "Stato: Free";
+      unlockBtnLink.style.display = "";
+      memberBtn.textContent = "Vai all’area membri";
+      premiumTeaser.style.display = "block";
+      premiumBlock.style.display = "none";
+      closingBox.style.display = "none";
+      currentVariant = null;
+    }
+
+    prevBtn.disabled = currentDay <= 1;
+
+    if(currentDay >= TOTAL_DAYS){
+      nextBtn.disabled = true;
+      nextBtn.textContent = completed ? "Ultimo giorno ✓" : "Ultimo giorno";
+    } else if(currentDay + 1 > getUnlockedDay()){
+      nextBtn.disabled = true;
+      nextBtn.textContent = "Ancora bloccato 🔒";
+    } else {
+      nextBtn.disabled = false;
+      nextBtn.textContent = "Avanti →";
+    }
+
+    if(completed){
+      completeBtn.disabled = true;
+      completeBtn.textContent = "Già completato ✓";
+    } else {
+      completeBtn.disabled = false;
+      completeBtn.textContent = "Segna il giorno come completato ✓";
+    }
+
+    if(cycleCompleted){
+      cycleDoneBox.style.display = "block";
+      restartCycleBtn.style.display = "inline-flex";
+    } else {
+      cycleDoneBox.style.display = "none";
+      restartCycleBtn.style.display = "none";
+    }
+  }
+
+  async function loadFreeJSON(){
+    try{
+      const res = await fetch(JSON_URL, { cache: "no-store" });
+      if(!res.ok) throw new Error(`Free JSON fetch failed: ${res.status}`);
+      const json = await res.json();
+      dataDays = normalizeDays(json);
+    } catch(error){
+      console.warn("Impossibile caricare il JSON Lifestyle FREE:", error);
+      dataDays = [];
+    }
+  }
+
+  async function loadPremiumJSON(){
+    try{
+      const res = await fetch(PREMIUM_JSON_URL, { cache: "no-store" });
+      if(!res.ok) throw new Error(`Premium JSON fetch failed: ${res.status}`);
+      const json = await res.json();
+      premiumDays = normalizeDays(json);
+    } catch(error){
+      console.warn("Impossibile caricare il JSON Lifestyle PREMIUM:", error);
+      premiumDays = [];
+    }
+  }
+
+  async function loadPracticesJSON(){
+    try{
+      const res = await fetch(PRACTICES_JSON_URL, { cache: "no-store" });
+      if(!res.ok) throw new Error(`Practices JSON fetch failed: ${res.status}`);
+      const json = await res.json();
+      practices = Array.isArray(json?.practices) ? json.practices : [];
+    } catch(error){
+      console.warn("Impossibile caricare il JSON Practices:", error);
+      practices = [];
+    }
+  }
+
+  async function loadJSON(){
+    await Promise.all([loadFreeJSON(), loadPremiumJSON(), loadPracticesJSON()]);
+  }
+
+  function setLang(lang){
+    localStorage.setItem(LS_LANG, lang);
+    if(lang === "de"){
+      window.location.href = "./lifestyle.html";
+    } else {
+      btnIT.classList.add("active");
+      btnDE.classList.remove("active");
+    }
+  }
+
+  function initLang(){
+    const lang = (localStorage.getItem(LS_LANG) || "it").toLowerCase();
+    if(lang === "de"){
+      window.location.href = "./lifestyle.html";
+      return;
+    }
+    btnIT.classList.add("active");
+    btnDE.classList.remove("active");
+  }
+
+  function bindEvents(){
+    btnDE.addEventListener("click", () => setLang("de"));
+    btnIT.addEventListener("click", () => setLang("it"));
+
     prevBtn.addEventListener("click", () => {
-      const d = getCurrentDay();
-      setCurrentDay(d - 1);
-      renderDay(getCurrentDay());
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      setStoredDay(currentDay - 1);
     });
 
     nextBtn.addEventListener("click", () => {
-      const d = getCurrentDay();
-      setCurrentDay(d + 1);
-      renderDay(getCurrentDay());
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-
-    doneBtn.addEventListener("click", () => {
-      const day = getCurrentDay();
-      const done = getDone();
-
-      if(!done.includes(day)) done.push(day);
-      setDone(done);
-
-      if(day < TOTAL_DAYS) {
-        setCurrentDay(day + 1);
+      if(currentDay < TOTAL_DAYS && currentDay < getUnlockedDay()){
+        setStoredDay(currentDay + 1);
       }
-
-      renderDay(getCurrentDay());
-      window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
-    (async function init(){
-      updatePills();
-      await loadPremiumJson();
-      renderDay(getCurrentDay());
-      updatePills();
-    })();
-  </script>
+    completeBtn.addEventListener("click", () => {
+      if(isCurrentDayLocked()) return;
+      markDayCompleted(currentDay);
+      render();
+    });
+
+    restartCycleBtn.addEventListener("click", () => {
+      restartCycle();
+    });
+
+    choiceBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        if(!currentVariant) return;
+        renderSmartExercise(currentVariant, btn.dataset.choice);
+      });
+    });
+
+    applySmartBtn.addEventListener("click", () => {
+      gameResult.textContent = "Bene. Porta con te proprio questo piccolo passo, oggi: non di più, ma neppure di meno.";
+    });
+
+    finishBtn.addEventListener("click", () => {
+      if(!currentVariant) return;
+      closingBox.style.display = "block";
+      if(typeof closingBox.scrollIntoView === "function"){
+        closingBox.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+
+    dayImage.addEventListener("error", () => {
+      dayImage.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(`
+        <svg xmlns="http://www.w3.org/2000/svg" width="800" height="500">
+          <defs>
+            <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#f6f1e6"/>
+              <stop offset="1" stop-color="#efe7d7"/>
+            </linearGradient>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#g)"/>
+          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+            font-family="Arial" font-size="28" fill="#6b6b6b">
+            Immagine in arrivo (Giorno ${currentDay})
+          </text>
+        </svg>
+      `);
+      dayImage.alt = `Immagine segnaposto per il giorno ${currentDay}`;
+    });
+  }
+
+  async function init(){
+    ensureStartDate();
+    initLang();
+    bindEvents();
+    await loadJSON();
+
+    currentDay = getStoredDay();
+    localStorage.setItem(LS_DAY, String(currentDay));
+
+    updateProgressUI();
+    render();
+  }
+
+  init();
+</script>
+
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("./service-worker.js")
+        .then(reg => console.log("Service Worker registered", reg))
+        .catch(err => console.log("Service Worker failed", err));
+    });
+  }
+</script>
 </body>
 </html>
