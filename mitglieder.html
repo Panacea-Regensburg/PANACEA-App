@@ -674,8 +674,8 @@
       </div>
 
       <div class="navCenter">
-        <button class="langBtn" type="button" onclick="goIT()">IT</button>
-        <button class="langBtn active" type="button" onclick="goDE()">DE</button>
+        <button class="langBtn" id="langIT" type="button">IT</button>
+        <button class="langBtn active" id="langDE" type="button">DE</button>
       </div>
 
       <div class="navRight">
@@ -866,9 +866,6 @@
   </div>
 
 <script>
-  function goDE(){ window.location.href = "./mitglieder.html"; }
-  function goIT(){ window.location.href = "./mitgliederIT.html"; }
-
   const BASIS_PASSWORD = "PNC-79xL!qR26-Z";
 
   const PREMIUM_KEYS = [
@@ -878,8 +875,52 @@
     "panacea_member"
   ];
 
+  const ALLOWED_TARGETS = [
+    "uebungen-premium.html",
+    "uebungen-premiumIT.html",
+    "daily-reset.html",
+    "daily-resetIT.html",
+    "wissen.html",
+    "wissenIT.html",
+    "lifestyle.html",
+    "lifestyleIT.html"
+  ];
+
   const params = new URLSearchParams(window.location.search);
-  const targetPage = params.get("target");
+
+  function sanitizeTarget(raw){
+    if(!raw) return "";
+    const clean = String(raw).trim().replace(/^\.?\//, "");
+    return ALLOWED_TARGETS.includes(clean) ? clean : "";
+  }
+
+  const targetPage = sanitizeTarget(params.get("target"));
+
+  function buildLangUrl(file){
+    const url = new URL(file, window.location.href);
+    if(targetPage) url.searchParams.set("target", targetPage);
+    return url.toString();
+  }
+
+  function goDE(){
+    window.location.href = buildLangUrl("./mitglieder.html");
+  }
+
+  function goIT(){
+    const itTargetMap = {
+      "uebungen-premium.html": "uebungen-premiumIT.html",
+      "daily-reset.html": "daily-resetIT.html",
+      "wissen.html": "wissenIT.html",
+      "lifestyle.html": "lifestyleIT.html"
+    };
+    const translatedTarget = itTargetMap[targetPage] || targetPage;
+    const url = new URL("./mitgliederIT.html", window.location.href);
+    if(translatedTarget) url.searchParams.set("target", translatedTarget);
+    window.location.href = url.toString();
+  }
+
+  document.getElementById("langDE").addEventListener("click", goDE);
+  document.getElementById("langIT").addEventListener("click", goIT);
 
   function isMember(){
     return PREMIUM_KEYS.some(key => localStorage.getItem(key) === "true");
@@ -892,15 +933,16 @@
   }
 
   function clearMemberState(){
-    PREMIUM_KEYS.forEach(key => localStorage.removeItem(key));
+    PREMIUM_KEYS.forEach(key => {
+      localStorage.removeItem(key);
+    });
   }
 
   function cleanupMemberState(){
-    const keysToClear = [
+    [
       "panacea_last_profile_de",
       "panacea_breath_mode_de"
-    ];
-    keysToClear.forEach(k => localStorage.removeItem(k));
+    ].forEach(k => localStorage.removeItem(k));
   }
 
   function updateTopBadge(){
@@ -961,14 +1003,15 @@
 
     if(code === BASIS_PASSWORD){
       setMemberState(true);
+      localStorage.setItem("panacea_premium", "true");
       codeInput.value = "";
-      alert("Freigeschaltet ✅");
 
       if(targetPage){
         window.location.href = targetPage;
         return;
       }
 
+      alert("Freigeschaltet ✅");
       setAccessUI();
       generateReset();
     } else {
@@ -1571,7 +1614,7 @@
   syncSliderLabels();
 
   if(redirectToTargetIfNeeded()){
-    // schon weitergeleitet
+    // redirected
   } else if(isMember()){
     try{
       const last = JSON.parse(localStorage.getItem("panacea_last_profile_de") || "null");
