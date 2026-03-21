@@ -3,1803 +3,1681 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Panacea – Sapere & Chiarezza</title>
-  <link rel="icon" href="./icons/icon-192.png" />
+  <title>Area Membri – Panacea</title>
 
   <style>
     :root{
       --bg1:#f6f1e6;
       --bg2:#efe7d7;
-      --card:#ffffffd9;
-      --card2:#ffffffee;
+      --card:rgba(255,255,255,0.88);
+      --card2:rgba(255,255,255,0.76);
+      --text:#1f1f1f;
+      --muted:#5c5c5c;
       --gold:#c8a24a;
       --gold2:#e8d28a;
-      --text:#2b2b2b;
-      --muted:#6b6b6b;
-      --shadow: 0 14px 40px rgba(0,0,0,.10);
-      --shadow2: 0 10px 26px rgba(0,0,0,.10);
-      --radius: 22px;
-      --radius2: 18px;
-
-      --pad: clamp(14px, 3.6vw, 22px);
-      --gap: clamp(10px, 2.8vw, 14px);
+      --ink:#1a1a1a;
+      --shadow:0 14px 36px rgba(0,0,0,0.08);
+      --shadow2:0 8px 20px rgba(0,0,0,0.07);
+      --radius:22px;
+      --radius2:16px;
     }
 
     *{ box-sizing:border-box; }
-    html,body{ height:100%; }
+
+    html{ scroll-behavior:smooth; }
 
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--text);
-      background: radial-gradient(1200px 800px at 30% 0%, var(--bg1), var(--bg2));
+      background: radial-gradient(1200px 800px at 20% 0%, var(--bg2), var(--bg1));
       min-height:100vh;
-      display:flex;
-      justify-content:center;
-      padding: clamp(16px, 3.5vw, 28px) 14px;
     }
 
-    .phone{
-      width:100%;
-      max-width:min(520px,100%);
+    button,input{ font:inherit; }
+
+    .fixedTopbar{
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      z-index:9999;
+      padding:8px 10px;
+      background: rgba(255,255,255,0.58);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom:1px solid rgba(255,255,255,0.35);
     }
 
-    .topbar{
+    .fixedTopbarInner{
+      max-width:520px;
+      margin:0 auto;
       display:grid;
       grid-template-columns: 1fr auto 1fr;
       align-items:center;
-      gap: var(--gap);
-      margin-bottom:14px;
+      gap:8px;
     }
 
-    .back{
-      justify-self:start;
+    .navLeft,.navCenter,.navRight{
+      display:flex;
+      align-items:center;
+      min-width:0;
+    }
+
+    .navLeft{ justify-content:flex-start; }
+    .navCenter{ justify-content:center; gap:8px; }
+    .navRight{ justify-content:flex-end; }
+
+    .btn{
       text-decoration:none;
       display:inline-flex;
       align-items:center;
-      gap:8px;
-      padding:10px 14px;
-      border-radius:999px;
-      background: linear-gradient(180deg, var(--card2), var(--card));
-      box-shadow: var(--shadow2);
-      color:var(--text);
-      border:1px solid rgba(200,162,74,.20);
-      white-space:nowrap;
-      transition: transform .15s ease;
-    }
-    .back:hover{ transform: translateY(-1px); }
-
-    .langToggle{
-      justify-self:center;
-      display:flex;
-      gap:10px;
-      align-items:center;
       justify-content:center;
-    }
-
-    .langBtn{
-      appearance:none;
-      border:none;
-      cursor:pointer;
-      padding:10px 14px;
+      gap:8px;
+      padding:8px 12px;
       border-radius:999px;
-      font-weight:950;
-      letter-spacing:.12em;
-      background: rgba(255,255,255,.70);
-      border:1px solid rgba(200,162,74,.18);
-      box-shadow: 0 10px 22px rgba(0,0,0,.06);
-      color: var(--text);
-      white-space:nowrap;
-      transition: transform .15s ease;
-      min-width:56px;
-      text-align:center;
-    }
-    .langBtn:hover{ transform: translateY(-1px); }
-    .langBtn.active{
-      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
-      border:1px solid rgba(200,162,74,.35);
-      color:#3a2c10;
-      text-shadow: 0 0 10px rgba(200,162,74,.22);
-    }
-
-    .brand{
-      justify-self:end;
-      text-align:right;
-      line-height:1.1;
-      white-space:nowrap;
-      margin-left:0;
-    }
-    .brand .t1{
-      font-size:13px;
-      color:var(--muted);
-    }
-    .brand .t2{
-      font-size:18px;
+      background: rgba(255,255,255,0.82);
+      color:var(--ink);
       font-weight:800;
-      letter-spacing:.2px;
-    }
-    .brand .glow{
-      color:var(--gold);
-      text-shadow: 0 0 10px rgba(200,162,74,.30);
-      font-weight:900;
-    }
-
-    .card{
-      background: linear-gradient(180deg, var(--card2), var(--card));
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      border:1px solid rgba(200,162,74,.18);
-      overflow:hidden;
-    }
-
-    .hero{
-      padding: var(--pad);
-      display:flex;
-      gap:14px;
-      align-items:center;
-    }
-
-    .badge{
-      width:64px;
-      height:64px;
-      border-radius:18px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:900;
-      font-size:16px;
-      color:#3a2c10;
-      background: radial-gradient(circle at 30% 20%, #fff6d6, #e8d28a);
-      border:1px solid rgba(200,162,74,.35);
-      box-shadow: 0 0 16px rgba(200,162,74,.25);
-      flex:0 0 auto;
-      text-align:center;
-      line-height:1.05;
-      padding:6px;
-    }
-
-    .hero h1{
-      margin:0;
-      font-size:18px;
-      letter-spacing:.2px;
-    }
-    .hero p{
-      margin:6px 0 0 0;
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.45;
-    }
-
-    .content{
-      padding: 0 var(--pad) var(--pad) var(--pad);
-    }
-
-    .progressBox{
-      margin: 0 var(--pad) 14px var(--pad);
-      padding:14px;
-      border-radius:18px;
-      border:1px solid rgba(200,162,74,.18);
-      background: rgba(255,255,255,.72);
-      box-shadow: 0 10px 22px rgba(0,0,0,.06);
-    }
-
-    .progressTop{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      margin-bottom:12px;
-    }
-
-    .progressText{
-      font-size:13px;
-      font-weight:900;
-      color:rgba(43,43,43,.82);
-    }
-
-    .progressCount{
-      font-size:13px;
-      font-weight:950;
-      color:#3a2c10;
-    }
-
-    .progressDots{
-      display:grid;
-      grid-template-columns: repeat(7, minmax(0, 1fr));
-      gap:8px;
-    }
-
-    .progressDot{
-      height:28px;
-      border-radius:999px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:11px;
-      font-weight:950;
-      border:1px solid rgba(200,162,74,.18);
-      background: rgba(255,255,255,.78);
-      color: rgba(43,43,43,.65);
-      box-shadow: 0 8px 18px rgba(0,0,0,.05);
+      font-size:12px;
+      border:1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+      cursor:pointer;
       user-select:none;
-    }
-
-    .progressDot.done{
-      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
-      border:1px solid rgba(200,162,74,.35);
-      color:#3a2c10;
-      box-shadow:
-        0 0 14px rgba(200,162,74,.16),
-        0 8px 18px rgba(0,0,0,.05);
-    }
-
-    .progressDot.current{
-      outline:2px solid rgba(200,162,74,.28);
-      outline-offset:1px;
-    }
-
-    .progressDot.locked{
-      background: rgba(255,255,255,.62);
-      border:1px solid rgba(0,0,0,.08);
-      color: rgba(43,43,43,.42);
-    }
-
-    .dayDone{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      margin-left:8px;
-      min-width:26px;
-      height:26px;
-      padding:0 8px;
-      border-radius:999px;
-      font-size:12px;
-      font-weight:950;
-      background: rgba(255,255,255,.78);
-      border:1px solid rgba(200,162,74,.18);
-      color:rgba(43,43,43,.70);
-      box-shadow: 0 8px 18px rgba(0,0,0,.05);
-    }
-
-    .dayDone.done{
-      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
-      border:1px solid rgba(200,162,74,.35);
-      color:#3a2c10;
-    }
-
-    .dayDone.locked{
-      background: rgba(255,255,255,.78);
-      border:1px solid rgba(0,0,0,.08);
-      color:rgba(43,43,43,.55);
-    }
-
-    .softBox.lockedBox{
-      opacity:0.62;
-      filter:grayscale(0.16);
-    }
-
-    .divider{
-      height:1px;
-      background: linear-gradient(90deg, transparent, rgba(200,162,74,.35), transparent);
-      margin:16px 0;
-    }
-
-    .softBox{
-      margin-top:0;
-      padding:14px;
-      border-radius:18px;
-      border:1px solid rgba(200,162,74,.16);
-      background: rgba(255,255,255,.72);
-      box-shadow: 0 10px 22px rgba(0,0,0,.06);
-    }
-
-    .imgWrap{
-      margin-top:12px;
-      border-radius:18px;
-      overflow:hidden;
-      border:1px solid rgba(200,162,74,.18);
-      box-shadow: var(--shadow2);
-      background:#fff;
-    }
-
-    .imgWrap img{
-      width:100%;
-      height:auto;
-      display:block;
-    }
-
-    .dayTitle{
-      margin:0 0 8px 0;
-      font-size:20px;
-      font-weight:950;
-      color:rgba(43,43,43,.92);
-      letter-spacing:.1px;
-    }
-
-    .label{
-      margin:0 0 6px 0;
-      font-size:12px;
-      font-weight:950;
-      letter-spacing:.08em;
-      color:rgba(43,43,43,.62);
-      text-transform:uppercase;
-    }
-
-    .text{
-      margin:0;
-      font-size:14px;
-      line-height:1.56;
-      color:rgba(43,43,43,.78);
-      font-weight:760;
-      white-space:pre-line;
-    }
-
-    .impuls{
-      margin:0;
-      font-size:15px;
-      line-height:1.55;
-      color:rgba(43,43,43,.86);
-      font-weight:920;
-      white-space:pre-line;
-    }
-
-    .text strong,
-    .impuls strong{
-      font-weight:1000;
-      color:#3a2c10;
-    }
-
-    .navRow{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:14px;
-    }
-
-    button{
-      appearance:none;
-      border:none;
-      cursor:pointer;
-      padding:12px 14px;
-      border-radius:14px;
-      font-weight:950;
-      letter-spacing:.2px;
-      box-shadow: var(--shadow2);
-      border:1px solid rgba(200,162,74,.20);
-      background: linear-gradient(180deg, #ffffff, #f7f2e6);
-      color:var(--text);
-      flex:1;
-      min-width:130px;
-      transition: transform .15s ease, opacity .15s ease;
-    }
-
-    button:hover{ transform: translateY(-1px); }
-
-    button.primary{
-      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
-      border:1px solid rgba(200,162,74,.35);
-      color:#3a2c10;
-      text-shadow: 0 0 10px rgba(200,162,74,.25);
-    }
-
-    button:disabled{
-      opacity:.45;
-      cursor:not-allowed;
-      transform:none !important;
-      box-shadow:none;
-    }
-
-    .cycleDoneBox{
-      margin-top:14px;
-      padding:14px;
-      border-radius:18px;
-      border:1px solid rgba(200,162,74,.34);
-      background:
-        radial-gradient(800px 260px at 20% 0%, rgba(255,246,214,.92), rgba(255,255,255,.72)),
-        linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.75));
-      box-shadow:
-        0 0 22px rgba(200,162,74,.18),
-        0 16px 42px rgba(0,0,0,.08);
-      display:none;
-    }
-
-    .cycleDoneBox h4{
-      margin:0 0 6px 0;
-      font-size:15px;
-      font-weight:950;
-      color:#3a2c10;
-    }
-
-    .cycleDoneBox p{
-      margin:0;
-      color: rgba(43,43,43,.80);
-      font-weight:760;
-      font-size:13.8px;
-      line-height:1.5;
-    }
-
-    .premiumTeaser{
-      margin-top:14px;
-      padding:14px;
-      border-radius:18px;
-      border:1px solid rgba(200,162,74,.34);
-      background:
-        radial-gradient(800px 260px at 20% 0%, rgba(255,246,214,.92), rgba(255,255,255,.72)),
-        linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.75));
-      box-shadow:
-        0 0 22px rgba(200,162,74,.18),
-        0 16px 42px rgba(0,0,0,.08);
-      position:relative;
-      overflow:hidden;
-    }
-
-    .premiumTeaser::before{
-      content:"";
-      position:absolute;
-      inset:-40px;
-      background: radial-gradient(circle at 30% 20%, rgba(200,162,74,.22), transparent 55%);
-      filter: blur(8px);
-      opacity:.9;
-      pointer-events:none;
-    }
-
-    .premiumHead{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:12px;
-      position:relative;
-      z-index:2;
-    }
-
-    .premiumTeaser h3{
-      margin:0 0 6px 0;
-      font-size:14.5px;
-      font-weight:950;
-      color:#3a2c10;
-      letter-spacing:.2px;
-    }
-
-    .premiumTeaser p{
-      margin:0;
-      color: rgba(43,43,43,.78);
-      font-weight:760;
-      font-size:13.6px;
-      line-height:1.45;
-    }
-
-    .premiumBadge{
-      flex:0 0 auto;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 10px;
-      border-radius:999px;
-      background: rgba(200,162,74,.18);
-      border:1px solid rgba(200,162,74,.35);
-      color:#3a2c10;
-      font-weight:950;
       white-space:nowrap;
-      position:relative;
-      z-index:2;
-    }
-        .premiumList{
-      margin:12px 0 0;
-      padding-left:18px;
-      line-height:1.55;
-      color: rgba(43,43,43,.78);
-      font-weight:760;
-      font-size:13.6px;
-      position:relative;
-      z-index:2;
-    }
-
-    .premiumActions{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:12px;
-      position:relative;
-      z-index:2;
-    }
-
-    .linkBtn{
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:12px 14px;
-      border-radius:14px;
-      font-weight:950;
-      letter-spacing:.2px;
-      border:1px solid rgba(200,162,74,.35);
-      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
-      color:#3a2c10;
-      box-shadow: 0 14px 30px rgba(200,162,74,.18);
-      flex:1;
-      min-width:180px;
-      transition: transform .15s ease;
-      white-space:nowrap;
-    }
-
-    .linkBtn:hover{ transform: translateY(-1px); }
-
-    .subLink{
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:12px 14px;
-      border-radius:14px;
-      font-weight:950;
-      letter-spacing:.2px;
-      border:1px solid rgba(0,0,0,0.10);
-      background: rgba(255,255,255,0.78);
-      color: rgba(43,43,43,.88);
-      flex:1;
-      min-width:180px;
-      transition: transform .15s ease;
-      white-space:nowrap;
-    }
-
-    .subLink:hover{ transform: translateY(-1px); }
-
-    .smallNote{
-      margin-top:10px;
-      font-size:12.6px;
-      color: rgba(43,43,43,.62);
-      font-weight:760;
-      line-height:1.45;
-      position:relative;
-      z-index:2;
-    }
-
-    .premiumBlock{
-      margin-top:14px;
-      padding:14px;
-      border-radius:18px;
-      border:1px solid rgba(200,162,74,.38);
-      background:
-        radial-gradient(900px 340px at 20% 0%, rgba(255,246,214,.88), rgba(255,255,255,.70)),
-        linear-gradient(180deg, rgba(255,255,255,.60), rgba(255,255,255,.78));
-      box-shadow:
-        0 0 26px rgba(200,162,74,.18),
-        0 16px 44px rgba(0,0,0,.08);
-      position:relative;
-      overflow:hidden;
-      display:none;
-    }
-
-    .premiumBlock::before{
-      content:"";
-      position:absolute;
-      inset:-50px;
-      background:
-        radial-gradient(circle at 28% 12%, rgba(200,162,74,.24), transparent 55%),
-        radial-gradient(circle at 75% 40%, rgba(232,210,138,.22), transparent 55%);
-      filter: blur(9px);
-      opacity:.95;
-      pointer-events:none;
-    }
-
-    .premiumTop{
-      position:relative;
-      z-index:2;
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:12px;
-    }
-
-    .premiumTitle{
-      margin:0 0 6px 0;
-      font-size:15px;
-      font-weight:950;
-      color:#3a2c10;
-      letter-spacing:.2px;
-    }
-
-    .premiumSub{
-      margin:0;
-      font-size:13.6px;
-      line-height:1.45;
-      color: rgba(43,43,43,.78);
-      font-weight:780;
-    }
-
-    .pill{
-      flex:0 0 auto;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 10px;
-      border-radius:999px;
-      background: rgba(200,162,74,.18);
-      border:1px solid rgba(200,162,74,.35);
-      color:#3a2c10;
-      font-weight:950;
-      white-space:nowrap;
-      position:relative;
-      z-index:2;
-    }
-
-    .paper{
-      position:relative;
-      z-index:2;
-      margin-top:12px;
-      padding:14px 14px 12px;
-      border-radius:18px;
-      border:1px solid rgba(58,44,16,.16);
-      background: linear-gradient(180deg, rgba(255,250,238,.86), rgba(245,235,214,.82));
-      box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,.40),
-        0 12px 28px rgba(0,0,0,.08);
-    }
-
-    .paper::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(circle at 10% 0%, rgba(200,162,74,.10), transparent 60%),
-        radial-gradient(circle at 100% 40%, rgba(200,162,74,.08), transparent 55%);
-      opacity:.9;
-      pointer-events:none;
-      border-radius:18px;
-    }
-
-    .paper h4{
-      position:relative;
-      margin:0 0 8px 0;
-      font-size:14px;
-      font-weight:950;
-      color:#3a2c10;
-      letter-spacing:.2px;
-    }
-
-    .paperText{
-      position:relative;
-      margin:0;
-      font-size:13.8px;
-      line-height:1.56;
-      color: rgba(43,43,43,.86);
-      font-weight:760;
-      white-space:pre-line;
-    }
-
-    .paperMeta{
-      position:relative;
-      margin-top:10px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-      color: rgba(43,43,43,.72);
-      font-size:12.6px;
-      font-weight:780;
-    }
-
-    .chip{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid rgba(200,162,74,.25);
-      background: rgba(255,255,255,.62);
-      box-shadow: 0 10px 22px rgba(0,0,0,.06);
-    }
-
-    .premiumGrid{
-      position:relative;
-      z-index:2;
-      display:grid;
-      gap:12px;
-      margin-top:12px;
-    }
-
-    .premiumGrid .softBox{
-      background: rgba(255,255,255,.74);
-    }
-
-    .gameCard{
-      position:relative;
-      z-index:2;
-      margin-top:12px;
-      padding:14px;
-      border-radius:18px;
-      border:1px solid rgba(200,162,74,.22);
-      background: rgba(255,255,255,.70);
-      box-shadow: 0 12px 26px rgba(0,0,0,.06);
-      overflow:hidden;
-    }
-
-    .gameHead{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:10px;
-    }
-
-    .gameCard h4{
-      margin:0 0 6px;
-      font-size:14px;
-      font-weight:950;
-      color:#3a2c10;
-    }
-
-    .gameCard p{
-      margin:0;
-      font-size:13.6px;
-      line-height:1.45;
-      color: rgba(43,43,43,.78);
-      font-weight:760;
-    }
-
-    .smartChoices{
-      margin-top:12px;
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:10px;
-    }
-
-    .choiceBtn{
-      appearance:none;
-      border:none;
-      cursor:pointer;
-      padding:12px 10px;
-      border-radius:16px;
-      font-weight:950;
-      letter-spacing:.1px;
-      border:1px solid rgba(200,162,74,.22);
-      background: rgba(255,255,255,.78);
-      color:var(--text);
-      box-shadow: 0 10px 22px rgba(0,0,0,.06);
       transition: transform .15s ease, box-shadow .15s ease;
     }
 
-    .choiceBtn:hover{
+    .btn:hover{
       transform: translateY(-1px);
-      box-shadow: 0 12px 24px rgba(0,0,0,.07);
+      box-shadow:0 9px 18px rgba(0,0,0,0.08);
     }
 
-    .choiceBtn.active{
-      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
-      border:1px solid rgba(200,162,74,.35);
-      color:#3a2c10;
-      text-shadow: 0 0 10px rgba(200,162,74,.18);
+    .btn:active{ transform: translateY(1px); }
+
+    .langBtn{
+      padding:8px 11px;
+      border-radius:999px;
+      font-weight:900;
+      font-size:12px;
+      background: rgba(255,255,255,0.72);
+      border:1px solid rgba(0,0,0,0.08);
+      cursor:pointer;
+      white-space:nowrap;
+      transition: transform .15s ease, box-shadow .15s ease;
+      color:var(--ink);
     }
 
-    .smartOutput{
-      margin-top:12px;
-      padding:13px 14px;
-      border-radius:18px;
-      border:1px solid rgba(200,162,74,.18);
-      background: rgba(255,255,255,.74);
-      box-shadow: 0 10px 22px rgba(0,0,0,.05);
-      font-size:13.8px;
-      line-height:1.52;
-      color:rgba(43,43,43,.82);
-      font-weight:760;
-      white-space:pre-line;
+    .langBtn:hover{
+      transform: translateY(-1px);
+      box-shadow:0 8px 16px rgba(0,0,0,0.06);
     }
 
-    .autoHint{
-      margin-top:8px;
-      font-size:12.8px;
-      line-height:1.45;
-      color:rgba(43,43,43,.65);
-      font-weight:700;
+    .langBtn.active{
+      background: rgba(200,162,74,0.18);
+      border-color: rgba(200,162,74,0.45);
+      box-shadow: 0 8px 18px rgba(200,162,74,0.10);
     }
 
-    .gameFooter{
-      margin-top:10px;
+    .pageTitle{
+      font-weight:900;
+      letter-spacing:.1px;
+      font-size:12px;
+      padding:8px 10px;
+      border-radius:999px;
+      background: rgba(255,255,255,0.62);
+      border:1px solid rgba(0,0,0,0.06);
+      max-width:100%;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+    }
+
+    .wrap{
+      max-width:520px;
+      margin:0 auto;
+      padding:68px 10px 22px;
+    }
+
+    .card{
+      background: var(--card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:14px;
+      border:1px solid rgba(200,162,74,0.14);
+    }
+
+    .card + .card{ margin-top:12px; }
+
+    .brandTitle{
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+      margin:0;
+      font-size:20px;
+      letter-spacing:.1px;
+      line-height:1.05;
+    }
+
+    .sub{
+      margin:7px 0 0;
+      color:var(--muted);
+      line-height:1.5;
+      font-size:12.5px;
+    }
+
+    .goldLine{
+      height:1px;
+      width:100%;
+      margin:10px 0;
+      background: linear-gradient(90deg, transparent, rgba(200,162,74,.55), transparent);
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:5px 9px;
+      border-radius:999px;
+      font-size:10px;
+      font-weight:900;
+      background: rgba(200,162,74,0.16);
+      border:1px solid rgba(200,162,74,0.28);
+      color:#2a2316;
+    }
+
+    .muted{ color:var(--muted); }
+
+    .row{
       display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .input{
+      flex:1 1 220px;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid rgba(0,0,0,0.12);
+      width:100%;
+      max-width:100%;
+      font-size:14px;
+      background:#fff;
+      outline:none;
+      color:var(--ink);
+    }
+
+    .input:focus{
+      border-color: rgba(200,162,74,0.55);
+      box-shadow: 0 0 0 3px rgba(200,162,74,0.16);
+    }
+
+    .btnGold{
+      border:0;
+      font-weight:900;
+      padding:10px 13px;
+      border-radius:12px;
+      cursor:pointer;
+      color:#1f1a10;
+      background: linear-gradient(180deg, rgba(232,210,138,.95), rgba(200,162,74,.92));
+      box-shadow: 0 10px 24px rgba(200,162,74,.16);
+      white-space:nowrap;
+      font-size:12px;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+
+    .btnGold:hover{
+      transform: translateY(-1px);
+      box-shadow:0 12px 28px rgba(200,162,74,.22);
+    }
+
+    .btnSoft{
+      padding:10px 13px;
+      border-radius:12px;
+      border:1px solid rgba(0,0,0,0.10);
+      background: rgba(255,255,255,0.85);
+      font-weight:900;
+      cursor:pointer;
+      color:#1f1f1f;
+      font-size:12px;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+
+    .btnSoft:hover{
+      transform: translateY(-1px);
+      box-shadow:0 10px 22px rgba(0,0,0,0.06);
+    }
+
+    .statusLocked{ color:#8a1f1f; font-weight:900; font-size:12px; }
+    .statusOk{ color:#116b2e; font-weight:900; font-size:12px; }
+
+    .note{
+      margin-top:9px;
+      padding:10px 12px;
+      border-radius:12px;
+      background: rgba(255,255,255,0.62);
+      border:1px solid rgba(0,0,0,0.06);
+      font-size:11.5px;
+      line-height:1.45;
+      color:rgba(0,0,0,0.72);
+    }
+
+    .grid2{
+      display:grid;
+      grid-template-columns: 1fr;
       gap:10px;
+      margin-top:10px;
+    }
+
+    .miniCard{
+      background: var(--card2);
+      border-radius: var(--radius2);
+      padding:11px;
+      border:1px solid rgba(0,0,0,0.06);
+      box-shadow: var(--shadow2);
+    }
+
+    .labelRow{
+      display:flex;
+      justify-content:space-between;
+      align-items:baseline;
+      gap:10px;
+      margin-bottom:6px;
+    }
+
+    .labelRow .lbl{
+      font-weight:900;
+      letter-spacing:.1px;
+      font-size:12px;
+    }
+
+    .labelRow .val{
+      font-weight:900;
+      color: rgba(0,0,0,0.70);
+      font-size:12px;
+    }
+
+    input[type="range"]{
+      width:100%;
+      accent-color: var(--gold);
+    }
+
+    .actionsRow{
+      display:flex;
+      gap:8px;
       flex-wrap:wrap;
       align-items:center;
       justify-content:space-between;
-      color: rgba(43,43,43,.74);
-      font-size:12.8px;
-      font-weight:820;
-    }
-
-    .gameBtns{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      width:100%;
       margin-top:10px;
     }
 
-    .miniBtn{
-      padding:10px 12px;
-      border-radius:14px;
-      font-weight:950;
-      letter-spacing:.2px;
-      border:1px solid rgba(200,162,74,.22);
-      background: rgba(255,255,255,.78);
-      box-shadow: 0 10px 22px rgba(0,0,0,.06);
-      flex:1;
-      min-width:140px;
+    .toggle{
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      padding:8px 10px;
+      border-radius:12px;
+      border:1px solid rgba(0,0,0,0.10);
+      background: rgba(255,255,255,0.78);
+      font-weight:900;
+      font-size:12px;
+      cursor:pointer;
+      user-select:none;
     }
 
-    .miniBtn.primary{
-      background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
-      border:1px solid rgba(200,162,74,.35);
-      color:#3a2c10;
-      text-shadow: 0 0 10px rgba(200,162,74,.18);
-    }
-
-    .closing{
+    .switch{
+      width:40px;
+      height:22px;
+      border-radius:999px;
+      background: rgba(0,0,0,0.10);
       position:relative;
-      z-index:2;
-      margin-top:12px;
-      padding:14px;
-      border-radius:18px;
-      border:1px solid rgba(200,162,74,.22);
-      background: rgba(255,255,255,.74);
-      box-shadow: 0 12px 26px rgba(0,0,0,.06);
+      border:1px solid rgba(0,0,0,0.10);
+      transition: background .18s ease, border-color .18s ease;
+    }
+
+    .knob{
+      width:18px;
+      height:18px;
+      border-radius:999px;
+      position:absolute;
+      top:1px;
+      left:1px;
+      background:#fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+      transition: left .18s ease;
+    }
+
+    .switch.on{
+      background: rgba(200,162,74,0.30);
+      border-color: rgba(200,162,74,0.40);
+    }
+
+    .switch.on .knob{ left:20px; }
+
+    .protoGrid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:9px;
+      margin-top:10px;
+    }
+
+    .protoBlock{
+      background: rgba(255,255,255,0.78);
+      border-radius:14px;
+      padding:11px;
+      border:1px solid rgba(0,0,0,0.06);
+      box-shadow: var(--shadow2);
+    }
+
+    .protoBlock h3{
+      margin:0 0 6px;
+      font-size:12.5px;
+      font-weight:900;
+      letter-spacing:.1px;
+    }
+
+    .protoBlock p{
+      margin:0;
+      line-height:1.5;
+      color: rgba(0,0,0,0.78);
+      font-size:12px;
+    }
+
+    .goal{
+      margin-top:10px;
+      padding:11px;
+      border-radius:14px;
+      background: rgba(255,255,255,0.78);
+      border:1px solid rgba(200,162,74,0.18);
+      box-shadow: var(--shadow2);
+    }
+
+    .goal h3{
+      margin:0 0 6px;
+      font-size:12.5px;
+      font-weight:900;
+    }
+
+    .goal p{
+      margin:0;
+      color: rgba(0,0,0,0.78);
+      line-height:1.5;
+      font-size:12px;
+    }
+
+    .breathWrap{
+      margin-top:10px;
+      background: rgba(255,255,255,0.78);
+      border-radius:14px;
+      border:1px solid rgba(0,0,0,0.06);
+      box-shadow: var(--shadow2);
+      padding:11px;
+    }
+
+    .breathTop{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:9px;
+      flex-wrap:wrap;
+    }
+
+    .breathTitle{
+      font-weight:900;
+      font-size:12.5px;
+      margin:0;
+    }
+
+    .breathState{
+      font-weight:900;
+      font-size:14px;
+      letter-spacing:.1px;
+    }
+
+    .breathTimer{
+      font-weight:900;
+      font-size:12px;
+      color: rgba(0,0,0,0.72);
+    }
+
+    .breathPlan{
+      margin-top:8px;
+      font-size:11px;
+      line-height:1.45;
+      color: rgba(0,0,0,0.70);
+      padding:8px 10px;
+      border-radius:12px;
+      background: rgba(255,255,255,0.62);
+      border:1px solid rgba(0,0,0,0.06);
+    }
+
+    .progress{
+      margin-top:8px;
+      height:8px;
+      border-radius:999px;
+      background: rgba(0,0,0,0.06);
+      overflow:hidden;
+      border:1px solid rgba(0,0,0,0.06);
+    }
+
+    .progress > div{
+      height:100%;
+      width:0%;
+      background: linear-gradient(90deg, rgba(200,162,74,.65), rgba(232,210,138,.95));
+      box-shadow: 0 0 18px rgba(200,162,74,.18);
+      border-radius:999px;
+      transition: width .15s linear;
+    }
+
+    .modeRow{
+      margin-top:9px;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .modeBtns{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .modeBtn{
+      padding:8px 10px;
+      border-radius:12px;
+      border:1px solid rgba(0,0,0,0.10);
+      background: rgba(255,255,255,0.80);
+      font-weight:900;
+      cursor:pointer;
+      user-select:none;
+      font-size:11px;
+      color:var(--ink);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+
+    .modeBtn:hover{
+      transform: translateY(-1px);
+      box-shadow:0 8px 18px rgba(0,0,0,0.06);
+    }
+
+    .modeBtn.active{
+      background: rgba(200,162,74,0.18);
+      border-color: rgba(200,162,74,0.35);
+      box-shadow: 0 8px 18px rgba(200,162,74,0.08);
+    }
+
+    .linesWrap{
+      margin-top:9px;
+      padding:10px;
+      border-radius:14px;
+      background: rgba(255,255,255,0.62);
+      border:1px solid rgba(0,0,0,0.06);
       display:none;
     }
 
-    .closing h4{
-      margin:0 0 6px;
-      font-size:14px;
-      font-weight:950;
-      color:#3a2c10;
+    .lineRow{
+      display:grid;
+      grid-template-columns: 70px 1fr 34px;
+      gap:8px;
+      align-items:center;
+      margin:8px 0;
     }
 
-    .closing p{
-      margin:0;
-      font-size:13.8px;
-      line-height:1.52;
-      color: rgba(43,43,43,.82);
-      font-weight:780;
-      white-space:pre-line;
+    .lineLabel{
+      font-weight:900;
+      color: rgba(0,0,0,0.78);
+      font-size:11px;
     }
 
-    @media (max-width: 420px){
-      .topbar{ grid-template-columns: 1fr auto 1fr; }
-      .navRow button{ min-width:100%; }
-      .smartChoices{ grid-template-columns:1fr; }
-      .premiumHead,
-      .premiumTop,
-      .gameHead,
-      .progressTop{
-        flex-direction:column;
-        align-items:flex-start;
-      }
-      .progressDots{
-        grid-template-columns: repeat(5, minmax(0, 1fr));
-      }
+    .lineBar{
+      height:9px;
+      border-radius:999px;
+      background: rgba(0,0,0,0.06);
+      border:1px solid rgba(0,0,0,0.06);
+      overflow:hidden;
+    }
+
+    .lineFill{
+      height:100%;
+      width:0%;
+      border-radius:999px;
+      background: linear-gradient(90deg, rgba(232,210,138,0.95), rgba(200,162,74,0.65));
+      box-shadow: 0 0 14px rgba(200,162,74,0.14);
+      transition: width .12s linear;
+    }
+
+    .lineSec{
+      font-weight:900;
+      color: rgba(0,0,0,0.72);
+      text-align:right;
+      font-size:11px;
+    }
+
+    .linesHint{
+      margin-top:7px;
+      font-size:10.5px;
+      color: rgba(0,0,0,0.66);
+      line-height:1.45;
+    }
+
+    .cloudWrap{
+      margin-top:9px;
+      display:none;
+      gap:8px;
+    }
+
+    .cloud{
+      width:160px;
+      height:160px;
+      margin:0 auto;
+      position:relative;
+      border-radius: 44% 56% 52% 48% / 48% 44% 56% 52%;
+      background:
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,0.95), rgba(255,255,255,0.72)),
+        radial-gradient(220px 220px at 50% 65%, rgba(232,210,138,0.16), rgba(255,255,255,0));
+      border:1px solid rgba(200,162,74,0.16);
+      box-shadow: 0 14px 36px rgba(0,0,0,0.08);
+      overflow:hidden;
+    }
+
+    .cloudSheen{
+      position:absolute;
+      inset:8px;
+      border-radius: 44% 56% 52% 48% / 48% 44% 56% 52%;
+      background: conic-gradient(
+        from 180deg,
+        rgba(200,162,74,0.10),
+        rgba(232,210,138,0.55),
+        rgba(200,162,74,0.10),
+        rgba(255,255,255,0),
+        rgba(200,162,74,0.12)
+      );
+      opacity:.95;
+      animation:sheen 10s linear infinite;
+      mask: radial-gradient(circle, transparent 62%, #000 63%);
+      -webkit-mask: radial-gradient(circle, transparent 62%, #000 63%);
+      pointer-events:none;
+    }
+
+    @keyframes sheen{
+      to { transform: rotate(360deg); }
+    }
+
+    .cloudFill{
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:0;
+      height:0%;
+      background: linear-gradient(180deg, rgba(232,210,138,0.82), rgba(200,162,74,0.58));
+      box-shadow: 0 -14px 32px rgba(200,162,74,0.14);
+      transition: height .18s linear;
+      filter: saturate(1.03);
+    }
+
+    .cloudText{
+      position:absolute;
+      inset:16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:8px;
+    }
+
+    .cloudTextInner{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+      line-height:1.1;
+      align-items:center;
+      justify-content:center;
+      max-width:130px;
+    }
+
+    .cloudPhase{
+      font-weight:900;
+      font-size:13px;
+    }
+
+    .cloudCount{
+      font-weight:900;
+      font-size:20px;
+      letter-spacing:.1px;
+    }
+
+    .cloudHint{
+      font-weight:800;
+      font-size:10px;
+      color: rgba(0,0,0,0.62);
+      line-height:1.35;
+    }
+
+    .cueLine{
+      margin-top:7px;
+      display:flex;
+      justify-content:space-between;
+      gap:8px;
+      flex-wrap:wrap;
+      font-size:10px;
+      color: rgba(0,0,0,0.62);
+      font-weight:800;
+      padding:0 2px;
+    }
+
+    .breathControls{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:9px;
+      align-items:center;
+      justify-content:center;
+    }
+
+    @media (max-width:520px){
+      .fixedTopbarInner{ max-width:100%; }
+      .wrap{ padding:66px 8px 18px; }
+      .card{ padding:12px; }
+      .brandTitle{ font-size:18px; }
+      .lineRow{ grid-template-columns: 62px 1fr 30px; }
     }
   </style>
 </head>
 
 <body>
-  <div class="phone">
 
-    <div class="topbar">
-      <a class="back" href="./indexIT.html">← Home</a>
-
-      <div class="langToggle" aria-label="Selettore lingua">
-        <button class="langBtn" id="btnDE" type="button">DE</button>
-        <button class="langBtn active" id="btnIT" type="button">IT</button>
+  <div class="fixedTopbar">
+    <div class="fixedTopbarInner">
+      <div class="navLeft">
+        <a class="btn" href="./indexIT.html">← Home</a>
       </div>
 
-      <div class="brand">
-        <div class="t1">Panacea</div>
-        <div class="t2"><span class="glow">Sapere</span> & Chiarezza</div>
+      <div class="navCenter">
+        <button class="langBtn active" id="langIT" type="button">IT</button>
+        <button class="langBtn" id="langDE" type="button">DE</button>
+      </div>
+
+      <div class="navRight">
+        <div class="pageTitle" id="pageTitleBadge">Membri · Base</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <div class="card">
+      <div class="pill">Reset adattivo • guida reale • respiro personalizzato</div>
+      <div class="goldLine"></div>
+
+      <h1 class="brandTitle">Area Membri</h1>
+      <p class="sub">
+        È bello averti qui. In questo spazio non devi fare nulla “nel modo giusto”.
+        <br><br>
+        Questo reset si adatta a te: a seconda di quanto è alto il tuo <strong>stress</strong> e di quanta <strong>energia</strong> senti in questo momento.
+        Ricevi una guida chiara e accogliente: prima <strong>calmare</strong>, poi <strong>mettere ordine</strong>, poi fare <strong>un piccolo passo</strong> davvero possibile.
+        <br><br>
+        <span class="muted">In cosa è diverso da molte app gratuite?</span>
+        Non è sempre lo stesso testo. La guida cambia in base al momento che stai vivendo — e per questo può risultare più vicina, più concreta, più vera.
+      </p>
+    </div>
+
+    <div class="card" id="unlockBox">
+      <div class="pill">Accesso per membri</div>
+      <div class="goldLine"></div>
+
+      <div class="row">
+        <input id="codeInput" class="input" placeholder="Inserisci la password (meglio copiare e incollare)" autocomplete="off" spellcheck="false" />
+        <button id="unlockBtn" class="btnGold" type="button">Sblocca</button>
+        <span id="status" class="statusLocked">Bloccato</span>
+      </div>
+
+      <div class="note" id="targetNote">
+        Ricevi la tua password <strong>automaticamente</strong> dopo l’acquisto.
+        <br>Nota: l’accesso è personale. Se una password viene condivisa pubblicamente, verrà sostituita per proteggere l’area membri.
       </div>
     </div>
 
-    <div class="card">
-      <div class="hero">
-        <div class="badge">SC</div>
-        <div>
-          <h1>Sapere & Chiarezza</h1>
-          <p>Il tuo percorso di 21 giorni per coltivare maggiore orientamento, calma interiore e chiarezza nella vita quotidiana.</p>
-        </div>
+    <div class="card" id="premiumArea" style="display:none;">
+      <div class="row" style="justify-content:space-between;">
+        <div class="pill" id="statePill">Profilo: —</div>
+        <button id="logoutBtn" class="btnSoft" type="button">Logout</button>
       </div>
 
-      <div class="progressBox">
-        <div class="progressTop">
-          <div class="progressText">I tuoi progressi</div>
-          <div class="progressCount"><span id="progressCount">0</span> / 21 giorni</div>
-        </div>
-        <div class="progressDots" id="progressDots"></div>
-      </div>
+      <div class="goldLine"></div>
 
-      <div class="content">
+      <h2 style="margin:0; font-size:16px; font-weight:950;">Il tuo reset — proprio adesso</h2>
+      <p class="sub" style="margin-top:6px;">
+        Regola i cursori in base a come ti senti <em>ora</em>. Non come “dovresti” stare, ma come stai davvero.
+        Poi riceverai un reset in 3 passaggi e una guida respiratoria adatta al tuo stato.
+      </p>
 
-        <div class="softBox" id="dayCard">
-          <div class="label">Giorno <span id="tagNumber">1</span><span id="dayDone" class="dayDone">○</span></div>
-          <div class="imgWrap">
-            <img id="dayImage" src="./icons/1.png" alt="Immagine del giorno 1" />
+      <div class="grid2">
+        <div class="miniCard">
+          <div class="labelRow">
+            <div class="lbl">Stress</div>
+            <div class="val" id="stressVal">5/10</div>
           </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="softBox">
-          <h2 class="dayTitle" id="title">—</h2>
-          <div class="label">Contesto</div>
-          <p class="text" id="explanation">—</p>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="softBox">
-          <div class="label">Impulso centrale</div>
-          <p class="impuls" id="impuls">—</p>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="softBox">
-          <div class="label">Autoriflessione</div>
-          <p class="text" id="reflection">—</p>
-        </div>
-
-        <div id="exerciseWrap" style="display:none;">
-          <div class="divider"></div>
-          <div class="softBox">
-            <div class="label" id="exerciseTitle">Mini esercizio</div>
-            <p class="text" id="exerciseText">—</p>
-          </div>
-        </div>
-
-        <div class="navRow">
-          <button id="prevBtn" type="button">← Indietro</button>
-          <button class="primary" id="nextBtn" type="button">Avanti →</button>
-        </div>
-
-        <div class="navRow" style="margin-top:10px;">
-          <button id="completeBtn" type="button">Segna il giorno come completato ✓</button>
-          <button id="restartCycleBtn" type="button" style="display:none;">Inizia un nuovo ciclo di 21 giorni ↺</button>
-        </div>
-
-        <div class="cycleDoneBox" id="cycleDoneBox">
-          <h4>21 giorni completati ✨</h4>
-          <p>
-            Hai completato questo ciclo. Ora puoi iniziare un nuovo percorso di 21 giorni
-            e ritrovare questi contenuti con un ritmo nuovo e più consapevole.
+          <input id="stressM" type="range" min="1" max="10" value="5" />
+          <p class="muted" style="margin:8px 0 0; font-size:11.5px; line-height:1.45;">
+            Quando lo stress è alto, iniziamo dal corpo: prima calma, poi chiarezza.
           </p>
         </div>
 
-        <div class="divider"></div>
-
-        <div class="premiumTeaser" id="premiumTeaser">
-          <div class="premiumHead">
-            <div>
-              <h3>Area Membri – Sapere Deluxe</h3>
-              <p>
-                Una versione più profonda del tuo impulso quotidiano, con maggiore contestualizzazione,
-                più applicazione concreta e una guida premium calda, curata e di alta qualità.
-              </p>
-            </div>
-            <div class="premiumBadge" id="premiumBadge">Stato: Free</div>
+        <div class="miniCard">
+          <div class="labelRow">
+            <div class="lbl">Energia</div>
+            <div class="val" id="energyVal">5/10</div>
           </div>
-
-          <ul class="premiumList">
-            <li><b>Approfondimento del tema</b> con una lettura più psicologica, concreta e vicina alla vita reale</li>
-            <li><b>3 varianti premium</b> in rotazione dinamica di 21 giorni per offrire più varietà</li>
-            <li><b>Esercizio smart</b> con focus su corpo, pensiero o azione</li>
-            <li><b>Integrazione finale</b> per portare il contenuto con maggiore chiarezza nella tua quotidianità</li>
-          </ul>
-
-          <div class="premiumActions">
-            <a class="linkBtn" id="memberBtn" href="./mitgliederIT.html">Vai all’Area Membri</a>
-            <a class="subLink" id="unlockBtnLink" href="./mitgliederIT.html">Sblocca l’Area Membri</a>
-          </div>
-
-          <div class="smallNote">
-            Nota: dopo lo sblocco, la tua area premium verrà mostrata automaticamente direttamente qui.
-          </div>
+          <input id="energyM" type="range" min="1" max="10" value="5" />
+          <p class="muted" style="margin:8px 0 0; font-size:11.5px; line-height:1.45;">
+            Quando l’energia è bassa, non si tratta di fare “di più”. Si tratta di trovare ciò che oggi può davvero aiutarti.
+          </p>
         </div>
-
-        <div class="premiumBlock" id="premiumBlock" aria-label="Premium Sapere Deluxe">
-          <div class="premiumTop">
-            <div>
-              <h3 class="premiumTitle" id="pTitle">Area Membri – Approfondimento del giorno</h3>
-              <p class="premiumSub" id="pSub">Caricamento…</p>
-            </div>
-            <div class="pill" id="pPill">Variante A</div>
-          </div>
-                    <div class="paper">
-            <h4 id="paperTitle">Approfondimento del giorno</h4>
-            <p class="paperText" id="paperText">Caricamento…</p>
-            <div class="paperMeta">
-              <span class="chip" id="paperAnchor">🧭 Focus: …</span>
-              <span class="chip" id="paperMicro">✨ Micro-passo: …</span>
-            </div>
-          </div>
-
-          <div class="premiumGrid">
-            <div class="softBox">
-              <div class="label">Premium Insight</div>
-              <p class="text" id="premiumInsight">—</p>
-            </div>
-
-            <div class="softBox">
-              <div class="label">Domanda Premium</div>
-              <p class="text" id="premiumQuestion">—</p>
-            </div>
-
-            <div class="softBox">
-              <div class="label">Integrazione</div>
-              <p class="text" id="premiumClosing">—</p>
-            </div>
-          </div>
-
-          <div class="gameCard">
-            <div class="gameHead">
-              <div>
-                <h4 id="gameTitle">Esercizio Smart</h4>
-                <p id="gamePrompt">Caricamento…</p>
-              </div>
-              <div class="pill">Smart</div>
-            </div>
-
-            <div class="smartChoices">
-              <button class="choiceBtn" data-choice="body" type="button">Corpo</button>
-              <button class="choiceBtn" data-choice="mind" type="button">Pensiero</button>
-              <button class="choiceBtn" data-choice="action" type="button">Azione</button>
-            </div>
-
-            <div class="smartOutput" id="smartOutput">
-              Scegli un’area. Riceverai subito un piccolo passo chiaro e concreto da portare con te.
-            </div>
-
-            <div class="autoHint" id="autoHint">
-              Suggerimento automatico: il focus di oggi è già stato preselezionato per te.
-            </div>
-
-            <div class="gameFooter">
-              <div id="gameHint">Suggerimento: scegli in modo intuitivo, non perfetto.</div>
-              <div id="gameResult"></div>
-            </div>
-
-            <div class="gameBtns">
-              <button class="miniBtn primary" id="applySmartBtn" type="button">Applica l’impulso</button>
-              <button class="miniBtn" id="finishBtn" type="button">Mostra la conclusione</button>
-            </div>
-          </div>
-
-          <div class="closing" id="closingBox">
-            <h4>Per concludere</h4>
-            <p id="closingText">…</p>
-          </div>
-        </div>
-
       </div>
+
+      <div class="actionsRow">
+        <button id="genM" class="btnGold" type="button">Crea il mio reset</button>
+
+        <div class="toggle" id="soundToggle" title="Segnale sonoro delicato (opzionale)">
+          <span>Suono</span>
+          <span class="switch" id="soundSwitch"><span class="knob"></span></span>
+        </div>
+      </div>
+
+      <div class="goldLine"></div>
+
+      <div class="pill" style="margin-bottom:9px;">Protocollo reset (3 passaggi)</div>
+      <h3 id="mTitle" style="margin:0 0 6px; font-size:15px; font-weight:950;">—</h3>
+      <p class="muted" id="mSummary" style="margin:0 0 10px; font-size:12px; line-height:1.5;">—</p>
+
+      <div class="protoGrid">
+        <div class="protoBlock">
+          <h3>1) Tornare prima nel corpo</h3>
+          <p id="mText1">—</p>
+        </div>
+        <div class="protoBlock">
+          <h3>2) Mettere ordine nei pensieri</h3>
+          <p id="mText2">—</p>
+        </div>
+        <div class="protoBlock">
+          <h3>3) Un piccolo passo adatto a oggi</h3>
+          <p id="mText3">—</p>
+        </div>
+      </div>
+
+      <div class="goal">
+        <h3>Obiettivo per i prossimi 10 minuti</h3>
+        <p id="goalText">—</p>
+      </div>
+
+      <div class="breathWrap">
+        <div class="breathTop">
+          <div>
+            <p class="breathTitle">Guida respiratoria</p>
+            <div class="muted" style="margin-top:5px; font-size:10.8px;">
+              Scegli la visualizzazione che per te è più piacevole: <strong>Linee</strong> oppure <strong>Nuvola</strong>.
+            </div>
+          </div>
+
+          <div style="display:flex; gap:8px; align-items:baseline; flex-wrap:wrap; justify-content:flex-end;">
+            <div class="breathState" id="breathState">Pronto</div>
+            <div class="breathTimer" id="breathTimer">00:00</div>
+          </div>
+        </div>
+
+        <div class="breathPlan" id="breathPlan">—</div>
+        <div class="progress"><div id="progressBar"></div></div>
+
+        <div class="modeRow">
+          <div class="modeBtns">
+            <button class="modeBtn active" id="modeLinesBtn" type="button">Guida: Linee</button>
+            <button class="modeBtn" id="modeCloudBtn" type="button">Guida: Nuvola</button>
+          </div>
+          <div class="pill" id="modePill">Linee</div>
+        </div>
+
+        <div class="linesWrap" id="linesWrap">
+          <div class="lineRow">
+            <div class="lineLabel">Inspira</div>
+            <div class="lineBar"><div class="lineFill" id="inFill"></div></div>
+            <div class="lineSec" id="inSec">—</div>
+          </div>
+
+          <div class="lineRow">
+            <div class="lineLabel">Espira</div>
+            <div class="lineBar"><div class="lineFill" id="outFill"></div></div>
+            <div class="lineSec" id="outSec">—</div>
+          </div>
+
+          <div class="linesHint" id="linesHint">
+            Segui la barra: quando vedi “Inspira”, lasci entrare l’aria. Quando vedi “Espira”, la lasci uscire lentamente.
+          </div>
+        </div>
+
+        <div class="cloudWrap" id="cloudWrap">
+          <div class="cloud" aria-label="Guida respiratoria visiva">
+            <div class="cloudFill" id="cloudFill"></div>
+            <div class="cloudSheen"></div>
+            <div class="cloudText">
+              <div class="cloudTextInner">
+                <div class="cloudPhase" id="cloudPhase">Pronto</div>
+                <div class="cloudCount" id="cloudCount">—</div>
+                <div class="cloudHint" id="cloudHint">Se vuoi, iniziamo insieme.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cueLine">
+            <span id="cueLeft">Un’espirazione lunga favorisce la calma</span>
+            <span id="cueRight">Non forzare — lascia semplicemente accadere</span>
+          </div>
+        </div>
+
+        <div class="breathControls">
+          <button class="btnGold" id="breathStart" type="button">Avvia</button>
+          <button class="btnSoft" id="breathPause" type="button">Pausa</button>
+          <button class="btnSoft" id="breathReset" type="button">Reset</button>
+        </div>
+      </div>
+
+      <p class="muted" style="margin-top:12px; font-size:10.8px; line-height:1.45;">
+        © Panacea Regensburg • Questo strumento sostiene la tua autoregolazione quotidiana e non sostituisce un trattamento medico o psicoterapeutico.
+      </p>
     </div>
 
   </div>
 
   <script>
-    // ===== CONFIG =====
-    const JSON_URL = "./data/wissenIT.json";
-    const PREMIUM_JSON_URL = "./data/wissen-premiumIT.json";
-    const TOTAL_DAYS = 21;
+  const BASIS_PASSWORD = "PNC-79xL!qR26-Z";
 
-    const LS_DAY = "panacea_wissen_day";
-    const LS_START = "panacea_wissen_start";
-    const LS_LANG = "lang";
-    const LS_MEMBER = "panacea_member";
-    const LS_PREMIUM_CYCLE_ID = "panacea_wissen_premium_cycle_id";
-    const LS_PREMIUM_VARIANT_MAP = "panacea_wissen_premium_variant_map";
-    const LS_PROGRESS = "panacea_wissen_progress";
+  const CANONICAL_PREMIUM_KEY = "panacea_premium";
+  const LEGACY_PREMIUM_KEYS = [
+    "premiumUnlocked",
+    "mitglied",
+    "panacea_member"
+  ];
 
-    // ===== ELEMENTS =====
-    const btnDE = document.getElementById("btnDE");
-    const btnIT = document.getElementById("btnIT");
+  const ALL_PREMIUM_KEYS = [CANONICAL_PREMIUM_KEY, ...LEGACY_PREMIUM_KEYS];
 
-    const tagNumber = document.getElementById("tagNumber");
-    const dayDone = document.getElementById("dayDone");
-    const progressCount = document.getElementById("progressCount");
-    const progressDots = document.getElementById("progressDots");
-    const dayImage = document.getElementById("dayImage");
-    const dayCard = document.getElementById("dayCard");
+  const ALLOWED_TARGETS = [
+    "uebungen-premium.html",
+    "uebungen-premiumIT.html",
+    "daily-reset.html",
+    "daily-resetIT.html",
+    "wissen.html",
+    "wissenIT.html",
+    "lifestyle.html",
+    "lifestyleIT.html"
+  ];
 
-    const elTitle = document.getElementById("title");
-    const elExplanation = document.getElementById("explanation");
-    const elImpuls = document.getElementById("impuls");
-    const elReflection = document.getElementById("reflection");
+  const params = new URLSearchParams(window.location.search);
 
-    const exerciseWrap = document.getElementById("exerciseWrap");
-    const exerciseTitle = document.getElementById("exerciseTitle");
-    const exerciseText = document.getElementById("exerciseText");
+  function sanitizeTarget(raw){
+    if(!raw) return "";
+    const clean = String(raw).trim().replace(/^\.?\//, "");
+    return ALLOWED_TARGETS.includes(clean) ? clean : "";
+  }
 
-    const premiumTeaser = document.getElementById("premiumTeaser");
-    const premiumBadge = document.getElementById("premiumBadge");
-    const memberBtn = document.getElementById("memberBtn");
-    const unlockBtnLink = document.getElementById("unlockBtnLink");
-    const premiumBlock = document.getElementById("premiumBlock");
+  const targetPage = sanitizeTarget(params.get("target"));
 
-    const pTitle = document.getElementById("pTitle");
-    const pSub = document.getElementById("pSub");
-    const pPill = document.getElementById("pPill");
-    const paperTitle = document.getElementById("paperTitle");
-    const paperText = document.getElementById("paperText");
-    const paperAnchor = document.getElementById("paperAnchor");
-    const paperMicro = document.getElementById("paperMicro");
-    const premiumInsight = document.getElementById("premiumInsight");
-    const premiumQuestion = document.getElementById("premiumQuestion");
-    const premiumClosing = document.getElementById("premiumClosing");
+  function currentFileName(){
+    const path = window.location.pathname.split("/").pop() || "";
+    return path.trim();
+  }
 
-    const gameTitle = document.getElementById("gameTitle");
-    const gamePrompt = document.getElementById("gamePrompt");
-    const smartOutput = document.getElementById("smartOutput");
-    const autoHint = document.getElementById("autoHint");
-    const gameResult = document.getElementById("gameResult");
-    const applySmartBtn = document.getElementById("applySmartBtn");
-    const finishBtn = document.getElementById("finishBtn");
-    const closingBox = document.getElementById("closingBox");
-    const closingText = document.getElementById("closingText");
-    const choiceBtns = Array.from(document.querySelectorAll(".choiceBtn"));
+  function buildLangUrl(file, target){
+    const url = new URL(file, window.location.href);
+    if(target) url.searchParams.set("target", target);
+    return url.toString();
+  }
 
-    const prevBtn = document.getElementById("prevBtn");
-    const nextBtn = document.getElementById("nextBtn");
-    const completeBtn = document.getElementById("completeBtn");
-    const restartCycleBtn = document.getElementById("restartCycleBtn");
-    const cycleDoneBox = document.getElementById("cycleDoneBox");
+  function goDE(){
+    const deTargetMap = {
+      "uebungen-premiumIT.html": "uebungen-premium.html",
+      "daily-resetIT.html": "daily-reset.html",
+      "wissenIT.html": "wissen.html",
+      "lifestyleIT.html": "lifestyle.html"
+    };
+    const translatedTarget = deTargetMap[targetPage] || targetPage;
+    window.location.href = buildLangUrl("./mitglieder.html", translatedTarget);
+  }
 
-    // ===== STATE =====
-    let dataDays = [];
-    let premiumDays = [];
-    let currentDay = 1;
-    let currentVariant = null;
+  function goIT(){
+    const itTargetMap = {
+      "uebungen-premium.html": "uebungen-premiumIT.html",
+      "daily-reset.html": "daily-resetIT.html",
+      "wissen.html": "wissenIT.html",
+      "lifestyle.html": "lifestyleIT.html"
+    };
+    const translatedTarget = itTargetMap[targetPage] || targetPage;
+    window.location.href = buildLangUrl("./mitgliederIT.html", translatedTarget);
+  }
 
-    // ===== HELPERS =====
-    function clampDay(value){
-      const n = parseInt(value, 10);
-      if (!Number.isFinite(n)) return 1;
-      return Math.min(TOTAL_DAYS, Math.max(1, n));
+  document.getElementById("langDE").addEventListener("click", goDE);
+  document.getElementById("langIT").addEventListener("click", goIT);
+
+  function isMember(){
+    return ALL_PREMIUM_KEYS.some(key => localStorage.getItem(key) === "true");
+  }
+
+  function syncLegacyKeysFromCanonical(){
+    if(localStorage.getItem(CANONICAL_PREMIUM_KEY) === "true"){
+      LEGACY_PREMIUM_KEYS.forEach(key => localStorage.setItem(key, "true"));
     }
+  }
 
-    function isMember(){
-      const raw = String(localStorage.getItem(LS_MEMBER) || "").toLowerCase();
-      return raw === "1" || raw === "true" || raw === "yes" || raw === "on";
+  function setMemberState(value){
+    ALL_PREMIUM_KEYS.forEach(key => {
+      localStorage.setItem(key, value ? "true" : "false");
+    });
+  }
+
+  function clearMemberState(){
+    ALL_PREMIUM_KEYS.forEach(key => localStorage.removeItem(key));
+  }
+
+  function cleanupMemberState(){
+    [
+      "panacea_last_profile_it",
+      "panacea_breath_mode_it"
+    ].forEach(k => localStorage.removeItem(k));
+  }
+
+  function updateTopBadge(){
+    const badge = document.getElementById("pageTitleBadge");
+    badge.textContent = isMember() ? "Membri · Premium" : "Membri · Base";
+  }
+
+  function updateTargetNote(){
+    const note = document.getElementById("targetNote");
+    if(targetPage){
+      note.innerHTML = `
+        Ricevi la tua password <strong>automaticamente</strong> dopo l’acquisto.
+        <br>Dopo lo sblocco verrai reindirizzato direttamente a: <strong>${targetPage}</strong>
+        <br>Nota: l’accesso è personale. Se una password viene condivisa pubblicamente, verrà sostituita per proteggere l’area membri.
+      `;
+    } else {
+      note.innerHTML = `
+        Ricevi la tua password <strong>automaticamente</strong> dopo l’acquisto.
+        <br>Nota: l’accesso è personale. Se una password viene condivisa pubblicamente, verrà sostituita per proteggere l’area membri.
+      `;
     }
+  }
 
-    function ensureStartDate(){
-      if(!localStorage.getItem(LS_START)){
-        localStorage.setItem(LS_START, new Date().toISOString().slice(0,10));
-      }
+  function redirectToTargetIfNeeded(){
+    if(!isMember() || !targetPage) return false;
+
+    const current = currentFileName();
+    if(current === targetPage) return false;
+
+    window.location.href = `./${targetPage}`;
+    return true;
+  }
+
+  function setAccessUI(){
+    const unlockBox = document.getElementById("unlockBox");
+    const premiumArea = document.getElementById("premiumArea");
+    const status = document.getElementById("status");
+
+    updateTopBadge();
+
+    if(isMember()){
+      status.textContent = "Sbloccato ✅";
+      status.className = "statusOk";
+      unlockBox.style.display = "none";
+      premiumArea.style.display = "block";
+    } else {
+      status.textContent = "Bloccato";
+      status.className = "statusLocked";
+      unlockBox.style.display = "block";
+      premiumArea.style.display = "none";
     }
+  }
 
-    function getCompletedDays(){
-      const saved = localStorage.getItem(LS_PROGRESS);
-      try{
-        const parsed = JSON.parse(saved || "[]");
-        if(Array.isArray(parsed)){
-          return parsed
-            .map(n => clampDay(n))
-            .filter((n, i, arr) => arr.indexOf(n) === i)
-            .sort((a, b) => a - b);
-        }
-      }catch{}
-      return [];
-    }
+  const unlockBtn = document.getElementById("unlockBtn");
+  const codeInput = document.getElementById("codeInput");
+  const logoutBtn = document.getElementById("logoutBtn");
 
-    function getStartDate(){
-      ensureStartDate();
-      const raw = localStorage.getItem(LS_START);
-      const parsed = new Date(raw + "T00:00:00");
-      return Number.isNaN(parsed.getTime()) ? new Date() : parsed;
-    }
+  unlockBtn.addEventListener("click", () => {
+    const code = (codeInput.value || "").trim();
 
-    function diffDays(a, b){
-      const ms = 24 * 60 * 60 * 1000;
-      const utcA = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
-      const utcB = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
-      return Math.floor((utcB - utcA) / ms);
-    }
+    if(code === BASIS_PASSWORD){
+      setMemberState(true);
+      localStorage.setItem("panacea_unlocked_at", String(Date.now()));
+      codeInput.value = "";
 
-    function getAbsoluteDay(){
-      const start = getStartDate();
-      const today = new Date();
-      return diffDays(start, today) + 1;
-    }
-
-    function getUnlockedDay(){
-      return Math.min(TOTAL_DAYS, Math.max(1, getAbsoluteDay()));
-    }
-
-    function getStoredDay(){
-      const savedDay = clampDay(localStorage.getItem(LS_DAY));
-      const unlockedDay = getUnlockedDay();
-      const completed = getCompletedDays();
-
-      let firstOpenDay = 1;
-      for(let i = 1; i <= unlockedDay; i++){
-        if(!completed.includes(i)){
-          firstOpenDay = i;
-          break;
-        }
-        firstOpenDay = i;
-      }
-
-      if(savedDay <= unlockedDay && !completed.includes(savedDay)){
-        return savedDay;
-      }
-
-      if(completed.length >= unlockedDay){
-        return unlockedDay;
-      }
-
-      return firstOpenDay;
-    }
-
-    function saveCompletedDays(days){
-      localStorage.setItem(LS_PROGRESS, JSON.stringify(days));
-    }
-
-    function markDayCompleted(day){
-      const completed = getCompletedDays();
-      const safeDay = clampDay(day);
-      if(!completed.includes(safeDay)){
-        completed.push(safeDay);
-        completed.sort((a, b) => a - b);
-        saveCompletedDays(completed);
-      }
-    }
-
-    function isDayCompleted(day){
-      return getCompletedDays().includes(clampDay(day));
-    }
-
-    function isCurrentDayLocked(){
-      return currentDay > getUnlockedDay();
-    }
-
-    function syncCurrentDayWithUnlocked(){
-      const unlocked = getUnlockedDay();
-      if(currentDay > unlocked){
-        currentDay = unlocked;
-        localStorage.setItem(LS_DAY, String(currentDay));
-      }
-    }
-
-    function isEntireCycleCompleted(){
-      return getCompletedDays().length >= TOTAL_DAYS;
-    }
-
-    function restartCycle(){
-      const oldStart = getStartDate();
-      const newStartDate = new Date(oldStart);
-      newStartDate.setDate(newStartDate.getDate() + TOTAL_DAYS);
-
-      const yyyy = newStartDate.getFullYear();
-      const mm = String(newStartDate.getMonth() + 1).padStart(2, "0");
-      const dd = String(newStartDate.getDate()).padStart(2, "0");
-      const iso = `${yyyy}-${mm}-${dd}`;
-
-      localStorage.setItem(LS_START, iso);
-      localStorage.setItem(LS_DAY, "1");
-      localStorage.setItem(LS_PROGRESS, JSON.stringify([]));
-
-      currentDay = 1;
-
-      localStorage.removeItem(LS_PREMIUM_VARIANT_MAP);
-      localStorage.removeItem(LS_PREMIUM_CYCLE_ID);
-
-      render();
-    }
-
-    function renderProgressDots(){
-      const completed = getCompletedDays();
-      const unlocked = getUnlockedDay();
-
-      progressDots.innerHTML = "";
-
-      for(let i = 1; i <= TOTAL_DAYS; i++){
-        const dot = document.createElement("div");
-        dot.className = "progressDot";
-        dot.textContent = String(i);
-
-        if(completed.includes(i)){
-          dot.classList.add("done");
-        } else if(i > unlocked){
-          dot.classList.add("locked");
-          dot.textContent = "🔒";
-        }
-
-        if(i === currentDay){
-          dot.classList.add("current");
-        }
-
-        progressDots.appendChild(dot);
-      }
-    }
-
-    function updateProgressUI(){
-      const completed = getCompletedDays();
-      const done = completed.length;
-      const locked = isCurrentDayLocked();
-      const currentCompleted = completed.includes(currentDay);
-
-      progressCount.textContent = String(done);
-      renderProgressDots();
-
-      dayDone.classList.remove("done", "locked");
-
-      if(locked){
-        dayDone.textContent = "🔒";
-        dayDone.classList.add("locked");
-        dayCard.classList.add("lockedBox");
-      } else if(currentCompleted){
-        dayDone.textContent = "✓";
-        dayDone.classList.add("done");
-        dayCard.classList.remove("lockedBox");
-      } else {
-        dayDone.textContent = "○";
-        dayCard.classList.remove("lockedBox");
-      }
-    }
-
-    function setStoredDay(day){
-      const unlocked = getUnlockedDay();
-      currentDay = clampDay(day);
-
-      if(currentDay > unlocked){
-        currentDay = unlocked;
-      }
-
-      localStorage.setItem(LS_DAY, String(currentDay));
-      render();
-    }
-
-    function getCurrentCycle(){
-      const absoluteDay = Math.max(1, getAbsoluteDay());
-      return Math.floor((absoluteDay - 1) / TOTAL_DAYS);
-    }
-
-    function safeJsonParse(value, fallback){
-      try{
-        return JSON.parse(value);
-      }catch{
-        return fallback;
-      }
-    }
-
-    function findDayObj(day){
-      return dataDays.find(item => Number(item.day) === Number(day));
-    }
-
-    function findPremiumDayObj(day){
-      return premiumDays.find(item => Number(item.day) === Number(day));
-    }
-
-    function getVariantLabel(index){
-      return index === 0 ? "Variante A" : index === 1 ? "Variante B" : "Variante C";
-    }
-
-    function generateVariantMap(days, previousMap = []){
-      return days.map((day, index) => {
-        const count = Array.isArray(day.variants) ? day.variants.length : 0;
-        if(count <= 1) return 0;
-
-        let choice = 0;
-        let attempts = 0;
-
-        do{
-          choice = Math.floor(Math.random() * count);
-          attempts++;
-        } while (
-          count > 1 &&
-          previousMap[index] === choice &&
-          attempts < 10
-        );
-
-        return choice;
-      });
-    }
-
-    function getPremiumVariantMap(){
-      const currentCycle = getCurrentCycle();
-      const savedCycle = parseInt(localStorage.getItem(LS_PREMIUM_CYCLE_ID) || "-1", 10);
-      const savedMap = safeJsonParse(localStorage.getItem(LS_PREMIUM_VARIANT_MAP) || "[]", []);
-
-      if(
-        savedCycle === currentCycle &&
-        Array.isArray(savedMap) &&
-        savedMap.length === premiumDays.length
-      ){
-        return savedMap;
-      }
-
-      const previousMap = Array.isArray(savedMap) ? savedMap : [];
-      const newMap = generateVariantMap(premiumDays, previousMap);
-
-      localStorage.setItem(LS_PREMIUM_CYCLE_ID, String(currentCycle));
-      localStorage.setItem(LS_PREMIUM_VARIANT_MAP, JSON.stringify(newMap));
-
-      return newMap;
-    }
-
-    function getPremiumVariantForDay(dayNumber){
-      const premiumDay = findPremiumDayObj(dayNumber);
-      if(!premiumDay || !Array.isArray(premiumDay.variants) || premiumDay.variants.length === 0){
-        return null;
-      }
-
-      const variantMap = getPremiumVariantMap();
-      const variantIndex = variantMap[dayNumber - 1] ?? 0;
-      const variant = premiumDay.variants[variantIndex] || premiumDay.variants[0];
-
-      return { premiumDay, variantIndex, variant };
-    }
-
-    function getChoiceLabel(choice){
-      if(choice === "body") return "Corpo";
-      if(choice === "action") return "Azione";
-      return "Pensiero";
-    }
-
-    function buildSmartExerciseFromVariant(variant){
-      return {
-        title: variant.activity?.title || "Esercizio Smart",
-        intro: variant.activity?.instruction || "Scegli in modo intuitivo l’area che in questo momento può offrirti maggiore chiarezza o stabilità.",
-        autoChoice: "mind",
-        body: variant.smart?.koerper || "Ascolta il corpo e accompagna il respiro con calma.",
-        mind: variant.smart?.gedanke || "Formula per oggi un pensiero chiaro che possa sostenerti.",
-        action: variant.smart?.handlung || "Scegli il più piccolo passo concreto possibile."
-      };
-    }
-        function renderSmartExercise(variantObj, forcedChoice){
-      const exercise = variantObj.smartExercise || {};
-      const selected = forcedChoice || exercise.autoChoice || "mind";
-
-      choiceBtns.forEach(btn => {
-        btn.classList.toggle("active", btn.dataset.choice === selected);
-      });
-
-      gameTitle.textContent = exercise.title || "Esercizio Smart";
-      gamePrompt.textContent = exercise.intro || "Scegli in modo intuitivo l’area che in questo momento può offrirti maggiore chiarezza o stabilità.";
-
-      const outputMap = {
-        body: exercise.body || "Ascolta il corpo. Lascia andare le spalle ed espira con calma una volta.",
-        mind: exercise.mind || "Formula per oggi un pensiero chiaro che possa alleggerirti e sostenerti.",
-        action: exercise.action || "Scegli una piccola azione che oggi sia davvero possibile."
-      };
-
-      smartOutput.textContent = outputMap[selected];
-      autoHint.textContent = `Suggerimento automatico: oggi è stato selezionato come primo focus “${getChoiceLabel(selected)}”.`;
-      gameResult.textContent = "";
-    }
-
-    function renderFreeContent(dayData){
-      const title = dayData.title || "Contenuto in preparazione";
-      const explanation = dayData.explanation || "Questo impulso del giorno sarà disponibile a breve.";
-      const impuls = dayData.impuls || dayData.impulse || "La chiarezza nasce passo dopo passo.";
-      const reflection = dayData.reflection || "Di che cosa ho davvero bisogno oggi?";
-
-      elTitle.textContent = title;
-      elExplanation.textContent = explanation;
-      elImpuls.textContent = impuls;
-      elReflection.textContent = reflection;
-
-      if(dayData.exercise && (dayData.exercise.text || dayData.exercise.title)){
-        exerciseWrap.style.display = "block";
-        exerciseTitle.textContent = dayData.exercise.title || "Mini esercizio";
-        exerciseText.textContent = dayData.exercise.text || "—";
-      } else {
-        exerciseWrap.style.display = "none";
-        exerciseTitle.textContent = "Mini esercizio";
-        exerciseText.textContent = "—";
-      }
-    }
-
-    function renderPremium(dayNumber){
-      if(!isMember()) return;
-
-      const premiumData = getPremiumVariantForDay(dayNumber);
-
-      if(!premiumData){
-        pTitle.textContent = "Area Membri – Approfondimento del giorno";
-        pSub.textContent = "Per questo giorno non è ancora disponibile alcun contenuto premium.";
-        pPill.textContent = "Variante A";
-        paperTitle.textContent = "Approfondimento del giorno";
-        paperText.textContent = "Per questo giorno non è ancora disponibile alcun testo premium.";
-        paperAnchor.textContent = "🧭 Focus: —";
-        paperMicro.textContent = "✨ Micro-passo: —";
-        premiumInsight.textContent = "—";
-        premiumQuestion.textContent = "—";
-        premiumClosing.textContent = "—";
-        closingText.textContent = "—";
-        closingBox.style.display = "none";
-        currentVariant = null;
+      if(targetPage){
+        window.location.href = `./${targetPage}`;
         return;
       }
 
-      const { premiumDay, variantIndex, variant } = premiumData;
+      setAccessUI();
+      generateReset();
+      alert("Accesso sbloccato ✅");
+    } else {
+      alert("Password non corretta ❌");
+    }
+  });
 
-      currentVariant = {
-        label: getVariantLabel(variantIndex),
-        title: premiumDay.title || "Approfondimento del giorno",
-        sub: "Una lettura più profonda, più calma e più concreta del tuo impulso di oggi.",
-        deepDive: variant.intro || "Per questo giorno non è ancora disponibile alcun testo premium.",
-        insight: variant.premiumInsight || "—",
-        question: variant.premiumQuestion || "—",
-        closing: variant.integration || "—",
-        anchor: variant.focus || premiumDay.title || "Chiarezza",
-        micro: variant.microStep || "—",
-        smartExercise: buildSmartExerciseFromVariant(variant)
-      };
+  codeInput.addEventListener("keydown", (e) => {
+    if(e.key === "Enter") unlockBtn.click();
+  });
 
-      pTitle.textContent = `Area Membri – ${currentVariant.title}`;
-      pSub.textContent = currentVariant.sub;
-      pPill.textContent = currentVariant.label;
+  logoutBtn.addEventListener("click", () => {
+    clearMemberState();
+    cleanupMemberState();
+    stopBreathing(true);
+    setAccessUI();
+    renderBreathUI();
+  });
 
-      paperTitle.textContent = currentVariant.title;
-      paperText.textContent = currentVariant.deepDive;
-      paperAnchor.textContent = `🧭 Focus: ${currentVariant.anchor}`;
-      paperMicro.textContent = `✨ Micro-passo: ${currentVariant.micro}`;
+  const stressM = document.getElementById("stressM");
+  const energyM = document.getElementById("energyM");
+  const stressVal = document.getElementById("stressVal");
+  const energyVal = document.getElementById("energyVal");
 
-      premiumInsight.textContent = currentVariant.insight;
-      premiumQuestion.textContent = currentVariant.question;
-      premiumClosing.textContent = currentVariant.closing;
-      closingText.textContent = currentVariant.closing;
+  function syncSliderLabels(){
+    stressVal.textContent = `${stressM.value}/10`;
+    energyVal.textContent = `${energyM.value}/10`;
+  }
 
-      closingBox.style.display = "none";
-      renderSmartExercise(currentVariant, currentVariant.smartExercise.autoChoice || "mind");
+  stressM.addEventListener("input", syncSliderLabels);
+  energyM.addEventListener("input", syncSliderLabels);
+
+  function band(v){
+    v = Number(v);
+    if(v >= 7) return "alto";
+    if(v >= 4) return "medio";
+    return "basso";
+  }
+
+  const PREMIUM_MAP = {
+    "alto|basso": {
+      label: "Molto stress, poca energia",
+      title: "Prima sicurezza — poi il passo successivo",
+      summary: "Oggi non devi dimostrare nulla. Prima ti aiutiamo a scendere di tono, poi a ritrovare terreno sotto i piedi.",
+      phase1: [
+        "Appoggia bene entrambi i piedi a terra. Senti il contatto. Poi lascia uscire lentamente l’aria, come se stessi creando un po’ di spazio dentro di te.",
+        "Metti una mano sul petto e una sul ventre. Per un momento, semplicemente ascoltati. Poi espira più a lungo di quanto inspiri. Senza sforzo.",
+        "Se senti tensione, non hai bisogno di combatterla. Riconoscila e concedi al corpo di lasciarne andare almeno una piccola parte."
+      ],
+      phase2: [
+        "Chiediti: cosa mi alleggerirebbe anche solo del 10% in questo momento? Non perfettamente. Solo un po’.",
+        "Se la mente gira troppo, scrivi una frase: “In questo momento ho bisogno di…” e completala con una sola cosa.",
+        "Se tutto sembra troppo, torna prima al respiro e poi scegli una sola priorità davvero realistica per oggi."
+      ],
+      phase3: [
+        "Scegli una mini-azione di 2–3 minuti: acqua, aria fresca, un piccolo riordino. Qualcosa che ti dia subito un po’ di sostegno.",
+        "Metti un confine gentile: c’è una cosa che oggi non devi risolvere. Non è rinuncia, è protezione.",
+        "Alla fine, riconosci che hai fatto qualcosa per te. Questo ha valore."
+      ],
+      breath: { inhale:4, exhale:7, minutes:3, cueL:"Un’espirazione lunga favorisce la calma", cueR:"Non forzare — lascia semplicemente accadere" },
+      goal: [
+        "Imposta 10 minuti e fai una sola cosa che ti alleggerisce. Poi fermati consapevolmente.",
+        "Scegli un micro-passo e inizia. Non serve finirlo, basta cominciare. Poi pausa.",
+        "Nei prossimi 10 minuti: acqua + un piccolo gesto di ordine. Poco, ma stabilizzante."
+      ]
+    },
+
+    "alto|medio": {
+      label: "Stress alto, energia media",
+      title: "Prima regolare — poi ritrovare chiarezza",
+      summary: "Hai ancora forza, ma il sistema è rumoroso. Prima abbassiamo il volume interno, poi il passo successivo diventa più semplice.",
+      phase1: [
+        "Fai un’espirazione lunga, come se volessi spegnere una candela con delicatezza — senza fretta.",
+        "Muoviti per 20 secondi in modo sciolto (qualche passo, spalle che ruotano), poi fermati un attimo.",
+        "Osserva mandibola e spalle. Non devi sciogliere tutto, basta lasciare andare un po’ di tensione."
+      ],
+      phase2: [
+        "Scegli una sola cosa che conta davvero oggi. Una sola è sufficiente.",
+        "Scrivi: “Adesso è importante…” e completa la frase. Poi passa all’azione.",
+        "Se ti senti irritata o agitata, riduci prima gli stimoli. Dopo deciderai con più chiarezza."
+      ],
+      phase3: [
+        "Metti un timer di 10 minuti e fai solo l’inizio. L’inizio ti porta più avanti della pianificazione perfetta.",
+        "Di’ consapevolmente “dopo” a una distrazione. Basta una.",
+        "Alla fine: un piccolo check-in — “Di cosa ho bisogno adesso?”"
+      ],
+      breath: { inhale:4, exhale:6, minutes:4, cueL:"Prima calma, poi chiarezza", cueR:"Non devi accelerare" },
+      goal: [
+        "Nei prossimi 10 minuti: inizia la cosa più importante. Solo iniziare, poi una piccola pausa.",
+        "Scegli un passo concreto e portalo a termine — piccolo, ma concluso.",
+        "Semplifica: una priorità, 10 minuti di focus, stop."
+      ]
+    },
+
+    "alto|alto": {
+      label: "Alta attivazione",
+      title: "Usare l’energia senza consumarti",
+      summary: "C’è molta spinta. La rendiamo utile: direzione, confine, pausa. Così l’energia resta dalla tua parte.",
+      phase1: [
+        "Fermati per 10 secondi. Fai una lunga espirazione. Poi riparti — con più controllo.",
+        "Ricorda: avere energia non significa irrigidirsi. Se vuoi, rilassa un attimo la mandibola.",
+        "Inizia con un ritmo che puoi sostenere. Non al massimo — ma in modo stabile."
+      ],
+      phase2: [
+        "Scegli una direzione: che cosa vuoi davvero portare avanti oggi?",
+        "Metti un confine: quando ti fermerai? I limiti sono una forma di protezione.",
+        "Niente multitasking: una cosa alla volta ti porta al risultato con più calma."
+      ],
+      phase3: [
+        "Lavora 10–15 minuti con focus, poi fai una vera pausa, anche se breve.",
+        "Bevi un sorso d’acqua e guarda per 10 secondi in lontananza — una piccola regolazione con grande effetto.",
+        "Alla fine: “Per adesso può bastare.”"
+      ],
+      breath: { inhale:4, exhale:6, minutes:3, cueL:"Energia sì — fretta no", cueR:"Il confine crea stabilità" },
+      goal: [
+        "Nei prossimi 10 minuti: completa un mini-risultato. Poi fermati.",
+        "Fai solo la parte più importante di un compito. Il resto può aspettare.",
+        "Focus per 10 minuti — e smetti prima di svuotarti."
+      ]
+    },
+
+    "medio|basso": {
+      label: "Stress medio, poca energia",
+      title: "Raccoglierti con dolcezza — un passo che ti corrisponde",
+      summary: "Oggi non serve stringere i denti. Si tratta piuttosto di ritrovare un po’ di stabilità, senza pressione.",
+      phase1: [
+        "Fai due respiri tranquilli. Senti che sei sostenuta: dal pavimento, dalla sedia, dal momento presente.",
+        "Se vuoi, bevi un sorso d’acqua. Poi fai una lunga espirazione. Semplice, ma efficace.",
+        "Parlati dentro come parleresti a una persona a cui vuoi bene: con gentilezza, non con pretese."
+      ],
+      phase2: [
+        "Scegli una priorità — e una cosa che oggi puoi lasciare andare. È saggezza, non debolezza.",
+        "Chiediti: cosa può davvero aspettare fino a domani senza creare danno? Concediti questo permesso.",
+        "Scrivi tre parole: “Oggi è sufficiente se…”"
+      ],
+      phase3: [
+        "Fai un passo di 3 minuti che prepari il terreno: aprire un file, mettere a portata il materiale, segnare il punto di partenza.",
+        "Riduci l’attrito: rendi più facile il domani.",
+        "Alla fine, riconosci che ti sei presa cura di te."
+      ],
+      breath: { inhale:4, exhale:7, minutes:3, cueL:"Prima recuperare, poi agire", cueR:"Il minimo che davvero aiuta" },
+      goal: [
+        "Nei prossimi 10 minuti: prepara solo il primo passo. Poi fermati.",
+        "Togli una piccola cosa che ti appesantisce, visivamente o mentalmente.",
+        "Una mini-azione che alleggerisce — poi pausa."
+      ]
+    },
+
+    "medio|medio": {
+      label: "Equilibrio fragile",
+      title: "Reset e struttura leggera",
+      summary: "Sei in una zona intermedia — perfetta per un reset senza durezza. Un passo dopo l’altro, con calma e chiarezza.",
+      phase1: [
+        "Raddrizzati per un momento. Poi fai una lunga espirazione. È come un piccolo riavvio interiore.",
+        "Fai un lieve movimento del collo, lentamente — poi torna al respiro.",
+        "Cinque respiri regolari. Non devono essere perfetti, basta esserci."
+      ],
+      phase2: [
+        "Organizza solo i prossimi 30 minuti, non l’intera giornata.",
+        "Scegli una cosa che puoi concludere — le conclusioni alleggeriscono la mente.",
+        "Chiediti: qual è la prossima azione visibile? Un passo, non un’idea."
+      ],
+      phase3: [
+        "15 minuti di focus, poi 3 minuti di pausa. È un ritmo che il sistema nervoso tollera bene.",
+        "Spegni una sola distrazione. Ne basta una.",
+        "Alla fine chiediti: “Che cosa ha funzionato oggi?” Anche il piccolo conta."
+      ],
+      breath: { inhale:4, exhale:6, minutes:4, cueL:"La struttura dà sicurezza", cueR:"Calma → chiarezza → azione" },
+      goal: [
+        "Nei prossimi 10 minuti: fai il primo passo concreto della tua priorità.",
+        "Concludi una piccola parte — il “finito” calma.",
+        "10 minuti di focus, con una distrazione in meno."
+      ]
+    },
+
+    "medio|alto": {
+      label: "Stress medio, energia alta",
+      title: "Dare una direzione all’energia",
+      summary: "Hai energia — ed è una buona base. Ora la rendiamo chiara e sostenibile: direzione, blocco breve, pausa.",
+      phase1: [
+        "Un respiro lungo, poi inizi. Come un piccolo orientamento interiore.",
+        "Controlla mandibola e spalle. L’energia dovrebbe sostenerti, non irrigidirti.",
+        "Comincia senza fretta — la stabilità vale più della velocità."
+      ],
+      phase2: [
+        "Scegli un obiettivo e un criterio di successo semplice (“inizio” / “chiudo una piccola parte”).",
+        "Scegli anche ciò che adesso non farai. Questo protegge il tuo focus.",
+        "Scrivi: “Adesso faccio…” e poi fallo."
+      ],
+      phase3: [
+        "10+2: dieci minuti di focus, due minuti di pausa. Puoi ripetere, se vuoi.",
+        "Concludi un mini-risultato prima di passare oltre.",
+        "Alla fine: tre respiri tranquilli, per non restare nella sensazione di essere sempre spinta."
+      ],
+      breath: { inhale:4, exhale:6, minutes:3, cueL:"Energia — ma focalizzata", cueR:"Pausa breve, ma vera" },
+      goal: [
+        "10 minuti di focus su una sola cosa, poi 2 minuti di pausa.",
+        "Concludi un mini-risultato e poi fermati consapevolmente.",
+        "Un blocco di focus pulito — una sola cosa."
+      ]
+    },
+
+    "basso|basso": {
+      label: "Attivazione bassa",
+      title: "Riaccendersi con dolcezza",
+      summary: "Non hai bisogno di spingerti con forza. Mettiamo solo una piccola scintilla: corpo, respiro, un passo possibile.",
+      phase1: [
+        "Se puoi, alzati un momento o muoviti per 30 secondi. Spesso il corpo aiuta più velocemente dei pensieri.",
+        "Inspira un po’ più profondamente, poi lascia uscire l’aria lentamente. Senza fretta.",
+        "Senti le mani o il viso. Portare attenzione qui è già regolazione."
+      ],
+      phase2: [
+        "Qual è il passo più piccolo con cui puoi iniziare? Davvero piccolo.",
+        "Scegli un compito da 2 minuti. Cominciare spesso fa tornare un po’ di energia.",
+        "Non pensare “tutto”. Pensa “uno”."
+      ],
+      phase3: [
+        "Fai 2 minuti — poi fermati. Lascia pronto un rientro semplice.",
+        "Rimuovi un solo piccolo ostacolo: materiale pronto, file aperto, spazio più chiaro.",
+        "Alla fine: “Va bene così. Mi sono rimessa in movimento.”"
+      ],
+      breath: { inhale:4, exhale:4, minutes:2, cueL:"Molto semplice", cueR:"Molto gentile" },
+      goal: [
+        "2 minuti di azione + 1 minuto di pausa, per tre volte — è sufficiente.",
+        "Inizia un micro-compito e poi fermati. Conta anche questo.",
+        "Un piccolo punto di ordine — niente di più."
+      ]
+    },
+
+    "basso|medio": {
+      label: "Calma e stabilità",
+      title: "Stabile e lucida",
+      summary: "Sei in una buona zona. Manteniamo la calma e la trasformiamo in un progresso semplice e chiaro.",
+      phase1: [
+        "Sei respiri tranquilli. Lascia che l’espirazione diventi leggermente più lunga.",
+        "Rilassa la mandibola. Spesso lì si accumula tensione senza accorgercene.",
+        "Senti stabilità nel corpo. È una buona base per decidere."
+      ],
+      phase2: [
+        "Scegli una priorità e al massimo tre punti chiave.",
+        "Chiediti: cosa renderebbe oggi una buona giornata, in modo realistico?",
+        "Elimina una cosa non necessaria. Ti sentirai subito più leggera."
+      ],
+      phase3: [
+        "Fai subito il primo passo, anche solo per 2 minuti. Poi deciderai come proseguire.",
+        "15 minuti di focus, 3 minuti di pausa — semplice ed efficace.",
+        "Alla fine, riconosci ciò che hai fatto."
+      ],
+      breath: { inhale:4, exhale:6, minutes:3, cueL:"Stabilità", cueR:"Progresso semplice" },
+      goal: [
+        "Nei prossimi 10 minuti: fai il primo passo concreto della tua priorità.",
+        "Elimina una cosa superflua — così si crea spazio.",
+        "Metti in ordine tre punti e realizza il primo."
+      ]
+    },
+
+    "basso|alto": {
+      label: "Calma con molta energia",
+      title: "Slancio — senza fretta",
+      summary: "Questa è una bella energia. Le diamo un contenitore gentile, così domani ne avrai ancora.",
+      phase1: [
+        "Un respiro lungo e tranquillo. Poi puoi iniziare — senza correre.",
+        "Avere energia non significa irrigidirsi. Se vuoi, fai un breve check della mandibola.",
+        "Concediti 10 secondi prima di partire. Ti renderà più chiara."
+      ],
+      phase2: [
+        "Scegli una cosa che vuoi portare avanti in 20 minuti.",
+        "Metti un limite: fermati prima di svuotarti. È intelligenza, non rinuncia.",
+        "Scrivi: “Oggi scelgo di…”"
+      ],
+      phase3: [
+        "10–20 minuti di focus, poi una vera pausa.",
+        "Alla fine: tre respiri tranquilli, per non restare troppo “su”.",
+        "Riconosci una cosa che ha funzionato."
+      ],
+      breath: { inhale:4, exhale:6, minutes:2, cueL:"Bella energia", cueR:"Confine gentile" },
+      goal: [
+        "10 minuti di focus, poi pausa.",
+        "Concludi un mini-risultato e fermati prima di esaurirti.",
+        "Scegli una direzione e realizzala con chiarezza per 10 minuti."
+      ]
+    }
+  };
+
+  function getPlan(stress, energy){
+    const s = band(stress);
+    const e = band(energy);
+    return PREMIUM_MAP[`${s}|${e}`] || PREMIUM_MAP["medio|medio"];
+  }
+
+  function pick1(arr){
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
+  let soundOn = false;
+  const soundToggle = document.getElementById("soundToggle");
+  const soundSwitch = document.getElementById("soundSwitch");
+
+  function setSoundUI(){
+    soundSwitch.classList.toggle("on", soundOn);
+  }
+
+  soundToggle.addEventListener("click", () => {
+    soundOn = !soundOn;
+    setSoundUI();
+  });
+
+  setSoundUI();
+
+  function softBeep(){
+    if(!soundOn) return;
+    try{
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const o = ctx.createOscillator();
+      const g = ctx.createGain();
+      o.type = "sine";
+      o.frequency.value = 523.25;
+      g.gain.value = 0.0001;
+      o.connect(g);
+      g.connect(ctx.destination);
+      o.start();
+      g.gain.exponentialRampToValueAtTime(0.03, ctx.currentTime + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.18);
+      setTimeout(() => {
+        o.stop();
+        ctx.close();
+      }, 220);
+    }catch(e){}
+  }
+
+  const modeLinesBtn = document.getElementById("modeLinesBtn");
+  const modeCloudBtn = document.getElementById("modeCloudBtn");
+  const modePill = document.getElementById("modePill");
+  const linesWrap = document.getElementById("linesWrap");
+  const cloudWrap = document.getElementById("cloudWrap");
+
+  let breathMode = localStorage.getItem("panacea_breath_mode_it") || "lines";
+
+  function setModeUI(){
+    const isLines = breathMode === "lines";
+    modeLinesBtn.classList.toggle("active", isLines);
+    modeCloudBtn.classList.toggle("active", !isLines);
+    linesWrap.style.display = isLines ? "block" : "none";
+    cloudWrap.style.display = isLines ? "none" : "grid";
+    modePill.textContent = isLines ? "Linee" : "Nuvola";
+  }
+
+  modeLinesBtn.addEventListener("click", () => {
+    breathMode = "lines";
+    localStorage.setItem("panacea_breath_mode_it", breathMode);
+    setModeUI();
+  });
+
+  modeCloudBtn.addEventListener("click", () => {
+    breathMode = "cloud";
+    localStorage.setItem("panacea_breath_mode_it", breathMode);
+    setModeUI();
+  });
+
+  let breathInterval = null;
+  let breathRunning = false;
+  let plan = { inhale:4, exhale:6, minutes:3, cueL:"", cueR:"" };
+  let phase = "pronto";
+  let phaseRemaining = 0;
+  let totalRemaining = 0;
+  let totalStart = 0;
+
+  const breathStateEl = document.getElementById("breathState");
+  const breathTimerEl = document.getElementById("breathTimer");
+  const breathPlanEl  = document.getElementById("breathPlan");
+  const progressBarEl = document.getElementById("progressBar");
+  const cueLeft = document.getElementById("cueLeft");
+  const cueRight = document.getElementById("cueRight");
+
+  const inFill = document.getElementById("inFill");
+  const outFill = document.getElementById("outFill");
+  const inSec = document.getElementById("inSec");
+  const outSec = document.getElementById("outSec");
+  const linesHint = document.getElementById("linesHint");
+
+  const cloudFill = document.getElementById("cloudFill");
+  const cloudPhase = document.getElementById("cloudPhase");
+  const cloudCount = document.getElementById("cloudCount");
+  const cloudHint = document.getElementById("cloudHint");
+
+  function fmt(sec){
+    sec = Math.max(0, Math.floor(sec));
+    const m = String(Math.floor(sec / 60)).padStart(2, "0");
+    const s = String(sec % 60).padStart(2, "0");
+    return `${m}:${s}`;
+  }
+
+  function setBreathPlan(newPlan){
+    plan = {...newPlan};
+
+    cueLeft.textContent = plan.cueL || "Un’espirazione lunga favorisce la calma";
+    cueRight.textContent = plan.cueR || "Non forzare — lascia semplicemente accadere";
+
+    stopBreathing(true);
+
+    breathPlanEl.textContent = `Piano: Inspira ${plan.inhale}s · Espira ${plan.exhale}s · Durata ${plan.minutes} min`;
+    breathTimerEl.textContent = fmt(plan.minutes * 60);
+    progressBarEl.style.width = "0%";
+
+    inFill.style.width = "0%";
+    outFill.style.width = "0%";
+    inSec.textContent = "—";
+    outSec.textContent = "—";
+    linesHint.textContent = "Segui la barra: quando vedi “Inspira”, lasci entrare l’aria. Quando vedi “Espira”, la lasci uscire lentamente.";
+
+    cloudFill.style.height = "0%";
+    cloudPhase.textContent = "Pronto";
+    cloudCount.textContent = "—";
+    cloudHint.textContent = "Se vuoi, iniziamo insieme.";
+
+    breathStateEl.textContent = "Pronto";
+  }
+
+  function renderBreathUI(){
+    if(!breathRunning && phase === "pronto"){
+      breathStateEl.textContent = "Pronto";
+      breathTimerEl.textContent = fmt(plan.minutes * 60);
+      progressBarEl.style.width = "0%";
+
+      inFill.style.width = "0%";
+      outFill.style.width = "0%";
+      inSec.textContent = "—";
+      outSec.textContent = "—";
+
+      cloudFill.style.height = "0%";
+      cloudPhase.textContent = "Pronto";
+      cloudCount.textContent = "—";
+      cloudHint.textContent = "Se vuoi, iniziamo insieme.";
+      return;
     }
 
-    function updateImage(day){
-      dayImage.src = `./icons/${day}.png`;
-      dayImage.alt = `Immagine del giorno ${day}`;
+    if(phase === "finito"){
+      breathStateEl.textContent = "Finito ✅";
+      breathTimerEl.textContent = "00:00";
+      progressBarEl.style.width = "100%";
+
+      inFill.style.width = "0%";
+      outFill.style.width = "0%";
+      inSec.textContent = "✓";
+      outSec.textContent = "✓";
+
+      cloudFill.style.height = "0%";
+      cloudPhase.textContent = "Finito";
+      cloudCount.textContent = "✓";
+      cloudHint.textContent = "Molto bene. A volte bastano davvero pochi minuti.";
+      return;
     }
 
-    function renderLockedContent(){
-      const member = isMember();
+    const done = totalStart - totalRemaining;
+    const pctAll = totalStart > 0 ? Math.min(100, Math.max(0, (done / totalStart) * 100)) : 0;
+    progressBarEl.style.width = pctAll.toFixed(1) + "%";
+    breathTimerEl.textContent = fmt(totalRemaining);
 
-      tagNumber.textContent = String(currentDay);
-      updateImage(currentDay);
+    if(phase === "inspira"){
+      const p = 1 - (phaseRemaining / plan.inhale);
+      const sec = phaseRemaining;
 
-      elTitle.textContent = `Il giorno ${currentDay} non è ancora disponibile`;
-      elExplanation.textContent = "Questo giorno si sbloccherà automaticamente quando lo raggiungerai nel ritmo naturale del tuo percorso di 21 giorni.";
-      elImpuls.textContent = "Non serve fare tutto subito. Oggi conta solo il giorno che è realmente aperto per te.";
-      elReflection.textContent = "Che cosa mi aiuta oggi a restare nel passo presente, senza anticipare?";
+      breathStateEl.textContent = `Inspira (${sec}s)`;
+      inFill.style.width = (p * 100).toFixed(0) + "%";
+      outFill.style.width = "0%";
+      inSec.textContent = `${sec}s`;
+      outSec.textContent = "—";
+      linesHint.textContent = "Inspirazione: lascia entrare l’aria con calma — non c’è nulla da forzare.";
 
-      exerciseWrap.style.display = "none";
-      exerciseTitle.textContent = "Mini esercizio";
-      exerciseText.textContent = "—";
+      cloudPhase.textContent = "Inspira";
+      cloudCount.textContent = String(sec);
+      cloudHint.textContent = "Lascia entrare lentamente l’aria…";
+      cloudFill.style.height = (10 + p * 80).toFixed(0) + "%";
+    } else {
+      const p = 1 - (phaseRemaining / plan.exhale);
+      const sec = phaseRemaining;
 
-      premiumBlock.style.display = "none";
-      closingBox.style.display = "none";
-      currentVariant = null;
+      breathStateEl.textContent = `Espira (${sec}s)`;
+      outFill.style.width = (p * 100).toFixed(0) + "%";
+      inFill.style.width = "0%";
+      outSec.textContent = `${sec}s`;
+      inSec.textContent = "—";
+      linesHint.textContent = "Espirazione: lascia uscire lentamente l’aria — come un soffio morbido, senza fretta.";
 
-      if(member){
-        premiumBadge.textContent = "Stato: Membro ✅";
-        premiumTeaser.style.display = "none";
-        unlockBtnLink.style.display = "none";
-        memberBtn.textContent = "Area Membri";
-      } else {
-        premiumBadge.textContent = "Stato: Free";
-        premiumTeaser.style.display = "block";
-        unlockBtnLink.style.display = "";
-        memberBtn.textContent = "Vai all’Area Membri";
-      }
+      cloudPhase.textContent = "Espira";
+      cloudCount.textContent = String(sec);
+      cloudHint.textContent = "Lascia andare lentamente l’aria…";
+      cloudFill.style.height = (90 - p * 80).toFixed(0) + "%";
+    }
+  }
 
-      prevBtn.disabled = currentDay <= 1;
-      nextBtn.disabled = true;
-      nextBtn.textContent = "Non ancora disponibile 🔒";
+  function startBreathing(){
+    if(breathRunning) return;
 
-      completeBtn.disabled = true;
-      completeBtn.textContent = "Non ancora disponibile 🔒";
-
-      restartCycleBtn.style.display = "none";
-      cycleDoneBox.style.display = "none";
+    if(phase === "pronto" || phase === "finito"){
+      totalRemaining = plan.minutes * 60;
+      totalStart = totalRemaining;
+      phase = "inspira";
+      phaseRemaining = plan.inhale;
+      softBeep();
     }
 
-    function render(){
-      syncCurrentDayWithUnlocked();
+    breathRunning = true;
+    renderBreathUI();
 
-      const locked = isCurrentDayLocked();
-      const dayData = findDayObj(currentDay) || {};
-      const completed = isDayCompleted(currentDay);
-      const cycleCompleted = isEntireCycleCompleted();
-
-      if(locked){
-        updateProgressUI();
-        renderLockedContent();
+    breathInterval = setInterval(() => {
+      if(totalRemaining <= 0){
+        stopBreathing(false);
+        phase = "finito";
+        renderBreathUI();
         return;
       }
 
-      tagNumber.textContent = String(currentDay);
-      updateImage(currentDay);
-      renderFreeContent(dayData);
-      updateProgressUI();
+      totalRemaining -= 1;
+      phaseRemaining -= 1;
 
-      if(isMember()){
-        premiumBadge.textContent = "Stato: Membro ✅";
-        unlockBtnLink.style.display = "none";
-        memberBtn.textContent = "Area Membri";
-        premiumTeaser.style.display = "none";
-        premiumBlock.style.display = "block";
-        renderPremium(currentDay);
-      } else {
-        premiumBadge.textContent = "Stato: Free";
-        unlockBtnLink.style.display = "";
-        memberBtn.textContent = "Vai all’Area Membri";
-        premiumTeaser.style.display = "block";
-        premiumBlock.style.display = "none";
-        closingBox.style.display = "none";
-        currentVariant = null;
+      if(phaseRemaining <= 0){
+        phase = (phase === "inspira") ? "espira" : "inspira";
+        phaseRemaining = (phase === "inspira") ? plan.inhale : plan.exhale;
+        softBeep();
       }
 
-      prevBtn.disabled = currentDay <= 1;
+      renderBreathUI();
+    }, 1000);
+  }
 
-      if(currentDay >= TOTAL_DAYS){
-        nextBtn.disabled = true;
-        nextBtn.textContent = completed ? "Ultimo giorno ✓" : "Ultimo giorno";
-      } else if(currentDay + 1 > getUnlockedDay()){
-        nextBtn.disabled = true;
-        nextBtn.textContent = "Non ancora disponibile 🔒";
-      } else {
-        nextBtn.disabled = false;
-        nextBtn.textContent = "Avanti →";
+  function pauseBreathing(){
+    if(!breathRunning) return;
+    breathRunning = false;
+    if(breathInterval) clearInterval(breathInterval);
+    breathInterval = null;
+    renderBreathUI();
+  }
+
+  function stopBreathing(resetToReady){
+    if(breathInterval) clearInterval(breathInterval);
+    breathInterval = null;
+    breathRunning = false;
+
+    if(resetToReady){
+      phase = "pronto";
+      phaseRemaining = 0;
+      totalRemaining = 0;
+      totalStart = 0;
+    }
+  }
+
+  document.getElementById("breathStart").addEventListener("click", startBreathing);
+  document.getElementById("breathPause").addEventListener("click", pauseBreathing);
+  document.getElementById("breathReset").addEventListener("click", () => {
+    stopBreathing(true);
+    renderBreathUI();
+  });
+
+  const statePill = document.getElementById("statePill");
+  const mTitle = document.getElementById("mTitle");
+  const mSummary = document.getElementById("mSummary");
+  const mText1 = document.getElementById("mText1");
+  const mText2 = document.getElementById("mText2");
+  const mText3 = document.getElementById("mText3");
+  const goalText = document.getElementById("goalText");
+
+  function generateReset(){
+    syncSliderLabels();
+
+    const stress = Number(stressM.value);
+    const energy = Number(energyM.value);
+    const data = getPlan(stress, energy);
+
+    statePill.textContent = `Profilo: ${data.label}`;
+    mTitle.textContent = data.title;
+    mSummary.textContent = data.summary;
+
+    mText1.textContent = pick1(data.phase1);
+    mText2.textContent = pick1(data.phase2);
+    mText3.textContent = pick1(data.phase3);
+    goalText.textContent = pick1(data.goal || ["Concediti 10 minuti. Una sola cosa. Poi fermati consapevolmente."]);
+
+    setBreathPlan(data.breath);
+
+    try{
+      localStorage.setItem("panacea_last_profile_it", JSON.stringify({
+        stress,
+        energy,
+        label:data.label,
+        title:data.title,
+        ts: Date.now()
+      }));
+    } catch(e){}
+  }
+
+  document.getElementById("genM").addEventListener("click", generateReset);
+
+  syncLegacyKeysFromCanonical();
+  updateTargetNote();
+  setModeUI();
+  setAccessUI();
+  syncSliderLabels();
+
+  if(redirectToTargetIfNeeded()){
+    // redirect eseguito
+  } else if(isMember()){
+    try{
+      const last = JSON.parse(localStorage.getItem("panacea_last_profile_it") || "null");
+      if(last && last.stress && last.energy){
+        stressM.value = String(last.stress);
+        energyM.value = String(last.energy);
       }
-
-      if(completed){
-        completeBtn.disabled = true;
-        completeBtn.textContent = "Già completato ✓";
-      } else {
-        completeBtn.disabled = false;
-        completeBtn.textContent = "Segna il giorno come completato ✓";
-      }
-
-      if(cycleCompleted){
-        cycleDoneBox.style.display = "block";
-        restartCycleBtn.style.display = "inline-flex";
-      } else {
-        cycleDoneBox.style.display = "none";
-        restartCycleBtn.style.display = "none";
-      }
-    }
-
-    // ===== JSON LOADERS =====
-    async function loadFreeJSON(){
-      try{
-        const res = await fetch(JSON_URL, { cache: "no-store" });
-        if(!res.ok) throw new Error(`Free JSON fetch failed: ${res.status}`);
-        const json = await res.json();
-        dataDays = Array.isArray(json?.days) ? json.days : (Array.isArray(json) ? json : []);
-      } catch(error){
-        console.warn("Il JSON FREE di Sapere non è stato caricato:", error);
-        dataDays = [];
-      }
-    }
-
-    async function loadPremiumJSON(){
-      try{
-        const res = await fetch(PREMIUM_JSON_URL, { cache: "no-store" });
-        if(!res.ok) throw new Error(`Premium JSON fetch failed: ${res.status}`);
-        const json = await res.json();
-        premiumDays = Array.isArray(json?.days) ? json.days : (Array.isArray(json) ? json : []);
-      } catch(error){
-        console.warn("Il JSON PREMIUM di Sapere non è stato caricato:", error);
-        premiumDays = [];
-      }
-    }
-
-    async function loadJSON(){
-      await Promise.all([loadFreeJSON(), loadPremiumJSON()]);
-    }
-
-    // ===== LANGUAGE =====
-    function setLang(lang){
-      localStorage.setItem(LS_LANG, lang);
-      if(lang === "de"){
-        window.location.href = "./wissen.html";
-      } else {
-        btnIT.classList.add("active");
-        btnDE.classList.remove("active");
-      }
-    }
-
-    function initLang(){
-      const lang = (localStorage.getItem(LS_LANG) || "it").toLowerCase();
-      if(lang === "de"){
-        window.location.href = "./wissen.html";
-        return;
-      }
-      btnIT.classList.add("active");
-      btnDE.classList.remove("active");
-    }
-
-    // ===== EVENTS =====
-    function bindEvents(){
-      btnDE.addEventListener("click", () => setLang("de"));
-      btnIT.addEventListener("click", () => setLang("it"));
-
-      prevBtn.addEventListener("click", () => {
-        setStoredDay(currentDay - 1);
-      });
-
-      nextBtn.addEventListener("click", () => {
-        if(currentDay < TOTAL_DAYS && currentDay < getUnlockedDay()){
-          setStoredDay(currentDay + 1);
-        }
-      });
-
-      completeBtn.addEventListener("click", () => {
-        if(isCurrentDayLocked()) return;
-        markDayCompleted(currentDay);
-        render();
-      });
-
-      restartCycleBtn.addEventListener("click", () => {
-        restartCycle();
-      });
-
-      choiceBtns.forEach(btn => {
-        btn.addEventListener("click", () => {
-          if(!currentVariant) return;
-          renderSmartExercise(currentVariant, btn.dataset.choice);
-        });
-      });
-
-      applySmartBtn.addEventListener("click", () => {
-        gameResult.textContent = "Bene. Porta con te oggi esattamente questo piccolo passo: non di più, ma nemmeno di meno.";
-      });
-
-      finishBtn.addEventListener("click", () => {
-        if(!currentVariant) return;
-        closingBox.style.display = "block";
-        if(typeof closingBox.scrollIntoView === "function"){
-          closingBox.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      });
-
-      dayImage.addEventListener("error", () => {
-        dayImage.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(`
-          <svg xmlns="http://www.w3.org/2000/svg" width="800" height="500">
-            <defs>
-              <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#f6f1e6"/>
-                <stop offset="1" stop-color="#efe7d7"/>
-              </linearGradient>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#g)"/>
-            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
-              font-family="Arial" font-size="28" fill="#6b6b6b">
-              Immagine in arrivo (Giorno ${currentDay})
-            </text>
-          </svg>
-        `);
-        dayImage.alt = `Immagine segnaposto per il giorno ${currentDay}`;
-      });
-    }
-
-    // ===== INIT =====
-    async function init(){
-      ensureStartDate();
-      initLang();
-      bindEvents();
-      await loadJSON();
-
-      currentDay = getStoredDay();
-      localStorage.setItem(LS_DAY, String(currentDay));
-
-      updateProgressUI();
-      render();
-    }
-
-    init();
+    } catch(e){}
+    syncSliderLabels();
+    generateReset();
+  } else {
+    setBreathPlan({
+      inhale:4,
+      exhale:6,
+      minutes:3,
+      cueL:"Un’espirazione lunga favorisce la calma",
+      cueR:"Non forzare — lascia semplicemente accadere"
+    });
+    renderBreathUI();
+  }
   </script>
 
-  <script>
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker.register("./service-worker.js")
-          .then(reg => console.log("Service Worker registered", reg))
-          .catch(err => console.log("Service Worker failed", err));
-      });
-    }
-  </script>
 </body>
 </html>
