@@ -476,6 +476,7 @@
 
     .memberBtn{
       display:block;
+      width:100%;
       text-align:center;
       text-decoration:none;
       margin-top:12px;
@@ -487,6 +488,7 @@
       background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
       border:1px solid rgba(200,162,74,.35);
       box-shadow: 0 0 16px rgba(200,162,74,.20);
+      cursor:pointer;
     }
 
     .note{
@@ -578,7 +580,6 @@
 
         <div class="grid" style="margin-top:12px;">
 
-          <!-- BLOCK 1 -->
           <div class="block" data-block="1">
             <div class="blockHead">
               <div class="blockTitle">Block 1 · Ankommen (Atmung)</div>
@@ -610,7 +611,6 @@
             </div>
           </div>
 
-          <!-- BLOCK 2 -->
           <div class="block" data-block="2">
             <div class="blockHead">
               <div class="blockTitle">Block 2 · Körper (sanfte Aktivierung)</div>
@@ -642,7 +642,6 @@
             </div>
           </div>
 
-          <!-- BLOCK 3 -->
           <div class="block" data-block="3">
             <div class="blockHead">
               <div class="blockTitle">Block 3 · Kopf (Klarheit)</div>
@@ -674,7 +673,6 @@
             </div>
           </div>
 
-          <!-- BLOCK 4 -->
           <div class="block" data-block="4">
             <div class="blockHead">
               <div class="blockTitle">Block 4 · Integration (Abschluss)</div>
@@ -714,7 +712,6 @@
 
         <div class="grid" style="margin-top:12px;">
 
-          <!-- SPIEL 1 -->
           <div class="toolCard">
             <div class="toolHead">
               <div class="toolTitle">Spiel 1 · Wortfokus</div>
@@ -737,7 +734,6 @@
             </div>
           </div>
 
-          <!-- SPIEL 2 -->
           <div class="toolCard">
             <div class="toolHead">
               <div class="toolTitle">Spiel 2 · 5-4-3-2-1 Orientierung</div>
@@ -766,7 +762,6 @@
             </div>
           </div>
 
-          <!-- SPIEL 3 -->
           <div class="toolCard">
             <div class="toolHead">
               <div class="toolTitle">Spiel 3 · Reaktionsfokus</div>
@@ -797,7 +792,6 @@
 
         <div class="grid" style="margin-top:12px;">
 
-          <!-- KURZ 1 -->
           <div class="toolCard" data-short="1">
             <div class="toolHead">
               <div class="toolTitle">Kurz-Übung 1 · Längere Ausatmung</div>
@@ -820,7 +814,6 @@
             </div>
           </div>
 
-          <!-- KURZ 2 -->
           <div class="toolCard" data-short="2">
             <div class="toolHead">
               <div class="toolTitle">Kurz-Übung 2 · Muskel lösen</div>
@@ -843,7 +836,6 @@
             </div>
           </div>
 
-          <!-- KURZ 3 -->
           <div class="toolCard" data-short="3">
             <div class="toolHead">
               <div class="toolTitle">Kurz-Übung 3 · Mikro-Bewegung</div>
@@ -873,24 +865,33 @@
           <h3 id="premiumTitle">Mitgliederbereich</h3>
 
           <div id="premiumFree">
-  <ul>
-    <li><b>10 interaktive Fokus-Spiele</b> statt nur 3</li>
-    <li><b>10 kurze wissenschaftlich vorsichtig formulierte Übungen</b> statt nur 3</li>
-    <li><b>Zusatzmodule zu Schlaf, akutem Stress, Regeneration und Konzentration</b></li>
-    <li><b>Geführte Audios, Meditationen und Bonus-Videos</b></li>
-    <li><b>Ruhigere Premium-Ansicht</b> mit erweitertem Alltagstraining</li>
-  </ul>
-  <a class="memberBtn" href="#" id="premiumAccessBtn">Premium Übungen öffnen →</a>
-  <div class="note">Nach Freischaltung kann Premium automatisch sichtbar werden.</div>
-</div>
+            <ul>
+              <li><b>10 interaktive Fokus-Spiele</b> statt nur 3</li>
+              <li><b>10 kurze wissenschaftlich vorsichtig formulierte Übungen</b> statt nur 3</li>
+              <li><b>Zusatzmodule zu Schlaf, akutem Stress, Regeneration und Konzentration</b></li>
+              <li><b>Geführte Audios, Meditationen und Bonus-Videos</b></li>
+              <li><b>Ruhigere Premium-Ansicht</b> mit erweitertem Alltagstraining</li>
+            </ul>
+
+            <button class="memberBtn" id="premiumAccessBtn" type="button">
+              Premium Übungen öffnen →
+            </button>
+
+            <div class="note">Nach Freischaltung kann Premium automatisch sichtbar werden.</div>
+          </div>
 
           <div id="premiumOn" style="display:none;">
             <ul>
               <li><b>Premium aktiv</b> ✅</li>
-              <li>Hier kannst du später 10 Spiele, 10 Übungen, Audio, Video und Schlaf-/Stress-Module einbauen.</li>
+              <li>Du kannst jetzt direkt in die separate Premium-Seite wechseln.</li>
               <li>Sinnvolle Premium-Kategorien: <b>Schlaf</b>, <b>Akutstress</b>, <b>Fokus</b>, <b>Bewegung</b>, <b>Abend-Reset</b>.</li>
               <li>Bild-Platzhalter: <b>icons/1b.png, 2b.png, 3b.png …</b></li>
             </ul>
+
+            <button class="memberBtn" id="premiumOpenDirectBtn" type="button">
+              Zu Premium Übungen →
+            </button>
+
             <div class="note">Diese Box wird sichtbar, wenn <b>panacea_premium=true</b> gesetzt ist.</div>
           </div>
         </div>
@@ -904,9 +905,6 @@
   </div>
 
   <script>
-    // =========================================================
-    // Language switch (DE/IT)
-    // =========================================================
     (function(){
       const KEY = "lang";
 
@@ -936,6 +934,9 @@
 
           "uebungen.html": "uebungenIT.html",
           "uebungenIT.html": "uebungen.html",
+
+          "uebungen-premium.html": "uebungen-premiumIT.html",
+          "uebungen-premiumIT.html": "uebungen-premium.html"
         };
 
         if(targetLang === "it") return map[path] || path.replace(".html","IT.html");
@@ -966,6 +967,7 @@
         if(twin !== current) location.replace(twin);
         return;
       }
+
       if(stored === "de" && isITpage){
         const twin = getTwinUrl("de");
         if(twin !== current) location.replace(twin);
@@ -977,14 +979,13 @@
   </script>
 
   <script>
-    // =========================================================
-    // Premium visibility
-    // =========================================================
     (function(){
       const PREMIUM_FLAG = "panacea_premium";
-      const isPremium = (localStorage.getItem(PREMIUM_FLAG) === "true");
+      const isPremium = localStorage.getItem(PREMIUM_FLAG) === "true";
+
       const free = document.getElementById("premiumFree");
       const on = document.getElementById("premiumOn");
+
       if(isPremium && free && on){
         free.style.display = "none";
         on.style.display = "block";
@@ -993,9 +994,6 @@
   </script>
 
   <script>
-    // =========================================================
-    // Checklist save + progress for reset blocks
-    // =========================================================
     (function(){
       const KEY = "panacea_uebungen_checks_v2";
 
@@ -1041,9 +1039,6 @@
   </script>
 
   <script>
-    // =========================================================
-    // Timers for reset blocks
-    // =========================================================
     (function(){
       const timers = {};
 
@@ -1090,7 +1085,9 @@
         if(img){
           img.addEventListener("error", ()=>{ img.style.display="none"; });
           img.addEventListener("load", ()=>{ img.style.display="block"; });
-          img.style.display = "block";
+          if(img.complete && img.naturalWidth > 0){
+            img.style.display = "block";
+          }
         }
 
         btnStart.addEventListener("click", () => {
@@ -1110,6 +1107,7 @@
 
           t.interval = setInterval(() => {
             if(!t.running || t.paused) return;
+
             t.left -= 1;
             if(t.left < 0) t.left = 0;
             setPillTime(blockN, t.left);
@@ -1151,9 +1149,6 @@
   </script>
 
   <script>
-    // =========================================================
-    // Short exercise timers
-    // =========================================================
     (function(){
       const timers = {};
 
@@ -1211,6 +1206,7 @@
 
           t.interval = setInterval(() => {
             if(!t.running || t.paused) return;
+
             t.left -= 1;
             if(t.left < 0) t.left = 0;
             setPillTime(n, t.left);
@@ -1248,9 +1244,6 @@
   </script>
 
   <script>
-    // =========================================================
-    // Word focus game
-    // =========================================================
     (function(){
       const grid = document.getElementById("wordGameGrid");
       const result = document.getElementById("wordResult");
@@ -1264,14 +1257,12 @@
       const distractors = ["Chaos", "Alarm", "Hektik", "Druck", "Reiz", "Tempo", "Lärm", "Eile"];
 
       let score = 0;
-      let round = 0;
 
       function shuffle(arr){
         return [...arr].sort(() => Math.random() - 0.5);
       }
 
       function renderRound(){
-        round++;
         score = 0;
         scoreEl.textContent = score;
         grid.innerHTML = "";
@@ -1300,7 +1291,7 @@
               result.textContent = score >= 4
                 ? "Sehr gut – du hast die ruhigen Fokus-Wörter erkannt."
                 : "Gut – weiter auswählen.";
-            }else{
+            } else {
               btn.textContent = "– " + word;
               result.textContent = "Nicht schlimm. Ziel ist Fokus, nicht Perfektion.";
             }
@@ -1314,7 +1305,6 @@
 
       function resetGame(){
         score = 0;
-        round = 0;
         scoreEl.textContent = "0";
         grid.innerHTML = "";
         result.textContent = "Bereit für die erste Runde.";
@@ -1326,9 +1316,6 @@
   </script>
 
   <script>
-    // =========================================================
-    // Grounding checklist game
-    // =========================================================
     (function(){
       const checks = Array.from(document.querySelectorAll('#groundingList input[type="checkbox"]'));
       const scoreEl = document.getElementById("scoreGround");
@@ -1341,13 +1328,16 @@
       function update(){
         const done = checks.filter(c => c.checked).length;
         scoreEl.textContent = `${done}/5`;
-        checks.forEach(c => c.closest(".item")?.classList.toggle("done", c.checked));
+
+        checks.forEach(c => {
+          c.closest(".item")?.classList.toggle("done", c.checked);
+        });
 
         if(done === 0){
           result.textContent = "Nimm dir Zeit. Es gibt hier kein „richtig“ oder „falsch“.";
-        }else if(done < 5){
+        } else if(done < 5){
           result.textContent = "Gut. Bleibe bei neutralen Sinneseindrücken und arbeite Schritt für Schritt.";
-        }else{
+        } else {
           result.textContent = "Fertig. Du hast deine Aufmerksamkeit erfolgreich geordnet.";
         }
       }
@@ -1370,9 +1360,6 @@
   </script>
 
   <script>
-    // =========================================================
-    // Reaction focus game
-    // =========================================================
     (function(){
       const box = document.getElementById("reactionBox");
       const score = document.getElementById("reactionScore");
@@ -1396,8 +1383,12 @@
         waiting = false;
         ready = false;
         startedAt = 0;
-        if(timeoutId) clearTimeout(timeoutId);
-        timeoutId = null;
+
+        if(timeoutId){
+          clearTimeout(timeoutId);
+          timeoutId = null;
+        }
+
         score.textContent = "–";
         box.textContent = "Tippe auf „Start“.";
         resetVisual();
@@ -1407,6 +1398,7 @@
         resetGame();
         waiting = true;
         box.textContent = "Warte … nicht zu früh tippen.";
+
         const delay = 1500 + Math.floor(Math.random() * 2500);
 
         timeoutId = setTimeout(() => {
@@ -1443,26 +1435,36 @@
       resetGame();
     })();
   </script>
+
   <script>
-  (function(){
-    const btn = document.getElementById("premiumAccessBtn");
-    if(!btn) return;
-
-    btn.addEventListener("click", function(e){
-      e.preventDefault();
-
-      const isMember =
-        localStorage.getItem("panacea_premium") === "true" ||
-        localStorage.getItem("premiumUnlocked") === "true" ||
-        localStorage.getItem("mitglied") === "true";
-
-      if(isMember){
-        window.location.href = "uebungen-premium.html";
-      } else {
-        window.location.href = "mitglieder.html";
+    (function(){
+      function isPremiumUser(){
+        return (
+          localStorage.getItem("panacea_premium") === "true" ||
+          localStorage.getItem("premiumUnlocked") === "true" ||
+          localStorage.getItem("mitglied") === "true"
+        );
       }
-    });
-  })();
-</script>
+
+      function openPremiumArea(){
+        if(isPremiumUser()){
+          window.location.href = "uebungen-premium.html";
+        } else {
+          window.location.href = "mitglieder.html";
+        }
+      }
+
+      const btn = document.getElementById("premiumAccessBtn");
+      const btnDirect = document.getElementById("premiumOpenDirectBtn");
+
+      if(btn){
+        btn.addEventListener("click", openPremiumArea);
+      }
+
+      if(btnDirect){
+        btnDirect.addEventListener("click", openPremiumArea);
+      }
+    })();
+  </script>
 </body>
 </html>
