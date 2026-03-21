@@ -7,31 +7,6 @@
   <link rel="icon" href="./icons/icon-192.png" />
 
   <style>
-    .premium-box{
-  margin-top:40px;
-  padding:25px;
-  border-radius:20px;
-  background: linear-gradient(135deg, #f8f3e8, #efe4c9);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  text-align:center;
-}
-
-.premium-box h3{
-  color:#c8a24a;
-  margin-bottom:10px;
-}
-
-.premium-box button{
-  margin-top:15px;
-  padding:12px 20px;
-  border:none;
-  border-radius:12px;
-  background:#c8a24a;
-  color:white;
-  font-weight:600;
-  cursor:pointer;
-  font-size:16px;
-}
     :root{
       --bg1:#f6f1e6;
       --bg2:#efe7d7;
@@ -505,6 +480,7 @@
 
     .memberBtn{
       display:block;
+      width:100%;
       text-align:center;
       text-decoration:none;
       margin-top:12px;
@@ -516,6 +492,7 @@
       background: radial-gradient(circle at 20% 10%, #fff6d6, #e8d28a);
       border:1px solid rgba(200,162,74,.35);
       box-shadow: 0 0 16px rgba(200,162,74,.20);
+      cursor:pointer;
     }
 
     .note{
@@ -923,8 +900,8 @@
               <li><b>Geführte Audios, Meditationen und Bonus-Videos</b></li>
               <li><b>Ruhigere Premium-Ansicht</b> mit erweitertem Alltagstraining</li>
             </ul>
-           <a class="memberBtn" href="uebungen-premium.html">Zum Premium-Bereich →</a>
-            <div class="note">Nach Freischaltung wird der Premium-Bereich direkt in dieser Seite sichtbar.</div>
+            <button class="memberBtn" type="button" onclick="checkPremium()">Zu Premium Übungen →</button>
+            <div class="note">Wenn Premium aktiv ist, öffnet sich direkt der Premium-Bereich. Sonst geht es zur Mitgliederseite.</div>
           </div>
 
           <div id="premiumOn" style="display:none;">
@@ -933,201 +910,9 @@
               <li>Zusätzliche Übungen und Fokus-Tools sind jetzt freigeschaltet.</li>
               <li>Bereiche: <b>Schlaf</b>, <b>Akutstress</b>, <b>Fokus</b>, <b>Bewegung</b>, <b>Abend-Reset</b>.</li>
             </ul>
-            <div class="note">Die goldenen Premium-Inhalte wurden unten geöffnet.</div>
+            <button class="memberBtn" type="button" onclick="window.location.href='uebungen-premium.html'">Premium jetzt öffnen →</button>
+            <div class="note">Dein Premium-Bereich ist freigeschaltet.</div>
           </div>
-        </div>
-
-        <div id="premiumContent" style="display:none; margin-top:14px;">
-
-          <div class="divider"></div>
-
-          <div class="premiumSectionTitle">Premium · Weitere Fokus-Spiele</div>
-          <p class="sectionLead">Für Mitglieder: zusätzliche Übungen zur Aufmerksamkeitslenkung, Impulskontrolle und mentalen Entlastung.</p>
-
-          <div class="grid" style="margin-top:12px;">
-            <div class="premiumCard">
-              <div class="premiumHead">
-                <div class="premiumCardTitle">Premium 1 · Farb-Fokus</div>
-                <div class="premiumMeta"><span class="premiumBadge">Premium</span></div>
-              </div>
-              <div class="premiumBody">
-                <p class="miniText">Finde im Raum drei Dinge in derselben Farbe. Ziel: visuelle Aufmerksamkeit bündeln.</p>
-              </div>
-            </div>
-
-            <div class="premiumCard">
-              <div class="premiumHead">
-                <div class="premiumCardTitle">Premium 2 · Zahlen-Ruhe</div>
-                <div class="premiumMeta"><span class="premiumBadge">Premium</span></div>
-              </div>
-              <div class="premiumBody">
-                <p class="miniText">Zähle langsam rückwärts in 3er-Schritten. Ziel: Grübelschleifen kurz unterbrechen.</p>
-              </div>
-            </div>
-
-            <div class="premiumCard">
-              <div class="premiumHead">
-                <div class="premiumCardTitle">Premium 3 · Kategorien-Spiel</div>
-                <div class="premiumMeta"><span class="premiumBadge">Premium</span></div>
-              </div>
-              <div class="premiumBody">
-                <p class="miniText">Nenne 5 ruhige Orte, 5 sichere Tätigkeiten oder 5 stärkende Routinen.</p>
-              </div>
-            </div>
-
-            <div class="premiumCard">
-              <div class="premiumHead">
-                <div class="premiumCardTitle">Premium 4 · Tempo-Wechsel</div>
-                <div class="premiumMeta"><span class="premiumBadge">Premium</span></div>
-              </div>
-              <div class="premiumBody">
-                <p class="miniText">30 Sekunden langsam gehen, 15 Sekunden normal, dann wieder langsam. Ziel: bewusste Steuerung.</p>
-              </div>
-            </div>
-
-            <div class="premiumCard">
-              <div class="premiumHead">
-                <div class="premiumCardTitle">Premium 5 · Geräusch-Fokus</div>
-                <div class="premiumMeta"><span class="premiumBadge">Premium</span></div>
-              </div>
-              <div class="premiumBody">
-                <p class="miniText">Wähle ein neutrales Geräusch aus der Umgebung und bleibe 20 Sekunden nur dabei.</p>
-              </div>
-            </div>
-
-            <div class="premiumCard">
-              <div class="premiumHead">
-                <div class="premiumCardTitle">Premium 6 · Reiz-Reduktion</div>
-                <div class="premiumMeta"><span class="premiumBadge">Premium</span></div>
-              </div>
-              <div class="premiumBody">
-                <p class="miniText">Schließe für einen Moment unnötige Tabs, Reize oder Benachrichtigungen. Ziel: kognitive Entlastung.</p>
-              </div>
-            </div>
-
-            <div class="premiumCard">
-              <div class="premiumHead">
-                <div class="premiumCardTitle">Premium 7 · Blick-Anker</div>
-                <div class="premiumMeta"><span class="premiumBadge">Premium</span></div>
-              </div>
-              <div class="premiumBody">
-                <p class="miniText">Fixiere einen ruhigen Punkt im Raum und kombiniere dies mit langsamer Atmung.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="divider"></div>
-
-          <div class="premiumSectionTitle">Premium · Weitere Kurz-Übungen</div>
-          <p class="sectionLead">Zusätzliche Mini-Übungen für Stress, Abendruhe, Regeneration, Konzentration und Selbstberuhigung.</p>
-
-          <div class="grid" style="margin-top:12px;">
-            <div class="premiumCard">
-              <div class="premiumHead">
-                <div class="premiumCardTitle">Premium Übung 4 · Abend-Reset</div>
-                <div class="premiumMeta"><span class="premiumBadge">2 Min.</span></div>
-              </div>
-              <div class="premiumBody">
-                <p class="miniText">Licht reduzieren, Schultern lösen, 5 langsame Ausatmungen. Ziel: Übergang in Ruhe.</p>
-              </div>
-            </div>
-
-            <div class="premiumCard">
-              <div class="premiumHead">
-                <div class="premiumCardTitle">Premium Übung 5 · Akutstress kurz abfangen</div>
-                <div class="premiumMeta"><span class="premiumBadge">90 Sek.</span></div>
-              </div>
-              <div class="premiumBody">
-                <p class="miniText">Stehen bleiben, Boden spüren, 1 langen Ausatemzug, 3 Dinge sehen, 1 nächsten Schritt wählen.</p>
-              </div>
-            </div>
-
-            <div class="premiumCard">
-              <div class="premiumHead">
-                <div class="premiumCardTitle">Premium Übung 6 · Schulter-Nacken weich</div>
-                <div class="premiumMeta"><span class="premiumBadge">2 Min.</span></div>
-              </div>
-              <div class="premiumBody">
-                <p class="miniText">Kleine Kreise, sanftes Lösen, kein Ziehen. Für typische Bildschirm-Anspannung.</p>
-              </div>
-            </div>
-
-            <div class="premiumCard">
-              <div class="premiumHead">
-                <div class="premiumCardTitle">Premium Übung 7 · Konzentrationsstart</div>
-                <div class="premiumMeta"><span class="premiumBadge">2 Min.</span></div>
-              </div>
-              <div class="premiumBody">
-                <p class="miniText">Arbeitsplatz ordnen, 3 bewusste Atemzüge, nur 1 Aufgabe definieren.</p>
-              </div>
-            </div>
-
-            <div class="premiumCard">
-              <div class="premiumHead">
-                <div class="premiumCardTitle">Premium Übung 8 · Hände beruhigen</div>
-                <div class="premiumMeta"><span class="premiumBadge">1 Min.</span></div>
-              </div>
-              <div class="premiumBody">
-                <p class="miniText">Handflächen aneinanderlegen, Druck leicht wahrnehmen, langsam lösen.</p>
-              </div>
-            </div>
-
-            <div class="premiumCard">
-              <div class="premiumHead">
-                <div class="premiumCardTitle">Premium Übung 9 · Morgen-Aktivierung</div>
-                <div class="premiumMeta"><span class="premiumBadge">2–3 Min.</span></div>
-              </div>
-              <div class="premiumBody">
-                <p class="miniText">Aufrichten, Arme heben, 30 Sekunden gehen, Blick öffnen, Tagesstart bewusst setzen.</p>
-              </div>
-            </div>
-
-            <div class="premiumCard">
-              <div class="premiumHead">
-                <div class="premiumCardTitle">Premium Übung 10 · Mini-Regeneration</div>
-                <div class="premiumMeta"><span class="premiumBadge">2 Min.</span></div>
-              </div>
-              <div class="premiumBody">
-                <p class="miniText">Für zwischendurch: kurze Pause, Ausatmung verlängern, Muskeltonus lösen, Fokus neu sammeln.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="divider"></div>
-
-          <div class="premiumSectionTitle">Premium · Audio, Video & Module</div>
-          <div class="grid" style="margin-top:12px;">
-            <div class="premiumCard">
-              <div class="premiumHead">
-                <div class="premiumCardTitle">Audio-Module</div>
-                <div class="premiumMeta"><span class="premiumBadge">Premium</span></div>
-              </div>
-              <div class="premiumBody">
-                <p class="miniText">Platz für kurze geführte Audios: Atmung, Abendruhe, Reset bei Stress, Fokus vor Arbeit.</p>
-              </div>
-            </div>
-
-            <div class="premiumCard">
-              <div class="premiumHead">
-                <div class="premiumCardTitle">Video-Module</div>
-                <div class="premiumMeta"><span class="premiumBadge">Premium</span></div>
-              </div>
-              <div class="premiumBody">
-                <p class="miniText">Platz für kleine Demonstrations-Videos: Haltung, Bewegung, Atmung, kurze Regenerationsroutinen.</p>
-              </div>
-            </div>
-
-            <div class="premiumCard">
-              <div class="premiumHead">
-                <div class="premiumCardTitle">Spezialbereiche</div>
-                <div class="premiumMeta"><span class="premiumBadge">Premium</span></div>
-              </div>
-              <div class="premiumBody">
-                <p class="miniText">Sinnvolle Kategorien: Schlaf, Akutstress, Konzentration, Abend-Reset, Nervensystem-Beruhigung.</p>
-              </div>
-            </div>
-          </div>
-
         </div>
 
         <div class="footerNote">
@@ -1137,6 +922,16 @@
       </div>
     </div>
   </div>
+
+  <script>
+    function checkPremium(){
+      if(localStorage.getItem("panacea_premium") === "true"){
+        window.location.href = "uebungen-premium.html";
+      } else {
+        window.location.href = "mitglieder.html";
+      }
+    }
+  </script>
 
   <script>
     (function(){
@@ -1163,6 +958,8 @@
           "mitgliederIT.html": "mitglieder.html",
           "uebungen.html": "uebungenIT.html",
           "uebungenIT.html": "uebungen.html",
+          "uebungen-premium.html": "uebungen-premiumIT.html",
+          "uebungen-premiumIT.html": "uebungen-premium.html"
         };
 
         if(targetLang === "it") return map[path] || path.replace(".html","IT.html");
@@ -1209,12 +1006,10 @@
       const isPremium = (localStorage.getItem(PREMIUM_FLAG) === "true");
       const free = document.getElementById("premiumFree");
       const on = document.getElementById("premiumOn");
-      const content = document.getElementById("premiumContent");
 
       if(isPremium){
         if(free) free.style.display = "none";
         if(on) on.style.display = "block";
-        if(content) content.style.display = "block";
       }
     })();
   </script>
@@ -1479,14 +1274,12 @@
       const distractors = ["Chaos", "Alarm", "Hektik", "Druck", "Reiz", "Tempo", "Lärm", "Eile"];
 
       let score = 0;
-      let round = 0;
 
       function shuffle(arr){
         return [...arr].sort(() => Math.random() - 0.5);
       }
 
       function renderRound(){
-        round++;
         score = 0;
         scoreEl.textContent = score;
         grid.innerHTML = "";
@@ -1529,7 +1322,6 @@
 
       function resetGame(){
         score = 0;
-        round = 0;
         scoreEl.textContent = "0";
         grid.innerHTML = "";
         result.textContent = "Bereit für die erste Runde.";
@@ -1652,20 +1444,5 @@
       resetGame();
     })();
   </script>
-  <div class="premium-box">
-  <h3>Premium Übungen</h3>
-  <p>Vertiefe deine Übungen mit interaktiven Spielen, wissenschaftlichen Übungen und Audio-Guides.</p>
-  <button onclick="checkPremium()">Zu Premium Übungen</button>
-</div>
-
-<script>
-function checkPremium(){
-  if(localStorage.getItem("panacea_premium") === "true"){
-    window.location.href = "uebungen-premium.html";
-  } else {
-    window.location.href = "mitglieder.html";
-  }
-}
-</script>
 </body>
 </html>
