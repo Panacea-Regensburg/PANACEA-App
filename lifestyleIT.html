@@ -891,13 +891,13 @@
         <div class="badge">LS</div>
         <div>
           <h1>Lifestyle Reset</h1>
-          <p>Il tuo percorso di 21 giorni verso più stabilità, energia e salutogenesi concreta nella vita di ogni giorno.</p>
+          <p>Un percorso di 21 giorni per ritrovare stabilità, energia e una forma di equilibrio capace di accompagnarti davvero nella vita di ogni giorno.</p>
         </div>
       </div>
 
       <div class="progressBox">
         <div class="progressTop">
-          <div class="progressText">Il tuo percorso</div>
+          <div class="progressText">Il tuo percorso di 21 giorni</div>
           <div class="progressCount"><span id="progressCount">0</span> / 21 giorni</div>
         </div>
         <div class="progressDots" id="progressDots"></div>
@@ -916,47 +916,48 @@
 
         <div class="softBox">
           <h2 class="dayTitle" id="title">—</h2>
-          <div class="label">Contesto</div>
+          <div class="label">Per comprendere</div>
           <p class="text" id="explanation">—</p>
         </div>
 
         <div class="divider"></div>
 
         <div class="softBox">
-          <div class="label">Impulso centrale</div>
+          <div class="label">Impulso del giorno</div>
           <p class="impuls" id="impuls">—</p>
         </div>
 
         <div class="divider"></div>
 
         <div class="softBox">
-          <div class="label">Autoriflessione</div>
+          <div class="label">Spazio di riflessione</div>
           <p class="text" id="reflection">—</p>
         </div>
 
         <div id="exerciseWrap" style="display:none;">
           <div class="divider"></div>
           <div class="softBox">
-            <div class="label" id="exerciseTitle">Mini esercizio</div>
+            <div class="label" id="exerciseTitle">Piccolo esercizio</div>
             <p class="text" id="exerciseText">—</p>
           </div>
         </div>
 
         <div class="navRow">
-          <button id="prevBtn" type="button">← Indietro</button>
-          <button class="primary" id="nextBtn" type="button">Avanti →</button>
+          <button id="prevBtn" type="button">← Torna</button>
+          <button class="primary" id="nextBtn" type="button">Continua →</button>
         </div>
 
         <div class="navRow" style="margin-top:10px;">
-          <button id="completeBtn" type="button">Segna il giorno come completato ✓</button>
+          <button id="completeBtn" type="button">Concludi il giorno ✓</button>
           <button id="restartCycleBtn" type="button" style="display:none;">Inizia un nuovo ciclo di 21 giorni ↺</button>
         </div>
 
         <div class="cycleDoneBox" id="cycleDoneBox">
           <h4>21 giorni completati ✨</h4>
           <p>
-            Hai concluso questo ciclo. Ora puoi iniziare un nuovo percorso di 21 giorni
-            e vivere nuovamente i contenuti con un ritmo nuovo e più profondo.
+            Hai concluso questo ciclo. Non è una fine, ma un nuovo punto di partenza.
+            Se lo desideri, puoi iniziare un nuovo percorso di 21 giorni e ritrovare gli stessi contenuti
+            con uno sguardo diverso, più profondo e ancora più tuo.
           </p>
         </div>
 
@@ -967,18 +968,19 @@
             <div>
               <h3>Area Membri – Lifestyle Deluxe</h3>
               <p>
-                Una versione più profonda del tuo impulso quotidiano: con più significato,
-                più integrazione e un accompagnamento premium caldo, elegante e concreto.
+                Una versione più profonda e più ricca del tuo impulso quotidiano:
+                con più comprensione, più integrazione e un accompagnamento premium
+                pensato per sostenerti con presenza, eleganza e concretezza.
               </p>
             </div>
             <div class="premiumBadge" id="premiumBadge">Stato: Free</div>
           </div>
 
           <ul class="premiumList">
-            <li><b>Approfondimento del tema</b> con una lettura più chiara e vicina alla vita reale</li>
+            <li><b>Approfondimento del tema</b> con una lettura più chiara, più morbida e più vicina alla vita reale</li>
             <li><b>3 varianti premium</b> in una rotazione dinamica di 21 giorni</li>
             <li><b>Esercizio intelligente</b> con focus su corpo, pensiero o azione</li>
-            <li><b>Integrazione finale</b> per portare davvero il contenuto nella tua quotidianità</li>
+            <li><b>Integrazione finale</b> per portare il contenuto nel quotidiano in modo reale e sostenibile</li>
           </ul>
 
           <div class="premiumActions">
@@ -987,7 +989,7 @@
           </div>
 
           <div class="smallNote">
-            Nota: dopo lo sblocco, la tua area premium apparirà automaticamente direttamente qui.
+            Nota: dopo lo sblocco, la tua area premium apparirà automaticamente qui, all’interno del tuo percorso.
           </div>
         </div>
 
@@ -1042,11 +1044,11 @@
             </div>
 
             <div class="smartOutput" id="smartOutput">
-              Scegli un’area. Riceverai subito un piccolo passo intelligente e concreto da applicare.
+              Scegli un’area. Riceverai subito un piccolo passo intelligente, delicato e concreto da portare con te oggi.
             </div>
 
             <div class="autoHint" id="autoHint">
-              Suggerimento automatico: il focus di oggi è già stato preselezionato per te.
+              Suggerimento automatico: il focus di oggi è già stato selezionato per te.
             </div>
 
             <div class="gameFooter">
@@ -1061,7 +1063,7 @@
           </div>
 
           <div class="closing" id="closingBox">
-            <h4>Per concludere</h4>
+            <h4>Prima di chiudere la giornata</h4>
             <p id="closingText">…</p>
           </div>
         </div>
@@ -1488,12 +1490,12 @@
     const basePractice = practice?.instruction || "";
 
     if(choice === "body"){
-      return exerciseText || basePractice || nervous || "Ascolta il tuo corpo e scegli oggi un piccolo gesto che possa regolarlo e sostenerlo.";
+      return exerciseText || basePractice || nervous || "Porta l’attenzione al tuo corpo e scegli un gesto piccolo, ma regolante e gentile verso te stesso.";
     }
     if(choice === "mind"){
-      return journal || nervous || "Scegli oggi un pensiero più chiaro e più gentile, capace di darti orientamento.";
+      return journal || nervous || "Scegli oggi un pensiero più calmo, più chiaro, capace di offrirti orientamento invece che pressione.";
     }
-    return integration || exerciseText || "Trasforma il contenuto di oggi in una piccola azione reale, concreta e possibile.";
+    return integration || exerciseText || "Trasforma ciò che hai letto oggi in una piccola azione reale, semplice e possibile.";
   }
 
   function buildSmartExerciseFromVariant(variant){
@@ -1524,9 +1526,9 @@
     gamePrompt.textContent = exercise.intro || "Scegli intuitivamente l’area che in questo momento può offrirti più stabilità.";
 
     const outputMap = {
-      body: exercise.body || "Prenditi cura del tuo corpo con un gesto semplice e regolante.",
+      body: exercise.body || "Prenditi cura del tuo corpo con un gesto semplice, regolante e gentile.",
       mind: exercise.mind || "Scegli oggi un pensiero più chiaro, più lieve e più utile.",
-      action: exercise.action || "Scegli oggi una piccola azione concreta, davvero realizzabile."
+      action: exercise.action || "Scegli oggi una piccola azione concreta, davvero possibile."
     };
 
     smartOutput.textContent = outputMap[selected];
@@ -1549,11 +1551,11 @@
 
     if(exercise && (exercise.text || exercise.title)){
       exerciseWrap.style.display = "block";
-      exerciseTitle.textContent = exercise.title || "Mini esercizio";
+      exerciseTitle.textContent = exercise.title || "Piccolo esercizio";
       exerciseText.textContent = exercise.text || "—";
     } else {
       exerciseWrap.style.display = "none";
-      exerciseTitle.textContent = "Mini esercizio";
+      exerciseTitle.textContent = "Piccolo esercizio";
       exerciseText.textContent = "—";
     }
   }
@@ -1635,13 +1637,13 @@
     tagNumber.textContent = String(currentDay);
     updateImage(currentDay);
 
-    elTitle.textContent = `Il giorno ${currentDay} è ancora bloccato`;
-    elExplanation.textContent = "Questo giorno si sbloccherà automaticamente quando lo raggiungerai nel ritmo naturale del tuo programma di 21 giorni.";
-    elImpuls.textContent = "Non serve vivere tutto insieme. Oggi conta soltanto il giorno che è davvero aperto per te.";
-    elReflection.textContent = "Che cosa può aiutarmi oggi a restare nel passo presente, senza correre avanti?";
+    elTitle.textContent = `Il giorno ${currentDay} non è ancora aperto`;
+    elExplanation.textContent = "Ogni cosa ha il suo tempo. Questo giorno si aprirà automaticamente quando lo raggiungerai nel ritmo naturale del tuo percorso di 21 giorni.";
+    elImpuls.textContent = "Non devi fare tutto subito. Oggi conta solo il passo che è davvero davanti a te.";
+    elReflection.textContent = "Che cosa mi aiuta oggi a restare nel mio ritmo, senza anticipare ciò che verrà?";
 
     exerciseWrap.style.display = "none";
-    exerciseTitle.textContent = "Mini esercizio";
+    exerciseTitle.textContent = "Piccolo esercizio";
     exerciseText.textContent = "—";
 
     premiumTeaser.style.display = "block";
@@ -1711,7 +1713,7 @@
       nextBtn.textContent = "Ancora bloccato 🔒";
     } else {
       nextBtn.disabled = false;
-      nextBtn.textContent = "Avanti →";
+      nextBtn.textContent = "Continua →";
     }
 
     if(completed){
@@ -1719,7 +1721,7 @@
       completeBtn.textContent = "Già completato ✓";
     } else {
       completeBtn.disabled = false;
-      completeBtn.textContent = "Segna il giorno come completato ✓";
+      completeBtn.textContent = "Concludi il giorno ✓";
     }
 
     if(cycleCompleted){
@@ -1823,7 +1825,7 @@
     });
 
     applySmartBtn.addEventListener("click", () => {
-      gameResult.textContent = "Bene. Porta con te proprio questo piccolo passo, oggi: non di più, ma neppure di meno.";
+      gameResult.textContent = "Perfetto. Porta con te proprio questo piccolo passo, oggi. Non serve fare di più. Ma questo sì.";
     });
 
     finishBtn.addEventListener("click", () => {
