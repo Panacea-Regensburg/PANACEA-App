@@ -72,8 +72,7 @@
       opacity:.20;
       pointer-events:none;
     }
-
-    .langBar{
+        .langBar{
       display:flex;
       justify-content:center;
       margin-bottom:16px;
@@ -152,8 +151,7 @@
       line-height:1.35;
       font-weight:600;
     }
-
-    .grid{
+        .grid{
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:14px;
@@ -207,43 +205,8 @@
       -webkit-user-drag:none;
     }
 
-    .tileLabel{
-      position:absolute;
-      left:14px;
-      right:14px;
-      bottom:12px;
-      text-align:center;
-      font-weight:800;
-      color:var(--green);
-      opacity:.90;
-      font-size:14px;
-      display:none;
-    }
-
     .spacer{
       height:10px;
-    }
-
-    @media (max-width:420px){
-      body{
-        padding:20px 12px 32px;
-      }
-
-      .title{
-        font-size:40px;
-      }
-
-      .title .line2{
-        font-size:34px;
-      }
-
-      .tile{
-        min-height:150px;
-      }
-
-      .menuIcon{
-        max-width:210px;
-      }
     }
   </style>
 </head>
@@ -255,48 +218,48 @@
 
     <div class="langBar">
       <div class="langWrap" role="tablist" aria-label="Lingua">
-        <button class="langBtn" id="btnDE" type="button" aria-selected="false">Deutsch</button>
-        <button class="langBtn active" id="btnIT" type="button" aria-selected="true">Italiano</button>
+        <button class="langBtn" id="btnDE" type="button">Deutsch</button>
+        <button class="langBtn active" id="btnIT" type="button">Italiano</button>
       </div>
     </div>
 
     <div class="headerCard">
       <h1 class="title titleGlow">
-        <span id="t_panacea">Panacea</span>
-        <span class="line2" id="t_bodymind">Body &amp; Mind</span>
+        <span>Panacea</span>
+        <span class="line2">Body &amp; Mind</span>
       </h1>
-      <p class="subtitle" id="t_subtitle">Piccoli passi. Più stabilità. Ogni giorno.</p>
+      <p class="subtitle">Piccoli passi. Più stabilità. Ogni giorno.</p>
     </div>
 
     <div class="grid">
-      <a class="tile" href="daily-resetIT.html" aria-label="Reset Quotidiano">
+      <a class="tile" href="daily-resetIT.html">
         <img class="menuIcon" data-src="icons/daily-reset.png" alt="Reset Quotidiano" />
       </a>
 
-      <a class="tile" href="wissenIT.html" aria-label="Conoscenza e Chiarezza">
-        <img class="menuIcon" data-src="icons/wissen-klarheit.png" alt="Conoscenza &amp; Chiarezza" />
+      <a class="tile" href="wissenIT.html">
+        <img class="menuIcon" data-src="icons/wissen-klarheit.png" alt="Conoscenza e Chiarezza" />
       </a>
 
-      <a class="tile" href="lifestyleIT.html" aria-label="Stile di Vita">
+      <a class="tile" href="lifestyleIT.html">
         <img class="menuIcon" data-src="icons/lifestyle.png" alt="Stile di Vita" />
       </a>
-            <a class="tile" href="uebungen-premiumIT.html" aria-label="Esercizi">
+
+      <a class="tile" href="uebungen-premiumIT.html">
         <img class="menuIcon" data-src="icons/uebungen.png" alt="Esercizi" />
       </a>
 
-      <a class="tile" href="kurseIT.html" aria-label="Corsi">
+      <a class="tile" href="kurseIT.html">
         <img class="menuIcon" data-src="icons/kurse.png" alt="Corsi" />
       </a>
 
-      <a class="tile" href="mitgliederIT.html" aria-label="Area Membri">
+      <a class="tile" href="mitgliederIT.html">
         <img class="menuIcon" data-src="icons/mitgliederbereich.png" alt="Area Membri" />
       </a>
     </div>
 
     <div class="spacer"></div>
   </div>
-
-  <script>
+    <script>
     (function(){
       const v = Date.now();
       document.querySelectorAll("img[data-src]").forEach(img => {
@@ -304,34 +267,16 @@
       });
     })();
 
-    const STORAGE_LANG = "lang";
     const btnDE = document.getElementById("btnDE");
     const btnIT = document.getElementById("btnIT");
 
-    function setActiveLang(lang){
-      const isIT = lang === "it";
-
-      btnDE.classList.toggle("active", !isIT);
-      btnIT.classList.toggle("active", isIT);
-
-      btnDE.setAttribute("aria-selected", !isIT ? "true" : "false");
-      btnIT.setAttribute("aria-selected", isIT ? "true" : "false");
-
-      document.documentElement.lang = isIT ? "it" : "de";
-      localStorage.setItem(STORAGE_LANG, lang);
-    }
-
     function goToLang(lang){
-      setActiveLang(lang);
-
       if(lang === "de"){
         window.location.href = "index.html";
       } else {
         window.location.href = "indexIT.html";
       }
     }
-
-    setActiveLang("it");
 
     btnDE.addEventListener("click", () => goToLang("de"));
     btnIT.addEventListener("click", () => goToLang("it"));
@@ -340,9 +285,7 @@
   <script>
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {
-        navigator.serviceWorker.register("./service-worker.js")
-          .then(reg => console.log("Service Worker registered", reg))
-          .catch(err => console.log("Service Worker failed", err));
+        navigator.serviceWorker.register("./service-worker.js");
       });
     }
   </script>
