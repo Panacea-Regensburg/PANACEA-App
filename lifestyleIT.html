@@ -550,8 +550,7 @@
       position:relative;
       z-index:2;
     }
-
-    .premiumBlock{
+        .premiumBlock{
       margin-top:14px;
       padding:14px;
       border-radius:18px;
@@ -891,7 +890,7 @@
         <div class="badge">LS</div>
         <div>
           <h1>Lifestyle Reset</h1>
-          <p>Un percorso di 21 giorni per ritrovare stabilità, energia e una forma di equilibrio capace di accompagnarti davvero nella vita di ogni giorno.</p>
+          <p>Un percorso di 21 giorni per ritrovare stabilità, energia e un equilibrio autentico, capace di accompagnarti davvero nella vita di ogni giorno.</p>
         </div>
       </div>
 
@@ -916,7 +915,7 @@
 
         <div class="softBox">
           <h2 class="dayTitle" id="title">—</h2>
-          <div class="label">Per comprendere</div>
+          <div class="label">Per orientarti</div>
           <p class="text" id="explanation">—</p>
         </div>
 
@@ -943,12 +942,12 @@
         </div>
 
         <div class="navRow">
-          <button id="prevBtn" type="button">← Torna</button>
+          <button id="prevBtn" type="button">← Indietro</button>
           <button class="primary" id="nextBtn" type="button">Continua →</button>
         </div>
 
         <div class="navRow" style="margin-top:10px;">
-          <button id="completeBtn" type="button">Concludi il giorno ✓</button>
+          <button id="completeBtn" type="button">Concludi la giornata ✓</button>
           <button id="restartCycleBtn" type="button" style="display:none;">Inizia un nuovo ciclo di 21 giorni ↺</button>
         </div>
 
@@ -969,7 +968,7 @@
               <h3>Area Membri – Lifestyle Deluxe</h3>
               <p>
                 Una versione più profonda e più ricca del tuo impulso quotidiano:
-                con più comprensione, più integrazione e un accompagnamento premium
+                con maggiore comprensione, più integrazione e un accompagnamento premium
                 pensato per sostenerti con presenza, eleganza e concretezza.
               </p>
             </div>
@@ -977,19 +976,19 @@
           </div>
 
           <ul class="premiumList">
-            <li><b>Approfondimento del tema</b> con una lettura più chiara, più morbida e più vicina alla vita reale</li>
+            <li><b>Approfondimento del tema</b> con una lettura più chiara, più delicata e più vicina alla vita reale</li>
             <li><b>3 varianti premium</b> in una rotazione dinamica di 21 giorni</li>
             <li><b>Esercizio intelligente</b> con focus su corpo, pensiero o azione</li>
             <li><b>Integrazione finale</b> per portare il contenuto nel quotidiano in modo reale e sostenibile</li>
           </ul>
 
           <div class="premiumActions">
-            <a class="linkBtn" id="memberBtn" href="./mitgliederIT.html">Vai all’area membri</a>
-            <a class="subLink" id="unlockBtnLink" href="./mitgliederIT.html">Sblocca accesso membri</a>
+            <a class="linkBtn" id="memberBtn" href="./mitgliederIT.html">Vai all'area membri</a>
+            <a class="subLink" id="unlockBtnLink" href="./mitgliederIT.html">Sblocca l'accesso membri</a>
           </div>
 
           <div class="smallNote">
-            Nota: dopo lo sblocco, la tua area premium apparirà automaticamente qui, all’interno del tuo percorso.
+            Nota: dopo lo sblocco, la tua area premium apparirà automaticamente qui, all'interno del tuo percorso.
           </div>
         </div>
 
@@ -1044,7 +1043,7 @@
             </div>
 
             <div class="smartOutput" id="smartOutput">
-              Scegli un’area. Riceverai subito un piccolo passo intelligente, delicato e concreto da portare con te oggi.
+              Scegli un'area. Riceverai subito un piccolo passo intelligente, delicato e concreto da portare con te oggi.
             </div>
 
             <div class="autoHint" id="autoHint">
@@ -1057,8 +1056,8 @@
             </div>
 
             <div class="gameBtns">
-              <button class="miniBtn primary" id="applySmartBtn" type="button">Applica l’impulso</button>
-              <button class="miniBtn" id="finishBtn" type="button">Mostra conclusione</button>
+              <button class="miniBtn primary" id="applySmartBtn" type="button">Applica l'impulso</button>
+              <button class="miniBtn" id="finishBtn" type="button">Mostra la conclusione</button>
             </div>
           </div>
 
@@ -1147,8 +1146,7 @@
   let practices = [];
   let currentDay = 1;
   let currentVariant = null;
-
-  function clampDay(value){
+    function clampDay(value){
     const n = parseInt(value, 10);
     if (!Number.isFinite(n)) return 1;
     return Math.min(TOTAL_DAYS, Math.max(1, n));
@@ -1490,7 +1488,7 @@
     const basePractice = practice?.instruction || "";
 
     if(choice === "body"){
-      return exerciseText || basePractice || nervous || "Porta l’attenzione al tuo corpo e scegli un gesto piccolo, ma regolante e gentile verso te stesso.";
+      return exerciseText || basePractice || nervous || "Porta l'attenzione al tuo corpo e scegli un gesto piccolo, ma regolante e gentile verso te stesso.";
     }
     if(choice === "mind"){
       return journal || nervous || "Scegli oggi un pensiero più calmo, più chiaro, capace di offrirti orientamento invece che pressione.";
@@ -1506,7 +1504,7 @@
 
     return {
       title: premiumObj?.exercise?.title || practice?.title || "Esercizio intelligente",
-      intro: premiumObj?.deepening || premiumObj?.intro || practice?.instruction || "Scegli intuitivamente l’area che in questo momento può offrirti più stabilità.",
+      intro: premiumObj?.deepening || premiumObj?.intro || practice?.instruction || "Scegli intuitivamente l'area che in questo momento può offrirti più stabilità.",
       autoChoice: variant?.autoChoice || "body",
       body: pickSmartText("body", premiumObj, practice),
       mind: pickSmartText("mind", premiumObj, practice),
@@ -1523,7 +1521,7 @@
     });
 
     gameTitle.textContent = exercise.title || "Esercizio intelligente";
-    gamePrompt.textContent = exercise.intro || "Scegli intuitivamente l’area che in questo momento può offrirti più stabilità.";
+    gamePrompt.textContent = exercise.intro || "Scegli intuitivamente l'area che in questo momento può offrirti più stabilità.";
 
     const outputMap = {
       body: exercise.body || "Prenditi cura del tuo corpo con un gesto semplice, regolante e gentile.",
@@ -1581,8 +1579,7 @@
       currentVariant = null;
       return;
     }
-
-    const { premiumDay, variantIndex, variant } = premiumData;
+        const { premiumDay, variantIndex, variant } = premiumData;
     const premium = variant?.premium || variant || {};
     const free = variant?.free || {};
 
@@ -1637,9 +1634,9 @@
     tagNumber.textContent = String(currentDay);
     updateImage(currentDay);
 
-    elTitle.textContent = `Il giorno ${currentDay} non è ancora aperto`;
+    elTitle.textContent = `Il giorno ${currentDay} non è ancora disponibile`;
     elExplanation.textContent = "Ogni cosa ha il suo tempo. Questo giorno si aprirà automaticamente quando lo raggiungerai nel ritmo naturale del tuo percorso di 21 giorni.";
-    elImpuls.textContent = "Non devi fare tutto subito. Oggi conta solo il passo che è davvero davanti a te.";
+    elImpuls.textContent = "Non devi fare tutto subito. Oggi conta soltanto il passo che hai davvero davanti a te.";
     elReflection.textContent = "Che cosa mi aiuta oggi a restare nel mio ritmo, senza anticipare ciò che verrà?";
 
     exerciseWrap.style.display = "none";
@@ -1653,11 +1650,11 @@
 
     premiumBadge.textContent = "Stato: Free";
     unlockBtnLink.style.display = "";
-    memberBtn.textContent = "Vai all’area membri";
+    memberBtn.textContent = "Vai all'area membri";
 
     prevBtn.disabled = currentDay <= 1;
     nextBtn.disabled = true;
-    nextBtn.textContent = "Ancora bloccato 🔒";
+    nextBtn.textContent = "Non ancora disponibile 🔒";
 
     completeBtn.disabled = true;
     completeBtn.textContent = "Non ancora disponibile 🔒";
@@ -1696,7 +1693,7 @@
     } else {
       premiumBadge.textContent = "Stato: Free";
       unlockBtnLink.style.display = "";
-      memberBtn.textContent = "Vai all’area membri";
+      memberBtn.textContent = "Vai all'area membri";
       premiumTeaser.style.display = "block";
       premiumBlock.style.display = "none";
       closingBox.style.display = "none";
@@ -1710,7 +1707,7 @@
       nextBtn.textContent = completed ? "Ultimo giorno ✓" : "Ultimo giorno";
     } else if(currentDay + 1 > getUnlockedDay()){
       nextBtn.disabled = true;
-      nextBtn.textContent = "Ancora bloccato 🔒";
+      nextBtn.textContent = "Non ancora disponibile 🔒";
     } else {
       nextBtn.disabled = false;
       nextBtn.textContent = "Continua →";
@@ -1721,7 +1718,7 @@
       completeBtn.textContent = "Già completato ✓";
     } else {
       completeBtn.disabled = false;
-      completeBtn.textContent = "Concludi il giorno ✓";
+      completeBtn.textContent = "Concludi la giornata ✓";
     }
 
     if(cycleCompleted){
